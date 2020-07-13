@@ -21,7 +21,8 @@ public class Card : MonoBehaviour
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
     //The resource cost should always be set to the default cost at the start of each game.
-    //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. Neutral cost is depricated but kept in for use in IsPlayable function
+    //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
+    //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
     private int[] defaultCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
     private int[] resourceCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 
