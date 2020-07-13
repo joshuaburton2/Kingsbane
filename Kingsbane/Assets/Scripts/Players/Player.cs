@@ -5,17 +5,32 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public string playerName;
+    public Classes.ClassList playerClass = Classes.ClassList.Default;
 
-    public Deck deck;
+    public Deck defaultDeck; //Deck to be persisted between scenarios
+    public Deck deck; //Deck to be accessed during a scenario
     public Hand hand;
 
     public int[] playerResources = new int[] { 0, 0, 0, 0, 0 };
+    public Resources.ResourceList[] usedResources;
 
     int counter;
 
     private void Start()
     {
         counter = 0;
+
+        ResourceInit();
+    }
+
+    /// <summary>
+    /// 
+    /// Initialises the resource list used by the class. To be called on start
+    /// 
+    /// </summary>
+    private void ResourceInit()
+    {
+        usedResources = Classes.GetClassResource(playerClass);
     }
 
     #region Draw Functions

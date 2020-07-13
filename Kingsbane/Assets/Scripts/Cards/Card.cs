@@ -7,13 +7,23 @@ public class Card : MonoBehaviour
     public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary }
     public enum CardType { Default, Unit, Spell, Item }
 
+    public int CardID { get { return cardID; } }
     public int cardID = -1; //ID of the card in the card library. Should have no reference in gameplay
-    public string cardName = "Default";
-    public Rarity rarity = Rarity.Default;
-    public Sprite cardArt;
-    public CardType cardType = CardType.Default;
+    public string CardName { get { return cardName; } }
+    private string cardName = "Default";
 
-    public Player cardOwner;
+    public Rarity rarity = Rarity.Default;
+    public CardType cardType = CardType.Default;
+    public Classes.ClassList cardClass = Classes.ClassList.Default;
+
+    public Sprite cardArt;
+    private string artLocation;
+
+    public List<Tags.GeneralTags> CardTags { get; private set; }
+
+    public List<Synergies.SynergyList> CardSyngergies { get; private set; }
+
+    public Player CardOwner { get; private set; }
 
     [SerializeField]
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
@@ -23,21 +33,43 @@ public class Card : MonoBehaviour
     //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
     private int[] defaultCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
     private int[] resourceCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+    public List<Resources.ResourceList> Resources { get; private set; }
 
     private void Awake()
     {
+        ResourceInit();
+    }
+
+    /// <summary>
+    /// 
+    /// Initialises the Resource Data on the card. To be called on awake
+    /// 
+    /// </summary>
+    private void ResourceInit()
+    {
         resourceCost = defaultCost;
+
+        Resources = new List<Resources.ResourceList>();
+        for (int resourceIndex = 0; resourceIndex < defaultCost.Length; resourceIndex++)
+        {
+            if (defaultCost[resourceIndex] != 0)
+            {
+                Resources.Add((Resources.ResourceList)resourceIndex);
+            }
+        }
     }
 
     /// <summary>
     /// 
     /// Tests if a card is playable based on the player's current resources
     /// 
+    /// IMPORTANT: Can be reworked to integrate Resources in Player and Card class
+    /// 
     /// </summary>
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        int[] playerResources = cardOwner.playerResources;
+        int[] playerResources = CardOwner.playerResources;
 
         //The resource differences will be the difference between the player's current resources and their mandatory spending
         //of their resources based on the cost of the card
