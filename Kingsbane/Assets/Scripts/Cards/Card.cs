@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     public Sprite cardArt;
     public CardType cardType = CardType.Default;
 
-    
+    public int test;
 
     public Player cardOwner;
 
