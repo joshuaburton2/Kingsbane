@@ -7,10 +7,13 @@ public class Card : MonoBehaviour
     public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary }
     public enum CardType { Default, Unit, Spell, Item }
 
+    public int cardID = -1; //ID of the card in the card library. Should have no reference in gameplay
     public string cardName = "Default";
     public Rarity rarity = Rarity.Default;
     public Sprite cardArt;
     public CardType cardType = CardType.Default;
+
+    
 
     public Player cardOwner;
 
@@ -18,8 +21,9 @@ public class Card : MonoBehaviour
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
     //The resource cost should always be set to the default cost at the start of each game.
-    private int[] defaultCost = new int[] { 0, 0, 0, 0, 0, 0 };
-    private int[] resourceCost = new int[] { 0, 0, 0, 0, 0, 0 };
+    //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. Neutral cost is depricated but kept in for use in IsPlayable function
+    private int[] defaultCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+    private int[] resourceCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 
     private void Awake()
     {
