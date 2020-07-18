@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
     public Deck deck; //Deck to be accessed during a scenario
     public Hand hand;
 
-    public int[] playerResources = new int[] { 0, 0, 0, 0, 0 };
+    public int[] playerResources;
     public Resources.ResourceList[] usedResources;
+    private const int NUM_RESOURCES = 6;
 
     int counter;
 
@@ -30,6 +31,8 @@ public class Player : MonoBehaviour
     /// </summary>
     private void ResourceInit()
     {
+        playerResources = new int[NUM_RESOURCES];
+
         usedResources = Classes.GetClassResource(playerClass);
     }
 

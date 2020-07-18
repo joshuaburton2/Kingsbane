@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary }
+    public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary, Uncollectable }
     public enum CardType { Default, Unit, Spell, Item }
 
     public int CardID { get { return cardID; } }
@@ -31,25 +31,28 @@ public class Card : MonoBehaviour
     //The resource cost should always be set to the default cost at the start of each game.
     //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
     //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
-    private int[] defaultCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
-    private int[] resourceCost = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+    private int[] defaultCost;
+    private int[] resourceCost;
     public List<Resources.ResourceList> Resources { get; private set; }
+    private const int DEFAULT_VAL = -1;
+    private const int NUM_RESOURCES = 7;
 
     private void Awake()
     {
-        ResourceInit();
+
     }
 
     /// <summary>
     /// 
-    /// Initialises the Resource Data on the card. To be called on awake
+    /// Initialises the Resource Data on the card. To be called when the card is created
     /// 
     /// </summary>
     private void ResourceInit()
     {
-        resourceCost = defaultCost;
-
+        defaultCost = new int[NUM_RESOURCES];
+        resourceCost = new int[NUM_RESOURCES];
         Resources = new List<Resources.ResourceList>();
+
         for (int resourceIndex = 0; resourceIndex < defaultCost.Length; resourceIndex++)
         {
             if (defaultCost[resourceIndex] != 0)
@@ -57,6 +60,8 @@ public class Card : MonoBehaviour
                 Resources.Add((Resources.ResourceList)resourceIndex);
             }
         }
+
+        resourceCost = defaultCost;
     }
 
     /// <summary>
