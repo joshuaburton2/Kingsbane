@@ -4,8 +4,9 @@ using UnityEngine;
 
 public static class Classes
 {
+    public const int NUM_CLASSES = 16; //This will always be equal to the number of actual classes plus one
     public enum ClassList
-    { 
+    {
         Default, Abyssal, Agent, Arcanist, Captain, Elementalist, Grovewatcher,
         Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Runeblade,
         Trickster, Waystalker, Wildkin
@@ -41,7 +42,7 @@ public static class Classes
     /// Obtain the list of resources used by a particular class
     /// 
     /// </summary>
-    public static Resources.ResourceList[] GetClassResource (ClassList neededClass)
+    public static Resources.ResourceList[] GetClassResource(ClassList neededClass)
     {
         return classResources[(int)neededClass];
     }

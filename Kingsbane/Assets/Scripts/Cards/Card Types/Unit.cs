@@ -9,6 +9,10 @@ public class Unit : Card
     public int Range { get; private set; }
     public int Speed { get; private set; }
 
+    public string UnitTag { get; private set; }
+
+    public bool IsHero { get; private set; }
+
     public override void Play()
     {
         base.Play();

@@ -37,6 +37,8 @@ public class Card : MonoBehaviour
     private const int DEFAULT_VAL = -1;
     private const int NUM_RESOURCES = 7;
 
+    public string cardText = "";
+
     private void Awake()
     {
 
