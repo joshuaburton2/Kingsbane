@@ -11,8 +11,6 @@ public class Unit : Card
 
     public string UnitTag { get; private set; }
 
-    public bool IsHero { get; private set; }
-
     public override void Play()
     {
         base.Play();

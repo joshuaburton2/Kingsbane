@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary, Uncollectable }
+    public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary, Uncollectable, Hero }
     public enum CardType { Default, Unit, Spell, Item }
 
     public int CardID { get { return cardID; } }
@@ -25,17 +25,18 @@ public class Card : MonoBehaviour
 
     public Player CardOwner { get; private set; }
 
-    [SerializeField]
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
     //The resource cost should always be set to the default cost at the start of each game.
     //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
     //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
-    private int[] defaultCost;
-    private int[] resourceCost;
+    [SerializeField]
+    public int[] DefaultCost { get; set; }
+    [SerializeField]
+    public int[] ResourceCost { get; private set; }
     public List<Resources.ResourceList> Resources { get; private set; }
-    private const int DEFAULT_VAL = -1;
-    private const int NUM_RESOURCES = 7;
+    public readonly int DEFAULT_VAL = -1;
+    public readonly int NUM_RESOURCES = 7;
 
     public string cardText = "";
 
@@ -51,19 +52,19 @@ public class Card : MonoBehaviour
     /// </summary>
     private void ResourceInit()
     {
-        defaultCost = new int[NUM_RESOURCES];
-        resourceCost = new int[NUM_RESOURCES];
+        DefaultCost = new int[NUM_RESOURCES];
+        ResourceCost = new int[NUM_RESOURCES];
         Resources = new List<Resources.ResourceList>();
 
-        for (int resourceIndex = 0; resourceIndex < defaultCost.Length; resourceIndex++)
+        for (int resourceIndex = 0; resourceIndex < DefaultCost.Length; resourceIndex++)
         {
-            if (defaultCost[resourceIndex] != 0)
+            if (DefaultCost[resourceIndex] != 0)
             {
                 Resources.Add((Resources.ResourceList)resourceIndex);
             }
         }
 
-        resourceCost = defaultCost;
+        ResourceCost = DefaultCost;
     }
 
     /// <summary>
@@ -82,16 +83,16 @@ public class Card : MonoBehaviour
         //of their resources based on the cost of the card
         int[] resourceDifferences = new int[playerResources.Length];
 
-        for (int resourceID = 0; resourceID < resourceCost.Length; resourceID++)
+        for (int resourceID = 0; resourceID < ResourceCost.Length; resourceID++)
         {
             //Calculate the resource difference. Calculated here even if the cost is 0 since needs a value for all resource types
-            resourceDifferences[resourceID] = playerResources[resourceID] - resourceCost[resourceID];
+            resourceDifferences[resourceID] = playerResources[resourceID] - ResourceCost[resourceID];
 
             //Tests if the resource actually has a cost of that type
-            if (resourceCost[resourceID] != 0)
+            if (ResourceCost[resourceID] != 0)
             {
                 //Tests if the current resource is not a neutral cost
-                if (resourceID != resourceCost.Length - 1)
+                if (resourceID != ResourceCost.Length - 1)
                 {
                     //If the difference between the cost of a card and the player's resource is less than 0, this means the card cannot be played
                     if (resourceDifferences[resourceID] < 0)
@@ -107,7 +108,7 @@ public class Card : MonoBehaviour
                     {
                         //If the player has enough resources remaining after spending the mandatory cost of the card, they can play
                         //the card
-                        if(resourceDifference - resourceCost[resourceID] > 0)
+                        if(resourceDifference - ResourceCost[resourceID] > 0)
                         {
                             return true;
                         }

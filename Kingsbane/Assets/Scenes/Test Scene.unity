@@ -1112,6 +1112,8 @@ GameObject:
   - component: {fileID: 1839567439}
   - component: {fileID: 1839567441}
   - component: {fileID: 1839567440}
+  - component: {fileID: 1839567443}
+  - component: {fileID: 1839567442}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -1175,6 +1177,102 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839567438}
   m_CullTransparentMesh: 0
+--- !u!114 &1839567442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839567438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffd45a55a230864a9471f77fbe1935c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  card: {fileID: 0}
+  cardName: {fileID: 0}
+  subText: {fileID: 0}
+  resourceText: {fileID: 0}
+  classText: {fileID: 0}
+  cardText: {fileID: 0}
+  cardImage: {fileID: 0}
+  rarityBorder: {fileID: 0}
+  unitProps: {fileID: 0}
+  attackText: {fileID: 0}
+  healthText: {fileID: 0}
+  unitRangeText: {fileID: 0}
+  speedText: {fileID: 0}
+  spellProps: {fileID: 0}
+  spellRangeText: {fileID: 0}
+  itemProps: {fileID: 0}
+  durabilityText: {fileID: 0}
+  commonRarity:
+    Rarity: 1
+    rarityColour: {r: 0.81, g: 1, b: 0.91, a: 1}
+  uncommonRarity:
+    Rarity: 2
+    rarityColour: {r: 0.12, g: 0.34, b: 0.82, a: 1}
+  rareRarity:
+    Rarity: 3
+    rarityColour: {r: 0.32, g: 0.23, b: 0.64, a: 1}
+  epicRarity:
+    Rarity: 4
+    rarityColour: {r: 0.67, g: 0.21, b: 0.1, a: 1}
+  legendaryRarity:
+    Rarity: 5
+    rarityColour: {r: 0.91, g: 0.59, b: 0.08, a: 1}
+  classColours:
+  - Class: 0
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 1
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 2
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 3
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 4
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 5
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 6
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 7
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 8
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 9
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 10
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 11
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 12
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 13
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 14
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+  - Class: 15
+    classColour: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1839567443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839567438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606c9250a155bf04fa0e79ea2ab7e615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardID: -1
+  rarity: 0
+  cardType: 0
+  cardClass: 0
+  cardArt: {fileID: 0}
+  defaultCost: 
+  cardText: 
 --- !u!1 &1928567936
 GameObject:
   m_ObjectHideFlags: 0
