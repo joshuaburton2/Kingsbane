@@ -31,7 +31,7 @@ public class Card : MonoBehaviour
     //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
     //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
     [SerializeField]
-    public int[] DefaultCost { get; set; }
+    public int[] DefaultCost { get; set; } //Change this to be a list of object containers
     [SerializeField]
     public int[] ResourceCost { get; private set; }
     public List<Resources.ResourceList> Resources { get; private set; }
