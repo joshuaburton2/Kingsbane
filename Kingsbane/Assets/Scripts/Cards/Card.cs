@@ -5,26 +5,26 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary, Uncollectable, Hero }
-    public enum CardType { Default, Unit, Spell, Item }
+    public enum Type { Default, Unit, Spell, Item }
 
-    public int CardID { get { return cardID; } }
-    public int cardID = -1; //ID of the card in the card library. Should have no reference in gameplay
-    public string CardName { get { return cardName; } }
+    public int ID { get { return iD; } }
+    public int iD = -1; //ID of the card in the card library. Should have no reference in gameplay
+    public string CardName { get { return name; } }
     [SerializeField]
     private string cardName = "Default";
 
     public Rarity rarity = Rarity.Default;
-    public CardType cardType = CardType.Default;
+    public Type type = Type.Default;
     public Classes.ClassList cardClass = Classes.ClassList.Default;
 
     public Sprite cardArt;
     private string artLocation;
 
-    public List<Tags.GeneralTags> CardTags { get; private set; }
+    public List<Tags.GeneralTags> Tags { get; private set; }
 
-    public List<Synergies.SynergyList> CardSyngergies { get; private set; }
+    public List<Synergies.SynergyList> Syngergies { get; private set; }
 
-    public Player CardOwner { get; private set; }
+    public Player Owner { get; private set; }
 
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
@@ -32,14 +32,14 @@ public class Card : MonoBehaviour
     //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
     //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
     [SerializeField]
-    public int[] DefaultCost { get; set; } //Change this to be a list of object containers
+    public int[] DefaultCost; //Change this to be a list of object containers
     [SerializeField]
     public int[] ResourceCost { get; private set; }
     public List<Resources.ResourceList> Resources { get; private set; }
     public readonly int DEFAULT_VAL = -1;
     public readonly int NUM_RESOURCES = 7;
 
-    public string cardText = "";
+    public string mainText = "";
 
     private void Awake()
     {
@@ -78,7 +78,7 @@ public class Card : MonoBehaviour
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        int[] playerResources = CardOwner.playerResources;
+        int[] playerResources = Owner.resources;
 
         //The resource differences will be the difference between the player's current resources and their mandatory spending
         //of their resources based on the cost of the card

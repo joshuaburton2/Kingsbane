@@ -121,7 +121,7 @@ public class CardDisplay : MonoBehaviour
     {
         cardName.text = card.CardName;
         classText.text = card.cardClass.ToString();
-        cardText.text = card.cardText;
+        cardText.text = card.mainText;
         cardImage.sprite = card.cardArt;
 
         UpdateCardType();
@@ -141,9 +141,9 @@ public class CardDisplay : MonoBehaviour
     {
         string subTextString;
 
-        switch (card.cardType)
+        switch (card.type)
         {
-            case Card.CardType.Unit:
+            case Card.Type.Unit:
                 Unit unitCard = (card as Unit);
 
                 if (card.rarity == Card.Rarity.Hero)
@@ -160,13 +160,13 @@ public class CardDisplay : MonoBehaviour
                 ResetProps();
                 unitProps.SetActive(true);
                 break;
-            case Card.CardType.Spell:
+            case Card.Type.Spell:
                 subTextString = "Spell";
 
                 ResetProps();
                 spellProps.SetActive(true);
                 break;
-            case Card.CardType.Item:
+            case Card.Type.Item:
                 Item itemCard = card as Item;
                 subTextString = "Item - " + itemCard.ItemTag;
 
@@ -233,9 +233,9 @@ public class CardDisplay : MonoBehaviour
     {
         UpdateResourceText();
 
-        switch (card.cardType)
+        switch (card.type)
         {
-            case Card.CardType.Unit:
+            case Card.Type.Unit:
                 Unit unitCard = card as Unit;
 
                 attackText.text = unitCard.Attack.ToString();
@@ -244,13 +244,13 @@ public class CardDisplay : MonoBehaviour
                 speedText.text = unitCard.Speed.ToString();
 
                 break;
-            case Card.CardType.Spell:
+            case Card.Type.Spell:
                 Spell spellCard = card as Spell;
 
                 spellRangeText.text = spellCard.SpellRange.ToString();
 
                 break;
-            case Card.CardType.Item:
+            case Card.Type.Item:
                 Item itemCard = card as Item;
 
                 durabilityText.text = itemCard.Durability.ToString();
