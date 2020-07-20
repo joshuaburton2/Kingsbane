@@ -116,6 +116,11 @@ public class CardDisplay : MonoBehaviour
         InitDisplay();
     }
 
+    /// <summary>
+    /// 
+    /// Initialise the display. This is for properties which should not reset during the game
+    /// 
+    /// </summary>
     [ContextMenu("Initialise Display")]
     public void InitDisplay()
     {
@@ -130,6 +135,11 @@ public class CardDisplay : MonoBehaviour
         UpdateProperties();
     }
 
+    /// <summary>
+    /// 
+    /// Reset the card so that it does not display any card type fields
+    /// 
+    /// </summary>
     private void ResetProps()
     {
         unitProps.SetActive(false);
@@ -137,6 +147,11 @@ public class CardDisplay : MonoBehaviour
         itemProps.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Update the card so the subtext lists the unit type, and the relevant card type fields are activated
+    /// 
+    /// </summary>
     private void UpdateCardType()
     {
         string subTextString;
@@ -182,6 +197,11 @@ public class CardDisplay : MonoBehaviour
         subText.text = subTextString;
     }
 
+    /// <summary>
+    /// 
+    /// Update the colour of the rarity border based on the rarity of the card
+    /// 
+    /// </summary>
     private void UpdateRarityBorder()
     {
         Color rarityColour;
@@ -215,6 +235,11 @@ public class CardDisplay : MonoBehaviour
         rarityBorder.color = rarityColour;
     }
 
+    /// <summary>
+    /// 
+    /// Obtain a particular classes colour for their hero rarity border
+    /// 
+    /// </summary>
     private Color GetClassColour(Classes.ClassList neededClass)
     {
         foreach (ClassColour classColour in classColours)
@@ -228,6 +253,11 @@ public class CardDisplay : MonoBehaviour
         return new Color(1f, 1f, 1f);
     }
 
+    /// <summary>
+    /// 
+    /// Refresh the properties which can update during the game
+    /// 
+    /// </summary>
     [ContextMenu("Update Properties")]
     public void UpdateProperties()
     {
@@ -261,6 +291,11 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Update the resource text to include the resource words
+    /// 
+    /// </summary>
     private void UpdateResourceText()
     {
         int[] cardResources = card.ResourceCost;
