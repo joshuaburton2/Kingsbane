@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public int CardID { get { return cardID; } }
     public int cardID = -1; //ID of the card in the card library. Should have no reference in gameplay
     public string CardName { get { return cardName; } }
+    [SerializeField]
     private string cardName = "Default";
 
     public Rarity rarity = Rarity.Default;
