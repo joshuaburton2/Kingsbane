@@ -1896,7 +1896,7 @@ MonoBehaviour:
   defaultDeck: {fileID: 0}
   deck: {fileID: 1825478330}
   hand: {fileID: 2119162282}
-  playerResources: 0000000000000000000000000000000000000000
+  resources: 
   usedResources: 
 --- !u!1 &867744365
 GameObject:
@@ -4642,13 +4642,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606c9250a155bf04fa0e79ea2ab7e615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardID: -1
+  iD: -1
   cardName: Default
-  rarity: 0
-  cardType: 0
-  cardClass: 0
-  cardArt: {fileID: 0}
-  cardText: 
+  rarity: 2
+  type: 0
+  cardClass: 5
+  cardArt: {fileID: 21300000, guid: 77930616b45a0f34caac99ab8298859f, type: 3}
+  DefaultCost: 
+  mainText: 
 --- !u!1 &1912805723
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,7 +5192,7 @@ MonoBehaviour:
   defaultDeck: {fileID: 0}
   deck: {fileID: 2080803882}
   hand: {fileID: 871374740}
-  playerResources: 0000000000000000000000000000000000000000
+  resources: 
   usedResources: 
 --- !u!1 &2119162280
 GameObject:
