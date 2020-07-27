@@ -7,7 +7,7 @@ namespace Kingsbane.Database.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //[ForeignKey(nameof(Card))]
+        [ForeignKey(nameof(Card))]
         public int CardId { get; set; }
 
         [MaxLength(100)]
