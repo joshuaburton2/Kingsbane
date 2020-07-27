@@ -60,6 +60,26 @@ namespace Kingsbane.App
             this.Close();
         }
 
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this card?", "Check Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (Id.HasValue)
+                {
+                    _context.Remove(card);
+                    _context.SaveChanges();
+                    this.DialogResult = DialogResult.Abort;
+                    this.Close();
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.Cancel;
+                    this.Close();
+                }
+            }
+        }
+
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

@@ -26,6 +26,7 @@ namespace Kingsbane.App
         {
             var formCardList = _serviceProvider.GetRequiredService<formCardList>();
             formCardList.Show();
+            this.Hide();
         }
     }
 }
