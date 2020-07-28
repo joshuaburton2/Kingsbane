@@ -70,6 +70,37 @@
             this.lstSynergies = new System.Windows.Forms.ListBox();
             this.lblType = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
+            this.grpUnit = new System.Windows.Forms.GroupBox();
+            this.txtSpeed = new System.Windows.Forms.TextBox();
+            this.lblSpeed = new System.Windows.Forms.Label();
+            this.txtRange = new System.Windows.Forms.TextBox();
+            this.lblRange = new System.Windows.Forms.Label();
+            this.txtHealth = new System.Windows.Forms.TextBox();
+            this.lblHealth = new System.Windows.Forms.Label();
+            this.txtAttack = new System.Windows.Forms.TextBox();
+            this.lblAttack = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblMinionTag = new System.Windows.Forms.Label();
+            this.grpItem = new System.Windows.Forms.GroupBox();
+            this.txtDurability = new System.Windows.Forms.TextBox();
+            this.lblDurability = new System.Windows.Forms.Label();
+            this.txtItemTag = new System.Windows.Forms.TextBox();
+            this.lblItemTag = new System.Windows.Forms.Label();
+            this.grpSpell = new System.Windows.Forms.GroupBox();
+            this.txtSpellRange = new System.Windows.Forms.TextBox();
+            this.lblSpellRange = new System.Windows.Forms.Label();
+            this.txtSpellType = new System.Windows.Forms.TextBox();
+            this.lblSpellType = new System.Windows.Forms.Label();
+            this.chkDevotion = new System.Windows.Forms.CheckBox();
+            this.chkEnergy = new System.Windows.Forms.CheckBox();
+            this.chkGold = new System.Windows.Forms.CheckBox();
+            this.chkKnowledge = new System.Windows.Forms.CheckBox();
+            this.chkMana = new System.Windows.Forms.CheckBox();
+            this.chkWild = new System.Windows.Forms.CheckBox();
+            this.chkNeutral = new System.Windows.Forms.CheckBox();
+            this.grpUnit.SuspendLayout();
+            this.grpItem.SuspendLayout();
+            this.grpSpell.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelName
@@ -93,7 +124,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(430, 828);
+            this.buttonSave.Location = new System.Drawing.Point(430, 849);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -104,7 +135,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(518, 828);
+            this.buttonCancel.Location = new System.Drawing.Point(518, 849);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -115,7 +146,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(606, 828);
+            this.buttonDelete.Location = new System.Drawing.Point(606, 849);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -195,7 +226,7 @@
             // 
             // txtDevotion
             // 
-            this.txtDevotion.Location = new System.Drawing.Point(95, 157);
+            this.txtDevotion.Location = new System.Drawing.Point(107, 157);
             this.txtDevotion.Name = "txtDevotion";
             this.txtDevotion.Size = new System.Drawing.Size(100, 23);
             this.txtDevotion.TabIndex = 12;
@@ -211,7 +242,7 @@
             // 
             // txtEnergy
             // 
-            this.txtEnergy.Location = new System.Drawing.Point(95, 186);
+            this.txtEnergy.Location = new System.Drawing.Point(107, 186);
             this.txtEnergy.Name = "txtEnergy";
             this.txtEnergy.Size = new System.Drawing.Size(100, 23);
             this.txtEnergy.TabIndex = 12;
@@ -227,7 +258,7 @@
             // 
             // txtGold
             // 
-            this.txtGold.Location = new System.Drawing.Point(95, 215);
+            this.txtGold.Location = new System.Drawing.Point(107, 215);
             this.txtGold.Name = "txtGold";
             this.txtGold.Size = new System.Drawing.Size(100, 23);
             this.txtGold.TabIndex = 12;
@@ -243,7 +274,7 @@
             // 
             // txtKnowledge
             // 
-            this.txtKnowledge.Location = new System.Drawing.Point(95, 244);
+            this.txtKnowledge.Location = new System.Drawing.Point(107, 244);
             this.txtKnowledge.Name = "txtKnowledge";
             this.txtKnowledge.Size = new System.Drawing.Size(100, 23);
             this.txtKnowledge.TabIndex = 12;
@@ -259,7 +290,7 @@
             // 
             // txtMana
             // 
-            this.txtMana.Location = new System.Drawing.Point(95, 273);
+            this.txtMana.Location = new System.Drawing.Point(107, 273);
             this.txtMana.Name = "txtMana";
             this.txtMana.Size = new System.Drawing.Size(100, 23);
             this.txtMana.TabIndex = 12;
@@ -275,7 +306,7 @@
             // 
             // txtWild
             // 
-            this.txtWild.Location = new System.Drawing.Point(95, 302);
+            this.txtWild.Location = new System.Drawing.Point(107, 302);
             this.txtWild.Name = "txtWild";
             this.txtWild.Size = new System.Drawing.Size(100, 23);
             this.txtWild.TabIndex = 12;
@@ -291,7 +322,7 @@
             // 
             // txtNeutral
             // 
-            this.txtNeutral.Location = new System.Drawing.Point(95, 331);
+            this.txtNeutral.Location = new System.Drawing.Point(107, 331);
             this.txtNeutral.Name = "txtNeutral";
             this.txtNeutral.Size = new System.Drawing.Size(100, 23);
             this.txtNeutral.TabIndex = 12;
@@ -353,9 +384,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(60, 393);
+            this.comboBox1.Location = new System.Drawing.Point(74, 393);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(135, 23);
+            this.comboBox1.Size = new System.Drawing.Size(133, 23);
             this.comboBox1.TabIndex = 15;
             // 
             // lblSet
@@ -445,11 +476,274 @@
             this.cmbType.Size = new System.Drawing.Size(120, 23);
             this.cmbType.TabIndex = 21;
             // 
+            // grpUnit
+            // 
+            this.grpUnit.Controls.Add(this.txtSpeed);
+            this.grpUnit.Controls.Add(this.lblSpeed);
+            this.grpUnit.Controls.Add(this.txtRange);
+            this.grpUnit.Controls.Add(this.lblRange);
+            this.grpUnit.Controls.Add(this.txtHealth);
+            this.grpUnit.Controls.Add(this.lblHealth);
+            this.grpUnit.Controls.Add(this.txtAttack);
+            this.grpUnit.Controls.Add(this.lblAttack);
+            this.grpUnit.Controls.Add(this.textBox2);
+            this.grpUnit.Controls.Add(this.lblMinionTag);
+            this.grpUnit.Enabled = false;
+            this.grpUnit.Location = new System.Drawing.Point(12, 636);
+            this.grpUnit.Name = "grpUnit";
+            this.grpUnit.Size = new System.Drawing.Size(651, 61);
+            this.grpUnit.TabIndex = 22;
+            this.grpUnit.TabStop = false;
+            this.grpUnit.Text = "Unit Fields";
+            // 
+            // txtSpeed
+            // 
+            this.txtSpeed.Location = new System.Drawing.Point(557, 26);
+            this.txtSpeed.Name = "txtSpeed";
+            this.txtSpeed.Size = new System.Drawing.Size(44, 23);
+            this.txtSpeed.TabIndex = 3;
+            // 
+            // lblSpeed
+            // 
+            this.lblSpeed.AutoSize = true;
+            this.lblSpeed.Location = new System.Drawing.Point(512, 29);
+            this.lblSpeed.Name = "lblSpeed";
+            this.lblSpeed.Size = new System.Drawing.Size(39, 15);
+            this.lblSpeed.TabIndex = 2;
+            this.lblSpeed.Text = "Speed";
+            // 
+            // txtRange
+            // 
+            this.txtRange.Location = new System.Drawing.Point(462, 26);
+            this.txtRange.Name = "txtRange";
+            this.txtRange.Size = new System.Drawing.Size(44, 23);
+            this.txtRange.TabIndex = 3;
+            // 
+            // lblRange
+            // 
+            this.lblRange.AutoSize = true;
+            this.lblRange.Location = new System.Drawing.Point(416, 29);
+            this.lblRange.Name = "lblRange";
+            this.lblRange.Size = new System.Drawing.Size(40, 15);
+            this.lblRange.TabIndex = 2;
+            this.lblRange.Text = "Range";
+            // 
+            // txtHealth
+            // 
+            this.txtHealth.Location = new System.Drawing.Point(366, 26);
+            this.txtHealth.Name = "txtHealth";
+            this.txtHealth.Size = new System.Drawing.Size(44, 23);
+            this.txtHealth.TabIndex = 3;
+            // 
+            // lblHealth
+            // 
+            this.lblHealth.AutoSize = true;
+            this.lblHealth.Location = new System.Drawing.Point(318, 29);
+            this.lblHealth.Name = "lblHealth";
+            this.lblHealth.Size = new System.Drawing.Size(42, 15);
+            this.lblHealth.TabIndex = 2;
+            this.lblHealth.Text = "Health";
+            // 
+            // txtAttack
+            // 
+            this.txtAttack.Location = new System.Drawing.Point(268, 26);
+            this.txtAttack.Name = "txtAttack";
+            this.txtAttack.Size = new System.Drawing.Size(44, 23);
+            this.txtAttack.TabIndex = 3;
+            // 
+            // lblAttack
+            // 
+            this.lblAttack.AutoSize = true;
+            this.lblAttack.Location = new System.Drawing.Point(226, 29);
+            this.lblAttack.Name = "lblAttack";
+            this.lblAttack.Size = new System.Drawing.Size(41, 15);
+            this.lblAttack.TabIndex = 2;
+            this.lblAttack.Text = "Attack";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(83, 26);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(135, 23);
+            this.textBox2.TabIndex = 1;
+            // 
+            // lblMinionTag
+            // 
+            this.lblMinionTag.AutoSize = true;
+            this.lblMinionTag.Location = new System.Drawing.Point(8, 29);
+            this.lblMinionTag.Name = "lblMinionTag";
+            this.lblMinionTag.Size = new System.Drawing.Size(66, 15);
+            this.lblMinionTag.TabIndex = 0;
+            this.lblMinionTag.Text = "Minion Tag";
+            // 
+            // grpItem
+            // 
+            this.grpItem.Controls.Add(this.txtDurability);
+            this.grpItem.Controls.Add(this.lblDurability);
+            this.grpItem.Controls.Add(this.txtItemTag);
+            this.grpItem.Controls.Add(this.lblItemTag);
+            this.grpItem.Location = new System.Drawing.Point(10, 770);
+            this.grpItem.Name = "grpItem";
+            this.grpItem.Size = new System.Drawing.Size(651, 61);
+            this.grpItem.TabIndex = 22;
+            this.grpItem.TabStop = false;
+            this.grpItem.Text = "Item Fields";
+            // 
+            // txtDurability
+            // 
+            this.txtDurability.Location = new System.Drawing.Point(293, 22);
+            this.txtDurability.Name = "txtDurability";
+            this.txtDurability.Size = new System.Drawing.Size(44, 23);
+            this.txtDurability.TabIndex = 3;
+            // 
+            // lblDurability
+            // 
+            this.lblDurability.AutoSize = true;
+            this.lblDurability.Location = new System.Drawing.Point(229, 25);
+            this.lblDurability.Name = "lblDurability";
+            this.lblDurability.Size = new System.Drawing.Size(58, 15);
+            this.lblDurability.TabIndex = 2;
+            this.lblDurability.Text = "Durability";
+            // 
+            // txtItemTag
+            // 
+            this.txtItemTag.Location = new System.Drawing.Point(85, 22);
+            this.txtItemTag.Name = "txtItemTag";
+            this.txtItemTag.Size = new System.Drawing.Size(135, 23);
+            this.txtItemTag.TabIndex = 1;
+            // 
+            // lblItemTag
+            // 
+            this.lblItemTag.AutoSize = true;
+            this.lblItemTag.Location = new System.Drawing.Point(10, 30);
+            this.lblItemTag.Name = "lblItemTag";
+            this.lblItemTag.Size = new System.Drawing.Size(52, 15);
+            this.lblItemTag.TabIndex = 0;
+            this.lblItemTag.Text = "Item Tag";
+            // 
+            // grpSpell
+            // 
+            this.grpSpell.Controls.Add(this.txtSpellRange);
+            this.grpSpell.Controls.Add(this.lblSpellRange);
+            this.grpSpell.Controls.Add(this.txtSpellType);
+            this.grpSpell.Controls.Add(this.lblSpellType);
+            this.grpSpell.Location = new System.Drawing.Point(12, 703);
+            this.grpSpell.Name = "grpSpell";
+            this.grpSpell.Size = new System.Drawing.Size(651, 61);
+            this.grpSpell.TabIndex = 22;
+            this.grpSpell.TabStop = false;
+            this.grpSpell.Text = "Spell Fields";
+            // 
+            // txtSpellRange
+            // 
+            this.txtSpellRange.Location = new System.Drawing.Point(272, 25);
+            this.txtSpellRange.Name = "txtSpellRange";
+            this.txtSpellRange.Size = new System.Drawing.Size(44, 23);
+            this.txtSpellRange.TabIndex = 3;
+            // 
+            // lblSpellRange
+            // 
+            this.lblSpellRange.AutoSize = true;
+            this.lblSpellRange.Location = new System.Drawing.Point(226, 28);
+            this.lblSpellRange.Name = "lblSpellRange";
+            this.lblSpellRange.Size = new System.Drawing.Size(40, 15);
+            this.lblSpellRange.TabIndex = 2;
+            this.lblSpellRange.Text = "Range";
+            // 
+            // txtSpellType
+            // 
+            this.txtSpellType.Location = new System.Drawing.Point(83, 25);
+            this.txtSpellType.Name = "txtSpellType";
+            this.txtSpellType.Size = new System.Drawing.Size(135, 23);
+            this.txtSpellType.TabIndex = 1;
+            // 
+            // lblSpellType
+            // 
+            this.lblSpellType.AutoSize = true;
+            this.lblSpellType.Location = new System.Drawing.Point(9, 28);
+            this.lblSpellType.Name = "lblSpellType";
+            this.lblSpellType.Size = new System.Drawing.Size(59, 15);
+            this.lblSpellType.TabIndex = 0;
+            this.lblSpellType.Text = "Spell Type";
+            // 
+            // chkDevotion
+            // 
+            this.chkDevotion.AutoSize = true;
+            this.chkDevotion.Location = new System.Drawing.Point(83, 161);
+            this.chkDevotion.Name = "chkDevotion";
+            this.chkDevotion.Size = new System.Drawing.Size(15, 14);
+            this.chkDevotion.TabIndex = 23;
+            this.chkDevotion.UseVisualStyleBackColor = true;
+            // 
+            // chkEnergy
+            // 
+            this.chkEnergy.AutoSize = true;
+            this.chkEnergy.Location = new System.Drawing.Point(83, 190);
+            this.chkEnergy.Name = "chkEnergy";
+            this.chkEnergy.Size = new System.Drawing.Size(15, 14);
+            this.chkEnergy.TabIndex = 23;
+            this.chkEnergy.UseVisualStyleBackColor = true;
+            // 
+            // chkGold
+            // 
+            this.chkGold.AutoSize = true;
+            this.chkGold.Location = new System.Drawing.Point(83, 219);
+            this.chkGold.Name = "chkGold";
+            this.chkGold.Size = new System.Drawing.Size(15, 14);
+            this.chkGold.TabIndex = 23;
+            this.chkGold.UseVisualStyleBackColor = true;
+            // 
+            // chkKnowledge
+            // 
+            this.chkKnowledge.AutoSize = true;
+            this.chkKnowledge.Location = new System.Drawing.Point(83, 248);
+            this.chkKnowledge.Name = "chkKnowledge";
+            this.chkKnowledge.Size = new System.Drawing.Size(15, 14);
+            this.chkKnowledge.TabIndex = 23;
+            this.chkKnowledge.UseVisualStyleBackColor = true;
+            // 
+            // chkMana
+            // 
+            this.chkMana.AutoSize = true;
+            this.chkMana.Location = new System.Drawing.Point(83, 277);
+            this.chkMana.Name = "chkMana";
+            this.chkMana.Size = new System.Drawing.Size(15, 14);
+            this.chkMana.TabIndex = 23;
+            this.chkMana.UseVisualStyleBackColor = true;
+            // 
+            // chkWild
+            // 
+            this.chkWild.AutoSize = true;
+            this.chkWild.Location = new System.Drawing.Point(83, 306);
+            this.chkWild.Name = "chkWild";
+            this.chkWild.Size = new System.Drawing.Size(15, 14);
+            this.chkWild.TabIndex = 23;
+            this.chkWild.UseVisualStyleBackColor = true;
+            // 
+            // chkNeutral
+            // 
+            this.chkNeutral.AutoSize = true;
+            this.chkNeutral.Location = new System.Drawing.Point(83, 335);
+            this.chkNeutral.Name = "chkNeutral";
+            this.chkNeutral.Size = new System.Drawing.Size(15, 14);
+            this.chkNeutral.TabIndex = 23;
+            this.chkNeutral.UseVisualStyleBackColor = true;
+            // 
             // formCardEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 861);
+            this.ClientSize = new System.Drawing.Size(700, 885);
+            this.Controls.Add(this.chkNeutral);
+            this.Controls.Add(this.chkWild);
+            this.Controls.Add(this.chkMana);
+            this.Controls.Add(this.chkKnowledge);
+            this.Controls.Add(this.chkGold);
+            this.Controls.Add(this.chkEnergy);
+            this.Controls.Add(this.chkDevotion);
+            this.Controls.Add(this.grpSpell);
+            this.Controls.Add(this.grpItem);
+            this.Controls.Add(this.grpUnit);
             this.Controls.Add(this.cmbType);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.lstSynergies);
@@ -496,6 +790,12 @@
             this.Name = "formCardEdit";
             this.Text = "Card Edit";
             this.Load += new System.EventHandler(this.formCardEdit_Load);
+            this.grpUnit.ResumeLayout(false);
+            this.grpUnit.PerformLayout();
+            this.grpItem.ResumeLayout(false);
+            this.grpItem.PerformLayout();
+            this.grpSpell.ResumeLayout(false);
+            this.grpSpell.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -545,5 +845,33 @@
         private System.Windows.Forms.ListBox lstSynergies;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.GroupBox grpUnit;
+        private System.Windows.Forms.GroupBox grpItem;
+        private System.Windows.Forms.GroupBox grpSpell;
+        private System.Windows.Forms.Label lblMinionTag;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblAttack;
+        private System.Windows.Forms.TextBox txtAttack;
+        private System.Windows.Forms.TextBox txtSpeed;
+        private System.Windows.Forms.Label lblSpeed;
+        private System.Windows.Forms.TextBox txtRange;
+        private System.Windows.Forms.Label lblRange;
+        private System.Windows.Forms.TextBox txtHealth;
+        private System.Windows.Forms.Label lblHealth;
+        private System.Windows.Forms.TextBox txtSpellRange;
+        private System.Windows.Forms.Label lblSpellRange;
+        private System.Windows.Forms.TextBox txtSpellType;
+        private System.Windows.Forms.Label lblSpellType;
+        private System.Windows.Forms.TextBox txtDurability;
+        private System.Windows.Forms.Label lblDurability;
+        private System.Windows.Forms.TextBox txtItemTag;
+        private System.Windows.Forms.Label lblItemTag;
+        private System.Windows.Forms.CheckBox chkDevotion;
+        private System.Windows.Forms.CheckBox chkEnergy;
+        private System.Windows.Forms.CheckBox chkGold;
+        private System.Windows.Forms.CheckBox chkKnowledge;
+        private System.Windows.Forms.CheckBox chkMana;
+        private System.Windows.Forms.CheckBox chkWild;
+        private System.Windows.Forms.CheckBox chkNeutral;
     }
 }
