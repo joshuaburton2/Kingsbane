@@ -34,7 +34,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.lblImage = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtImageName = new System.Windows.Forms.TextBox();
             this.lblClass = new System.Windows.Forms.Label();
             this.cmbClass = new System.Windows.Forms.ComboBox();
             this.lblRarity = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.txtLoreText = new System.Windows.Forms.TextBox();
             this.lblNotes = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbSet = new System.Windows.Forms.ComboBox();
             this.lblSet = new System.Windows.Forms.Label();
             this.lblTags = new System.Windows.Forms.Label();
             this.cmbTags = new System.Windows.Forms.ComboBox();
@@ -164,12 +164,12 @@
             this.lblImage.TabIndex = 4;
             this.lblImage.Text = "Image Name";
             // 
-            // textBox1
+            // txtImageName
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 23);
-            this.textBox1.TabIndex = 5;
+            this.txtImageName.Location = new System.Drawing.Point(117, 60);
+            this.txtImageName.Name = "txtImageName";
+            this.txtImageName.Size = new System.Drawing.Size(263, 23);
+            this.txtImageName.TabIndex = 5;
             // 
             // lblClass
             // 
@@ -381,13 +381,13 @@
             this.txtNotes.Size = new System.Drawing.Size(439, 80);
             this.txtNotes.TabIndex = 14;
             // 
-            // comboBox1
+            // cmbSet
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(74, 393);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(133, 23);
-            this.comboBox1.TabIndex = 15;
+            this.cmbSet.FormattingEnabled = true;
+            this.cmbSet.Location = new System.Drawing.Point(74, 393);
+            this.cmbSet.Name = "cmbSet";
+            this.cmbSet.Size = new System.Drawing.Size(133, 23);
+            this.cmbSet.TabIndex = 15;
             // 
             // lblSet
             // 
@@ -753,7 +753,7 @@
             this.Controls.Add(this.cmbTags);
             this.Controls.Add(this.lblTags);
             this.Controls.Add(this.lblSet);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbSet);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.lblNotes);
             this.Controls.Add(this.txtLoreText);
@@ -779,7 +779,7 @@
             this.Controls.Add(this.lblRarity);
             this.Controls.Add(this.cmbClass);
             this.Controls.Add(this.lblClass);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtImageName);
             this.Controls.Add(this.lblImage);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonCancel);
@@ -809,7 +809,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Label lblImage;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtImageName;
         private System.Windows.Forms.Label lblClass;
         private System.Windows.Forms.ComboBox cmbClass;
         private System.Windows.Forms.Label lblRarity;
@@ -835,7 +835,7 @@
         private System.Windows.Forms.TextBox txtLoreText;
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.TextBox txtNotes;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbSet;
         private System.Windows.Forms.Label lblSet;
         private System.Windows.Forms.Label lblTags;
         private System.Windows.Forms.ComboBox cmbTags;

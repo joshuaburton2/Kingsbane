@@ -17,6 +17,10 @@ namespace Kingsbane.Database
             //    new Card {Name = "Fred"},
             //    new Card {Name = "John"}
             //);
+
+            await context.Set.AddRangeAsync(
+                    new Set { Name = "Standard"}
+                );
         }
     }
 }

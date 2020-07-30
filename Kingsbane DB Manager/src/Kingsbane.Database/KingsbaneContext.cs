@@ -26,6 +26,7 @@ namespace Kingsbane.Database
         public DbSet<Tag> Tags { get; set; }
         public DbSet<CardTag> CardTags { get; set; }
         public DbSet<RelatedCards> RelatedCards { get; set; }
+        public DbSet<Set> Set { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
