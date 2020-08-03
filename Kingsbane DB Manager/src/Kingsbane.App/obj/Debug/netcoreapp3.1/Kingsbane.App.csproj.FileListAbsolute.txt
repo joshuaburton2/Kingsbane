@@ -1,0 +1,133 @@
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.exe
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csprojAssemblyReference.cache
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.GenerateResource.cache
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.AssemblyInfoInputs.cache
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.AssemblyInfo.cs
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.CopyComplete
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.deps.json
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.runtimeconfig.json
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.runtimeconfig.dev.json
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.pdb
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.Database.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.Database.pdb
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.FormMain.resources
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.pdb
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.genruntimeconfig.cache
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCardList.resources
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Debug.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.EventLog.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.EventSource.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.CoreCompileInputs.cache
+D:\Source\Joshua\KingsbaneV3\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCardEdit.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.exe
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\appsettings.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.deps.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.runtimeconfig.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.runtimeconfig.dev.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.App.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Debug.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.EventLog.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.EventSource.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.Database.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\bin\Debug\netcoreapp3.1\Kingsbane.Database.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csprojAssemblyReference.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCardEdit.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCardList.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formMain.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.GenerateResource.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.AssemblyInfoInputs.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.AssemblyInfo.cs
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.CoreCompileInputs.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.csproj.CopyComplete
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.genruntimeconfig.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formSelectionList.resources

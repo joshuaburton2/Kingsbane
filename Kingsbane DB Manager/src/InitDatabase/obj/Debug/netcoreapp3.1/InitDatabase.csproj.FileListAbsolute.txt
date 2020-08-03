@@ -1,0 +1,147 @@
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.exe
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.deps.json
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.json
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.dev.json
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.pdb
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csprojAssemblyReference.cache
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfoInputs.cache
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfo.cs
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CoreCompileInputs.cache
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CopyComplete
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Source\Joshua\Kingsbane\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.genruntimeconfig.cache
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.exe
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.deps.json
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.json
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.dev.json
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.pdb
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csprojAssemblyReference.cache
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfoInputs.cache
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfo.cs
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CoreCompileInputs.cache
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CopyComplete
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Source\Joshua\KingsbaneV3\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.genruntimeconfig.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.exe
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.deps.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.runtimeconfig.dev.json
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\bin\Debug\netcoreapp3.1\Kingsbane.Database.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csprojAssemblyReference.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfoInputs.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.AssemblyInfo.cs
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CoreCompileInputs.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.csproj.CopyComplete
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.dll
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\InitDatabase\obj\Debug\netcoreapp3.1\InitDatabase.genruntimeconfig.cache
