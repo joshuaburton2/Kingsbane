@@ -12,7 +12,7 @@ namespace Kingsbane.Database.Models
 
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
-        public string MinionTag { get; set; }
+        public string UnitTag { get; set; }
 
         public int Attack { get; set; }
         public int Health { get; set; }

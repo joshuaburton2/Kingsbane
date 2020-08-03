@@ -1,6 +1,6 @@
 ﻿namespace Kingsbane.Database.Enums
 {
-    public enum Rarity
+    public enum CardRarities
     {
         Default,
         Common,

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kingsbane.Database.Enums
 {
-    public enum Classes
+    public enum CardClasses
     {
         Default,
         Abyssal,

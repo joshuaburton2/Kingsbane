@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Kingsbane.Database.Enums;
 using Kingsbane.Database.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,9 @@ namespace Kingsbane.Database
         public DbSet<CardTag> CardTags { get; set; }
         public DbSet<RelatedCards> RelatedCards { get; set; }
         public DbSet<Set> Set { get; set; }
+        public DbSet<CardClass> CardClasses { get; set; }
+        public DbSet<CardType> CardTypes { get; set; }
+        public DbSet<CardRarity> CardRarities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

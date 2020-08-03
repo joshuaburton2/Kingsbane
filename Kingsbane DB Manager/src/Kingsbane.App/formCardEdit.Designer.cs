@@ -63,10 +63,8 @@
             this.cmbSet = new System.Windows.Forms.ComboBox();
             this.lblSet = new System.Windows.Forms.Label();
             this.lblTags = new System.Windows.Forms.Label();
-            this.cmbTags = new System.Windows.Forms.ComboBox();
             this.lstTags = new System.Windows.Forms.ListBox();
             this.lblSynergies = new System.Windows.Forms.Label();
-            this.cmbSynergies = new System.Windows.Forms.ComboBox();
             this.lstSynergies = new System.Windows.Forms.ListBox();
             this.lblType = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
@@ -79,8 +77,8 @@
             this.lblHealth = new System.Windows.Forms.Label();
             this.txtAttack = new System.Windows.Forms.TextBox();
             this.lblAttack = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblMinionTag = new System.Windows.Forms.Label();
+            this.txtUnitTag = new System.Windows.Forms.TextBox();
+            this.lblUnitTag = new System.Windows.Forms.Label();
             this.grpItem = new System.Windows.Forms.GroupBox();
             this.txtDurability = new System.Windows.Forms.TextBox();
             this.lblDurability = new System.Windows.Forms.Label();
@@ -98,6 +96,11 @@
             this.chkMana = new System.Windows.Forms.CheckBox();
             this.chkWild = new System.Windows.Forms.CheckBox();
             this.chkNeutral = new System.Windows.Forms.CheckBox();
+            this.btnAddTag = new System.Windows.Forms.Button();
+            this.btnAddSynergy = new System.Windows.Forms.Button();
+            this.lblRelatedCards = new System.Windows.Forms.Label();
+            this.lstRelatedCards = new System.Windows.Forms.ListBox();
+            this.btnAddRelatedCard = new System.Windows.Forms.Button();
             this.grpUnit.SuspendLayout();
             this.grpItem.SuspendLayout();
             this.grpSpell.SuspendLayout();
@@ -124,7 +127,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(430, 849);
+            this.buttonSave.Location = new System.Drawing.Point(430, 964);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -135,7 +138,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(518, 849);
+            this.buttonCancel.Location = new System.Drawing.Point(518, 964);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -146,7 +149,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(606, 849);
+            this.buttonDelete.Location = new System.Drawing.Point(606, 964);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -182,6 +185,7 @@
             // 
             // cmbClass
             // 
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(117, 93);
             this.cmbClass.Name = "cmbClass";
@@ -199,6 +203,7 @@
             // 
             // cmbRarity
             // 
+            this.cmbRarity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRarity.FormattingEnabled = true;
             this.cmbRarity.Location = new System.Drawing.Point(356, 93);
             this.cmbRarity.Name = "cmbRarity";
@@ -383,6 +388,7 @@
             // 
             // cmbSet
             // 
+            this.cmbSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSet.FormattingEnabled = true;
             this.cmbSet.Location = new System.Drawing.Point(74, 393);
             this.cmbSet.Name = "cmbSet";
@@ -410,14 +416,6 @@
             this.lblTags.TabIndex = 17;
             this.lblTags.Text = "Tags";
             // 
-            // cmbTags
-            // 
-            this.cmbTags.FormattingEnabled = true;
-            this.cmbTags.Location = new System.Drawing.Point(74, 469);
-            this.cmbTags.Name = "cmbTags";
-            this.cmbTags.Size = new System.Drawing.Size(229, 23);
-            this.cmbTags.TabIndex = 18;
-            // 
             // lstTags
             // 
             this.lstTags.FormattingEnabled = true;
@@ -428,6 +426,7 @@
             this.lstTags.Name = "lstTags";
             this.lstTags.Size = new System.Drawing.Size(228, 94);
             this.lstTags.TabIndex = 19;
+            this.lstTags.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
             // 
             // lblSynergies
             // 
@@ -439,14 +438,6 @@
             this.lblSynergies.TabIndex = 17;
             this.lblSynergies.Text = "Synergies";
             // 
-            // cmbSynergies
-            // 
-            this.cmbSynergies.FormattingEnabled = true;
-            this.cmbSynergies.Location = new System.Drawing.Point(434, 467);
-            this.cmbSynergies.Name = "cmbSynergies";
-            this.cmbSynergies.Size = new System.Drawing.Size(229, 23);
-            this.cmbSynergies.TabIndex = 18;
-            // 
             // lstSynergies
             // 
             this.lstSynergies.FormattingEnabled = true;
@@ -457,12 +448,13 @@
             this.lstSynergies.Name = "lstSynergies";
             this.lstSynergies.Size = new System.Drawing.Size(228, 94);
             this.lstSynergies.TabIndex = 19;
+            this.lstSynergies.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
             // 
             // lblType
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblType.Location = new System.Drawing.Point(12, 605);
+            this.lblType.Location = new System.Drawing.Point(12, 724);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(46, 21);
             this.lblType.TabIndex = 20;
@@ -470,8 +462,9 @@
             // 
             // cmbType
             // 
+            this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(75, 607);
+            this.cmbType.Location = new System.Drawing.Point(75, 726);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(120, 23);
             this.cmbType.TabIndex = 21;
@@ -486,10 +479,10 @@
             this.grpUnit.Controls.Add(this.lblHealth);
             this.grpUnit.Controls.Add(this.txtAttack);
             this.grpUnit.Controls.Add(this.lblAttack);
-            this.grpUnit.Controls.Add(this.textBox2);
-            this.grpUnit.Controls.Add(this.lblMinionTag);
+            this.grpUnit.Controls.Add(this.txtUnitTag);
+            this.grpUnit.Controls.Add(this.lblUnitTag);
             this.grpUnit.Enabled = false;
-            this.grpUnit.Location = new System.Drawing.Point(12, 636);
+            this.grpUnit.Location = new System.Drawing.Point(12, 755);
             this.grpUnit.Name = "grpUnit";
             this.grpUnit.Size = new System.Drawing.Size(651, 61);
             this.grpUnit.TabIndex = 22;
@@ -560,21 +553,21 @@
             this.lblAttack.TabIndex = 2;
             this.lblAttack.Text = "Attack";
             // 
-            // textBox2
+            // txtUnitTag
             // 
-            this.textBox2.Location = new System.Drawing.Point(83, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(135, 23);
-            this.textBox2.TabIndex = 1;
+            this.txtUnitTag.Location = new System.Drawing.Point(83, 26);
+            this.txtUnitTag.Name = "txtUnitTag";
+            this.txtUnitTag.Size = new System.Drawing.Size(135, 23);
+            this.txtUnitTag.TabIndex = 1;
             // 
-            // lblMinionTag
+            // lblUnitTag
             // 
-            this.lblMinionTag.AutoSize = true;
-            this.lblMinionTag.Location = new System.Drawing.Point(8, 29);
-            this.lblMinionTag.Name = "lblMinionTag";
-            this.lblMinionTag.Size = new System.Drawing.Size(66, 15);
-            this.lblMinionTag.TabIndex = 0;
-            this.lblMinionTag.Text = "Minion Tag";
+            this.lblUnitTag.AutoSize = true;
+            this.lblUnitTag.Location = new System.Drawing.Point(8, 29);
+            this.lblUnitTag.Name = "lblUnitTag";
+            this.lblUnitTag.Size = new System.Drawing.Size(50, 15);
+            this.lblUnitTag.TabIndex = 0;
+            this.lblUnitTag.Text = "Unit Tag";
             // 
             // grpItem
             // 
@@ -582,7 +575,7 @@
             this.grpItem.Controls.Add(this.lblDurability);
             this.grpItem.Controls.Add(this.txtItemTag);
             this.grpItem.Controls.Add(this.lblItemTag);
-            this.grpItem.Location = new System.Drawing.Point(10, 770);
+            this.grpItem.Location = new System.Drawing.Point(10, 889);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(651, 61);
             this.grpItem.TabIndex = 22;
@@ -627,7 +620,7 @@
             this.grpSpell.Controls.Add(this.lblSpellRange);
             this.grpSpell.Controls.Add(this.txtSpellType);
             this.grpSpell.Controls.Add(this.lblSpellType);
-            this.grpSpell.Location = new System.Drawing.Point(12, 703);
+            this.grpSpell.Location = new System.Drawing.Point(12, 822);
             this.grpSpell.Name = "grpSpell";
             this.grpSpell.Size = new System.Drawing.Size(651, 61);
             this.grpSpell.TabIndex = 22;
@@ -729,11 +722,68 @@
             this.chkNeutral.TabIndex = 23;
             this.chkNeutral.UseVisualStyleBackColor = true;
             // 
+            // btnAddTag
+            // 
+            this.btnAddTag.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddTag.Location = new System.Drawing.Point(74, 469);
+            this.btnAddTag.Name = "btnAddTag";
+            this.btnAddTag.Size = new System.Drawing.Size(41, 23);
+            this.btnAddTag.TabIndex = 25;
+            this.btnAddTag.Text = "+";
+            this.btnAddTag.UseVisualStyleBackColor = true;
+            this.btnAddTag.Click += new System.EventHandler(this.btnAddTag_Click);
+            // 
+            // btnAddSynergy
+            // 
+            this.btnAddSynergy.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddSynergy.Location = new System.Drawing.Point(435, 467);
+            this.btnAddSynergy.Name = "btnAddSynergy";
+            this.btnAddSynergy.Size = new System.Drawing.Size(41, 23);
+            this.btnAddSynergy.TabIndex = 25;
+            this.btnAddSynergy.Text = "+";
+            this.btnAddSynergy.UseVisualStyleBackColor = true;
+            this.btnAddSynergy.Click += new System.EventHandler(this.btnAddSynergy_Click);
+            // 
+            // lblRelatedCards
+            // 
+            this.lblRelatedCards.AutoSize = true;
+            this.lblRelatedCards.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblRelatedCards.Location = new System.Drawing.Point(12, 609);
+            this.lblRelatedCards.Name = "lblRelatedCards";
+            this.lblRelatedCards.Size = new System.Drawing.Size(114, 21);
+            this.lblRelatedCards.TabIndex = 17;
+            this.lblRelatedCards.Text = "Related Cards";
+            // 
+            // lstRelatedCards
+            // 
+            this.lstRelatedCards.FormattingEnabled = true;
+            this.lstRelatedCards.ItemHeight = 15;
+            this.lstRelatedCards.Location = new System.Drawing.Point(103, 645);
+            this.lstRelatedCards.Name = "lstRelatedCards";
+            this.lstRelatedCards.Size = new System.Drawing.Size(560, 64);
+            this.lstRelatedCards.TabIndex = 28;
+            this.lstRelatedCards.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
+            // 
+            // btnAddRelatedCard
+            // 
+            this.btnAddRelatedCard.Location = new System.Drawing.Point(12, 645);
+            this.btnAddRelatedCard.Name = "btnAddRelatedCard";
+            this.btnAddRelatedCard.Size = new System.Drawing.Size(75, 64);
+            this.btnAddRelatedCard.TabIndex = 29;
+            this.btnAddRelatedCard.Text = "Add";
+            this.btnAddRelatedCard.UseVisualStyleBackColor = true;
+            this.btnAddRelatedCard.Click += new System.EventHandler(this.btnAddRelatedCard_Click);
+            // 
             // formCardEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 885);
+            this.ClientSize = new System.Drawing.Size(700, 998);
+            this.Controls.Add(this.btnAddRelatedCard);
+            this.Controls.Add(this.lstRelatedCards);
+            this.Controls.Add(this.lblRelatedCards);
+            this.Controls.Add(this.btnAddSynergy);
+            this.Controls.Add(this.btnAddTag);
             this.Controls.Add(this.chkNeutral);
             this.Controls.Add(this.chkWild);
             this.Controls.Add(this.chkMana);
@@ -747,10 +797,8 @@
             this.Controls.Add(this.cmbType);
             this.Controls.Add(this.lblType);
             this.Controls.Add(this.lstSynergies);
-            this.Controls.Add(this.cmbSynergies);
             this.Controls.Add(this.lblSynergies);
             this.Controls.Add(this.lstTags);
-            this.Controls.Add(this.cmbTags);
             this.Controls.Add(this.lblTags);
             this.Controls.Add(this.lblSet);
             this.Controls.Add(this.cmbSet);
@@ -788,7 +836,7 @@
             this.Controls.Add(this.labelName);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "formCardEdit";
-            this.Text = "Card Edit";
+            this.Text = "Edit Card";
             this.Load += new System.EventHandler(this.formCardEdit_Load);
             this.grpUnit.ResumeLayout(false);
             this.grpUnit.PerformLayout();
@@ -838,18 +886,16 @@
         private System.Windows.Forms.ComboBox cmbSet;
         private System.Windows.Forms.Label lblSet;
         private System.Windows.Forms.Label lblTags;
-        private System.Windows.Forms.ComboBox cmbTags;
         private System.Windows.Forms.ListBox lstTags;
         private System.Windows.Forms.Label lblSynergies;
-        private System.Windows.Forms.ComboBox cmbSynergies;
         private System.Windows.Forms.ListBox lstSynergies;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.GroupBox grpUnit;
         private System.Windows.Forms.GroupBox grpItem;
         private System.Windows.Forms.GroupBox grpSpell;
-        private System.Windows.Forms.Label lblMinionTag;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblUnitTag;
+        private System.Windows.Forms.TextBox txtUnitTag;
         private System.Windows.Forms.Label lblAttack;
         private System.Windows.Forms.TextBox txtAttack;
         private System.Windows.Forms.TextBox txtSpeed;
@@ -873,5 +919,10 @@
         private System.Windows.Forms.CheckBox chkMana;
         private System.Windows.Forms.CheckBox chkWild;
         private System.Windows.Forms.CheckBox chkNeutral;
+        private System.Windows.Forms.Button btnAddTag;
+        private System.Windows.Forms.Button btnAddSynergy;
+        private System.Windows.Forms.Label lblRelatedCards;
+        private System.Windows.Forms.ListBox lstRelatedCards;
+        private System.Windows.Forms.Button btnAddRelatedCard;
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kingsbane.Database.Enums
 {
-    public enum CardType
+    public enum CardTypes
     {
         Default,
         Unit,

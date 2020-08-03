@@ -26,8 +26,6 @@ namespace Kingsbane.Database.Models
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
         public string ImageLocation { get; set; }
-        public Classes Classes { get; set; }
-        public Rarity Rarity { get; set; }
 
         public int? ResourceDevotion { get; set; }
         public int? ResourceEnergy { get; set; }
@@ -54,10 +52,17 @@ namespace Kingsbane.Database.Models
 
         public int SetId { get; set; }
         public virtual Set Set { get; set; }
+        public CardClasses ClassId { get; set; }
+        public virtual CardClass CardClass { get; set; }
+        public CardRarities RarityId { get; set; }
+        public virtual CardRarity Rarity { get; set; }
+        public CardTypes TypeId { get; set; }
+        public virtual CardType CardType { get; set; }
 
         public virtual ICollection<CardItem> Items { get; set; }
         public virtual ICollection<CardSpell> Spells { get; set; }
         public virtual ICollection<CardUnit> Units { get; set; }
         public virtual ICollection<CardSynergy> Synergies { get; set; }
+        public virtual ICollection<CardTag> Tags { get; set; }
     }
 }

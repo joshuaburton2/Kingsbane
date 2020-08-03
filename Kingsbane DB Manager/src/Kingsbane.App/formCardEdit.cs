@@ -1,26 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kingsbane.Database;
 using Kingsbane.Database.Enums;
 using Kingsbane.Database.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kingsbane.App
 {
     public partial class formCardEdit : Form
     {
         private readonly KingsbaneContext _context;
+        private readonly IServiceProvider _serviceProvider;
 
         public int? Id { get; set; }
         private Card card;
 
-        public formCardEdit(KingsbaneContext context)
+        public formCardEdit(
+            IServiceProvider serviceProvider,
+            KingsbaneContext context)
         {
             InitializeComponent();
 
+            _serviceProvider = serviceProvider;
             _context = context;
         }
 
+        #region LoadData
         private void formCardEdit_Load(object sender, EventArgs e)
         {
             SetupComboBoxes();
@@ -28,38 +40,144 @@ namespace Kingsbane.App
             if (Id.HasValue)
             {
                 this.Text = $"Edit Card: {Id}";
-                card = _context.Cards.Single(x => x.Id == Id);
+                card = _context.Cards
+                    .Include(x => x.Units)
+                    .Include(x => x.Spells)
+                    .Include(x => x.Items)
+                    .Single(x => x.Id == Id);
 
-                textName.Text = card.Name;
-                txtImageName.Text = card.ImageLocation;
+                switch (card.CardType.Id)
+                {
+                    case CardTypes.Unit:
+                        if (!card.Units.Any())
+                        {
+                            card.CardType.Id = CardTypes.Default;
+                        }
+                        if (card.Spells.Any())
+                        {
+                            _context.CardSpells.Remove(card.Spells.FirstOrDefault());
+                        }
+                        if (card.Items.Any())
+                        {
+                            _context.CardItems.Remove(card.Items.FirstOrDefault());
+                        }
+
+                        break;
+                    case CardTypes.Spell:
+                        if (!card.Spells.Any())
+                        {
+                            card.CardType.Id = CardTypes.Default;
+                        }
+                        if (card.Units.Any())
+                        {
+                            _context.CardUnits.Remove(card.Units.FirstOrDefault());
+                        }
+                        if (card.Items.Any())
+                        {
+                            _context.CardItems.Remove(card.Items.FirstOrDefault());
+                        }
+
+                        break;
+                    case CardTypes.Item:
+                        if (!card.Items.Any())
+                        {
+                            card.CardType.Id = CardTypes.Default;
+                        }
+                        if (card.Units.Any())
+                        {
+                            _context.CardUnits.Remove(card.Units.FirstOrDefault());
+                        }
+                        if (card.Spells.Any())
+                        {
+                            _context.CardSpells.Remove(card.Spells.FirstOrDefault());
+                        }
+
+                        break;
+                    case CardTypes.Default:
+                    default:
+                        break;
+                }
+
+                LoadCardData();
             }
             else
             {
                 this.Text = "Add Card";
+
+                SetActiveTypeFields(CardTypes.Default);
             }
         }
 
         private void SetupComboBoxes()
         {
-            string[] classes = Enum.GetValues(typeof(Classes)).Cast<Classes>().Select(x => x.ToString()).ToArray();
+            var classes = Enum.GetValues(typeof(CardClasses)).Cast<CardClasses>().Select(x => new SelectListItem { Id = (int)x, Name = x.ToString() }).ToArray();
             cmbClass.Items.AddRange(classes);
 
-            string[] rarities = Enum.GetValues(typeof(Rarity)).Cast<Rarity>().Select(x => x.ToString()).ToArray();
+            var rarities = Enum.GetValues(typeof(CardRarities)).Cast<CardRarities>().Select(x => new SelectListItem { Id = (int)x, Name = x.ToString() }).ToArray();
             cmbRarity.Items.AddRange(rarities);
 
-            string[] cardTypes = Enum.GetValues(typeof(CardType)).Cast<CardType>().Select(x => x.ToString()).ToArray();
+            var cardTypes = Enum.GetValues(typeof(CardTypes)).Cast<CardTypes>().Select(x => new SelectListItem { Id = (int)x, Name = x.ToString() }).ToArray();
             cmbType.Items.AddRange(cardTypes);
 
-            Set[] sets = _context.Set.ToArray();
-            string[] setString = new string[sets.Length];
-            for (int i = 0; i < sets.Length; i++)
-            {
-                setString[i] = sets[i].Name;
-            }
-            cmbSet.Items.AddRange(setString);
+            var sets = _context.Set.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+            cmbSet.Items.AddRange(sets);
         }
 
-        private void SetActiveTypeFields(CardType cardType)
+        private void LoadCardData()
+        {
+            textName.Text = card.Name;
+            txtImageName.Text = card.ImageLocation;
+
+            txtCardText.Text = card.Text;
+            txtLoreText.Text = card.LoreText;
+            txtNotes.Text = card.Notes;
+
+            cmbClass.SelectedItem = card.CardClass.ToString();
+            cmbRarity.SelectedItem = card.Rarity.ToString();
+            cmbSet.SelectedItem = card.Set.Name;
+
+            cmbType.SelectedItem = card.CardType.ToString();
+            UpdateTypeFields(card.CardType.Id);
+
+            UpdateResourceFields();
+
+            UpdateListBoxes();
+        }
+
+        private void UpdateTypeFields(CardTypes cardType)
+        {
+            switch (cardType)
+            {
+                case CardTypes.Unit:
+                    var cardUnit = card.Units.FirstOrDefault();
+
+                    txtUnitTag.Text = cardUnit.UnitTag;
+                    txtAttack.Text = cardUnit.Attack.ToString();
+                    txtHealth.Text = cardUnit.Health.ToString();
+                    txtRange.Text = cardUnit.Range.ToString();
+                    txtSpeed.Text = cardUnit.Speed.ToString();
+                    break;
+                case CardTypes.Spell:
+                    var cardSpell = card.Spells.FirstOrDefault();
+
+                    txtSpellType.Text = cardSpell.SpellType;
+                    txtSpellRange.Text = cardSpell.Range.ToString();
+                    break;
+                case CardTypes.Item:
+                    var cardItem = card.Items.FirstOrDefault();
+
+                    txtItemTag.Text = cardItem.ItemTag;
+                    txtDurability.Text = cardItem.Durability.ToString();
+                    break;
+                case CardTypes.Default:
+                default:
+                    break;
+            }
+
+            SetActiveTypeFields(cardType);
+        }
+
+        private void SetActiveTypeFields(CardTypes cardType)
         {
             grpUnit.Enabled = false;
             grpSpell.Enabled = false;
@@ -67,44 +185,229 @@ namespace Kingsbane.App
 
             switch (cardType)
             {
-                case CardType.Default:
-                    break;
-                case CardType.Unit:
+                case CardTypes.Unit:
                     grpUnit.Enabled = true;
                     break;
-                case CardType.Spell:
+                case CardTypes.Spell:
                     grpSpell.Enabled = true;
                     break;
-                case CardType.Item:
+                case CardTypes.Item:
                     grpItem.Enabled = true;
                     break;
+                case CardTypes.Default:
                 default:
                     break;
             }
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void UpdateResourceFields()
         {
-            if (Id.HasValue)
+            UpdateResourceField(card.ResourceDevotion, txtDevotion, chkDevotion);
+            UpdateResourceField(card.ResourceEnergy, txtEnergy, chkEnergy);
+            UpdateResourceField(card.ResourceGold, txtGold, chkGold);
+            UpdateResourceField(card.ResourceKnowledge, txtKnowledge, chkKnowledge);
+            UpdateResourceField(card.ResourceMana, txtMana, chkMana);
+            UpdateResourceField(card.ResourceWild, txtWild, chkWild);
+            UpdateResourceField(card.ResourceNeutral, txtNeutral, chkNeutral);
+        }
+
+        private void UpdateResourceField(int? resourceVal, TextBox resourceTxt, CheckBox resourceChk)
+        {
+            if (resourceVal.HasValue)
             {
-                card.Name = textName.Text;
+                resourceChk.Checked = true;
+                resourceTxt.Text = resourceVal.ToString();
             }
             else
             {
-                card = new Card
-                {
-                    Name = textName.Text,
-                    ImageLocation = "xxxx",
-                    Classes = Classes.Abyssal,
-                    Rarity = Rarity.Hero,
-                    SetId = 1
-                };
+                resourceChk.Checked = false;
+            }
+        }
+
+
+        private void UpdateListBoxes()
+        {
+            var tags = _context.CardTags.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Tag.Id, Name = x.Tag.Name }).ToArray();
+            lstTags.Items.AddRange(tags);
+
+            var synergies = _context.CardSynergies.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Synergy.Id, Name = x.Synergy.Name }).ToArray();
+            lstSynergies.Items.AddRange(synergies);
+
+            var relatedCards = _context.RelatedCards.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.RelatedCard.Id, Name = x.RelatedCard.Name }).ToArray();
+            lstRelatedCards.Items.AddRange(relatedCards);
+        }
+        #endregion
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (!Id.HasValue)
+            {
+                card = new Card();
                 _context.Cards.Add(card);
             }
+
+            card.Name = textName.Text;
+            card.ImageLocation = txtImageName.Text;
+            card.ClassId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
+            card.RarityId = (CardRarities)((SelectListItem)cmbRarity.SelectedItem).Id;
+            card.Text = txtCardText.Text;
+            card.LoreText = txtLoreText.Text;
+            card.Notes = txtNotes.Text;
+
+            card.ResourceDevotion = AddResource(chkDevotion, txtDevotion);
+            card.ResourceEnergy = AddResource(chkEnergy, txtEnergy);
+            card.ResourceGold = AddResource(chkGold, txtGold);
+            card.ResourceKnowledge = AddResource(chkKnowledge, txtKnowledge);
+            card.ResourceMana = AddResource(chkMana, txtMana);
+            card.ResourceWild = AddResource(chkWild, txtWild);
+            card.ResourceNeutral = AddResource(chkNeutral, txtNeutral);
+
+            card.SetId = ((SelectListItem)cmbSet.SelectedItem).Id;
+
+            #region AddCardTags
+            var cardTagIDs = lstTags.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+
+            foreach (var tagId in cardTagIDs)
+            {
+                var cardTag = Id.HasValue ? _context.CardTags.SingleOrDefault(x => x.CardId == Id.Value && x.TagId == tagId) : null;
+                if (cardTag == null)
+                    _context.CardTags.Add(new CardTag { Card = card, TagId = tagId });
+            }
+            if (Id.HasValue)
+            {
+                var cardTags = _context.CardTags.Where(x => x.CardId == Id.Value && !cardTagIDs.Contains(x.TagId));
+                _context.CardTags.RemoveRange(cardTags);
+            }
+            #endregion
+
+            #region AddCardSyngergies
+            var cardSyngeryIDs = lstSynergies.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+
+            foreach (var synergyId in cardSyngeryIDs)
+            {
+                var cardSynergy = Id.HasValue ? _context.CardSynergies.SingleOrDefault(x => x.CardId == Id.Value && x.SynergyId == synergyId) : null;
+                if (cardSynergy == null)
+                    _context.CardSynergies.Add(new CardSynergy { Card = card, SynergyId = synergyId });
+            }
+            if (Id.HasValue)
+            {
+                var cardSynergies = _context.CardSynergies.Where(x => x.CardId == Id.Value && !cardSyngeryIDs.Contains(x.SynergyId));
+                _context.CardSynergies.RemoveRange(cardSynergies);
+            }
+            #endregion
+
+            #region AddRelatedCards
+            var relatedCardIDs = lstRelatedCards.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+
+            foreach (var relatedCardId in relatedCardIDs)
+            {
+                var relatedCard = Id.HasValue ? _context.RelatedCards.SingleOrDefault(x => x.CardId == Id.Value && x.RelatedCardId == relatedCardId) : null;
+                if (relatedCard == null)
+                    _context.RelatedCards.Add(new RelatedCards { Card = card, CardId = relatedCardId });
+            }
+            if (Id.HasValue)
+            {
+                var relatedCards = _context.RelatedCards.Where(x => x.CardId == Id.Value && !relatedCardIDs.Contains(x.RelatedCardId));
+                _context.RelatedCards.RemoveRange(relatedCards);
+            }
+            #endregion
+
+            AddTypeProperties((CardTypes)((SelectListItem)cmbType.SelectedItem).Id);
 
             _context.SaveChanges();
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private int? AddResource(CheckBox checkBox, TextBox textBox)
+        {
+            if (checkBox.Checked)
+            {
+                if (int.TryParse(textBox.Text, out int value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void AddTypeProperties(CardTypes cardType)
+        {
+            card.CardType.Id = cardType;
+
+            switch (cardType)
+            {
+                case CardTypes.Unit:
+                    var cardUnit = new CardUnit();
+                    if (card.Units.Any())
+                    {
+                        cardUnit = card.Units.FirstOrDefault();
+                    }
+                    else
+                    {
+                        card.Units.Add(cardUnit);
+                    }
+
+                    cardUnit.Attack = GetStat(txtAttack);
+                    cardUnit.Health = GetStat(txtHealth);
+                    cardUnit.Range = GetStat(txtRange);
+                    cardUnit.Speed = GetStat(txtSpeed);
+                    cardUnit.UnitTag = txtUnitTag.Text;
+
+                    break;
+                case CardTypes.Spell:
+                    var cardSpell = new CardSpell();
+                    if (card.Spells.Any())
+                    {
+                        cardSpell = card.Spells.FirstOrDefault();
+                    }
+                    else
+                    {
+                        card.Spells.Add(cardSpell);
+                    }
+
+                    cardSpell.Range = GetStat(txtSpellRange);
+                    cardSpell.SpellType = txtSpellType.Text;
+
+                    break;
+                case CardTypes.Item:
+                    var cardItem = new CardItem();
+                    if (card.Items.Any())
+                    {
+                        cardItem = card.Items.FirstOrDefault();
+                    }
+                    else
+                    {
+                        card.Items.Add(cardItem);
+                    }
+
+                    cardItem.Durability = GetStat(txtDurability);
+                    cardItem.ItemTag = txtItemTag.Text;
+
+                    break;
+                default:
+                case CardTypes.Default:
+                    break;
+            }
+        }
+
+        private int GetStat(TextBox textBox)
+        {
+            if (int.TryParse(textBox.Text, out int result))
+            {
+                return result;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -132,6 +435,63 @@ namespace Kingsbane.App
             this.DialogResult = DialogResult.Cancel;
             this.Close();
 
+        }
+
+        private void btnAddRelatedCard_Click(object sender, EventArgs e)
+        {
+            SelectionForm(SelectionType.RelatedCard);
+        }
+
+        private void btnAddTag_Click(object sender, EventArgs e)
+        {
+            SelectionForm(SelectionType.Tag);
+        }
+
+        private void btnAddSynergy_Click(object sender, EventArgs e)
+        {
+            SelectionForm(SelectionType.Synergy);
+        }
+
+        private void SelectionForm(SelectionType selectionType)
+        {
+            var formSelectionList = _serviceProvider.GetRequiredService<formSelectionList>();
+            formSelectionList.selectionType = selectionType;
+            var result = formSelectionList.ShowDialog(this);
+
+            if(result == DialogResult.OK)
+            {
+                switch (selectionType)
+                {
+                    case SelectionType.Tag:
+                        lstTags.Items.Add(formSelectionList.selectionItem);
+
+                        break;
+                    case SelectionType.Synergy:
+                        lstSynergies.Items.Add(formSelectionList.selectionItem);
+
+                        break;
+                    case SelectionType.RelatedCard:
+                        lstSynergies.Items.Add(formSelectionList.selectionItem);
+
+                        break;
+                }
+            }
+        }
+
+        private void ClickListRecord(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var listBox = (ListBox)sender;
+                var selectedRecord = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
+
+                var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    listBox.Items.Remove(listBox.SelectedItems[0]);
+                }
+            }
         }
     }
 }
