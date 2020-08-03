@@ -45,6 +45,8 @@
             this.colID,
             this.colName,
             this.colIdentifier});
+            this.lstSelectionList.FullRowSelect = true;
+            this.lstSelectionList.GridLines = true;
             this.lstSelectionList.HideSelection = false;
             this.lstSelectionList.Location = new System.Drawing.Point(11, 42);
             this.lstSelectionList.Name = "lstSelectionList";

@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kingsbane.Database;
 using Kingsbane.Database.Enums;
@@ -46,12 +42,12 @@ namespace Kingsbane.App
                     .Include(x => x.Items)
                     .Single(x => x.Id == Id);
 
-                switch (card.CardType.Id)
+                switch (card.CardTypeId)
                 {
                     case CardTypes.Unit:
                         if (!card.Units.Any())
                         {
-                            card.CardType.Id = CardTypes.Default;
+                            card.CardTypeId = CardTypes.Default;
                         }
                         if (card.Spells.Any())
                         {
@@ -66,7 +62,7 @@ namespace Kingsbane.App
                     case CardTypes.Spell:
                         if (!card.Spells.Any())
                         {
-                            card.CardType.Id = CardTypes.Default;
+                            card.CardTypeId = CardTypes.Default;
                         }
                         if (card.Units.Any())
                         {
@@ -81,7 +77,7 @@ namespace Kingsbane.App
                     case CardTypes.Item:
                         if (!card.Items.Any())
                         {
-                            card.CardType.Id = CardTypes.Default;
+                            card.CardTypeId = CardTypes.Default;
                         }
                         if (card.Units.Any())
                         {
@@ -132,16 +128,21 @@ namespace Kingsbane.App
             txtLoreText.Text = card.LoreText;
             txtNotes.Text = card.Notes;
 
-            cmbClass.SelectedItem = card.CardClass.ToString();
-            cmbRarity.SelectedItem = card.Rarity.ToString();
-            cmbSet.SelectedItem = card.Set.Name;
+            cmbClass.SelectedItem = SetComboItem(cmbClass, (int)card.CardClassId);
+            cmbRarity.SelectedItem = SetComboItem(cmbRarity, (int)card.RarityId);
+            cmbSet.SelectedItem = SetComboItem(cmbSet, card.SetId);
 
-            cmbType.SelectedItem = card.CardType.ToString();
-            UpdateTypeFields(card.CardType.Id);
+            cmbType.SelectedItem = SetComboItem(cmbType, (int)card.CardTypeId);
+            UpdateTypeFields(card.CardTypeId);
 
             UpdateResourceFields();
 
             UpdateListBoxes();
+        }
+
+        private SelectListItem SetComboItem (ComboBox cmb, int Id)
+        {
+            return cmb.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == Id);
         }
 
         private void UpdateTypeFields(CardTypes cardType)
@@ -228,12 +229,15 @@ namespace Kingsbane.App
         private void UpdateListBoxes()
         {
             var tags = _context.CardTags.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Tag.Id, Name = x.Tag.Name }).ToArray();
+            lstTags.Items.Clear();
             lstTags.Items.AddRange(tags);
 
             var synergies = _context.CardSynergies.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Synergy.Id, Name = x.Synergy.Name }).ToArray();
+            lstSynergies.Items.Clear();
             lstSynergies.Items.AddRange(synergies);
 
             var relatedCards = _context.RelatedCards.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.RelatedCard.Id, Name = x.RelatedCard.Name }).ToArray();
+            lstRelatedCards.Items.Clear();
             lstRelatedCards.Items.AddRange(relatedCards);
         }
         #endregion
@@ -248,7 +252,7 @@ namespace Kingsbane.App
 
             card.Name = textName.Text;
             card.ImageLocation = txtImageName.Text;
-            card.ClassId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
+            card.CardClassId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
             card.RarityId = (CardRarities)((SelectListItem)cmbRarity.SelectedItem).Id;
             card.Text = txtCardText.Text;
             card.LoreText = txtLoreText.Text;
@@ -340,7 +344,7 @@ namespace Kingsbane.App
 
         private void AddTypeProperties(CardTypes cardType)
         {
-            card.CardType.Id = cardType;
+            card.CardTypeId = cardType;
 
             switch (cardType)
             {
@@ -417,6 +421,9 @@ namespace Kingsbane.App
             {
                 if (Id.HasValue)
                 {
+                    card.Units.Clear();
+                    card.Spells.Clear();
+                    card.Items.Clear();
                     _context.Remove(card);
                     _context.SaveChanges();
                     this.DialogResult = DialogResult.Abort;
@@ -463,15 +470,37 @@ namespace Kingsbane.App
                 switch (selectionType)
                 {
                     case SelectionType.Tag:
-                        lstTags.Items.Add(formSelectionList.selectionItem);
+                        if (!lstTags.Items.Cast<SelectListItem>().ToList().Contains(formSelectionList.selectionItem))
+                        {
+                            lstTags.Items.Add(formSelectionList.selectionItem);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Card already has that tag");
+                        }
 
                         break;
                     case SelectionType.Synergy:
-                        lstSynergies.Items.Add(formSelectionList.selectionItem);
+                        if (!lstSynergies.Items.Contains(formSelectionList.selectionItem))
+                        {
+                            lstSynergies.Items.Add(formSelectionList.selectionItem);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Card already has that synergy");
+                        }
 
                         break;
                     case SelectionType.RelatedCard:
-                        lstSynergies.Items.Add(formSelectionList.selectionItem);
+                        if (!lstRelatedCards.Items.Contains(formSelectionList.selectionItem))
+                        {
+                            lstRelatedCards.Items.Add(formSelectionList.selectionItem);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Card already has that related card");
+                        }
+                        
 
                         break;
                 }
@@ -492,6 +521,11 @@ namespace Kingsbane.App
                     listBox.Items.Remove(listBox.SelectedItems[0]);
                 }
             }
+        }
+
+        private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetActiveTypeFields((CardTypes)((SelectListItem)cmbType.SelectedItem).Id);
         }
     }
 }

@@ -420,8 +420,6 @@
             // 
             this.lstTags.FormattingEnabled = true;
             this.lstTags.ItemHeight = 15;
-            this.lstTags.Items.AddRange(new object[] {
-            ""});
             this.lstTags.Location = new System.Drawing.Point(75, 498);
             this.lstTags.Name = "lstTags";
             this.lstTags.Size = new System.Drawing.Size(228, 94);
@@ -442,8 +440,6 @@
             // 
             this.lstSynergies.FormattingEnabled = true;
             this.lstSynergies.ItemHeight = 15;
-            this.lstSynergies.Items.AddRange(new object[] {
-            ""});
             this.lstSynergies.Location = new System.Drawing.Point(435, 496);
             this.lstSynergies.Name = "lstSynergies";
             this.lstSynergies.Size = new System.Drawing.Size(228, 94);
@@ -468,6 +464,7 @@
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(120, 23);
             this.cmbType.TabIndex = 21;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // grpUnit
             // 

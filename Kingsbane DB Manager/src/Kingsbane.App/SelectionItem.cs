@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Kingsbane.App
 {
-    class SelectionItem
+    public class SelectionItem
     {
         public int Id { get; set; }
         public string Name { get; set; }

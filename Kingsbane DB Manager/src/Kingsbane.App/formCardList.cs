@@ -45,10 +45,7 @@ namespace Kingsbane.App
             formCardEdit.Id = id;
             var result = formCardEdit.ShowDialog(this);
 
-            if (result == DialogResult.OK)
-            {
-                RefreshList();
-            }
+            RefreshList();
         }
 
 

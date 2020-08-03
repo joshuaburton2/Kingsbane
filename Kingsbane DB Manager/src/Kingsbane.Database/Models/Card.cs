@@ -52,11 +52,11 @@ namespace Kingsbane.Database.Models
 
         public int SetId { get; set; }
         public virtual Set Set { get; set; }
-        public CardClasses ClassId { get; set; }
+        public CardClasses CardClassId { get; set; }
         public virtual CardClass CardClass { get; set; }
         public CardRarities RarityId { get; set; }
         public virtual CardRarity Rarity { get; set; }
-        public CardTypes TypeId { get; set; }
+        public CardTypes CardTypeId { get; set; }
         public virtual CardType CardType { get; set; }
 
         public virtual ICollection<CardItem> Items { get; set; }

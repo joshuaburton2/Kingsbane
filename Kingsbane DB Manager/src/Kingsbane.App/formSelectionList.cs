@@ -1,18 +1,11 @@
 ﻿using Kingsbane.Database;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Kingsbane.Database;
-using Kingsbane.Database.Enums;
 using Kingsbane.Database.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Kingsbane.App
 {
@@ -67,6 +60,7 @@ namespace Kingsbane.App
                 listItem.SubItems.Add(selection.Id.ToString());
                 listItem.SubItems.Add(selection.Name.ToString());
                 listItem.SubItems.Add(selection.Identifier.ToString());
+                lstSelectionList.Items.Add(listItem);
                 listItem.Tag = selection;
             }
         }
@@ -85,7 +79,7 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.RelatedCard:
                 default:
-                    newQuery = _context.Cards.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CardType.ToString() });
+                    newQuery = _context.Cards.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CardTypeId.ToString() });
                     break;
             }
 
@@ -110,7 +104,7 @@ namespace Kingsbane.App
         {
             string newName = txtAdd.Text;
             string selectionString = selectionType.ToString();
-            DialogResult dialogResult = MessageBox.Show("Add a new " + selectionString, "Add " + selectionString, MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Add a new " + selectionString + "?", "Add " + selectionString, MessageBoxButtons.YesNo);
 
             if(dialogResult == DialogResult.Yes)
             {
@@ -170,8 +164,8 @@ namespace Kingsbane.App
 
         private void lstSelectionList_DoubleClick(object sender, EventArgs e)
         {
-            var id = lstSelectionList.SelectedItems[0].Tag as int?;
-            selectionItem = (SelectListItem)lstSelectionList.SelectedItems[0].Tag;
+            var selectedItem = (SelectionItem)lstSelectionList.SelectedItems[0].Tag;
+            selectionItem = new SelectListItem { Id = selectedItem.Id, Name = selectedItem.Name };
 
             this.DialogResult = DialogResult.OK;
             this.Close();

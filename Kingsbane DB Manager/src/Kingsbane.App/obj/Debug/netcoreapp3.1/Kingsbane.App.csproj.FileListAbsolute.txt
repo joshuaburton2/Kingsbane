@@ -130,3 +130,4 @@ D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.dll
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.pdb
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.genruntimeconfig.cache
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formSelectionList.resources
