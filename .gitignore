@@ -70,3 +70,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Kingsbane/Temp/UnityLockfile
+
+Kingsbane DB Manager/src/Kingsbane.Database/obj/Debug/netstandard2.0/Kingsbane.Database.csprojAssemblyReference.cache
+
+Kingsbane DB Manager/src/Kingsbane.App/obj/Debug/netcoreapp3.1/Kingsbane.App.csprojAssemblyReference.cache
