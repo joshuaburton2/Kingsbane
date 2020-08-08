@@ -424,7 +424,7 @@
             this.lstTags.Name = "lstTags";
             this.lstTags.Size = new System.Drawing.Size(228, 94);
             this.lstTags.TabIndex = 19;
-            this.lstTags.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
+            this.lstTags.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // lblSynergies
             // 
@@ -444,7 +444,7 @@
             this.lstSynergies.Name = "lstSynergies";
             this.lstSynergies.Size = new System.Drawing.Size(228, 94);
             this.lstSynergies.TabIndex = 19;
-            this.lstSynergies.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
+            this.lstSynergies.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // lblType
             // 
@@ -759,7 +759,7 @@
             this.lstRelatedCards.Name = "lstRelatedCards";
             this.lstRelatedCards.Size = new System.Drawing.Size(560, 64);
             this.lstRelatedCards.TabIndex = 28;
-            this.lstRelatedCards.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ClickListRecord);
+            this.lstRelatedCards.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // btnAddRelatedCard
             // 
