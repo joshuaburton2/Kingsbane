@@ -307,7 +307,7 @@ namespace Kingsbane.App
             {
                 var relatedCard = Id.HasValue ? _context.RelatedCards.SingleOrDefault(x => x.CardId == Id.Value && x.RelatedCardId == relatedCardId) : null;
                 if (relatedCard == null)
-                    _context.RelatedCards.Add(new RelatedCards { Card = card, CardId = relatedCardId });
+                    _context.RelatedCards.Add(new RelatedCards { Card = card, RelatedCardId = relatedCardId });
             }
             if (Id.HasValue)
             {
