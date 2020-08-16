@@ -74,7 +74,6 @@
     <Compile Include="Assets\Scripts\Category Data\Resources.cs" />
     <Compile Include="Assets\Scripts\Category Data\Synergies.cs" />
     <Compile Include="Assets\Scripts\Category Data\Tags.cs" />
-    <Compile Include="Assets\Scripts\DBManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Map\Cell.cs" />
     <Compile Include="Assets\Scripts\Map\MapGrid.cs" />
@@ -279,15 +278,6 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.3f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>D:/Game Development Work/Unity Projects/Kingsbane/Kingsbane/Kingsbane/Assets/Plugins/SQL DB Management/EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>D:/Game Development Work/Unity Projects/Kingsbane/Kingsbane/Kingsbane/Assets/Plugins/SQL DB Management/EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Kingsbane.Database">
-      <HintPath>D:/Game Development Work/Unity Projects/Kingsbane/Kingsbane/Kingsbane/Assets/Plugins/SQL DB Management/Kingsbane.Database.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.3f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

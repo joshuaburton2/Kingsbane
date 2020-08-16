@@ -19,9 +19,9 @@ D:\Source\Joshua\KingsbaneV3\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kin
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\bin\Debug\netstandard2.0\Kingsbane.Database.deps.json
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\bin\Debug\netstandard2.0\Kingsbane.Database.dll
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\bin\Debug\netstandard2.0\Kingsbane.Database.pdb
-D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.csprojAssemblyReference.cache
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.AssemblyInfoInputs.cache
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.AssemblyInfo.cs
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.csproj.CoreCompileInputs.cache
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.dll
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.pdb
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.Database\obj\Debug\netstandard2.0\Kingsbane.Database.csprojAssemblyReference.cache

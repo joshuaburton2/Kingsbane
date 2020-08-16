@@ -56,8 +56,7 @@ namespace Kingsbane.App
             lstSelectionList.Items.Clear();
             foreach (var selection in selectionList)
             {
-                var listItem = new ListViewItem();
-                listItem.SubItems.Add(selection.Id.ToString());
+                var listItem = new ListViewItem(selection.Id.ToString());
                 listItem.SubItems.Add(selection.Name.ToString());
                 listItem.SubItems.Add(selection.Identifier.ToString());
                 lstSelectionList.Items.Add(listItem);

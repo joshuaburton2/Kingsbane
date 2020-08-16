@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 using Kingsbane.Database;
@@ -140,7 +140,7 @@ namespace Kingsbane.App
             UpdateListBoxes();
         }
 
-        private SelectListItem SetComboItem (ComboBox cmb, int Id)
+        private SelectListItem SetComboItem(ComboBox cmb, int Id)
         {
             return cmb.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == Id);
         }
@@ -307,7 +307,7 @@ namespace Kingsbane.App
             {
                 var relatedCard = Id.HasValue ? _context.RelatedCards.SingleOrDefault(x => x.CardId == Id.Value && x.RelatedCardId == relatedCardId) : null;
                 if (relatedCard == null)
-                    _context.RelatedCards.Add(new RelatedCards { Card = card, CardId = relatedCardId });
+                    _context.RelatedCards.Add(new RelatedCards { Card = card, RelatedCardId = relatedCardId });
             }
             if (Id.HasValue)
             {
@@ -465,7 +465,7 @@ namespace Kingsbane.App
             formSelectionList.selectionType = selectionType;
             var result = formSelectionList.ShowDialog(this);
 
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 switch (selectionType)
                 {
@@ -500,26 +500,23 @@ namespace Kingsbane.App
                         {
                             MessageBox.Show("Card already has that related card");
                         }
-                        
+
 
                         break;
                 }
             }
         }
 
-        private void ClickListRecord(object sender, MouseEventArgs e)
+        private void ClickListRecord(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            var listBox = (ListBox)sender;
+            var selectedRecord = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
+
+            var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
             {
-                var listBox = (ListBox)sender;
-                var selectedRecord = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
-
-                var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
-
-                if (result == DialogResult.Yes)
-                {
-                    listBox.Items.Remove(listBox.SelectedItems[0]);
-                }
+                listBox.Items.Remove(listBox.SelectedItems[0]);
             }
         }
 
