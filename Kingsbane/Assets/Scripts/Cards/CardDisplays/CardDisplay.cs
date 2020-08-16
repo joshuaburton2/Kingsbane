@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using CategoryEnums;
 
 
 /// <summary>
@@ -33,12 +34,12 @@ public class ClassColour
 [System.Serializable]
 public class RarityColour
 {
-    public Card.Rarity Rarity;
+    public Rarity Rarity;
     public Color rarityColour;
 
     RarityColour()
     {
-        Rarity = Card.Rarity.Default;
+        Rarity = Rarity.Default;
         rarityColour = new Color();
     }
 }
@@ -158,10 +159,10 @@ public class CardDisplay : MonoBehaviour
 
         switch (card.type)
         {
-            case Card.Type.Unit:
+            case CardTypes.Unit:
                 Unit unitCard = (card as Unit);
 
-                if (card.rarity == Card.Rarity.Hero)
+                if (card.rarity == Rarity.Hero)
                 {
                     subTextString = "Hero - ";
                 }
@@ -175,13 +176,13 @@ public class CardDisplay : MonoBehaviour
                 ResetProps();
                 unitProps.SetActive(true);
                 break;
-            case Card.Type.Spell:
+            case CardTypes.Spell:
                 subTextString = "Spell";
 
                 ResetProps();
                 spellProps.SetActive(true);
                 break;
-            case Card.Type.Item:
+            case CardTypes.Item:
                 Item itemCard = card as Item;
                 subTextString = "Item - " + itemCard.ItemTag;
 
@@ -208,23 +209,23 @@ public class CardDisplay : MonoBehaviour
 
         switch (card.rarity)
         {
-            case Card.Rarity.Uncollectable:
-            case Card.Rarity.Common:
+            case Rarity.Uncollectable:
+            case Rarity.Common:
                 rarityColour = commonRarity.rarityColour;
                 break;
-            case Card.Rarity.Uncommon:
+            case Rarity.Uncommon:
                 rarityColour = uncommonRarity.rarityColour;
                 break;
-            case Card.Rarity.Rare:
+            case Rarity.Rare:
                 rarityColour = rareRarity.rarityColour;
                 break;
-            case Card.Rarity.Epic:
+            case Rarity.Epic:
                 rarityColour = epicRarity.rarityColour;
                 break;
-            case Card.Rarity.Legendary:
+            case Rarity.Legendary:
                 rarityColour = legendaryRarity.rarityColour;
                 break;
-            case Card.Rarity.Hero:
+            case Rarity.Hero:
                 rarityColour = GetClassColour(card.cardClass);
                 break;
             default:
@@ -265,7 +266,7 @@ public class CardDisplay : MonoBehaviour
 
         switch (card.type)
         {
-            case Card.Type.Unit:
+            case CardTypes.Unit:
                 Unit unitCard = card as Unit;
 
                 attackText.text = unitCard.Attack.ToString();
@@ -274,13 +275,13 @@ public class CardDisplay : MonoBehaviour
                 speedText.text = unitCard.Speed.ToString();
 
                 break;
-            case Card.Type.Spell:
+            case CardTypes.Spell:
                 Spell spellCard = card as Spell;
 
                 spellRangeText.text = spellCard.SpellRange.ToString();
 
                 break;
-            case Card.Type.Item:
+            case CardTypes.Item:
                 Item itemCard = card as Item;
 
                 durabilityText.text = itemCard.Durability.ToString();
@@ -306,7 +307,7 @@ public class CardDisplay : MonoBehaviour
         {
             if (cardResources[resourceIndex] != card.DEFAULT_VAL)
             {
-                resourceString += " " + cardResources[resourceIndex].ToString() + ((Resources.ResourceList)resourceIndex).ToString();
+                resourceString += " " + cardResources[resourceIndex].ToString() + ((CardResources)resourceIndex).ToString();
             }
         }
 

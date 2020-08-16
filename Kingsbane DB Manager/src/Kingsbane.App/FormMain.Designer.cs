@@ -30,6 +30,7 @@
         {
             this.buttonCardList = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -55,11 +56,23 @@
             this.lblTitle.Text = "Kingsbane Library Manager";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(193, 125);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(116, 52);
+            this.btnExport.TabIndex = 0;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 132);
+            this.ClientSize = new System.Drawing.Size(504, 188);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.buttonCardList);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -73,6 +86,7 @@
 
         private System.Windows.Forms.Button buttonCardList;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
