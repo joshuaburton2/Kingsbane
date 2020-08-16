@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour
     public Hand hand;
 
     public int[] resources; //Change this to be an object container
-    public Resources.ResourceList[] usedResources;
+    public CardResources[] usedResources;
     private const int NUM_RESOURCES = 6;
 
     int counter;

@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public enum Rarity { Default, Common, Uncommon, Rare, Epic, Legendary, Uncollectable, Hero }
-    public enum Type { Default, Unit, Spell, Item }
 
     public int ID { get { return iD; } }
     public int iD = -1; //ID of the card in the card library. Should have no reference in gameplay
@@ -14,15 +13,15 @@ public class Card : MonoBehaviour
     private string cardName = "Default";
 
     public Rarity rarity = Rarity.Default;
-    public Type type = Type.Default;
+    public CardTypes type = CardTypes.Default;
     public Classes.ClassList cardClass = Classes.ClassList.Default;
 
     public Sprite cardArt;
     private string artLocation;
 
-    public List<Tags.GeneralTags> Tags { get; private set; }
+    public List<Tags> Tags { get; private set; }
 
-    public List<Synergies.SynergyList> Syngergies { get; private set; }
+    public List<Synergies> Syngergies { get; private set; }
 
     public Player Owner { get; private set; }
 
@@ -35,7 +34,7 @@ public class Card : MonoBehaviour
     public int[] DefaultCost; //Change this to be a list of object containers
     [SerializeField]
     public int[] ResourceCost { get; private set; }
-    public List<Resources.ResourceList> Resources { get; private set; }
+    public List<CardResources> Resources { get; private set; }
     public readonly int DEFAULT_VAL = -1;
     public readonly int NUM_RESOURCES = 7;
 
@@ -55,13 +54,13 @@ public class Card : MonoBehaviour
     {
         DefaultCost = new int[NUM_RESOURCES];
         ResourceCost = new int[NUM_RESOURCES];
-        Resources = new List<Resources.ResourceList>();
+        Resources = new List<CardResources>();
 
         for (int resourceIndex = 0; resourceIndex < DefaultCost.Length; resourceIndex++)
         {
             if (DefaultCost[resourceIndex] != 0)
             {
-                Resources.Add((Resources.ResourceList)resourceIndex);
+                Resources.Add((CardResources)resourceIndex);
             }
         }
 
