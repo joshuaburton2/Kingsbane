@@ -177,6 +177,8 @@ public class CardDisplay : MonoBehaviour
                 unitProps.SetActive(true);
                 break;
             case CardTypes.Spell:
+                Spell spellCard = (card as Spell);
+
                 subTextString = "Spell";
 
                 ResetProps();

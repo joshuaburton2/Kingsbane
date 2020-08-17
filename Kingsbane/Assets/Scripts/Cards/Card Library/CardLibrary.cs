@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using CategoryEnums;
 
-public class CardLibrary : MonoBehaviour
+public class CardLibrary
 {
     public List<CardData> CardList { get; }
-    private void Start()
+
+    public void InitLibrary()
     {
         var card2 = new UnitData()
         {

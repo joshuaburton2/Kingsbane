@@ -9,6 +9,6 @@ public class Item : Card
 
     public override void Play()
     {
-        base.Play();
+
     }
 }

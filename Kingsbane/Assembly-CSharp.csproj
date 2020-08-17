@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Cards\Card Library\CardData.cs" />
     <Compile Include="Assets\Scripts\Cards\Card Library\CardLibrary.cs" />
     <Compile Include="Assets\Scripts\Cards\Card Library\ItemData.cs" />
+    <Compile Include="Assets\Scripts\Cards\Card Library\LibraryManager.cs" />
     <Compile Include="Assets\Scripts\Cards\Card Library\SpellData.cs" />
     <Compile Include="Assets\Scripts\Cards\Card Library\UnitData.cs" />
     <Compile Include="Assets\Scripts\Cards\Card Lists\Deck.cs" />
