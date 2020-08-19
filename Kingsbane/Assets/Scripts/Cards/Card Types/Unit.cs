@@ -13,6 +13,6 @@ public class Unit : Card
 
     public override void Play()
     {
-
+        base.Play();
     }
 }

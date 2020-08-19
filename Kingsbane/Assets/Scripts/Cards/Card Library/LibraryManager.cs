@@ -71,15 +71,7 @@ public class LibraryManager : MonoBehaviour
 
     public CardData GetCard(int Id)
     {
-        foreach (var card in cardList)
-        {
-            if(card.Id == Id)
-            {
-                return card;
-            }
-        }
-
-        return new CardData();
+        return cardList.FirstOrDefault(x => x.Id == Id);
     }
 
     public List<CardData> GetAllCards()
@@ -97,21 +89,22 @@ public class LibraryManager : MonoBehaviour
     {
         GameObject createdCard = Instantiate(cardObject);
 
-        Card cardScript = (Card)createdCard.AddComponent(typeof(Card));
-
         switch (card.CardType)
         {
             case CardTypes.Unit:
-                Unit unitScript = (Unit)cardScript;
+                Unit unitScript = (Unit)createdCard.AddComponent(typeof(Unit));
+
+                unitScript.cardData = card;
                 break;
             case CardTypes.Spell:
-                Spell spellScript = (Spell)cardScript;
+                Spell spellScript = (Spell)createdCard.AddComponent(typeof(Spell));
+
+                spellScript.cardData = card;
                 break;
             case CardTypes.Item:
-                Item itemScript = (Item)cardScript;
-                break;
-            case CardTypes.Default:
-            default:
+                Item itemScript = (Item)createdCard.AddComponent(typeof(Item));
+
+                itemScript.cardData = card;
                 break;
         }
 

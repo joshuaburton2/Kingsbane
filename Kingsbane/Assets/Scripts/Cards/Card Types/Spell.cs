@@ -9,6 +9,6 @@ public class Spell : Card
 
     public override void Play()
     {
-
+        base.Play();
     }
 }

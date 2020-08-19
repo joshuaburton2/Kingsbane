@@ -126,8 +126,8 @@ public class CardDisplay : MonoBehaviour
     public void InitDisplay()
     {
         cardName.text = card.CardName;
-        classText.text = card.cardClass.ToString();
-        cardText.text = card.mainText;
+        classText.text = card.CardClass.ToString();
+        cardText.text = card.Text;
         cardImage.sprite = card.cardArt;
 
         UpdateCardType();
@@ -157,12 +157,12 @@ public class CardDisplay : MonoBehaviour
     {
         string subTextString;
 
-        switch (card.type)
+        switch (card.Type)
         {
             case CardTypes.Unit:
                 Unit unitCard = (card as Unit);
 
-                if (card.rarity == Rarity.Hero)
+                if (card.Rarity == Rarity.Hero)
                 {
                     subTextString = "Hero - ";
                 }
@@ -209,7 +209,7 @@ public class CardDisplay : MonoBehaviour
     {
         Color rarityColour;
 
-        switch (card.rarity)
+        switch (card.Rarity)
         {
             case Rarity.Uncollectable:
             case Rarity.Common:
@@ -228,7 +228,7 @@ public class CardDisplay : MonoBehaviour
                 rarityColour = legendaryRarity.rarityColour;
                 break;
             case Rarity.Hero:
-                rarityColour = GetClassColour(card.cardClass);
+                rarityColour = GetClassColour(card.CardClass);
                 break;
             default:
                 rarityColour = new Color(1f, 1f, 1f);
@@ -266,7 +266,7 @@ public class CardDisplay : MonoBehaviour
     {
         UpdateResourceText();
 
-        switch (card.type)
+        switch (card.Type)
         {
             case CardTypes.Unit:
                 Unit unitCard = card as Unit;
@@ -301,16 +301,13 @@ public class CardDisplay : MonoBehaviour
     /// </summary>
     private void UpdateResourceText()
     {
-        int[] cardResources = card.ResourceCost;
+        List<Resource> cardResources = card.ResourceCost;
 
         string resourceString = "";
 
-        for (int resourceIndex = 0; resourceIndex < card.NUM_RESOURCES; resourceIndex++)
+        foreach (var resource in cardResources)
         {
-            if (cardResources[resourceIndex] != card.DEFAULT_VAL)
-            {
-                resourceString += " " + cardResources[resourceIndex].ToString() + ((CardResources)resourceIndex).ToString();
-            }
+            resourceString += " " + resource.Value.ToString() + resource.ResourceType.ToString();
         }
 
         resourceText.text = resourceString;

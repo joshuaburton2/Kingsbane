@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -12,9 +14,8 @@ public class Player : MonoBehaviour
     public Deck deck; //Deck to be accessed during a scenario
     public Hand hand;
 
-    public int[] resources; //Change this to be an object container
+    public List<Resource> resources;
     public CardResources[] usedResources;
-    private const int NUM_RESOURCES = 6;
 
     int counter;
 
@@ -32,9 +33,44 @@ public class Player : MonoBehaviour
     /// </summary>
     private void ResourceInit()
     {
-        resources = new int[NUM_RESOURCES];
-
         usedResources = Classes.GetClassResource(playerClass);
+
+        resources = new List<Resource>();
+        foreach (var resource in usedResources)
+        {
+            resources.Add(new Resource() { ResourceType = resource });
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Calculates the difference in resources if an effect is to change them
+    /// 
+    /// </summary>
+    /// <param name="resource">The resource which is being modified as well as the relevant value</param>
+    public Resource CalcNewResource(Resource resource)
+    {
+        return new Resource()
+        {
+            ResourceType = resource.ResourceType,
+            Value = resources.First(x => x.ResourceType == resource.ResourceType).Value + resource.Value
+        };
+    }
+
+    /// <summary>
+    /// 
+    /// Modifies a particular player resource with a given resource value
+    /// 
+    /// </summary>
+    public void ModifyResources(Resource resource)
+    {
+        for (int i = 0; i < resources.Count; i++)
+        {
+            if (resource.ResourceType == resources[i].ResourceType)
+            {
+                resources[i] = CalcNewResource(resource);
+            }
+        }
     }
 
     #region Draw Functions
