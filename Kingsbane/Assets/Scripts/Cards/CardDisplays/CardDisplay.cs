@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using CategoryEnums;
+using System.Linq;
 
 
 /// <summary>
@@ -51,8 +52,7 @@ public class RarityColour
 /// </summary>
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField]
-    private Card card;
+    public Card card;
 
     [Header("Main Card Objects")]
     [SerializeField]
@@ -245,15 +245,7 @@ public class CardDisplay : MonoBehaviour
     /// </summary>
     private Color GetClassColour(Classes.ClassList neededClass)
     {
-        foreach (ClassColour classColour in classColours)
-        {
-            if (classColour.Class == neededClass)
-            {
-                return classColour.classColour;
-            }
-        }
-
-        return new Color(1f, 1f, 1f);
+        return classColours.FirstOrDefault(x => x.Class == neededClass).classColour;
     }
 
     /// <summary>

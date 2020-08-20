@@ -7,7 +7,11 @@ using UnityEngine;
 public class LibraryManager : MonoBehaviour
 {
     [SerializeField]
+    //Card Object for rendering on 2D canvas
     private GameObject cardObject;
+    [SerializeField]
+    //World Space Canvas for rendering cards in world
+    private GameObject cardCanvas;
 
     private List<CardData> cardList;
 
@@ -79,15 +83,11 @@ public class LibraryManager : MonoBehaviour
         return cardList;
     }
 
-    public List<CardData> GetRelatedCards(int Id)
+    public GameObject CreateCard(CardData card, Transform parent)
     {
-        CardData card = GetCard(Id);
-        return card.RelatedCards;
-    }
+        GameObject createdCard = Instantiate(cardObject, parent);
 
-    public GameObject CreateCard(CardData card)
-    {
-        GameObject createdCard = Instantiate(cardObject);
+        CardDisplay cardDisplay;
 
         switch (card.CardType)
         {
@@ -95,29 +95,61 @@ public class LibraryManager : MonoBehaviour
                 Unit unitScript = (Unit)createdCard.AddComponent(typeof(Unit));
 
                 unitScript.cardData = card;
+
+                cardDisplay = createdCard.GetComponent<CardDisplay>();
+                cardDisplay.card = unitScript;
                 break;
             case CardTypes.Spell:
                 Spell spellScript = (Spell)createdCard.AddComponent(typeof(Spell));
 
                 spellScript.cardData = card;
+
+                cardDisplay = createdCard.GetComponent<CardDisplay>();
+                cardDisplay.card = spellScript;
                 break;
             case CardTypes.Item:
                 Item itemScript = (Item)createdCard.AddComponent(typeof(Item));
 
                 itemScript.cardData = card;
+
+                cardDisplay = createdCard.GetComponent<CardDisplay>();
+                cardDisplay.card = itemScript;
+                break;
+            default:
+                Card cardScript = (Card)createdCard.AddComponent(typeof(Card));
+
+                cardScript.cardData = card;
+
+                cardDisplay = createdCard.GetComponent<CardDisplay>();
+                cardDisplay.card = cardScript;
                 break;
         }
 
-        
+        cardDisplay.InitDisplay();
 
         return createdCard;
-        
     }
 
-    public GameObject CreateCard(int Id)
+    public GameObject CreateCard(int Id, Transform parent)
     {
         CardData card = GetCard(Id);
 
-        return CreateCard(card);
+        return CreateCard(card, parent);
+    }
+
+    public GameObject CreatedWorldCard(CardData card, Transform parent)
+    {
+        GameObject worldCanvas = Instantiate(cardCanvas, parent);
+
+        CreateCard(card, worldCanvas.transform);
+
+        return worldCanvas;
+    }
+
+    public GameObject CreateWorldCard(int Id, Transform parent)
+    {
+        CardData card = GetCard(Id);
+
+        return CreatedWorldCard(card, parent);
     }
 }
