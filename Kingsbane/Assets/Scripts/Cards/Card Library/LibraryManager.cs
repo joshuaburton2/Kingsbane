@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum CardOrdering
+{
+    None,
+    Classes,
+    Resources
+}
+
 public class LibraryManager : MonoBehaviour
 {
     [SerializeField]
@@ -61,13 +68,13 @@ public class LibraryManager : MonoBehaviour
         }
     }
 
-    public List<CardData> GetCardsWithTag (Tags tag)
+    public List<CardData> GetCardsWithTag(Tags tag)
     {
         tagLookup.TryGetValue(tag, out var cardList);
         return cardList;
     }
 
-    public List<CardData> GetCardsWithSynergy (Synergies synergy)
+    public List<CardData> GetCardsWithSynergy(Synergies synergy)
     {
         synergyLookup.TryGetValue(synergy, out var cardList);
         return cardList;
@@ -78,9 +85,71 @@ public class LibraryManager : MonoBehaviour
         return cardList.FirstOrDefault(x => x.Id == Id);
     }
 
-    public List<CardData> GetAllCards()
+    public List<CardData> GetAllCards(CardOrdering cardOrdering)
     {
-        return cardList;
+        List<CardData> orderedCardList = new List<CardData>();
+
+        switch (cardOrdering)
+        {
+            case CardOrdering.Classes:
+                orderedCardList = cardList;
+                orderedCardList.OrderBy(x => x.Class);
+                break;
+            case CardOrdering.Resources:
+                foreach (CardResources resource in Enum.GetValues(typeof(CardResources)).Cast<CardResources>().ToList())
+                {
+                    List<CardData> resourceList = new List<CardData>();
+
+                    foreach (var card in cardList)
+                    {
+                        if (card.GetResources.FirstOrDefault(x => x.ResourceType == resource) != null)
+                        {
+                            resourceList.Add(card);
+                        }
+                    }
+
+                    orderedCardList.AddRange(resourceList);
+                }
+                break;
+            case CardOrdering.None:
+                orderedCardList = cardList;
+                break;
+        }
+
+        orderedCardList.OrderBy(x => x.TotalResource);
+
+        return orderedCardList;
+    }
+
+    public List<List<CardData>> GetAllCardsSplit(CardOrdering cardOrdering)
+    {
+        List<List<CardData>> allCardsSplit = new List<List<CardData>>();
+
+        List<CardData> allCards = GetAllCards(cardOrdering);
+
+        switch (cardOrdering)
+        {
+            case CardOrdering.Classes:
+                allCardsSplit = SplitCardList<Classes.ClassList>(allCards);
+                break;
+            case CardOrdering.Resources:
+                allCardsSplit = SplitCardList<CardResources>(allCards);
+                break;
+        }
+
+        return allCardsSplit;
+    }
+
+    private List<List<CardData>> SplitCardList<T>(List<CardData> cardList) where T : Enum
+    {
+        List<List<CardData>> splitList = new List<List<CardData>>();
+
+        foreach (var splitType in Enum.GetValues(typeof(T)).Cast<T>().ToList())
+        {
+            splitList[(int)(object)splitType] = new List<CardData>();
+        }
+
+        return splitList;
     }
 
     public GameObject CreateCard(CardData card, Transform parent)
