@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum CardOrdering
-{
-    None,
-    Classes,
-    Resources
-}
+
 
 public class LibraryManager : MonoBehaviour
 {
@@ -75,7 +70,7 @@ public class LibraryManager : MonoBehaviour
                     keyList.Add((T)(object)card.Class);
                     break;
                 case Type _ when type == typeof(CardResources):
-                    keyList = card.GetResources.Select(x => x.ResourceType) as List<T>;
+                    keyList = card.GetResources.Select(x => x.ResourceType).Cast<T>().ToList();
                     break;
                 case Type _ when type == typeof(Sets):
                     keyList.Add((T)(object)card.Set);
@@ -88,15 +83,18 @@ public class LibraryManager : MonoBehaviour
                     break;
             }
 
-            foreach (var key in keyList)
+            if (keyList != null)
             {
-                if (!newDictionary.ContainsKey(key))
+                foreach (var key in keyList)
                 {
-                    newDictionary.Add(key, new List<CardData>() { card });
-                }
-                else
-                {
-                    newDictionary[key].Add(card);
+                    if (!newDictionary.ContainsKey(key))
+                    {
+                        newDictionary.Add(key, new List<CardData>() { card });
+                    }
+                    else
+                    {
+                        newDictionary[key].Add(card);
+                    }
                 }
             }
         }
@@ -134,7 +132,10 @@ public class LibraryManager : MonoBehaviour
                 break;
         }
 
-        return OrderCardList(dictionaryList);
+        if (dictionaryList != null)
+            return OrderCardList(dictionaryList);
+        else
+            return new List<CardData>();
     }
 
     public CardData GetCard(int Id)
@@ -149,93 +150,7 @@ public class LibraryManager : MonoBehaviour
 
     private List<CardData> OrderCardList(List<CardData> cardList)
     {
-        return cardList.OrderBy(x => x.Rarity).ThenBy(x => x.TotalResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
-    }
-
-    public List<CardData> GetAllCards(CardOrdering cardOrdering)
-    {
-        List<CardData> orderedCardList = new List<CardData>();
-
-        switch (cardOrdering)
-        {
-            case CardOrdering.Classes:
-                orderedCardList = cardList;
-                orderedCardList.OrderBy(x => x.Class);
-                break;
-            case CardOrdering.Resources:
-                foreach (CardResources resource in Enum.GetValues(typeof(CardResources)).Cast<CardResources>().ToList())
-                {
-                    List<CardData> resourceList = new List<CardData>();
-
-                    foreach (var card in cardList)
-                    {
-                        if (card.GetResources.FirstOrDefault(x => x.ResourceType == resource) != null)
-                        {
-                            resourceList.Add(card);
-                        }
-                    }
-
-                    orderedCardList.AddRange(resourceList);
-                }
-                break;
-            case CardOrdering.None:
-                orderedCardList = cardList;
-                break;
-        }
-
-        orderedCardList.OrderBy(x => x.TotalResource);
-        orderedCardList.OrderBy(x => x.Name);
-
-        return orderedCardList;
-    }
-
-    public List<List<CardData>> GetAllCardsSplit(CardOrdering cardOrdering)
-    {
-        List<List<CardData>> allCardsSplit = new List<List<CardData>>();
-
-        List<CardData> allCards = GetAllCards(cardOrdering);
-
-        switch (cardOrdering)
-        {
-            case CardOrdering.Classes:
-                allCardsSplit = SplitCardList<Classes.ClassList>(allCards);
-                break;
-            case CardOrdering.Resources:
-                allCardsSplit = SplitCardList<CardResources>(allCards);
-                break;
-        }
-
-        return allCardsSplit.Where(x => x.Count != 0).ToList();
-    }
-
-    private List<List<CardData>> SplitCardList<T>(List<CardData> cardList) where T : Enum
-    {
-        var splitList = new List<List<CardData>>();
-
-        foreach (var splitType in Enum.GetValues(typeof(T)).Cast<T>().ToList())
-        {
-            var splitItems = new List<CardData>();
-            foreach (var card in cardList)
-            {
-                var type = typeof(T);
-                switch (type)
-                {
-                    case Type _ when type == typeof(Classes.ClassList):
-                        if (card.Class == (Classes.ClassList)(object)splitType)
-                            splitItems.Add(card);
-                        break;
-                    case Type _ when type == typeof(CardResources):
-                        if (card.GetResources.Any(x => x.ResourceType == (CardResources)(object)splitType))
-                            splitItems.Add(card);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            splitList.Add(splitItems);
-        }
-
-        return splitList;
+        return cardList.OrderByDescending(x => x.TotalResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 
     public GameObject CreateCard(CardData card, Transform parent)
@@ -247,46 +162,33 @@ public class LibraryManager : MonoBehaviour
         switch (card.CardType)
         {
             case CardTypes.Unit:
-                Unit unitScript = (Unit)createdCard.AddComponent(typeof(Unit));
-
-                unitScript.cardData = card;
-                unitScript.InitCard();
-
-                cardDisplay = createdCard.GetComponent<CardDisplay>();
-                cardDisplay.card = unitScript;
+                SetCardType<Unit>(card, createdCard, out cardDisplay);
                 break;
             case CardTypes.Spell:
-                Spell spellScript = (Spell)createdCard.AddComponent(typeof(Spell));
-
-                spellScript.cardData = card;
-                spellScript.InitCard();
-
-                cardDisplay = createdCard.GetComponent<CardDisplay>();
-                cardDisplay.card = spellScript;
+                SetCardType<Spell>(card, createdCard, out cardDisplay);
                 break;
             case CardTypes.Item:
-                Item itemScript = (Item)createdCard.AddComponent(typeof(Item));
-
-                itemScript.cardData = card;
-                itemScript.InitCard();
-
-                cardDisplay = createdCard.GetComponent<CardDisplay>();
-                cardDisplay.card = itemScript;
+                SetCardType<Item>(card, createdCard, out cardDisplay);
                 break;
             default:
-                Card cardScript = (Card)createdCard.AddComponent(typeof(Card));
-
-                cardScript.cardData = card;
-                cardScript.InitCard();
-
-                cardDisplay = createdCard.GetComponent<CardDisplay>();
-                cardDisplay.card = cardScript;
+                SetCardType<Card>(card, createdCard, out cardDisplay);
                 break;
         }
 
         cardDisplay.InitDisplay();
 
         return createdCard;
+    }
+
+    private void SetCardType<T>(CardData card, GameObject createdCard, out CardDisplay cardDisplay)
+    {
+        T typeScript = (T)(object)createdCard.AddComponent(typeof(T));
+
+        ((Card)(object)typeScript).cardData = card;
+        ((Card)(object)typeScript).InitCard();
+
+        cardDisplay = createdCard.GetComponent<CardDisplay>();
+        cardDisplay.card = (Card)(object)typeScript;
     }
 
     public GameObject CreateCard(int Id, Transform parent)

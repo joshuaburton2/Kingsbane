@@ -866,7 +866,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Notes = @"",
 
             Set = Sets.Standard,
-            Class = Classes.ClassList.Runeblade,
+            Class = Classes.ClassList.Arcanist,
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
