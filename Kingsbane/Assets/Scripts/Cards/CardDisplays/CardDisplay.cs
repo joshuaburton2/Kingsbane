@@ -114,7 +114,6 @@ public class CardDisplay : MonoBehaviour
     private void Awake()
     {
         ResetProps();
-        InitDisplay();
     }
 
     /// <summary>
@@ -263,22 +262,22 @@ public class CardDisplay : MonoBehaviour
             case CardTypes.Unit:
                 Unit unitCard = card as Unit;
 
-                attackText.text = unitCard.Attack.ToString();
-                healthText.text = unitCard.Health.ToString();
-                unitRangeText.text = unitCard.Range.ToString();
-                speedText.text = unitCard.Speed.ToString();
+                attackText.text = $"Attack: {unitCard.Attack}";
+                healthText.text = $"Health: {unitCard.Health}";
+                unitRangeText.text = $"Range: {unitCard.Range}";
+                speedText.text = $"Speed: {unitCard.Speed}";
 
                 break;
             case CardTypes.Spell:
                 Spell spellCard = card as Spell;
 
-                spellRangeText.text = spellCard.SpellRange.ToString();
+                spellRangeText.text = $"Range: {spellCard.SpellRange}";
 
                 break;
             case CardTypes.Item:
                 Item itemCard = card as Item;
 
-                durabilityText.text = itemCard.Durability.ToString();
+                durabilityText.text = $"Durability: {itemCard.Durability}";
 
                 break;
             default:
@@ -299,7 +298,8 @@ public class CardDisplay : MonoBehaviour
 
         foreach (var resource in cardResources)
         {
-            resourceString += " " + resource.Value.ToString() + resource.ResourceType.ToString();
+            var resourceVal = resource.Value.ToString().Replace("-", "");
+            resourceString += $" {resourceVal} {resource.ResourceType}";
         }
 
         resourceText.text = resourceString;

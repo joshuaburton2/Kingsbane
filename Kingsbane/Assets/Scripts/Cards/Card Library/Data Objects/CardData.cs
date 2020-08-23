@@ -67,6 +67,20 @@ public class CardData
     /// </summary>
     public int TotalResource
     {
-        get { return GetResources.Sum(x => x.Value); }
+        get 
+        {
+            int totalResource;
+            if (GetResources.Count != 0)
+            {
+                totalResource = GetResources.Sum(x => x.Value);
+            }
+            else
+            {
+                totalResource = 0;
+            }
+             
+
+            return totalResource;
+        }
     }
 }

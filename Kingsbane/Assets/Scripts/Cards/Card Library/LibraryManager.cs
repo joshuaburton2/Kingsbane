@@ -24,6 +24,11 @@ public class LibraryManager : MonoBehaviour
 
     private Dictionary<Tags, List<CardData>> tagLookup;
     private Dictionary<Synergies, List<CardData>> synergyLookup;
+    private Dictionary<Classes.ClassList, List<CardData>> classLookup;
+    private Dictionary<CardResources, List<CardData>> resourceLookup;
+    private Dictionary<Sets, List<CardData>> setLookup;
+    private Dictionary<Rarity, List<CardData>> rarityLookup;
+    private Dictionary<CardTypes, List<CardData>> typeLookup;
 
     private void Start()
     {
@@ -40,49 +45,111 @@ public class LibraryManager : MonoBehaviour
 
     private void LoadDirectionaries()
     {
+        tagLookup = ConstructDictionary<Tags>();
+        synergyLookup = ConstructDictionary<Synergies>();
+        classLookup = ConstructDictionary<Classes.ClassList>();
+        resourceLookup = ConstructDictionary<CardResources>();
+        setLookup = ConstructDictionary<Sets>();
+        rarityLookup = ConstructDictionary<Rarity>();
+        typeLookup = ConstructDictionary<CardTypes>();
+    }
+
+    private Dictionary<T, List<CardData>> ConstructDictionary<T>() where T : Enum
+    {
+        var newDictionary = new Dictionary<T, List<CardData>>();
+
         foreach (var card in cardList)
         {
-            foreach (var tag in card.Tags)
+            var keyList = new List<T>();
+            var type = typeof(T);
+
+            switch (type)
             {
-                if (!tagLookup.ContainsKey(tag))
-                {
-                    tagLookup.Add(tag, new List<CardData>() { card });
-                }
-                else
-                {
-                    tagLookup[tag].Add(card);
-                }
+                case Type _ when type == typeof(Tags):
+                    keyList = card.Tags as List<T>;
+                    break;
+                case Type _ when type == typeof(Synergies):
+                    keyList = card.Synergies as List<T>;
+                    break;
+                case Type _ when type == typeof(Classes.ClassList):
+                    keyList.Add((T)(object)card.Class);
+                    break;
+                case Type _ when type == typeof(CardResources):
+                    keyList = card.GetResources.Select(x => x.ResourceType) as List<T>;
+                    break;
+                case Type _ when type == typeof(Sets):
+                    keyList.Add((T)(object)card.Set);
+                    break;
+                case Type _ when type == typeof(Rarity):
+                    keyList.Add((T)(object)card.Rarity);
+                    break;
+                case Type _ when type == typeof(CardTypes):
+                    keyList.Add((T)(object)card.CardType);
+                    break;
             }
 
-            foreach (var synergy in card.Synergies)
+            foreach (var key in keyList)
             {
-                if (!synergyLookup.ContainsKey(synergy))
+                if (!newDictionary.ContainsKey(key))
                 {
-                    synergyLookup.Add(synergy, new List<CardData>() { card });
+                    newDictionary.Add(key, new List<CardData>() { card });
                 }
                 else
                 {
-                    synergyLookup[synergy].Add(card);
+                    newDictionary[key].Add(card);
                 }
             }
         }
+
+        return newDictionary;
     }
 
-    public List<CardData> GetCardsWithTag(Tags tag)
+    public List<CardData> GetDictionaryList<T> (T key) where T : Enum
     {
-        tagLookup.TryGetValue(tag, out var cardList);
-        return cardList;
-    }
+        var dictionaryList = new List<CardData>();
+        var type = typeof(T);
 
-    public List<CardData> GetCardsWithSynergy(Synergies synergy)
-    {
-        synergyLookup.TryGetValue(synergy, out var cardList);
-        return cardList;
+        switch (type)
+        {
+            case Type _ when type == typeof(Tags):
+                tagLookup.TryGetValue((Tags)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(Synergies):
+                synergyLookup.TryGetValue((Synergies)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(Classes.ClassList):
+                classLookup.TryGetValue((Classes.ClassList)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(CardResources):
+                resourceLookup.TryGetValue((CardResources)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(Sets):
+                setLookup.TryGetValue((Sets)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(Rarity):
+                rarityLookup.TryGetValue((Rarity)(object)key, out dictionaryList);
+                break;
+            case Type _ when type == typeof(CardTypes):
+                typeLookup.TryGetValue((CardTypes)(object)key, out dictionaryList);
+                break;
+        }
+
+        return OrderCardList(dictionaryList);
     }
 
     public CardData GetCard(int Id)
     {
         return cardList.FirstOrDefault(x => x.Id == Id);
+    }
+
+    public List<CardData> GetAllCards()
+    {
+        return OrderCardList(cardList);
+    }
+
+    private List<CardData> OrderCardList(List<CardData> cardList)
+    {
+        return cardList.OrderBy(x => x.Rarity).ThenBy(x => x.TotalResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 
     public List<CardData> GetAllCards(CardOrdering cardOrdering)
@@ -117,6 +184,7 @@ public class LibraryManager : MonoBehaviour
         }
 
         orderedCardList.OrderBy(x => x.TotalResource);
+        orderedCardList.OrderBy(x => x.Name);
 
         return orderedCardList;
     }
@@ -137,16 +205,34 @@ public class LibraryManager : MonoBehaviour
                 break;
         }
 
-        return allCardsSplit;
+        return allCardsSplit.Where(x => x.Count != 0).ToList();
     }
 
     private List<List<CardData>> SplitCardList<T>(List<CardData> cardList) where T : Enum
     {
-        List<List<CardData>> splitList = new List<List<CardData>>();
+        var splitList = new List<List<CardData>>();
 
         foreach (var splitType in Enum.GetValues(typeof(T)).Cast<T>().ToList())
         {
-            splitList[(int)(object)splitType] = new List<CardData>();
+            var splitItems = new List<CardData>();
+            foreach (var card in cardList)
+            {
+                var type = typeof(T);
+                switch (type)
+                {
+                    case Type _ when type == typeof(Classes.ClassList):
+                        if (card.Class == (Classes.ClassList)(object)splitType)
+                            splitItems.Add(card);
+                        break;
+                    case Type _ when type == typeof(CardResources):
+                        if (card.GetResources.Any(x => x.ResourceType == (CardResources)(object)splitType))
+                            splitItems.Add(card);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            splitList.Add(splitItems);
         }
 
         return splitList;
@@ -164,6 +250,7 @@ public class LibraryManager : MonoBehaviour
                 Unit unitScript = (Unit)createdCard.AddComponent(typeof(Unit));
 
                 unitScript.cardData = card;
+                unitScript.InitCard();
 
                 cardDisplay = createdCard.GetComponent<CardDisplay>();
                 cardDisplay.card = unitScript;
@@ -172,6 +259,7 @@ public class LibraryManager : MonoBehaviour
                 Spell spellScript = (Spell)createdCard.AddComponent(typeof(Spell));
 
                 spellScript.cardData = card;
+                spellScript.InitCard();
 
                 cardDisplay = createdCard.GetComponent<CardDisplay>();
                 cardDisplay.card = spellScript;
@@ -180,6 +268,7 @@ public class LibraryManager : MonoBehaviour
                 Item itemScript = (Item)createdCard.AddComponent(typeof(Item));
 
                 itemScript.cardData = card;
+                itemScript.InitCard();
 
                 cardDisplay = createdCard.GetComponent<CardDisplay>();
                 cardDisplay.card = itemScript;
@@ -188,6 +277,7 @@ public class LibraryManager : MonoBehaviour
                 Card cardScript = (Card)createdCard.AddComponent(typeof(Card));
 
                 cardScript.cardData = card;
+                cardScript.InitCard();
 
                 cardDisplay = createdCard.GetComponent<CardDisplay>();
                 cardDisplay.card = cardScript;

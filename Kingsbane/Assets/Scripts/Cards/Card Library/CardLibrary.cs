@@ -3,10 +3,12 @@ using CategoryEnums;
 
 public class CardLibrary
 {
-    public List<CardData> CardList { get; }
+    public List<CardData> CardList { get; private set; }
 
     public void InitLibrary()
     {
+        CardList = new List<CardData>();
+
         var card2 = new UnitData()
         {
             Id = 2,

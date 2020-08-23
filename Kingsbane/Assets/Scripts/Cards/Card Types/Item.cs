@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Item : Card
 {
-    public string ItemTag { get; private set; }
-    public int Durability { get; private set; }
+    public ItemData itemData { get { return cardData as ItemData; } }
+
+    public string ItemTag { get { return itemData.ItemTag; } }
+    public int Durability { get { return itemData.Durability; } }
 
     public override void Play()
     {

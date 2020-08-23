@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Spell : Card
 {
-    public string SpellType { get; private set; }
-    public int SpellRange { get; private set; }
+    public SpellData spellData { get { return cardData as SpellData; } }
+
+    public string SpellType { get { return spellData.SpellType; } }
+    public int SpellRange { get { return spellData.Range; } }
 
     public override void Play()
     {

@@ -19,8 +19,9 @@ public class LibraryUI : MonoBehaviour
     private CardOrdering tabFilter;
 
     List<List<CardData>> pageList;
-    private int PageCount { get { return numColumns * numRows; } }
+    private int CardsPerPage { get { return numColumns * numRows; } }
     private int pageIndex;
+    private int tabIndex;
     private int cardCount;
 
     [Header("Tab Settings")]
@@ -53,6 +54,7 @@ public class LibraryUI : MonoBehaviour
     private void ResetGrid()
     {
         pageIndex = 0;
+        tabIndex = 0;
 
         foreach (GameObject row in gridRows)
         {
@@ -62,13 +64,33 @@ public class LibraryUI : MonoBehaviour
             }
         }
 
+        pageList = GameManager.instance.libraryManager.GetAllCardsSplit(tabFilter);
+
         RefreshGrid();
     }
 
     private void RefreshGrid()
     {
-        pageList = GameManager.instance.libraryManager.GetAllCardsSplit(tabFilter);
+        var tabList = pageList[tabIndex];
 
+        var startCardIndex = pageIndex * CardsPerPage;
 
+        var currentRow = 0;
+        var currentColumn = 0;
+
+        for (int cardIndex = startCardIndex; cardIndex < CardsPerPage + startCardIndex; cardIndex++)
+        {
+            var currentCard = tabList[cardIndex];
+            var newCardObj = GameManager.instance.libraryManager.CreateCard(currentCard, gridRows[currentRow].transform);
+            newCardObj.name = $"Card{currentRow}.{currentColumn}- {currentCard.Name}";
+
+            currentColumn++;
+
+            if(currentColumn == numColumns)
+            {
+                currentRow++;
+                currentColumn = 0;
+            }
+        }
     }
 }

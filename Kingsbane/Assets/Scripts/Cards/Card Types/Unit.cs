@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Unit : Card
 {
-    public int Attack { get; private set; }
-    public int Health { get; private set; }
-    public int Range { get; private set; }
-    public int Speed { get; private set; }
+    public UnitData unitData { get { return cardData as UnitData; } }
 
-    public string UnitTag { get; private set; }
+    public int Attack { get { return unitData.Attack; } }
+    public int Health { get { return unitData.Health; } }
+    public int Range { get { return unitData.Range; } }
+    public int Speed { get { return unitData.Speed; } }
+
+    public string UnitTag { get { return unitData.UnitTag; } }
 
     public override void Play()
     {
