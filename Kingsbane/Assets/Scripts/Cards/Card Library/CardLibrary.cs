@@ -1768,6 +1768,335 @@ Whenever you cast a spell, cast it again on the same target",
         };
         CardList.Add(card59);
 
+        var card60 = new UnitData()
+        {
+            Id = 60,
+            Name = "Abyssal Tier1",
+            ImageLocation = "Abyssal1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Abyssal",
+            Attack = 3,
+            Health = 7,
+            Range = 3,
+            Speed = 2
+        };
+        CardList.Add(card60);
+
+        var card61 = new UnitData()
+        {
+            Id = 61,
+            Name = "Abyssal Tier2",
+            ImageLocation = "Abyssal2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Abyssal",
+            Attack = 4,
+            Health = 15,
+            Range = 3,
+            Speed = 2
+        };
+        CardList.Add(card61);
+
+        var card62 = new UnitData()
+        {
+            Id = 62,
+            Name = "Abyssal Tier3",
+            ImageLocation = "Abyssal3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Abyssal",
+            Attack = 5,
+            Health = 26,
+            Range = 3,
+            Speed = 3
+        };
+        CardList.Add(card62);
+
+        var card63 = new UnitData()
+        {
+            Id = 63,
+            Name = "Voidling",
+            ImageLocation = "Voidling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Warden</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Void },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Void Summon",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card63);
+
+        var card64 = new UnitData()
+        {
+            Id = 64,
+            Name = "Abyss Imp",
+            ImageLocation = "Abyss_Imp",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Discard a card
+<b>Last Rites:</b> Shuffle an Abyss Imp into your deck. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.LastRites, Tags.Void, Tags.Abomination, Tags.Discard },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Swarm, Synergies.LastRites, Synergies.Discard, Synergies.Void, Synergies.Sacrifice },
+            UnitTag = "Void Abomination",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card64);
+
+        var card65 = new UnitData()
+        {
+            Id = 65,
+            Name = "Abyssal Cultist",
+            ImageLocation = "Abyssal_Cultist",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Shadowy Ritual (1 Action): Prayer +1</b>
+Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Abyssal, Tags.PrayerGain },
+            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Prayer },
+            UnitTag = "Human Abyssal",
+            Attack = 2,
+            Health = 1,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card65);
+
+        var card66 = new SpellData()
+        {
+            Id = 66,
+            Name = "Bite",
+            ImageLocation = "Bite",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond</b>
+Deal 4 damage to a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Lifebond },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.SingleDamage, Synergies.Restoration },
+            SpellType = "Damage",
+            Range = 1,
+        };
+        CardList.Add(card66);
+
+        var card67 = new SpellData()
+        {
+            Id = 67,
+            Name = "Dark Pact",
+            ImageLocation = "Dark_Pact",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Increase your mana by 4. Add a random Void unit to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.ManaGain },
+            Synergies = new List<Synergies> { Synergies.Mana, Synergies.Value, Synergies.Void },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card67);
+
+        var card68 = new UnitData()
+        {
+            Id = 68,
+            Name = "Void Soul",
+            ImageLocation = "Void_Soul",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Ethereal</b>
+Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ethereal, Tags.Void, Tags.Spirit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice },
+            UnitTag = "Void Spirit",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card68);
+
+        var card69 = new SpellData()
+        {
+            Id = 69,
+            Name = "Void Touch",
+            ImageLocation = "Void_Touch",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a friendly unit with <b>Summon</b> +4 Attack, +4 Health. Gain additional Attack and Health points equal to your <b>Empowered</b> value.
+Deal damage to the caster equal to the additional points gained.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Restoration, Synergies.SelfDamage },
+            SpellType = "Enchantment",
+            Range = 1,
+        };
+        CardList.Add(card69);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -1776,6 +2105,10 @@ Whenever you cast a spell, cast it again on the same target",
         card44.RelatedCards = new List<CardData> { card45 };
         card47.RelatedCards = new List<CardData> { card36 };
         card54.RelatedCards = new List<CardData> { card55, card56, card57, card58, card59 };
+        card60.RelatedCards = new List<CardData> { card63 };
+        card61.RelatedCards = new List<CardData> { card63 };
+        card62.RelatedCards = new List<CardData> { card63 };
+        card65.RelatedCards = new List<CardData> { card68 };
     }
 }
 
@@ -1783,12 +2116,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage
     }
 
     public enum Sets
