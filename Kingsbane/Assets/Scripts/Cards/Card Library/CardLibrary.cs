@@ -446,7 +446,7 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane, Tags.Warden },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal, Synergies.Warden, Synergies.Defensive },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal, Synergies.Defensive },
             UnitTag = "Arcane Summon",
             Attack = 0,
             Health = 12,
@@ -1302,7 +1302,7 @@ Stargaze (1 Action): Divinate (1)</b>",
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = 0,
+            ResourceMana = null,
             ResourceWild = null,
             ResourceNeutral = null,
 
@@ -2097,6 +2097,1206 @@ Deal damage to the caster equal to the additional points gained.",
         };
         CardList.Add(card69);
 
+        var card70 = new UnitData()
+        {
+            Id = 70,
+            Name = "Abyssal Dreadspeaker",
+            ImageLocation = "Abyssal_Dreadspeaker",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Empowered +1</b>
+Whenever you discard a card or a friendly unit dies within Range 2, draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Empowered, Tags.Conduit },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Midrange, Synergies.Swarm, Synergies.Death, Synergies.Discard, Synergies.Sacrifice },
+            UnitTag = "Human Abyssal",
+            Attack = 2,
+            Health = 3,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card70);
+
+        var card71 = new SpellData()
+        {
+            Id = 71,
+            Name = "Blood Pact",
+            ImageLocation = "Blood_Pact",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Destroy a friendly unit. Restore health equal to the destroyed unit's health to another unit. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Sacrifice },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.Sacrifice, Synergies.Restoration },
+            SpellType = "Restoration",
+            Range = 2,
+        };
+        CardList.Add(card71);
+
+        var card72 = new SpellData()
+        {
+            Id = 72,
+            Name = "Dreadbolt",
+            ImageLocation = "Dreadbolt",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 4 damage to a unit. Deal an equal amount of damage to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.SelfDamage },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.SingleDamage, Synergies.SelfDamage },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card72);
+
+        var card73 = new UnitData()
+        {
+            Id = 73,
+            Name = "Vampire Aristocrat",
+            ImageLocation = "Vampire_Aristocrat",
+
+            ResourceDevotion = 6,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond</b>
+At the start of your turn, <b>Regenerate</b>
+Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
+            UnitTag = "Vampire Noble",
+            Attack = 5,
+            Health = 5,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card73);
+
+        var card74 = new UnitData()
+        {
+            Id = 74,
+            Name = "Vampire Courtesan",
+            ImageLocation = "Vampire_Courtesan",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond
+Lifedrain (2 Devotion, 1 Action):</b> Deal 3 damage to a unit. Heal this unit for the amount of damage dealt",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Lifebond, Tags.Vampire, Tags.Noble },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Durable, Synergies.SingleDamage, Synergies.Restoration },
+            UnitTag = "Vampire Noble",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card74);
+
+        var card75 = new UnitData()
+        {
+            Id = 75,
+            Name = "Abyss Knight",
+            ImageLocation = "Abyss_Knight",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Warden</b>
+Whenever you discard a card, gain Attack and Health equal to its total cost",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Void, Tags.Abomination },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Discard, Synergies.Void },
+            UnitTag = "Void Summon",
+            Attack = 5,
+            Health = 7,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card75);
+
+        var card76 = new UnitData()
+        {
+            Id = 76,
+            Name = "Abyssal Summoner",
+            ImageLocation = "Abyssal_Summoner",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> You can <b>Summon</b> one additional unit for the rest of the scenario. Deal 3 damage to your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Deployment, Synergies.ShortRange, Synergies.Restoration, Synergies.SelfDamage },
+            UnitTag = "Human Abyssal",
+            Attack = 3,
+            Health = 3,
+            Range = 1,
+            Speed = 2
+        };
+        CardList.Add(card76);
+
+        var card77 = new UnitData()
+        {
+            Id = 77,
+            Name = "Eye of the Void",
+            ImageLocation = "Eye_of_the_Void",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 5,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Flying</b>
+Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Void, Tags.Abomination, Tags.Flying },
+            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Mana, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Flying },
+            UnitTag = "Void Summon",
+            Attack = 3,
+            Health = 5,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card77);
+
+        var card78 = new UnitData()
+        {
+            Id = 78,
+            Name = "Imp Mother",
+            ImageLocation = "Imp_Mother",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Warden
+Brood Spawn (2 Mana, 1 Action):</b> Discard a card. Deploy two Abyss Imps beside this unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Summon, Tags.Warden, Tags.Void, Tags.Discard },
+            Synergies = new List<Synergies> { Synergies.Summon, Synergies.Mana, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.ShortRange, Synergies.Discard, Synergies.Void, Synergies.Sacrifice },
+            UnitTag = "Void Summon",
+            Attack = 3,
+            Health = 9,
+            Range = 1,
+            Speed = 2
+        };
+        CardList.Add(card78);
+
+        var card79 = new UnitData()
+        {
+            Id = 79,
+            Name = "Abyssal Voidcaller",
+            ImageLocation = "Abyssal_Voidcaller",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 5,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Call of the Void
+Call of the Void (2 Mana, 1 Action):</b> Add a random Void unit to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Abyssal },
+            Synergies = new List<Synergies> { Synergies.Mana, Synergies.Deployment, Synergies.Value, Synergies.LongRange, Synergies.Void },
+            UnitTag = "Human Abyssal",
+            Attack = 4,
+            Health = 5,
+            Range = 3,
+            Speed = 2
+        };
+        CardList.Add(card79);
+
+        var card80 = new UnitData()
+        {
+            Id = 80,
+            Name = "Soul Consumer",
+            ImageLocation = "Soul_Consumer",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 7,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Consume (1 Action):</b> Discard a card. Gain Mana equal to its total cost.
+Whenever this kills a unit, return a random card you discarded this game to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.ManaGain, Tags.Void, Tags.Abomination, Tags.Discard },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Mana, Synergies.BigMinions, Synergies.Death, Synergies.Discard, Synergies.Void },
+            UnitTag = "Void Abomination",
+            Attack = 4,
+            Health = 12,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card80);
+
+        var card81 = new SpellData()
+        {
+            Id = 81,
+            Name = "The Void Hungers",
+            ImageLocation = "The_Void_Hungers",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Destroy a friendly unit. Deal damage to another unit equal to the destroyed unit's health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Sacrifice },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigMinions, Synergies.SingleDamage, Synergies.Sacrifice },
+            SpellType = "Damage",
+            Range = 4,
+        };
+        CardList.Add(card81);
+
+        var card82 = new UnitData()
+        {
+            Id = 82,
+            Name = "Abysslord Marrex",
+            ImageLocation = "Abysslord_Marrex",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 7,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>
+<b>Rally the Horde (2 Mana, 1 Action): Discard a card. Give all adjacent units Attack and Health equal to its total cost",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Void, Tags.Discard, Tags.Noble },
+            Synergies = new List<Synergies> { Synergies.Mana, Synergies.Swarm, Synergies.BigMinions, Synergies.Discard, Synergies.Void, Synergies.Prayer },
+            UnitTag = "Void Noble",
+            Attack = 8,
+            Health = 11,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card82);
+
+        var card83 = new SpellData()
+        {
+            Id = 83,
+            Name = "Realm Convergence",
+            ImageLocation = "Realm_Convergence",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario
+Deal damage to your hero equal to half their remaining health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SelfDamage, Tags.PassiveSpell },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigSpells, Synergies.Summon, Synergies.Mana, Synergies.Restoration, Synergies.SelfDamage },
+            SpellType = "Other",
+            Range = 0,
+        };
+        CardList.Add(card83);
+
+        var card84 = new UnitData()
+        {
+            Id = 84,
+            Name = "Elementalist Tier1",
+            ImageLocation = "Elementalist1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Elementalist",
+            Attack = 5,
+            Health = 5,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card84);
+
+        var card85 = new UnitData()
+        {
+            Id = 85,
+            Name = "Elementalist Tier2",
+            ImageLocation = "Elementalist2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Elementalist",
+            Attack = 7,
+            Health = 11,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card85);
+
+        var card86 = new UnitData()
+        {
+            Id = 86,
+            Name = "Elementalist Tier3",
+            ImageLocation = "Elementalist3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Elementalist",
+            Attack = 9,
+            Health = 20,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card86);
+
+        var card87 = new SpellData()
+        {
+            Id = 87,
+            Name = "Fireball",
+            ImageLocation = "Fireball",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 3 damage to all units within an area of Radius 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage },
+            SpellType = "Damage",
+            Range = 4,
+        };
+        CardList.Add(card87);
+
+        var card88 = new UnitData()
+        {
+            Id = 88,
+            Name = "Goblin Blastmage",
+            ImageLocation = "Goblin_Blastmage",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Empowered +1
+FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2 equal to your <b>Empowered</b> value",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Empowered, Tags.Elementalist, Tags.Fire, Tags.Goblin },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Midrange, Synergies.Goblin },
+            UnitTag = "Goblin Elementalist",
+            Attack = 1,
+            Health = 2,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card88);
+
+        var card89 = new SpellData()
+        {
+            Id = 89,
+            Name = "Ice Blast",
+            ImageLocation = "Ice_Blast",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 1 damage to a unit and <b>Stun</b> it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.SingleDamage, Tags.Water },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Stun, Synergies.SingleDamage },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card89);
+
+        var card90 = new SpellData()
+        {
+            Id = 90,
+            Name = "Lightning Bolt",
+            ImageLocation = "Lightning_Bolt",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 3 damage to all units within an area of Line 6 from the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage },
+            SpellType = "Damage",
+            Range = 0,
+        };
+        CardList.Add(card90);
+
+        var card91 = new SpellData()
+        {
+            Id = 91,
+            Name = "Mana Surge",
+            ImageLocation = "Mana_Surge",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            Text = @"Increase your Mana by 3. Gain <b>Empowered +2</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Empowered, Tags.ManaGain },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Mana },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card91);
+
+        var card92 = new UnitData()
+        {
+            Id = 92,
+            Name = "Wave Sorceror",
+            ImageLocation = "Wave_Sorceror",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 4,
+            ResourceNeutral = null,
+
+            Text = @"<b>Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Elementalist, Tags.Water, Tags.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.ForceMove },
+            UnitTag = "Elven Elementalist",
+            Attack = 3,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card92);
+
+        var card93 = new UnitData()
+        {
+            Id = 93,
+            Name = "Air Elemental",
+            ImageLocation = "Air_Elemental",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Flying</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Flying, Tags.Air, Tags.Elemental },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Flying },
+            UnitTag = "Elemental Summon",
+            Attack = 7,
+            Health = 5,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card93);
+
+        var card94 = new UnitData()
+        {
+            Id = 94,
+            Name = "Earth Elemental",
+            ImageLocation = "Earth_Elemental",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Warden</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Elemental, Tags.Earth },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive },
+            UnitTag = "Elemental Summon",
+            Attack = 4,
+            Health = 12,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card94);
+
+        var card95 = new UnitData()
+        {
+            Id = 95,
+            Name = "Fire Elemental",
+            ImageLocation = "Fire_Elemental",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon Prepared</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Prepared, Tags.Fire, Tags.Elemental },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Prepared },
+            UnitTag = "Elemental Summon",
+            Attack = 8,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card95);
+
+        var card96 = new SpellData()
+        {
+            Id = 96,
+            Name = "Tend the Elements",
+            ImageLocation = "Tend_the_Elements",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"<b>Cycle +3</b>
+Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.CyclePlus },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Cycle },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card96);
+
+        var card97 = new UnitData()
+        {
+            Id = 97,
+            Name = "Water Elemental",
+            ImageLocation = "Water_Elemental",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon</b>
+Whenever this unit deals damage to another unit, <b>Stun</b> it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.Summon, Tags.Water, Tags.Elemental },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Stun, Synergies.Summon, Synergies.Mana, Synergies.BigMinions },
+            UnitTag = "Elemental Summon",
+            Attack = 5,
+            Health = 9,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card97);
+
+        var card98 = new UnitData()
+        {
+            Id = 98,
+            Name = "Earthbinder",
+            ImageLocation = "Earthbinder",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = 1,
+            ResourceNeutral = null,
+
+            Text = @"<b>Empowered +1
+Earthspike (2 Mana, 1 Action):</b> Deal damage to all units in an area of Cone 3 equal to your <b>Empowered</b> value and <b>Root</b> them",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Empowered, Tags.Elementalist, Tags.Earth, Tags.Root },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Root },
+            UnitTag = "Dwarven Elementalist",
+            Attack = 3,
+            Health = 5,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card98);
+
+        var card99 = new SpellData()
+        {
+            Id = 99,
+            Name = "Elemental Rush",
+            ImageLocation = "Elemental_Rush",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 5,
+            ResourceNeutral = null,
+
+            Text = @"Draw a card. Reduce the cost of all spells in your hand and deck by (2) <b>Cycle -5</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.Cycle, Synergies.Wild },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card99);
+
+        var card100 = new UnitData()
+        {
+            Id = 100,
+            Name = "Monk of the Four Winds",
+            ImageLocation = "Monk_of_the_Four_Winds",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 6,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Call of the Winds
+Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce its cost by (3). <b>Cycle -3</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Deployment, Tags.Elementalist, Tags.Air, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.ShortRange, Synergies.Wild },
+            UnitTag = "Human Elementalist",
+            Attack = 3,
+            Health = 3,
+            Range = 1,
+            Speed = 4
+        };
+        CardList.Add(card100);
+
+        var card101 = new SpellData()
+        {
+            Id = 101,
+            Name = "Pummel",
+            ImageLocation = "Pummel",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            Text = @"Deal 3 damage to a unit. Move it up to 2 tiles away from the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.ForceMove, Tags.Earth },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.SingleDamage, Synergies.ForceMove },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card101);
+
+        var card102 = new SpellData()
+        {
+            Id = 102,
+            Name = "Chain Lightning",
+            ImageLocation = "Chain_Lightning",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 5,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"<b>Cycle -3</b>
+Deal 6 damage to an enemy unit and 3 damage to all other enemy units within an area of Radius 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SplitDamage, Tags.Air, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.Mana },
+            SpellType = "Damage",
+            Range = 4,
+        };
+        CardList.Add(card102);
+
+        var card103 = new SpellData()
+        {
+            Id = 103,
+            Name = "Earthquake",
+            ImageLocation = "Earthquake",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 6,
+            ResourceWild = 8,
+            ResourceNeutral = null,
+
+            Text = @"Deal 4 damage to all units within an area of Radius 3 and increase the movement cost of all tiles in the area by 1 until the end of your next turn. At the start of your next turn, deal 4 damage to all units within the same area.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Earth },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Wild },
+            SpellType = "Damage",
+            Range = -1,
+        };
+        CardList.Add(card103);
+
+        var card104 = new SpellData()
+        {
+            Id = 104,
+            Name = "Wall of Fire",
+            ImageLocation = "Wall_of_Fire",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 8,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 5 damage to all units in an area of Wall 5. If any unit enters this area until the end of your next turn, they take 5 damage",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.Mana, Synergies.ForceMove },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card104);
+
+        var card105 = new UnitData()
+        {
+            Id = 105,
+            Name = "Master Kybas",
+            ImageLocation = "Master_Kybas",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 8,
+            ResourceWild = 6,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Cycle -6</b>
+Reduce the cost of all spells generated by this unit to 0.
+<b>Deployment:</b> Add all four of the basic Elemental Spells to your hand.
+<b>Master of the Elements (2 Mana):</b> Add a basic Elemental Spell to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Elementalist, Tags.Fire, Tags.Water, Tags.Air, Tags.Earth, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Mana, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.ShortRange, Synergies.Cycle, Synergies.Wild },
+            UnitTag = "Human Elementalist",
+            Attack = 5,
+            Health = 5,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card105);
+
+        var card106 = new SpellData()
+        {
+            Id = 106,
+            Name = "Tidal Wave",
+            ImageLocation = "Tidal_Wave",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 10,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"In an area of line 6 from the caster as well as both adjacent lines, deal 2 damage, <b>Stun</b> and push back 3 tiles all units in that area.
+The damage of this spell is multiplied by your <b>Empowered</b> score instead of being added. The damage of this spell cannot be reduced below 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.AreaDamage, Tags.Water, Tags.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Stun, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove },
+            SpellType = "Damage",
+            Range = 0,
+        };
+        CardList.Add(card106);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -2109,6 +3309,9 @@ Deal damage to the caster equal to the additional points gained.",
         card61.RelatedCards = new List<CardData> { card63 };
         card62.RelatedCards = new List<CardData> { card63 };
         card65.RelatedCards = new List<CardData> { card68 };
+        card77.RelatedCards = new List<CardData> { card68 };
+        card78.RelatedCards = new List<CardData> { card64 };
+        card105.RelatedCards = new List<CardData> { card87, card89, card90, card101 };
     }
 }
 
@@ -2116,12 +3319,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild
     }
 
     public enum Sets
