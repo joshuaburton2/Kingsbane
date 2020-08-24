@@ -54,6 +54,10 @@ public class LibraryUI : MonoBehaviour
     private GameObject tabPrefab;
     [SerializeField]
     private List<LibraryTab> tabList;
+    [SerializeField]
+    private Color selectedTabColour = new Color (1f, 1f, 1f);
+    [SerializeField]
+    private Color unselectedTabColour = new Color (0.5f, 0.5f, 0.5f);
     private int minTab;
     private int maxTab;
 
@@ -119,6 +123,10 @@ public class LibraryUI : MonoBehaviour
                 libraryTab.tabCardList = tabCardList;
                 libraryTab.tabName = ((T)type).ToString();
                 newTab.name = $"Tab{libraryTab.tabIndex}- {libraryTab.tabName}";
+                libraryTab.tabObject = newTab;
+
+                newTab.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite =
+                    GameManager.instance.iconManager.getIcon((T)type);
 
                 tabList.Add(libraryTab);
             }
@@ -159,6 +167,8 @@ public class LibraryUI : MonoBehaviour
                 pageListSplit[pageIndex].Add(pageList[cardIndex]);
             }
         }
+
+        UpdateTabColour(true);
     }
 
     private List<CardData> GetTabList()
@@ -209,6 +219,8 @@ public class LibraryUI : MonoBehaviour
             leftButton.SetActive(true);
             rightButton.SetActive(true);
         }
+
+        
     }
 
     public void SwitchPage(int libraryDirection)
@@ -217,7 +229,9 @@ public class LibraryUI : MonoBehaviour
 
         if (pageIndex == -1 || pageIndex == tabPageCount)
         {
+            UpdateTabColour(false);
             tabIndex += libraryDirection;
+            UpdateTabColour(true);
             LoadTabList();
             pageIndex = libraryDirection == 1 ? 0 : tabPageCount - 1;
         }
@@ -227,9 +241,23 @@ public class LibraryUI : MonoBehaviour
 
     public void SelectTab(int newTabIndex)
     {
+        UpdateTabColour(false);
         tabIndex = newTabIndex;
+        UpdateTabColour(true);
         pageIndex = 0;
         LoadTabList();
         RefreshGrid();
+    }
+
+    public void UpdateTabColour(bool isNewTab)
+    {
+        Color tabColour;
+
+        if (isNewTab)
+            tabColour = selectedTabColour;
+        else
+            tabColour = unselectedTabColour;
+
+        tabList[tabIndex].tabObject.GetComponent<Image>().color = tabColour;
     }
 }
