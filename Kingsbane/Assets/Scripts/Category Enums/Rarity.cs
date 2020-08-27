@@ -8,7 +8,7 @@
         Rare,
         Epic,
         Legendary,
+        Uncollectable,
         Hero,
-        Uncollectable
     }
 }

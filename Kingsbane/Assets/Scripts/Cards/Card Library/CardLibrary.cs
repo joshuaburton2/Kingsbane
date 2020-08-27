@@ -3297,6 +3297,923 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         };
         CardList.Add(card106);
 
+        var card107 = new UnitData()
+        {
+            Id = 107,
+            Name = "Grovewatcher Tier1",
+            ImageLocation = "Grovewatcher1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Grovewatcher",
+            Attack = 2,
+            Health = 11,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card107);
+
+        var card108 = new UnitData()
+        {
+            Id = 108,
+            Name = "Grovewatcher Tier2",
+            ImageLocation = "Grovewatcher2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Grovewatcher",
+            Attack = 2,
+            Health = 19,
+            Range = 3,
+            Speed = 2
+        };
+        CardList.Add(card108);
+
+        var card109 = new UnitData()
+        {
+            Id = 109,
+            Name = "Grovewatcher Tier3",
+            ImageLocation = "Grovewatcher3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Grovewatcher",
+            Attack = 3,
+            Health = 28,
+            Range = 4,
+            Speed = 2
+        };
+        CardList.Add(card109);
+
+        var card110 = new SpellData()
+        {
+            Id = 110,
+            Name = "Grasping Vine",
+            ImageLocation = "Grasping_Vine",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            Text = @"<b>Root</b> an enemy. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Root },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Draw, Synergies.Root },
+            SpellType = "Enchantment",
+            Range = 3,
+        };
+        CardList.Add(card110);
+
+        var card111 = new SpellData()
+        {
+            Id = 111,
+            Name = "Honour the Old Gods",
+            ImageLocation = "Honour_the_Old_Gods",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Increase your Wild by 3. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.WildGain },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Wild },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card111);
+
+        var card112 = new UnitData()
+        {
+            Id = 112,
+            Name = "Sosthrim Druid",
+            ImageLocation = "Sosthrim_Druid",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever this attacks a unit <b>Root</b> it.
+<b>Wild Ritual (1 Action): Prayer +1</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.PrayerGain, Tags.Root, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Prayer, Synergies.Root },
+            UnitTag = "Elven Grovewatcher",
+            Attack = 1,
+            Health = 3,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card112);
+
+        var card113 = new SpellData()
+        {
+            Id = 113,
+            Name = "Juicy Fruit",
+            ImageLocation = "Juicy_Fruit",
+
+            ResourceDevotion = 0,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Restore 5 Health to a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { },
+            SpellType = "Restoration",
+            Range = 2,
+        };
+        CardList.Add(card113);
+
+        var card114 = new UnitData()
+        {
+            Id = 114,
+            Name = "Sosthrim Grovekeeper",
+            ImageLocation = "Sosthrim_Grovekeeper",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Shuffle 5 ""Juicy Fruit"" cards into your deck. 
+At the end of each of your turns, draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Elven, Tags.Deployment, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Value, Synergies.Restoration },
+            UnitTag = "Elven Grovewatcher",
+            Attack = 3,
+            Health = 6,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card114);
+
+        var card115 = new UnitData()
+        {
+            Id = 115,
+            Name = "Woodland Sprite",
+            ImageLocation = "Woodland_Sprite",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond, Spellshield</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Spellshield, Tags.Lifebond, Tags.Faerie, Tags.Soldier },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Antimagic, Synergies.Swarm, Synergies.Restoration, Synergies.Faerie },
+            UnitTag = "Faerie Soldier",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card115);
+
+        var card116 = new UnitData()
+        {
+            Id = 116,
+            Name = "Worldroot Sapling",
+            ImageLocation = "Worldroot_Sapling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 1,
+            ResourceNeutral = null,
+
+            Text = @"At the start of each of your turns, gain 1 Wild",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Grovewatcher, Tags.WildGain, Tags.Treant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Wild, Synergies.Treant },
+            UnitTag = "Treant Grovewatcher",
+            Attack = 0,
+            Health = 5,
+            Range = 0,
+            Speed = 1
+        };
+        CardList.Add(card116);
+
+        var card117 = new SpellData()
+        {
+            Id = 117,
+            Name = "Earth Ritual",
+            ImageLocation = "Earth_Ritual",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit and the caster +3 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Control },
+            SpellType = "Enchantment",
+            Range = 3,
+        };
+        CardList.Add(card117);
+
+        var card118 = new SpellData()
+        {
+            Id = 118,
+            Name = "Faerie's Blessing",
+            ImageLocation = "Faeries_Blessing",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit <b>Spellshield</b> and <b>Lifebond</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Spellshield, Tags.Lifebond },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Antimagic, Synergies.Restoration },
+            SpellType = "Enchantment",
+            Range = 3,
+        };
+        CardList.Add(card118);
+
+        var card119 = new SpellData()
+        {
+            Id = 119,
+            Name = "Patient Harvest",
+            ImageLocation = "Patient_Harvest",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"At the start of your next turn, gain 5 Wild and draw 2 cards",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.WildGain },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Wild },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card119);
+
+        var card120 = new UnitData()
+        {
+            Id = 120,
+            Name = "Sosthrim Harvester",
+            ImageLocation = "Sosthrim Harvester",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever a unit dies within Range 3, draw a card and <b>Prayer +2</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Elven, Tags.PrayerGain, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Swarm, Synergies.BigMinions, Synergies.Death, Synergies.Prayer },
+            UnitTag = "Elven Grovewatcher",
+            Attack = 4,
+            Health = 8,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card120);
+
+        var card121 = new UnitData()
+        {
+            Id = 121,
+            Name = "Agent Tier1",
+            ImageLocation = "Agent1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Agent",
+            Attack = 3,
+            Health = 10,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card121);
+
+        var card122 = new UnitData()
+        {
+            Id = 122,
+            Name = "Agent Tier2",
+            ImageLocation = "Agent2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Agent",
+            Attack = 4,
+            Health = 19,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card122);
+
+        var card123 = new UnitData()
+        {
+            Id = 123,
+            Name = "Agent Tier3",
+            ImageLocation = "Agent3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Agent",
+            Attack = 6,
+            Health = 25,
+            Range = 1,
+            Speed = 4
+        };
+        CardList.Add(card123);
+
+        var card124 = new UnitData()
+        {
+            Id = 124,
+            Name = "Captain Tier1",
+            ImageLocation = "Captain1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Captain",
+            Attack = 5,
+            Health = 10,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card124);
+
+        var card125 = new ItemData()
+        {
+            Id = 125,
+            Name = "Battle Sword",
+            ImageLocation = "Battle_Sword",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks, gain +1 Attack and <b>Protected (1)</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Protected, Tags.Sword, Tags.Metal },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Metal Sword",
+            Durability = 1,
+        };
+        CardList.Add(card125);
+
+        var card126 = new UnitData()
+        {
+            Id = 126,
+            Name = "Captain Tier2",
+            ImageLocation = "Captain2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Captain",
+            Attack = 5,
+            Health = 20,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card126);
+
+        var card127 = new UnitData()
+        {
+            Id = 127,
+            Name = "Captain Tier3",
+            ImageLocation = "Captain3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Captain",
+            Attack = 7,
+            Health = 31,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card127);
+
+        var card128 = new UnitData()
+        {
+            Id = 128,
+            Name = "Lifebringer Tier1",
+            ImageLocation = "Lifebringer1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lifebringer",
+            Attack = 1,
+            Health = 12,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card128);
+
+        var card129 = new UnitData()
+        {
+            Id = 129,
+            Name = "Lorekeeper Tier1",
+            ImageLocation = "Lorekeeper1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lorekeeper",
+            Attack = 2,
+            Health = 12,
+            Range = 1,
+            Speed = 2
+        };
+        CardList.Add(card129);
+
+        var card130 = new UnitData()
+        {
+            Id = 130,
+            Name = "Luminist Tier1",
+            ImageLocation = "Luminist1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Foretell (2 Knowledge): Divinate 1</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Luminist },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Luminist",
+            Attack = 2,
+            Health = 9,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card130);
+
+        var card131 = new UnitData()
+        {
+            Id = 131,
+            Name = "Mercenary Tier1",
+            ImageLocation = "Mercenary1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 5,
+            Health = 8,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card131);
+
+        var card132 = new UnitData()
+        {
+            Id = 132,
+            Name = "Oathknight Tier1",
+            ImageLocation = "Oathknight1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Holy Shield (3 Devotion, 1 Action): Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Oathknight",
+            Attack = 3,
+            Health = 12,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card132);
+
+        var card133 = new UnitData()
+        {
+            Id = 133,
+            Name = "Trickster Tier1",
+            ImageLocation = "Trickster1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Resupply (3 Gold):</b> Add a shiv to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Trickster",
+            Attack = 6,
+            Health = 7,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card133);
+
+        var card134 = new SpellData()
+        {
+            Id = 134,
+            Name = "Shiv",
+            ImageLocation = "Shiv",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 2 damage to a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage },
+            Synergies = new List<Synergies> { },
+            SpellType = "Damage",
+            Range = 1,
+        };
+        CardList.Add(card134);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -3312,6 +4229,10 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         card77.RelatedCards = new List<CardData> { card68 };
         card78.RelatedCards = new List<CardData> { card64 };
         card105.RelatedCards = new List<CardData> { card87, card89, card90, card101 };
+        card114.RelatedCards = new List<CardData> { card113 };
+        card124.RelatedCards = new List<CardData> { card125 };
+        card126.RelatedCards = new List<CardData> { card125 };
+        card127.RelatedCards = new List<CardData> { card125 };
     }
 }
 
@@ -3319,12 +4240,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant
     }
 
     public enum Sets
