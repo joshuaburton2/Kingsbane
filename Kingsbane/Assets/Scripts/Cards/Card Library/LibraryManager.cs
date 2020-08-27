@@ -213,4 +213,40 @@ public class LibraryManager : MonoBehaviour
 
         return CreatedWorldCard(card, parent);
     }
+
+    public List<CardData> FilterCardList(List<CardData> cardList, CardFilter listFilter)
+    {
+        var searchStrings = listFilter.SearchStrings;
+
+        if (searchStrings.Count != 0)
+        {
+            foreach (var searchString in searchStrings)
+            {
+                if (searchString.Length > 0)
+                {
+                    var isTag = Enum.TryParse(searchString, out Tags tag);
+                    if (isTag)
+                        cardList = cardList.Where(x => x.Tags.Contains(tag)).ToList();
+                    else
+                        cardList = cardList.Where(x => x.Name.Contains(searchString) || x.Text.Contains(searchString)).ToList();
+                }
+            }
+        }
+
+        if (listFilter.CardTypes.Count != 0)
+            foreach (var cardType in listFilter.CardTypes)
+                cardList = cardList.Where(x => x.CardType == cardType).ToList();
+
+        if (listFilter.Rarities.Count != 0)
+            foreach (var rarity in listFilter.Rarities)
+                cardList = cardList.Where(x => x.Rarity == rarity).ToList();
+
+        if (listFilter.Sets.Count != 0)
+            foreach (var set in listFilter.Sets)
+                cardList = cardList.Where(x => x.Set == set).ToList();
+
+        cardList = cardList.Distinct().ToList();
+
+        return cardList;
+    }
 }
