@@ -61,6 +61,8 @@ public class LibraryUI : MonoBehaviour
     private int minTab;
     private int maxTab;
 
+    private readonly CardFilter defaultFilter = new CardFilter();
+
     private void Start()
     {
         InitGrid();
@@ -108,7 +110,7 @@ public class LibraryUI : MonoBehaviour
 
         foreach (var type in Enum.GetValues(typeof(T)))
         {
-            List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type);
+            List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type, defaultFilter);
             if (tabCardList.Count != 0)
             {
                 var libraryTab = new LibraryTab();

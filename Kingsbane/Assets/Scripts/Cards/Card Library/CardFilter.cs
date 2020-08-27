@@ -1,14 +1,14 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class CardFilter
 {
     public string SearchString { get; set; }
-
-    public List<CardTypes> CardTypes { get; set; }
-    public List<Rarity> Rarities { get; set; }
-    public List<Sets> Sets { get; set; }
+    public List<CardTypes> CardTypeFilter { get; set; }
+    public List<Rarity> RaritiyFilter { get; set; }
+    public List<Sets> SetFilter { get; set; }
 
     public List<string> SearchStrings
     {
@@ -19,11 +19,13 @@ public class CardFilter
         }
     }
 
-    CardFilter()
+    public CardFilter()
     {
         SearchString = "";
-        CardTypes = new List<CardTypes>();
-        Rarities = new List<Rarity>();
-        Sets = new List<Sets>();
+        CardTypeFilter = new List<CardTypes>() { CardTypes.Unit, CardTypes.Spell, CardTypes.Item };
+        RaritiyFilter = new List<Rarity>() { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary, Rarity.Hero };
+        SetFilter = new List<Sets>();
+        foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
+            SetFilter.Add(set);
     }
 }

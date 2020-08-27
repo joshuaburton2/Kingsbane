@@ -15,7 +15,7 @@ public class LibraryManager : MonoBehaviour
     //World Space Canvas for rendering cards in world
     private GameObject cardCanvas;
 
-    private List<CardData> cardList;
+    private List<CardData> newCardList;
 
     private Dictionary<Tags, List<CardData>> tagLookup;
     private Dictionary<Synergies, List<CardData>> synergyLookup;
@@ -33,7 +33,7 @@ public class LibraryManager : MonoBehaviour
         cardLibrary = new CardLibrary();
         cardLibrary.InitLibrary();
 
-        cardList = cardLibrary.CardList;
+        newCardList = cardLibrary.CardList;
 
         LoadDirectionaries();
     }
@@ -53,7 +53,7 @@ public class LibraryManager : MonoBehaviour
     {
         var newDictionary = new Dictionary<T, List<CardData>>();
 
-        foreach (var card in cardList)
+        foreach (var card in newCardList)
         {
             var keyList = new List<T>();
             var type = typeof(T);
@@ -102,7 +102,7 @@ public class LibraryManager : MonoBehaviour
         return newDictionary;
     }
 
-    public List<CardData> GetDictionaryList<T> (T key) where T : Enum
+    public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter) where T : Enum
     {
         var dictionaryList = new List<CardData>();
         var type = typeof(T);
@@ -133,19 +133,19 @@ public class LibraryManager : MonoBehaviour
         }
 
         if (dictionaryList != null)
-            return OrderCardList(dictionaryList);
+            return FilterCardList(OrderCardList(dictionaryList), listFilter);
         else
             return new List<CardData>();
     }
 
     public CardData GetCard(int Id)
     {
-        return cardList.FirstOrDefault(x => x.Id == Id);
+        return newCardList.FirstOrDefault(x => x.Id == Id);
     }
 
-    public List<CardData> GetAllCards()
+    public List<CardData> GetAllCards(CardFilter listFilter)
     {
-        return OrderCardList(cardList);
+        return FilterCardList(OrderCardList(newCardList), listFilter);
     }
 
     private List<CardData> OrderCardList(List<CardData> cardList)
@@ -218,35 +218,77 @@ public class LibraryManager : MonoBehaviour
     {
         var searchStrings = listFilter.SearchStrings;
 
-        if (searchStrings.Count != 0)
+        var newCardList = new List<CardData>();
+
+        foreach (var card in cardList)
         {
-            foreach (var searchString in searchStrings)
+            var numActiveFilters = 0;
+            var numMetFilters = 0;
+
+            if (listFilter.SearchString.Length != 0)
             {
-                if (searchString.Length > 0)
+                numActiveFilters++;
+
+                foreach (var searchString in searchStrings)
                 {
-                    var isTag = Enum.TryParse(searchString, out Tags tag);
-                    if (isTag)
-                        cardList = cardList.Where(x => x.Tags.Contains(tag)).ToList();
-                    else
-                        cardList = cardList.Where(x => x.Name.Contains(searchString) || x.Text.Contains(searchString)).ToList();
+                    if (searchString.Length > 0)
+                    {
+                        var isTag = Enum.TryParse(searchString, out Tags tag);
+                        if (isTag)
+                        {
+                            if (card.Tags.Contains(tag))
+                                numMetFilters++;
+                        }
+                        else
+                        {
+                            if (card.Name.Contains(searchString) || card.Text.Contains(searchString))
+                                numMetFilters++;
+                        }
+                    }
                 }
+            }
+
+
+            if (listFilter.CardTypeFilter.Count != 0)
+            {
+                numActiveFilters++;
+
+                foreach (var cardType in listFilter.CardTypeFilter)
+                    if (card.CardType == cardType)
+                    {
+                        numMetFilters++;
+                    }
+            }
+
+            if (listFilter.RaritiyFilter.Count != 0)
+            {
+                numActiveFilters++;
+
+                foreach (var rarity in listFilter.RaritiyFilter)
+                    if (card.Rarity == rarity)
+                    { 
+                        numMetFilters++;
+                    }
+            }
+
+            if (listFilter.SetFilter.Count != 0)
+            {
+                numActiveFilters++;
+
+                foreach (var set in listFilter.SetFilter)
+                    if (card.Set == set)
+                    {
+                        numMetFilters++;
+                    }
+            }
+
+            if (numMetFilters == numActiveFilters)
+            {
+                Debug.Log(card.Name);
+                newCardList.Add(card);
             }
         }
 
-        if (listFilter.CardTypes.Count != 0)
-            foreach (var cardType in listFilter.CardTypes)
-                cardList = cardList.Where(x => x.CardType == cardType).ToList();
-
-        if (listFilter.Rarities.Count != 0)
-            foreach (var rarity in listFilter.Rarities)
-                cardList = cardList.Where(x => x.Rarity == rarity).ToList();
-
-        if (listFilter.Sets.Count != 0)
-            foreach (var set in listFilter.Sets)
-                cardList = cardList.Where(x => x.Set == set).ToList();
-
-        cardList = cardList.Distinct().ToList();
-
-        return cardList;
+        return newCardList;
     }
 }

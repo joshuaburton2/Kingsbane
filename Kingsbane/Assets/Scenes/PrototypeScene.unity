@@ -1341,7 +1341,7 @@ MonoBehaviour:
     type: 3}
   numColumns: 4
   numRows: 2
-  tabFilter: 0
+  tabFilter: 1
   leftButton: {fileID: 1636684374}
   rightButton: {fileID: 102702213}
   tabParent: {fileID: 399652794}

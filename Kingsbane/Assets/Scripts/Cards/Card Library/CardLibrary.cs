@@ -50,7 +50,7 @@ public class CardLibrary
             ImageLocation = "Arcane_Rush",
 
             ResourceDevotion = null,
-            ResourceEnergy = null,
+            ResourceEnergy = 0,
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = 3,
@@ -1052,7 +1052,7 @@ Increase your base Knowledge rate by 1",
             ResourceDevotion = null,
             ResourceEnergy = null,
             ResourceGold = null,
-            ResourceKnowledge = null,
+            ResourceKnowledge = 0,
             ResourceMana = 2,
             ResourceWild = null,
             ResourceNeutral = null,
@@ -2012,7 +2012,7 @@ Deal 4 damage to a unit",
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = null,
+            ResourceMana = 0,
             ResourceWild = null,
             ResourceNeutral = null,
 
@@ -2794,7 +2794,7 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = null,
+            ResourceMana = 0,
             ResourceWild = 2,
             ResourceNeutral = null,
 
@@ -2828,7 +2828,8 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             ResourceWild = 4,
             ResourceNeutral = null,
 
-            Text = @"<b>Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it.",
+            Text = @"<b>Unleash
+Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it.",
             LoreText = @"",
             Notes = @"",
 
@@ -2841,7 +2842,7 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.ForceMove },
             UnitTag = "Elven Elementalist",
             Attack = 3,
-            Health = 6,
+            Health = 5,
             Range = 0,
             Speed = 3
         };
@@ -3440,7 +3441,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
-            ResourceWild = null,
+            ResourceWild = 0,
             ResourceNeutral = null,
 
             Text = @"Increase your Wild by 3. Draw a card",
@@ -4131,7 +4132,7 @@ Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
             ResourceNeutral = null,
 
             Text = @"<b>Hero
-Holy Shield (3 Devotion, 1 Action): Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4214,6 +4215,870 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
         };
         CardList.Add(card134);
 
+        var card135 = new UnitData()
+        {
+            Id = 135,
+            Name = "Waystalker Tier1",
+            ImageLocation = "Waystalker1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Waystalker",
+            Attack = 2,
+            Health = 5,
+            Range = 3,
+            Speed = 4
+        };
+        CardList.Add(card135);
+
+        var card136 = new UnitData()
+        {
+            Id = 136,
+            Name = "Trained Hound",
+            ImageLocation = "Trained_Hound",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Prepared, Tags.Beast, Tags.Trained },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Trained Beast",
+            Attack = 2,
+            Health = 1,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card136);
+
+        var card137 = new UnitData()
+        {
+            Id = 137,
+            Name = "Wildkin Tier1",
+            ImageLocation = "Wildkin1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Enrage (3 Energy):</b> Your hero gains +3 Attack until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Wildkin,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Wildkin",
+            Attack = 1,
+            Health = 14,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card137);
+
+        var card138 = new UnitData()
+        {
+            Id = 138,
+            Name = "Worldroot Defender",
+            ImageLocation = "Worldroot_Defender",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden</b>
+Whenever this unit deals damage, <b>Cycle</b> for the same amount",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.CyclePlus, Tags.Soldier, Tags.Treant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Defensive, Synergies.Cycle, Synergies.Treant },
+            UnitTag = "Treant Soldier",
+            Attack = 2,
+            Health = 6,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card138);
+
+        var card139 = new SpellData()
+        {
+            Id = 139,
+            Name = "Faerie Guile",
+            ImageLocation = "Faerie_Guile",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            Text = @"Gain control of an enemy minion until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.MindControl },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Removal },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card139);
+
+        var card140 = new ItemData()
+        {
+            Id = 140,
+            Name = "Spined Carapace",
+            ImageLocation = "Spined_Carapace",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            Text = @"Whenever an enemy is rooted or melee attacks your hero, deal 2 damage to it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Natural, Tags.Armour },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Defensive, Synergies.Equip, Synergies.Root },
+            ItemTag = "Natural Armour",
+            Durability = 6,
+        };
+        CardList.Add(card140);
+
+        var card141 = new ItemData()
+        {
+            Id = 141,
+            Name = "Treeheart Censer",
+            ImageLocation = "Treeheart_Censer",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 6,
+            ResourceNeutral = null,
+
+            Text = @"Whenever a friendly unit dies wthin Range 3, shuffle a copy of it into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Natural, Tags.Trinket },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Equip, Synergies.Death, Synergies.Wild },
+            ItemTag = "Natural Trinket",
+            Durability = 5,
+        };
+        CardList.Add(card141);
+
+        var card142 = new UnitData()
+        {
+            Id = 142,
+            Name = "Worldroot Dreamer",
+            ImageLocation = "Worldroot_Dreamer",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 7,
+            ResourceNeutral = null,
+
+            Text = @"At the end of your turn, reduce the Wild cost of a random card in your hand by (6)",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Grovewatcher, Tags.Treant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.BigSpells, Synergies.BigMinions, Synergies.Wild, Synergies.Treant },
+            UnitTag = "Treant Grovewatcher",
+            Attack = 4,
+            Health = 6,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card142);
+
+        var card143 = new UnitData()
+        {
+            Id = 143,
+            Name = "Faerie Harbringer",
+            ImageLocation = "Faerie_Harbringer",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 4,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond, Spellshield
+Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Attack, +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Spellshield, Tags.Deployment, Tags.Lifebond, Tags.Faerie, Tags.Soldier },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Value, Synergies.Prayer, Synergies.Restoration, Synergies.Faerie },
+            UnitTag = "Faerie Soldier",
+            Attack = 6,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card143);
+
+        var card144 = new SpellData()
+        {
+            Id = 144,
+            Name = "Recycling",
+            ImageLocation = "Recycling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 8,
+            ResourceNeutral = null,
+
+            Text = @"Deploy three friendly Treant units which died this game adjacent to the caster. <b>Cycle -6</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.CycleMinus, Tags.Resurrection },
+            Synergies = new List<Synergies> { Synergies.BigSpells, Synergies.BigMinions, Synergies.Value, Synergies.Cycle, Synergies.Wild, Synergies.Treant },
+            SpellType = "Deployment",
+            Range = 0,
+        };
+        CardList.Add(card144);
+
+        var card145 = new UnitData()
+        {
+            Id = 145,
+            Name = "Worldroot Ancient",
+            ImageLocation = "Worldroot_Ancient",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 9,
+            ResourceNeutral = null,
+
+            Text = @"<b>Unleash, Warden
+Cycle -6</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Cycle, Synergies.Treant, Synergies.Unleash },
+            UnitTag = "Treant Grovewatcher",
+            Attack = 9,
+            Health = 9,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card145);
+
+        var card146 = new UnitData()
+        {
+            Id = 146,
+            Name = "Queen Aedellaei",
+            ImageLocation = "Queen_Aedellaei",
+
+            ResourceDevotion = 6,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 6,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond, Spellshield
+Faerie Charm (3 Wild, 2 Devotion, 1 Action):</b> Gain control of an enemy unit within Range 2 until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Spellshield, Tags.Lifebond, Tags.Noble, Tags.Faerie },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration, Synergies.Wild, Synergies.Faerie },
+            UnitTag = "Faerie Noble",
+            Attack = 7,
+            Health = 9,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card146);
+
+        var card147 = new UnitData()
+        {
+            Id = 147,
+            Name = "Naharr, the Worldroot",
+            ImageLocation = "Naharr_the_Worldroot",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 12,
+            ResourceNeutral = null,
+
+            Text = @"<b>Unleash, Warden, Cycle -9
+Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any enchantments gained from <b>Unleash</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.LastRites, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.LastRites, Synergies.Cycle, Synergies.Wild, Synergies.Treant, Synergies.Unleash },
+            UnitTag = "Treant Grovewatcher",
+            Attack = 12,
+            Health = 12,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card147);
+
+        var card148 = new UnitData()
+        {
+            Id = 148,
+            Name = "Lifebringer Tier2",
+            ImageLocation = "Lifebringer2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lifebringer",
+            Attack = 2,
+            Health = 20,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card148);
+
+        var card149 = new UnitData()
+        {
+            Id = 149,
+            Name = "Lifebringer Tier3",
+            ImageLocation = "Lifebringer3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lifebringer",
+            Attack = 3,
+            Health = 32,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card149);
+
+        var card150 = new SpellData()
+        {
+            Id = 150,
+            Name = "Potion of Confusion",
+            ImageLocation = "Potion_of_Confusion",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Swap a minions attack and health until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Potion },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card150);
+
+        var card151 = new SpellData()
+        {
+            Id = 151,
+            Name = "Potion of Decay",
+            ImageLocation = "Potion_of_Decay",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Reduce a units by 3 until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Potion },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card151);
+
+        var card152 = new SpellData()
+        {
+            Id = 152,
+            Name = "Potion of Frost",
+            ImageLocation = "Potion_of_Frost",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Stun</b> a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.Potion },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card152);
+
+        var card153 = new SpellData()
+        {
+            Id = 153,
+            Name = "Potion of Healing",
+            ImageLocation = "Potion_of_Healing",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Restore 3 Health to a unit. Any excess healing increases the units attack by that amount until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Potion },
+            Synergies = new List<Synergies> { },
+            SpellType = "Restoration",
+            Range = 2,
+        };
+        CardList.Add(card153);
+
+        var card154 = new SpellData()
+        {
+            Id = 154,
+            Name = "Potion of Shadows",
+            ImageLocation = "Potion_of_Shadows",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit <b>Stealth</b> until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Potion, Tags.Stealth },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card154);
+
+        var card155 = new SpellData()
+        {
+            Id = 155,
+            Name = "Potion of Speed",
+            ImageLocation = "Potion_of_Speed",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit +2 Speed until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Potion },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card155);
+
+        var card156 = new SpellData()
+        {
+            Id = 156,
+            Name = "Divine Ritual",
+            ImageLocation = "Divine_Ritual",
+
+            ResourceDevotion = 0,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prayer +2</b>
+Give the caster +3 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.PrayerGain },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Durable, Synergies.Prayer },
+            SpellType = "Resource",
+            Range = 2,
+        };
+        CardList.Add(card156);
+
+        var card157 = new SpellData()
+        {
+            Id = 157,
+            Name = "Lay on Hands",
+            ImageLocation = "Lay_on_Hands",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Restore 5 Health to a unit. If the unit has been <b>Spellbound</b>, restore any enchantments of text removed",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Spellbind },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Control, Synergies.Restoration },
+            SpellType = "Restoration",
+            Range = 1,
+        };
+        CardList.Add(card157);
+
+        var card158 = new SpellData()
+        {
+            Id = 158,
+            Name = "Quick Alchemy",
+            ImageLocation = "Quick_Alchemy",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Add a random potion card to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Value, Synergies.Potions },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card158);
+
+        var card159 = new UnitData()
+        {
+            Id = 159,
+            Name = "Sorena Cleric",
+            ImageLocation = "Sorena_Cleric",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond
+Holy Ritual (1 Action): Prayer +1</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.PrayerGain, Tags.Lifebond, Tags.Lifebringer },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Restoration },
+            UnitTag = "Human Lifebringer",
+            Attack = 3,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card159);
+
+        var card160 = new UnitData()
+        {
+            Id = 160,
+            Name = "Tending Priest",
+            ImageLocation = "Tending_Priest",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Soothe Wounds
+Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Range 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Lifebringer },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Restoration },
+            UnitTag = "Human Lifebringer",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card160);
+
+        var card161 = new UnitData()
+        {
+            Id = 161,
+            Name = "Tithe Collector",
+            ImageLocation = "Tithe_Collector",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Collect Dues (1 Action):</b> Gain 2 Gold for every adjacent friendly unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Noble, Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Gold },
+            UnitTag = "Human Noble",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card161);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -4233,6 +5098,9 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
         card124.RelatedCards = new List<CardData> { card125 };
         card126.RelatedCards = new List<CardData> { card125 };
         card127.RelatedCards = new List<CardData> { card125 };
+        card135.RelatedCards = new List<CardData> { card136 };
+        card143.RelatedCards = new List<CardData> { card115 };
+        card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
     }
 }
 
@@ -4240,12 +5108,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold
     }
 
     public enum Sets
