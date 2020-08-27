@@ -65,7 +65,8 @@ public class CardDisplay : MonoBehaviour
     private TextMeshProUGUI classText;
     [SerializeField]
     private TextMeshProUGUI cardText;
-
+    [SerializeField]
+    private Image cardBackground;
     [SerializeField]
     private Image cardImage;
     [SerializeField]
@@ -97,15 +98,7 @@ public class CardDisplay : MonoBehaviour
 
     [Header("Border Colours")]
     [SerializeField]
-    RarityColour commonRarity;
-    [SerializeField]
-    RarityColour uncommonRarity;
-    [SerializeField]
-    RarityColour rareRarity;
-    [SerializeField]
-    RarityColour epicRarity;
-    [SerializeField]
-    RarityColour legendaryRarity;
+    List<RarityColour> rarityColours;
 
     [Header("Hero Border Colours")]
     [SerializeField]
@@ -131,6 +124,7 @@ public class CardDisplay : MonoBehaviour
 
         UpdateCardType();
         UpdateRarityBorder();
+        UpdateCardBackground();
 
         UpdateProperties();
     }
@@ -206,40 +200,39 @@ public class CardDisplay : MonoBehaviour
     /// </summary>
     private void UpdateRarityBorder()
     {
-        Color rarityColour;
+        Color borderColour;
 
-        switch (card.Rarity)
-        {
-            case Rarity.Uncollectable:
-            case Rarity.Common:
-                rarityColour = commonRarity.rarityColour;
-                break;
-            case Rarity.Uncommon:
-                rarityColour = uncommonRarity.rarityColour;
-                break;
-            case Rarity.Rare:
-                rarityColour = rareRarity.rarityColour;
-                break;
-            case Rarity.Epic:
-                rarityColour = epicRarity.rarityColour;
-                break;
-            case Rarity.Legendary:
-                rarityColour = legendaryRarity.rarityColour;
-                break;
-            case Rarity.Hero:
-                rarityColour = GetClassColour(card.CardClass);
-                break;
-            default:
-                rarityColour = new Color(1f, 1f, 1f);
-                break;
-        }
+        if (card.Rarity == Rarity.Hero)
+            borderColour = GetClassColour(card.CardClass);
+        else
+            borderColour = GetRarityColour(card.Rarity);
 
-        rarityBorder.color = rarityColour;
+        rarityBorder.color = borderColour;
     }
 
     /// <summary>
     /// 
-    /// Obtain a particular classes colour for their hero rarity border
+    /// Update the colour of the card background
+    /// 
+    /// </summary>
+    private void UpdateCardBackground()
+    {
+        cardBackground.color = GetClassColour(card.CardClass);
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular rarities colour
+    /// 
+    /// </summary>
+    private Color GetRarityColour(Rarity neededRarity)
+    {
+        return rarityColours.FirstOrDefault(x => x.Rarity == neededRarity).rarityColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular classes colour
     /// 
     /// </summary>
     private Color GetClassColour(Classes.ClassList neededClass)
