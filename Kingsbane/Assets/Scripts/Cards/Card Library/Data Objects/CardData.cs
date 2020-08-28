@@ -1,5 +1,4 @@
 using CategoryEnums;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -81,6 +80,20 @@ public class CardData
              
 
             return totalResource;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Gets the highest resource value of the class on the card
+    /// 
+    /// </summary>
+    public int HighestResource
+    {
+        get
+        {
+            // Note that Min is used since resources on a card are negative values
+            return GetResources.Min(x => x.Value);
         }
     }
 }

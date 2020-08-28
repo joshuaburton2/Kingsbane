@@ -19,6 +19,11 @@ public class CardFilter
         }
     }
 
+    /// <summary>
+    /// 
+    /// Default filter. Includes all cards except Uncollectable ones
+    /// 
+    /// </summary>
     public CardFilter()
     {
         SearchString = "";

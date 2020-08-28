@@ -88,6 +88,9 @@ public class LibraryUI : MonoBehaviour
 
     private void InitTabs()
     {
+        foreach (var tab in tabList)
+            Destroy(tab.tabObject);
+
         tabList = new List<LibraryTab>();
 
         switch (tabFilter)
@@ -261,5 +264,21 @@ public class LibraryUI : MonoBehaviour
             tabColour = unselectedTabColour;
 
         tabList[tabIndex].tabObject.GetComponent<Image>().color = tabColour;
+    }
+
+    public void SwitchTabType()
+    {
+        switch (tabFilter)
+        {
+            case TabTypes.Classes:
+                tabFilter = TabTypes.Resources;
+                break;
+            case TabTypes.Resources:
+                tabFilter = TabTypes.Classes;
+                break;
+        }
+
+        InitTabs();
+        ResetGrid();
     }
 }

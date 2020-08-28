@@ -27,7 +27,7 @@ public class LibraryManager : MonoBehaviour
 
     private void Start()
     {
-        //Load in cardList upon initialisation of the game
+        //Load in cardList upon initialization of the game
         CardLibrary cardLibrary;
 
         cardLibrary = new CardLibrary();
@@ -150,7 +150,7 @@ public class LibraryManager : MonoBehaviour
 
     private List<CardData> OrderCardList(List<CardData> cardList)
     {
-        return cardList.OrderByDescending(x => x.TotalResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
+        return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 
     public GameObject CreateCard(CardData card, Transform parent)
@@ -284,7 +284,6 @@ public class LibraryManager : MonoBehaviour
 
             if (numMetFilters == numActiveFilters)
             {
-                Debug.Log(card.Name);
                 newCardList.Add(card);
             }
         }
