@@ -133,7 +133,9 @@ public class LibraryManager : MonoBehaviour
         }
 
         if (dictionaryList != null)
+        {
             return FilterCardList(OrderCardList(dictionaryList), listFilter);
+        } 
         else
             return new List<CardData>();
     }
@@ -217,6 +219,7 @@ public class LibraryManager : MonoBehaviour
     public List<CardData> FilterCardList(List<CardData> cardList, CardFilter listFilter)
     {
         var searchStrings = listFilter.SearchStrings;
+        var numSearchStrings = searchStrings.Count;
 
         var newCardList = new List<CardData>();
 
@@ -229,6 +232,8 @@ public class LibraryManager : MonoBehaviour
             {
                 numActiveFilters++;
 
+                var numStringsMet = 0;
+
                 foreach (var searchString in searchStrings)
                 {
                     if (searchString.Length > 0)
@@ -237,15 +242,23 @@ public class LibraryManager : MonoBehaviour
                         if (isTag)
                         {
                             if (card.Tags.Contains(tag))
-                                numMetFilters++;
+                                numStringsMet++;
+                            else
+                            {
+                                if (CardStringContainsSearch(card, searchString))
+                                    numStringsMet++;
+                            }
                         }
                         else
                         {
-                            if (card.Name.Contains(searchString) || card.Text.Contains(searchString))
-                                numMetFilters++;
+                            if (CardStringContainsSearch(card, searchString))
+                                numStringsMet++;
                         }
                     }
                 }
+
+                if (numStringsMet == numSearchStrings)
+                    numMetFilters++;
             }
 
 
@@ -257,6 +270,7 @@ public class LibraryManager : MonoBehaviour
                     if (card.CardType == cardType)
                     {
                         numMetFilters++;
+                        break;
                     }
             }
 
@@ -268,6 +282,7 @@ public class LibraryManager : MonoBehaviour
                     if (card.Rarity == rarity)
                     { 
                         numMetFilters++;
+                        break;
                     }
             }
 
@@ -279,8 +294,20 @@ public class LibraryManager : MonoBehaviour
                     if (card.Set == set)
                     {
                         numMetFilters++;
+                        break;
                     }
             }
+
+            //if (listFilter.ResourceFilter.Count != 0)
+            //{
+            //    numActiveFilters++;
+
+            //    foreach (var resource in listFilter.ResourceFilter)
+            //        if (card.GetResources == resource)
+            //        {
+            //            numMetFilters++;
+            //        }
+            //}
 
             if (numMetFilters == numActiveFilters)
             {
@@ -289,5 +316,10 @@ public class LibraryManager : MonoBehaviour
         }
 
         return newCardList;
+    }
+
+    private bool CardStringContainsSearch(CardData card, string searchString)
+    {
+        return card.Name.ToLower().Contains(searchString.ToLower()) || card.Text.ToLower().Contains(searchString.ToLower());
     }
 }

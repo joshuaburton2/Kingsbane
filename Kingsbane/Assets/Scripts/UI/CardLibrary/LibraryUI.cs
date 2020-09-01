@@ -1,8 +1,7 @@
 ﻿using CategoryEnums;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,11 +33,13 @@ public class LibraryUI : MonoBehaviour
     [SerializeField]
     private int numRows = 2;
     [SerializeField]
-    private TabTypes tabFilter;
+    private TabTypes tabFilter = TabTypes.Classes;
     [SerializeField]
     private GameObject leftButton;
     [SerializeField]
     private GameObject rightButton;
+    [SerializeField]
+    private GameObject noResultsText;
 
     List<CardData> pageList;
     List<List<CardData>> pageListSplit;
@@ -61,6 +62,14 @@ public class LibraryUI : MonoBehaviour
     private int minTab;
     private int maxTab;
 
+    [Header("Filter Settings")]
+    [SerializeField]
+    private TextMeshProUGUI tabFilterText;
+    [SerializeField]
+    private TMP_InputField searchStringInput;
+
+
+    private CardFilter activeFilter;
     private readonly CardFilter defaultFilter = new CardFilter();
 
     private void Start()
@@ -82,8 +91,11 @@ public class LibraryUI : MonoBehaviour
             gridRows[row].name = $"Row{row + 1}";
         }
 
+        tabFilter = TabTypes.Classes;
+        activeFilter = defaultFilter;
+        SwitchTabText();
+
         InitTabs();
-        ResetGrid();
     }
 
     private void InitTabs()
@@ -105,6 +117,17 @@ public class LibraryUI : MonoBehaviour
 
         minTab = 0;
         maxTab = tabList.Count - 1;
+
+        if (tabList.Count != 0)
+        {
+            noResultsText.SetActive(false);
+            ResetGrid();
+        }
+        else
+        {
+            noResultsText.SetActive(true);
+            DestroyGridCards();
+        }
     }
 
     private void LoadTabsofType<T>() where T : Enum
@@ -113,7 +136,7 @@ public class LibraryUI : MonoBehaviour
 
         foreach (var type in Enum.GetValues(typeof(T)))
         {
-            List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type, defaultFilter);
+            List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type, activeFilter);
             if (tabCardList.Count != 0)
             {
                 var libraryTab = new LibraryTab();
@@ -187,13 +210,7 @@ public class LibraryUI : MonoBehaviour
         var currentRow = 0;
         var currentColumn = 0;
 
-        foreach (GameObject row in gridRows)
-        {
-            foreach (Transform child in row.transform)
-            {
-                Destroy(child.gameObject);
-            }
-        }
+        DestroyGridCards();
 
         foreach (var card in pageListSplit[pageIndex])
         {
@@ -209,7 +226,12 @@ public class LibraryUI : MonoBehaviour
             }
         }
 
-        if (tabIndex == minTab && pageIndex == 0)
+        if (minTab == maxTab)
+        {
+            leftButton.SetActive(false);
+            rightButton.SetActive(false);
+        }
+        else if (tabIndex == minTab && pageIndex == 0)
         {
             leftButton.SetActive(false);
             rightButton.SetActive(true);
@@ -226,6 +248,17 @@ public class LibraryUI : MonoBehaviour
         }
 
         
+    }
+
+    private void DestroyGridCards()
+    {
+        foreach (GameObject row in gridRows)
+        {
+            foreach (Transform child in row.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
     }
 
     public void SwitchPage(int libraryDirection)
@@ -272,13 +305,29 @@ public class LibraryUI : MonoBehaviour
         {
             case TabTypes.Classes:
                 tabFilter = TabTypes.Resources;
+                SwitchTabText();
                 break;
             case TabTypes.Resources:
                 tabFilter = TabTypes.Classes;
+                SwitchTabText();
                 break;
         }
 
         InitTabs();
-        ResetGrid();
+    }
+
+    private void SwitchTabText()
+    {
+        var text = "Current: " + tabFilter.ToString();
+        tabFilterText.text = text;
+    }
+
+    public void ApplyFilter()
+    {
+        activeFilter = defaultFilter;
+
+        activeFilter.SearchString = searchStringInput.text;
+
+        InitTabs();
     }
 }

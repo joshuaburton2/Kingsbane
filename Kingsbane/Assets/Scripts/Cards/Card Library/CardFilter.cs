@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class CardFilter
 {
@@ -9,6 +10,7 @@ public class CardFilter
     public List<CardTypes> CardTypeFilter { get; set; }
     public List<Rarity> RaritiyFilter { get; set; }
     public List<Sets> SetFilter { get; set; }
+    public List<CardResources> ResourceFilter { get; set; }
 
     public List<string> SearchStrings
     {
@@ -21,7 +23,7 @@ public class CardFilter
 
     /// <summary>
     /// 
-    /// Default filter. Includes all cards except Uncollectable ones
+    /// Default filter. Includes all cards except Uncollectable ones and Neutral Cards
     /// 
     /// </summary>
     public CardFilter()
@@ -32,5 +34,6 @@ public class CardFilter
         SetFilter = new List<Sets>();
         foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
             SetFilter.Add(set);
+        ResourceFilter = new List<CardResources>();
     }
 }

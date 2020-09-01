@@ -55,6 +55,9 @@ public class CardData
             if (ResourceNeutral.HasValue)
                 cardResources.Add(new Resource() { ResourceType = CardResources.Neutral, Value = - ResourceNeutral.Value });
 
+            //Order the resources by their largest value
+            cardResources = cardResources.OrderBy(x => x.Value).ToList();
+
             return cardResources;
         }
     }
@@ -69,6 +72,7 @@ public class CardData
         get 
         {
             int totalResource;
+            //Certain cards (namely heroes) may not have a resource cost, so this needs to return a count of 0
             if (GetResources.Count != 0)
             {
                 totalResource = GetResources.Sum(x => x.Value);
@@ -92,8 +96,18 @@ public class CardData
     {
         get
         {
-            // Note that Min is used since resources on a card are negative values
-            return GetResources.Min(x => x.Value);
+            int highestResource;
+            if (GetResources.Count != 0)
+            {
+                // Note that Min is used since resources on a card are negative values
+                highestResource = GetResources.Min(x => x.Value);
+            }
+            else
+            {
+                highestResource = 0;
+            }
+
+            return highestResource;
         }
     }
 }

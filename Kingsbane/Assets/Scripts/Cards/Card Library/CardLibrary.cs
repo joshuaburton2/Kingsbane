@@ -610,7 +610,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { },
+            Tags = new List<Tags> { Tags.Equip, Tags.Conjured, Tags.Image },
             Synergies = new List<Synergies> { },
             ItemTag = "Conjured Image",
             Durability = 3,
@@ -707,7 +707,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Magic, Tags.Sword, Tags.Overwhelm },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip, Tags.Magic, Tags.Sword, Tags.Overwhelm },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Empowered, Synergies.SmallSpells, Synergies.Mana, Synergies.Value, Synergies.Equip, Synergies.SplitDamage },
             ItemTag = "Magic Sword",
             Durability = 3,
@@ -1015,8 +1015,8 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
         var card36 = new SpellData()
         {
             Id = 36,
-            Name = "InspirationArcanist",
-            ImageLocation = "InspirationArcanist",
+            Name = "Magical Inspiration",
+            ImageLocation = "Magical_Inspiration",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -1142,7 +1142,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 40,
             Name = "Counterspell",
-            ImageLocation = "CounterspellItem",
+            ImageLocation = "Counterspel_Item",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -1161,7 +1161,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.ManaGain, Tags.Equip },
+            Tags = new List<Tags> { Tags.ManaGain, Tags.Equip, Tags.Conjured, Tags.Spell },
             Synergies = new List<Synergies> { },
             ItemTag = "Conjured Spell",
             Durability = 1,
@@ -1637,7 +1637,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -1668,7 +1668,7 @@ When you select this form, draw 3 cards",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Draw, Tags.Empowered },
+            Tags = new List<Tags> { Tags.Draw, Tags.Empowered, Tags.Equip },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -1699,7 +1699,7 @@ Your hero's attack is increased by your <b>Empowered</b> value. Whenever your he
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -1730,7 +1730,7 @@ At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Pr
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Protected },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Protected, Tags.Equip },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -1761,7 +1761,7 @@ Whenever you cast a spell, cast it again on the same target",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -4403,7 +4403,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Natural, Tags.Armour },
+            Tags = new List<Tags> { Tags.Equip, Tags.Natural, Tags.Armour },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Defensive, Synergies.Equip, Synergies.Root },
             ItemTag = "Natural Armour",
             Durability = 6,
@@ -4433,7 +4433,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Natural, Tags.Trinket },
+            Tags = new List<Tags> { Tags.Equip, Tags.Natural, Tags.Trinket },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Equip, Synergies.Death, Synergies.Wild },
             ItemTag = "Natural Trinket",
             Durability = 5,
@@ -5079,6 +5079,2778 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
         };
         CardList.Add(card161);
 
+        var card162 = new UnitData()
+        {
+            Id = 162,
+            Name = "Golden Host",
+            ImageLocation = "Golden_Host",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden</b>
+Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Regenerate, Tags.Soldier, Tags.GoldenHost },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.Swarm, Synergies.Defensive, Synergies.Resurrection, Synergies.GoldenHost },
+            UnitTag = "Human Soldier",
+            Attack = 3,
+            Health = 4,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card162);
+
+        var card163 = new SpellData()
+        {
+            Id = 163,
+            Name = "Offer Alms",
+            ImageLocation = "Offer_Alms",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Regenerate</b> a minion",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Regenerate },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Restoration },
+            SpellType = "Restoration",
+            Range = 2,
+        };
+        CardList.Add(card163);
+
+        var card164 = new UnitData()
+        {
+            Id = 164,
+            Name = "Potion Seller",
+            ImageLocation = "Potion_Seller",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Potion Sale
+Potion Sale (1 Gold):</b> Add a random potion card to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Merchant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Potions },
+            UnitTag = "Human Merchant",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card164);
+
+        var card165 = new SpellData()
+        {
+            Id = 165,
+            Name = "Return Soul",
+            ImageLocation = "Return_Soul",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deploy a friendly unit which has died this game adjacent to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Resurrection },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.BigMinions, Synergies.Value, Synergies.Resurrection },
+            SpellType = "Deployment",
+            Range = 0,
+        };
+        CardList.Add(card165);
+
+        var card166 = new UnitData()
+        {
+            Id = 166,
+            Name = "Sorena High Priest",
+            ImageLocation = "Sorena_High_Priest",
+
+            ResourceDevotion = 6,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Lifebond</b>
+Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is doubled",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.PrayerGain, Tags.Lifebond, Tags.Lifebringer },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Midrange, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
+            UnitTag = "Human Lifebringer",
+            Attack = 2,
+            Health = 5,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card166);
+
+        var card167 = new ItemData()
+        {
+            Id = 167,
+            Name = "Amulet of Divinity",
+            ImageLocation = "Amulet_of_Divinity",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever a friendly unit dies within Range 2 of your hero, store its soul. 
+<b>Last Rites:</b> Deploy the stored units adjacent to your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.LastRites, Tags.Resurrection, Tags.Holy, Tags.Amulet },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigMinions, Synergies.Value, Synergies.Prayer, Synergies.Resurrection },
+            ItemTag = "Holy Amulet",
+            Durability = 4,
+        };
+        CardList.Add(card167);
+
+        var card168 = new SpellData()
+        {
+            Id = 168,
+            Name = "Binding Circle",
+            ImageLocation = "Binding_Circle",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Spellbind</b> then <b>Root</b> a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Spellbind, Tags.Root },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Antimagic, Synergies.Root },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card168);
+
+        var card169 = new UnitData()
+        {
+            Id = 169,
+            Name = "Golden Lifebinder",
+            ImageLocation = "Golden_Lifebinder",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Choose one of three friendly units which have died this game to deploy adjacent to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Lifebringer, Tags.Resurrection },
+            Synergies = new List<Synergies> { Synergies.Deployment, Synergies.BigMinions, Synergies.ShortRange, Synergies.Resurrection, Synergies.GoldenHost },
+            UnitTag = "Human Lifebringer",
+            Attack = 3,
+            Health = 3,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card169);
+
+        var card170 = new SpellData()
+        {
+            Id = 170,
+            Name = "Sanctuary",
+            ImageLocation = "Sanctuary",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Restore 4 Health to all friendly units in an area of Radius 2 from the caster. Whenever an ally starts its turn there, restore 2 Health to it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Defensive, Synergies.Restoration },
+            SpellType = "Restoration",
+            Range = 4,
+        };
+        CardList.Add(card170);
+
+        var card171 = new UnitData()
+        {
+            Id = 171,
+            Name = "Defender of Sorena",
+            ImageLocation = "Defender_of_Sorena",
+
+            ResourceDevotion = 7,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond, Warden</b>
+Deal 2 damage to any enemy unit which damages friendly units within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Lifebond, Tags.Lifebringer },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Control, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution },
+            UnitTag = "Human Lifebringer",
+            Attack = 2,
+            Health = 10,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card171);
+
+        var card172 = new UnitData()
+        {
+            Id = 172,
+            Name = "Golden Hostcaller",
+            ImageLocation = "Golden_Hostcaller",
+
+            ResourceDevotion = 8,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit
+Deployment:</b> Deploy 2 Golden Hosts beside this unit.
+<b>Call the Host (2 Devotion, 1 Gold, 1 Action):</b> Deploy a ""Golden Host"" adjacent to this unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.Soldier, Tags.GoldenHost },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Prayer, Synergies.Resurrection, Synergies.GoldenHost },
+            UnitTag = "Human Soldier",
+            Attack = 4,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card172);
+
+        var card173 = new ItemData()
+        {
+            Id = 173,
+            Name = "Potion Satchel",
+            ImageLocation = "Potion_Satchel",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever you add a potion card to your hand, add another copy of it to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Alchemy, Tags.Bag },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Value, Synergies.Potions },
+            ItemTag = "Alchemy Bag",
+            Durability = 4,
+        };
+        CardList.Add(card173);
+
+        var card174 = new SpellData()
+        {
+            Id = 174,
+            Name = "Divine Intervention",
+            ImageLocation = "Divine_Intervention",
+
+            ResourceDevotion = 30,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Costs (1) Devotion less for each point your units have been healed since the last ""Divine Intervention"" was played.
+Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the caster. Draw 3 cards",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Protected },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.BigSpells, Synergies.Defensive, Synergies.Removal, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution },
+            SpellType = "Removal",
+            Range = 0,
+        };
+        CardList.Add(card174);
+
+        var card175 = new UnitData()
+        {
+            Id = 175,
+            Name = "Tythelia, Lady of Gold",
+            ImageLocation = "Tythelia_Lady_of_Gold",
+
+            ResourceDevotion = 8,
+            ResourceEnergy = null,
+            ResourceGold = 6,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden
+Deployment:</b> Deploy two friendly units which have died this game beside this one. Whenever one of them dies, <b>Regenerate</b> this unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lifebringer,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Regenerate, Tags.GoldenHost },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Prayer, Synergies.Gold, Synergies.Resurrection, Synergies.GoldenHost },
+            UnitTag = "Human Noble",
+            Attack = 8,
+            Health = 8,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card175);
+
+        var card176 = new UnitData()
+        {
+            Id = 176,
+            Name = "Lorekeeper Tier2",
+            ImageLocation = "Lorekeeper2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lorekeeper",
+            Attack = 3,
+            Health = 20,
+            Range = 1,
+            Speed = 2
+        };
+        CardList.Add(card176);
+
+        var card177 = new UnitData()
+        {
+            Id = 177,
+            Name = "Lorekeeper Tier3",
+            ImageLocation = "Lorekeeper3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Lorekeeper",
+            Attack = 4,
+            Health = 32,
+            Range = 2,
+            Speed = 2
+        };
+        CardList.Add(card177);
+
+        var card178 = new SpellData()
+        {
+            Id = 178,
+            Name = "Recorded Inspiration",
+            ImageLocation = "Studious_Inspiration",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 0,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Cast When Drawn</b>
+Increase your base Knowledge rate by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card178);
+
+        var card179 = new SpellData()
+        {
+            Id = 179,
+            Name = "Dedicated Preservation",
+            ImageLocation = "Dedicated_Preservation",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 0,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Study (4).</b> Shuffle a copy of a spell in your hand into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.Value, Synergies.Study, Synergies.Preservation },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card179);
+
+        var card180 = new SpellData()
+        {
+            Id = 180,
+            Name = "Mind Collapse",
+            ImageLocation = "Mind_Collapse",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond</b>
+Deal damage to a unit equal to its attack",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.Removal, Synergies.Restoration, Synergies.Equalize, Synergies.Madness },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card180);
+
+        var card181 = new UnitData()
+        {
+            Id = 181,
+            Name = "Oldari Acolyte",
+            ImageLocation = "Oldari_Acolyte",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Thoughtful Meditation (1 Action): Prayer +1</b>
+Whenever this attacks a unit, reduce its attack by 2 until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.PrayerGain, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Pacify },
+            UnitTag = "Human Lorekeeper",
+            Attack = 1,
+            Health = 4,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card181);
+
+        var card182 = new SpellData()
+        {
+            Id = 182,
+            Name = "Ring the Bells",
+            ImageLocation = "Ring_the_Bells",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Draw a minion from your deck. Give it +2 Attack, +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.Swarm, Synergies.BigMinions },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card182);
+
+        var card183 = new SpellData()
+        {
+            Id = 183,
+            Name = "Subdue",
+            ImageLocation = "Subdue",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Destroy a minion with 5 or more attack",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleRemoval },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Removal },
+            SpellType = "Removal",
+            Range = 3,
+        };
+        CardList.Add(card183);
+
+        var card184 = new UnitData()
+        {
+            Id = 184,
+            Name = "Vault Collector",
+            ImageLocation = "Vault_Collector",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Submit Collection
+Submit Collection (2 Knowledge, 1 Action): Study (3).</b> One of the <b>Inspiration</b> cards shuffled is placed on the top of your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Deployment, Tags.StudyGain, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Dwarven Lorekeeper",
+            Attack = 2,
+            Health = 3,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card184);
+
+        var card185 = new SpellData()
+        {
+            Id = 185,
+            Name = "Equalize",
+            ImageLocation = "Equalize",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Set a minions Health equal to its attack",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Equalize, Synergies.Pacify },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card185);
+
+        var card186 = new SpellData()
+        {
+            Id = 186,
+            Name = "Maddening Knowledge",
+            ImageLocation = "Maddening_Knowledge",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Force a minion to melee attack a random adjacent unit. It loses its next action",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Removal, Synergies.Madness },
+            SpellType = "Enchantment",
+            Range = 3,
+        };
+        CardList.Add(card186);
+
+        var card187 = new UnitData()
+        {
+            Id = 187,
+            Name = "Oldari Spellweaver",
+            ImageLocation = "Oldari_Spellweaver",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Spellshield</b>
+After a unit casts a spell within Range 2, <b>Prayer +2</b>.
+Whenever this attacks a unit, reduce its attack by 3 until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Spellshield, Tags.PrayerGain, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.Antimagic, Synergies.ShortRange, Synergies.Prayer, Synergies.Pacify },
+            UnitTag = "Human Lorekeeper",
+            Attack = 1,
+            Health = 4,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card187);
+
+        var card188 = new SpellData()
+        {
+            Id = 188,
+            Name = "Pacify",
+            ImageLocation = "Pacify",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Reduce a units attack by 3 until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Pacify },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card188);
+
+        var card189 = new UnitData()
+        {
+            Id = 189,
+            Name = "Vault Archivist",
+            ImageLocation = "Vault_Archivist",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 4,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment: Study (4)
+Search Archives (3 Knowledge, 1 Action):</b> Draw an <b>Inspiration</b> card from your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Deployment, Tags.StudyGain, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Dwarven Lorekeeper",
+            Attack = 4,
+            Health = 5,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card189);
+
+        var card190 = new ItemData()
+        {
+            Id = 190,
+            Name = "Book of Records",
+            ImageLocation = "Book_of_Records",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever you cast a spell, shuffle a copy of it into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Magic, Tags.Tome },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.Value, Synergies.Equip, Synergies.Preservation },
+            ItemTag = "Magic Tome",
+            Durability = 5,
+        };
+        CardList.Add(card190);
+
+        var card191 = new UnitData()
+        {
+            Id = 191,
+            Name = "Deep Priest",
+            ImageLocation = "Deep_Priest",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond
+Deployment:</b> Choose an enemy minion. Swap this units attack and Health with it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.Deployment, Synergies.Prayer, Synergies.Restoration, Synergies.Equalize, Synergies.Pacify },
+            UnitTag = "Dragonkin Lorekeeper",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card191);
+
+        var card192 = new SpellData()
+        {
+            Id = 192,
+            Name = "Prevent Repetiton",
+            ImageLocation = "Prevent_Repetition",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 6,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Divinate (3)</b>
+Draw 3 cards",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Divinate },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigSpells, Synergies.Study, Synergies.Prediction },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card192);
+
+        var card193 = new UnitData()
+        {
+            Id = 193,
+            Name = "Vault Catalyst",
+            ImageLocation = "Vault_Catalyst",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 4,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit</b>
+After you cast a spell, draw a spell of the same total cost from your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Dwarven, Tags.Conduit, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.ShortRange, Synergies.Preservation },
+            UnitTag = "Dwarven Lorekeeper",
+            Attack = 3,
+            Health = 3,
+            Range = 1,
+            Speed = 2
+        };
+        CardList.Add(card193);
+
+        var card194 = new ItemData()
+        {
+            Id = 194,
+            Name = "Book of Madness",
+            ImageLocation = "Book_of_Madness",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 5,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever an enemy within Range 3 of your hero attacks, it instead melee attacks a random adjacent unit and loses its next action",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Magic, Tags.Tome },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Defensive, Synergies.Equip, Synergies.Study, Synergies.Madness },
+            ItemTag = "Magic Tome",
+            Durability = 4,
+        };
+        CardList.Add(card194);
+
+        var card195 = new SpellData()
+        {
+            Id = 195,
+            Name = "Deep Conversion",
+            ImageLocation = "Deep_Conversion",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 7,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Gain control of an enemy minion",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.MindControl },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Study, Synergies.Removal, Synergies.Madness },
+            SpellType = "Enchantment",
+            Range = 1,
+        };
+        CardList.Add(card195);
+
+        var card196 = new SpellData()
+        {
+            Id = 196,
+            Name = "Repress",
+            ImageLocation = "Repress",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 5,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Destroy all minions with 5 or more attack in an area of Radius 3",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaRemoval },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Study, Synergies.Removal },
+            SpellType = "Removal",
+            Range = 3,
+        };
+        CardList.Add(card196);
+
+        var card197 = new UnitData()
+        {
+            Id = 197,
+            Name = "Corthax, Keeper of the Deeps",
+            ImageLocation = "Corthax_Keeper_of_the_Deeps",
+
+            ResourceDevotion = 6,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 7,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Lifebond
+Deep Exposure (1 Devotion, 2 Knowledge, 1 Action):</b> Deal damage to a unit within Range 3 equal to its attack.
+<b>Last Rites:</b>Use <b>Deep Exposure</b> on all units within Range 2",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.LastRites, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Study, Synergies.Removal, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution, Synergies.Equalize },
+            UnitTag = "Dragonkin Lorekeeper",
+            Attack = 5,
+            Health = 8,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card197);
+
+        var card198 = new UnitData()
+        {
+            Id = 198,
+            Name = "Grand Archivist Nurosi",
+            ImageLocation = "Grand_Archivist_Nurosi",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 8,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit</b>
+Spells in your hand which did not start in your deck have their cost reduced by (3)
+<b>Deployment:</b> Shuffle a copy of all spells in your hand into your deck.
+<b>Pull Record (2 Knowledge):</b> Draw a spell which did not start in your deck
+",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Lorekeeper,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Conduit, Tags.Deployment, Tags.Lorekeeper },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.Preservation },
+            UnitTag = "Dwarven Lorekeeper",
+            Attack = 7,
+            Health = 7,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card198);
+
+        var card199 = new UnitData()
+        {
+            Id = 199,
+            Name = "Oathknight Tier2",
+            ImageLocation = "Oathknight2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Oathknight",
+            Attack = 4,
+            Health = 21,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card199);
+
+        var card200 = new UnitData()
+        {
+            Id = 200,
+            Name = "Oathknight Tier3",
+            ImageLocation = "Oathknight3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Oathknight",
+            Attack = 5,
+            Health = 35,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card200);
+
+        var card201 = new SpellData()
+        {
+            Id = 201,
+            Name = "Aid From Above",
+            ImageLocation = "Aid_From_Above",
+
+            ResourceDevotion = 6,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deploy two ""Angel of Protection"" units beside the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Swarm, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
+            SpellType = "Deployment",
+            Range = 0,
+        };
+        CardList.Add(card201);
+
+        var card202 = new UnitData()
+        {
+            Id = 202,
+            Name = "Angel of Protection",
+            ImageLocation = "Angel_of_Protection",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden, Flying, Lifebond</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Angel Oathknight",
+            Attack = 2,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card202);
+
+        var card203 = new UnitData()
+        {
+            Id = 203,
+            Name = "Angel of Devotion",
+            ImageLocation = "Angel_of_Devotion",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Flying
+Divine Oath (1 Action): Prayer +1</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.PrayerGain, Tags.Flying, Tags.Oathknight, Tags.Angel },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Flying, Synergies.Angels },
+            UnitTag = "Angel Oathknight",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card203);
+
+        var card204 = new SpellData()
+        {
+            Id = 204,
+            Name = "Battle Prayer",
+            ImageLocation = "Battle_Prayer",
+
+            ResourceDevotion = 0,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prayer +2.</b> Give the caster <b>Protected (3)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Protected, Tags.PrayerGain },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.Prayer },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card204);
+
+        var card205 = new SpellData()
+        {
+            Id = 205,
+            Name = "Divine Strength",
+            ImageLocation = "Divine_Strength",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit +4 Attack, +4 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card205);
+
+        var card206 = new UnitData()
+        {
+            Id = 206,
+            Name = "Eager Squire",
+            ImageLocation = "Eager_Squire",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared</b>
+At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack, +1 Health.
+<b>Fetch Gear (1 Energy, 1 Action):</b> Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Enchantment, Tags.Draw, Tags.Prepared, Tags.Knight },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Draw, Synergies.Durable, Synergies.Swarm, Synergies.Prepared },
+            UnitTag = "Human Knight",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card206);
+
+        var card207 = new SpellData()
+        {
+            Id = 207,
+            Name = "Shield of Faith",
+            ImageLocation = "Shield_of_Faith",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give a unit <b>Protected (3).</b> Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Draw, Tags.Protected },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Draw, Synergies.Durable, Synergies.Protected },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card207);
+
+        var card208 = new UnitData()
+        {
+            Id = 208,
+            Name = "Angel of Purity",
+            ImageLocation = "Angel_of_Purity",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Flying, Lifebond
+Lifebond</b> healing from this unit heals this unit as well as your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
+            UnitTag = "Angel Oathknight",
+            Attack = 3,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card208);
+
+        var card209 = new SpellData()
+        {
+            Id = 209,
+            Name = "Bravery",
+            ImageLocation = "Bravery",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"The caster gains <b>Overwhelm</b> until the end of your turn. If the caster kills a unit before the end of your turn, give all friendly units within Range 2 +2 Attack and +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Overwhelm },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Enchantment, Synergies.Swarm, Synergies.Overwhelm },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card209);
+
+        var card210 = new UnitData()
+        {
+            Id = 210,
+            Name = "Oathspeaker",
+            ImageLocation = "Oathspeaker",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Draw an Oath from your deck. If you don't have an Oath in your deck, add a random Oath card to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Elven, Tags.Oathknight },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Draw, Synergies.Value, Synergies.Oaths },
+            UnitTag = "Elven Oathknight",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card210);
+
+        var card211 = new UnitData()
+        {
+            Id = 211,
+            Name = "Shield of Goldland",
+            ImageLocation = "Shield_of_Goldland",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden, Protected (2)</b>
+At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Warden, Tags.PrayerGain, Tags.Knight },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Protected, Synergies.Defensive, Synergies.Prayer },
+            UnitTag = "Human Knight",
+            Attack = 2,
+            Health = 4,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card211);
+
+        var card212 = new UnitData()
+        {
+            Id = 212,
+            Name = "Warhorse",
+            ImageLocation = "Warhorse",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared</b>
+Gain +1 Attack for each tile moved this turn until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Prepared, Tags.Beast, Tags.Steed },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Prepared, Synergies.Mounted },
+            UnitTag = "Beast Steed",
+            Attack = 1,
+            Health = 3,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card212);
+
+        var card213 = new UnitData()
+        {
+            Id = 213,
+            Name = "Angel of Judgement",
+            ImageLocation = "Angel_of_Judgement",
+
+            ResourceDevotion = 7,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Flying, Vanguard
+Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number of units it has killed",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Flying, Tags.Oathknight, Tags.Angel, Tags.Vanguard },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Deployment, Synergies.Vanguard, Synergies.Prayer, Synergies.Flying, Synergies.Retribution, Synergies.Angels },
+            UnitTag = "Angel Oathknight",
+            Attack = 5,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card213);
+
+        var card214 = new SpellData()
+        {
+            Id = 214,
+            Name = "Consecrate",
+            ImageLocation = "Consecrate",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 2 damage to all enemy units within an area of Radius 2 from the caster. Whenever an enemy unit enters these tiles, deal 1 damage to it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.AreaDamage, Synergies.Defensive },
+            SpellType = "Damage",
+            Range = 0,
+        };
+        CardList.Add(card214);
+
+        var card215 = new SpellData()
+        {
+            Id = 215,
+            Name = "Mount Up",
+            ImageLocation = "Mount_Up",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Choose a friendly Steed unit. The casters speed is increased up to that unit's speed and gains any text effect on it as an Enchantment until the end of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Mobility, Synergies.Mounted },
+            SpellType = "Enchantment",
+            Range = 1,
+        };
+        CardList.Add(card215);
+
+        var card216 = new UnitData()
+        {
+            Id = 216,
+            Name = "Pegasus",
+            ImageLocation = "Pegasus",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared, Flying</b>
+Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhelm</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Prepared, Tags.Overwhelm, Tags.Flying, Tags.Steed, Tags.Mythic },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Flying, Synergies.Mounted },
+            UnitTag = "Mythic Steed",
+            Attack = 1,
+            Health = 5,
+            Range = 0,
+            Speed = 5
+        };
+        CardList.Add(card216);
+
+        var card217 = new SpellData()
+        {
+            Id = 217,
+            Name = "Oath of Protection",
+            ImageLocation = "Oath of Protection",
+
+            ResourceDevotion = 7,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Equip an ""Oath of Protection"" item. Destroy any other Oath item you have equipped",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.BigSpells, Synergies.Antimagic, Synergies.Defensive, Synergies.Equip, Synergies.Prayer, Synergies.Oaths },
+            SpellType = "Equip",
+            Range = 0,
+        };
+        CardList.Add(card217);
+
+        var card218 = new ItemData()
+        {
+            Id = 218,
+            Name = "Oath of Protection",
+            ImageLocation = "Oath_of_Protection_Item",
+
+            ResourceDevotion = 7,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"When this is equipped and at the start of each turn, your hero gains the following enchantments which end at the start of your next turn: <b>Warden.</b> At the start of your turn, gain <b>Protected (5).</b> All adjacent friendly units gain <b>Spellshield</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Protected, Tags.Spellshield, Tags.Warden, Tags.Oath, Tags.Conjured },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Conjured Oath",
+            Durability = 4,
+        };
+        CardList.Add(card218);
+
+        var card219 = new SpellData()
+        {
+            Id = 219,
+            Name = "Oath of Restoration",
+            ImageLocation = "Oath_of_Restoration",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Equip an ""Oath of Restoration"" item. Destroy any other Oath items you have equipped",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.BigSpells, Synergies.Equip, Synergies.Prayer, Synergies.Restoration, Synergies.Oaths },
+            SpellType = "Equip",
+            Range = 0,
+        };
+        CardList.Add(card219);
+
+        var card220 = new ItemData()
+        {
+            Id = 220,
+            Name = "Oath of Restoration",
+            ImageLocation = "Oath_of_Restoration_Item",
+
+            ResourceDevotion = 5,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"When this is equipped and at the start of your each turn your hero gains the following enchantments which end at the start of your next turn: <b>Lifebond.</b> Whenever this unit is healed, heal all other friendly units within Range 2 for the same amount",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Lifebond, Tags.Oath, Tags.Conjured },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Conjured Oath",
+            Durability = 5,
+        };
+        CardList.Add(card220);
+
+        var card221 = new SpellData()
+        {
+            Id = 221,
+            Name = "Oath of Retribution",
+            ImageLocation = "Oath_of_Retribution_Item",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = 6,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Equip an ""Oath of Retribution"" item. Destroy any other Oath items you have equipped",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Enchantment, Synergies.Draw, Synergies.BigSpells, Synergies.Retribution, Synergies.Oaths },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card221);
+
+        var card222 = new ItemData()
+        {
+            Id = 222,
+            Name = "Oath of Retribution",
+            ImageLocation = "Oath_of_Retribution_Item",
+
+            ResourceDevotion = 4,
+            ResourceEnergy = 6,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of units the target has killed. Whenever this unit kills an enemy, draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Swiftstrike, Tags.Draw, Tags.Overwhelm, Tags.Oath, Tags.Conjured },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Conjured Oath",
+            Durability = 3,
+        };
+        CardList.Add(card222);
+
+        var card223 = new UnitData()
+        {
+            Id = 223,
+            Name = "Ethelia, Chosen of the Light",
+            ImageLocation = "Ethelia_Chosen_of_the_Light",
+
+            ResourceDevotion = 15,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Flying, Lifebond, Vanguard</b>
+Costs (1) Devotion less for every Angel which has died this game.
+<b>Deployment:</b> Deal damage to all adjacent enemy units equal to the number of Angels killed",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel, Tags.Vanguard },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Vanguard, Synergies.ShortRange, Synergies.Flying, Synergies.Retribution, Synergies.Angels },
+            UnitTag = "Angel Oathknight",
+            Attack = 6,
+            Health = 8,
+            Range = 1,
+            Speed = 3
+        };
+        CardList.Add(card223);
+
+        var card224 = new UnitData()
+        {
+            Id = 224,
+            Name = "Lord Seldoras Kerhall",
+            ImageLocation = "Lord_Seldoras_Kerhall",
+
+            ResourceDevotion = 8,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Protected (6)</b>
+Whenever your hero recieves an enchantment, this unit recieves it as well",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Oathknight,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Oathknight },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.BigMinions, Synergies.Prayer, Synergies.Oaths },
+            UnitTag = "Human Oathknight",
+            Attack = 9,
+            Health = 9,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card224);
+
+        var card225 = new UnitData()
+        {
+            Id = 225,
+            Name = "Trickster Tier2",
+            ImageLocation = "Trickster2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Resupply (3 Gold):</b> Add a shiv to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Trickster",
+            Attack = 8,
+            Health = 15,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card225);
+
+        var card226 = new UnitData()
+        {
+            Id = 226,
+            Name = "Trickster Tier3",
+            ImageLocation = "Trickster3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero
+Resupply (3 Gold):</b> Add a shiv to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Trickster",
+            Attack = 8,
+            Health = 21,
+            Range = 1,
+            Speed = 4
+        };
+        CardList.Add(card226);
+
+        var card227 = new UnitData()
+        {
+            Id = 227,
+            Name = "Bounty Hunter",
+            ImageLocation = "Bounty_Hunter",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Vanguard, Stalker</b>
+Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.GoldGain, Tags.Vanguard, Tags.Rogue, Tags.Stalker, Tags.Bounty },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Removal, Synergies.Vanguard, Synergies.Death, Synergies.Gold },
+            UnitTag = "Human Rogue",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card227);
+
+        var card228 = new UnitData()
+        {
+            Id = 228,
+            Name = "Deathsworn Infiltrator",
+            ImageLocation = "Deathsworn_Infiltrator",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Vanguard, Empowered +2
+Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> value",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Empowered, Tags.Deployment, Tags.SingleDamage, Tags.Trickster, Tags.Vanguard, Tags.Shadowborn },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Deployment, Synergies.Vanguard },
+            UnitTag = "Shadowborn Trickster",
+            Attack = 3,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card228);
+
+        var card229 = new SpellData()
+        {
+            Id = 229,
+            Name = "Flash",
+            ImageLocation = "Flash",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Teleport the caster to an empty tile. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.Vanguard, Synergies.Escape },
+            SpellType = "Other",
+            Range = 3,
+        };
+        CardList.Add(card229);
+
+        var card230 = new UnitData()
+        {
+            Id = 230,
+            Name = "Shady Recruiter",
+            ImageLocation = "Shady_Recruiter",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 5,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Hefty Bribe
+Hefty Bribe (4 Gold, 1 Action): Recruit</b> an enemy minion that has a total cost of (5) or less",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Rogue, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit },
+            UnitTag = "Human Rogue",
+            Attack = 3,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card230);
+
+        var card231 = new SpellData()
+        {
+            Id = 231,
+            Name = "Street Tricks",
+            ImageLocation = "Street_Tricks",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 0,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Gain 2 Gold. Add 2 Shivs to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Value, Synergies.Gold, Synergies.Shivs },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card231);
+
+        var card232 = new UnitData()
+        {
+            Id = 232,
+            Name = "Underbelly Cutthroat",
+            ImageLocation = "Underbelly_Cutthroat",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit
+Deployment:</b> Add 2 Shivs to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.Rogue },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs },
+            UnitTag = "Human Rogue",
+            Attack = 2,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card232);
+
+        var card233 = new UnitData()
+        {
+            Id = 233,
+            Name = "Deathsworn Assassin",
+            ImageLocation = "Deathsworn_Assassin",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deadly, Stalker, Stealth
+Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent additional <b>Bounty</b> of 3 Gold""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Trickster, Tags.GoldGain, Tags.Stalker, Tags.Bounty, Tags.Shadowborn, Tags.Deadly },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Removal, Synergies.Gold, Synergies.Shadows },
+            UnitTag = "Shadowborn Trickster",
+            Attack = 2,
+            Health = 4,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card233);
+
+        var card234 = new SpellData()
+        {
+            Id = 234,
+            Name = "Eliminate",
+            ImageLocation = "Eliminate",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Deal 8 damage to a unit. If this spell kills the unit, gain additional <b>Bounty</b> equal to any excess damage",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.GoldGain, Tags.Bounty },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SingleDamage, Synergies.Removal, Synergies.Gold },
+            SpellType = "Damage",
+            Range = 1,
+        };
+        CardList.Add(card234);
+
+        var card235 = new SpellData()
+        {
+            Id = 235,
+            Name = "Fade",
+            ImageLocation = "Fade",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Redeploy the caster or return a friendly minion to your hand. Draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Redeploy },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.Deployment, Synergies.Vanguard, Synergies.Escape },
+            SpellType = "Other",
+            Range = 0,
+        };
+        CardList.Add(card235);
+
+        var card236 = new SpellData()
+        {
+            Id = 236,
+            Name = "Soul Blade",
+            ImageLocation = "Soul_Blade",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Spellbind</b> and deal 4 damage to a unit. If this kills it, draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Spellbind },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Draw, Synergies.Antimagic },
+            SpellType = "Damage",
+            Range = 1,
+        };
+        CardList.Add(card236);
+
+        var card237 = new UnitData()
+        {
+            Id = 237,
+            Name = "Underbelly Runner",
+            ImageLocation = "Underbelly_Runner",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Stalker
+Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Rogue, Tags.Stalker },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw },
+            UnitTag = "Human Rogue",
+            Attack = 4,
+            Health = 3,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card237);
+
+        var card238 = new SpellData()
+        {
+            Id = 238,
+            Name = "Blade Flurry",
+            ImageLocation = "Blade_Flury",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Discard all shivs in your hand. Deal 1 damage to all other units within Range 1 of the caster for each shiv Discarded",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Discard },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Draw, Synergies.AreaDamage, Synergies.Defensive, Synergies.Shivs },
+            SpellType = "Damage",
+            Range = 0,
+        };
+        CardList.Add(card238);
+
+        var card239 = new ItemData()
+        {
+            Id = 239,
+            Name = "Enchanted Dagger",
+            ImageLocation = "Enchanted_Dagger",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks, give them <b>Deadly</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Magic, Tags.Deadly, Tags.Dagger },
+            Synergies = new List<Synergies> { Synergies.Equip, Synergies.Removal },
+            ItemTag = "Magic Dagger",
+            Durability = 4,
+        };
+        CardList.Add(card239);
+
+        var card240 = new UnitData()
+        {
+            Id = 240,
+            Name = "Shade Hunter",
+            ImageLocation = "Shade_Hunter",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 5,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Summon, Deadly, Stealth, Ethereal</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Deadly, Tags.Shadow },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Removal, Synergies.Shadows },
+            UnitTag = "Shadow Summon",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card240);
+
+        var card241 = new UnitData()
+        {
+            Id = 241,
+            Name = "Underbelly Smuggler",
+            ImageLocation = "Underbelly_Smuggler",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Smuggle Target
+Smuggle Target (1 Gold, 1 Action):</b> Return a friendly minion to your hand, or redeploy your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Rogue },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Escape },
+            UnitTag = "Human Rogue",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card241);
+
+        var card242 = new UnitData()
+        {
+            Id = 242,
+            Name = "Convincin' Thug",
+            ImageLocation = "Convincin_Thug",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden</b>
+Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.Recruit, Tags.Ogre, Tags.Brigand },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Warden, Synergies.Value, Synergies.Removal, Synergies.Recruit },
+            UnitTag = "Ogre Brigand",
+            Attack = 4,
+            Health = 3,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card242);
+
+        var card243 = new UnitData()
+        {
+            Id = 243,
+            Name = "Deathsworn Cursebringer",
+            ImageLocation = "Deathsworn_Cursebringer",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 5,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit</b>
+Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Conduit, Tags.Trickster, Tags.Shadowborn },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.BigMinions, Synergies.Value, Synergies.Vanguard, Synergies.Gold, Synergies.Shadows },
+            UnitTag = "Shadowborn Trickster",
+            Attack = 6,
+            Health = 5,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card243);
+
+        var card244 = new UnitData()
+        {
+            Id = 244,
+            Name = "Cursed Shade",
+            ImageLocation = "Cursed_Shade",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 4,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Ethereal, Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ethereal, Tags.Abomination, Tags.Stealth, Tags.Shadow },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Shadow Abomination",
+            Attack = 4,
+            Health = 1,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card244);
+
+        var card245 = new UnitData()
+        {
+            Id = 245,
+            Name = "Soulthief Shade",
+            ImageLocation = "Soulthief_Shade",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 8,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Ethereal, Summon, Stealth</b>
+Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Regenerate, Tags.Stealth, Tags.Shadow },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Durable, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
+            UnitTag = "Shadow Summon",
+            Attack = 8,
+            Health = 6,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card245);
+
+        var card246 = new UnitData()
+        {
+            Id = 246,
+            Name = "King Toll of the Underbelly",
+            ImageLocation = "King_Toll_of_the_Underbelly",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 8,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment: Recruit</b> 3 enemy minions within Range 5
+Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not less than 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Rogue, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit },
+            UnitTag = "Human Rogue",
+            Attack = 5,
+            Health = 5,
+            Range = 0,
+            Speed = 2
+        };
+        CardList.Add(card246);
+
+        var card247 = new UnitData()
+        {
+            Id = 247,
+            Name = "The Faceless One",
+            ImageLocation = "The_Faceless_One",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Vanguard, Stalker
+Last Rites:</b> If killed by a minion, destroy it and return this unit to your hand with stats equal to the destroyed minion",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Conduit, Tags.LastRites, Tags.Vanguard, Tags.Stalker },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.Value, Synergies.Removal, Synergies.Vanguard, Synergies.Retribution },
+            UnitTag = "Shadowborn Trickster",
+            Attack = 4,
+            Health = 3,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card247);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -5101,6 +7873,20 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
         card135.RelatedCards = new List<CardData> { card136 };
         card143.RelatedCards = new List<CardData> { card115 };
         card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card164.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card172.RelatedCards = new List<CardData> { card162 };
+        card173.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card179.RelatedCards = new List<CardData> { card178 };
+        card184.RelatedCards = new List<CardData> { card178 };
+        card201.RelatedCards = new List<CardData> { card202 };
+        card210.RelatedCards = new List<CardData> { card217, card219, card221 };
+        card217.RelatedCards = new List<CardData> { card218 };
+        card219.RelatedCards = new List<CardData> { card220 };
+        card221.RelatedCards = new List<CardData> { card222 };
+        card225.RelatedCards = new List<CardData> { card134 };
+        card226.RelatedCards = new List<CardData> { card134 };
+        card231.RelatedCards = new List<CardData> { card134 };
+        card243.RelatedCards = new List<CardData> { card244 };
     }
 }
 
@@ -5108,12 +7894,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows
     }
 
     public enum Sets
