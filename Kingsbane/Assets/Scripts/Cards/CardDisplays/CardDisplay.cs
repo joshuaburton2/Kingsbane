@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 using CategoryEnums;
 using System.Linq;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 
@@ -50,7 +50,7 @@ public class RarityColour
 /// Script for displaying the card information in a UI Panel
 /// 
 /// </summary>
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : MonoBehaviour, IPointerClickHandler
 {
     public Card card;
 
@@ -103,6 +103,10 @@ public class CardDisplay : MonoBehaviour
     [Header("Hero Border Colours")]
     [SerializeField]
     private ClassColour[] classColours = new ClassColour[Classes.NUM_CLASSES];
+
+    [Header("Other Props")]
+    [SerializeField]
+    private bool isClickable = true;
 
     private void Awake()
     {
@@ -296,6 +300,14 @@ public class CardDisplay : MonoBehaviour
         }
 
         resourceText.text = resourceString;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(eventData.button == PointerEventData.InputButton.Right && isClickable)
+        {
+            GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
+        }
     }
 }
 

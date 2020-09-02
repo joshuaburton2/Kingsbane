@@ -104,7 +104,7 @@ public class CardData
             }
             else
             {
-                highestResource = 0;
+                highestResource = 1;
             }
 
             return highestResource;

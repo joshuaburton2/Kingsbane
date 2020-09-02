@@ -67,6 +67,8 @@ public class LibraryUI : MonoBehaviour
     private TextMeshProUGUI tabFilterText;
     [SerializeField]
     private TMP_InputField searchStringInput;
+    [SerializeField]
+    private TextMeshProUGUI uncollectableText;
 
 
     private CardFilter activeFilter;
@@ -327,6 +329,23 @@ public class LibraryUI : MonoBehaviour
         activeFilter = defaultFilter;
 
         activeFilter.SearchString = searchStringInput.text;
+        searchStringInput.text = "";
+
+        InitTabs();
+    }
+
+    public void FilterUncollectables()
+    {
+        if (!activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
+        {
+            uncollectableText.text = "Hide Uncollectable Cards";
+            activeFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+        }
+        else
+        {
+            uncollectableText.text = "Show Uncollectable Cards";
+            activeFilter.RaritiyFilter.Remove(Rarity.Uncollectable);
+        }
 
         InitTabs();
     }

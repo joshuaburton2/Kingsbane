@@ -1191,7 +1191,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Equip },
+            Tags = new List<Tags> { Tags.ManaGain, Tags.Equip },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Antimagic, Synergies.Mana, Synergies.Defensive, Synergies.Equip },
             SpellType = "Equip",
             Range = 0,
@@ -4030,7 +4030,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             ResourceNeutral = null,
 
             Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
             LoreText = @"",
             Notes = @"",
 
@@ -4971,7 +4971,7 @@ Give the caster +3 Health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { },
+            Tags = new List<Tags> { Tags.Stun, Tags.Stealth },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Value, Synergies.Potions },
             SpellType = "Resource",
             Range = 0,
@@ -5167,7 +5167,7 @@ Potion Sale (1 Gold):</b> Add a random potion card to your hand",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Merchant },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Stun, Tags.Deployment, Tags.Stealth, Tags.Merchant },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Potions },
             UnitTag = "Human Merchant",
             Attack = 3,
@@ -5457,7 +5457,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.
             Rarity = Rarity.Epic,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Alchemy, Tags.Bag },
+            Tags = new List<Tags> { Tags.Stun, Tags.Stealth, Tags.Alchemy, Tags.Bag },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Value, Synergies.Potions },
             ItemTag = "Alchemy Bag",
             Durability = 4,
@@ -5544,7 +5544,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             ResourceNeutral = null,
 
             Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
             LoreText = @"",
             Notes = @"",
 
@@ -5578,7 +5578,7 @@ Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into
             ResourceNeutral = null,
 
             Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge): Shuffle a copy of the next spell you cast into your deck",
+Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
             LoreText = @"",
             Notes = @"",
 
@@ -6358,7 +6358,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { },
+            Tags = new List<Tags> { Tags.Warden, Tags.Lifebond, Tags.Flying },
             Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Swarm, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
             SpellType = "Deployment",
             Range = 0,
@@ -6873,7 +6873,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Protected, Tags.Spellshield, Tags.Warden, Tags.Equip, Tags.Oath },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.BigSpells, Synergies.Antimagic, Synergies.Defensive, Synergies.Equip, Synergies.Prayer, Synergies.Oaths },
             SpellType = "Equip",
             Range = 0,
@@ -6933,7 +6933,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Lifebond, Tags.Oath },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.BigSpells, Synergies.Equip, Synergies.Prayer, Synergies.Restoration, Synergies.Oaths },
             SpellType = "Equip",
             Range = 0,
@@ -6993,7 +6993,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Oath },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Swiftstrike, Tags.Draw, Tags.Equip, Tags.Overwhelm, Tags.Oath },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Enchantment, Synergies.Draw, Synergies.BigSpells, Synergies.Retribution, Synergies.Oaths },
             SpellType = "Enchantment",
             Range = 0,
@@ -7322,7 +7322,7 @@ Hefty Bribe (4 Gold, 1 Action): Recruit</b> an enemy minion that has a total cos
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.GoldGain },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.GoldGain },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Value, Synergies.Gold, Synergies.Shivs },
             SpellType = "Resource",
             Range = 0,
@@ -7353,7 +7353,7 @@ Deployment:</b> Add 2 Shivs to your hand",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.Rogue },
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs },
             UnitTag = "Human Rogue",
             Attack = 2,
@@ -7706,7 +7706,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Conduit, Tags.Trickster, Tags.Shadowborn },
+            Tags = new List<Tags> { Tags.Conduit, Tags.Ethereal, Tags.Trickster, Tags.Stealth, Tags.Shadowborn },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.BigMinions, Synergies.Value, Synergies.Vanguard, Synergies.Gold, Synergies.Shadows },
             UnitTag = "Shadowborn Trickster",
             Attack = 6,
@@ -7851,6 +7851,839 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
         };
         CardList.Add(card247);
 
+        var card248 = new SpellData()
+        {
+            Id = 248,
+            Name = "Battle Inspiration",
+            ImageLocation = "Battle_Inspiration",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 0,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Cast When Drawn</b>
+Increase your base Knowledge rate by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card248);
+
+        var card249 = new UnitData()
+        {
+            Id = 249,
+            Name = "Battlefield Surveyor",
+            ImageLocation = "Battlefield_Surveyor",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Use <b>Surveillance
+Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Scout },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Human Scout",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card249);
+
+        var card250 = new SpellData()
+        {
+            Id = 250,
+            Name = "Execute Plan",
+            ImageLocation = "Execute_Plan",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 0,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Gain 4 Energy until the end of your turn. Deploy a ""Man at Arms"" unit adjacent to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.EnergyGain },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.SmallSpells, Synergies.Swarm, Synergies.Overwhelm },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card250);
+
+        var card251 = new UnitData()
+        {
+            Id = 251,
+            Name = "Man at Arms",
+            ImageLocation = "Man_at_Arms",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Overwhelm</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Overwhelm, Tags.Soldier },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Soldier",
+            Attack = 3,
+            Health = 2,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card251);
+
+        var card252 = new UnitData()
+        {
+            Id = 252,
+            Name = "Field Medic",
+            ImageLocation = "Field_Medic",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment</b> Gain either <b>Vanguard</b> or increase <b>Triage</b> healing by 2. Use <b>Triage
+Triage (1 Knowledge, 1 Action):</b> Restore 2 Health to a unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Soldier, Tags.Vanguard, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Vanguard, Synergies.Restoration, Synergies.Choices },
+            UnitTag = "Human Soldier",
+            Attack = 1,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card252);
+
+        var card253 = new UnitData()
+        {
+            Id = 253,
+            Name = "Goldland Knight",
+            ImageLocation = "Goldland_Knight",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared
+Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Deployment, Tags.Overwhelm, Tags.Knight, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Prepared, Synergies.Overwhelm, Synergies.Choices },
+            UnitTag = "Human Knight",
+            Attack = 3,
+            Health = 1,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card253);
+
+        var card254 = new UnitData()
+        {
+            Id = 254,
+            Name = "Legionnaire",
+            ImageLocation = "Legionnaire",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden
+Deployment:</b> Gain either +2 Attack or +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Deployment, Tags.Soldier, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Swarm, Synergies.Defensive, Synergies.Choices },
+            UnitTag = "Human Soldier",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card254);
+
+        var card255 = new SpellData()
+        {
+            Id = 255,
+            Name = "Rally!",
+            ImageLocation = "Rally!",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Grant all friendly units in Range 2 of the caster +2 Attack, +2 Health or Deploy 2 ""Man at Arms"" units adjacent to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Swarm, Synergies.Overwhelm, Synergies.Choices },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card255);
+
+        var card256 = new ItemData()
+        {
+            Id = 256,
+            Name = "Aggressive Stance",
+            ImageLocation = "Aggressive_Stance",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks, gain +4 Attack until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Battle, Tags.Stance },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Battle Stance",
+            Durability = 2,
+        };
+        CardList.Add(card256);
+
+        var card257 = new ItemData()
+        {
+            Id = 257,
+            Name = "Defensive Stance",
+            ImageLocation = "Defensive_Stance",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks, gain <b>Protected (4)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Protected, Tags.Equip, Tags.Battle, Tags.Stance },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Battle Stance",
+            Durability = 2,
+        };
+        CardList.Add(card257);
+
+        var card258 = new ItemData()
+        {
+            Id = 258,
+            Name = "Stable Stance",
+            ImageLocation = "Stable_Stance",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks, gain 1 Energy until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.EnergyGain, Tags.Equip, Tags.Battle, Tags.Stance },
+            Synergies = new List<Synergies> { },
+            ItemTag = "Battle Stance",
+            Durability = 2,
+        };
+        CardList.Add(card258);
+
+        var card259 = new SpellData()
+        {
+            Id = 259,
+            Name = "Battle Stance",
+            ImageLocation = "Battle_Stance",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If you have a Battle Sword equipped, add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.EnergyGain, Tags.Protected, Tags.Equip, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.SmallSpells, Synergies.Durable, Synergies.Protected, Synergies.Equip, Synergies.Choices, Synergies.Swordsman },
+            SpellType = "Equip",
+            Range = 0,
+        };
+        CardList.Add(card259);
+
+        var card260 = new UnitData()
+        {
+            Id = 260,
+            Name = "Field Commander",
+            ImageLocation = "Field_Commander",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 5,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit
+Deployment: Study (4)</b>
+Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Captain },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Draw, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Human Captain",
+            Attack = 4,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card260);
+
+        var card261 = new SpellData()
+        {
+            Id = 261,
+            Name = "Forward Planning",
+            ImageLocation = "Forward_Planning",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Divinate (2)</b>
+Reduce the cost of the the top two cards in your deck by (2)",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Divinate },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.BigMinions, Synergies.Prediction },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card261);
+
+        var card262 = new SpellData()
+        {
+            Id = 262,
+            Name = "Perfect Strike",
+            ImageLocation = "Perfect_Strike",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"The caster attacks a target unit. If the target is killed, either draw a card or gain <b>Protected (5)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Protected, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.SmallSpells, Synergies.Draw, Synergies.Durable, Synergies.Protected },
+            SpellType = "Damage",
+            Range = 1,
+        };
+        CardList.Add(card262);
+
+        var card263 = new UnitData()
+        {
+            Id = 263,
+            Name = "Scout Regiment",
+            ImageLocation = "Scout_Regiment",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Stalker</b>
+Can target <b>Stealth</b> units
+<b>Deployment:</b> Gain either +1 Range of +1 Speed",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Stalker, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.Choices },
+            UnitTag = "Human Scout",
+            Attack = 2,
+            Health = 3,
+            Range = 2,
+            Speed = 3
+        };
+        CardList.Add(card263);
+
+        var card264 = new SpellData()
+        {
+            Id = 264,
+            Name = "Battle Repair",
+            ImageLocation = "Battle_Repair",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Give your equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Sword"" item",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Equip },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Equip, Synergies.Swordsman },
+            SpellType = "Other",
+            Range = 0,
+        };
+        CardList.Add(card264);
+
+        var card265 = new ItemData()
+        {
+            Id = 265,
+            Name = "Commander's Logbook",
+            ImageLocation = "Commanders_Logbook",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero attacks and kills a unit, <b>Divinate (1)</b> and draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Divinate, Tags.Wartorn, Tags.Book },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Draw, Synergies.Prediction },
+            ItemTag = "Wartorn Book",
+            Durability = 3,
+        };
+        CardList.Add(card265);
+
+        var card266 = new ItemData()
+        {
+            Id = 266,
+            Name = "Hardened Shield",
+            ImageLocation = "Hardened_Shield",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever your hero is attacked, gain <b>Protected (4)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Protected, Tags.Equip, Tags.Metal, Tags.Shield },
+            Synergies = new List<Synergies> { Synergies.Durable, Synergies.Defensive, Synergies.Equip },
+            ItemTag = "Metal Shield",
+            Durability = 4,
+        };
+        CardList.Add(card266);
+
+        var card267 = new ItemData()
+        {
+            Id = 267,
+            Name = "Rallying Flag",
+            ImageLocation = "Rallying_Flag",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 5,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Tiles adjacent to your hero are part of your deployment zone. Whenever you deploy a unit there, lose 1 Durability",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Wartorn, Tags.Flag },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Equip, Synergies.Vanguard },
+            ItemTag = "Wartorn Flag",
+            Durability = 5,
+        };
+        CardList.Add(card267);
+
+        var card268 = new UnitData()
+        {
+            Id = 268,
+            Name = "Ballista",
+            ImageLocation = "Ballista",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = 7,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Grant either +2 Attack, +1 Range or attacks hit enemy units adjacent to the target.
+This unit can target through obstacle terrain",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Choice, Tags.Siege, Tags.Construct },
+            Synergies = new List<Synergies> { Synergies.AreaDamage, Synergies.Deployment, Synergies.BigMinions, Synergies.Study, Synergies.LongRange },
+            UnitTag = "Siege Construct",
+            Attack = 3,
+            Health = 3,
+            Range = 4,
+            Speed = 2
+        };
+        CardList.Add(card268);
+
+        var card269 = new UnitData()
+        {
+            Id = 269,
+            Name = "Captain of the Guard",
+            ImageLocation = "Captain_of_the_Guard",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 5,
+            ResourceGold = null,
+            ResourceKnowledge = 4,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison
+Confiscate (4 Energy, 1 Action):</b> Remove a random card from your opponents hand
+<b>Imprison (4 Energy, 1 Action):</b> Remove an enemy unit from the battlefield
+<b>Last Rites:</b> Return all removed cards and redeploy all removed units",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Captain, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.BigMinions, Synergies.Removal },
+            UnitTag = "Human Captain",
+            Attack = 5,
+            Health = 6,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card269);
+
+        var card270 = new SpellData()
+        {
+            Id = 270,
+            Name = "Survey",
+            ImageLocation = "Survey",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 5,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Choose an area of Radius 2. Draw a card for each enemy unit in the area. Your units ignore difficult terrain and <b>Warden</b> effects in the area. Remove <b>Stealth</b> from enemy units in the area",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Warden, Tags.Stealth },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Draw, Synergies.BigSpells },
+            SpellType = "Other",
+            Range = 3,
+        };
+        CardList.Add(card270);
+
+        var card271 = new UnitData()
+        {
+            Id = 271,
+            Name = "Tessara, Lady of Goldland",
+            ImageLocation = "Tessara_Lady_of_Goldland",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 8,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Vanguard
+Deployment:</b> Use <b>Call to Arms
+Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacent to this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Vanguard, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Overwhelm, Synergies.Choices },
+            UnitTag = "Human Noble",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 4
+        };
+        CardList.Add(card271);
+
+        var card272 = new UnitData()
+        {
+            Id = 272,
+            Name = "Goldland Loyalist",
+            ImageLocation = "Goldland_Loyalist",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Soldier },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Soldier",
+            Attack = 2,
+            Health = 3,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card272);
+
+        var card273 = new UnitData()
+        {
+            Id = 273,
+            Name = "Supreme Commander Tythas",
+            ImageLocation = "Supreme_Commander_Tythas",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 8,
+            ResourceGold = null,
+            ResourceKnowledge = 5,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Conduit, Prepared</b>
+Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Prepared, Tags.Captain, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Study, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
+            UnitTag = "Human Captain",
+            Attack = 7,
+            Health = 9,
+            Range = 0,
+            Speed = 3
+        };
+        CardList.Add(card273);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -7887,6 +8720,13 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
         card226.RelatedCards = new List<CardData> { card134 };
         card231.RelatedCards = new List<CardData> { card134 };
         card243.RelatedCards = new List<CardData> { card244 };
+        card249.RelatedCards = new List<CardData> { card248 };
+        card250.RelatedCards = new List<CardData> { card251 };
+        card255.RelatedCards = new List<CardData> { card251 };
+        card259.RelatedCards = new List<CardData> { card256, card257, card258 };
+        card260.RelatedCards = new List<CardData> { card248 };
+        card264.RelatedCards = new List<CardData> { card125 };
+        card271.RelatedCards = new List<CardData> { card272 };
     }
 }
 
@@ -7894,12 +8734,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand
+        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows
+        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman
     }
 
     public enum Sets

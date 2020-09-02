@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public LibraryManager libraryManager;
     public IconManager iconManager;
+    public UIManager uiManager;
 
     private void Awake()
     {
