@@ -6,6 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public GameObject cardDetailDisplay;
 
+    private void Start()
+    {
+        cardDetailDisplay.SetActive(false);
+    }
+
     public void ActivateCardDetail(CardData cardData)
     {
         cardDetailDisplay.SetActive(true);

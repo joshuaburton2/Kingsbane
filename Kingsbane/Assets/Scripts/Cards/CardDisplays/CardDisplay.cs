@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 using CategoryEnums;
 using System.Linq;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /// <summary>
@@ -105,8 +104,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     private ClassColour[] classColours = new ClassColour[Classes.NUM_CLASSES];
 
     [Header("Other Props")]
-    [SerializeField]
-    private bool isClickable = true;
+    public bool isClickable = true;
 
     private void Awake()
     {
