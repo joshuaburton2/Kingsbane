@@ -1,7 +1,9 @@
 ﻿using CategoryEnums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,7 +71,12 @@ public class LibraryUI : MonoBehaviour
     private TMP_InputField searchStringInput;
     [SerializeField]
     private TextMeshProUGUI uncollectableText;
-
+    [SerializeField]
+    private TMP_Dropdown cardTypeDropdown;
+    [SerializeField]
+    private TMP_Dropdown rarityDropdown;
+    [SerializeField]
+    private TMP_Dropdown setDropdown;
 
     private CardFilter activeFilter;
     private readonly CardFilter defaultFilter = new CardFilter();
@@ -77,6 +84,7 @@ public class LibraryUI : MonoBehaviour
     private void Start()
     {
         InitGrid();
+        InitDropdowns();
     }
 
     private void InitGrid()
@@ -98,6 +106,24 @@ public class LibraryUI : MonoBehaviour
         SwitchTabText();
 
         InitTabs();
+    }
+
+    private void InitDropdowns()
+    {
+        InitDropdown(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default });
+        InitDropdown(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.NPCHero, Rarity.Uncollectable });
+        InitDropdown(setDropdown, new List<Sets>() { Sets.Default });
+    }
+
+    private void InitDropdown<T>(TMP_Dropdown dropdown, List<T> removedList)
+    {
+        var dropDownNames = Enum.GetNames(typeof(T)).ToList();
+        foreach (var removeItem in removedList)
+        {
+            var removeString = removeItem.ToString();
+            dropDownNames.Remove(removeString);
+        }
+        dropdown.AddOptions(dropDownNames);
     }
 
     private void InitTabs()
@@ -331,7 +357,33 @@ public class LibraryUI : MonoBehaviour
         activeFilter.SearchString = searchStringInput.text;
         searchStringInput.text = "";
 
+        ApplyDropdownFilter<CardTypes>(cardTypeDropdown);
+        ApplyDropdownFilter<Rarity>(rarityDropdown);
+        ApplyDropdownFilter<Sets>(setDropdown);
+
         InitTabs();
+    }
+
+    private void ApplyDropdownFilter<T>(TMP_Dropdown dropdown)
+    {
+        if (dropdown.captionText.text != "All")
+        {
+            var selectedCardType = (T)Enum.Parse(typeof(T), dropdown.captionText.text);
+            var type = typeof(T);
+
+            switch (type)
+            {
+                case Type _ when type == typeof(CardTypes):
+                    activeFilter.CardTypeFilter = new List<CardTypes>() { (CardTypes)(object)selectedCardType };
+                    break;
+                case Type _ when type == typeof(Rarity):
+                    activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
+                    break;
+                case Type _ when type == typeof(Sets):
+                    activeFilter.SetFilter = new List<Sets>() { (Sets)(object)selectedCardType };
+                    break;
+            }            
+        }
     }
 
     public void FilterUncollectables()

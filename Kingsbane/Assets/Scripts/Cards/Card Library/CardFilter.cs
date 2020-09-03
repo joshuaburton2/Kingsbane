@@ -34,6 +34,7 @@ public class CardFilter
         SetFilter = new List<Sets>();
         foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
             SetFilter.Add(set);
+        SetFilter.Remove(Sets.Default);
         ResourceFilter = new List<CardResources>();
     }
 }
