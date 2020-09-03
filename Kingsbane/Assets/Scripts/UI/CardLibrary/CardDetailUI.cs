@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CardDetailUI : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CardDetailUI : MonoBehaviour
     GameObject mainCardParent;
     [SerializeField]
     GameObject relatedCardArea;
+    [SerializeField]
+    Scrollbar relatedCardScrollBar;
     [SerializeField]
     GameObject relatedCardList;
     [SerializeField]
@@ -37,6 +40,7 @@ public class CardDetailUI : MonoBehaviour
                 GameObject relatedCardParent = Instantiate(new GameObject($"Related Card- {relatedCard.Name}", typeof(RectTransform)), relatedCardList.transform);
                 GameManager.instance.libraryManager.CreateCard(relatedCard, relatedCardParent.transform);
             }
+            relatedCardScrollBar.value = 0;
         }
         else
         {

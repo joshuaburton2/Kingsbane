@@ -544,7 +544,7 @@ MonoBehaviour:
   - Class: 0
     classColour: {r: 0, g: 0, b: 0, a: 1}
   - Class: 1
-    classColour: {r: 0.32866344, g: 0.031372547, b: 0.74509805, a: 1}
+    classColour: {r: 0.49959585, g: 0.034843344, b: 0.8207547, a: 1}
   - Class: 2
     classColour: {r: 0.38431376, g: 0.36862746, b: 0.4666667, a: 1}
   - Class: 3
@@ -552,9 +552,9 @@ MonoBehaviour:
   - Class: 4
     classColour: {r: 1, g: 0.29411766, b: 0.10980393, a: 1}
   - Class: 5
-    classColour: {r: 0.6392157, g: 0.6431373, b: 0.13725491, a: 1}
+    classColour: {r: 0, g: 0.6509434, b: 0.56318104, a: 1}
   - Class: 6
-    classColour: {r: 0.1764706, g: 0.48235297, b: 0.25490198, a: 1}
+    classColour: {r: 0.22491772, g: 0.6226415, b: 0.20265219, a: 1}
   - Class: 7
     classColour: {r: 1, g: 0.98862064, b: 0.7122642, a: 1}
   - Class: 8
@@ -564,15 +564,16 @@ MonoBehaviour:
   - Class: 10
     classColour: {r: 0.41960788, g: 0.12941177, b: 0.13333334, a: 1}
   - Class: 11
-    classColour: {r: 1, g: 0.6862745, b: 0.054901965, a: 1}
+    classColour: {r: 0.9528302, g: 0.78302, b: 0.12135102, a: 1}
   - Class: 12
-    classColour: {r: 0.08627451, g: 0.6039216, b: 1, a: 1}
+    classColour: {r: 0, g: 0.5550184, b: 1, a: 1}
   - Class: 13
-    classColour: {r: 0.039215688, g: 0.03529412, b: 0.5764706, a: 1}
+    classColour: {r: 0.21199664, g: 0.14231044, b: 0.7735849, a: 1}
   - Class: 14
-    classColour: {r: 0.10588236, g: 0.2392157, b: 0.10588236, a: 1}
+    classColour: {r: 0.10536677, g: 0.3679245, b: 0.09198113, a: 1}
   - Class: 15
     classColour: {r: 0.8018868, g: 0, b: 0.003517034, a: 1}
+  isClickable: 1
 --- !u!114 &7451795837933458935
 MonoBehaviour:
   m_ObjectHideFlags: 0

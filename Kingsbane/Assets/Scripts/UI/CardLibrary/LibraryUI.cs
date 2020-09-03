@@ -79,7 +79,6 @@ public class LibraryUI : MonoBehaviour
     private TMP_Dropdown setDropdown;
 
     private CardFilter activeFilter;
-    private readonly CardFilter defaultFilter = new CardFilter();
 
     private void Start()
     {
@@ -102,7 +101,7 @@ public class LibraryUI : MonoBehaviour
         }
 
         tabFilter = TabTypes.Classes;
-        activeFilter = defaultFilter;
+        activeFilter = new CardFilter();
         SwitchTabText();
 
         InitTabs();
@@ -214,9 +213,11 @@ public class LibraryUI : MonoBehaviour
             pageListSplit.Add(new List<CardData>());
 
             if (pageIndex < tabPageCount - 1 || (pageIndex == tabPageCount - 1 && pageList.Count % CardsPerPage == 0))
-                endingPageIndex += CardsPerPage;
+                endingPageIndex += CardsPerPage; 
             else
                 endingPageIndex += pageList.Count % CardsPerPage;
+
+            
 
             for (int cardIndex = startingPageIndex; cardIndex < endingPageIndex; cardIndex++)
             {
@@ -254,7 +255,7 @@ public class LibraryUI : MonoBehaviour
             }
         }
 
-        if (minTab == maxTab)
+        if (minTab == maxTab && tabPageCount == 1)
         {
             leftButton.SetActive(false);
             rightButton.SetActive(false);
@@ -352,10 +353,11 @@ public class LibraryUI : MonoBehaviour
 
     public void ApplyFilter()
     {
-        activeFilter = defaultFilter;
+        activeFilter = new CardFilter();
 
         activeFilter.SearchString = searchStringInput.text;
-        searchStringInput.text = "";
+        //searchStringInput.text = "";
+        uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
         ApplyDropdownFilter<CardTypes>(cardTypeDropdown);
         ApplyDropdownFilter<Rarity>(rarityDropdown);
@@ -378,6 +380,7 @@ public class LibraryUI : MonoBehaviour
                     break;
                 case Type _ when type == typeof(Rarity):
                     activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
+                    uncollectableText.transform.parent.GetComponent<Button>().interactable = false;
                     break;
                 case Type _ when type == typeof(Sets):
                     activeFilter.SetFilter = new List<Sets>() { (Sets)(object)selectedCardType };
