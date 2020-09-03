@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public Hand hand;
 
     public List<Resource> resources;
-    public CardResources[] usedResources;
+    public List<CardResources> usedResources;
 
     int counter;
 

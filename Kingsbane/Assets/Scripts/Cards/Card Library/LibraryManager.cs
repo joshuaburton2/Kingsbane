@@ -145,6 +145,11 @@ public class LibraryManager : MonoBehaviour
         return newCardList.FirstOrDefault(x => x.Id == Id);
     }
 
+    public CardData GetCard(string nameSearch)
+    {
+        return newCardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
+    }
+
     public List<CardData> GetAllCards(CardFilter listFilter)
     {
         return FilterCardList(OrderCardList(newCardList), listFilter);

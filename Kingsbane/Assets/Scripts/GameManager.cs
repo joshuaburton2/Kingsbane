@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public LibraryManager libraryManager;
     public IconManager iconManager;
     public UIManager uiManager;
+    public DeckManager deckManager;
 
     private void Awake()
     {
