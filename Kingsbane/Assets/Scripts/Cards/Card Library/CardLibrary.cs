@@ -1628,7 +1628,8 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Empowered +3</b>",
+            Text = @"<b>Empowered +3</b>
+The cost of spells which did not start in your deck is reduced by (3)",
             LoreText = @"",
             Notes = @"",
 
@@ -2508,7 +2509,7 @@ Whenever this kills a unit, return a random card you discarded this game to your
             ResourceNeutral = null,
 
             Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>
-<b>Rally the Horde (2 Mana, 1 Action): Discard a card. Give all adjacent units Attack and Health equal to its total cost",
+<b>Rally the Horde (2 Mana, 1 Action):</b> Discard a card. Give all adjacent units Attack and Health equal to its total cost",
             LoreText = @"",
             Notes = @"",
 
@@ -2835,7 +2836,7 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Elementalist,
-            Rarity = Rarity.Common,
+            Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Elementalist, Tags.Water, Tags.ForceMove },
@@ -3130,7 +3131,7 @@ Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce 
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Elementalist,
-            Rarity = Rarity.Rare,
+            Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.SingleDamage, Tags.ForceMove, Tags.Earth },
@@ -7595,7 +7596,7 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Summon, Deadly, Stealth, Ethereal</b>",
+            Text = @"<b>Summon, Stealth, Ethereal</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7607,8 +7608,8 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Deadly, Tags.Shadow },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Removal, Synergies.Shadows },
             UnitTag = "Shadow Summon",
-            Attack = 4,
-            Health = 4,
+            Attack = 5,
+            Health = 5,
             Range = 0,
             Speed = 4
         };
