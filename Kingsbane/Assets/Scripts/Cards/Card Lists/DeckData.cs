@@ -8,9 +8,10 @@ using UnityEngine;
 [Serializable]
 public class DeckData
 {
-    public string deckName;
-    public List<CardData> cardList;
-    public int deckCount;
-    public List<CardResources> DeckResources { get { return Classes.GetClassResource(deckClass); } }
-    public Classes.ClassList deckClass;
+    public string DeckName { get; set; }
+    public List<CardData> CardList { get; set; }
+    public int DeckCount { get; set; }
+    public List<CardResources> DeckResources { get { return Classes.GetClassResource(DeckClass); } }
+    public Classes.ClassList DeckClass { get; set; }
+    public bool IsNPCDeck { get; set; }
 }

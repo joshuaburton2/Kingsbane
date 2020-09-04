@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Unit : Card
 {
-    public UnitData unitData { get { return cardData as UnitData; } }
+    public UnitData UnitData { get { return cardData as UnitData; } }
 
-    public int Attack { get { return unitData.Attack; } }
-    public int Health { get { return unitData.Health; } }
-    public int Range { get { return unitData.Range; } }
-    public int Speed { get { return unitData.Speed; } }
+    public int Attack { get { return UnitData.Attack; } }
+    public int Health { get { return UnitData.Health; } }
+    public int Range { get { return UnitData.Range; } }
+    public int Speed { get { return UnitData.Speed; } }
 
-    public string UnitTag { get { return unitData.UnitTag; } }
+    public string UnitTag { get { return UnitData.UnitTag; } }
+
+    public AbilityData Ability { get { return UnitData.Ability; } }
 
     public override void Play()
     {

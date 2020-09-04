@@ -184,7 +184,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [ContextMenu("Update Properties")]
     public void UpdateProperties()
     {
-        UpdateResourceText();
+        resourceText.text = GenerateResourceText(card.ResourceCost);
 
         switch (card.Type)
         {
@@ -195,6 +195,14 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 healthText.text = $"Health: {unitCard.Health}";
                 unitRangeText.text = $"Range: {unitCard.Range}";
                 speedText.text = $"Speed: {unitCard.Speed}";
+
+                AbilityData ability = unitCard.Ability;
+                if (ability != null)
+                {
+                    var actionText = ability.CostsAction ? ", 1 Action" : "";
+                    var abilityText = $"{ability.Name}({GenerateResourceText(ability.GetResources)}{actionText}): {ability.Text}";
+                    cardText.text = $"{cardText.text}\n{abilityText}";
+                }
 
                 break;
             case CardTypes.Spell:
@@ -219,19 +227,24 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// Update the resource text to include the resource words
     /// 
     /// </summary>
-    private void UpdateResourceText()
+    private string GenerateResourceText(List<Resource> resourceList)
     {
-        List<Resource> cardResources = card.ResourceCost;
-
         string resourceString = "";
 
-        foreach (var resource in cardResources)
+        foreach (var resource in resourceList)
         {
             var resourceVal = resource.Value.ToString().Replace("-", "");
-            resourceString += $" {resourceVal} {resource.ResourceType}";
+            resourceString += $" {resourceVal} {resource.ResourceType},";
         }
 
-        resourceText.text = resourceString;
+        // Remove the last comma from the resource text
+        if (resourceString.Length != 0)
+        {
+            resourceString = resourceString.Remove(resourceString.Length - 1);
+        }
+        
+
+        return resourceString;
     }
 
     public void OnPointerClick(PointerEventData eventData)
