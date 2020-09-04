@@ -196,12 +196,15 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 unitRangeText.text = $"Range: {unitCard.Range}";
                 speedText.text = $"Speed: {unitCard.Speed}";
 
-                AbilityData ability = unitCard.Ability;
-                if (ability != null)
+                List<AbilityData> abilities = unitCard.Abilities;
+                if (abilities != null)
                 {
-                    var actionText = ability.CostsAction ? ", 1 Action" : "";
-                    var abilityText = $"{ability.Name}({GenerateResourceText(ability.GetResources)}{actionText}): {ability.Text}";
-                    cardText.text = $"{cardText.text}\n{abilityText}";
+                    foreach (var ability in abilities)
+                    {
+                        var actionText = ability.CostsAction ? ", 1 Action" : "";
+                        var abilityText = $"{ability.Name}({GenerateResourceText(ability.GetResources)}{actionText}): {ability.Text}";
+                        cardText.text = $"{cardText.text}\n{abilityText}";
+                    }
                 }
 
                 break;

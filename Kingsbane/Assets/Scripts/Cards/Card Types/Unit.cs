@@ -13,7 +13,7 @@ public class Unit : Card
 
     public string UnitTag { get { return UnitData.UnitTag; } }
 
-    public AbilityData Ability { get { return UnitData.Ability; } }
+    public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
     public override void Play()
     {
