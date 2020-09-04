@@ -1,48 +1,10 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using CategoryEnums;
-using System.Linq;
 using UnityEngine.EventSystems;
-
-/// <summary>
-/// 
-/// Object for storing the rarity border colour for a class's hero
-/// 
-/// </summary>
-[System.Serializable]
-public class ClassColour
-{
-    public Classes.ClassList Class;
-    public Color classColour;
-
-    ClassColour()
-    {
-        Class = Classes.ClassList.Default;
-        classColour = new Color();
-    }
-}
-
-
-/// <summary>
-/// 
-/// Object for storing the rarity border colour based on the rarity of the card
-/// 
-/// </summary>
-[System.Serializable]
-public class RarityColour
-{
-    public Rarity Rarity;
-    public Color rarityColour;
-
-    RarityColour()
-    {
-        Rarity = Rarity.Default;
-        rarityColour = new Color();
-    }
-}
 
 /// <summary>
 /// 
@@ -94,14 +56,6 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     private GameObject itemProps;
     [SerializeField]
     private TextMeshProUGUI durabilityText;
-
-    [Header("Border Colours")]
-    [SerializeField]
-    List<RarityColour> rarityColours;
-
-    [Header("Hero Border Colours")]
-    [SerializeField]
-    private ClassColour[] classColours = new ClassColour[Classes.NUM_CLASSES];
 
     [Header("Other Props")]
     public bool isClickable = true;
@@ -204,10 +158,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     {
         Color borderColour;
 
-        if (card.Rarity == Rarity.Hero)
-            borderColour = GetClassColour(card.CardClass);
+        if (card.Rarity == Rarity.Hero || card.Rarity == Rarity.NPCHero)
+            borderColour = GameManager.instance.colourManager.GetClassColour(card.CardClass);
         else
-            borderColour = GetRarityColour(card.Rarity);
+            borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity);
 
         rarityBorder.color = borderColour;
     }
@@ -219,27 +173,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void UpdateCardBackground()
     {
-        cardBackground.color = GetClassColour(card.CardClass);
-    }
-
-    /// <summary>
-    /// 
-    /// Obtain a particular rarities colour
-    /// 
-    /// </summary>
-    private Color GetRarityColour(Rarity neededRarity)
-    {
-        return rarityColours.FirstOrDefault(x => x.Rarity == neededRarity).rarityColour;
-    }
-
-    /// <summary>
-    /// 
-    /// Obtain a particular classes colour
-    /// 
-    /// </summary>
-    private Color GetClassColour(Classes.ClassList neededClass)
-    {
-        return classColours.FirstOrDefault(x => x.Class == neededClass).classColour;
+        cardBackground.color = GameManager.instance.colourManager.GetClassColour(card.CardClass);
     }
 
     /// <summary>

@@ -353,10 +353,15 @@ public class LibraryUI : MonoBehaviour
 
     public void ApplyFilter()
     {
+        var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
+
         activeFilter = new CardFilter();
 
+        if (includeUncollectables)
+            activeFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+
         activeFilter.SearchString = searchStringInput.text;
-        //searchStringInput.text = "";
+
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
         ApplyDropdownFilter<CardTypes>(cardTypeDropdown);
@@ -380,6 +385,8 @@ public class LibraryUI : MonoBehaviour
                     break;
                 case Type _ when type == typeof(Rarity):
                     activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
+                    if (activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
+                        activeFilter.RaritiyFilter.Remove(Rarity.Uncollectable);
                     uncollectableText.transform.parent.GetComponent<Button>().interactable = false;
                     break;
                 case Type _ when type == typeof(Sets):

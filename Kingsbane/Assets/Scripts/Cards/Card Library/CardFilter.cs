@@ -30,7 +30,7 @@ public class CardFilter
     {
         SearchString = "";
         CardTypeFilter = new List<CardTypes>() { CardTypes.Unit, CardTypes.Spell, CardTypes.Item };
-        RaritiyFilter = new List<Rarity>() { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary, Rarity.Hero };
+        RaritiyFilter = new List<Rarity>() { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary };
         SetFilter = new List<Sets>();
         foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
             SetFilter.Add(set);

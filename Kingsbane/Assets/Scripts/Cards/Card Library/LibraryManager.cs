@@ -1,4 +1,5 @@
-﻿using CategoryEnums;
+﻿using Assets.Scripts.Category_Enums;
+using CategoryEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<Sets, List<CardData>> setLookup;
     private Dictionary<Rarity, List<CardData>> rarityLookup;
     private Dictionary<CardTypes, List<CardData>> typeLookup;
+    private Dictionary<HeroTier, List<CardData>> heroLookup;
 
     private void Start()
     {
@@ -47,6 +49,8 @@ public class LibraryManager : MonoBehaviour
         setLookup = ConstructDictionary<Sets>();
         rarityLookup = ConstructDictionary<Rarity>();
         typeLookup = ConstructDictionary<CardTypes>();
+
+        ConstructHeroLookup();
     }
 
     private Dictionary<T, List<CardData>> ConstructDictionary<T>() where T : Enum
@@ -102,7 +106,27 @@ public class LibraryManager : MonoBehaviour
         return newDictionary;
     }
 
-    public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter) where T : Enum
+    private void ConstructHeroLookup()
+    {
+        var tempHeroLookup = new Dictionary<Classes.ClassList, List<CardData>>();
+        heroLookup = new Dictionary<HeroTier, List<CardData>>();
+
+        foreach (var cardClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
+        {
+            if (cardClass != Classes.ClassList.Default)
+            {
+                tempHeroLookup.Add(cardClass, rarityLookup[Rarity.Hero].Intersect(classLookup[cardClass]).ToList());
+
+                for (int tierIndex = 0; tierIndex < 3; tierIndex++)
+                {
+                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = (TierLevel)tierIndex };
+                    heroLookup.Add(heroTier, tempHeroLookup[cardClass].Where(x => x.Name.Contains((tierIndex + 1).ToString())).ToList());
+                }
+            }
+        }
+    }
+
+    public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter)
     {
         var dictionaryList = new List<CardData>();
         var type = typeof(T);
@@ -130,6 +154,11 @@ public class LibraryManager : MonoBehaviour
             case Type _ when type == typeof(CardTypes):
                 typeLookup.TryGetValue((CardTypes)(object)key, out dictionaryList);
                 break;
+            case Type _ when type == typeof(HeroTier):
+                heroLookup.TryGetValue((HeroTier)(object)key, out dictionaryList);
+                break;
+            default:
+                throw new Exception("Not a valid Dictionary Type");
         }
 
         if (dictionaryList != null)
