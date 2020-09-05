@@ -4,10 +4,30 @@ using CategoryEnums;
 public class CardLibrary
 {
     public List<CardData> CardList { get; private set; }
+    public List<AbilityData> AbilityList { get; private set; }
 
     public void InitLibrary()
     {
         CardList = new List<CardData>();
+        AbilityList = new List<AbilityData>();
+
+        var ability5 = new AbilityData()
+        {
+            Id = 5,
+            Name = "Arcane Bolt",
+            Text = @"Deal 2 damage to a unit within range 1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability5);
 
         var card2 = new UnitData()
         {
@@ -39,7 +59,9 @@ public class CardLibrary
             Attack = 4,
             Health = 9,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability5 },
         };
         CardList.Add(card2);
 
@@ -133,7 +155,9 @@ Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
             Attack = 2,
             Health = 2,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card6);
 
@@ -196,7 +220,9 @@ Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
             Attack = 3,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card8);
 
@@ -230,7 +256,9 @@ Runesmith (1 Mana, 1 Action):</b> Give a friendly unit within Range 1 <b>Empower
             Attack = 3,
             Health = 4,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card9);
 
@@ -384,7 +412,9 @@ Sword Fling (2 Mana, 1 Action):</b> Deal damage equal to your <b>Empowered</b> v
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card14);
 
@@ -417,7 +447,9 @@ Sword Fling (2 Mana, 1 Action):</b> Deal damage equal to your <b>Empowered</b> v
             Attack = 2,
             Health = 3,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card15);
 
@@ -451,7 +483,9 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
             Attack = 0,
             Health = 12,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card16);
 
@@ -485,7 +519,9 @@ This units attack is increased by your <b>Empowered</b> value",
             Attack = 4,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card17);
 
@@ -549,7 +585,9 @@ Kalyan Training (3 Energy, 1 Action):</b> Give all other friendly melee units wi
             Attack = 5,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card19);
 
@@ -583,7 +621,9 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Attack = 5,
             Health = 7,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card20);
 
@@ -679,7 +719,9 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card
             Attack = 7,
             Health = 5,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card25);
 
@@ -774,7 +816,9 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Attack = 7,
             Health = 16,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card28);
 
@@ -808,7 +852,9 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Attack = 9,
             Health = 27,
             Range = 0,
-            Speed = 5
+            Speed = 5,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card29);
 
@@ -842,7 +888,9 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Attack = 4,
             Health = 5,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card30);
 
@@ -876,7 +924,9 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Attack = 6,
             Health = 11,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card31);
 
@@ -910,7 +960,9 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Attack = 7,
             Health = 20,
             Range = 4,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card32);
 
@@ -974,7 +1026,9 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
             Attack = 4,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card34);
 
@@ -1008,7 +1062,9 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
             Attack = 1,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card35);
 
@@ -1134,7 +1190,9 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Attack = 5,
             Health = 5,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card39);
 
@@ -1258,7 +1316,9 @@ Stargaze (1 Action): Divinate (1)</b>",
             Attack = 2,
             Health = 6,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card43);
 
@@ -1321,7 +1381,9 @@ Stargaze (1 Action): Divinate (1)</b>",
             Attack = 1,
             Health = 1,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card45);
 
@@ -1355,7 +1417,9 @@ The Mana cost of your spells is reduced by (2)",
             Attack = 2,
             Health = 3,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card46);
 
@@ -1389,7 +1453,9 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Attack = 3,
             Health = 5,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card47);
 
@@ -1422,7 +1488,9 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Attack = 2,
             Health = 5,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card48);
 
@@ -1516,7 +1584,9 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
             Attack = 3,
             Health = 7,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card51);
 
@@ -1580,7 +1650,9 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             Attack = 3,
             Health = 8,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card53);
 
@@ -1799,7 +1871,9 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Attack = 3,
             Health = 7,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card60);
 
@@ -1833,7 +1907,9 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Attack = 4,
             Health = 15,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card61);
 
@@ -1867,7 +1943,9 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Attack = 5,
             Health = 26,
             Range = 3,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card62);
 
@@ -1900,7 +1978,9 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card63);
 
@@ -1934,7 +2014,9 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card64);
 
@@ -1968,7 +2050,9 @@ Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
             Attack = 2,
             Health = 1,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card65);
 
@@ -2063,7 +2147,9 @@ Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
             Attack = 1,
             Health = 1,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card68);
 
@@ -2128,7 +2214,9 @@ Whenever you discard a card or a friendly unit dies within Range 2, draw a card"
             Attack = 2,
             Health = 3,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card70);
 
@@ -2223,7 +2311,9 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Attack = 5,
             Health = 5,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card73);
 
@@ -2257,7 +2347,9 @@ Lifedrain (2 Devotion, 1 Action):</b> Deal 3 damage to a unit. Heal this unit fo
             Attack = 4,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card74);
 
@@ -2291,7 +2383,9 @@ Whenever you discard a card, gain Attack and Health equal to its total cost",
             Attack = 5,
             Health = 7,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card75);
 
@@ -2324,7 +2418,9 @@ Whenever you discard a card, gain Attack and Health equal to its total cost",
             Attack = 3,
             Health = 3,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card76);
 
@@ -2358,7 +2454,9 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Attack = 3,
             Health = 5,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card77);
 
@@ -2392,7 +2490,9 @@ Brood Spawn (2 Mana, 1 Action):</b> Discard a card. Deploy two Abyss Imps beside
             Attack = 3,
             Health = 9,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card78);
 
@@ -2426,7 +2526,9 @@ Call of the Void (2 Mana, 1 Action):</b> Add a random Void unit to your hand",
             Attack = 4,
             Health = 5,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card79);
 
@@ -2460,7 +2562,9 @@ Whenever this kills a unit, return a random card you discarded this game to your
             Attack = 4,
             Health = 12,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card80);
 
@@ -2524,7 +2628,9 @@ Whenever this kills a unit, return a random card you discarded this game to your
             Attack = 8,
             Health = 11,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card82);
 
@@ -2589,7 +2695,9 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Attack = 5,
             Health = 5,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card84);
 
@@ -2623,7 +2731,9 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Attack = 7,
             Health = 11,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card85);
 
@@ -2657,7 +2767,9 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Attack = 9,
             Health = 20,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card86);
 
@@ -2721,7 +2833,9 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             Attack = 1,
             Health = 2,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card88);
 
@@ -2809,7 +2923,7 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Empowered, Tags.ManaGain },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Mana },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Mana },
             SpellType = "Resource",
             Range = 0,
         };
@@ -2845,7 +2959,9 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
             Attack = 3,
             Health = 5,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card92);
 
@@ -2878,7 +2994,9 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
             Attack = 7,
             Health = 5,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card93);
 
@@ -2911,7 +3029,9 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
             Attack = 4,
             Health = 12,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card94);
 
@@ -2944,7 +3064,9 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
             Attack = 8,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card95);
 
@@ -3009,7 +3131,9 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Attack = 5,
             Health = 9,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card97);
 
@@ -3043,7 +3167,9 @@ Earthspike (2 Mana, 1 Action):</b> Deal damage to all units in an area of Cone 3
             Attack = 3,
             Health = 5,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card98);
 
@@ -3107,7 +3233,9 @@ Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce 
             Attack = 3,
             Health = 3,
             Range = 1,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card100);
 
@@ -3264,7 +3392,9 @@ Reduce the cost of all spells generated by this unit to 0.
             Attack = 5,
             Health = 5,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card105);
 
@@ -3329,7 +3459,9 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Attack = 2,
             Health = 11,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card107);
 
@@ -3363,7 +3495,9 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Attack = 2,
             Health = 19,
             Range = 3,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card108);
 
@@ -3397,7 +3531,9 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Attack = 3,
             Health = 28,
             Range = 4,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card109);
 
@@ -3491,7 +3627,9 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Attack = 1,
             Health = 3,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card112);
 
@@ -3555,7 +3693,9 @@ At the end of each of your turns, draw a card",
             Attack = 3,
             Health = 6,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card114);
 
@@ -3588,7 +3728,9 @@ At the end of each of your turns, draw a card",
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card115);
 
@@ -3621,7 +3763,9 @@ At the end of each of your turns, draw a card",
             Attack = 0,
             Health = 5,
             Range = 0,
-            Speed = 1
+            Speed = 1,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card116);
 
@@ -3744,7 +3888,9 @@ At the end of each of your turns, draw a card",
             Attack = 4,
             Health = 8,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card120);
 
@@ -3778,7 +3924,9 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Attack = 3,
             Health = 10,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card121);
 
@@ -3812,7 +3960,9 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Attack = 4,
             Health = 19,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card122);
 
@@ -3846,7 +3996,9 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Attack = 6,
             Health = 25,
             Range = 1,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card123);
 
@@ -3880,7 +4032,9 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Attack = 5,
             Health = 10,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card124);
 
@@ -3944,7 +4098,9 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Attack = 5,
             Health = 20,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card126);
 
@@ -3978,7 +4134,9 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Attack = 7,
             Health = 31,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card127);
 
@@ -4012,7 +4170,9 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Attack = 1,
             Health = 12,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card128);
 
@@ -4046,7 +4206,9 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Attack = 2,
             Health = 12,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card129);
 
@@ -4080,7 +4242,9 @@ Foretell (2 Knowledge): Divinate 1</b>",
             Attack = 2,
             Health = 9,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card130);
 
@@ -4114,7 +4278,9 @@ Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
             Attack = 5,
             Health = 8,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card131);
 
@@ -4148,7 +4314,9 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Attack = 3,
             Health = 12,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card132);
 
@@ -4182,7 +4350,9 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Attack = 6,
             Health = 7,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card133);
 
@@ -4246,7 +4416,9 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             Attack = 2,
             Health = 5,
             Range = 3,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card135);
 
@@ -4279,7 +4451,9 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             Attack = 2,
             Health = 1,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card136);
 
@@ -4313,7 +4487,9 @@ Enrage (3 Energy):</b> Your hero gains +3 Attack until the end of your turn",
             Attack = 1,
             Health = 14,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card137);
 
@@ -4347,7 +4523,9 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Attack = 2,
             Health = 6,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card138);
 
@@ -4470,7 +4648,9 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Attack = 4,
             Health = 6,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card142);
 
@@ -4504,7 +4684,9 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
             Attack = 6,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card143);
 
@@ -4568,7 +4750,9 @@ Cycle -6</b>",
             Attack = 9,
             Health = 9,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card145);
 
@@ -4602,7 +4786,9 @@ Faerie Charm (3 Wild, 2 Devotion, 1 Action):</b> Gain control of an enemy unit w
             Attack = 7,
             Health = 9,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card146);
 
@@ -4636,7 +4822,9 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Attack = 12,
             Health = 12,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card147);
 
@@ -4670,7 +4858,9 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Attack = 2,
             Health = 20,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card148);
 
@@ -4704,7 +4894,9 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Attack = 3,
             Health = 32,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card149);
 
@@ -5009,7 +5201,9 @@ Holy Ritual (1 Action): Prayer +1</b>",
             Attack = 3,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card159);
 
@@ -5043,7 +5237,9 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card160);
 
@@ -5076,7 +5272,9 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
             Attack = 1,
             Health = 2,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card161);
 
@@ -5110,7 +5308,9 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             Attack = 3,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card162);
 
@@ -5174,7 +5374,9 @@ Potion Sale (1 Gold):</b> Add a random potion card to your hand",
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card164);
 
@@ -5238,7 +5440,9 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Attack = 2,
             Health = 5,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card166);
 
@@ -5332,7 +5536,9 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Attack = 3,
             Health = 3,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card169);
 
@@ -5396,7 +5602,9 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
             Attack = 2,
             Health = 10,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card171);
 
@@ -5431,7 +5639,9 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.
             Attack = 4,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card172);
 
@@ -5526,7 +5736,9 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             Attack = 8,
             Health = 8,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card175);
 
@@ -5560,7 +5772,9 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Attack = 3,
             Health = 20,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card176);
 
@@ -5594,7 +5808,9 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Attack = 4,
             Health = 32,
             Range = 2,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card177);
 
@@ -5720,7 +5936,9 @@ Whenever this attacks a unit, reduce its attack by 2 until the start of your nex
             Attack = 1,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card181);
 
@@ -5814,7 +6032,9 @@ Submit Collection (2 Knowledge, 1 Action): Study (3).</b> One of the <b>Inspirat
             Attack = 2,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card184);
 
@@ -5909,7 +6129,9 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Attack = 1,
             Health = 4,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card187);
 
@@ -5973,7 +6195,9 @@ Search Archives (3 Knowledge, 1 Action):</b> Draw an <b>Inspiration</b> card fro
             Attack = 4,
             Health = 5,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card189);
 
@@ -6037,7 +6261,9 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card191);
 
@@ -6102,7 +6328,9 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Attack = 3,
             Health = 3,
             Range = 1,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card193);
 
@@ -6227,7 +6455,9 @@ Deep Exposure (1 Devotion, 2 Knowledge, 1 Action):</b> Deal damage to a unit wit
             Attack = 5,
             Health = 8,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card197);
 
@@ -6264,7 +6494,9 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Attack = 7,
             Health = 7,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card198);
 
@@ -6298,7 +6530,9 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Attack = 4,
             Health = 21,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card199);
 
@@ -6332,7 +6566,9 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Attack = 5,
             Health = 35,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card200);
 
@@ -6395,7 +6631,9 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Attack = 2,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card202);
 
@@ -6429,7 +6667,9 @@ Divine Oath (1 Action): Prayer +1</b>",
             Attack = 2,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card203);
 
@@ -6524,7 +6764,9 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
             Attack = 1,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card206);
 
@@ -6588,7 +6830,9 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Attack = 3,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card208);
 
@@ -6651,7 +6895,9 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Attack = 4,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card210);
 
@@ -6685,7 +6931,9 @@ At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
             Attack = 2,
             Health = 4,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card211);
 
@@ -6719,7 +6967,9 @@ Gain +1 Attack for each tile moved this turn until the end of your turn",
             Attack = 1,
             Health = 3,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card212);
 
@@ -6753,7 +7003,9 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
             Attack = 5,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card213);
 
@@ -6847,7 +7099,9 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Attack = 1,
             Health = 5,
             Range = 0,
-            Speed = 5
+            Speed = 5,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card216);
 
@@ -7062,7 +7316,9 @@ Costs (1) Devotion less for every Angel which has died this game.
             Attack = 6,
             Health = 8,
             Range = 1,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card223);
 
@@ -7096,7 +7352,9 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             Attack = 9,
             Health = 9,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card224);
 
@@ -7130,7 +7388,9 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Attack = 8,
             Health = 15,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card225);
 
@@ -7164,7 +7424,9 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Attack = 8,
             Health = 21,
             Range = 1,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card226);
 
@@ -7198,7 +7460,9 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
             Attack = 2,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card227);
 
@@ -7232,7 +7496,9 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Attack = 3,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card228);
 
@@ -7296,7 +7562,9 @@ Hefty Bribe (4 Gold, 1 Action): Recruit</b> an enemy minion that has a total cos
             Attack = 3,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card230);
 
@@ -7360,7 +7628,9 @@ Deployment:</b> Add 2 Shivs to your hand",
             Attack = 2,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card232);
 
@@ -7394,7 +7664,9 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Attack = 2,
             Health = 4,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card233);
 
@@ -7518,7 +7790,9 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             Attack = 4,
             Health = 3,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card237);
 
@@ -7611,7 +7885,9 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             Attack = 5,
             Health = 5,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card240);
 
@@ -7645,7 +7921,9 @@ Smuggle Target (1 Gold, 1 Action):</b> Return a friendly minion to your hand, or
             Attack = 4,
             Health = 4,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card241);
 
@@ -7679,7 +7957,9 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
             Attack = 4,
             Health = 3,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card242);
 
@@ -7713,7 +7993,9 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Attack = 6,
             Health = 5,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card243);
 
@@ -7746,7 +8028,9 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Attack = 4,
             Health = 1,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card244);
 
@@ -7780,7 +8064,9 @@ Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b
             Attack = 8,
             Health = 6,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card245);
 
@@ -7814,7 +8100,9 @@ Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not le
             Attack = 5,
             Health = 5,
             Range = 0,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card246);
 
@@ -7848,7 +8136,9 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
             Attack = 4,
             Health = 3,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card247);
 
@@ -7913,7 +8203,9 @@ Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b>
             Attack = 2,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card249);
 
@@ -7976,7 +8268,9 @@ Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b>
             Attack = 3,
             Health = 2,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card251);
 
@@ -8010,7 +8304,9 @@ Triage (1 Knowledge, 1 Action):</b> Restore 2 Health to a unit",
             Attack = 1,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card252);
 
@@ -8044,7 +8340,9 @@ Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
             Attack = 3,
             Health = 1,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card253);
 
@@ -8078,7 +8376,9 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Attack = 3,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card254);
 
@@ -8263,7 +8563,9 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
             Attack = 4,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card260);
 
@@ -8359,7 +8661,9 @@ Can target <b>Stealth</b> units
             Attack = 2,
             Health = 3,
             Range = 2,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card263);
 
@@ -8513,7 +8817,9 @@ This unit can target through obstacle terrain",
             Attack = 3,
             Health = 3,
             Range = 4,
-            Speed = 2
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card268);
 
@@ -8549,7 +8855,9 @@ Confiscate (4 Energy, 1 Action):</b> Remove a random card from your opponents ha
             Attack = 5,
             Health = 6,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card269);
 
@@ -8614,7 +8922,9 @@ Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacen
             Attack = 4,
             Health = 4,
             Range = 0,
-            Speed = 4
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card271);
 
@@ -8647,7 +8957,9 @@ Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacen
             Attack = 2,
             Health = 3,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card272);
 
@@ -8681,53 +8993,13 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Attack = 7,
             Health = 9,
             Range = 0,
-            Speed = 3
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
         };
         CardList.Add(card273);
 
-        card24.RelatedCards = new List<CardData> { card21 };
-        card26.RelatedCards = new List<CardData> { card27 };
-        card35.RelatedCards = new List<CardData> { card36 };
-        card37.RelatedCards = new List<CardData> { card36 };
-        card41.RelatedCards = new List<CardData> { card40 };
-        card44.RelatedCards = new List<CardData> { card45 };
-        card47.RelatedCards = new List<CardData> { card36 };
         card54.RelatedCards = new List<CardData> { card55, card56, card57, card58, card59 };
-        card60.RelatedCards = new List<CardData> { card63 };
-        card61.RelatedCards = new List<CardData> { card63 };
-        card62.RelatedCards = new List<CardData> { card63 };
-        card65.RelatedCards = new List<CardData> { card68 };
-        card77.RelatedCards = new List<CardData> { card68 };
-        card78.RelatedCards = new List<CardData> { card64 };
-        card105.RelatedCards = new List<CardData> { card87, card89, card90, card101 };
-        card114.RelatedCards = new List<CardData> { card113 };
-        card124.RelatedCards = new List<CardData> { card125 };
-        card126.RelatedCards = new List<CardData> { card125 };
-        card127.RelatedCards = new List<CardData> { card125 };
-        card135.RelatedCards = new List<CardData> { card136 };
-        card143.RelatedCards = new List<CardData> { card115 };
-        card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
-        card164.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
-        card172.RelatedCards = new List<CardData> { card162 };
-        card173.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
-        card179.RelatedCards = new List<CardData> { card178 };
-        card184.RelatedCards = new List<CardData> { card178 };
-        card201.RelatedCards = new List<CardData> { card202 };
-        card210.RelatedCards = new List<CardData> { card217, card219, card221 };
-        card217.RelatedCards = new List<CardData> { card218 };
-        card219.RelatedCards = new List<CardData> { card220 };
-        card221.RelatedCards = new List<CardData> { card222 };
-        card225.RelatedCards = new List<CardData> { card134 };
-        card226.RelatedCards = new List<CardData> { card134 };
-        card231.RelatedCards = new List<CardData> { card134 };
-        card243.RelatedCards = new List<CardData> { card244 };
-        card249.RelatedCards = new List<CardData> { card248 };
-        card250.RelatedCards = new List<CardData> { card251 };
-        card255.RelatedCards = new List<CardData> { card251 };
-        card259.RelatedCards = new List<CardData> { card256, card257, card258 };
-        card260.RelatedCards = new List<CardData> { card248 };
-        card264.RelatedCards = new List<CardData> { card125 };
-        card271.RelatedCards = new List<CardData> { card272 };
     }
 }
 

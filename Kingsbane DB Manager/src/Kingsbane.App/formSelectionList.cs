@@ -13,7 +13,7 @@ namespace Kingsbane.App
     {
         Tag,
         Synergy,
-        RelatedCard
+        RelatedCard,
     }
 
     public partial class formSelectionList : Form

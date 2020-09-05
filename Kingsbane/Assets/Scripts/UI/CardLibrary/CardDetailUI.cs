@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +36,7 @@ public class CardDetailUI : MonoBehaviour
         {
             relatedCardArea.SetActive(true);
 
-            foreach (var relatedCard in cardData.RelatedCards)
+            foreach (var relatedCard in cardData.RelatedCards.OrderBy(x => x.Name))
             {
                 GameObject relatedCardParent = Instantiate(new GameObject($"Related Card- {relatedCard.Name}", typeof(RectTransform)), relatedCardList.transform);
                 GameManager.instance.libraryManager.CreateCard(relatedCard, relatedCardParent.transform);

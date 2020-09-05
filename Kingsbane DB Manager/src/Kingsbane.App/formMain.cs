@@ -44,15 +44,48 @@ namespace Kingsbane.App
             sb.AppendLine("public class CardLibrary");
             sb.AppendLine("{");
             sb.AppendLine("    public List<CardData> CardList { get; private set; }");
+            sb.AppendLine("    public List<AbilityData> AbilityList { get; private set; }");
             sb.AppendLine("");
             sb.AppendLine("    public void InitLibrary()");
             sb.AppendLine("    {");
             sb.AppendLine("        CardList = new List<CardData>();");
+            sb.AppendLine("        AbilityList = new List<AbilityData>();");
             sb.AppendLine("");
+
+
+
+            var abilityQuery = _context.Abilities;
+
+            foreach (var item in abilityQuery)
+            {
+                var costsAction = item.CostsAction.ToString().ToLower();
+                var abilityText = @$"        var ability{item.Id} = new AbilityData()
+        {{
+            Id = {item.Id},
+            Name = ""{item.Name}"",
+            Text = @""{item.Text.FixQuotes()}"",
+
+            ResourceDevotion = {item.ResourceDevotion.ToNullableInt()},
+            ResourceEnergy = {item.ResourceEnergy.ToNullableInt()},
+            ResourceGold = {item.ResourceGold.ToNullableInt()},
+            ResourceKnowledge = {item.ResourceKnowledge.ToNullableInt()},
+            ResourceMana = {item.ResourceMana.ToNullableInt()},
+            ResourceWild = {item.ResourceWild.ToNullableInt()},
+            ResourceNeutral = {item.ResourceNeutral.ToNullableInt()},
+
+            CostsAction = {costsAction},
+        }};
+            AbilityList.Add(ability{item.Id}); ";
+                sb.AppendLine(abilityText);
+                sb.AppendLine("");
+            }
+
+
 
             var query = _context.Cards
                 .Include(x => x.Tags).ThenInclude(x => x.Tag)
                 .Include(x => x.Synergies).ThenInclude(x => x.Synergy)
+                .Include(x => x.RelatedCards).ThenInclude(x => x.RelatedCard)
                 .Include(x => x.Set)
                 .Include(x => x.Units)
                 .Include(x => x.Spells)
@@ -92,6 +125,8 @@ namespace Kingsbane.App
                     case Database.Enums.CardTypes.Unit:
                         var unit = item.Units.FirstOrDefault();
 
+                        var unitAbilities = string.Join(",", unit.Abilities.Select(x => $"ability{x.Id}"));
+
                         sb.AppendLine($"        var card{item.Id} = new UnitData()");
                         sb.AppendLine("        {");
                         sb.AppendLine(commonCard);
@@ -99,7 +134,9 @@ namespace Kingsbane.App
                         sb.AppendLine($"            Attack = {unit?.Attack??0},");
                         sb.AppendLine($"            Health = {unit?.Health ?? 0},");
                         sb.AppendLine($"            Range = {unit?.Range ?? 0},");
-                        sb.AppendLine($"            Speed = {unit?.Speed ?? 0}");
+                        sb.AppendLine($"            Speed = {unit?.Speed ?? 0},");
+                        sb.AppendLine($"");
+                        sb.AppendLine($"            Abilities = new List<AbilityData>() {{{unitAbilities}}},");
                         sb.AppendLine("        };");
                         break;
                     case Database.Enums.CardTypes.Spell:
@@ -133,7 +170,8 @@ namespace Kingsbane.App
 
             foreach (var item in query)
             {
-                var relatedCards = string.Join(",", _context.RelatedCards.Where(x => x.CardId == item.Id).Select(x => $"card{x.RelatedCardId}"));
+                //_context.RelatedCards.Where(x => x.CardId == item.Id).
+                var relatedCards = string.Join(",", item.RelatedCards.Select(x => $"card{x.RelatedCardId}"));
 
                 if (string.IsNullOrWhiteSpace(relatedCards))
                 {

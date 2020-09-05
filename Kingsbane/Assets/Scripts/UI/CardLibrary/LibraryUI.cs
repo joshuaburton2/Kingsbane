@@ -402,11 +402,13 @@ public class LibraryUI : MonoBehaviour
         {
             uncollectableText.text = "Hide Uncollectable Cards";
             activeFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+            activeFilter.RaritiyFilter.Add(Rarity.Hero);
         }
         else
         {
             uncollectableText.text = "Show Uncollectable Cards";
             activeFilter.RaritiyFilter.Remove(Rarity.Uncollectable);
+            activeFilter.RaritiyFilter.Remove(Rarity.Hero);
         }
 
         InitTabs();

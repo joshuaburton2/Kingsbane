@@ -69,6 +69,9 @@
             this.lblType = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.grpUnit = new System.Windows.Forms.GroupBox();
+            this.btnAddAbility = new System.Windows.Forms.Button();
+            this.lstAbilities = new System.Windows.Forms.ListBox();
+            this.lblAbilities = new System.Windows.Forms.Label();
             this.txtSpeed = new System.Windows.Forms.TextBox();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.txtRange = new System.Windows.Forms.TextBox();
@@ -127,7 +130,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(430, 964);
+            this.buttonSave.Location = new System.Drawing.Point(430, 1028);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -138,7 +141,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(518, 964);
+            this.buttonCancel.Location = new System.Drawing.Point(518, 1028);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -149,7 +152,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(606, 964);
+            this.buttonDelete.Location = new System.Drawing.Point(606, 1028);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -468,6 +471,9 @@
             // 
             // grpUnit
             // 
+            this.grpUnit.Controls.Add(this.btnAddAbility);
+            this.grpUnit.Controls.Add(this.lstAbilities);
+            this.grpUnit.Controls.Add(this.lblAbilities);
             this.grpUnit.Controls.Add(this.txtSpeed);
             this.grpUnit.Controls.Add(this.lblSpeed);
             this.grpUnit.Controls.Add(this.txtRange);
@@ -481,10 +487,39 @@
             this.grpUnit.Enabled = false;
             this.grpUnit.Location = new System.Drawing.Point(12, 755);
             this.grpUnit.Name = "grpUnit";
-            this.grpUnit.Size = new System.Drawing.Size(651, 61);
+            this.grpUnit.Size = new System.Drawing.Size(651, 125);
             this.grpUnit.TabIndex = 22;
             this.grpUnit.TabStop = false;
             this.grpUnit.Text = "Unit Fields";
+            // 
+            // btnAddAbility
+            // 
+            this.btnAddAbility.Location = new System.Drawing.Point(318, 64);
+            this.btnAddAbility.Name = "btnAddAbility";
+            this.btnAddAbility.Size = new System.Drawing.Size(32, 23);
+            this.btnAddAbility.TabIndex = 6;
+            this.btnAddAbility.Text = "+";
+            this.btnAddAbility.UseVisualStyleBackColor = true;
+            this.btnAddAbility.Click += new System.EventHandler(this.btnAddAbility_Click);
+            // 
+            // lstAbilities
+            // 
+            this.lstAbilities.FormattingEnabled = true;
+            this.lstAbilities.ItemHeight = 15;
+            this.lstAbilities.Location = new System.Drawing.Point(83, 64);
+            this.lstAbilities.Name = "lstAbilities";
+            this.lstAbilities.Size = new System.Drawing.Size(229, 49);
+            this.lstAbilities.TabIndex = 5;
+            this.lstAbilities.DoubleClick += new System.EventHandler(this.lstAbilities_DoubleClick);
+            // 
+            // lblAbilities
+            // 
+            this.lblAbilities.AutoSize = true;
+            this.lblAbilities.Location = new System.Drawing.Point(6, 64);
+            this.lblAbilities.Name = "lblAbilities";
+            this.lblAbilities.Size = new System.Drawing.Size(49, 15);
+            this.lblAbilities.TabIndex = 4;
+            this.lblAbilities.Text = "Abilities";
             // 
             // txtSpeed
             // 
@@ -572,7 +607,7 @@
             this.grpItem.Controls.Add(this.lblDurability);
             this.grpItem.Controls.Add(this.txtItemTag);
             this.grpItem.Controls.Add(this.lblItemTag);
-            this.grpItem.Location = new System.Drawing.Point(10, 889);
+            this.grpItem.Location = new System.Drawing.Point(10, 953);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(651, 61);
             this.grpItem.TabIndex = 22;
@@ -617,7 +652,7 @@
             this.grpSpell.Controls.Add(this.lblSpellRange);
             this.grpSpell.Controls.Add(this.txtSpellType);
             this.grpSpell.Controls.Add(this.lblSpellType);
-            this.grpSpell.Location = new System.Drawing.Point(12, 822);
+            this.grpSpell.Location = new System.Drawing.Point(12, 886);
             this.grpSpell.Name = "grpSpell";
             this.grpSpell.Size = new System.Drawing.Size(651, 61);
             this.grpSpell.TabIndex = 22;
@@ -775,7 +810,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 998);
+            this.ClientSize = new System.Drawing.Size(700, 1061);
             this.Controls.Add(this.btnAddRelatedCard);
             this.Controls.Add(this.lstRelatedCards);
             this.Controls.Add(this.lblRelatedCards);
@@ -921,5 +956,8 @@
         private System.Windows.Forms.Label lblRelatedCards;
         private System.Windows.Forms.ListBox lstRelatedCards;
         private System.Windows.Forms.Button btnAddRelatedCard;
+        private System.Windows.Forms.ListBox lstAbilities;
+        private System.Windows.Forms.Label lblAbilities;
+        private System.Windows.Forms.Button btnAddAbility;
     }
 }
