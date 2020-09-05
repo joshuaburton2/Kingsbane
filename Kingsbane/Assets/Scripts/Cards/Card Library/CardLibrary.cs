@@ -8999,7 +8999,49 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         };
         CardList.Add(card273);
 
+        card24.RelatedCards = new List<CardData> { card21 };
+        card26.RelatedCards = new List<CardData> { card27 };
+        card35.RelatedCards = new List<CardData> { card36 };
+        card37.RelatedCards = new List<CardData> { card36 };
+        card41.RelatedCards = new List<CardData> { card40 };
+        card44.RelatedCards = new List<CardData> { card45 };
+        card47.RelatedCards = new List<CardData> { card36 };
         card54.RelatedCards = new List<CardData> { card55, card56, card57, card58, card59 };
+        card60.RelatedCards = new List<CardData> { card63 };
+        card61.RelatedCards = new List<CardData> { card63 };
+        card62.RelatedCards = new List<CardData> { card63 };
+        card65.RelatedCards = new List<CardData> { card68 };
+        card77.RelatedCards = new List<CardData> { card68 };
+        card78.RelatedCards = new List<CardData> { card64 };
+        card105.RelatedCards = new List<CardData> { card87, card89, card90, card101 };
+        card114.RelatedCards = new List<CardData> { card113 };
+        card124.RelatedCards = new List<CardData> { card125 };
+        card126.RelatedCards = new List<CardData> { card125 };
+        card127.RelatedCards = new List<CardData> { card125 };
+        card135.RelatedCards = new List<CardData> { card136 };
+        card143.RelatedCards = new List<CardData> { card115 };
+        card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card164.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card172.RelatedCards = new List<CardData> { card162 };
+        card173.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
+        card179.RelatedCards = new List<CardData> { card178 };
+        card184.RelatedCards = new List<CardData> { card178 };
+        card201.RelatedCards = new List<CardData> { card202 };
+        card210.RelatedCards = new List<CardData> { card217, card219, card221 };
+        card217.RelatedCards = new List<CardData> { card218 };
+        card219.RelatedCards = new List<CardData> { card220 };
+        card221.RelatedCards = new List<CardData> { card222 };
+        card225.RelatedCards = new List<CardData> { card134 };
+        card226.RelatedCards = new List<CardData> { card134 };
+        card231.RelatedCards = new List<CardData> { card134 };
+        card243.RelatedCards = new List<CardData> { card244 };
+        card249.RelatedCards = new List<CardData> { card248 };
+        card250.RelatedCards = new List<CardData> { card251 };
+        card255.RelatedCards = new List<CardData> { card251 };
+        card259.RelatedCards = new List<CardData> { card256, card257, card258 };
+        card260.RelatedCards = new List<CardData> { card248 };
+        card264.RelatedCards = new List<CardData> { card125 };
+        card271.RelatedCards = new List<CardData> { card272 };
     }
 }
 
