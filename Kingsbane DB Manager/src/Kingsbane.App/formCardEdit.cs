@@ -37,9 +37,12 @@ namespace Kingsbane.App
             {
                 this.Text = $"Edit Card: {Id}";
                 card = _context.Cards
-                    .Include(x => x.Units)
+                    .Include(x => x.Units).ThenInclude(x => x.Abilities)
                     .Include(x => x.Spells)
                     .Include(x => x.Items)
+                    .Include(x => x.Tags).ThenInclude(x => x.Tag)
+                    .Include(x => x.Synergies).ThenInclude(x => x.Synergy)
+                    .Include(x => x.RelatedCards).ThenInclude(x => x.RelatedCard)
                     .Single(x => x.Id == Id);
 
                 switch (card.CardTypeId)
@@ -228,17 +231,33 @@ namespace Kingsbane.App
 
         private void UpdateListBoxes()
         {
-            var tags = _context.CardTags.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Tag.Id, Name = x.Tag.Name }).ToArray();
+            //_context.CardTags.Where(x => x.CardId == card.Id)
+            var tags = card.Tags.Select(x => new SelectListItem { Id = x.Tag.Id, Name = x.Tag.Name }).ToArray();
             lstTags.Items.Clear();
             lstTags.Items.AddRange(tags);
 
-            var synergies = _context.CardSynergies.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.Synergy.Id, Name = x.Synergy.Name }).ToArray();
+            //_context.CardSynergies.Where(x => x.CardId == card.Id).
+            var synergies = card.Synergies.Select(x => new SelectListItem { Id = x.Synergy.Id, Name = x.Synergy.Name }).ToArray();
             lstSynergies.Items.Clear();
             lstSynergies.Items.AddRange(synergies);
 
-            var relatedCards = _context.RelatedCards.Where(x => x.CardId == card.Id).Select(x => new SelectListItem { Id = x.RelatedCard.Id, Name = x.RelatedCard.Name }).ToArray();
+            //_context.RelatedCards.Where(x => x.CardId == card.Id).
+            var relatedCards = card.RelatedCards.Select(x => new SelectListItem { Id = x.RelatedCard.Id, Name = x.RelatedCard.Name }).ToArray();
             lstRelatedCards.Items.Clear();
             lstRelatedCards.Items.AddRange(relatedCards);
+
+            lstAbilities.Items.Clear();
+            if (card.CardTypeId == CardTypes.Unit)
+            {
+                RefreshAbilityList();
+            }
+        }
+
+        private void RefreshAbilityList()
+        {
+            lstAbilities.Items.Clear();
+            var abilities = card.Units.FirstOrDefault().Abilities.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+            lstAbilities.Items.AddRange(abilities);
         }
         #endregion
 
@@ -273,13 +292,15 @@ namespace Kingsbane.App
 
             foreach (var tagId in cardTagIDs)
             {
-                var cardTag = Id.HasValue ? _context.CardTags.SingleOrDefault(x => x.CardId == Id.Value && x.TagId == tagId) : null;
+                //var cardTag = Id.HasValue ? _context.CardTags.SingleOrDefault(x => x.CardId == Id.Value && x.TagId == tagId) : null;
+                var cardTag = Id.HasValue ? card.Tags.SingleOrDefault(x => x.TagId == tagId) : null;
                 if (cardTag == null)
                     _context.CardTags.Add(new CardTag { Card = card, TagId = tagId });
             }
             if (Id.HasValue)
             {
-                var cardTags = _context.CardTags.Where(x => x.CardId == Id.Value && !cardTagIDs.Contains(x.TagId));
+                //var cardTags = _context.CardTags.Where(x => x.CardId == Id.Value && !cardTagIDs.Contains(x.TagId));
+                var cardTags = card.Tags.Where(x => !cardTagIDs.Contains(x.TagId));
                 _context.CardTags.RemoveRange(cardTags);
             }
             #endregion
@@ -289,13 +310,15 @@ namespace Kingsbane.App
 
             foreach (var synergyId in cardSyngeryIDs)
             {
-                var cardSynergy = Id.HasValue ? _context.CardSynergies.SingleOrDefault(x => x.CardId == Id.Value && x.SynergyId == synergyId) : null;
+                //var cardSynergy = Id.HasValue ? _context.CardSynergies.SingleOrDefault(x => x.CardId == Id.Value && x.SynergyId == synergyId) : null;
+                var cardSynergy = Id.HasValue ? card.Synergies.SingleOrDefault(x => x.SynergyId == synergyId) : null;
                 if (cardSynergy == null)
                     _context.CardSynergies.Add(new CardSynergy { Card = card, SynergyId = synergyId });
             }
             if (Id.HasValue)
             {
-                var cardSynergies = _context.CardSynergies.Where(x => x.CardId == Id.Value && !cardSyngeryIDs.Contains(x.SynergyId));
+                //var cardSynergies = _context.CardSynergies.Where(x => x.CardId == Id.Value && !cardSyngeryIDs.Contains(x.SynergyId));
+                var cardSynergies = card.Synergies.Where(x => !cardSyngeryIDs.Contains(x.SynergyId));
                 _context.CardSynergies.RemoveRange(cardSynergies);
             }
             #endregion
@@ -305,13 +328,15 @@ namespace Kingsbane.App
 
             foreach (var relatedCardId in relatedCardIDs)
             {
-                var relatedCard = Id.HasValue ? _context.RelatedCards.SingleOrDefault(x => x.CardId == Id.Value && x.RelatedCardId == relatedCardId) : null;
+                //var relatedCard = Id.HasValue ? _context.RelatedCards.SingleOrDefault(x => x.CardId == Id.Value && x.RelatedCardId == relatedCardId) : null;
+                var relatedCard = Id.HasValue ? card.RelatedCards.SingleOrDefault(x => x.RelatedCardId == relatedCardId) : null;
                 if (relatedCard == null)
                     _context.RelatedCards.Add(new RelatedCards { Card = card, RelatedCardId = relatedCardId });
             }
             if (Id.HasValue)
             {
-                var relatedCards = _context.RelatedCards.Where(x => x.CardId == Id.Value && !relatedCardIDs.Contains(x.RelatedCardId));
+                //var relatedCards = _context.RelatedCards.Where(x => x.CardId == Id.Value && !relatedCardIDs.Contains(x.RelatedCardId));
+                var relatedCards = _context.RelatedCards.Where(x => !relatedCardIDs.Contains(x.RelatedCardId));
                 _context.RelatedCards.RemoveRange(relatedCards);
             }
             #endregion
@@ -364,6 +389,14 @@ namespace Kingsbane.App
                     cardUnit.Range = GetStat(txtRange);
                     cardUnit.Speed = GetStat(txtSpeed);
                     cardUnit.UnitTag = txtUnitTag.Text;
+
+                    var abilityIds = lstAbilities.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+                    foreach (var abilityId in abilityIds)
+                    {
+                        var ability = _context.Abilities.FirstOrDefault(x => x.Id == abilityId);
+                        ability.Card = cardUnit;
+                        cardUnit.Abilities.Add(ability);
+                    }
 
                     break;
                 case CardTypes.Spell:
@@ -516,6 +549,12 @@ namespace Kingsbane.App
 
             if (result == DialogResult.Yes)
             {
+                if(sender == lstAbilities)
+                {
+                    _context.Abilities.Remove(_context.Abilities.FirstOrDefault(x => x.Id == selectedRecord.Id));
+                    _context.SaveChanges();
+                }
+
                 listBox.Items.Remove(listBox.SelectedItems[0]);
             }
         }
@@ -524,5 +563,36 @@ namespace Kingsbane.App
         {
             SetActiveTypeFields((CardTypes)((SelectListItem)cmbType.SelectedItem).Id);
         }
+
+        private void btnAddAbility_Click(object sender, EventArgs e)
+        {
+            EditAbility(null);
+        }
+
+        private void lstAbilities_DoubleClick(object sender, EventArgs e)
+        {
+            var listBox = (ListBox)sender;
+            var selectedAbility = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
+            EditAbility(selectedAbility.Id);
+        }
+
+        private void EditAbility(int? id)
+        {
+            var formEditAbility = _serviceProvider.GetRequiredService<formEditAbility>();
+            formEditAbility.Id = id;
+            var result = formEditAbility.ShowDialog(this);
+
+            if (result == DialogResult.OK && !lstAbilities.Items.Cast<SelectListItem>().ToList().Contains(formEditAbility.selectionItem))
+            {
+                lstAbilities.Items.Add(formEditAbility.selectionItem);
+            }
+
+            if(result == DialogResult.Abort)
+            {
+                lstAbilities.Items.Remove(formEditAbility.selectionItem);
+            }
+        }
+
+
     }
 }

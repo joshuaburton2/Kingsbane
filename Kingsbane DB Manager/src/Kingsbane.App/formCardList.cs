@@ -91,5 +91,11 @@ namespace Kingsbane.App
 
             return cardQuery.ToList();
         }
+
+        private void formCardList_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            formMain formMain = new formMain(_serviceProvider, _context);
+            formMain.Show();
+        }
     }
 }

@@ -202,7 +202,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                     foreach (var ability in abilities)
                     {
                         var actionText = ability.CostsAction ? ", 1 Action" : "";
-                        var abilityText = $"{ability.Name}({GenerateResourceText(ability.GetResources)}{actionText}): {ability.Text}";
+                        var abilityText = $"<b>{ability.Name} ({GenerateResourceText(ability.GetResources)}{actionText}):</b> {ability.Text}";
                         cardText.text = $"{cardText.text}\n{abilityText}";
                     }
                 }
@@ -237,15 +237,16 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         foreach (var resource in resourceList)
         {
             var resourceVal = resource.Value.ToString().Replace("-", "");
-            resourceString += $" {resourceVal} {resource.ResourceType},";
+            resourceString += $"{resourceVal} {resource.ResourceType},";
         }
 
-        // Remove the last comma from the resource text
+        // Remove the first space last comma from the resource text
         if (resourceString.Length != 0)
         {
             resourceString = resourceString.Remove(resourceString.Length - 1);
         }
-        
+
+        resourceString = resourceString.Replace(",", ", ");
 
         return resourceString;
     }
