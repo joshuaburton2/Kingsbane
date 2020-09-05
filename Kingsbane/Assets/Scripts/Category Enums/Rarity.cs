@@ -9,6 +9,7 @@
         Epic,
         Legendary,
         Uncollectable,
-        Hero
+        Hero,
+        NPCHero
     }
 }

@@ -76,3 +76,5 @@ Kingsbane DB Manager/src/Kingsbane.Database/obj/Debug/netstandard2.0/Kingsbane.D
 Kingsbane DB Manager/src/Kingsbane.App/obj/Debug/netcoreapp3.1/Kingsbane.App.csprojAssemblyReference.cache
 
 Kingsbane/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+
+Kingsbane/Assembly-CSharp.csproj

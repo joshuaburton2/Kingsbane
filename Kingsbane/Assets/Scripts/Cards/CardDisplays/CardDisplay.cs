@@ -1,58 +1,19 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 using CategoryEnums;
-
-
-/// <summary>
-/// 
-/// Object for storing the rarity border colour for a class's hero
-/// 
-/// </summary>
-[System.Serializable]
-public class ClassColour
-{
-    public Classes.ClassList Class;
-    public Color classColour;
-
-    ClassColour()
-    {
-        Class = Classes.ClassList.Default;
-        classColour = new Color();
-    }
-}
-
-
-/// <summary>
-/// 
-/// Object for storing the rarity border colour based on the rarity of the card
-/// 
-/// </summary>
-[System.Serializable]
-public class RarityColour
-{
-    public Rarity Rarity;
-    public Color rarityColour;
-
-    RarityColour()
-    {
-        Rarity = Rarity.Default;
-        rarityColour = new Color();
-    }
-}
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 
 /// Script for displaying the card information in a UI Panel
 /// 
 /// </summary>
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField]
-    private Card card;
+    public Card card;
 
     [Header("Main Card Objects")]
     [SerializeField]
@@ -65,7 +26,8 @@ public class CardDisplay : MonoBehaviour
     private TextMeshProUGUI classText;
     [SerializeField]
     private TextMeshProUGUI cardText;
-
+    [SerializeField]
+    private Image cardBackground;
     [SerializeField]
     private Image cardImage;
     [SerializeField]
@@ -95,26 +57,12 @@ public class CardDisplay : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI durabilityText;
 
-    [Header("Border Colours")]
-    [SerializeField]
-    RarityColour commonRarity;
-    [SerializeField]
-    RarityColour uncommonRarity;
-    [SerializeField]
-    RarityColour rareRarity;
-    [SerializeField]
-    RarityColour epicRarity;
-    [SerializeField]
-    RarityColour legendaryRarity;
-
-    [Header("Hero Border Colours")]
-    [SerializeField]
-    private ClassColour[] classColours = new ClassColour[Classes.NUM_CLASSES];
+    [Header("Other Props")]
+    public bool isClickable = true;
 
     private void Awake()
     {
         ResetProps();
-        InitDisplay();
     }
 
     /// <summary>
@@ -126,12 +74,13 @@ public class CardDisplay : MonoBehaviour
     public void InitDisplay()
     {
         cardName.text = card.CardName;
-        classText.text = card.cardClass.ToString();
-        cardText.text = card.mainText;
+        classText.text = card.CardClass.ToString();
+        cardText.text = card.Text;
         cardImage.sprite = card.cardArt;
 
         UpdateCardType();
         UpdateRarityBorder();
+        UpdateCardBackground();
 
         UpdateProperties();
     }
@@ -157,12 +106,12 @@ public class CardDisplay : MonoBehaviour
     {
         string subTextString;
 
-        switch (card.type)
+        switch (card.Type)
         {
             case CardTypes.Unit:
                 Unit unitCard = (card as Unit);
 
-                if (card.rarity == Rarity.Hero)
+                if (card.Rarity == Rarity.Hero)
                 {
                     subTextString = "Hero - ";
                 }
@@ -177,6 +126,8 @@ public class CardDisplay : MonoBehaviour
                 unitProps.SetActive(true);
                 break;
             case CardTypes.Spell:
+                Spell spellCard = (card as Spell);
+
                 subTextString = "Spell";
 
                 ResetProps();
@@ -205,53 +156,24 @@ public class CardDisplay : MonoBehaviour
     /// </summary>
     private void UpdateRarityBorder()
     {
-        Color rarityColour;
+        Color borderColour;
 
-        switch (card.rarity)
-        {
-            case Rarity.Uncollectable:
-            case Rarity.Common:
-                rarityColour = commonRarity.rarityColour;
-                break;
-            case Rarity.Uncommon:
-                rarityColour = uncommonRarity.rarityColour;
-                break;
-            case Rarity.Rare:
-                rarityColour = rareRarity.rarityColour;
-                break;
-            case Rarity.Epic:
-                rarityColour = epicRarity.rarityColour;
-                break;
-            case Rarity.Legendary:
-                rarityColour = legendaryRarity.rarityColour;
-                break;
-            case Rarity.Hero:
-                rarityColour = GetClassColour(card.cardClass);
-                break;
-            default:
-                rarityColour = new Color(1f, 1f, 1f);
-                break;
-        }
+        if (card.Rarity == Rarity.Hero || card.Rarity == Rarity.NPCHero)
+            borderColour = GameManager.instance.colourManager.GetClassColour(card.CardClass);
+        else
+            borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity);
 
-        rarityBorder.color = rarityColour;
+        rarityBorder.color = borderColour;
     }
 
     /// <summary>
     /// 
-    /// Obtain a particular classes colour for their hero rarity border
+    /// Update the colour of the card background
     /// 
     /// </summary>
-    private Color GetClassColour(Classes.ClassList neededClass)
+    private void UpdateCardBackground()
     {
-        foreach (ClassColour classColour in classColours)
-        {
-            if (classColour.Class == neededClass)
-            {
-                return classColour.classColour;
-            }
-        }
-
-        return new Color(1f, 1f, 1f);
+        cardBackground.color = GameManager.instance.colourManager.GetClassColour(card.CardClass);
     }
 
     /// <summary>
@@ -262,29 +184,40 @@ public class CardDisplay : MonoBehaviour
     [ContextMenu("Update Properties")]
     public void UpdateProperties()
     {
-        UpdateResourceText();
+        resourceText.text = GenerateResourceText(card.ResourceCost);
 
-        switch (card.type)
+        switch (card.Type)
         {
             case CardTypes.Unit:
                 Unit unitCard = card as Unit;
 
-                attackText.text = unitCard.Attack.ToString();
-                healthText.text = unitCard.Health.ToString();
-                unitRangeText.text = unitCard.Range.ToString();
-                speedText.text = unitCard.Speed.ToString();
+                attackText.text = $"Attack: {unitCard.Attack}";
+                healthText.text = $"Health: {unitCard.Health}";
+                unitRangeText.text = $"Range: {unitCard.Range}";
+                speedText.text = $"Speed: {unitCard.Speed}";
+
+                List<AbilityData> abilities = unitCard.Abilities;
+                if (abilities != null)
+                {
+                    foreach (var ability in abilities)
+                    {
+                        var actionText = ability.CostsAction ? ", 1 Action" : "";
+                        var abilityText = $"{ability.Name}({GenerateResourceText(ability.GetResources)}{actionText}): {ability.Text}";
+                        cardText.text = $"{cardText.text}\n{abilityText}";
+                    }
+                }
 
                 break;
             case CardTypes.Spell:
                 Spell spellCard = card as Spell;
 
-                spellRangeText.text = spellCard.SpellRange.ToString();
+                spellRangeText.text = $"Range: {spellCard.SpellRange}";
 
                 break;
             case CardTypes.Item:
                 Item itemCard = card as Item;
 
-                durabilityText.text = itemCard.Durability.ToString();
+                durabilityText.text = $"Durability: {itemCard.Durability}";
 
                 break;
             default:
@@ -297,21 +230,32 @@ public class CardDisplay : MonoBehaviour
     /// Update the resource text to include the resource words
     /// 
     /// </summary>
-    private void UpdateResourceText()
+    private string GenerateResourceText(List<Resource> resourceList)
     {
-        int[] cardResources = card.ResourceCost;
-
         string resourceString = "";
 
-        for (int resourceIndex = 0; resourceIndex < card.NUM_RESOURCES; resourceIndex++)
+        foreach (var resource in resourceList)
         {
-            if (cardResources[resourceIndex] != card.DEFAULT_VAL)
-            {
-                resourceString += " " + cardResources[resourceIndex].ToString() + ((CardResources)resourceIndex).ToString();
-            }
+            var resourceVal = resource.Value.ToString().Replace("-", "");
+            resourceString += $" {resourceVal} {resource.ResourceType},";
         }
 
-        resourceText.text = resourceString;
+        // Remove the last comma from the resource text
+        if (resourceString.Length != 0)
+        {
+            resourceString = resourceString.Remove(resourceString.Length - 1);
+        }
+        
+
+        return resourceString;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(eventData.button == PointerEventData.InputButton.Right && isClickable)
+        {
+            GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
+        }
     }
 }
 

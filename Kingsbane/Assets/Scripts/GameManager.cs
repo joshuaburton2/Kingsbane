@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public LibraryManager libraryManager;
+    public IconManager iconManager;
+    public UIManager uiManager;
+    public DeckManager deckManager;
+    public ColourManager colourManager;
+
     private void Awake()
     {
         if(instance == null)

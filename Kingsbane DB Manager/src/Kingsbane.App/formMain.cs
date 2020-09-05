@@ -39,14 +39,16 @@ namespace Kingsbane.App
         {
             var sb = new StringBuilder();
             sb.AppendLine("using System.Collections.Generic;");
-            sb.AppendLine("using UnityEngine;");
             sb.AppendLine("using CategoryEnums;");
             sb.AppendLine("");
-            sb.AppendLine("public class CardLibrary : MonoBehaviour");
+            sb.AppendLine("public class CardLibrary");
             sb.AppendLine("{");
-            sb.AppendLine("    public List<CardData> CardList { get; }");
-            sb.AppendLine("    private void Start()");
+            sb.AppendLine("    public List<CardData> CardList { get; private set; }");
+            sb.AppendLine("");
+            sb.AppendLine("    public void InitLibrary()");
             sb.AppendLine("    {");
+            sb.AppendLine("        CardList = new List<CardData>();");
+            sb.AppendLine("");
 
             var query = _context.Cards
                 .Include(x => x.Tags).ThenInclude(x => x.Tag)

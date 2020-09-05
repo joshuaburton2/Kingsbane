@@ -1,48 +1,45 @@
 ﻿using CategoryEnums;
 using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    public CardData cardData;
 
-    public int ID { get { return iD; } }
-    public int iD = -1; //ID of the card in the card library. Should have no reference in gameplay
-    public string CardName { get { return name; } }
-    [SerializeField]
-    private string cardName = "Default";
+    public int Id { get { return cardData.Id; } }
+    public string CardName { get { return cardData.Name; } }
 
-    public Rarity rarity = Rarity.Default;
-    public CardTypes type = CardTypes.Default;
-    public Classes.ClassList cardClass = Classes.ClassList.Default;
+    public Rarity Rarity { get { return cardData.Rarity; } }
+    public CardTypes Type { get { return cardData.CardType; } }
+    public Classes.ClassList CardClass { get { return cardData.Class; } }
+    public Sets Set { get { return cardData.Set; } }
 
     public Sprite cardArt;
-    private string artLocation;
+    private string ImageLocation { get { return cardData.ImageLocation; } }
 
-    public List<Tags> Tags { get; private set; }
-
-    public List<Synergies> Syngergies { get; private set; }
+    public List<Tags> Tags { get { return cardData.Tags; } }
+    public List<Synergies> Syngergies { get { return cardData.Synergies; } }
+    public List<CardData> RelatedCards { get { return cardData.RelatedCards; } }
 
     public Player Owner { get; private set; }
 
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
     //The resource cost should always be set to the default cost at the start of each game.
-    //The resources in order are Devotion, Energy, Gold, Knowledge, Mana, Wild, Neutral. 
-    //Neutral cost is depricated but kept in for use in IsPlayable function. May be added again
-    [SerializeField]
-    public int[] DefaultCost; //Change this to be a list of object containers
-    [SerializeField]
-    public int[] ResourceCost { get; private set; }
+    public List<Resource> DefaultCost { get { return cardData.GetResources; } }
+    public List<Resource> ResourceCost { get; private set; }
     public List<CardResources> Resources { get; private set; }
-    public readonly int DEFAULT_VAL = -1;
-    public readonly int NUM_RESOURCES = 7;
 
-    public string mainText = "";
+    public string Text { get { return cardData.Text; } }
+    public string LoreText { get { return cardData.LoreText; } }
+    public string Notes { get { return cardData.Notes; } }
 
-    private void Awake()
+    public void InitCard()
     {
-
+        ResourceInit();
     }
 
     /// <summary>
@@ -52,19 +49,13 @@ public class Card : MonoBehaviour
     /// </summary>
     private void ResourceInit()
     {
-        DefaultCost = new int[NUM_RESOURCES];
-        ResourceCost = new int[NUM_RESOURCES];
+        ResourceCost = new List<Resource>();
         Resources = new List<CardResources>();
-
-        for (int resourceIndex = 0; resourceIndex < DefaultCost.Length; resourceIndex++)
+        foreach (var resource in DefaultCost)
         {
-            if (DefaultCost[resourceIndex] != 0)
-            {
-                Resources.Add((CardResources)resourceIndex);
-            }
+            ResourceCost.Add(new Resource(resource));
+            Resources.Add(resource.ResourceType);
         }
-
-        ResourceCost = DefaultCost;
     }
 
     /// <summary>
@@ -77,46 +68,44 @@ public class Card : MonoBehaviour
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        int[] playerResources = Owner.resources;
+        List<Resource> playerResources = Owner.resources;
 
         //The resource differences will be the difference between the player's current resources and their mandatory spending
         //of their resources based on the cost of the card
-        int[] resourceDifferences = new int[playerResources.Length];
+        List<Resource> resourceDifferences = new List<Resource>();
 
-        for (int resourceID = 0; resourceID < ResourceCost.Length; resourceID++)
+        foreach (Resource resource in ResourceCost)
         {
-            //Calculate the resource difference. Calculated here even if the cost is 0 since needs a value for all resource types
-            resourceDifferences[resourceID] = playerResources[resourceID] - ResourceCost[resourceID];
-
-            //Tests if the resource actually has a cost of that type
-            if (ResourceCost[resourceID] != 0)
+            //Tests if the current resource is not a neutral cost
+            if (resource.ResourceType != CardResources.Neutral)
             {
-                //Tests if the current resource is not a neutral cost
-                if (resourceID != ResourceCost.Length - 1)
-                {
-                    //If the difference between the cost of a card and the player's resource is less than 0, this means the card cannot be played
-                    if (resourceDifferences[resourceID] < 0)
-                    {
-                        return false;
-                    }
-                }
-                //Case for if the card has a neutral cost
-                else
-                {
-                    //Loops through all the resource difference values
-                    foreach (int resourceDifference in resourceDifferences)
-                    {
-                        //If the player has enough resources remaining after spending the mandatory cost of the card, they can play
-                        //the card
-                        if(resourceDifference - ResourceCost[resourceID] > 0)
-                        {
-                            return true;
-                        }
-                    }
+                //Calculate the resource difference
+                Resource resourceDif = Owner.CalcNewResource(resource);
+                resourceDifferences.Add(resourceDif);
 
-                    //If none of the player's resources have the neutral cost remaining after spending the mandatory cost of the card, returns false
+                //If the difference between the cost of a card and the player's resource is less than 0, this means the card cannot be played
+                if (resourceDif.Value < 0)
+                {
                     return false;
                 }
+            }
+            //Case for if the card has a neutral cost
+            else
+            {
+
+                //Loops through all the resource difference values. Note that this will be filled since Neutral Resource is the last resource checked
+                foreach (Resource resourceDifference in resourceDifferences)
+                {
+                    //If the player has enough resources remaining after spending the mandatory cost of the card, they can play
+                    //the card
+                    if (resourceDifference.Value - ResourceCost.First(x => x.ResourceType == resourceDifference.ResourceType).Value > 0)
+                    {
+                        return true;
+                    }
+                }
+
+                //If none of the player's resources have the neutral cost remaining after spending the mandatory cost of the card, returns false
+                return false;
             }
         }
 
@@ -126,6 +115,9 @@ public class Card : MonoBehaviour
 
     public virtual void Play()
     {
-
+        foreach (var resource in ResourceCost)
+        {
+            Owner.ModifyResources(resource);
+        }
     }
 }
