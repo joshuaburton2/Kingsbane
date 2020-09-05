@@ -13,6 +13,8 @@ namespace Kingsbane.Database.Models
             Spells = new HashSet<CardSpell>();
             Units = new HashSet<CardUnit>();
             Synergies = new HashSet<CardSynergy>();
+            Tags = new HashSet<CardTag>();
+            RelatedCards = new HashSet<RelatedCards>();
         }
 
         [Key]
@@ -64,5 +66,8 @@ namespace Kingsbane.Database.Models
         public virtual ICollection<CardUnit> Units { get; set; }
         public virtual ICollection<CardSynergy> Synergies { get; set; }
         public virtual ICollection<CardTag> Tags { get; set; }
+        public virtual ICollection<DeckCard> DeckCards { get; set; }
+        [InverseProperty("Card")]
+        public virtual ICollection<RelatedCards> RelatedCards { get; set; }
     }
 }

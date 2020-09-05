@@ -1,10 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kingsbane.Database.Models
 {
     public class CardUnit
     {
+        public CardUnit()
+        {
+            Abilities = new HashSet<Ability>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [ForeignKey(nameof(Card))]
@@ -25,5 +32,7 @@ namespace Kingsbane.Database.Models
         // Related Entities
 
         public virtual Card Card { get; set; }              // Primary Client
+
+        public virtual ICollection<Ability> Abilities { get; set; }
     }
 }

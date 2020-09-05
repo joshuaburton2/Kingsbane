@@ -20,6 +20,7 @@ namespace Kingsbane.Database
 
         public DbSet<Card> Cards { get; set; }
         public DbSet<CardUnit> CardUnits { get; set; }
+        public DbSet<Ability> Abilities { get; set; }
         public DbSet<CardItem> CardItems { get; set; }
         public DbSet<CardSpell> CardSpells { get; set; }
         public DbSet<Synergy> Synergies { get; set; }
@@ -31,6 +32,8 @@ namespace Kingsbane.Database
         public DbSet<CardClass> CardClasses { get; set; }
         public DbSet<CardType> CardTypes { get; set; }
         public DbSet<CardRarity> CardRarities { get; set; }
+        public DbSet<Deck> Decks { get; set; }
+        public DbSet<DeckCard> DeckCards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +47,8 @@ namespace Kingsbane.Database
                 .HasKey(x => new { x.CardId, x.SynergyId });
             modelBuilder.Entity<CardTag>()
                 .HasKey(x => new { x.CardId, x.TagId });
+            modelBuilder.Entity<DeckCard>()
+                .HasKey(x => new { x.DeckId, x.CardId });
             modelBuilder.Entity<RelatedCards>()
                 .HasKey(x => new { x.CardId, x.RelatedCardId });
         }
