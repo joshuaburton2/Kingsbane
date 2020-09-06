@@ -911,6 +911,636 @@ public class CardLibrary
         };
         AbilityList.Add(ability63);
 
+        var ability64 = new AbilityData()
+        {
+            Id = 64,
+            Name = "Magic Missiles",
+            Text = @"Deal 3 damage randomly split among all enemies in an area of Cone 3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability64);
+
+        var ability65 = new AbilityData()
+        {
+            Id = 65,
+            Name = "Studious Research",
+            Text = @"<b>Study (3)</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability65);
+
+        var ability66 = new AbilityData()
+        {
+            Id = 66,
+            Name = "Stargaze",
+            Text = @"<b>Divinate 1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability66);
+
+        var ability67 = new AbilityData()
+        {
+            Id = 67,
+            Name = "Lifedrain",
+            Text = @"Deal 3 damage to a unit. Heal this unit for the amount of damage dealt",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability67);
+
+        var ability68 = new AbilityData()
+        {
+            Id = 68,
+            Name = "Brood Spawn",
+            Text = @"Discard a card. Deploy two Abyss Imps beside this unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability68);
+
+        var ability69 = new AbilityData()
+        {
+            Id = 69,
+            Name = "Call of the Void",
+            Text = @"Add a random Void unit to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability69);
+
+        var ability70 = new AbilityData()
+        {
+            Id = 70,
+            Name = "Consume",
+            Text = @"Discard a card. Gain mana equal to its total cost",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability70);
+
+        var ability71 = new AbilityData()
+        {
+            Id = 71,
+            Name = "Rally the Horde",
+            Text = @"Discard a card. Give all adjacent Void units Attack and Health equal to its total cost",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability71);
+
+        var ability72 = new AbilityData()
+        {
+            Id = 72,
+            Name = "Surveillance",
+            Text = @"<b>Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability72);
+
+        var ability73 = new AbilityData()
+        {
+            Id = 73,
+            Name = "Triage",
+            Text = @"Restore 2 Health to a unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability73);
+
+        var ability74 = new AbilityData()
+        {
+            Id = 74,
+            Name = "Confiscate",
+            Text = @"Remove a random card from your opponents hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability74);
+
+        var ability75 = new AbilityData()
+        {
+            Id = 75,
+            Name = "Imprison",
+            Text = @"Remove an enemy unit from the battlefield",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 4,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability75);
+
+        var ability76 = new AbilityData()
+        {
+            Id = 76,
+            Name = "Call to Arms",
+            Text = @"Deploy two ""Goldland Loyalists"" adjacent to this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 4,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability76);
+
+        var ability77 = new AbilityData()
+        {
+            Id = 77,
+            Name = "FIREBLAST!",
+            Text = @"Deal damage to all other units within Range 2 equal to your <b>Empowered</b> value",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability77);
+
+        var ability78 = new AbilityData()
+        {
+            Id = 78,
+            Name = "Earthspike",
+            Text = @"Deal damage to all units in an area of Cone 3 equal to your <b>Empowered</b> value and <b>Root</b> them",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability78);
+
+        var ability79 = new AbilityData()
+        {
+            Id = 79,
+            Name = "Call of the Winds",
+            Text = @"Draw a card. If it is a spell, reduce its cost by (3). <b>Cycle -3</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability79);
+
+        var ability80 = new AbilityData()
+        {
+            Id = 80,
+            Name = "Water Whip",
+            Text = @"Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability80);
+
+        var ability81 = new AbilityData()
+        {
+            Id = 81,
+            Name = "Master of the Elements",
+            Text = @"Add a basic Elemental Spell to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability81);
+
+        var ability82 = new AbilityData()
+        {
+            Id = 82,
+            Name = "Wild Ritual",
+            Text = @"<b>Prayer +1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability82);
+
+        var ability83 = new AbilityData()
+        {
+            Id = 83,
+            Name = "Faerie Charm",
+            Text = @"Gain control of an enemy unit within Range 2 until the start of your next turn",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability83);
+
+        var ability84 = new AbilityData()
+        {
+            Id = 84,
+            Name = "Holy Ritual",
+            Text = @"<b>Prayer +1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability84);
+
+        var ability85 = new AbilityData()
+        {
+            Id = 85,
+            Name = "Soothe Wounds",
+            Text = @"Restore 3 Health to a unit within Range 1",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability85);
+
+        var ability86 = new AbilityData()
+        {
+            Id = 86,
+            Name = "Collect Dues",
+            Text = @"Gain 2 Gold for every adjacent friendly unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability86);
+
+        var ability87 = new AbilityData()
+        {
+            Id = 87,
+            Name = "Potion Sale",
+            Text = @"Add a random potion card to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability87);
+
+        var ability88 = new AbilityData()
+        {
+            Id = 88,
+            Name = "Call the Host",
+            Text = @"Deploy a ""Golden Host"" unit adjacent to this unit",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability88);
+
+        var ability89 = new AbilityData()
+        {
+            Id = 89,
+            Name = "Thoughtful Meditation",
+            Text = @"<b>Prayer +1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability89);
+
+        var ability90 = new AbilityData()
+        {
+            Id = 90,
+            Name = "Submit Collection",
+            Text = @"<b>Study (3).</b> One of the <b>Inspiration</b> cards shuffled is placed on the top of your deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability90);
+
+        var ability91 = new AbilityData()
+        {
+            Id = 91,
+            Name = "Search Archives",
+            Text = @"Draw an <b>Inspiration</b> card from your deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability91);
+
+        var ability92 = new AbilityData()
+        {
+            Id = 92,
+            Name = "Deep Exposure",
+            Text = @"Deal damage to a unit within Range 3 equal to its attack.",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability92);
+
+        var ability93 = new AbilityData()
+        {
+            Id = 93,
+            Name = "Pull Record",
+            Text = @"Draw a spell which did not start in your deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability93);
+
+        var ability94 = new AbilityData()
+        {
+            Id = 94,
+            Name = "Divine Oath",
+            Text = @"Prayer +1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability94);
+
+        var ability95 = new AbilityData()
+        {
+            Id = 95,
+            Name = "Fetch Gear",
+            Text = @"Draw a card",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 1,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability95);
+
+        var ability96 = new AbilityData()
+        {
+            Id = 96,
+            Name = "Hefty Bribe",
+            Text = @"<b>Recruit</b> an enemy minion that has a total cost of (5) or less",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 4,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability96);
+
+        var ability97 = new AbilityData()
+        {
+            Id = 97,
+            Name = "Run Messages",
+            Text = @"Draw a card for every 2 tiles moved this turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability97);
+
+        var ability98 = new AbilityData()
+        {
+            Id = 98,
+            Name = "Smuggle",
+            Text = @"Return a friendly minion to your hand, or redeploy your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability98);
+
         var card2 = new UnitData()
         {
             Id = 2,
@@ -1881,8 +2511,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Conduit, Empowered +2
-Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all enemies in an area of Cone 3",
+            Text = @"<b>Conduit, Empowered +2</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1899,7 +2528,7 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability64 },
         };
         CardList.Add(card34);
 
@@ -1917,8 +2546,7 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't reduce the number of <b>Inspiration</b> cards shuffled.
-<b>Studious Research (1 Knowledge, 1 Action): Study (3)</b>",
+            Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't reduce the number of <b>Inspiration</b> cards shuffled.",
             LoreText = @"",
             Notes = @"",
 
@@ -1935,7 +2563,7 @@ Magic Missiles (2 Mana, 1 Action):</b> Deal 2 damage randomly split among all en
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability65 },
         };
         CardList.Add(card35);
 
@@ -2171,8 +2799,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment: Divinate (2)
-Stargaze (1 Action): Divinate (1)</b>",
+            Text = @"<b>Deployment: Divinate (2)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2189,7 +2816,7 @@ Stargaze (1 Action): Divinate (1)</b>",
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability66 },
         };
         CardList.Add(card43);
 
@@ -2750,7 +3377,7 @@ Whenever you cast a spell, cast it again on the same target",
         var card61 = new UnitData()
         {
             Id = 61,
-            Name = "Abyssal Voidcaller",
+            Name = "Abyssal Warlock",
             ImageLocation = "Abyssal2",
 
             ResourceDevotion = null,
@@ -3199,8 +3826,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Lifebond
-Lifedrain (2 Devotion, 1 Action):</b> Deal 3 damage to a unit. Heal this unit for the amount of damage dealt",
+            Text = @"<b>Lifebond</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3217,7 +3843,7 @@ Lifedrain (2 Devotion, 1 Action):</b> Deal 3 damage to a unit. Heal this unit fo
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability67 },
         };
         CardList.Add(card74);
 
@@ -3342,8 +3968,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Summon, Warden
-Brood Spawn (2 Mana, 1 Action):</b> Discard a card. Deploy two Abyss Imps beside this unit",
+            Text = @"<b>Summon, Warden</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3360,7 +3985,7 @@ Brood Spawn (2 Mana, 1 Action):</b> Discard a card. Deploy two Abyss Imps beside
             Range = 1,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability68 },
         };
         CardList.Add(card78);
 
@@ -3378,8 +4003,7 @@ Brood Spawn (2 Mana, 1 Action):</b> Discard a card. Deploy two Abyss Imps beside
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Call of the Void
-Call of the Void (2 Mana, 1 Action):</b> Add a random Void unit to your hand",
+            Text = @"<b>Deployment:</b> Use <b>Call of the Void</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3396,7 +4020,7 @@ Call of the Void (2 Mana, 1 Action):</b> Add a random Void unit to your hand",
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability69 },
         };
         CardList.Add(card79);
 
@@ -3414,8 +4038,7 @@ Call of the Void (2 Mana, 1 Action):</b> Add a random Void unit to your hand",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Consume (1 Action):</b> Discard a card. Gain Mana equal to its total cost.
-Whenever this kills a unit, return a random card you discarded this game to your hand",
+            Text = @"Whenever this kills a unit, return a random card you discarded this game to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -3432,7 +4055,7 @@ Whenever this kills a unit, return a random card you discarded this game to your
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability70 },
         };
         CardList.Add(card80);
 
@@ -3480,8 +4103,7 @@ Whenever this kills a unit, return a random card you discarded this game to your
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>
-<b>Rally the Horde (2 Mana, 1 Action):</b> Discard a card. Give all adjacent units Attack and Health equal to its total cost",
+            Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3498,7 +4120,7 @@ Whenever this kills a unit, return a random card you discarded this game to your
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability71 },
         };
         CardList.Add(card82);
 
@@ -3682,8 +4304,7 @@ Deal damage to your hero equal to half their remaining health",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Empowered +1
-FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2 equal to your <b>Empowered</b> value",
+            Text = @"<b>Empowered +1</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3700,7 +4321,7 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             Range = 2,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability77 },
         };
         CardList.Add(card88);
 
@@ -3808,8 +4429,7 @@ FIREBLAST! (2 Mana, 1 Action):</b> Deal damage to all other units within Range 2
             ResourceWild = 4,
             ResourceNeutral = null,
 
-            Text = @"<b>Unleash
-Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it.",
+            Text = @"<b>Unleash</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3826,7 +4446,7 @@ Water Whip (2 Mana, 1 Action):</b> Choose a unit within Range 4. Deal 1 damage t
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability80 },
         };
         CardList.Add(card92);
 
@@ -4016,8 +4636,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             ResourceWild = 1,
             ResourceNeutral = null,
 
-            Text = @"<b>Empowered +1
-Earthspike (2 Mana, 1 Action):</b> Deal damage to all units in an area of Cone 3 equal to your <b>Empowered</b> value and <b>Root</b> them",
+            Text = @"<b>Empowered +1</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4034,7 +4653,7 @@ Earthspike (2 Mana, 1 Action):</b> Deal damage to all units in an area of Cone 3
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability78 },
         };
         CardList.Add(card98);
 
@@ -4082,8 +4701,7 @@ Earthspike (2 Mana, 1 Action):</b> Deal damage to all units in an area of Cone 3
             ResourceWild = 6,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Call of the Winds
-Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce its cost by (3). <b>Cycle -3</b>",
+            Text = @"<b>Deployment:</b> Use <b>Call of the Winds</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4100,7 +4718,7 @@ Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce 
             Range = 1,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability79 },
         };
         CardList.Add(card100);
 
@@ -4241,8 +4859,7 @@ Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and pus
 
             Text = @"<b>Conduit, Cycle -6</b>
 Reduce the cost of all spells generated by this unit to 0.
-<b>Deployment:</b> Add all four of the basic Elemental Spells to your hand.
-<b>Master of the Elements (2 Mana):</b> Add a basic Elemental Spell to your hand",
+<b>Deployment:</b> Add all four of the basic Elemental Spells to your hand.",
             LoreText = @"",
             Notes = @"",
 
@@ -4259,7 +4876,7 @@ Reduce the cost of all spells generated by this unit to 0.
             Range = 1,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability81 },
         };
         CardList.Add(card105);
 
@@ -4474,8 +5091,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"Whenever this attacks a unit <b>Root</b> it.
-<b>Wild Ritual (1 Action): Prayer +1</b>",
+            Text = @"Whenever this attacks a unit <b>Root</b> it",
             LoreText = @"",
             Notes = @"",
 
@@ -4492,7 +5108,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability82 },
         };
         CardList.Add(card112);
 
@@ -5619,8 +6235,7 @@ Cycle -6</b>",
             ResourceWild = 6,
             ResourceNeutral = null,
 
-            Text = @"<b>Lifebond, Spellshield
-Faerie Charm (3 Wild, 2 Devotion, 1 Action):</b> Gain control of an enemy unit within Range 2 until the start of your next turn",
+            Text = @"<b>Lifebond, Spellshield</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5637,7 +6252,7 @@ Faerie Charm (3 Wild, 2 Devotion, 1 Action):</b> Gain control of an enemy unit w
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability83 },
         };
         CardList.Add(card146);
 
@@ -6032,8 +6647,7 @@ Give the caster +3 Health",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Lifebond
-Holy Ritual (1 Action): Prayer +1</b>",
+            Text = @"<b>Lifebond</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6050,7 +6664,7 @@ Holy Ritual (1 Action): Prayer +1</b>",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability84 },
         };
         CardList.Add(card159);
 
@@ -6068,8 +6682,7 @@ Holy Ritual (1 Action): Prayer +1</b>",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Soothe Wounds
-Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Range 1",
+            Text = @"<b>Deployment:</b> Use <b>Soothe Wounds</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6086,7 +6699,7 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability85 },
         };
         CardList.Add(card160);
 
@@ -6104,7 +6717,7 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Collect Dues (1 Action):</b> Gain 2 Gold for every adjacent friendly unit",
+            Text = @"",
             LoreText = @"",
             Notes = @"",
 
@@ -6121,7 +6734,7 @@ Soothe Wounds (1 Devotion, 1 Action):</b> Restore 3 Health to a unit within Rang
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability86 },
         };
         CardList.Add(card161);
 
@@ -6205,8 +6818,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Potion Sale
-Potion Sale (1 Gold):</b> Add a random potion card to your hand",
+            Text = @"<b>Deployment:</b> Use <b>Potion Sale</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6223,7 +6835,7 @@ Potion Sale (1 Gold):</b> Add a random potion card to your hand",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability87 },
         };
         CardList.Add(card164);
 
@@ -6470,8 +7082,7 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
             ResourceNeutral = null,
 
             Text = @"<b>Conduit
-Deployment:</b> Deploy 2 Golden Hosts beside this unit.
-<b>Call the Host (2 Devotion, 1 Gold, 1 Action):</b> Deploy a ""Golden Host"" adjacent to this unit",
+Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
             LoreText = @"",
             Notes = @"",
 
@@ -6488,7 +7099,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability88 },
         };
         CardList.Add(card172);
 
@@ -6765,8 +7376,7 @@ Deal damage to a unit equal to its attack",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Thoughtful Meditation (1 Action): Prayer +1</b>
-Whenever this attacks a unit, reduce its attack by 2 until the start of your next turn",
+            Text = @"Whenever this attacks a unit, reduce its attack by 2 until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -6783,7 +7393,7 @@ Whenever this attacks a unit, reduce its attack by 2 until the start of your nex
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability89 },
         };
         CardList.Add(card181);
 
@@ -6861,8 +7471,7 @@ Whenever this attacks a unit, reduce its attack by 2 until the start of your nex
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Submit Collection
-Submit Collection (2 Knowledge, 1 Action): Study (3).</b> One of the <b>Inspiration</b> cards shuffled is placed on the top of your deck",
+            Text = @"<b>Deployment:</b> Use <b>Submit Collection</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6879,7 +7488,7 @@ Submit Collection (2 Knowledge, 1 Action): Study (3).</b> One of the <b>Inspirat
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability90 },
         };
         CardList.Add(card184);
 
@@ -7024,8 +7633,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment: Study (4)
-Search Archives (3 Knowledge, 1 Action):</b> Draw an <b>Inspiration</b> card from your deck",
+            Text = @"<b>Deployment: Study (4)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7042,7 +7650,7 @@ Search Archives (3 Knowledge, 1 Action):</b> Draw an <b>Inspiration</b> card fro
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability91 },
         };
         CardList.Add(card189);
 
@@ -7302,7 +7910,7 @@ Deep Exposure (1 Devotion, 2 Knowledge, 1 Action):</b> Deal damage to a unit wit
             Range = 1,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability92 },
         };
         CardList.Add(card197);
 
@@ -7323,7 +7931,6 @@ Deep Exposure (1 Devotion, 2 Knowledge, 1 Action):</b> Deal damage to a unit wit
             Text = @"<b>Conduit</b>
 Spells in your hand which did not start in your deck have their cost reduced by (3)
 <b>Deployment:</b> Shuffle a copy of all spells in your hand into your deck.
-<b>Pull Record (2 Knowledge):</b> Draw a spell which did not start in your deck
 ",
             LoreText = @"",
             Notes = @"",
@@ -7341,7 +7948,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability93 },
         };
         CardList.Add(card198);
 
@@ -7494,8 +8101,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Flying
-Divine Oath (1 Action): Prayer +1</b>",
+            Text = @"<b>Flying</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7512,7 +8118,7 @@ Divine Oath (1 Action): Prayer +1</b>",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability94 },
         };
         CardList.Add(card203);
 
@@ -7591,8 +8197,7 @@ Divine Oath (1 Action): Prayer +1</b>",
             ResourceNeutral = null,
 
             Text = @"<b>Prepared</b>
-At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack, +1 Health.
-<b>Fetch Gear (1 Energy, 1 Action):</b> Draw a card",
+At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack, +1 Health.",
             LoreText = @"",
             Notes = @"",
 
@@ -7609,7 +8214,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability95 },
         };
         CardList.Add(card206);
 
@@ -7723,7 +8328,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"Draw an Oath from your deck. If you don't have an Oath in your deck, add a random Oath card to your hand",
+            Text = @"<b>Deployment:</b> Draw an Oath from your deck. If you don't have an Oath in your deck, add a random Oath card to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -8387,8 +8992,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Hefty Bribe
-Hefty Bribe (4 Gold, 1 Action): Recruit</b> an enemy minion that has a total cost of (5) or less",
+            Text = @"<b>Deployment:</b> Use <b>Hefty Bribe</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -8405,7 +9009,7 @@ Hefty Bribe (4 Gold, 1 Action): Recruit</b> an enemy minion that has a total cos
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability96 },
         };
         CardList.Add(card230);
 
@@ -8615,8 +9219,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Stalker
-Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
+            Text = @"<b>Stalker</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -8633,7 +9236,7 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability97 },
         };
         CardList.Add(card237);
 
@@ -8746,8 +9349,7 @@ Run Messages (2 Gold):</b> Draw a card for every 2 tiles moved this turn",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Smuggle Target
-Smuggle Target (1 Gold, 1 Action):</b> Return a friendly minion to your hand, or redeploy your hero",
+            Text = @"<b>Deployment:</b> Use <b>Smuggle</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -8764,7 +9366,7 @@ Smuggle Target (1 Gold, 1 Action):</b> Return a friendly minion to your hand, or
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability98 },
         };
         CardList.Add(card241);
 
@@ -9028,8 +9630,7 @@ Increase your base Knowledge rate by 1",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Surveillance
-Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
+            Text = @"<b>Deployment:</b> Use <b>Surveillance</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -9046,7 +9647,7 @@ Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b>
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability72 },
         };
         CardList.Add(card249);
 
@@ -9129,8 +9730,7 @@ Surveillance (1 Action): Study (3).</b> Shuffle an additional <b>Inspiration</b>
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment</b> Gain either <b>Vanguard</b> or increase <b>Triage</b> healing by 2. Use <b>Triage
-Triage (1 Knowledge, 1 Action):</b> Restore 2 Health to a unit",
+            Text = @"<b>Deployment</b> Gain either <b>Vanguard</b> or increase <b>Triage</b> healing by 2. Use <b>Triage</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -9147,7 +9747,7 @@ Triage (1 Knowledge, 1 Action):</b> Restore 2 Health to a unit",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability73 },
         };
         CardList.Add(card252);
 
@@ -9678,9 +10278,7 @@ This unit can target through obstacle terrain",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison
-Confiscate (4 Energy, 1 Action):</b> Remove a random card from your opponents hand
-<b>Imprison (4 Energy, 1 Action):</b> Remove an enemy unit from the battlefield
+            Text = @"<b>Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 <b>Last Rites:</b> Return all removed cards and redeploy all removed units",
             LoreText = @"",
             Notes = @"",
@@ -9698,7 +10296,7 @@ Confiscate (4 Energy, 1 Action):</b> Remove a random card from your opponents ha
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability74, ability75 },
         };
         CardList.Add(card269);
 
@@ -9747,8 +10345,7 @@ Confiscate (4 Energy, 1 Action):</b> Remove a random card from your opponents ha
             ResourceNeutral = null,
 
             Text = @"<b>Vanguard
-Deployment:</b> Use <b>Call to Arms
-Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacent to this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
+Deployment:</b> Use <b>Call to Arms</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -9765,7 +10362,7 @@ Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacen
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability76 },
         };
         CardList.Add(card271);
 
@@ -9811,15 +10408,15 @@ Call to Arms (4 Energy, 1 Action):</b> Deploy two ""Goldland Loyalists"" adjacen
             ImageLocation = "Supreme_Commander_Tythas",
 
             ResourceDevotion = null,
-            ResourceEnergy = 8,
+            ResourceEnergy = 5,
             ResourceGold = null,
-            ResourceKnowledge = 5,
+            ResourceKnowledge = 3,
             ResourceMana = null,
             ResourceWild = null,
             ResourceNeutral = null,
 
             Text = @"<b>Conduit, Prepared</b>
-Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected</b>",
+Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected (4)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -9829,10 +10426,10 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Prepared, Tags.Captain, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Study, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
             UnitTag = "Human Captain",
-            Attack = 7,
-            Health = 9,
+            Attack = 4,
+            Health = 6,
             Range = 0,
             Speed = 3,
 
@@ -10008,7 +10605,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             UnitTag = "Human Mercenary",
             Attack = 2,
             Health = 2,
-            Range = 1,
+            Range = 0,
             Speed = 3,
 
             Abilities = new List<AbilityData>() { },
@@ -10200,6 +10797,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         card264.RelatedCards = new List<CardData> { card125 };
         card271.RelatedCards = new List<CardData> { card272 };
         card276.RelatedCards = new List<CardData> { card278 };
+        card277.RelatedCards = new List<CardData> { card278 };
         card279.RelatedCards = new List<CardData> { card136 };
         card280.RelatedCards = new List<CardData> { card136 };
     }
