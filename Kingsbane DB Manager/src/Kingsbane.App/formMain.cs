@@ -187,12 +187,12 @@ namespace Kingsbane.App
             sb.AppendLine("{");
             sb.AppendLine("    public enum Tags");
             sb.AppendLine("    {");
-            sb.AppendLine($"         {string.Join(",", _context.Tags.Select(x => x.Name))}");
+            sb.AppendLine($"         Default, {string.Join(",", _context.Tags.Select(x => x.Name))}");
             sb.AppendLine("    }");
             sb.AppendLine("");
             sb.AppendLine("    public enum Synergies");
             sb.AppendLine("    {");
-            sb.AppendLine($"         {string.Join(",", _context.Synergies.Select(x => x.Name))}");
+            sb.AppendLine($"         Default, {string.Join(",", _context.Synergies.Select(x => x.Name))}");
             sb.AppendLine("    }");
             sb.AppendLine("");
             sb.AppendLine("    public enum Sets");

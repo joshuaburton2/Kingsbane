@@ -29,10 +29,892 @@ public class CardLibrary
         };
         AbilityList.Add(ability5);
 
+        var ability6 = new AbilityData()
+        {
+            Id = 6,
+            Name = "Kalyan Strike",
+            Text = @"<b>Stun</b> an enemy unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 1,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability6);
+
+        var ability7 = new AbilityData()
+        {
+            Id = 7,
+            Name = "Runesmith",
+            Text = @"Give a friendly unit within Range 1 <b>Empowered +1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability7);
+
+        var ability8 = new AbilityData()
+        {
+            Id = 8,
+            Name = "Sword Fling",
+            Text = @"Deal damage equal to your <b>Empowered</b> value to a unit within Range 2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability8);
+
+        var ability9 = new AbilityData()
+        {
+            Id = 9,
+            Name = "Kalyan Training",
+            Text = @"Give all other friendly melee units within Range 2 +2 Attack",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability9);
+
+        var ability10 = new AbilityData()
+        {
+            Id = 10,
+            Name = "Kalyan Strike",
+            Text = @"<b>Stun</b> an enemy unit",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 1,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability10);
+
+        var ability11 = new AbilityData()
+        {
+            Id = 11,
+            Name = "Arcane Bolt",
+            Text = @"Deal 4 damage to a unit within range 2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability11);
+
+        var ability12 = new AbilityData()
+        {
+            Id = 12,
+            Name = "Arcane Bolt",
+            Text = @"Deal 6 damage to a unit within Range 2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability12);
+
+        var ability13 = new AbilityData()
+        {
+            Id = 13,
+            Name = "Arcane Knowledge",
+            Text = @"Add a random playable spell to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability13);
+
+        var ability14 = new AbilityData()
+        {
+            Id = 14,
+            Name = "Arcane Knowledge",
+            Text = @"Add a random playable spell to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability14);
+
+        var ability15 = new AbilityData()
+        {
+            Id = 15,
+            Name = "Arcane Knowledge",
+            Text = @"Add 2 random playable spells to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability15);
+
+        var ability16 = new AbilityData()
+        {
+            Id = 16,
+            Name = "Conjure Voidling",
+            Text = @"Deploy a Voidling adjacent to your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability16);
+
+        var ability17 = new AbilityData()
+        {
+            Id = 17,
+            Name = "Conjure Voidling",
+            Text = @"Deploy a Voidling adjacent to your hero. Give it +1 Attack, +1 Health",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 3,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability17);
+
+        var ability18 = new AbilityData()
+        {
+            Id = 18,
+            Name = "Conjure Voidling",
+            Text = @"Deploy a Voidling adjacent to your hero. Give it +2 Attack, +2 Health and <b>Spellshield</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability18);
+
+        var ability21 = new AbilityData()
+        {
+            Id = 21,
+            Name = "Info Exchange",
+            Text = @"Shuffle a card in your hand into your deck. Draw a card",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability21);
+
+        var ability22 = new AbilityData()
+        {
+            Id = 22,
+            Name = "Info Exchange",
+            Text = @"Shuffle a card in your hand into your deck. Draw a card",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability22);
+
+        var ability23 = new AbilityData()
+        {
+            Id = 23,
+            Name = "Info Exchange",
+            Text = @"Shuffle two copies of a card in your hand into your deck. Draw a card",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability23);
+
+        var ability24 = new AbilityData()
+        {
+            Id = 24,
+            Name = "Lead from the Front",
+            Text = @"Equip a ""Battle Sword"" item",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability24);
+
+        var ability25 = new AbilityData()
+        {
+            Id = 25,
+            Name = "Lead from the Front",
+            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability25);
+
+        var ability26 = new AbilityData()
+        {
+            Id = 26,
+            Name = "Lead from the Front",
+            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 1,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability26);
+
+        var ability27 = new AbilityData()
+        {
+            Id = 27,
+            Name = "Elemental Power",
+            Text = @"Gain <b>Empowered +1</b> until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability27);
+
+        var ability28 = new AbilityData()
+        {
+            Id = 28,
+            Name = "Elemental Power",
+            Text = @"Gain <b>Empowered +2</b> until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 2,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability28);
+
+        var ability29 = new AbilityData()
+        {
+            Id = 29,
+            Name = "Elemental Power",
+            Text = @"Gain <b>Empowered +3</b> until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = 1,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability29);
+
+        var ability30 = new AbilityData()
+        {
+            Id = 30,
+            Name = "Plant Growth",
+            Text = @"<b>Root</b> an enemy unit within Range 2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability30);
+
+        var ability31 = new AbilityData()
+        {
+            Id = 31,
+            Name = "Plant Growth",
+            Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 2,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability31);
+
+        var ability32 = new AbilityData()
+        {
+            Id = 32,
+            Name = "Plant Growth",
+            Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 4",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 1,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability32);
+
+        var ability33 = new AbilityData()
+        {
+            Id = 33,
+            Name = "Healing Word",
+            Text = @"Restore 2 Health to a unit within Range 1",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability33);
+
+        var ability34 = new AbilityData()
+        {
+            Id = 34,
+            Name = "Healing Word",
+            Text = @"Restore 2 Health to a unit within Range 2",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability34);
+
+        var ability35 = new AbilityData()
+        {
+            Id = 35,
+            Name = "Healing Word",
+            Text = @"Restore 4 Health to a unit within Range 3",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability35);
+
+        var ability36 = new AbilityData()
+        {
+            Id = 36,
+            Name = "Preserve Knowledge",
+            Text = @"Shuffle a copy of the next spell you cast this turn into your  deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 3,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability36);
+
+        var ability37 = new AbilityData()
+        {
+            Id = 37,
+            Name = "Preserve Knowledge",
+            Text = @"Shuffle a copy of the next spell you cast this turn into your deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability37);
+
+        var ability38 = new AbilityData()
+        {
+            Id = 38,
+            Name = "Preserve Knowledge",
+            Text = @"Shuffle two copies of the next spell you cast this turn into your deck",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability38);
+
+        var ability39 = new AbilityData()
+        {
+            Id = 39,
+            Name = "Foretell",
+            Text = @"<b>Divinate 1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 2,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability39);
+
+        var ability40 = new AbilityData()
+        {
+            Id = 40,
+            Name = "Foretell",
+            Text = @"<b>Divinate 2</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 1,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability40);
+
+        var ability41 = new AbilityData()
+        {
+            Id = 41,
+            Name = "Foretell",
+            Text = @"<b>Divinate 3</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = 0,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability41);
+
+        var ability43 = new AbilityData()
+        {
+            Id = 43,
+            Name = "Enlist Hireling",
+            Text = @"Deploy a ""Hireling"" unit adjacent to your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability43);
+
+        var ability44 = new AbilityData()
+        {
+            Id = 44,
+            Name = "Enlist Hireling",
+            Text = @"Deploy two ""Hirelings"" adjacent to your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability44);
+
+        var ability51 = new AbilityData()
+        {
+            Id = 51,
+            Name = "Enlist Hireling",
+            Text = @"Deploy a ""Hireling"" adjacent to your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability51);
+
+        var ability52 = new AbilityData()
+        {
+            Id = 52,
+            Name = "Holy Shield",
+            Text = @"Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+
+            ResourceDevotion = 3,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability52);
+
+        var ability53 = new AbilityData()
+        {
+            Id = 53,
+            Name = "Holy Shield",
+            Text = @"Give all friendly units within Range 1 of the hero <b>Protected (3)</b>",
+
+            ResourceDevotion = 2,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability53);
+
+        var ability54 = new AbilityData()
+        {
+            Id = 54,
+            Name = "Holy Shield",
+            Text = @"Give all friendly units within Range 2 of the hero <b>Protected (3)</b>",
+
+            ResourceDevotion = 1,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability54);
+
+        var ability55 = new AbilityData()
+        {
+            Id = 55,
+            Name = "Resupply",
+            Text = @"Add a ""Shiv"" card to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 3,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability55);
+
+        var ability56 = new AbilityData()
+        {
+            Id = 56,
+            Name = "Resupply",
+            Text = @"Add two ""Shiv"" cards to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability56);
+
+        var ability57 = new AbilityData()
+        {
+            Id = 57,
+            Name = "Resupply",
+            Text = @"Add three ""Shiv"" cards to your hand",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 1,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability57);
+
+        var ability58 = new AbilityData()
+        {
+            Id = 58,
+            Name = "Hound Training",
+            Text = @"Deploy two ""Trained Hounds"" beside your hero",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 3,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability58);
+
+        var ability59 = new AbilityData()
+        {
+            Id = 59,
+            Name = "Hound Training",
+            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +1 Attack",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 1,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability59);
+
+        var ability60 = new AbilityData()
+        {
+            Id = 60,
+            Name = "Hound Training",
+            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +2 Attack",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = 1,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability60);
+
+        var ability61 = new AbilityData()
+        {
+            Id = 61,
+            Name = "Enrage",
+            Text = @"Give your hero +2 Attack until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 3,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability61);
+
+        var ability62 = new AbilityData()
+        {
+            Id = 62,
+            Name = "Enrage",
+            Text = @"Your hero gains +4 Attack and +2 Health until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 2,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability62);
+
+        var ability63 = new AbilityData()
+        {
+            Id = 63,
+            Name = "Enrage",
+            Text = @"Your hero gains +4 Attack, +4 Health until the end of your turn",
+
+            ResourceDevotion = null,
+            ResourceEnergy = 1,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability63);
+
         var card2 = new UnitData()
         {
             Id = 2,
-            Name = "Runeblade Tier1",
+            Name = "Runeblade",
             ImageLocation = "Runeblade1",
 
             ResourceDevotion = null,
@@ -43,8 +925,7 @@ public class CardLibrary
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero</b>
-<b>Arcane Bolt (2 Energy, 1 Action):</b> Deal 2 damage to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -53,7 +934,7 @@ public class CardLibrary
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Runeblade",
             Attack = 4,
@@ -139,8 +1020,7 @@ public class CardLibrary
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Swiftstrike
-Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
+            Text = @"<b>Swiftstrike</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -157,7 +1037,7 @@ Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability6 },
         };
         CardList.Add(card6);
 
@@ -240,8 +1120,7 @@ Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Empowered +1
-Runesmith (1 Mana, 1 Action):</b> Give a friendly unit within Range 1 <b>Empowered +1</b>",
+            Text = @"<b>Empowered +1</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -258,7 +1137,7 @@ Runesmith (1 Mana, 1 Action):</b> Give a friendly unit within Range 1 <b>Empower
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability7 },
         };
         CardList.Add(card9);
 
@@ -396,8 +1275,7 @@ Runesmith (1 Mana, 1 Action):</b> Give a friendly unit within Range 1 <b>Empower
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Conduit, Empowered +1
-Sword Fling (2 Mana, 1 Action):</b> Deal damage equal to your <b>Empowered</b> value to a unit within range 2.",
+            Text = @"<b>Conduit, Empowered +1</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -414,7 +1292,7 @@ Sword Fling (2 Mana, 1 Action):</b> Deal damage equal to your <b>Empowered</b> v
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability8 },
         };
         CardList.Add(card14);
 
@@ -569,8 +1447,7 @@ This units attack is increased by your <b>Empowered</b> value",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Use <b>Kalyan Training
-Kalyan Training (3 Energy, 1 Action):</b> Give all other friendly melee units within Range 2 +2 Attack",
+            Text = @"<b>Deployment:</b> Use <b>Kalyan Training</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -587,7 +1464,7 @@ Kalyan Training (3 Energy, 1 Action):</b> Give all other friendly melee units wi
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability9 },
         };
         CardList.Add(card19);
 
@@ -703,8 +1580,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
 
             Text = @"<b>Swiftstrike</b>
 This unit's <b>Swiftstrike</b> grants it two additional actions. It can use it's ability multiple times in a turn.
-Whenever this attacks a <b>Stunned</b> unit, draw a card
-<b>Kalyan Strike (1 Energy, 1 Action): Stun</b> an enemy unit",
+Whenever this attacks a <b>Stunned</b> unit, draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -721,7 +1597,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability10 },
         };
         CardList.Add(card25);
 
@@ -789,7 +1665,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         var card28 = new UnitData()
         {
             Id = 28,
-            Name = "Runeblade Tier2",
+            Name = "Runeblade Duelist",
             ImageLocation = "Runeblade2",
 
             ResourceDevotion = null,
@@ -800,8 +1676,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero</b>
-<b>Arcane Bolt (2 Energy, 1 Action):</b> Deal 2 damage to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -810,7 +1685,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Runeblade",
             Attack = 7,
@@ -818,14 +1693,14 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability11 },
         };
         CardList.Add(card28);
 
         var card29 = new UnitData()
         {
             Id = 29,
-            Name = "Runeblade Tier3",
+            Name = "Runeblade Blademaster",
             ImageLocation = "Runeblade3",
 
             ResourceDevotion = null,
@@ -836,8 +1711,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero</b>
-<b>Arcane Bolt (2 Energy, 1 Action):</b> Deal 2 damage to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -846,7 +1720,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Runeblade",
             Attack = 9,
@@ -854,14 +1728,14 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Range = 0,
             Speed = 5,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability12 },
         };
         CardList.Add(card29);
 
         var card30 = new UnitData()
         {
             Id = 30,
-            Name = "Arcanist Tier1",
+            Name = "Arcanist",
             ImageLocation = "Arcanist1",
 
             ResourceDevotion = null,
@@ -872,8 +1746,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -882,7 +1755,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Arcanist",
             Attack = 4,
@@ -890,14 +1763,14 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability13 },
         };
         CardList.Add(card30);
 
         var card31 = new UnitData()
         {
             Id = 31,
-            Name = "Arcanist Tier2",
+            Name = "Arcanist Magician",
             ImageLocation = "Arcanist2",
 
             ResourceDevotion = null,
@@ -908,8 +1781,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -918,7 +1790,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Arcanist",
             Attack = 6,
@@ -926,14 +1798,14 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability14 },
         };
         CardList.Add(card31);
 
         var card32 = new UnitData()
         {
             Id = 32,
-            Name = "Arcanist Tier3",
+            Name = "Arcanist Archmage",
             ImageLocation = "Arcanist3",
 
             ResourceDevotion = null,
@@ -944,8 +1816,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -954,7 +1825,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Arcanist",
             Attack = 7,
@@ -962,7 +1833,7 @@ Arcane Knowledge (3 Knowledge, 1 Action):</b> Add a random playable spell to you
             Range = 4,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability15 },
         };
         CardList.Add(card32);
 
@@ -1362,7 +2233,7 @@ Stargaze (1 Action): Divinate (1)</b>",
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = null,
+            ResourceMana = 0,
             ResourceWild = null,
             ResourceNeutral = null,
 
@@ -1844,7 +2715,7 @@ Whenever you cast a spell, cast it again on the same target",
         var card60 = new UnitData()
         {
             Id = 60,
-            Name = "Abyssal Tier1",
+            Name = "Abyssal",
             ImageLocation = "Abyssal1",
 
             ResourceDevotion = null,
@@ -1855,8 +2726,7 @@ Whenever you cast a spell, cast it again on the same target",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1865,7 +2735,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Abyssal",
             Attack = 3,
@@ -1873,14 +2743,14 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability16 },
         };
         CardList.Add(card60);
 
         var card61 = new UnitData()
         {
             Id = 61,
-            Name = "Abyssal Tier2",
+            Name = "Abyssal Voidcaller",
             ImageLocation = "Abyssal2",
 
             ResourceDevotion = null,
@@ -1891,8 +2761,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1901,7 +2770,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Abyssal",
             Attack = 4,
@@ -1909,14 +2778,14 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability17 },
         };
         CardList.Add(card61);
 
         var card62 = new UnitData()
         {
             Id = 62,
-            Name = "Abyssal Tier3",
+            Name = "Abyssal Voidlord",
             ImageLocation = "Abyssal3",
 
             ResourceDevotion = null,
@@ -1927,8 +2796,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1937,7 +2805,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Abyssal",
             Attack = 5,
@@ -1945,7 +2813,7 @@ Conjure Voidling (3 Mana):</b> Deploy a Voidling adjacent to your hero",
             Range = 3,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability18 },
         };
         CardList.Add(card62);
 
@@ -2668,7 +3536,7 @@ Deal damage to your hero equal to half their remaining health",
         var card84 = new UnitData()
         {
             Id = 84,
-            Name = "Elementalist Tier1",
+            Name = "Elementalist",
             ImageLocation = "Elementalist1",
 
             ResourceDevotion = null,
@@ -2679,8 +3547,7 @@ Deal damage to your hero equal to half their remaining health",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2689,7 +3556,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Elementalist",
             Attack = 5,
@@ -2697,14 +3564,14 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability27 },
         };
         CardList.Add(card84);
 
         var card85 = new UnitData()
         {
             Id = 85,
-            Name = "Elementalist Tier2",
+            Name = "Elementalist Shaman",
             ImageLocation = "Elementalist2",
 
             ResourceDevotion = null,
@@ -2715,8 +3582,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2725,7 +3591,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Elementalist",
             Attack = 7,
@@ -2733,14 +3599,14 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability28 },
         };
         CardList.Add(card85);
 
         var card86 = new UnitData()
         {
             Id = 86,
-            Name = "Elementalist Tier3",
+            Name = "Elementalist Elder",
             ImageLocation = "Elementalist3",
 
             ResourceDevotion = null,
@@ -2751,8 +3617,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end of your turn",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2761,7 +3626,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Elementalist",
             Attack = 9,
@@ -2769,7 +3634,7 @@ Elemental Power (3 Mana, 1 Action):</b> Gain <b>Empowered +2</b> until the end o
             Range = 2,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability29 },
         };
         CardList.Add(card86);
 
@@ -3272,8 +4137,8 @@ Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce 
         var card102 = new SpellData()
         {
             Id = 102,
-            Name = "Chain Lightning",
-            ImageLocation = "Chain_Lightning",
+            Name = "Hurricane",
+            ImageLocation = "Hurricane",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -3284,7 +4149,7 @@ Call of the Winds (3 Wild, 1 Action):</b> Draw a card. If it is a spell, reduce 
             ResourceNeutral = null,
 
             Text = @"<b>Cycle -3</b>
-Deal 6 damage to an enemy unit and 3 damage to all other enemy units within an area of Radius 2",
+Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and push them in a line 2 tiles directly away from the centre of the area. If they impact any obstacle terrain, deal an additional 2 damage to them",
             LoreText = @"",
             Notes = @"",
 
@@ -3293,8 +4158,8 @@ Deal 6 damage to an enemy unit and 3 damage to all other enemy units within an a
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SplitDamage, Tags.Air, Tags.CycleMinus },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.Mana },
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air, Tags.ForceMove, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove },
             SpellType = "Damage",
             Range = 4,
         };
@@ -3432,7 +4297,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         var card107 = new UnitData()
         {
             Id = 107,
-            Name = "Grovewatcher Tier1",
+            Name = "Grovewatcher",
             ImageLocation = "Grovewatcher1",
 
             ResourceDevotion = null,
@@ -3443,8 +4308,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3453,7 +4317,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Grovewatcher",
             Attack = 2,
@@ -3461,14 +4325,14 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability30 },
         };
         CardList.Add(card107);
 
         var card108 = new UnitData()
         {
             Id = 108,
-            Name = "Grovewatcher Tier2",
+            Name = "Grovewatcher Woodwalker",
             ImageLocation = "Grovewatcher2",
 
             ResourceDevotion = null,
@@ -3479,8 +4343,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3489,7 +4352,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Grovewatcher",
             Attack = 2,
@@ -3497,14 +4360,14 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Range = 3,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability31 },
         };
         CardList.Add(card108);
 
         var card109 = new UnitData()
         {
             Id = 109,
-            Name = "Grovewatcher Tier3",
+            Name = "Grovewatcher Archdruid",
             ImageLocation = "Grovewatcher3",
 
             ResourceDevotion = null,
@@ -3525,7 +4388,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Grovewatcher",
             Attack = 3,
@@ -3533,7 +4396,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             Range = 4,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability32 },
         };
         CardList.Add(card109);
 
@@ -3897,7 +4760,7 @@ At the end of each of your turns, draw a card",
         var card121 = new UnitData()
         {
             Id = 121,
-            Name = "Agent Tier1",
+            Name = "Agent",
             ImageLocation = "Agent1",
 
             ResourceDevotion = null,
@@ -3908,8 +4771,7 @@ At the end of each of your turns, draw a card",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3918,7 +4780,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Agent",
             Attack = 3,
@@ -3926,14 +4788,14 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability21 },
         };
         CardList.Add(card121);
 
         var card122 = new UnitData()
         {
             Id = 122,
-            Name = "Agent Tier2",
+            Name = "Agent Infiltrator",
             ImageLocation = "Agent2",
 
             ResourceDevotion = null,
@@ -3944,8 +4806,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3954,7 +4815,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Agent",
             Attack = 4,
@@ -3962,14 +4823,14 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability22 },
         };
         CardList.Add(card122);
 
         var card123 = new UnitData()
         {
             Id = 123,
-            Name = "Agent Tier3",
+            Name = "Agent Spymaster",
             ImageLocation = "Agent3",
 
             ResourceDevotion = null,
@@ -3980,8 +4841,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck. Draw a card",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3990,7 +4850,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Agent",
             Attack = 6,
@@ -3998,14 +4858,14 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             Range = 1,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability23 },
         };
         CardList.Add(card123);
 
         var card124 = new UnitData()
         {
             Id = 124,
-            Name = "Captain Tier1",
+            Name = "Captain",
             ImageLocation = "Captain1",
 
             ResourceDevotion = null,
@@ -4016,8 +4876,7 @@ Info Exchange (2 Gold, 1 Action):</b> Shuffle a card in your hand into your deck
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4026,7 +4885,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Captain",
             Attack = 5,
@@ -4034,7 +4893,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability24 },
         };
         CardList.Add(card124);
 
@@ -4071,7 +4930,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
         var card126 = new UnitData()
         {
             Id = 126,
-            Name = "Captain Tier2",
+            Name = "Captain Champion",
             ImageLocation = "Captain2",
 
             ResourceDevotion = null,
@@ -4082,8 +4941,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4092,7 +4950,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Captain",
             Attack = 5,
@@ -4100,14 +4958,14 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability25 },
         };
         CardList.Add(card126);
 
         var card127 = new UnitData()
         {
             Id = 127,
-            Name = "Captain Tier3",
+            Name = "Captain General",
             ImageLocation = "Captain3",
 
             ResourceDevotion = null,
@@ -4118,8 +4976,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4128,7 +4985,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Captain",
             Attack = 7,
@@ -4136,14 +4993,14 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability26 },
         };
         CardList.Add(card127);
 
         var card128 = new UnitData()
         {
             Id = 128,
-            Name = "Lifebringer Tier1",
+            Name = "Lifebringer",
             ImageLocation = "Lifebringer1",
 
             ResourceDevotion = null,
@@ -4154,8 +5011,7 @@ Lead from the Front (3 Energy):</b> Equip a ""Battle Sword""",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4164,7 +5020,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lifebringer",
             Attack = 1,
@@ -4172,14 +5028,14 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Range = 1,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability33 },
         };
         CardList.Add(card128);
 
         var card129 = new UnitData()
         {
             Id = 129,
-            Name = "Lorekeeper Tier1",
+            Name = "Lorekeeper",
             ImageLocation = "Lorekeeper1",
 
             ResourceDevotion = null,
@@ -4190,8 +5046,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4200,7 +5055,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lorekeeper",
             Attack = 2,
@@ -4208,14 +5063,14 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Range = 1,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability36 },
         };
         CardList.Add(card129);
 
         var card130 = new UnitData()
         {
             Id = 130,
-            Name = "Luminist Tier1",
+            Name = "Luminist",
             ImageLocation = "Luminist1",
 
             ResourceDevotion = null,
@@ -4226,8 +5081,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Foretell (2 Knowledge): Divinate 1</b>",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4236,7 +5090,7 @@ Foretell (2 Knowledge): Divinate 1</b>",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Luminist },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Luminist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Luminist",
             Attack = 2,
@@ -4244,14 +5098,14 @@ Foretell (2 Knowledge): Divinate 1</b>",
             Range = 2,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability39 },
         };
         CardList.Add(card130);
 
         var card131 = new UnitData()
         {
             Id = 131,
-            Name = "Mercenary Tier1",
+            Name = "Mercenary",
             ImageLocation = "Mercenary1",
 
             ResourceDevotion = null,
@@ -4262,8 +5116,7 @@ Foretell (2 Knowledge): Divinate 1</b>",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4272,7 +5125,7 @@ Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Mercenary",
             Attack = 5,
@@ -4280,14 +5133,14 @@ Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability51 },
         };
         CardList.Add(card131);
 
         var card132 = new UnitData()
         {
             Id = 132,
-            Name = "Oathknight Tier1",
+            Name = "Oathknight",
             ImageLocation = "Oathknight1",
 
             ResourceDevotion = null,
@@ -4298,8 +5151,7 @@ Intimidate (3 Energy, 1 Action): Stun</b> an enemy unit",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4308,7 +5160,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Oathknight",
             Attack = 3,
@@ -4316,14 +5168,14 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability52 },
         };
         CardList.Add(card132);
 
         var card133 = new UnitData()
         {
             Id = 133,
-            Name = "Trickster Tier1",
+            Name = "Trickster",
             ImageLocation = "Trickster1",
 
             ResourceDevotion = null,
@@ -4334,8 +5186,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Resupply (3 Gold):</b> Add a shiv to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4344,7 +5195,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Trickster",
             Attack = 6,
@@ -4352,7 +5203,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability55 },
         };
         CardList.Add(card133);
 
@@ -4389,7 +5240,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
         var card135 = new UnitData()
         {
             Id = 135,
-            Name = "Waystalker Tier1",
+            Name = "Waystalker",
             ImageLocation = "Waystalker1",
 
             ResourceDevotion = null,
@@ -4400,8 +5251,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your hero",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4410,7 +5260,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Waystalker",
             Attack = 2,
@@ -4418,7 +5268,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             Range = 3,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability58 },
         };
         CardList.Add(card135);
 
@@ -4433,7 +5283,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
-            ResourceWild = null,
+            ResourceWild = 1,
             ResourceNeutral = null,
 
             Text = @"<b>Prepared</b>",
@@ -4448,7 +5298,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             Tags = new List<Tags> { Tags.Prepared, Tags.Beast, Tags.Trained },
             Synergies = new List<Synergies> { },
             UnitTag = "Trained Beast",
-            Attack = 2,
+            Attack = 1,
             Health = 1,
             Range = 0,
             Speed = 3,
@@ -4460,7 +5310,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
         var card137 = new UnitData()
         {
             Id = 137,
-            Name = "Wildkin Tier1",
+            Name = "Wildkin",
             ImageLocation = "Wildkin1",
 
             ResourceDevotion = null,
@@ -4471,8 +5321,7 @@ Hound Training (3 Wild, 1 Action):</b> Deploy two ""Trained Hounds"" beside your
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Enrage (3 Energy):</b> Your hero gains +3 Attack until the end of your turn",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4481,7 +5330,7 @@ Enrage (3 Energy):</b> Your hero gains +3 Attack until the end of your turn",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Wildkin",
             Attack = 1,
@@ -4489,7 +5338,7 @@ Enrage (3 Energy):</b> Your hero gains +3 Attack until the end of your turn",
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability61 },
         };
         CardList.Add(card137);
 
@@ -4831,7 +5680,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         var card148 = new UnitData()
         {
             Id = 148,
-            Name = "Lifebringer Tier2",
+            Name = "Lifebringer Cleric",
             ImageLocation = "Lifebringer2",
 
             ResourceDevotion = null,
@@ -4842,8 +5691,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4852,7 +5700,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lifebringer",
             Attack = 2,
@@ -4860,14 +5708,14 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Range = 1,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability34 },
         };
         CardList.Add(card148);
 
         var card149 = new UnitData()
         {
             Id = 149,
-            Name = "Lifebringer Tier3",
+            Name = "Lifebringer Archpriest",
             ImageLocation = "Lifebringer3",
 
             ResourceDevotion = null,
@@ -4878,8 +5726,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range 1",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4888,7 +5735,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lifebringer",
             Attack = 3,
@@ -4896,7 +5743,7 @@ Healing Word (3 Devotion, 1 Action):</b> Restore 2 Health to a unit within range
             Range = 2,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability35 },
         };
         CardList.Add(card149);
 
@@ -5745,7 +6592,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
         var card176 = new UnitData()
         {
             Id = 176,
-            Name = "Lorekeeper Tier2",
+            Name = "Lorekeeper Keymaster",
             ImageLocation = "Lorekeeper2",
 
             ResourceDevotion = null,
@@ -5756,8 +6603,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5766,7 +6612,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lorekeeper",
             Attack = 3,
@@ -5774,14 +6620,14 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Range = 1,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability37 },
         };
         CardList.Add(card176);
 
         var card177 = new UnitData()
         {
             Id = 177,
-            Name = "Lorekeeper Tier3",
+            Name = "Lorekeeper Vaultwarden",
             ImageLocation = "Lorekeeper3",
 
             ResourceDevotion = null,
@@ -5792,8 +6638,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast into your deck",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5802,7 +6647,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Lorekeeper",
             Attack = 4,
@@ -5810,7 +6655,7 @@ Preserve Knowledge (3 Knowledge):</b> Shuffle a copy of the next spell you cast 
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability38 },
         };
         CardList.Add(card177);
 
@@ -6503,7 +7348,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         var card199 = new UnitData()
         {
             Id = 199,
-            Name = "Oathknight Tier2",
+            Name = "Oathknight Guardian",
             ImageLocation = "Oathknight2",
 
             ResourceDevotion = null,
@@ -6514,8 +7359,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6524,7 +7368,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Oathknight",
             Attack = 4,
@@ -6532,14 +7376,14 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability53 },
         };
         CardList.Add(card199);
 
         var card200 = new UnitData()
         {
             Id = 200,
-            Name = "Oathknight Tier3",
+            Name = "Oathknight Sentinel",
             ImageLocation = "Oathknight3",
 
             ResourceDevotion = null,
@@ -6550,8 +7394,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6560,7 +7403,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Oathknight",
             Attack = 5,
@@ -6568,7 +7411,7 @@ Holy Shield (3 Devotion, 1 Action):</b> Give all friendly units within Range 1 o
             Range = 0,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability54 },
         };
         CardList.Add(card200);
 
@@ -7361,7 +8204,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
         var card225 = new UnitData()
         {
             Id = 225,
-            Name = "Trickster Tier2",
+            Name = "Trickster Shadow",
             ImageLocation = "Trickster2",
 
             ResourceDevotion = null,
@@ -7372,8 +8215,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Resupply (3 Gold):</b> Add a shiv to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7382,7 +8224,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Trickster",
             Attack = 8,
@@ -7390,14 +8232,14 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Range = 0,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability56 },
         };
         CardList.Add(card225);
 
         var card226 = new UnitData()
         {
             Id = 226,
-            Name = "Trickster Tier3",
+            Name = "Trickster Wraith",
             ImageLocation = "Trickster3",
 
             ResourceDevotion = null,
@@ -7408,8 +8250,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Resupply (3 Gold):</b> Add a shiv to your hand",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7418,7 +8259,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Rarity = Rarity.Hero,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster },
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierThree },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Trickster",
             Attack = 8,
@@ -7426,7 +8267,7 @@ Resupply (3 Gold):</b> Add a shiv to your hand",
             Range = 1,
             Speed = 4,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability57 },
         };
         CardList.Add(card226);
 
@@ -8999,6 +9840,321 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         };
         CardList.Add(card273);
 
+        var card274 = new UnitData()
+        {
+            Id = 274,
+            Name = "Luminist Starcaller",
+            ImageLocation = "Luminist2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Divinate, Tags.Luminist, Tags.HeroTierTwo },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Luminist",
+            Attack = 3,
+            Health = 17,
+            Range = 2,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability40 },
+        };
+        CardList.Add(card274);
+
+        var card275 = new UnitData()
+        {
+            Id = 275,
+            Name = "Luminist Moonsinger",
+            ImageLocation = "Luminist3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Divinate, Tags.Luminist, Tags.HeroTierThree },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Luminist",
+            Attack = 4,
+            Health = 28,
+            Range = 3,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability41 },
+        };
+        CardList.Add(card275);
+
+        var card276 = new UnitData()
+        {
+            Id = 276,
+            Name = "Mercenary Boss",
+            ImageLocation = "Mercenary2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierTwo },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 6,
+            Health = 17,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability43 },
+        };
+        CardList.Add(card276);
+
+        var card277 = new UnitData()
+        {
+            Id = 277,
+            Name = "Mercenary Warlord",
+            ImageLocation = "Mercenary3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierThree },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 8,
+            Health = 28,
+            Range = 0,
+            Speed = 5,
+
+            Abilities = new List<AbilityData>() { ability44 },
+        };
+        CardList.Add(card277);
+
+        var card278 = new UnitData()
+        {
+            Id = 278,
+            Name = "Hireling",
+            ImageLocation = "Hireling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Mercenary },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 2,
+            Health = 2,
+            Range = 1,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card278);
+
+        var card279 = new UnitData()
+        {
+            Id = 279,
+            Name = "Waystalker Ranger",
+            ImageLocation = "Waystalker1",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierTwo },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Waystalker",
+            Attack = 4,
+            Health = 11,
+            Range = 3,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability59 },
+        };
+        CardList.Add(card279);
+
+        var card280 = new UnitData()
+        {
+            Id = 280,
+            Name = "Waystalker Wildwalker",
+            ImageLocation = "Waystalker3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierThree },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Waystalker",
+            Attack = 5,
+            Health = 20,
+            Range = 4,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability60 },
+        };
+        CardList.Add(card280);
+
+        var card281 = new UnitData()
+        {
+            Id = 281,
+            Name = "Wildkin Shapechanger",
+            ImageLocation = "Wildkin2",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Wildkin,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierTwo },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Wildkin",
+            Attack = 2,
+            Health = 23,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability62 },
+        };
+        CardList.Add(card281);
+
+        var card282 = new UnitData()
+        {
+            Id = 282,
+            Name = "Wildkin Berserker",
+            ImageLocation = "Wildkin3",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Wildkin,
+            Rarity = Rarity.Hero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierThree },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Wildkin",
+            Attack = 3,
+            Health = 35,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability63 },
+        };
+        CardList.Add(card282);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -9018,6 +10174,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         card124.RelatedCards = new List<CardData> { card125 };
         card126.RelatedCards = new List<CardData> { card125 };
         card127.RelatedCards = new List<CardData> { card125 };
+        card131.RelatedCards = new List<CardData> { card278 };
         card135.RelatedCards = new List<CardData> { card136 };
         card143.RelatedCards = new List<CardData> { card115 };
         card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
@@ -9042,6 +10199,9 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         card260.RelatedCards = new List<CardData> { card248 };
         card264.RelatedCards = new List<CardData> { card125 };
         card271.RelatedCards = new List<CardData> { card272 };
+        card276.RelatedCards = new List<CardData> { card278 };
+        card279.RelatedCards = new List<CardData> { card136 };
+        card280.RelatedCards = new List<CardData> { card136 };
     }
 }
 
@@ -9049,12 +10209,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierOne, HeroTierTwo, HeroTierThree
     }
 
     public enum Synergies
     {
-        Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman
     }
 
     public enum Sets

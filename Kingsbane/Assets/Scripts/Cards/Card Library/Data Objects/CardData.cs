@@ -1,3 +1,4 @@
+using Assets.Scripts.Category_Enums;
 using CategoryEnums;
 using System;
 using System.Collections.Generic;
@@ -107,10 +108,16 @@ public class CardData
             }
             else
             {
-                highestResource = 1;
+                //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
+                highestResource = 3 - (int)GetHeroTier();
             }
 
             return highestResource;
         }
+    }
+
+    public TierLevel GetHeroTier()
+    {
+        return HeroTier.ConvertTierLevel(this);
     }
 }

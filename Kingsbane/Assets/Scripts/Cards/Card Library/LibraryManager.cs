@@ -117,10 +117,10 @@ public class LibraryManager : MonoBehaviour
             {
                 tempHeroLookup.Add(cardClass, rarityLookup[Rarity.Hero].Intersect(classLookup[cardClass]).ToList());
 
-                for (int tierIndex = 0; tierIndex < 3; tierIndex++)
+                foreach (var card in tempHeroLookup[cardClass])
                 {
-                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = (TierLevel)tierIndex };
-                    heroLookup.Add(heroTier, tempHeroLookup[cardClass].Where(x => x.Name.Contains((tierIndex + 1).ToString())).ToList());
+                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = HeroTier.ConvertTierLevel(card) };
+                    heroLookup.Add(heroTier, new List<CardData>() { card });
                 }
             }
         }

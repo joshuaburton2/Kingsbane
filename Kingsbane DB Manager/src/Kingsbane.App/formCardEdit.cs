@@ -336,7 +336,7 @@ namespace Kingsbane.App
             if (Id.HasValue)
             {
                 //var relatedCards = _context.RelatedCards.Where(x => x.CardId == Id.Value && !relatedCardIDs.Contains(x.RelatedCardId));
-                var relatedCards = _context.RelatedCards.Where(x => !relatedCardIDs.Contains(x.RelatedCardId));
+                var relatedCards = card.RelatedCards.Where(x => !relatedCardIDs.Contains(x.RelatedCardId));
                 _context.RelatedCards.RemoveRange(relatedCards);
             }
             #endregion
@@ -580,16 +580,28 @@ namespace Kingsbane.App
         {
             var formEditAbility = _serviceProvider.GetRequiredService<formEditAbility>();
             formEditAbility.Id = id;
+            formEditAbility.CardId = Id;
             var result = formEditAbility.ShowDialog(this);
 
-            if (result == DialogResult.OK && !lstAbilities.Items.Cast<SelectListItem>().ToList().Contains(formEditAbility.selectionItem))
+            if (result == DialogResult.OK)
             {
-                lstAbilities.Items.Add(formEditAbility.selectionItem);
+                if (!lstAbilities.Items.Cast<SelectListItem>().Any(x => x.Id == formEditAbility.selectionItem.Id))
+                {
+                    lstAbilities.Items.Add(formEditAbility.selectionItem);
+                }
+                else
+                {
+                    var selectedAbility = lstAbilities.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == formEditAbility.selectionItem.Id);
+                    lstAbilities.Items.Remove(selectedAbility);
+                    selectedAbility.Name = formEditAbility.selectionItem.Name;
+                    lstAbilities.Items.Add(selectedAbility);
+                }
             }
 
             if(result == DialogResult.Abort)
             {
-                lstAbilities.Items.Remove(formEditAbility.selectionItem);
+                var removeList = lstAbilities.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == formEditAbility.selectionItem.Id);
+                lstAbilities.Items.Remove(removeList);
             }
         }
 

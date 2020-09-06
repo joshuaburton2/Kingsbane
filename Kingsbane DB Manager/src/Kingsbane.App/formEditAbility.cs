@@ -11,6 +11,7 @@ namespace Kingsbane.App
         private readonly KingsbaneContext _context;
 
         public int? Id { get; set; }
+        public int? CardId { get; set; }
         private Ability ability;
 
         public SelectListItem selectionItem;
@@ -32,7 +33,7 @@ namespace Kingsbane.App
 
                 txtName.Text = ability.Name;
                 txtAbilityText.Text = ability.Text;
-                chkAction.Enabled = ability.CostsAction;
+                chkAction.Checked = ability.CostsAction;
 
                 UpdateResourceFields();
             }
@@ -86,7 +87,14 @@ namespace Kingsbane.App
             ability.ResourceWild = AddResource(chkWild, txtWild);
             ability.ResourceNeutral = AddResource(chkNeutral, txtNeutral);
 
-            ability.CardId = _context.Cards.FirstOrDefault().Id;
+            if (CardId.HasValue)
+            {
+                ability.CardId = CardId.Value;
+            }
+            else
+            {
+                ability.CardId = _context.Cards.FirstOrDefault().Id;
+            }
 
             _context.SaveChanges();
 
@@ -126,6 +134,8 @@ namespace Kingsbane.App
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this ability?", "Check Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                selectionItem = new SelectListItem() { Id = ability.Id, Name = ability.Name };
+
                 if (Id.HasValue)
                 {
                     _context.Remove(ability);
