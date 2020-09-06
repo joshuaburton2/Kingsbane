@@ -1541,6 +1541,24 @@ public class CardLibrary
         };
         AbilityList.Add(ability98);
 
+        var ability99 = new AbilityData()
+        {
+            Id = 99,
+            Name = "Shadowy Ritual",
+            Text = @"<b>Prayer +1</b>",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = null,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability99);
+
         var card2 = new UnitData()
         {
             Id = 2,
@@ -3529,8 +3547,7 @@ Whenever you cast a spell, cast it again on the same target",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Shadowy Ritual (1 Action): Prayer +1</b>
-Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
+            Text = @"Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
             LoreText = @"",
             Notes = @"",
 
@@ -3547,7 +3564,7 @@ Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
             Range = 2,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability99 },
         };
         CardList.Add(card65);
 
