@@ -11455,17 +11455,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultIcon: {fileID: 21300000, guid: 77930616b45a0f34caac99ab8298859f, type: 3}
   resourceIcons:
-  - resourceID: 0
-    iconSprite: {fileID: 21300000, guid: b9a1c4b8a389a6e42b2fce147305dedc, type: 3}
   - resourceID: 1
-    iconSprite: {fileID: 21300000, guid: 15ef4ff1d55c5ff418a73909b7f63ecd, type: 3}
+    iconSprite: {fileID: 21300000, guid: b9a1c4b8a389a6e42b2fce147305dedc, type: 3}
   - resourceID: 2
-    iconSprite: {fileID: 21300000, guid: 58946064abf825f4a81d123a45a54ea0, type: 3}
+    iconSprite: {fileID: 21300000, guid: 15ef4ff1d55c5ff418a73909b7f63ecd, type: 3}
   - resourceID: 3
-    iconSprite: {fileID: 21300000, guid: 37c6f7cb279f4ea479ebf5011ace07dd, type: 3}
+    iconSprite: {fileID: 21300000, guid: 58946064abf825f4a81d123a45a54ea0, type: 3}
   - resourceID: 4
-    iconSprite: {fileID: 21300000, guid: 3af9c7f2c31e8da4e9d5a7154954aa79, type: 3}
+    iconSprite: {fileID: 21300000, guid: 37c6f7cb279f4ea479ebf5011ace07dd, type: 3}
   - resourceID: 5
+    iconSprite: {fileID: 21300000, guid: 3af9c7f2c31e8da4e9d5a7154954aa79, type: 3}
+  - resourceID: 6
     iconSprite: {fileID: 21300000, guid: f1fe447aecf80504bb2ceb4c7e88cd5a, type: 3}
   classIcons:
   - classID: 1
@@ -16324,13 +16324,13 @@ MonoBehaviour:
   classListParent: {fileID: 1969611388}
   classListPrefab: {fileID: 4887463255388378905, guid: 1f01205cdbe6bdf40b4d0a9c881f4cb3,
     type: 3}
-  classNameText: {fileID: 1059499159}
-  dominantResourceText: {fileID: 1279365619}
-  secondaryResourceText: {fileID: 1984621051}
-  playstyleText: {fileID: 1606736905}
-  strengthText: {fileID: 723407418}
-  weaknessText: {fileID: 817763166}
-  descriptionText: {fileID: 792423189}
+  classNameText: {fileID: 0}
+  dominantResourceText: {fileID: 0}
+  secondaryResourceText: {fileID: 0}
+  playstyleText: {fileID: 0}
+  strengthText: {fileID: 0}
+  weaknessText: {fileID: 0}
+  descriptionText: {fileID: 0}
 --- !u!1 &1790595198
 GameObject:
   m_ObjectHideFlags: 0
