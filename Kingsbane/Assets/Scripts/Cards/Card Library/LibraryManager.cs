@@ -352,8 +352,26 @@ public class LibraryManager : MonoBehaviour
         return newCardList;
     }
 
-    private bool CardStringContainsSearch(CardData card, string searchString)
+    private static bool CardStringContainsSearch(CardData card, string searchString)
     {
-        return card.Name.ToLower().Contains(searchString.ToLower()) || card.Text.ToLower().Contains(searchString.ToLower());
+        searchString = searchString.ToLower();
+        var abilityMet = false;
+
+        if (card.CardType == CardTypes.Unit)
+        {
+            var unit = (UnitData)card;
+            
+            foreach (var ability in unit.Abilities)
+            {
+                if (ability.Text.ToLower().Contains(searchString))
+                {
+                    abilityMet = true;
+                    break;
+                }
+            }
+        }
+        return card.Name.ToLower().Contains(searchString) 
+            || card.Text.ToLower().Contains(searchString)
+            || abilityMet;
     }
 }

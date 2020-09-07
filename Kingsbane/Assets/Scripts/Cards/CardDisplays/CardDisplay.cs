@@ -201,8 +201,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 {
                     foreach (var ability in abilities)
                     {
-                        var actionText = ability.CostsAction ? ", 1 Action" : "";
-                        var abilityText = $"<b>{ability.Name} ({GenerateResourceText(ability.GetResources)}{actionText}):</b> {ability.Text}";
+                        var resourceText = GenerateResourceText(ability.GetResources);
+                        var commaText = resourceText.Length == 0 ? "" : ", ";
+                        var actionText = ability.CostsAction ? $"{commaText}1 Action" : "";
+                        var abilityText = $"<b>{ability.Name} ({resourceText}{actionText}):</b> {ability.Text}";
                         cardText.text = $"{cardText.text}\n{abilityText}";
                     }
                 }
