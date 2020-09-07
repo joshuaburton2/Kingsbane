@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     /// </summary>
     private void ResourceInit()
     {
-        usedResources = Classes.GetClassResource(playerClass);
+        usedResources = Classes.GetClassData(playerClass).GetClassResources();
 
         resources = new List<Resource>();
         foreach (var resource in usedResources)

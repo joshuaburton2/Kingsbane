@@ -58,6 +58,7 @@ namespace Kingsbane.App
             services.AddTransient<formCardEdit>();
             services.AddTransient<formSelectionList>();
             services.AddTransient<formEditAbility>();
+            services.AddTransient<formEditClasses>();
         }
     }
 }

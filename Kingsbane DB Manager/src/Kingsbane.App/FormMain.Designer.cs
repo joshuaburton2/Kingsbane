@@ -31,11 +31,13 @@
             this.buttonCardList = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
+            this.btnClassList = new System.Windows.Forms.Button();
+            this.btnExportClasses = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
             // 
-            this.buttonCardList.Location = new System.Drawing.Point(193, 69);
+            this.buttonCardList.Location = new System.Drawing.Point(12, 65);
             this.buttonCardList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCardList.Name = "buttonCardList";
             this.buttonCardList.Size = new System.Drawing.Size(116, 52);
@@ -58,7 +60,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(193, 125);
+            this.btnExport.Location = new System.Drawing.Point(12, 121);
             this.btnExport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(116, 52);
@@ -67,11 +69,33 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // btnClassList
+            // 
+            this.btnClassList.Location = new System.Drawing.Point(372, 65);
+            this.btnClassList.Name = "btnClassList";
+            this.btnClassList.Size = new System.Drawing.Size(120, 52);
+            this.btnClassList.TabIndex = 2;
+            this.btnClassList.Text = "Classes";
+            this.btnClassList.UseVisualStyleBackColor = true;
+            this.btnClassList.Click += new System.EventHandler(this.btnClassList_Click);
+            // 
+            // btnExportClasses
+            // 
+            this.btnExportClasses.Location = new System.Drawing.Point(372, 124);
+            this.btnExportClasses.Name = "btnExportClasses";
+            this.btnExportClasses.Size = new System.Drawing.Size(120, 49);
+            this.btnExportClasses.TabIndex = 3;
+            this.btnExportClasses.Text = "Export";
+            this.btnExportClasses.UseVisualStyleBackColor = true;
+            this.btnExportClasses.Click += new System.EventHandler(this.btnExportClasses_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 188);
+            this.Controls.Add(this.btnExportClasses);
+            this.Controls.Add(this.btnClassList);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.buttonCardList);
@@ -87,6 +111,8 @@
         private System.Windows.Forms.Button buttonCardList;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnClassList;
+        private System.Windows.Forms.Button btnExportClasses;
     }
 }
 

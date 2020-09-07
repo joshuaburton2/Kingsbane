@@ -22,7 +22,8 @@ namespace Kingsbane.Database
 
             foreach (var value in Enum.GetValues(typeof(CardClasses)).Cast<CardClasses>())
             {
-                await context.CardClasses.AddAsync(new CardClass { Id = value, Name = value.ToString() });
+                await context.CardClasses.AddAsync(new CardClass { Id = value, Name = value.ToString(), DominantResource = Resources.Neutral, SecondaryResource = Resources.Neutral,
+                Description = "", Playstyle = "", Strengths = "", Weaknesses = "" });
             }
 
             foreach (var value in Enum.GetValues(typeof(CardRarities)).Cast<CardRarities>())
