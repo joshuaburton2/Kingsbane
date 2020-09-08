@@ -16324,13 +16324,13 @@ MonoBehaviour:
   classListParent: {fileID: 1969611388}
   classListPrefab: {fileID: 4887463255388378905, guid: 1f01205cdbe6bdf40b4d0a9c881f4cb3,
     type: 3}
-  classNameText: {fileID: 0}
-  dominantResourceText: {fileID: 0}
-  secondaryResourceText: {fileID: 0}
-  playstyleText: {fileID: 0}
-  strengthText: {fileID: 0}
-  weaknessText: {fileID: 0}
-  descriptionText: {fileID: 0}
+  classNameText: {fileID: 1059499159}
+  dominantResourceText: {fileID: 1279365619}
+  secondaryResourceText: {fileID: 1984621051}
+  playstyleText: {fileID: 1606736905}
+  strengthText: {fileID: 723407418}
+  weaknessText: {fileID: 817763166}
+  descriptionText: {fileID: 792423189}
 --- !u!1 &1790595198
 GameObject:
   m_ObjectHideFlags: 0
@@ -17476,7 +17476,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459478712}
   m_HandleRect: {fileID: 459478711}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -17554,7 +17554,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -12.891602, y: 0}
+  m_SizeDelta: {x: -11.653198, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1969611390
 MonoBehaviour:

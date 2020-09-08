@@ -55,6 +55,8 @@ namespace Kingsbane.App
             txtStrengths.Text = selectedClass.Strengths;
             txtWeaknesses.Text = selectedClass.Weaknesses;
             txtDescription.Text = selectedClass.Description;
+
+            chkPlayable.Checked = selectedClass.IsPlayable;
         }
 
         private SelectListItem SetComboItem(ComboBox cmb, int Id)
@@ -76,6 +78,7 @@ namespace Kingsbane.App
             selectedClass.Strengths = txtStrengths.Text;
             selectedClass.Weaknesses = txtWeaknesses.Text;
             selectedClass.Description = txtDescription.Text;
+            selectedClass.IsPlayable = chkPlayable.Checked;
 
             _context.SaveChanges();
         }

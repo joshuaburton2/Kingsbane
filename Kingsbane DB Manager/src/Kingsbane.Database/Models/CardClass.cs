@@ -24,6 +24,8 @@ namespace Kingsbane.Database.Models
         public Resources DominantResource { get; set; }
         public Resources SecondaryResource { get; set; }
 
+        public bool IsPlayable { get; set; }
+
         [Column(TypeName = "varchar(max)")]
         public string Description { get; set; }
         [Column(TypeName = "varchar(max)")]

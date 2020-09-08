@@ -45,11 +45,12 @@
             this.txtStrengths = new System.Windows.Forms.TextBox();
             this.txtWeaknesses = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
+            this.chkPlayable = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(293, 502);
+            this.btnClose.Location = new System.Drawing.Point(301, 519);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 42);
             this.btnClose.TabIndex = 0;
@@ -59,7 +60,7 @@
             // 
             // btnSaveAndClose
             // 
-            this.btnSaveAndClose.Location = new System.Drawing.Point(192, 502);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(200, 519);
             this.btnSaveAndClose.Name = "btnSaveAndClose";
             this.btnSaveAndClose.Size = new System.Drawing.Size(95, 42);
             this.btnSaveAndClose.TabIndex = 1;
@@ -69,7 +70,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(87, 502);
+            this.btnSave.Location = new System.Drawing.Point(95, 519);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 42);
             this.btnSave.TabIndex = 2;
@@ -84,7 +85,7 @@
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(87, 15);
             this.cmbClass.Name = "cmbClass";
-            this.cmbClass.Size = new System.Drawing.Size(286, 33);
+            this.cmbClass.Size = new System.Drawing.Size(289, 33);
             this.cmbClass.TabIndex = 3;
             this.cmbClass.SelectedIndexChanged += new System.EventHandler(this.cmbClass_SelectedIndexChanged);
             // 
@@ -203,11 +204,22 @@
             this.txtDescription.Size = new System.Drawing.Size(361, 125);
             this.txtDescription.TabIndex = 12;
             // 
+            // chkPlayable
+            // 
+            this.chkPlayable.AutoSize = true;
+            this.chkPlayable.Location = new System.Drawing.Point(13, 493);
+            this.chkPlayable.Name = "chkPlayable";
+            this.chkPlayable.Size = new System.Drawing.Size(86, 19);
+            this.chkPlayable.TabIndex = 13;
+            this.chkPlayable.Text = "Is Playable?";
+            this.chkPlayable.UseVisualStyleBackColor = true;
+            // 
             // formEditClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 556);
+            this.ClientSize = new System.Drawing.Size(388, 571);
+            this.Controls.Add(this.chkPlayable);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtWeaknesses);
             this.Controls.Add(this.txtStrengths);
@@ -253,5 +265,6 @@
         private System.Windows.Forms.TextBox txtStrengths;
         private System.Windows.Forms.TextBox txtWeaknesses;
         private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.CheckBox chkPlayable;
     }
 }

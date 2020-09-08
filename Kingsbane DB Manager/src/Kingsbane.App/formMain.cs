@@ -225,6 +225,8 @@ namespace Kingsbane.App
 
             foreach (var item in query)
             {
+                var isPlayable = item.IsPlayable.ToString().ToLower();
+
                 sb.AppendLine($"                //{item.Name}       (Dominant:{item.DominantResource}, Secondary:{item.SecondaryResource})");
                 sb.AppendLine($"                new ClassData(ClassList.{item.Name})");
                 sb.AppendLine($"                {{");
@@ -233,6 +235,7 @@ namespace Kingsbane.App
                 sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.{item.DominantResource} }},");
                 sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.{item.SecondaryResource} }},");
                 sb.AppendLine($"                    }},");
+                sb.AppendLine($"                    IsPlayable = {isPlayable},");
                 sb.AppendLine($"                    ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()");
                 sb.AppendLine($"                    {{");
                 sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Description, ""{item.Description}"" }},");
