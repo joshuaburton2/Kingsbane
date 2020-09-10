@@ -187,12 +187,12 @@ namespace Kingsbane.App
             sb.AppendLine("{");
             sb.AppendLine("    public enum Tags");
             sb.AppendLine("    {");
-            sb.AppendLine($"         {string.Join(",", _context.Tags.Select(x => x.Name))}");
+            sb.AppendLine($"         Default, {string.Join(",", _context.Tags.Select(x => x.Name))}");
             sb.AppendLine("    }");
             sb.AppendLine("");
             sb.AppendLine("    public enum Synergies");
             sb.AppendLine("    {");
-            sb.AppendLine($"         {string.Join(",", _context.Synergies.Select(x => x.Name))}");
+            sb.AppendLine($"         Default, {string.Join(",", _context.Synergies.Select(x => x.Name))}");
             sb.AppendLine("    }");
             sb.AppendLine("");
             sb.AppendLine("    public enum Sets");
@@ -203,7 +203,54 @@ namespace Kingsbane.App
 
             var x = sb.ToString();
 
-            System.Windows.Forms.Clipboard.SetText(x);
+            Clipboard.SetText(x);
+            MessageBox.Show("Exported content copied to clipboard");
+        }
+
+        private void btnClassList_Click(object sender, EventArgs e)
+        {
+            var formEditClass = _serviceProvider.GetRequiredService<formEditClasses>();
+            formEditClass.Show();
+            this.Hide();
+        }
+
+        private void btnExportClasses_Click(object sender, EventArgs e)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("        internal static List<ClassData> ClassDataList = new List<ClassData>()");
+            sb.AppendLine("        {");
+
+            var query = _context.CardClasses;
+
+            foreach (var item in query)
+            {
+                var isPlayable = item.IsPlayable.ToString().ToLower();
+
+                sb.AppendLine($"                //{item.Name}       (Dominant:{item.DominantResource}, Secondary:{item.SecondaryResource})");
+                sb.AppendLine($"                new ClassData(ClassList.{item.Name})");
+                sb.AppendLine($"                {{");
+                sb.AppendLine($"                    ClassResources = new List<ClassResourceType>()");
+                sb.AppendLine($"                    {{");
+                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.{item.DominantResource} }},");
+                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.{item.SecondaryResource} }},");
+                sb.AppendLine($"                    }},");
+                sb.AppendLine($"                    IsPlayable = {isPlayable},");
+                sb.AppendLine($"                    ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()");
+                sb.AppendLine($"                    {{");
+                sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Description, ""{item.Description}"" }},");
+                sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Playstyle, ""{item.Playstyle}"" }},");
+                sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Strengths, ""{item.Strengths}"" }},");
+                sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Weaknesses, ""{item.Weaknesses}"" }},");
+                sb.AppendLine($"                    }},");
+                sb.AppendLine($"                    }},");
+            }
+
+            sb.AppendLine("        };");
+
+            var x = sb.ToString();
+
+            Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
         }
     }

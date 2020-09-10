@@ -51,7 +51,7 @@ public class CardDetailUI : MonoBehaviour
 
     public void ClosePanel()
     {
-        gameObject.SetActive(false);
+        GameManager.instance.uiManager.ClosePanel(gameObject);
     }
 
     private void DestroyAllChildren(Transform transform)

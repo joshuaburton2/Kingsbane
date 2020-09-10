@@ -6,12 +6,12 @@ namespace Kingsbane.Database.Enums
 {
     public enum Resources
     {
+        Neutral,
         Devotion,
         Energy,
         Gold,
         Knowledge,
         Mana,
-        Neutral,
         Wild
     }
 }

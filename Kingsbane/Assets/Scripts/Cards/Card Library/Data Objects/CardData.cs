@@ -34,6 +34,49 @@ public class CardData
 
     /// <summary>
     /// 
+    /// Default Constructor. Cards should not have an Id of negative 1 so this is a good test to see if a card should exist or not.
+    /// 
+    /// </summary>
+    public CardData()
+    {
+        Id = -1;
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying card data. Should rarely be used as card data should almost always be drawn directly from CardLibary.cs
+    /// 
+    /// </summary>
+    public CardData(CardData cardData)
+    {
+        Id = cardData.Id;
+        Name = cardData.Name;
+        ImageLocation = cardData.ImageLocation;
+
+        ResourceDevotion = cardData.ResourceDevotion;
+        ResourceEnergy = cardData.ResourceEnergy;
+        ResourceGold = cardData.ResourceGold;
+        ResourceKnowledge = cardData.ResourceKnowledge;
+        ResourceMana = cardData.ResourceMana;
+        ResourceNeutral = cardData.ResourceNeutral;
+        ResourceWild = cardData.ResourceWild;
+
+        Text = cardData.Text;
+        LoreText = cardData.LoreText;
+        Notes = cardData.Notes;
+
+        Set = cardData.Set;
+        Class = cardData.Class;
+        Rarity = cardData.Rarity;
+        CardType = cardData.CardType;
+
+        Tags = cardData.Tags;
+        Synergies = cardData.Synergies;
+        RelatedCards = cardData.RelatedCards;
+    }
+
+    /// <summary>
+    /// 
     /// Fetches the card resources as a list. Note that Value is forced to be negative for Cards as they reduce the players resources when they are played
     /// 
     /// </summary>
@@ -107,10 +150,13 @@ public class CardData
             }
             else
             {
-                highestResource = 1;
+                //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
+                highestResource = 3 - (int)((UnitData)this).GetHeroTier();
             }
 
             return highestResource;
         }
     }
+
+
 }

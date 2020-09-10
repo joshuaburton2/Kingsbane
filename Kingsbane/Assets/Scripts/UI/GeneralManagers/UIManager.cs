@@ -16,4 +16,9 @@ public class UIManager : MonoBehaviour
         cardDetailDisplay.SetActive(true);
         cardDetailDisplay.GetComponent<CardDetailUI>().ShowCardDetails(cardData);
     }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
 }

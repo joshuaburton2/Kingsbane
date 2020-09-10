@@ -110,7 +110,7 @@ public class LibraryUI : MonoBehaviour
     private void InitDropdowns()
     {
         InitDropdown(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default });
-        InitDropdown(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.NPCHero, Rarity.Uncollectable });
+        InitDropdown(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable });
         InitDropdown(setDropdown, new List<Sets>() { Sets.Default });
     }
 
@@ -358,7 +358,9 @@ public class LibraryUI : MonoBehaviour
         activeFilter = new CardFilter();
 
         if (includeUncollectables)
-            activeFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+        {
+            UpdateUncollectableStatus(true);
+        }
 
         activeFilter.SearchString = searchStringInput.text;
 
@@ -386,7 +388,9 @@ public class LibraryUI : MonoBehaviour
                 case Type _ when type == typeof(Rarity):
                     activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
                     if (activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
-                        activeFilter.RaritiyFilter.Remove(Rarity.Uncollectable);
+                    {
+                        UpdateUncollectableStatus(false);
+                    }
                     uncollectableText.transform.parent.GetComponent<Button>().interactable = false;
                     break;
                 case Type _ when type == typeof(Sets):
@@ -401,16 +405,28 @@ public class LibraryUI : MonoBehaviour
         if (!activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
         {
             uncollectableText.text = "Hide Uncollectable Cards";
+            UpdateUncollectableStatus(true);
+        }
+        else
+        {
+            uncollectableText.text = "Show Uncollectable Cards";
+            UpdateUncollectableStatus(false);
+        }
+
+        InitTabs();
+    }
+
+    private void UpdateUncollectableStatus(bool isAdded)
+    {
+        if (isAdded)
+        {
             activeFilter.RaritiyFilter.Add(Rarity.Uncollectable);
             activeFilter.RaritiyFilter.Add(Rarity.Hero);
         }
         else
         {
-            uncollectableText.text = "Show Uncollectable Cards";
             activeFilter.RaritiyFilter.Remove(Rarity.Uncollectable);
             activeFilter.RaritiyFilter.Remove(Rarity.Hero);
         }
-
-        InitTabs();
     }
 }

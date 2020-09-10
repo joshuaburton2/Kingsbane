@@ -1,11 +1,8 @@
-﻿using Assets.Scripts.Category_Enums;
-using CategoryEnums;
+﻿using CategoryEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-
 
 public class LibraryManager : MonoBehaviour
 {
@@ -25,7 +22,11 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<Sets, List<CardData>> setLookup;
     private Dictionary<Rarity, List<CardData>> rarityLookup;
     private Dictionary<CardTypes, List<CardData>> typeLookup;
-    private Dictionary<HeroTier, List<CardData>> heroLookup;
+
+    //heroLookup and heroAbilityLookup should be used when creating player heroes to add to a deck and allow the customisation of abilities on the hero card
+    //These should not be used to pull the hero cards into the library
+    private Dictionary<HeroTier, UnitData> heroLookup;
+    private Dictionary<HeroTier, AbilityData> heroAbilityLookup;
 
     private void Start()
     {
@@ -109,7 +110,8 @@ public class LibraryManager : MonoBehaviour
     private void ConstructHeroLookup()
     {
         var tempHeroLookup = new Dictionary<Classes.ClassList, List<CardData>>();
-        heroLookup = new Dictionary<HeroTier, List<CardData>>();
+        heroLookup = new Dictionary<HeroTier, UnitData>();
+        heroAbilityLookup = new Dictionary<HeroTier, AbilityData>();
 
         foreach (var cardClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
@@ -117,10 +119,14 @@ public class LibraryManager : MonoBehaviour
             {
                 tempHeroLookup.Add(cardClass, rarityLookup[Rarity.Hero].Intersect(classLookup[cardClass]).ToList());
 
-                for (int tierIndex = 0; tierIndex < 3; tierIndex++)
+                foreach (var card in tempHeroLookup[cardClass])
                 {
-                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = (TierLevel)tierIndex };
-                    heroLookup.Add(heroTier, tempHeroLookup[cardClass].Where(x => x.Name.Contains((tierIndex + 1).ToString())).ToList());
+                    var heroCard = (UnitData)card;
+                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = HeroTier.ConvertTierLevel(heroCard) };
+                    heroLookup.Add(heroTier, heroCard);
+
+                    var heroAbility = heroCard.Abilities[0]; //Should only be one element in the hero ability list
+                    heroAbilityLookup.Add(heroTier, heroAbility);
                 }
             }
         }
@@ -154,9 +160,6 @@ public class LibraryManager : MonoBehaviour
             case Type _ when type == typeof(CardTypes):
                 typeLookup.TryGetValue((CardTypes)(object)key, out dictionaryList);
                 break;
-            case Type _ when type == typeof(HeroTier):
-                heroLookup.TryGetValue((HeroTier)(object)key, out dictionaryList);
-                break;
             default:
                 throw new Exception("Not a valid Dictionary Type");
         }
@@ -167,6 +170,27 @@ public class LibraryManager : MonoBehaviour
         } 
         else
             return new List<CardData>();
+    }
+
+    public UnitData GetHero (Classes.ClassList neededClass, TierLevel heroTierLevel, TierLevel abilityTierLevel )
+    {
+        if (neededClass != Classes.ClassList.Default)
+        {
+            var heroTier = new HeroTier() { heroClass = neededClass, tierLevel = heroTierLevel };
+            var abilityTier = new HeroTier() { heroClass = neededClass, tierLevel = abilityTierLevel };
+
+            heroLookup.TryGetValue(heroTier, out var heroData);
+            heroAbilityLookup.TryGetValue(abilityTier, out var abilityData);
+
+            heroData.Abilities.Clear();
+            heroData.Abilities.Add(abilityData);
+
+            return heroData;
+        }
+        else
+        {
+            throw new Exception("Cannot get hero from Default class");
+        }
     }
 
     public CardData GetCard(int Id)
@@ -352,8 +376,26 @@ public class LibraryManager : MonoBehaviour
         return newCardList;
     }
 
-    private bool CardStringContainsSearch(CardData card, string searchString)
+    private static bool CardStringContainsSearch(CardData card, string searchString)
     {
-        return card.Name.ToLower().Contains(searchString.ToLower()) || card.Text.ToLower().Contains(searchString.ToLower());
+        searchString = searchString.ToLower();
+        var abilityMet = false;
+
+        if (card.CardType == CardTypes.Unit)
+        {
+            var unit = (UnitData)card;
+            
+            foreach (var ability in unit.Abilities)
+            {
+                if (ability.Text.ToLower().Contains(searchString))
+                {
+                    abilityMet = true;
+                    break;
+                }
+            }
+        }
+        return card.Name.ToLower().Contains(searchString) 
+            || card.Text.ToLower().Contains(searchString)
+            || abilityMet;
     }
 }

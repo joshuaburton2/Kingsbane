@@ -11,6 +11,11 @@ public class DeckListUI : MonoBehaviour
     [SerializeField]
     private List<GameObject> deckListObjects;
 
+    private void Start()
+    {
+        newDeckPage.SetActive(false);
+    }
+
     public void CreateNewDeck()
     {
         newDeckPage.SetActive(true);
