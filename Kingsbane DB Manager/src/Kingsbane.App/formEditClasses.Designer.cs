@@ -46,11 +46,24 @@
             this.txtWeaknesses = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.chkPlayable = new System.Windows.Forms.CheckBox();
+            this.cmbDeck = new System.Windows.Forms.ComboBox();
+            this.btnAddDeck = new System.Windows.Forms.Button();
+            this.txtDeckName = new System.Windows.Forms.TextBox();
+            this.lstDeckList = new System.Windows.Forms.ListView();
+            this.colId = new System.Windows.Forms.ColumnHeader();
+            this.colName = new System.Windows.Forms.ColumnHeader();
+            this.colType = new System.Windows.Forms.ColumnHeader();
+            this.colClass = new System.Windows.Forms.ColumnHeader();
+            this.colRarity = new System.Windows.Forms.ColumnHeader();
+            this.chkNPCDeck = new System.Windows.Forms.CheckBox();
+            this.btnSaveDeck = new System.Windows.Forms.Button();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(301, 519);
+            this.btnClose.Location = new System.Drawing.Point(783, 520);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 42);
             this.btnClose.TabIndex = 0;
@@ -60,7 +73,7 @@
             // 
             // btnSaveAndClose
             // 
-            this.btnSaveAndClose.Location = new System.Drawing.Point(200, 519);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(682, 520);
             this.btnSaveAndClose.Name = "btnSaveAndClose";
             this.btnSaveAndClose.Size = new System.Drawing.Size(95, 42);
             this.btnSaveAndClose.TabIndex = 1;
@@ -70,7 +83,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(95, 519);
+            this.btnSave.Location = new System.Drawing.Point(577, 520);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 42);
             this.btnSave.TabIndex = 2;
@@ -214,11 +227,121 @@
             this.chkPlayable.Text = "Is Playable?";
             this.chkPlayable.UseVisualStyleBackColor = true;
             // 
+            // cmbDeck
+            // 
+            this.cmbDeck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDeck.FormattingEnabled = true;
+            this.cmbDeck.Location = new System.Drawing.Point(394, 75);
+            this.cmbDeck.Name = "cmbDeck";
+            this.cmbDeck.Size = new System.Drawing.Size(296, 23);
+            this.cmbDeck.TabIndex = 14;
+            this.cmbDeck.SelectedIndexChanged += new System.EventHandler(this.cmbDeck_SelectedIndexChanged);
+            // 
+            // btnAddDeck
+            // 
+            this.btnAddDeck.Location = new System.Drawing.Point(696, 77);
+            this.btnAddDeck.Name = "btnAddDeck";
+            this.btnAddDeck.Size = new System.Drawing.Size(81, 23);
+            this.btnAddDeck.TabIndex = 15;
+            this.btnAddDeck.Text = "Add";
+            this.btnAddDeck.UseVisualStyleBackColor = true;
+            this.btnAddDeck.Click += new System.EventHandler(this.btnAddDeck_Click);
+            // 
+            // txtDeckName
+            // 
+            this.txtDeckName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDeckName.Location = new System.Drawing.Point(394, 103);
+            this.txtDeckName.Name = "txtDeckName";
+            this.txtDeckName.Size = new System.Drawing.Size(296, 29);
+            this.txtDeckName.TabIndex = 16;
+            // 
+            // lstDeckList
+            // 
+            this.lstDeckList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colId,
+            this.colName,
+            this.colType,
+            this.colClass,
+            this.colRarity});
+            this.lstDeckList.HideSelection = false;
+            this.lstDeckList.Location = new System.Drawing.Point(394, 143);
+            this.lstDeckList.Name = "lstDeckList";
+            this.lstDeckList.Size = new System.Drawing.Size(464, 343);
+            this.lstDeckList.TabIndex = 17;
+            this.lstDeckList.UseCompatibleStateImageBehavior = false;
+            this.lstDeckList.View = System.Windows.Forms.View.Details;
+            // 
+            // colId
+            // 
+            this.colId.Name = "colId";
+            this.colId.Text = "Id";
+            // 
+            // colName
+            // 
+            this.colName.Name = "colName";
+            this.colName.Text = "Name";
+            this.colName.Width = 120;
+            // 
+            // colType
+            // 
+            this.colType.Name = "colType";
+            this.colType.Text = "Type";
+            this.colType.Width = 80;
+            // 
+            // colClass
+            // 
+            this.colClass.Name = "colClass";
+            this.colClass.Text = "Class";
+            this.colClass.Width = 100;
+            // 
+            // colRarity
+            // 
+            this.colRarity.Name = "colRarity";
+            this.colRarity.Text = "Rarity";
+            this.colRarity.Width = 100;
+            // 
+            // chkNPCDeck
+            // 
+            this.chkNPCDeck.AutoSize = true;
+            this.chkNPCDeck.Location = new System.Drawing.Point(774, 113);
+            this.chkNPCDeck.Name = "chkNPCDeck";
+            this.chkNPCDeck.Size = new System.Drawing.Size(84, 19);
+            this.chkNPCDeck.TabIndex = 18;
+            this.chkNPCDeck.Text = "NPC Deck?";
+            this.chkNPCDeck.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveDeck
+            // 
+            this.btnSaveDeck.Location = new System.Drawing.Point(766, 493);
+            this.btnSaveDeck.Name = "btnSaveDeck";
+            this.btnSaveDeck.Size = new System.Drawing.Size(92, 23);
+            this.btnSaveDeck.TabIndex = 19;
+            this.btnSaveDeck.Text = "Save Deck";
+            this.btnSaveDeck.UseVisualStyleBackColor = true;
+            this.btnSaveDeck.Click += new System.EventHandler(this.btnSaveDeck_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(782, 77);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 20;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // formEditClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 571);
+            this.ClientSize = new System.Drawing.Size(869, 571);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSaveDeck);
+            this.Controls.Add(this.chkNPCDeck);
+            this.Controls.Add(this.lstDeckList);
+            this.Controls.Add(this.txtDeckName);
+            this.Controls.Add(this.btnAddDeck);
+            this.Controls.Add(this.cmbDeck);
             this.Controls.Add(this.chkPlayable);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtWeaknesses);
@@ -266,5 +389,18 @@
         private System.Windows.Forms.TextBox txtWeaknesses;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.CheckBox chkPlayable;
+        private System.Windows.Forms.ComboBox cmbDeck;
+        private System.Windows.Forms.Button btnAddDeck;
+        private System.Windows.Forms.TextBox txtDeckName;
+        private System.Windows.Forms.ListView lstDeckList;
+        private System.Windows.Forms.CheckBox chkNPCDeck;
+        private System.Windows.Forms.Button btnSaveDeck;
+        private System.Windows.Forms.ColumnHeader colId;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colRarity;
+        private System.Windows.Forms.ColumnHeader colClass;
+        private System.Windows.Forms.ColumnHeader colType;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

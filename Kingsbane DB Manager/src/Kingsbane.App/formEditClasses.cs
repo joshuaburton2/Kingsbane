@@ -13,6 +13,7 @@ namespace Kingsbane.App
         private readonly IServiceProvider _serviceProvider;
 
         private CardClass selectedClass;
+        private Deck selectedDeck;
 
         public formEditClasses(
             IServiceProvider serviceProvider,
@@ -57,6 +58,64 @@ namespace Kingsbane.App
             txtDescription.Text = selectedClass.Description;
 
             chkPlayable.Checked = selectedClass.IsPlayable;
+
+            InitDeckList();
+        }
+
+        private void InitDeckList()
+        {
+            var deckList = selectedClass.Decks.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+            if (deckList == null)
+            {
+                cmbDeck.Enabled = false;
+                btnDelete.Enabled = false;
+                txtDeckName.Enabled = false;
+                btnSaveDeck.Enabled = false;
+                chkNPCDeck.Enabled = false;
+            }
+            else
+            {
+                cmbDeck.Enabled = true;
+                btnDelete.Enabled = true;
+                txtDeckName.Enabled = true;
+                btnSaveDeck.Enabled = true;
+                chkNPCDeck.Enabled = true;
+
+                cmbDeck.Items.Clear();
+                cmbDeck.Items.AddRange(deckList);
+                SetComboItem(cmbDeck, 0);
+
+                LoadDeckInfo();
+            }
+        }
+
+        private void LoadDeckInfo()
+        {
+            var selectedDeckId = ((SelectListItem)cmbDeck.SelectedItem).Id;
+            selectedDeck = selectedClass.Decks.FirstOrDefault(x => x.Id == selectedDeckId);
+
+            txtDeckName.Text = selectedDeck.Id.ToString();
+            chkNPCDeck.Checked = selectedDeck.NPCDeck;
+
+            RefreshDeckList();
+        }
+
+        private void RefreshDeckList()
+        {
+            var deckList = selectedDeck.DeckCards.Select(x => x.Card).ToList();
+            var cardList = deckList.Select(x => new CardListItem { Id = x.Id, Name = x.Name, CardType = x.CardTypeId, Class = x.CardClassId, Rarity = x.RarityId });
+
+            lstDeckList.Items.Clear();
+            foreach (var card in cardList)
+            {
+                var listItem = new ListViewItem(card.Id.ToString());
+                listItem.SubItems.Add(card.Name);
+                listItem.SubItems.Add(card.CardType.ToString());
+                listItem.SubItems.Add(card.Class.ToString());
+                listItem.SubItems.Add(card.Rarity.ToString());
+                lstDeckList.Items.Add(listItem);
+                listItem.Tag = card.Id;
+            }
         }
 
         private SelectListItem SetComboItem(ComboBox cmb, int Id)
@@ -104,6 +163,26 @@ namespace Kingsbane.App
         private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshFields();
+        }
+
+        private void btnAddDeck_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbDeck_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDeckInfo();
+        }
+
+        private void btnSaveDeck_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
