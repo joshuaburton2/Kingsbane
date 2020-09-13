@@ -13,7 +13,7 @@ namespace Kingsbane.App
     {
         Tag,
         Synergy,
-        RelatedCard,
+        Cards,
     }
 
     public partial class formSelectionList : Form
@@ -40,7 +40,7 @@ namespace Kingsbane.App
                     btnAdd.Enabled = true;
                     txtAdd.Enabled = true;
                     break;
-                case SelectionType.RelatedCard:
+                case SelectionType.Cards:
                     btnAdd.Enabled = false;
                     txtAdd.Enabled = false;
                     break;
@@ -76,7 +76,7 @@ namespace Kingsbane.App
                 case SelectionType.Synergy:
                     newQuery = _context.Synergies.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = "" });
                     break;
-                case SelectionType.RelatedCard:
+                case SelectionType.Cards:
                 default:
                     newQuery = _context.Cards.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CardTypeId.ToString() });
                     break;

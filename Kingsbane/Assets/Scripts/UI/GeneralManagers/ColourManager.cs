@@ -43,14 +43,22 @@ public class ColourManager : MonoBehaviour
     /// Obtain a particular rarities colour
     /// 
     /// </summary>
-    public Color GetRarityColour(Rarity neededRarity)
+    public Color GetRarityColour(Rarity neededRarity, Classes.ClassList neededClass)
     {
         var rarityColour = new Color();
-        rarityColour = rarityColours.FirstOrDefault(x => x.Rarity == neededRarity).rarityColour;
-        if (rarityColour == null)
+        if (neededRarity == Rarity.Hero || neededRarity == Rarity.NPCHero)
         {
-            rarityColour = new Color();
+            rarityColour = GetClassColour(neededClass);
         }
+        else
+        {
+            rarityColour = rarityColours.FirstOrDefault(x => x.Rarity == neededRarity).rarityColour;
+            if (rarityColour == null)
+            {
+                rarityColour = new Color();
+            }
+        }
+        
         return rarityColour;
     }
 

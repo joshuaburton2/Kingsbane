@@ -59,6 +59,8 @@
             this.btnSaveDeck = new System.Windows.Forms.Button();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.txtNewDeckName = new System.Windows.Forms.TextBox();
+            this.btnAddCard = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
@@ -198,6 +200,7 @@
             this.txtStrengths.Location = new System.Drawing.Point(12, 188);
             this.txtStrengths.Multiline = true;
             this.txtStrengths.Name = "txtStrengths";
+            this.txtStrengths.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtStrengths.Size = new System.Drawing.Size(361, 55);
             this.txtStrengths.TabIndex = 12;
             // 
@@ -206,6 +209,7 @@
             this.txtWeaknesses.Location = new System.Drawing.Point(12, 275);
             this.txtWeaknesses.Multiline = true;
             this.txtWeaknesses.Name = "txtWeaknesses";
+            this.txtWeaknesses.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtWeaknesses.Size = new System.Drawing.Size(361, 55);
             this.txtWeaknesses.TabIndex = 12;
             // 
@@ -214,6 +218,7 @@
             this.txtDescription.Location = new System.Drawing.Point(12, 361);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(361, 125);
             this.txtDescription.TabIndex = 12;
             // 
@@ -233,15 +238,15 @@
             this.cmbDeck.FormattingEnabled = true;
             this.cmbDeck.Location = new System.Drawing.Point(394, 75);
             this.cmbDeck.Name = "cmbDeck";
-            this.cmbDeck.Size = new System.Drawing.Size(296, 23);
+            this.cmbDeck.Size = new System.Drawing.Size(326, 23);
             this.cmbDeck.TabIndex = 14;
             this.cmbDeck.SelectedIndexChanged += new System.EventHandler(this.cmbDeck_SelectedIndexChanged);
             // 
             // btnAddDeck
             // 
-            this.btnAddDeck.Location = new System.Drawing.Point(696, 77);
+            this.btnAddDeck.Location = new System.Drawing.Point(645, 46);
             this.btnAddDeck.Name = "btnAddDeck";
-            this.btnAddDeck.Size = new System.Drawing.Size(81, 23);
+            this.btnAddDeck.Size = new System.Drawing.Size(75, 23);
             this.btnAddDeck.TabIndex = 15;
             this.btnAddDeck.Text = "Add";
             this.btnAddDeck.UseVisualStyleBackColor = true;
@@ -252,7 +257,7 @@
             this.txtDeckName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDeckName.Location = new System.Drawing.Point(394, 103);
             this.txtDeckName.Name = "txtDeckName";
-            this.txtDeckName.Size = new System.Drawing.Size(296, 29);
+            this.txtDeckName.Size = new System.Drawing.Size(326, 29);
             this.txtDeckName.TabIndex = 16;
             // 
             // lstDeckList
@@ -263,13 +268,17 @@
             this.colType,
             this.colClass,
             this.colRarity});
+            this.lstDeckList.FullRowSelect = true;
+            this.lstDeckList.GridLines = true;
             this.lstDeckList.HideSelection = false;
             this.lstDeckList.Location = new System.Drawing.Point(394, 143);
+            this.lstDeckList.MultiSelect = false;
             this.lstDeckList.Name = "lstDeckList";
             this.lstDeckList.Size = new System.Drawing.Size(464, 343);
             this.lstDeckList.TabIndex = 17;
             this.lstDeckList.UseCompatibleStateImageBehavior = false;
             this.lstDeckList.View = System.Windows.Forms.View.Details;
+            this.lstDeckList.DoubleClick += new System.EventHandler(this.lstDeckList_DoubleClick);
             // 
             // colId
             // 
@@ -303,7 +312,7 @@
             // chkNPCDeck
             // 
             this.chkNPCDeck.AutoSize = true;
-            this.chkNPCDeck.Location = new System.Drawing.Point(774, 113);
+            this.chkNPCDeck.Location = new System.Drawing.Point(773, 492);
             this.chkNPCDeck.Name = "chkNPCDeck";
             this.chkNPCDeck.Size = new System.Drawing.Size(84, 19);
             this.chkNPCDeck.TabIndex = 18;
@@ -312,9 +321,9 @@
             // 
             // btnSaveDeck
             // 
-            this.btnSaveDeck.Location = new System.Drawing.Point(766, 493);
+            this.btnSaveDeck.Location = new System.Drawing.Point(783, 103);
             this.btnSaveDeck.Name = "btnSaveDeck";
-            this.btnSaveDeck.Size = new System.Drawing.Size(92, 23);
+            this.btnSaveDeck.Size = new System.Drawing.Size(75, 29);
             this.btnSaveDeck.TabIndex = 19;
             this.btnSaveDeck.Text = "Save Deck";
             this.btnSaveDeck.UseVisualStyleBackColor = true;
@@ -322,19 +331,38 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(782, 77);
+            this.btnDelete.Location = new System.Drawing.Point(726, 103);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.Size = new System.Drawing.Size(51, 29);
             this.btnDelete.TabIndex = 20;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtNewDeckName
+            // 
+            this.txtNewDeckName.Location = new System.Drawing.Point(394, 46);
+            this.txtNewDeckName.Name = "txtNewDeckName";
+            this.txtNewDeckName.Size = new System.Drawing.Size(245, 23);
+            this.txtNewDeckName.TabIndex = 21;
+            // 
+            // btnAddCard
+            // 
+            this.btnAddCard.Location = new System.Drawing.Point(394, 493);
+            this.btnAddCard.Name = "btnAddCard";
+            this.btnAddCard.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCard.TabIndex = 22;
+            this.btnAddCard.Text = "Add Card";
+            this.btnAddCard.UseVisualStyleBackColor = true;
+            this.btnAddCard.Click += new System.EventHandler(this.btnAddCard_Click);
             // 
             // formEditClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 571);
+            this.Controls.Add(this.btnAddCard);
+            this.Controls.Add(this.txtNewDeckName);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSaveDeck);
             this.Controls.Add(this.chkNPCDeck);
@@ -402,5 +430,7 @@
         private System.Windows.Forms.ColumnHeader colType;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtNewDeckName;
+        private System.Windows.Forms.Button btnAddCard;
     }
 }

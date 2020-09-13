@@ -1,5 +1,6 @@
 ﻿using CategoryEnums;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class NewDeckUI : MonoBehaviour
 {
     public ClassData selectedClassData;
     private UnitData heroCard;
+    List<DeckData> deckTemplates;
+    DeckData selectedTemplate;
 
     [SerializeField]
     GameObject classListParent;
@@ -40,6 +43,12 @@ public class NewDeckUI : MonoBehaviour
     [SerializeField]
     TMP_Dropdown deckTemplateDropdown;
 
+    [Header("Card List Fields")]
+    [SerializeField]
+    TextMeshProUGUI deckNameText;
+    [SerializeField]
+    DeckCardListUI deckCardList;
+
     private void Start()
     {
         foreach (var newClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
@@ -61,8 +70,6 @@ public class NewDeckUI : MonoBehaviour
 
         heroTierDropdown.AddOptions(tierOptions);
         abilityTierDropdown.AddOptions(tierOptions);
-
-
     }
 
     public void InitNewDeckPage()
@@ -72,18 +79,30 @@ public class NewDeckUI : MonoBehaviour
 
     public void RefreshClassData(Classes.ClassList selectedClass)
     {
-
-
         selectedClassData = Classes.GetClassData(selectedClass);
+        deckTemplateDropdown.options.Clear();
+
+        playstyleText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Playstyle);
+        strengthText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Strengths);
+        weaknessText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Weaknesses);
+        descriptionText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Description);
+
+        deckTemplateDropdown.value = 0;
+
+        ResetHeroCard();
 
         if (selectedClassData.ThisClass == Classes.ClassList.Default)
         {
             classNameText.text = "-";
             dominantResourceText.text = "-";
             secondaryResourceText.text = "-";
+            deckNameText.text = "-";
 
             heroTierDropdown.interactable = false;
             abilityTierDropdown.interactable = false;
+            deckTemplateDropdown.interactable = false;
+
+            deckTemplateDropdown.AddOptions(new List<string>() { "None", });
         }
         else
         {
@@ -93,13 +112,15 @@ public class NewDeckUI : MonoBehaviour
 
             heroTierDropdown.interactable = true;
             abilityTierDropdown.interactable = true;
-        }
-        playstyleText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Playstyle);
-        strengthText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Strengths);
-        weaknessText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Weaknesses);
-        descriptionText.text = selectedClassData.GetStringData(ClassData.ClassDataFields.Description);
+            deckTemplateDropdown.interactable = true;
 
-        ResetHeroCard();
+            deckTemplates = GameManager.instance.deckManager.GetDeckTemplates(selectedClass, false);
+            foreach (var deck in deckTemplates)
+            {
+                deckTemplateDropdown.AddOptions(new List<string>() { deck.Name, });
+            }
+            ChangeDeckTemplate();
+        }
     }
 
     public void ResetHeroCard()
@@ -118,6 +139,23 @@ public class NewDeckUI : MonoBehaviour
             var heroCardObject = GameManager.instance.libraryManager.CreateCard(heroCard, heroCardArea.transform);
 
             heroCardObject.name = $"Hero Card: {heroCard.Name}";
+
+            if (selectedTemplate != null)
+            {
+                ChangeDeckTemplate();
+            }
+        }
+    }
+
+    public void ChangeDeckTemplate()
+    {
+        if (selectedClassData.ThisClass != Classes.ClassList.Default)
+        {
+            selectedTemplate = new DeckData(deckTemplates[deckTemplateDropdown.value]);
+            deckNameText.text = selectedTemplate.Name;
+            selectedTemplate.AddCard(heroCard);
+
+            deckCardList.RefreshCardList(selectedTemplate);
         }
     }
 }

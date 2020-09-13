@@ -125,7 +125,8 @@ public class CardData
             }
             else
             {
-                totalResource = 0;
+                //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
+                totalResource = 3 - (int)((UnitData)this).GetHeroTier(); ;
             }
              
 

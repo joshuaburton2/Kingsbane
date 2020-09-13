@@ -102,6 +102,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "formMain";
             this.Text = "formMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formMain_FormClosed);
             this.ResumeLayout(false);
 
         }

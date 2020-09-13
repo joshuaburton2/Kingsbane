@@ -479,7 +479,7 @@ namespace Kingsbane.App
 
         private void btnAddRelatedCard_Click(object sender, EventArgs e)
         {
-            SelectionForm(SelectionType.RelatedCard);
+            SelectionForm(SelectionType.Cards);
         }
 
         private void btnAddTag_Click(object sender, EventArgs e)
@@ -524,7 +524,7 @@ namespace Kingsbane.App
                         }
 
                         break;
-                    case SelectionType.RelatedCard:
+                    case SelectionType.Cards:
                         if (!lstRelatedCards.Items.Contains(formSelectionList.selectionItem))
                         {
                             lstRelatedCards.Items.Add(formSelectionList.selectionItem);
