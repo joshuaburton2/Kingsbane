@@ -38,5 +38,6 @@ namespace Kingsbane.Database.Models
         // Related Entities
 
         public virtual ICollection<Card> Cards { get; set; }
+        public virtual ICollection<Deck> Decks { get; set; }
     }
 }

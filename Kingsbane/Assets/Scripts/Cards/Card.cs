@@ -37,8 +37,9 @@ public class Card : MonoBehaviour
     public string LoreText { get { return cardData.LoreText; } }
     public string Notes { get { return cardData.Notes; } }
 
-    public void InitCard()
+    public void InitCard(CardData _cardData)
     {
+        cardData = _cardData;
         ResourceInit();
     }
 

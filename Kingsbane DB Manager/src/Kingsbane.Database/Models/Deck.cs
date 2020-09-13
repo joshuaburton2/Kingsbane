@@ -15,7 +15,7 @@ namespace Kingsbane.Database.Models
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
 
-        public bool PlayerDeck { get; set; }
+        public bool NPCDeck { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

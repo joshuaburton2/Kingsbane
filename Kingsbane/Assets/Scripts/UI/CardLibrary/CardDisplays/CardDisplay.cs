@@ -156,12 +156,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void UpdateRarityBorder()
     {
-        Color borderColour;
-
-        if (card.Rarity == Rarity.Hero || card.Rarity == Rarity.NPCHero)
-            borderColour = GameManager.instance.colourManager.GetClassColour(card.CardClass);
-        else
-            borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity);
+        Color borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity, card.CardClass);
 
         rarityBorder.color = borderColour;
     }
@@ -255,7 +250,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right && isClickable)
+        if (eventData.button == PointerEventData.InputButton.Right && isClickable)
         {
             GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
         }

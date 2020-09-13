@@ -13,7 +13,7 @@ public class LibraryManager : MonoBehaviour
     //World Space Canvas for rendering cards in world
     private GameObject cardCanvas;
 
-    private List<CardData> newCardList;
+    private CardLibrary cardLibrary;
 
     private Dictionary<Tags, List<CardData>> tagLookup;
     private Dictionary<Synergies, List<CardData>> synergyLookup;
@@ -31,14 +31,11 @@ public class LibraryManager : MonoBehaviour
     private void Start()
     {
         //Load in cardList upon initialization of the game
-        CardLibrary cardLibrary;
-
         cardLibrary = new CardLibrary();
         cardLibrary.InitLibrary();
 
-        newCardList = cardLibrary.CardList;
-
         LoadDirectionaries();
+        LoadDeckTemplates();        
     }
 
     private void LoadDirectionaries()
@@ -54,11 +51,24 @@ public class LibraryManager : MonoBehaviour
         ConstructHeroLookup();
     }
 
+    private void LoadDeckTemplates()
+    {
+        var deckTemplates = cardLibrary.ClassDeckList;
+        foreach (var classDecks in deckTemplates.Values)
+        {
+            foreach (var deck in classDecks)
+            {
+                deck.CardList = OrderCardList(deck.CardList);
+            }
+        }
+        GameManager.instance.deckManager.DeckTemplates = deckTemplates;
+    }
+
     private Dictionary<T, List<CardData>> ConstructDictionary<T>() where T : Enum
     {
         var newDictionary = new Dictionary<T, List<CardData>>();
 
-        foreach (var card in newCardList)
+        foreach (var card in cardLibrary.CardList)
         {
             var keyList = new List<T>();
             var type = typeof(T);
@@ -195,20 +205,20 @@ public class LibraryManager : MonoBehaviour
 
     public CardData GetCard(int Id)
     {
-        return newCardList.FirstOrDefault(x => x.Id == Id);
+        return cardLibrary.CardList.FirstOrDefault(x => x.Id == Id);
     }
 
     public CardData GetCard(string nameSearch)
     {
-        return newCardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
+        return cardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
     }
 
     public List<CardData> GetAllCards(CardFilter listFilter)
     {
-        return FilterCardList(OrderCardList(newCardList), listFilter);
+        return FilterCardList(OrderCardList(cardLibrary.CardList), listFilter);
     }
 
-    private List<CardData> OrderCardList(List<CardData> cardList)
+    public static List<CardData> OrderCardList(List<CardData> cardList)
     {
         return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
@@ -240,12 +250,11 @@ public class LibraryManager : MonoBehaviour
         return createdCard;
     }
 
-    private void SetCardType<T>(CardData card, GameObject createdCard, out CardDisplay cardDisplay)
+    private void SetCardType<T>(CardData cardData, GameObject createdCard, out CardDisplay cardDisplay)
     {
         T typeScript = (T)(object)createdCard.AddComponent(typeof(T));
 
-        ((Card)(object)typeScript).cardData = card;
-        ((Card)(object)typeScript).InitCard();
+        ((Card)(object)typeScript).InitCard(cardData);
 
         cardDisplay = createdCard.GetComponent<CardDisplay>();
         cardDisplay.card = (Card)(object)typeScript;

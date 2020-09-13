@@ -2,15 +2,24 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using CategoryEnums;
+using System.Linq;
 
 public class DeckManager : MonoBehaviour
 {
-    public List<DeckData> DeckList { get; set; }
+    private List<DeckData> DeckList;
+    public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
     private void Awake()
     {
         LoadDecks();
+    }
+
+    public List<DeckData> GetDeckTemplates(Classes.ClassList neededClass, bool isNPCDeck)
+    {
+        var deckTemplates = DeckTemplates[neededClass].Where(x => x.IsNPCDeck == isNPCDeck).OrderBy(x => x.Name).ToList();
+        return deckTemplates;
     }
 
     public void LoadDecks()

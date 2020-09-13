@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using Kingsbane.App.Extensions;
 using Kingsbane.Database;
+using Kingsbane.Database.Enums;
 using Kingsbane.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +46,7 @@ namespace Kingsbane.App
             sb.AppendLine("{");
             sb.AppendLine("    public List<CardData> CardList { get; private set; }");
             sb.AppendLine("    public List<AbilityData> AbilityList { get; private set; }");
+            sb.AppendLine("    public Dictionary<Classes.ClassList, List<DeckData>> ClassDeckList { get; private set; }");
             sb.AppendLine("");
             sb.AppendLine("    public void InitLibrary()");
             sb.AppendLine("    {");
@@ -180,6 +182,40 @@ namespace Kingsbane.App
                 sb.AppendLine($"        card{item.Id}.RelatedCards = new List<CardData> {{{relatedCards}}};");
             }
 
+            sb.AppendLine("");
+            sb.AppendLine("        ClassDeckList = new Dictionary<Classes.ClassList, List<DeckData>>();");
+
+            var deckQuery = _context.CardClasses.Include(x => x.Decks).ThenInclude(x => x.DeckCards);
+
+            foreach (var thisClass in deckQuery)
+            {
+                sb.AppendLine("");
+                sb.AppendLine($"        ClassDeckList.Add(");
+                sb.AppendLine($"            Classes.ClassList.{thisClass.Id},");
+                sb.AppendLine($"            new List<DeckData>()");
+                sb.AppendLine($"            {{");
+                foreach (var deck in thisClass.Decks)
+                {
+                    var isNPCDeck = deck.NPCDeck.ToString().ToLower();
+
+                    sb.AppendLine($"                new DeckData()");
+                    sb.AppendLine($"                {{");
+                    sb.AppendLine($"                    Id = {deck.Id},");
+                    sb.AppendLine(@$"                    Name = ""{deck.Name}"",");
+                    sb.AppendLine($"                    DeckClass = Classes.ClassList.{thisClass.Id},");
+                    sb.AppendLine($"                    IsNPCDeck = {isNPCDeck},");
+                    sb.AppendLine($"                    CardList = new List<CardData>()");
+                    sb.AppendLine($"                    {{");
+                    foreach (var card in deck.DeckCards)
+                    {
+                        sb.AppendLine($"                        card{card.CardId}");
+                    }
+                    sb.AppendLine($"                    }}");
+                    sb.AppendLine($"                }},");
+                }
+                sb.AppendLine($"            }});");
+            }
+
             sb.AppendLine("    }");
             sb.AppendLine("}");
             sb.AppendLine("");
@@ -206,6 +242,7 @@ namespace Kingsbane.App
             Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
         }
+
 
         private void btnClassList_Click(object sender, EventArgs e)
         {
@@ -252,6 +289,11 @@ namespace Kingsbane.App
 
             Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
+        }
+
+        private void formMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
