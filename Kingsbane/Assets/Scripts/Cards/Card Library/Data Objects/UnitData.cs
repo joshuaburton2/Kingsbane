@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using CategoryEnums;
 
+[Serializable]
 public class UnitData : CardData
 {
     public string UnitTag { get; set; }

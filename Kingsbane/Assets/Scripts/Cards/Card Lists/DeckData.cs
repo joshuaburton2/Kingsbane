@@ -35,4 +35,9 @@ public class DeckData
         CardList.Add(cardData);
         CardList = LibraryManager.OrderCardList(CardList);
     }
+
+    public void RemoveCard(CardData cardData)
+    {
+        CardList.Remove(cardData);
+    }
 }

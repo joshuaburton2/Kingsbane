@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject cardDetailDisplay;
+    public int? DeckEditId { get; set; }
+    [SerializeField]
+    private GameObject cardDetailDisplay;
 
     private void Start()
     {

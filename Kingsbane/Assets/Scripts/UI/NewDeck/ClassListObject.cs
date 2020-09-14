@@ -21,7 +21,8 @@ public class ClassListObject : MonoBehaviour, IPointerClickHandler
         newDeckUI = _newDeckUI;
         thisClass = _thisClass;
 
-        nameText.text = thisClass.ToString().ToUpper();
+        var isPlayableText = Classes.GetClassData(_thisClass).IsPlayable ? "" : @" <color=""white"">(!)</color=""white"">";
+        nameText.text = thisClass.ToString().ToUpper() + isPlayableText;
         objectBackground.color = GameManager.instance.colourManager.GetClassColour(_thisClass);
         classIcon.sprite = GameManager.instance.iconManager.getIcon(_thisClass);
     }

@@ -27,7 +27,6 @@ public class CardDetailUI : MonoBehaviour
 
         GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform);
         mainCard.name = $"Main Card- {cardData.Name}";
-        mainCard.GetComponent<CardDisplay>().isClickable = false;
 
         UpdateDetailText(cardData.Tags, tagsText);
         UpdateDetailText(cardData.Synergies, synergiesText);

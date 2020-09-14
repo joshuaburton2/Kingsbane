@@ -13,21 +13,25 @@ public class DeckCardListUI : MonoBehaviour
     [SerializeField]
     GameObject cardTemplate;
 
-    public void RefreshCardList(DeckData _deckData)
+    public void RefreshCardList(DeckData _deckData = null)
     {
-        this.deckData = _deckData;
         foreach (var item in cardObjects)
         {
             Destroy(item);
         }
         cardObjects.Clear();
-
-        foreach (var card in this.deckData.CardList)
+        
+        if (_deckData != null)
         {
-            var deckCardObject = Instantiate(cardTemplate, cardListArea.transform);
-            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(card);
-            deckCardObject.name = $"Card- {card.Name}";
-            cardObjects.Add(deckCardObject);
+            this.deckData = _deckData;
+
+            foreach (var card in this.deckData.CardList)
+            {
+                var deckCardObject = Instantiate(cardTemplate, cardListArea.transform);
+                deckCardObject.GetComponent<DeckCardObject>().InitCardObject(card);
+                deckCardObject.name = $"Card- {card.Name}";
+                cardObjects.Add(deckCardObject);
+            }
         }
     }
 }

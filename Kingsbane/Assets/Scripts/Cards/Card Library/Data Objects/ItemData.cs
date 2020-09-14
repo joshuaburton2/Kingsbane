@@ -1,4 +1,7 @@
-﻿public class ItemData : CardData
+﻿using System;
+
+[Serializable]
+public class ItemData : CardData
 {
     public string ItemTag;
 

@@ -1,7 +1,9 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
+[Serializable]
 public class AbilityData
 {
     public int Id { get; set; }

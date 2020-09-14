@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NewDeckUI : MonoBehaviour
 {
@@ -48,6 +49,14 @@ public class NewDeckUI : MonoBehaviour
     TextMeshProUGUI deckNameText;
     [SerializeField]
     DeckCardListUI deckCardList;
+    [SerializeField]
+    TMP_InputField deckNameInput;
+    [SerializeField]
+    Button createDeckButton;
+
+    [Header("Other Objects")]
+    [SerializeField]
+    DeckListUI deckList;
 
     private void Start()
     {
@@ -90,6 +99,7 @@ public class NewDeckUI : MonoBehaviour
         deckTemplateDropdown.value = 0;
 
         ResetHeroCard();
+        deckCardList.RefreshCardList();
 
         if (selectedClassData.ThisClass == Classes.ClassList.Default)
         {
@@ -114,24 +124,37 @@ public class NewDeckUI : MonoBehaviour
             abilityTierDropdown.interactable = true;
             deckTemplateDropdown.interactable = true;
 
-            deckTemplates = GameManager.instance.deckManager.GetDeckTemplates(selectedClass, false);
+            deckTemplates = GameManager.instance.deckManager.GetPlayerDeckTemplates(selectedClass);
             foreach (var deck in deckTemplates)
             {
                 deckTemplateDropdown.AddOptions(new List<string>() { deck.Name, });
             }
             ChangeDeckTemplate();
         }
+
+        if (selectedClassData.IsPlayable)
+        {
+            deckNameInput.text = $"New {selectedClassData.ClassName} Deck";
+            deckNameInput.interactable = true;
+            createDeckButton.interactable = true;
+        }
+        else
+        {
+            deckNameInput.text = "";
+            deckNameInput.interactable = false;
+            createDeckButton.interactable = false;
+        }
     }
 
     public void ResetHeroCard()
     {
+        foreach (Transform child in heroCardArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         if (selectedClassData.ThisClass != Classes.ClassList.Default)
         {
-            foreach (Transform child in heroCardArea.transform)
-            {
-                Destroy(child.gameObject);
-            }
-
             var heroTier = (TierLevel)heroTierDropdown.value;
             var abilityTier = (TierLevel)abilityTierDropdown.value;
 
@@ -157,5 +180,12 @@ public class NewDeckUI : MonoBehaviour
 
             deckCardList.RefreshCardList(selectedTemplate);
         }
+    }
+
+    public void CreateNewDeck()
+    {
+        GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
+        deckList.RefreshDeckList();
+        GameManager.instance.uiManager.ClosePanel(gameObject);
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 
 public class DeckManager : MonoBehaviour
 {
-    private List<DeckData> DeckList;
+    public List<DeckData> PlayerDeckList { get; private set; }
     public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
@@ -16,32 +16,32 @@ public class DeckManager : MonoBehaviour
         LoadDecks();
     }
 
-    public List<DeckData> GetDeckTemplates(Classes.ClassList neededClass, bool isNPCDeck)
+    public List<DeckData> GetPlayerDeckTemplates(Classes.ClassList neededClass)
     {
-        var deckTemplates = DeckTemplates[neededClass].Where(x => x.IsNPCDeck == isNPCDeck).OrderBy(x => x.Name).ToList();
+        var deckTemplates = DeckTemplates[neededClass].Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
         return deckTemplates;
     }
 
-    public void LoadDecks()
+    private void LoadDecks()
     {
         if(File.Exists(Application.persistentDataPath + deckFileName))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
-            DeckList = (List<DeckData>)bf.Deserialize(file);
+            PlayerDeckList = (List<DeckData>)bf.Deserialize(file);
             file.Close();
         }
         else
         {
-            DeckList = new List<DeckData>();
+            PlayerDeckList = new List<DeckData>();
         }
     }
 
-    public void SaveDecks()
+    private void SaveDecks()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + deckFileName);
-        bf.Serialize(file, DeckList);
+        bf.Serialize(file, PlayerDeckList);
         file.Close();
     }
 
@@ -51,5 +51,32 @@ public class DeckManager : MonoBehaviour
         {
             File.Delete(Application.persistentDataPath + deckFileName);
         }
+
+        PlayerDeckList = new List<DeckData>();
     }
+
+    public void CreatePlayerDeck(DeckData deck, string deckName)
+    {
+        var newId = 0;
+        if (PlayerDeckList.Count > 0)
+        {
+            newId = PlayerDeckList.LastOrDefault().Id + 1;
+        }
+
+        PlayerDeckList.Add(
+            new DeckData(deck)
+            {
+                Id = newId,
+                Name = deckName,
+            });
+
+        SaveDecks();
+    }
+
+    public void AddToPlayerDeck(int id, CardData cardData)
+    {
+        PlayerDeckList[id].AddCard(cardData);
+    }
+
+
 }
