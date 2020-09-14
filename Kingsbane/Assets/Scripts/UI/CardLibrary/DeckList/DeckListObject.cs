@@ -25,19 +25,19 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         nameText.text = deck.Name;
         classBorder.color = GameManager.instance.colourManager.GetClassColour(deck.DeckClass);
         classText.text = deck.DeckClass.ToString();
-        deckCardList.RefreshCardList(deck);
+        deckCardList.RefreshCardList(deck, deckListUI);
         deckCardList.gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameManager.instance.uiManager.DeckEditId.HasValue)
+        if (deckListUI.DeckEditMode)
         {
             deckListUI.RefreshDeckList();
         }
         else
         {
-            deckListUI.EditDeck(deckId);
+            deckListUI.EditDeck(deckId, deckCardList);
             deckCardList.gameObject.SetActive(true);
         }
     }

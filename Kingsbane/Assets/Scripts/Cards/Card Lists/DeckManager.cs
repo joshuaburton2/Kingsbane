@@ -73,10 +73,17 @@ public class DeckManager : MonoBehaviour
         SaveDecks();
     }
 
-    public void AddToPlayerDeck(int id, CardData cardData)
+    public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
         PlayerDeckList[id].AddCard(cardData);
+        SaveDecks();
+        return PlayerDeckList[id];
     }
 
-
+    public DeckData RemoveFromPlayerDeck(int id, CardData cardData)
+    {
+        PlayerDeckList[id].RemoveCard(cardData);
+        SaveDecks();
+        return PlayerDeckList[id];
+    }
 }

@@ -178,7 +178,7 @@ public class NewDeckUI : MonoBehaviour
             deckNameText.text = selectedTemplate.Name;
             selectedTemplate.AddCard(heroCard);
 
-            deckCardList.RefreshCardList(selectedTemplate);
+            deckCardList.RefreshCardList(selectedTemplate, deckList);
         }
     }
 

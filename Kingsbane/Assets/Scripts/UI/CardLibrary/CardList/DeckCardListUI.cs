@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DeckCardListUI : MonoBehaviour
 {
-    public DeckData deckData;
+    private DeckListUI deckListUI;
+    private DeckData deckData;
 
     [SerializeField]
     GameObject cardListArea;
@@ -13,8 +14,10 @@ public class DeckCardListUI : MonoBehaviour
     [SerializeField]
     GameObject cardTemplate;
 
-    public void RefreshCardList(DeckData _deckData = null)
+    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null)
     {
+        deckListUI = _deckListUI;
+
         foreach (var item in cardObjects)
         {
             Destroy(item);
@@ -28,7 +31,8 @@ public class DeckCardListUI : MonoBehaviour
             foreach (var card in this.deckData.CardList)
             {
                 var deckCardObject = Instantiate(cardTemplate, cardListArea.transform);
-                deckCardObject.GetComponent<DeckCardObject>().InitCardObject(card);
+
+                deckCardObject.GetComponent<DeckCardObject>().InitCardObject(card, deckListUI, deckData.Id);
                 deckCardObject.name = $"Card- {card.Name}";
                 cardObjects.Add(deckCardObject);
             }

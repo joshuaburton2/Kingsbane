@@ -13,6 +13,10 @@ public class DeckListUI : MonoBehaviour
     [SerializeField]
     private List<GameObject> deckListObjects;
 
+    public int? DeckEditId { get; set; }
+    public bool DeckEditMode { get { return DeckEditId.HasValue; } }
+    public DeckCardListUI activeDeckCardList;
+
     private void Start()
     {
         newDeckPage.SetActive(false);
@@ -21,6 +25,7 @@ public class DeckListUI : MonoBehaviour
 
     public void CreateNewDeck()
     {
+        DeckEditId = null;
         newDeckPage.SetActive(true);
         newDeckPage.GetComponent<NewDeckUI>().InitNewDeckPage();
     }
@@ -28,13 +33,13 @@ public class DeckListUI : MonoBehaviour
     public void ResetDecks()
     {
         GameManager.instance.deckManager.ResetDecks();
-        GameManager.instance.uiManager.DeckEditId = null;
+        DeckEditId = null;
         RefreshDeckList();
     }
 
     public void RefreshDeckList()
     {
-        GameManager.instance.uiManager.DeckEditId = null;
+        DeckEditId = null;
 
         foreach (Transform child in deckListParent.transform)
         {
@@ -52,9 +57,10 @@ public class DeckListUI : MonoBehaviour
         }
     }
 
-    public void EditDeck(int deckId)
+    public void EditDeck(int deckId, DeckCardListUI deckCardListUI)
     {
-        GameManager.instance.uiManager.DeckEditId = deckId;
+        DeckEditId = deckId;
+        activeDeckCardList = deckCardListUI;
         var selectedDeck = deckListObjects[deckId];
 
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)

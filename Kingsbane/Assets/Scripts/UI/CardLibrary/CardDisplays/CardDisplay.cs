@@ -57,6 +57,9 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private TextMeshProUGUI durabilityText;
 
+    [Header("Other Props")]
+    public DeckListUI deckListUI;
+
     private void Awake()
     {
         ResetProps();
@@ -250,11 +253,6 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
-        }
-
-        if (eventData.button == PointerEventData.InputButton.Left && GameManager.instance.uiManager.DeckEditId.HasValue)
-        {
-            GameManager.instance.deckManager.AddToPlayerDeck(GameManager.instance.uiManager.DeckEditId.Value, card.cardData);
         }
     }
 }

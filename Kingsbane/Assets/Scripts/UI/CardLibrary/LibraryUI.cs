@@ -31,6 +31,8 @@ public class LibraryUI : MonoBehaviour
     [SerializeField]
     private GameObject rowPrefab;
     [SerializeField]
+    private GameObject cardContainerPrefab;
+    [SerializeField]
     private int numColumns = 4;
     [SerializeField]
     private int numRows = 2;
@@ -79,6 +81,10 @@ public class LibraryUI : MonoBehaviour
     private TMP_Dropdown setDropdown;
 
     private CardFilter activeFilter;
+
+    [Header("Other Objects")]
+    [SerializeField]
+    DeckListUI deckListUI;
 
     private void Start()
     {
@@ -243,8 +249,15 @@ public class LibraryUI : MonoBehaviour
 
         foreach (var card in pageListSplit[pageIndex])
         {
-            var newCardObj = GameManager.instance.libraryManager.CreateCard(card, gridRows[currentRow].transform);
+            var cardContainer = Instantiate(cardContainerPrefab, gridRows[currentRow].transform);
+            cardContainer.name = $"Conatainer {currentRow}.{currentColumn}- {card.Name}";
+            var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
+            cardLibaryContainer.deckListUI = deckListUI;
+
+            var newCardObj = GameManager.instance.libraryManager.CreateCard(card, cardContainer.transform);
             newCardObj.name = $"Card{currentRow}.{currentColumn}- {card.Name}";
+            newCardObj.transform.SetSiblingIndex(0);
+            cardLibaryContainer.cardDisplay = newCardObj.GetComponent<CardDisplay>();
 
             currentColumn++;
 

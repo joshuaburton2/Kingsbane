@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 {
     CardData cardData;
+    private DeckListUI deckListUI;
+    private int? deckId;
 
     [SerializeField]
     TextMeshProUGUI nameText;
@@ -17,9 +19,11 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     Image rarityBorder;
 
-    public void InitCardObject(CardData _cardData)
+    public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int? _deckId = null)
     {
         cardData = _cardData;
+        deckListUI = _deckListUI;
+        deckId = _deckId;
 
         nameText.text = cardData.Name;
         typeText.text = cardData.CardType.ToString();
@@ -42,6 +46,15 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             GameManager.instance.uiManager.ActivateCardDetail(cardData);
+        }
+
+        if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
+        {
+            if (!cardData.Tags.Contains(CategoryEnums.Tags.Hero))
+            {
+                var updatedDeck = GameManager.instance.deckManager.RemoveFromPlayerDeck(deckId.Value, cardData);
+                deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI);
+            }
         }
     }
 }
