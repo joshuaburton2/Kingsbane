@@ -16,7 +16,6 @@ public class CardFilter
     {
         get
         {
-            SearchString = SearchString.Replace(" ", "");
             return SearchString.Split(',').ToList();
         }
     }

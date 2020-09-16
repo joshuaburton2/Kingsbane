@@ -1042,6 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdaeea81f7cecc9449b91c2d1cb787c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  libraryUI: {fileID: 865348344}
   newDeckPage: {fileID: 1763866647}
   deckListParent: {fileID: 224452054}
   deckListObjectPrefab: {fileID: 3589997613452270799, guid: f8234530385831948a7a5c08d4c7b29a,

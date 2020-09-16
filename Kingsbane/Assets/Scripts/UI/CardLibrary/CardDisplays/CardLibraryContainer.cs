@@ -10,8 +10,9 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateCardDetail(cardDisplay.card.cardData);
+            cardDisplay.DisplayCardDetail();
         }
+        Debug.Log("Test");
 
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {

@@ -8,6 +8,8 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     private int deckId;
     private DeckListUI deckListUI;
 
+    public DeckData deckData;
+
     [SerializeField]
     Image classBorder;
     [SerializeField]
@@ -17,15 +19,16 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     DeckCardListUI deckCardList;
 
-    public void InitDeckListObject(DeckData deck, DeckListUI _deckListUI)
+    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI)
     {
         deckListUI = _deckListUI;
+        deckData = _deckData;
 
-        deckId = deck.Id;
-        nameText.text = deck.Name;
-        classBorder.color = GameManager.instance.colourManager.GetClassColour(deck.DeckClass);
-        classText.text = deck.DeckClass.ToString();
-        deckCardList.RefreshCardList(deck, deckListUI);
+        deckId = deckData.Id;
+        nameText.text = deckData.Name;
+        classBorder.color = GameManager.instance.colourManager.GetClassColour(deckData.DeckClass);
+        classText.text = deckData.DeckClass.ToString();
+        deckCardList.RefreshCardList(deckData, deckListUI);
         deckCardList.gameObject.SetActive(false);
     }
 
@@ -33,7 +36,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     {
         if (deckListUI.DeckEditMode)
         {
-            deckListUI.RefreshDeckList();
+            deckListUI.RefreshDeckList(true);
         }
         else
         {

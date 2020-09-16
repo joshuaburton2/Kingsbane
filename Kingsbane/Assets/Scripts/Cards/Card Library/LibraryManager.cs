@@ -305,7 +305,7 @@ public class LibraryManager : MonoBehaviour
                 {
                     if (searchString.Length > 0)
                     {
-                        var isTag = Enum.TryParse(searchString, out Tags tag);
+                        var isTag = Enum.TryParse(searchString.Replace(" ", ""), true, out Tags tag);
                         if (isTag)
                         {
                             if (card.Tags.Contains(tag))
@@ -365,16 +365,26 @@ public class LibraryManager : MonoBehaviour
                     }
             }
 
-            //if (listFilter.ResourceFilter.Count != 0)
-            //{
-            //    numActiveFilters++;
+            if (listFilter.ResourceFilter.Count != 0)
+            {
+                numActiveFilters++;
+                var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
+                var numResourcesMet = listFilter.ResourceFilter.Count;
+                foreach (var resource in cardResources)
+                {
+                    if (!listFilter.ResourceFilter.Contains(resource))
+                    {
+                        numResourcesMet--;
+                    }
+                }
 
-            //    foreach (var resource in listFilter.ResourceFilter)
-            //        if (card.GetResources == resource)
-            //        {
-            //            numMetFilters++;
-            //        }
-            //}
+                if (numResourcesMet == listFilter.ResourceFilter.Count)
+                {
+                    numMetFilters++;
+                }
+            }
+
+            
 
             if (numMetFilters == numActiveFilters)
             {

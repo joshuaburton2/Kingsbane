@@ -12,6 +12,8 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     TextMeshProUGUI nameText;
     [SerializeField]
+    TextMeshProUGUI cardCountText;
+    [SerializeField]
     TextMeshProUGUI typeText;
     [SerializeField]
     TextMeshProUGUI totalCostText;
@@ -19,7 +21,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     Image rarityBorder;
 
-    public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int? _deckId = null)
+    public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int numCards, int? _deckId = null)
     {
         cardData = _cardData;
         deckListUI = _deckListUI;
@@ -27,18 +29,21 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
         nameText.text = cardData.Name;
         typeText.text = cardData.CardType.ToString();
+        cardCountText.text = cardData.IsHero ? "Hero" : $"x{numCards}";
         rarityBorder.color = GameManager.instance.colourManager.GetRarityColour(cardData.Rarity, cardData.Class);
 
-        var totalCost = cardData.TotalResource;
-        if (totalCost > 0)
-        {
-            totalCostText.text = "";
-        }
-        else
-        {
-            totalCost = -totalCost;
-            totalCostText.text = totalCost.ToString();
-        }
+        //var resourceCost = cardData.TotalResource;
+        //if (resourceCost > 0)
+        //{
+        //    totalCostText.text = "";
+        //}
+        //else
+        //{
+        //    resourceCost = -resourceCost;
+
+        //}
+
+        totalCostText.text = CardDisplay.GenerateResourceText(cardData.GetResources);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -50,11 +55,8 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {
-            if (!cardData.Tags.Contains(CategoryEnums.Tags.Hero))
-            {
-                var updatedDeck = GameManager.instance.deckManager.RemoveFromPlayerDeck(deckId.Value, cardData);
-                deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI);
-            }
+            var updatedDeck = GameManager.instance.deckManager.RemoveFromPlayerDeck(deckId.Value, cardData);
+            deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI);
         }
     }
 }

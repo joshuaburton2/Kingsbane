@@ -367,6 +367,7 @@ public class LibraryUI : MonoBehaviour
     public void ApplyFilter()
     {
         var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
+        var resourceFilter = activeFilter.ResourceFilter;
 
         activeFilter = new CardFilter();
 
@@ -376,17 +377,18 @@ public class LibraryUI : MonoBehaviour
         }
 
         activeFilter.SearchString = searchStringInput.text;
+        activeFilter.ResourceFilter = resourceFilter;
 
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
-        ApplyDropdownFilter<CardTypes>(cardTypeDropdown);
-        ApplyDropdownFilter<Rarity>(rarityDropdown);
-        ApplyDropdownFilter<Sets>(setDropdown);
+        activeFilter = ApplyDropdownFilter<CardTypes>(cardTypeDropdown, activeFilter);
+        activeFilter = ApplyDropdownFilter<Rarity>(rarityDropdown, activeFilter);
+        activeFilter = ApplyDropdownFilter<Sets>(setDropdown, activeFilter);
 
         InitTabs();
     }
 
-    private void ApplyDropdownFilter<T>(TMP_Dropdown dropdown)
+    private CardFilter ApplyDropdownFilter<T>(TMP_Dropdown dropdown, CardFilter activeFilter)
     {
         if (dropdown.captionText.text != "All")
         {
@@ -411,6 +413,8 @@ public class LibraryUI : MonoBehaviour
                     break;
             }            
         }
+
+        return activeFilter;
     }
 
     public void FilterUncollectables()
@@ -425,6 +429,13 @@ public class LibraryUI : MonoBehaviour
             uncollectableText.text = "Show Uncollectable Cards";
             UpdateUncollectableStatus(false);
         }
+
+        InitTabs();
+    }
+
+    public void ApplyResourceFilter(List<CardResources> resourceFilter)
+    {
+        activeFilter.ResourceFilter = resourceFilter;
 
         InitTabs();
     }

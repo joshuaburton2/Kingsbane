@@ -32,6 +32,8 @@ public class CardData
     public List<Synergies> Synergies { get; set; }
     public List<CardData> RelatedCards { get; set; }
 
+    public bool IsHero { get { return Tags.Contains(CategoryEnums.Tags.Hero); } }
+
     /// <summary>
     /// 
     /// Default Constructor. Cards should not have an Id of negative 1 so this is a good test to see if a card should exist or not.

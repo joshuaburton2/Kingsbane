@@ -5,6 +5,8 @@ using UnityEngine;
 public class DeckListUI : MonoBehaviour
 {
     [SerializeField]
+    private LibraryUI libraryUI;
+    [SerializeField]
     private GameObject newDeckPage;
     [SerializeField]
     private GameObject deckListParent;
@@ -37,9 +39,13 @@ public class DeckListUI : MonoBehaviour
         RefreshDeckList();
     }
 
-    public void RefreshDeckList()
+    public void RefreshDeckList(bool resourceFilter = false)
     {
         DeckEditId = null;
+        if (resourceFilter)
+        {
+            libraryUI.ApplyResourceFilter(new List<CategoryEnums.CardResources>());
+        }
 
         foreach (Transform child in deckListParent.transform)
         {
@@ -61,7 +67,9 @@ public class DeckListUI : MonoBehaviour
     {
         DeckEditId = deckId;
         activeDeckCardList = deckCardListUI;
-        var selectedDeck = deckListObjects[deckId];
+
+        var selectedDeck = deckListObjects[deckId].GetComponent<DeckListObject>().deckData;
+        libraryUI.ApplyResourceFilter(selectedDeck.DeckResources);
 
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
         {

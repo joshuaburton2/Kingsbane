@@ -75,6 +75,10 @@ public class DeckManager : MonoBehaviour
 
     public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
+        if (!cardData.IsHero)
+        {
+            
+        }
         PlayerDeckList[id].AddCard(cardData);
         SaveDecks();
         return PlayerDeckList[id];
@@ -82,8 +86,11 @@ public class DeckManager : MonoBehaviour
 
     public DeckData RemoveFromPlayerDeck(int id, CardData cardData)
     {
-        PlayerDeckList[id].RemoveCard(cardData);
-        SaveDecks();
+        if (!cardData.IsHero)
+        {
+            PlayerDeckList[id].RemoveCard(cardData);
+            SaveDecks();
+        }
         return PlayerDeckList[id];
     }
 }

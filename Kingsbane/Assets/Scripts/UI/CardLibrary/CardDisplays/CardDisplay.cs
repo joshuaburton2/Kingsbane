@@ -227,7 +227,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// Update the resource text to include the resource words
     /// 
     /// </summary>
-    private string GenerateResourceText(List<Resource> resourceList)
+    public static string GenerateResourceText(List<Resource> resourceList)
     {
         string resourceString = "";
 
@@ -252,8 +252,13 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
+            DisplayCardDetail();
         }
+    }
+
+    public void DisplayCardDetail()
+    {
+        GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
     }
 }
 
