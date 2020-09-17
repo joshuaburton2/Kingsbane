@@ -75,12 +75,11 @@ public class DeckManager : MonoBehaviour
 
     public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
-        if (!cardData.IsHero)
+        if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)
         {
-            
+            PlayerDeckList[id].AddCard(cardData);
+            SaveDecks();
         }
-        PlayerDeckList[id].AddCard(cardData);
-        SaveDecks();
         return PlayerDeckList[id];
     }
 

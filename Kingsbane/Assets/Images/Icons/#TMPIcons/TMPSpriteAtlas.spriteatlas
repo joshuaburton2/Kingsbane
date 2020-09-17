@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TMPSpriteAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b9a1c4b8a389a6e42b2fce147305dedc, type: 3}
+    - {fileID: 2800000, guid: 15ef4ff1d55c5ff418a73909b7f63ecd, type: 3}
+    - {fileID: 2800000, guid: 58946064abf825f4a81d123a45a54ea0, type: 3}
+    - {fileID: 2800000, guid: 37c6f7cb279f4ea479ebf5011ace07dd, type: 3}
+    - {fileID: 2800000, guid: 3af9c7f2c31e8da4e9d5a7154954aa79, type: 3}
+    - {fileID: 2800000, guid: f1fe447aecf80504bb2ceb4c7e88cd5a, type: 3}
+    - {fileID: 2800000, guid: e4de920445c626a44b2ca67427ba97cb, type: 3}
+    - {fileID: 2800000, guid: 6b1dba6a4a2290e4484640a3fe169187, type: 3}
+    - {fileID: 2800000, guid: 5858f7617c10b8741850a516e6a215c2, type: 3}
+    totalSpriteSurfaceArea: 9437184
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5858f7617c10b8741850a516e6a215c2, type: 3}
+  - {fileID: 21300000, guid: 15ef4ff1d55c5ff418a73909b7f63ecd, type: 3}
+  - {fileID: 21300000, guid: 3af9c7f2c31e8da4e9d5a7154954aa79, type: 3}
+  - {fileID: 21300000, guid: e4de920445c626a44b2ca67427ba97cb, type: 3}
+  - {fileID: 21300000, guid: 58946064abf825f4a81d123a45a54ea0, type: 3}
+  - {fileID: 21300000, guid: b9a1c4b8a389a6e42b2fce147305dedc, type: 3}
+  - {fileID: 21300000, guid: 6b1dba6a4a2290e4484640a3fe169187, type: 3}
+  - {fileID: 21300000, guid: f1fe447aecf80504bb2ceb4c7e88cd5a, type: 3}
+  - {fileID: 21300000, guid: 37c6f7cb279f4ea479ebf5011ace07dd, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Grovewatcher
+  - Energy
+  - Mana
+  - Abyssal
+  - Gold
+  - Devotion
+  - Captain
+  - Wild
+  - Knowledge
+  m_Tag: TMPSpriteAtlas
+  m_IsVariant: 0

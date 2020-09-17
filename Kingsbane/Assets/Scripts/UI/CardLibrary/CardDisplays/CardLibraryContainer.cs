@@ -12,7 +12,6 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
         {
             cardDisplay.DisplayCardDetail();
         }
-        Debug.Log("Test");
 
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {

@@ -35,7 +35,7 @@ public class LibraryManager : MonoBehaviour
         cardLibrary.InitLibrary();
 
         LoadDirectionaries();
-        LoadDeckTemplates();        
+        LoadDeckTemplates();
     }
 
     private void LoadDirectionaries()
@@ -177,12 +177,12 @@ public class LibraryManager : MonoBehaviour
         if (dictionaryList != null)
         {
             return FilterCardList(OrderCardList(dictionaryList), listFilter);
-        } 
+        }
         else
             return new List<CardData>();
     }
 
-    public UnitData GetHero (Classes.ClassList neededClass, TierLevel heroTierLevel, TierLevel abilityTierLevel )
+    public UnitData GetHero(Classes.ClassList neededClass, TierLevel heroTierLevel, TierLevel abilityTierLevel)
     {
         if (neededClass != Classes.ClassList.Default)
         {
@@ -347,7 +347,7 @@ public class LibraryManager : MonoBehaviour
 
                 foreach (var rarity in listFilter.RaritiyFilter)
                     if (card.Rarity == rarity)
-                    { 
+                    {
                         numMetFilters++;
                         break;
                     }
@@ -368,23 +368,24 @@ public class LibraryManager : MonoBehaviour
             if (listFilter.ResourceFilter.Count != 0)
             {
                 numActiveFilters++;
-                var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
-                var numResourcesMet = listFilter.ResourceFilter.Count;
-                foreach (var resource in cardResources)
+                if (!card.IsHero)
                 {
-                    if (!listFilter.ResourceFilter.Contains(resource))
+                    var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
+                    var numResourcesMet = listFilter.ResourceFilter.Count;
+                    foreach (var resource in cardResources)
                     {
-                        numResourcesMet--;
+                        if (!listFilter.ResourceFilter.Contains(resource))
+                        {
+                            numResourcesMet--;
+                        }
+                    }
+
+                    if (numResourcesMet == listFilter.ResourceFilter.Count)
+                    {
+                        numMetFilters++;
                     }
                 }
-
-                if (numResourcesMet == listFilter.ResourceFilter.Count)
-                {
-                    numMetFilters++;
-                }
             }
-
-            
 
             if (numMetFilters == numActiveFilters)
             {
@@ -403,7 +404,7 @@ public class LibraryManager : MonoBehaviour
         if (card.CardType == CardTypes.Unit)
         {
             var unit = (UnitData)card;
-            
+
             foreach (var ability in unit.Abilities)
             {
                 if (ability.Text.ToLower().Contains(searchString))
@@ -413,7 +414,7 @@ public class LibraryManager : MonoBehaviour
                 }
             }
         }
-        return card.Name.ToLower().Contains(searchString) 
+        return card.Name.ToLower().Contains(searchString)
             || card.Text.ToLower().Contains(searchString)
             || abilityMet;
     }
