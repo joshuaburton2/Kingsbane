@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Helpers;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -43,7 +44,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
         //}
 
-        totalCostText.text = CardDisplay.GenerateResourceText(cardData.GetResources);
+        totalCostText.text = StringHelpers.GenerateResourceText(cardData.GetResources);
     }
 
     public void OnPointerClick(PointerEventData eventData)
