@@ -40,7 +40,6 @@ namespace CategoryEnums
         /// Used for comparing Hero Tiers when used as dictionary key
         /// 
         /// </summary>
-        /// <returns></returns>
         public override int GetHashCode()
         {
             return heroClass.GetHashCode() + tierLevel.GetHashCode();

@@ -3,7 +3,41 @@ using System.Linq;
 
 namespace CategoryEnums
 {
+    public class ClassResources
+    {
+        public Classes.ClassList thisClass;
+        internal List<CardResources> resources;
 
+        public ClassResources(Classes.ClassList _thisClass)
+        {
+            thisClass = _thisClass;
+            resources = Classes.GetClassData(_thisClass).GetClassResources();
+        }
+
+        /// <summary>
+        /// 
+        /// Used for comparing Class Resources when used as dictionary key
+        /// 
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (obj == null || !(obj is ClassResources))
+                return false;
+
+            //Note: don't need to compare resources since they are dependent upon the class of the object
+            return ((ClassResources)obj).thisClass == thisClass;
+        }
+
+        /// <summary>
+        /// 
+        /// Used for comparing Class Resources when used as dictionary key
+        /// 
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return thisClass.GetHashCode();
+        }
+    }
 
     public class ClassResourceType
     {

@@ -10,7 +10,7 @@ public class CardFilter
     public List<CardTypes> CardTypeFilter { get; set; }
     public List<Rarity> RaritiyFilter { get; set; }
     public List<Sets> SetFilter { get; set; }
-    public List<CardResources> ResourceFilter { get; set; }
+    public Classes.ClassList ClassPlayableFilter { get; set; }
 
     public List<string> SearchStrings
     {
@@ -34,6 +34,6 @@ public class CardFilter
         foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
             SetFilter.Add(set);
         SetFilter.Remove(Sets.Default);
-        ResourceFilter = new List<CardResources>();
+        ClassPlayableFilter = Classes.ClassList.Default;
     }
 }

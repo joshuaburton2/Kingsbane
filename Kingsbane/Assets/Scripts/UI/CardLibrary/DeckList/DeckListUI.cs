@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +37,7 @@ public class DeckListUI : MonoBehaviour
     {
         GameManager.instance.deckManager.ResetDecks();
         DeckEditId = null;
-        RefreshDeckList();
+        RefreshDeckList(true);
     }
 
     public void RefreshDeckList(bool resourceFilter = false)
@@ -44,7 +45,7 @@ public class DeckListUI : MonoBehaviour
         DeckEditId = null;
         if (resourceFilter)
         {
-            libraryUI.ApplyResourceFilter(new List<CategoryEnums.CardResources>());
+            libraryUI.ApplyClassPlayableFilter(Classes.ClassList.Default);
         }
 
         foreach (Transform child in deckListParent.transform)
@@ -69,7 +70,7 @@ public class DeckListUI : MonoBehaviour
         activeDeckCardList = deckCardListUI;
 
         var selectedDeck = deckListObjects[deckId].GetComponent<DeckListObject>().deckData;
-        libraryUI.ApplyResourceFilter(selectedDeck.DeckResources);
+        libraryUI.ApplyClassPlayableFilter(selectedDeck.DeckClass);
 
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
         {

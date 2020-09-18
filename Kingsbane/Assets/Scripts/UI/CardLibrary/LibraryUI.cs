@@ -367,7 +367,7 @@ public class LibraryUI : MonoBehaviour
     public void ApplyFilter()
     {
         var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
-        var resourceFilter = activeFilter.ResourceFilter;
+        var resourceFilter = activeFilter.ClassPlayableFilter;
 
         activeFilter = new CardFilter();
 
@@ -377,7 +377,7 @@ public class LibraryUI : MonoBehaviour
         }
 
         activeFilter.SearchString = searchStringInput.text;
-        activeFilter.ResourceFilter = resourceFilter;
+        activeFilter.ClassPlayableFilter = resourceFilter;
 
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
@@ -433,9 +433,9 @@ public class LibraryUI : MonoBehaviour
         InitTabs();
     }
 
-    public void ApplyResourceFilter(List<CardResources> resourceFilter)
+    public void ApplyClassPlayableFilter(Classes.ClassList classAbailabilityFilter)
     {
-        activeFilter.ResourceFilter = resourceFilter;
+        activeFilter.ClassPlayableFilter = classAbailabilityFilter;
 
         InitTabs();
     }

@@ -9334,6 +9334,20 @@ MonoBehaviour:
     type: 3}
   cardCanvas: {fileID: 1944433674736422548, guid: e8ff815b5ee73a044a063ea0918e4e80,
     type: 3}
+  rarityWeightings:
+  - rarity: 1
+    weighting: 10
+  - rarity: 2
+    weighting: 7
+  - rarity: 3
+    weighting: 5
+  - rarity: 4
+    weighting: 5
+  - rarity: 5
+    weighting: 1
+  classWeighting: 3
+  synergyWeighting: 1
+  duplicateWeighting: -1
 --- !u!1 &843648688
 GameObject:
   m_ObjectHideFlags: 0
@@ -21873,7 +21887,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459478712}
   m_HandleRect: {fileID: 459478711}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

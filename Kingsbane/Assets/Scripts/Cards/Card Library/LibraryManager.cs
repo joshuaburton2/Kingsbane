@@ -3,9 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
+
+
 
 public class LibraryManager : MonoBehaviour
 {
+    [Serializable]
+    private class RarityWeighting
+    {
+        public Rarity rarity;
+        public int weighting;
+    }
+
+    [Header("Card Prefabs")]
     [SerializeField]
     //Card Object for rendering on 2D canvas
     private GameObject cardObject;
@@ -13,11 +24,22 @@ public class LibraryManager : MonoBehaviour
     //World Space Canvas for rendering cards in world
     private GameObject cardCanvas;
 
+    [Header("Loot Weightings")]
+    [SerializeField]
+    private List<RarityWeighting> rarityWeightings;
+    [SerializeField]
+    private int classWeighting;
+    [SerializeField]
+    private int synergyWeighting;
+    [SerializeField]
+    private int duplicateWeighting;
+
     private CardLibrary cardLibrary;
 
     private Dictionary<Tags, List<CardData>> tagLookup;
     private Dictionary<Synergies, List<CardData>> synergyLookup;
     private Dictionary<Classes.ClassList, List<CardData>> classLookup;
+    private Dictionary<ClassResources, List<CardData>> classPlayableLookup;
     private Dictionary<CardResources, List<CardData>> resourceLookup;
     private Dictionary<Sets, List<CardData>> setLookup;
     private Dictionary<Rarity, List<CardData>> rarityLookup;
@@ -43,6 +65,7 @@ public class LibraryManager : MonoBehaviour
         tagLookup = ConstructDictionary<Tags>();
         synergyLookup = ConstructDictionary<Synergies>();
         classLookup = ConstructDictionary<Classes.ClassList>();
+        classPlayableLookup = ConstructDictionary<ClassResources>();
         resourceLookup = ConstructDictionary<CardResources>();
         setLookup = ConstructDictionary<Sets>();
         rarityLookup = ConstructDictionary<Rarity>();
@@ -64,7 +87,7 @@ public class LibraryManager : MonoBehaviour
         GameManager.instance.deckManager.DeckTemplates = deckTemplates;
     }
 
-    private Dictionary<T, List<CardData>> ConstructDictionary<T>() where T : Enum
+    private Dictionary<T, List<CardData>> ConstructDictionary<T>()
     {
         var newDictionary = new Dictionary<T, List<CardData>>();
 
@@ -83,6 +106,27 @@ public class LibraryManager : MonoBehaviour
                     break;
                 case Type _ when type == typeof(Classes.ClassList):
                     keyList.Add((T)(object)card.Class);
+                    break;
+                case Type _ when type == typeof(ClassResources):
+                    foreach (var thisClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
+                    {
+                        var classResource = new ClassResources(thisClass);
+                        var classResources = classResource.resources;
+
+                        var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
+                        var numResourcesMet = classResources.Count;
+                        foreach (var resource in cardResources)
+                        {
+                            if (!classResources.Contains(resource))
+                            {
+                                numResourcesMet--;
+                            }
+                        }
+                        if (numResourcesMet == classResources.Count)
+                        {
+                            keyList.Add((T)(object)classResource);
+                        }
+                    }
                     break;
                 case Type _ when type == typeof(CardResources):
                     keyList = card.GetResources.Select(x => x.ResourceType).Cast<T>().ToList();
@@ -158,6 +202,9 @@ public class LibraryManager : MonoBehaviour
             case Type _ when type == typeof(Classes.ClassList):
                 classLookup.TryGetValue((Classes.ClassList)(object)key, out dictionaryList);
                 break;
+            case Type _ when type == typeof(ClassResources):
+                classPlayableLookup.TryGetValue((ClassResources)(object)key, out dictionaryList);
+                break;
             case Type _ when type == typeof(CardResources):
                 resourceLookup.TryGetValue((CardResources)(object)key, out dictionaryList);
                 break;
@@ -175,9 +222,7 @@ public class LibraryManager : MonoBehaviour
         }
 
         if (dictionaryList != null)
-        {
             return FilterCardList(OrderCardList(dictionaryList), listFilter);
-        }
         else
             return new List<CardData>();
     }
@@ -365,22 +410,15 @@ public class LibraryManager : MonoBehaviour
                     }
             }
 
-            if (listFilter.ResourceFilter.Count != 0)
+            if (listFilter.ClassPlayableFilter != Classes.ClassList.Default)
             {
                 numActiveFilters++;
                 if (!card.IsHero)
                 {
-                    var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
-                    var numResourcesMet = listFilter.ResourceFilter.Count;
-                    foreach (var resource in cardResources)
-                    {
-                        if (!listFilter.ResourceFilter.Contains(resource))
-                        {
-                            numResourcesMet--;
-                        }
-                    }
-
-                    if (numResourcesMet == listFilter.ResourceFilter.Count)
+                    var classResource = new ClassResources(listFilter.ClassPlayableFilter);
+                    var cardFilter = new CardFilter();
+                    cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+                    if (GetDictionaryList(classResource, cardFilter).Contains(card))
                     {
                         numMetFilters++;
                     }
@@ -417,5 +455,70 @@ public class LibraryManager : MonoBehaviour
         return card.Name.ToLower().Contains(searchString)
             || card.Text.ToLower().Contains(searchString)
             || abilityMet;
+    }
+
+    public class LootCard
+    {
+        public CardData CardData { get; set; }
+        public int Weighting { get; set; }
+    }
+
+    public List<LootCard> GenerateLootCards(DeckData deckData, int numCards, out int totalWeighting)
+    {
+        var classResource = new ClassResources(deckData.DeckClass);
+        var cardFilter = new CardFilter();
+        var classPlayableList = GetDictionaryList(classResource, cardFilter);
+
+        var deckSynergyCounts = new Dictionary<Synergies, int>();
+
+        foreach (var card in deckData.CardList)
+        {
+            foreach (var synergy in card.Synergies)
+            {
+                if (!deckSynergyCounts.ContainsKey(synergy))
+                {
+                    deckSynergyCounts.Add(synergy, 1);
+                }
+                else
+                {
+                    deckSynergyCounts[synergy] += 1;
+                }
+            }
+        }
+
+        var lootCards = new List<LootCard>();
+        totalWeighting = 0;
+
+        foreach (var card in classPlayableList)
+        {
+            var lootCard = new LootCard()
+            {
+                CardData = card,
+                Weighting = 0,
+            };
+
+            lootCard.Weighting += rarityWeightings.FirstOrDefault(x => x.rarity == card.Rarity).weighting;
+
+            if (card.Class == deckData.DeckClass)
+            {
+                lootCard.Weighting += classWeighting;
+            }
+
+            foreach (var synergy in card.Synergies)
+            {
+                if (deckSynergyCounts.TryGetValue(synergy, out int synergyCount))
+                {
+                    lootCard.Weighting += synergyCount * synergyWeighting;
+                }
+            }
+
+            var duplicateCount = deckData.CardList.Count(x => x.Id == card.Id);
+            lootCard.Weighting += duplicateCount * duplicateWeighting;
+
+            lootCards.Add(lootCard);
+            totalWeighting += lootCard.Weighting;
+        }
+
+        return lootCards;
     }
 }
