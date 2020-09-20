@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
-
-
 
 public class LibraryManager : MonoBehaviour
 {
@@ -519,6 +516,25 @@ public class LibraryManager : MonoBehaviour
             totalWeighting += lootCard.Weighting;
         }
 
-        return lootCards;
+        var lootSelection = new List<LootCard>();
+
+        for (int randomCardNum = 0; randomCardNum < numCards; randomCardNum++)
+        {
+            var randomVal = UnityEngine.Random.Range(0, totalWeighting);
+            var weightingIndex = 0;
+
+            foreach (var lootCard in lootCards)
+            {
+                weightingIndex += lootCard.Weighting;
+
+                if (randomVal < weightingIndex)
+                {
+                    lootSelection.Add(lootCard);
+                    break;
+                }
+            }
+        }
+
+        return lootSelection;
     }
 }

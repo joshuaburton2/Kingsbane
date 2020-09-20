@@ -73,6 +73,12 @@ public class DeckManager : MonoBehaviour
         SaveDecks();
     }
 
+    public void DeletePlayerDeck(DeckData deck)
+    {
+        PlayerDeckList.Remove(deck);
+        SaveDecks();
+    }
+
     public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
         if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)

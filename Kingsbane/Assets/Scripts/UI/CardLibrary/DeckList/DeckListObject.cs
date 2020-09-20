@@ -44,4 +44,10 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
             deckCardList.gameObject.SetActive(true);
         }
     }
+
+    public void DeleteDeck()
+    {
+        GameManager.instance.deckManager.DeletePlayerDeck(deckData);
+        deckListUI.RefreshDeckList(true);
+    }
 }
