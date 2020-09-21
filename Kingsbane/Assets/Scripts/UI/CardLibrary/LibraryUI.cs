@@ -250,14 +250,10 @@ public class LibraryUI : MonoBehaviour
         foreach (var card in pageListSplit[pageIndex])
         {
             var cardContainer = Instantiate(cardContainerPrefab, gridRows[currentRow].transform);
-            cardContainer.name = $"Conatainer {currentRow}.{currentColumn}- {card.Name}";
+            cardContainer.name = $"Container {currentRow}.{currentColumn}- {card.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
-            cardLibaryContainer.deckListUI = deckListUI;
-
-            var newCardObj = GameManager.instance.libraryManager.CreateCard(card, cardContainer.transform);
-            newCardObj.name = $"Card{currentRow}.{currentColumn}- {card.Name}";
-            newCardObj.transform.SetSiblingIndex(0);
-            cardLibaryContainer.cardDisplay = newCardObj.GetComponent<CardDisplay>();
+            var cardName = $"Card{currentRow}.{currentColumn}- {card.Name}";
+            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName);
 
             currentColumn++;
 

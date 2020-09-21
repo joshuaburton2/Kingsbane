@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeckListUI : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class DeckListUI : MonoBehaviour
     private LibraryUI libraryUI;
     [SerializeField]
     private GameObject newDeckPage;
+    [SerializeField]
+    private GameObject lootGenerator;
+    [SerializeField]
+    private Button lootButton;
+    [SerializeField]
+    private GameObject upgradeManager;
+    [SerializeField]
+    private Button upgradeButton;
     [SerializeField]
     private GameObject deckListParent;
     [SerializeField]
@@ -23,6 +32,8 @@ public class DeckListUI : MonoBehaviour
     private void Start()
     {
         newDeckPage.SetActive(false);
+        lootGenerator.SetActive(false);
+        upgradeManager.SetActive(false);
         RefreshDeckList();
     }
 
@@ -43,6 +54,9 @@ public class DeckListUI : MonoBehaviour
     public void RefreshDeckList(bool resourceFilter = false)
     {
         DeckEditId = null;
+        lootButton.interactable = false;
+        upgradeButton.interactable = false;
+
         if (resourceFilter)
         {
             libraryUI.ApplyClassPlayableFilter(Classes.ClassList.Default);
@@ -69,9 +83,6 @@ public class DeckListUI : MonoBehaviour
         DeckEditId = deckId;
         activeDeckCardList = deckCardListUI;
 
-        var selectedDeck = deckListObjects[deckId].GetComponent<DeckListObject>().deckData;
-        libraryUI.ApplyClassPlayableFilter(selectedDeck.DeckClass);
-
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
         {
             if (deckIndex != deckId)
@@ -79,5 +90,21 @@ public class DeckListUI : MonoBehaviour
                 deckListObjects[deckIndex].SetActive(false);
             }
         }
+
+        var selectedDeck = deckListObjects[deckId].GetComponent<DeckListObject>().deckData;
+        libraryUI.ApplyClassPlayableFilter(selectedDeck.DeckClass);
+
+        lootButton.interactable = true;
+        upgradeButton.interactable = true;
+    }
+
+    public void OpenLootGenerator()
+    {
+        lootGenerator.SetActive(true);
+    }
+
+    public void OpenUpgrades()
+    {
+        upgradeManager.SetActive(true);
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
 {
     private DeckListUI deckListUI;
-    private int deckId;
+    private int? deckId;
     private List<CardData> deckCardList;
 
     [SerializeField]
@@ -20,7 +20,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     TextMeshProUGUI cardCountText;
 
-    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null)
+    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null, int? _deckId = null)
     {
         deckListUI = _deckListUI;
 
@@ -33,6 +33,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
         if (_deckData != null)
         {
             deckCardList = _deckData.CardList;
+            deckId = _deckId;
 
             for (int cardIndex = 0; cardIndex < deckCardList.Count; cardIndex++)
             {

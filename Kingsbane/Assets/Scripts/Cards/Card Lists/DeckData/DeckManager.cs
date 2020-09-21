@@ -79,6 +79,11 @@ public class DeckManager : MonoBehaviour
         SaveDecks();
     }
 
+    public DeckData GetPlayerDeck(int id)
+    {
+        return PlayerDeckList.FirstOrDefault(x => x.Id == id);
+    }
+
     public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
         if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)

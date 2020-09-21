@@ -28,7 +28,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         nameText.text = deckData.Name;
         classBorder.color = GameManager.instance.colourManager.GetClassColour(deckData.DeckClass);
         classText.text = deckData.DeckClass.ToString();
-        deckCardList.RefreshCardList(deckData, deckListUI);
+        deckCardList.RefreshCardList(deckData, deckListUI, deckId);
         deckCardList.gameObject.SetActive(false);
     }
 
