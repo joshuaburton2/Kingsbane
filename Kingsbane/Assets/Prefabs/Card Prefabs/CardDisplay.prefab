@@ -527,53 +527,7 @@ MonoBehaviour:
   spellRangeText: {fileID: 7213617642326613095}
   itemProps: {fileID: 7213617642150030304}
   durabilityText: {fileID: 7213617642186174576}
-  rarityColours:
-  - Rarity: 1
-    rarityColour: {r: 0.8117648, g: 1, b: 0.909804, a: 1}
-  - Rarity: 2
-    rarityColour: {r: 0.26406196, g: 0.43623322, b: 0.8113208, a: 1}
-  - Rarity: 3
-    rarityColour: {r: 0.38229108, g: 0.2979708, b: 0.6792453, a: 1}
-  - Rarity: 4
-    rarityColour: {r: 0.67058825, g: 0.21176472, b: 0.10196079, a: 1}
-  - Rarity: 5
-    rarityColour: {r: 0.909804, g: 0.5882353, b: 0.078431375, a: 1}
-  - Rarity: 6
-    rarityColour: {r: 0.97924364, g: 1, b: 0.8915094, a: 1}
-  classColours:
-  - Class: 0
-    classColour: {r: 0, g: 0, b: 0, a: 1}
-  - Class: 1
-    classColour: {r: 0.49959585, g: 0.034843344, b: 0.8207547, a: 1}
-  - Class: 2
-    classColour: {r: 0.38431376, g: 0.36862746, b: 0.4666667, a: 1}
-  - Class: 3
-    classColour: {r: 0.86274517, g: 0.15294118, b: 0.9960785, a: 1}
-  - Class: 4
-    classColour: {r: 1, g: 0.29411766, b: 0.10980393, a: 1}
-  - Class: 5
-    classColour: {r: 0, g: 0.6509434, b: 0.56318104, a: 1}
-  - Class: 6
-    classColour: {r: 0.22491772, g: 0.6226415, b: 0.20265219, a: 1}
-  - Class: 7
-    classColour: {r: 1, g: 0.98862064, b: 0.7122642, a: 1}
-  - Class: 8
-    classColour: {r: 0.7372549, g: 0.03529412, b: 0.4666667, a: 1}
-  - Class: 9
-    classColour: {r: 0.027450982, g: 0.9960785, b: 0.89019614, a: 1}
-  - Class: 10
-    classColour: {r: 0.4433962, g: 0.18195978, b: 0.18549271, a: 1}
-  - Class: 11
-    classColour: {r: 0.9528302, g: 0.78302, b: 0.12135102, a: 1}
-  - Class: 12
-    classColour: {r: 0, g: 0.5550184, b: 1, a: 1}
-  - Class: 13
-    classColour: {r: 0.30151883, g: 0.23616053, b: 0.8207547, a: 1}
-  - Class: 14
-    classColour: {r: 0.10536677, g: 0.3679245, b: 0.09198113, a: 1}
-  - Class: 15
-    classColour: {r: 0.8018868, g: 0, b: 0.003517034, a: 1}
-  isClickable: 1
+  deckListUI: {fileID: 0}
 --- !u!114 &7451795837933458935
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -95,8 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a916df74037343c42a1e158bdfcc8c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardDisplay: {fileID: 0}
-  deckListUI: {fileID: 0}
 --- !u!222 &5760884054164398780
 CanvasRenderer:
   m_ObjectHideFlags: 0

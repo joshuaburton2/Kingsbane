@@ -55,7 +55,9 @@ public class DeckListUI : MonoBehaviour
     {
         DeckEditId = null;
         lootButton.interactable = false;
+        lootGenerator.SetActive(false);
         upgradeButton.interactable = false;
+        upgradeManager.SetActive(false);
 
         if (resourceFilter)
         {
@@ -100,11 +102,26 @@ public class DeckListUI : MonoBehaviour
 
     public void OpenLootGenerator()
     {
-        lootGenerator.SetActive(true);
+        if (lootGenerator.activeSelf)
+        {
+            lootGenerator.SetActive(false);
+        }
+        else
+        {
+            lootGenerator.SetActive(true);
+            lootGenerator.GetComponent<LootGeneratorUI>().RefreshLootGenerator();
+        }
     }
 
     public void OpenUpgrades()
     {
-        upgradeManager.SetActive(true);
+        if (upgradeManager.activeSelf)
+        {
+            upgradeManager.SetActive(false);
+        }
+        else
+        {
+            upgradeManager.SetActive(true);
+        }
     }
 }

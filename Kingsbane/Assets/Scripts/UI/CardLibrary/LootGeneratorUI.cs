@@ -25,6 +25,10 @@ public class LootGeneratorUI : MonoBehaviour
 
     public void RefreshLootGenerator()
     {
+        foreach (Transform child in lootArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         addSelectedButton.interactable = false;
 
@@ -33,7 +37,12 @@ public class LootGeneratorUI : MonoBehaviour
 
         foreach (var lootCard in lootCards)
         {
+            var cardContainer = Instantiate(cardDisplayContainer, lootArea.transform);
 
+            cardContainer.name = $"Container {lootCard.CardData.Name}";
+            var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
+            var cardName = $"Card {lootCard.CardData.Name}";
+            cardLibaryContainer.InitCardContainer(lootCard.CardData, deckListUI, 0.3f, cardName);
         }
     }
 }
