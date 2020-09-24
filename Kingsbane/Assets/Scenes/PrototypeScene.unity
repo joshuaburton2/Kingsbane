@@ -672,7 +672,9 @@ MonoBehaviour:
   addSelectedButton: {fileID: 0}
   refreshButton: {fileID: 0}
   cardDisplayContainer: {fileID: 0}
+  lootStatPrefab: {fileID: 0}
   numLootCards: 0
+  scalingFactor: 0
 --- !u!114 &53326306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9363,8 +9365,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40.000015, y: -40}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: -20, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811669722
 MonoBehaviour:
@@ -9420,11 +9422,11 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 285, y: 405}
-  m_Spacing: {x: 0, y: 0}
+  m_CellSize: {x: 268.8, y: 372.4}
+  m_Spacing: {x: 110, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 3
 --- !u!1 &816369522
@@ -10533,18 +10535,18 @@ MonoBehaviour:
     type: 3}
   rarityWeightings:
   - rarity: 1
-    weighting: 10
+    weighting: 50
   - rarity: 2
-    weighting: 7
+    weighting: 25
   - rarity: 3
-    weighting: 5
+    weighting: 12
   - rarity: 4
-    weighting: 5
+    weighting: 6
   - rarity: 5
-    weighting: 1
-  classWeighting: 3
-  synergyWeighting: 1
-  duplicateWeighting: -1
+    weighting: 2
+  classWeighting: 25
+  synergyWeighting: 2
+  duplicateWeighting: -10
 --- !u!1 &843648688
 GameObject:
   m_ObjectHideFlags: 0
@@ -18238,7 +18240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1417219218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18316,7 +18318,10 @@ MonoBehaviour:
   refreshButton: {fileID: 1033858810}
   cardDisplayContainer: {fileID: 1483599694604026599, guid: 440aa63b381b3724890ccf6def217fca,
     type: 3}
+  lootStatPrefab: {fileID: 6709459030343833672, guid: cbdb6fdb65e16b24ea85bfd4375ce9a6,
+    type: 3}
   numLootCards: 6
+  scalingFactor: 0.32
 --- !u!1 &1427650999
 GameObject:
   m_ObjectHideFlags: 0
@@ -25020,7 +25025,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459478712}
   m_HandleRect: {fileID: 459478711}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

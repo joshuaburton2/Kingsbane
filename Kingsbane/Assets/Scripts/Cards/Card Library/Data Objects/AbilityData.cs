@@ -3,6 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// 
+/// Data for storing Abilities on cards
+/// 
+/// </summary>
 [Serializable]
 public class AbilityData
 {

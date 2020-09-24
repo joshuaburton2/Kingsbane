@@ -253,7 +253,7 @@ public class LibraryUI : MonoBehaviour
             cardContainer.name = $"Container {currentRow}.{currentColumn}- {card.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card{currentRow}.{currentColumn}- {card.Name}";
-            cardLibaryContainer.InitCardContainer(card, deckListUI, 0.37f, cardName);
+            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName);
 
             currentColumn++;
 

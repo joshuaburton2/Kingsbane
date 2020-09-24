@@ -21,6 +21,8 @@ public class LibraryManager : MonoBehaviour
     //World Space Canvas for rendering cards in world
     private GameObject cardCanvas;
 
+    private const float defaultCardScaling = 0.37f;
+
     [Header("Loot Weightings")]
     [SerializeField]
     private List<RarityWeighting> rarityWeightings;
@@ -265,9 +267,10 @@ public class LibraryManager : MonoBehaviour
         return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 
-    public GameObject CreateCard(CardData card, Transform parent)
+    public GameObject CreateCard(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         GameObject createdCard = Instantiate(cardObject, parent);
+        createdCard.GetComponent<RectTransform>().localScale = new Vector3(scaling, scaling, 1.0f);
 
         CardDisplay cardDisplay;
 
@@ -302,27 +305,27 @@ public class LibraryManager : MonoBehaviour
         cardDisplay.card = (Card)(object)typeScript;
     }
 
-    public GameObject CreateCard(int Id, Transform parent)
+    public GameObject CreateCard(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
 
-        return CreateCard(card, parent);
+        return CreateCard(card, parent, scaling);
     }
 
-    public GameObject CreatedWorldCard(CardData card, Transform parent)
+    public GameObject CreatedWorldCard(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         GameObject worldCanvas = Instantiate(cardCanvas, parent);
 
-        CreateCard(card, worldCanvas.transform);
+        CreateCard(card, worldCanvas.transform, scaling);
 
         return worldCanvas;
     }
 
-    public GameObject CreateWorldCard(int Id, Transform parent)
+    public GameObject CreateWorldCard(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
 
-        return CreatedWorldCard(card, parent);
+        return CreatedWorldCard(card, parent, scaling);
     }
 
     public List<CardData> FilterCardList(List<CardData> cardList, CardFilter listFilter)
@@ -520,19 +523,29 @@ public class LibraryManager : MonoBehaviour
 
         for (int randomCardNum = 0; randomCardNum < numCards; randomCardNum++)
         {
-            var randomVal = UnityEngine.Random.Range(0, totalWeighting);
-            var weightingIndex = 0;
+            var selectedLootCard = new LootCard();
 
-            foreach (var lootCard in lootCards)
+            do
             {
-                weightingIndex += lootCard.Weighting;
+                var randomVal = UnityEngine.Random.Range(0, totalWeighting);
+                var weightingIndex = 0;
 
-                if (randomVal < weightingIndex)
+                foreach (var lootCard in lootCards)
                 {
-                    lootSelection.Add(lootCard);
-                    break;
+                    weightingIndex += lootCard.Weighting;
+
+                    if (randomVal < weightingIndex)
+                    {
+                        selectedLootCard = lootCard;
+                        break;
+                    }
                 }
-            }
+            } while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
+
+            lootSelection.Add(selectedLootCard);
+
+
+
         }
 
         return lootSelection;

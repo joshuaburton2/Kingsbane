@@ -3,17 +3,23 @@ using UnityEngine.EventSystems;
 
 public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField]
+    float cardSizex;
+    [SerializeField]
+    float cardSizey;
+
     private CardDisplay cardDisplay;
     private DeckListUI deckListUI;
 
-    public void InitCardContainer(CardData cardData, DeckListUI _deckListUI, float scalingFactor, string cardName = "")
+    private const float defaultScalingFactor = 0.37f;
+
+    public void InitCardContainer(CardData cardData, DeckListUI _deckListUI, string cardName = "", float scalingFactor = defaultScalingFactor)
     {
         deckListUI = _deckListUI;
 
-        //transform.parent.gameObject.GetComponent<RectTransform>(). = new Vecto
-        var newCardObj = GameManager.instance.libraryManager.CreateCard(cardData, gameObject.transform.parent);
+        transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
+        var newCardObj = GameManager.instance.libraryManager.CreateCard(cardData, gameObject.transform.parent, scalingFactor);
         newCardObj.name = cardName;
-        //newCardObj.GetComponent<RectTransform>().localScale = new Vector3(scalingFactor, scalingFactor);
         newCardObj.transform.SetSiblingIndex(0);
         cardDisplay = newCardObj.GetComponent<CardDisplay>();
     }
