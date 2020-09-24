@@ -1,5 +1,10 @@
 ﻿using System;
 
+/// <summary>
+/// 
+/// Object for storing unique data for spell cards
+/// 
+/// </summary>
 [Serializable]
 public class SpellData : CardData
 {

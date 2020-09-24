@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Object for keeping track of the filters for a particular set of cards
+/// 
+/// </summary>
 public class CardFilter
 {
     public string SearchString { get; set; }
@@ -12,6 +17,11 @@ public class CardFilter
     public List<Sets> SetFilter { get; set; }
     public Classes.ClassList ClassPlayableFilter { get; set; }
 
+    /// <summary>
+    /// 
+    /// When searching through the library, can utilise commas to seperate search terms
+    /// 
+    /// </summary>
     public List<string> SearchStrings
     {
         get

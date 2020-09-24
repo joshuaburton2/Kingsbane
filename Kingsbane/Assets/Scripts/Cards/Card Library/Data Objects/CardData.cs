@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Object for storing data about each card in the game
+/// 
+/// </summary>
 [Serializable]
 public class CardData
 {

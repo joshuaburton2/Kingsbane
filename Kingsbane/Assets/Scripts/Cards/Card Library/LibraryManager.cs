@@ -59,6 +59,29 @@ public class LibraryManager : MonoBehaviour
         LoadDeckTemplates();
     }
 
+    /// <summary>
+    /// 
+    /// Load deck templates from the card library
+    /// 
+    /// </summary>
+    private void LoadDeckTemplates()
+    {
+        var deckTemplates = cardLibrary.ClassDeckList;
+        foreach (var classDecks in deckTemplates.Values)
+        {
+            foreach (var deck in classDecks)
+            {
+                deck.CardList = OrderCardList(deck.CardList);
+            }
+        }
+        GameManager.instance.deckManager.DeckTemplates = deckTemplates;
+    }
+
+    /// <summary>
+    /// 
+    /// Load the relevant cards into their appropriate dictionaries for lookup later
+    /// 
+    /// </summary>
     private void LoadDirectionaries()
     {
         tagLookup = ConstructDictionary<Tags>();
@@ -73,28 +96,23 @@ public class LibraryManager : MonoBehaviour
         ConstructHeroLookup();
     }
 
-    private void LoadDeckTemplates()
-    {
-        var deckTemplates = cardLibrary.ClassDeckList;
-        foreach (var classDecks in deckTemplates.Values)
-        {
-            foreach (var deck in classDecks)
-            {
-                deck.CardList = OrderCardList(deck.CardList);
-            }
-        }
-        GameManager.instance.deckManager.DeckTemplates = deckTemplates;
-    }
-
+    /// <summary>
+    /// 
+    /// Constructs a dictionary of a generic type. The keys are the different values which the type can be and the card list is
+    /// the cards which are part of that key. These dictionaries are only intended to be constructed on startup
+    /// 
+    /// </summary>
     private Dictionary<T, List<CardData>> ConstructDictionary<T>()
     {
         var newDictionary = new Dictionary<T, List<CardData>>();
 
+        // Loop through all cards and obtain which keys in the dictionary that card falls into
         foreach (var card in cardLibrary.CardList)
         {
             var keyList = new List<T>();
             var type = typeof(T);
 
+            //Constructs the keylist the card falls into. The keylist is constructed depending on the type of key that the dictionary uses.
             switch (type)
             {
                 case Type _ when type == typeof(Tags):
@@ -106,22 +124,29 @@ public class LibraryManager : MonoBehaviour
                 case Type _ when type == typeof(Classes.ClassList):
                     keyList.Add((T)(object)card.Class);
                     break;
+                //Class Resources type is the cards which are obtainable by a particular class (i.e. they exclusively cost resources which the class can play)
                 case Type _ when type == typeof(ClassResources):
+                    //Loops through all the classes in the game. If the card is playable by that class, adds it to the keylist for the card
                     foreach (var thisClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
                     {
                         var classResource = new ClassResources(thisClass);
                         var classResources = classResource.resources;
 
                         var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
-                        var numResourcesMet = classResources.Count;
+
+                        var metResources = true;
+
+                        //Loops through all the resources the card costs. If the resource on the card costs a resource that the class cannot play, then
+                        // it will fail the test, and the ClassResources is not added as a key
                         foreach (var resource in cardResources)
                         {
                             if (!classResources.Contains(resource))
                             {
-                                numResourcesMet--;
+                                metResources = false;
+                                break;
                             }
                         }
-                        if (numResourcesMet == classResources.Count)
+                        if (metResources)
                         {
                             keyList.Add((T)(object)classResource);
                         }
@@ -141,6 +166,7 @@ public class LibraryManager : MonoBehaviour
                     break;
             }
 
+            //Loops through the keylist and adds the card to the relevant key in the dictionary
             if (keyList != null)
             {
                 foreach (var key in keyList)
@@ -160,6 +186,11 @@ public class LibraryManager : MonoBehaviour
         return newDictionary;
     }
 
+    /// <summary>
+    /// 
+    /// Constructs the hero lookup dictionary. 
+    /// 
+    /// </summary>
     private void ConstructHeroLookup()
     {
         var tempHeroLookup = new Dictionary<Classes.ClassList, List<CardData>>();

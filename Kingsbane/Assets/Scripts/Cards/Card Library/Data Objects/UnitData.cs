@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using CategoryEnums;
 
+/// <summary>
+/// 
+/// Object for storing unique data for unit cards
+/// 
+/// </summary>
 [Serializable]
 public class UnitData : CardData
 {
