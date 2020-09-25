@@ -45,11 +45,17 @@ namespace CategoryEnums
             return heroClass.GetHashCode() + tierLevel.GetHashCode();
         }
 
+        /// <summary>
+        /// 
+        /// Determines which hero tier the hero card is. Each hero card should have a valid Tier Level tag
+        /// 
+        /// </summary>
         public static TierLevel ConvertTierLevel (UnitData card)
         {
             if (card.Rarity == Rarity.Hero)
             {
                 Tags heroTierTag = card.Tags.FirstOrDefault(x => x == Tags.HeroTierOne || x == Tags.HeroTierTwo || x == Tags.HeroTierThree);
+                //If one of the tier level tags doesn't exist, it will obtain the default tag
                 if (heroTierTag == Tags.Default)
                     throw new Exception("Card does not have a valid Tier Level");
 

@@ -188,7 +188,7 @@ public class LibraryManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Constructs the hero lookup dictionary. 
+    /// Constructs the hero lookup dictionary. The hero lookup is used to construct the different combinations of heroes and abilities
     /// 
     /// </summary>
     private void ConstructHeroLookup()
@@ -201,6 +201,7 @@ public class LibraryManager : MonoBehaviour
         {
             if (cardClass != Classes.ClassList.Default)
             {
+                //Obtain all the heroes for a particular class. Intersects the rarity lookup and the classlookup
                 tempHeroLookup.Add(cardClass, rarityLookup[Rarity.Hero].Intersect(classLookup[cardClass]).ToList());
 
                 foreach (var card in tempHeroLookup[cardClass])
@@ -209,13 +210,18 @@ public class LibraryManager : MonoBehaviour
                     var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = HeroTier.ConvertTierLevel(heroCard) };
                     heroLookup.Add(heroTier, heroCard);
 
-                    var heroAbility = heroCard.Abilities[0]; //Should only be one element in the hero ability list
+                    var heroAbility = heroCard.Abilities.FirstOrDefault(); //Should only be one element in the hero ability list
                     heroAbilityLookup.Add(heroTier, heroAbility);
                 }
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// Tries to get the card list for a given dictionary key. Generic so that the key can be suited for any of the constructed dictionaries
+    /// 
+    /// </summary>
     public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter)
     {
         var dictionaryList = new List<CardData>();
@@ -257,6 +263,11 @@ public class LibraryManager : MonoBehaviour
             return new List<CardData>();
     }
 
+    /// <summary>
+    /// 
+    /// Gets a hero of a particular tier level and class
+    /// 
+    /// </summary>
     public UnitData GetHero(Classes.ClassList neededClass, TierLevel heroTierLevel, TierLevel abilityTierLevel)
     {
         if (neededClass != Classes.ClassList.Default)
@@ -267,6 +278,7 @@ public class LibraryManager : MonoBehaviour
             heroLookup.TryGetValue(heroTier, out var heroData);
             heroAbilityLookup.TryGetValue(abilityTier, out var abilityData);
 
+            //Removes the default ability on the hero card and replaces it with the required ability
             heroData.Abilities.Clear();
             heroData.Abilities.Add(abilityData);
 
@@ -278,64 +290,96 @@ public class LibraryManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Gets a card of a particular Id
+    /// 
+    /// </summary>
     public CardData GetCard(int Id)
     {
         return cardLibrary.CardList.FirstOrDefault(x => x.Id == Id);
     }
 
+    /// <summary>
+    /// 
+    /// Gets a card of a particular name
+    /// 
+    /// </summary>
     public CardData GetCard(string nameSearch)
     {
         return cardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
     }
 
+    /// <summary>
+    /// 
+    /// Gets all cards in the game with an applied filter
+    /// 
+    /// </summary>
     public List<CardData> GetAllCards(CardFilter listFilter)
     {
         return FilterCardList(OrderCardList(cardLibrary.CardList), listFilter);
     }
 
+    /// <summary>
+    /// 
+    /// Orders the card list with the default ordering
+    /// 
+    /// </summary>
     public static List<CardData> OrderCardList(List<CardData> cardList)
     {
+        //Note that the resource ordering is descending since the values are negative
         return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 
+    /// <summary>
+    /// 
+    /// Instantiates a card in the scene
+    /// 
+    /// </summary>
     public GameObject CreateCard(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         GameObject createdCard = Instantiate(cardObject, parent);
         createdCard.GetComponent<RectTransform>().localScale = new Vector3(scaling, scaling, 1.0f);
 
-        CardDisplay cardDisplay;
-
         switch (card.CardType)
         {
             case CardTypes.Unit:
-                SetCardType<Unit>(card, createdCard, out cardDisplay);
+                SetCardType<Unit>(card, createdCard);
                 break;
             case CardTypes.Spell:
-                SetCardType<Spell>(card, createdCard, out cardDisplay);
+                SetCardType<Spell>(card, createdCard);
                 break;
             case CardTypes.Item:
-                SetCardType<Item>(card, createdCard, out cardDisplay);
+                SetCardType<Item>(card, createdCard);
                 break;
             default:
-                SetCardType<Card>(card, createdCard, out cardDisplay);
+                SetCardType<Card>(card, createdCard);
                 break;
         }
-
-        cardDisplay.InitDisplay();
 
         return createdCard;
     }
 
-    private void SetCardType<T>(CardData cardData, GameObject createdCard, out CardDisplay cardDisplay)
+    /// <summary>
+    /// 
+    /// Sets the card type of the card object. 
+    /// 
+    /// </summary>
+    private void SetCardType<T>(CardData cardData, GameObject createdCard)
     {
+        //Adds the relevant script of the card type to the game object
         T typeScript = (T)(object)createdCard.AddComponent(typeof(T));
 
         ((Card)(object)typeScript).InitCard(cardData);
 
-        cardDisplay = createdCard.GetComponent<CardDisplay>();
-        cardDisplay.card = (Card)(object)typeScript;
+        createdCard.GetComponent<CardDisplay>().InitDisplay((Card)(object)typeScript);
     }
 
+    /// <summary>
+    /// 
+    /// Instantiates a card of a particular Id
+    /// 
+    /// </summary>
     public GameObject CreateCard(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
@@ -343,6 +387,11 @@ public class LibraryManager : MonoBehaviour
         return CreateCard(card, parent, scaling);
     }
 
+    /// <summary>
+    /// 
+    /// Instantiates a card on a world space canvas to move around in 3d
+    /// 
+    /// </summary>
     public GameObject CreatedWorldCard(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         GameObject worldCanvas = Instantiate(cardCanvas, parent);
@@ -352,6 +401,11 @@ public class LibraryManager : MonoBehaviour
         return worldCanvas;
     }
 
+    /// <summary>
+    /// 
+    /// Instantiates a card of a particular Id on a world space canvas to move around in 3d
+    /// 
+    /// </summary>
     public GameObject CreateWorldCard(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
@@ -359,18 +413,31 @@ public class LibraryManager : MonoBehaviour
         return CreatedWorldCard(card, parent, scaling);
     }
 
+    /// <summary>
+    /// 
+    /// Applies a filter to a a given card list and returns it. Options to filter a card list are:
+    /// - A search string
+    /// - Card types
+    /// - Rarities
+    /// - Sets
+    /// - Whether the card is playable by a class
+    /// 
+    /// </summary>
     public List<CardData> FilterCardList(List<CardData> cardList, CardFilter listFilter)
     {
         var searchStrings = listFilter.SearchStrings;
         var numSearchStrings = searchStrings.Count;
 
-        var newCardList = new List<CardData>();
+        var filteredCardList = new List<CardData>();
 
         foreach (var card in cardList)
         {
+            //In order for a card to be added to the filter, it needs to meet all the active filters in the Card Filter object
             var numActiveFilters = 0;
             var numMetFilters = 0;
 
+            //Search string filtering. Only active if there is a non-empty string
+            //Search string also looks through the cards tags
             if (listFilter.SearchString.Length != 0)
             {
                 numActiveFilters++;
@@ -381,6 +448,7 @@ public class LibraryManager : MonoBehaviour
                 {
                     if (searchString.Length > 0)
                     {
+                        //First checks if the search string is a tag. Note the true property is to ignore the case of the string
                         var isTag = Enum.TryParse(searchString.Replace(" ", ""), true, out Tags tag);
                         if (isTag)
                         {
@@ -388,6 +456,8 @@ public class LibraryManager : MonoBehaviour
                                 numStringsMet++;
                             else
                             {
+                                //Even if the search string is a tag, it is still possible that the card text or name contains the search string
+                                //As such, even if the card doesn't have the tag, still checks through the other search fields
                                 if (CardStringContainsSearch(card, searchString))
                                     numStringsMet++;
                             }
@@ -400,11 +470,12 @@ public class LibraryManager : MonoBehaviour
                     }
                 }
 
+                //If the card contains all the given search terms, then it meets the filter
                 if (numStringsMet == numSearchStrings)
                     numMetFilters++;
             }
 
-
+            //Card type filter area
             if (listFilter.CardTypeFilter.Count != 0)
             {
                 numActiveFilters++;
@@ -417,6 +488,7 @@ public class LibraryManager : MonoBehaviour
                     }
             }
 
+            //Rarity filter area
             if (listFilter.RaritiyFilter.Count != 0)
             {
                 numActiveFilters++;
@@ -429,6 +501,7 @@ public class LibraryManager : MonoBehaviour
                     }
             }
 
+            //Set filter area
             if (listFilter.SetFilter.Count != 0)
             {
                 numActiveFilters++;
@@ -441,12 +514,15 @@ public class LibraryManager : MonoBehaviour
                     }
             }
 
+            //Class playable filter area
             if (listFilter.ClassPlayableFilter != Classes.ClassList.Default)
             {
                 numActiveFilters++;
+                //Filters out all heroes from the list
                 if (!card.IsHero)
                 {
                     var classResource = new ClassResources(listFilter.ClassPlayableFilter);
+                    //Uses the default filter when obtaining the dictionary list. Also adds uncollectable rarity to the filter
                     var cardFilter = new CardFilter();
                     cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
                     if (GetDictionaryList(classResource, cardFilter).Contains(card))
@@ -456,20 +532,27 @@ public class LibraryManager : MonoBehaviour
                 }
             }
 
+            //If the num of active filters are all met on the card, the card passes the filter
             if (numMetFilters == numActiveFilters)
             {
-                newCardList.Add(card);
+                filteredCardList.Add(card);
             }
         }
 
-        return newCardList;
+        return filteredCardList;
     }
 
+    /// <summary>
+    /// 
+    /// Checks if the card name, the card text or the card abilities contains a particular search string
+    /// 
+    /// </summary>
     private static bool CardStringContainsSearch(CardData card, string searchString)
     {
         searchString = searchString.ToLower();
         var abilityMet = false;
 
+        //Only unit cards will have an ability
         if (card.CardType == CardTypes.Unit)
         {
             var unit = (UnitData)card;
@@ -494,14 +577,15 @@ public class LibraryManager : MonoBehaviour
         public int Weighting { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// Generates a list of random cards for loot based on the properties of a given deck
+    /// 
+    /// </summary>
     public List<LootCard> GenerateLootCards(DeckData deckData, int numCards, out int totalWeighting)
     {
-        var classResource = new ClassResources(deckData.DeckClass);
-        var cardFilter = new CardFilter();
-        var classPlayableList = GetDictionaryList(classResource, cardFilter);
-
+        //Totals the number of cards in a deck which have a particular synergy
         var deckSynergyCounts = new Dictionary<Synergies, int>();
-
         foreach (var card in deckData.CardList)
         {
             foreach (var synergy in card.Synergies)
@@ -520,6 +604,11 @@ public class LibraryManager : MonoBehaviour
         var lootCards = new List<LootCard>();
         totalWeighting = 0;
 
+        var cardFilter = new CardFilter();
+        var classResource = new ClassResources(deckData.DeckClass);
+        var classPlayableList = GetDictionaryList(classResource, cardFilter);
+
+        //Loops through all the cards which are possible to be played by a class and determines their weighting in the random selection
         foreach (var card in classPlayableList)
         {
             var lootCard = new LootCard()
@@ -528,13 +617,16 @@ public class LibraryManager : MonoBehaviour
                 Weighting = 0,
             };
 
+            //Add the weighting of the rarity of the card
             lootCard.Weighting += rarityWeightings.FirstOrDefault(x => x.rarity == card.Rarity).weighting;
 
+            //Adds the class weighting if the card is of the decks class
             if (card.Class == deckData.DeckClass)
             {
                 lootCard.Weighting += classWeighting;
             }
 
+            //If the card shares synergies with the cards already in the deck, increases the weighting accordingly
             foreach (var synergy in card.Synergies)
             {
                 if (deckSynergyCounts.TryGetValue(synergy, out int synergyCount))
@@ -543,6 +635,7 @@ public class LibraryManager : MonoBehaviour
                 }
             }
 
+            //Reduces the weighting of the card based on the number of that card already in the deck
             var duplicateCount = deckData.CardList.Count(x => x.Id == card.Id);
             lootCard.Weighting += duplicateCount * duplicateWeighting;
 
@@ -552,31 +645,34 @@ public class LibraryManager : MonoBehaviour
 
         var lootSelection = new List<LootCard>();
 
+        //Loops through the number of cards which are required to be randomly determined
         for (int randomCardNum = 0; randomCardNum < numCards; randomCardNum++)
         {
             var selectedLootCard = new LootCard();
 
             do
             {
+                //Randomly determines a card to be added
+                //First determines a random weighting
                 var randomVal = UnityEngine.Random.Range(0, totalWeighting);
                 var weightingIndex = 0;
 
+                //Runs through all the possible cards and the weighting
                 foreach (var lootCard in lootCards)
                 {
                     weightingIndex += lootCard.Weighting;
 
+                    //If the random weighting is within the weighting range of the card, it is the card that is randomly selected
                     if (randomVal < weightingIndex)
                     {
                         selectedLootCard = lootCard;
                         break;
                     }
                 }
+            //If the selection already contains the card, repeats the random selection
             } while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
 
             lootSelection.Add(selectedLootCard);
-
-
-
         }
 
         return lootSelection;

@@ -72,8 +72,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// 
     /// </summary>
     [ContextMenu("Initialise Display")]
-    public void InitDisplay()
+    public void InitDisplay(Card _card)
     {
+        card = _card;
+
         cardName.text = card.CardName;
         classText.text = card.CardClass.ToString();
         cardText.text = card.Text;

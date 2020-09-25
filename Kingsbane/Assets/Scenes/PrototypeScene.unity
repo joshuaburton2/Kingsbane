@@ -10546,7 +10546,7 @@ MonoBehaviour:
     weighting: 2
   classWeighting: 25
   synergyWeighting: 2
-  duplicateWeighting: -10
+  duplicateWeighting: -20
 --- !u!1 &843648688
 GameObject:
   m_ObjectHideFlags: 0
