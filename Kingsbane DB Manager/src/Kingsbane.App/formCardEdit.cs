@@ -454,9 +454,12 @@ namespace Kingsbane.App
             {
                 if (Id.HasValue)
                 {
+                    _context.RelatedCards.RemoveRange(_context.RelatedCards.Where(x => x.CardId == card.Id || x.RelatedCardId == card.Id));
                     card.Units.Clear();
                     card.Spells.Clear();
                     card.Items.Clear();
+                    card.Tags.Clear();
+                    card.Synergies.Clear();
                     _context.Remove(card);
                     _context.SaveChanges();
                     this.DialogResult = DialogResult.Abort;

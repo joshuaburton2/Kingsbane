@@ -34,7 +34,7 @@ public class CardLibrary
         {
             Id = 6,
             Name = "Kalyan Strike",
-            Text = @"<b>Stun</b> an enemy unit",
+            Text = @"<b>Stun</b> an adjacent enemy unit",
 
             ResourceDevotion = null,
             ResourceEnergy = 1,
@@ -106,7 +106,7 @@ public class CardLibrary
         {
             Id = 10,
             Name = "Kalyan Strike",
-            Text = @"<b>Stun</b> an enemy unit",
+            Text = @"<b>Stun</b> an adjacent enemy unit",
 
             ResourceDevotion = null,
             ResourceEnergy = 1,
@@ -214,7 +214,7 @@ public class CardLibrary
         {
             Id = 16,
             Name = "Conjure Voidling",
-            Text = @"Deploy a Voidling adjacent to your hero",
+            Text = @"<b>Summon</b> a Voidling adjacent to your hero",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -232,7 +232,7 @@ public class CardLibrary
         {
             Id = 17,
             Name = "Conjure Voidling",
-            Text = @"Deploy a Voidling adjacent to your hero. Give it +1 Attack, +1 Health",
+            Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +1 Attack, +1 Health",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -250,7 +250,7 @@ public class CardLibrary
         {
             Id = 18,
             Name = "Conjure Voidling",
-            Text = @"Deploy a Voidling adjacent to your hero. Give it +2 Attack, +2 Health and <b>Spellshield</b>",
+            Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +2 Attack, +2 Health and <b>Spellshield</b>",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -343,7 +343,7 @@ public class CardLibrary
             Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
 
             ResourceDevotion = null,
-            ResourceEnergy = 3,
+            ResourceEnergy = 2,
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
@@ -358,10 +358,10 @@ public class CardLibrary
         {
             Id = 26,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
+            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +2",
 
             ResourceDevotion = null,
-            ResourceEnergy = 1,
+            ResourceEnergy = 2,
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
@@ -646,7 +646,7 @@ public class CardLibrary
         {
             Id = 43,
             Name = "Enlist Hireling",
-            Text = @"Deploy a ""Hireling"" unit adjacent to your hero",
+            Text = @"Deploy a random ""Hireling"" unit adjacent to your hero",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -664,7 +664,7 @@ public class CardLibrary
         {
             Id = 44,
             Name = "Enlist Hireling",
-            Text = @"Deploy two ""Hirelings"" adjacent to your hero",
+            Text = @"Deploy a ""Hireling"" unit of your choice adjacent to your hero",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -682,7 +682,7 @@ public class CardLibrary
         {
             Id = 51,
             Name = "Enlist Hireling",
-            Text = @"Deploy a ""Hireling"" adjacent to your hero",
+            Text = @"Deploy a random ""Hireling"" adjacent to your hero",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -833,7 +833,7 @@ public class CardLibrary
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
-            ResourceWild = 1,
+            ResourceWild = 2,
             ResourceNeutral = null,
 
             CostsAction = true,
@@ -844,14 +844,14 @@ public class CardLibrary
         {
             Id = 60,
             Name = "Hound Training",
-            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +2 Attack",
+            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +3 Attack",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
-            ResourceWild = 1,
+            ResourceWild = 2,
             ResourceNeutral = null,
 
             CostsAction = false,
@@ -898,7 +898,7 @@ public class CardLibrary
         {
             Id = 63,
             Name = "Enrage",
-            Text = @"Your hero gains +4 Attack, +4 Health until the end of your turn",
+            Text = @"Your hero gains +6 Attack, +4 Health until the end of your turn",
 
             ResourceDevotion = null,
             ResourceEnergy = 1,
@@ -1114,7 +1114,7 @@ public class CardLibrary
         {
             Id = 75,
             Name = "Imprison",
-            Text = @"Remove an enemy unit from the battlefield",
+            Text = @"Remove an enemy minion from the battlefield",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -1222,7 +1222,7 @@ public class CardLibrary
         {
             Id = 81,
             Name = "Master of the Elements",
-            Text = @"Add a basic Elemental Spell to your hand",
+            Text = @"Add a basic Elemental Spell to your hand. <b>Cycle -2</b>",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -1365,7 +1365,7 @@ public class CardLibrary
         var ability89 = new AbilityData()
         {
             Id = 89,
-            Name = "Thoughtful Meditation",
+            Name = "Meditative Ritual",
             Text = @"<b>Prayer +1</b>",
 
             ResourceDevotion = null,
@@ -1455,8 +1455,8 @@ public class CardLibrary
         var ability94 = new AbilityData()
         {
             Id = 94,
-            Name = "Divine Oath",
-            Text = @"Prayer +1",
+            Name = "Heavenly Ritual",
+            Text = @"<b>Prayer +1</b>",
 
             ResourceDevotion = null,
             ResourceEnergy = null,
@@ -1716,7 +1716,7 @@ public class CardLibrary
             Tags = new List<Tags> { Tags.Stun, Tags.Draw },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Stun, Synergies.Control, Synergies.Draw },
             SpellType = "Enchantment",
-            Range = 2,
+            Range = 1,
         };
         CardList.Add(card7);
 
@@ -1810,7 +1810,7 @@ public class CardLibrary
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Runeblade,
-            Rarity = Rarity.Uncommon,
+            Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Enchantment, Tags.Swiftstrike, Tags.Protected },
@@ -2131,14 +2131,14 @@ This units attack is increased by your <b>Empowered</b> value",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Conduit<b>
+            Text = @"<b>Conduit</b>
 Whenever this unit kills an enemy unit, gain 3 Mana",
             LoreText = @"",
             Notes = @"",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Runeblade,
-            Rarity = Rarity.Epic,
+            Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Runeblade, Tags.Elven, Tags.Conduit, Tags.ManaGain },
@@ -2853,7 +2853,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"Transform a unit into a ""Pig""",
+            Text = @"<b>Transform</b> a unit into a ""Pig""",
             LoreText = @"",
             Notes = @"",
 
@@ -2862,7 +2862,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Transformation, Tags.SingleRemoval },
+            Tags = new List<Tags> { Tags.SingleRemoval, Tags.Transform },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Antimagic, Synergies.Removal },
             SpellType = "Enchantment",
             Range = 3,
@@ -3818,7 +3818,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate },
+            Tags = new List<Tags> { Tags.PrayerGain, Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
             UnitTag = "Vampire Noble",
             Attack = 5,
@@ -4353,11 +4353,11 @@ Deal damage to your hero equal to half their remaining health",
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
+            ResourceMana = null,
+            ResourceWild = 2,
             ResourceNeutral = null,
 
-            Text = @"Deal 1 damage to a unit and <b>Stun</b> it",
+            Text = @"Deal 2 damage to a unit and <b>Stun</b> it",
             LoreText = @"",
             Notes = @"",
 
@@ -4784,8 +4784,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             ResourceWild = 3,
             ResourceNeutral = null,
 
-            Text = @"<b>Cycle -3</b>
-Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and push them in a line 2 tiles directly away from the centre of the area. If they impact any obstacle terrain, deal an additional 2 damage to them",
+            Text = @"Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and push them in a line 2 tiles directly away from the centre of the area. If they impact any obstacle terrain, deal an additional 2 damage to them",
             LoreText = @"",
             Notes = @"",
 
@@ -4794,7 +4793,7 @@ Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and pus
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air, Tags.ForceMove, Tags.CycleMinus },
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air, Tags.ForceMove },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove },
             SpellType = "Damage",
             Range = 4,
@@ -5013,8 +5012,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Hero
-Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2 within Range 2",
+            Text = @"<b>Hero</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5079,7 +5077,7 @@ Plant Growth (2 Wild, 1 Action): Root</b> all enemy units in an area of Radius 2
             ResourceWild = 0,
             ResourceNeutral = null,
 
-            Text = @"Increase your Wild by 3. Draw a card",
+            Text = @"Increase your Wild by 3 and <b>Cycle +3</b>. Draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -5245,7 +5243,8 @@ At the end of each of your turns, draw a card",
             ResourceWild = 1,
             ResourceNeutral = null,
 
-            Text = @"At the start of each of your turns, gain 1 Wild",
+            Text = @"<b>Deployment: Cycle -3</b>
+At the start of each of your turns, gain 2 Wild",
             LoreText = @"",
             Notes = @"",
 
@@ -5337,10 +5336,10 @@ At the end of each of your turns, draw a card",
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
-            ResourceWild = 3,
+            ResourceWild = 2,
             ResourceNeutral = null,
 
-            Text = @"At the start of your next turn, gain 5 Wild and draw 2 cards",
+            Text = @"At the start of your next turn, gain 4 Wild, <b>Cycle +4</b> and draw 2 cards",
             LoreText = @"",
             Notes = @"",
 
@@ -5349,8 +5348,8 @@ At the end of each of your turns, draw a card",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Draw, Tags.WildGain },
-            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Wild },
+            Tags = new List<Tags> { Tags.Draw, Tags.CyclePlus, Tags.WildGain },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Cycle, Synergies.Wild },
             SpellType = "Resource",
             Range = 0,
         };
@@ -5534,8 +5533,8 @@ At the end of each of your turns, draw a card",
         var card125 = new ItemData()
         {
             Id = 125,
-            Name = "Battle Sword",
-            ImageLocation = "Battle_Sword",
+            Name = "Battle Gear",
+            ImageLocation = "Battle_Gear",
 
             ResourceDevotion = null,
             ResourceEnergy = 2,
@@ -5557,7 +5556,7 @@ At the end of each of your turns, draw a card",
             Tags = new List<Tags> { Tags.Protected, Tags.Sword, Tags.Metal },
             Synergies = new List<Synergies> { },
             ItemTag = "Metal Sword",
-            Durability = 1,
+            Durability = 2,
         };
         CardList.Add(card125);
 
@@ -6086,7 +6085,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             ResourceWild = 6,
             ResourceNeutral = null,
 
-            Text = @"Whenever a friendly unit dies wthin Range 3, shuffle a copy of it into your deck",
+            Text = @"Whenever a friendly unit dies wthin Range 3, shuffle a copy of it into your deck and <b>Cycle -2</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6095,8 +6094,8 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Equip, Tags.Natural, Tags.Trinket },
-            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Equip, Synergies.Death, Synergies.Wild },
+            Tags = new List<Tags> { Tags.Equip, Tags.CycleMinus, Tags.Natural, Tags.Trinket },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Equip, Synergies.Death, Synergies.Cycle, Synergies.Wild },
             ItemTag = "Natural Trinket",
             Durability = 5,
         };
@@ -6116,7 +6115,8 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             ResourceWild = 7,
             ResourceNeutral = null,
 
-            Text = @"At the end of your turn, reduce the Wild cost of a random card in your hand by (6)",
+            Text = @"<b>Deployment: Cycle -7</b>
+At the end of your turn, reduce the Wild cost of a random card in your hand by (6)",
             LoreText = @"",
             Notes = @"",
 
@@ -6125,8 +6125,8 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Grovewatcher, Tags.Treant },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.BigSpells, Synergies.BigMinions, Synergies.Wild, Synergies.Treant },
+            Tags = new List<Tags> { Tags.Deployment, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.BigSpells, Synergies.BigMinions, Synergies.Cycle, Synergies.Wild, Synergies.Treant },
             UnitTag = "Treant Grovewatcher",
             Attack = 4,
             Health = 6,
@@ -6424,7 +6424,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"Reduce a units by 3 until the start of your next turn",
+            Text = @"Reduce a units attack by 3 until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -6871,7 +6871,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"Deploy a friendly unit which has died this game adjacent to the caster",
+            Text = @"Deploy a friendly minion which has died this game adjacent to the caster",
             LoreText = @"",
             Notes = @"",
 
@@ -7909,8 +7909,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Lifebond
-Deep Exposure (1 Devotion, 2 Knowledge, 1 Action):</b> Deal damage to a unit within Range 3 equal to its attack.
+            Text = @"<b>Lifebond</b>
 <b>Last Rites:</b>Use <b>Deep Exposure</b> on all units within Range 2",
             LoreText = @"",
             Notes = @"",
@@ -8794,8 +8793,8 @@ Costs (1) Devotion less for every Angel which has died this game.
             Name = "Lord Seldoras Kerhall",
             ImageLocation = "Lord_Seldoras_Kerhall",
 
-            ResourceDevotion = 8,
-            ResourceEnergy = 4,
+            ResourceDevotion = 5,
+            ResourceEnergy = 3,
             ResourceGold = null,
             ResourceKnowledge = null,
             ResourceMana = null,
@@ -8815,8 +8814,8 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Oathknight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.BigMinions, Synergies.Prayer, Synergies.Oaths },
             UnitTag = "Human Oathknight",
-            Attack = 9,
-            Health = 9,
+            Attack = 5,
+            Health = 5,
             Range = 0,
             Speed = 3,
 
@@ -9341,8 +9340,8 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Deadly, Tags.Shadow },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Removal, Synergies.Shadows },
+            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Shadow },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
             UnitTag = "Shadow Summon",
             Attack = 5,
             Health = 5,
@@ -9470,7 +9469,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             ResourceEnergy = null,
             ResourceGold = null,
             ResourceKnowledge = null,
-            ResourceMana = 4,
+            ResourceMana = 3,
             ResourceWild = null,
             ResourceNeutral = null,
 
@@ -10296,7 +10295,8 @@ This unit can target through obstacle terrain",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
+            Text = @"<b>Warden
+Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 <b>Last Rites:</b> Return all removed cards and redeploy all removed units",
             LoreText = @"",
             Notes = @"",
@@ -10306,8 +10306,8 @@ This unit can target through obstacle terrain",
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Captain, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.BigMinions, Synergies.Removal },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Captain, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Removal },
             UnitTag = "Human Captain",
             Attack = 5,
             Health = 6,
@@ -10433,7 +10433,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
             ResourceWild = null,
             ResourceNeutral = null,
 
-            Text = @"<b>Conduit, Prepared</b>
+            Text = @"<b>Conduit, Prepared, Warden</b>
 Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected (4)</b>",
             LoreText = @"",
             Notes = @"",
@@ -10443,8 +10443,8 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Prepared, Tags.Captain, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
+            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Warden, Tags.Prepared, Tags.Captain, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
             UnitTag = "Human Captain",
             Attack = 4,
             Health = 6,
@@ -10595,41 +10595,6 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         };
         CardList.Add(card277);
 
-        var card278 = new UnitData()
-        {
-            Id = 278,
-            Name = "Hireling",
-            ImageLocation = "Hireling",
-
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
-
-            Text = @"",
-            LoreText = @"",
-            Notes = @"",
-
-            Set = Sets.Standard,
-            Class = Classes.ClassList.Mercenary,
-            Rarity = Rarity.Uncollectable,
-            CardType = CardTypes.Unit,
-
-            Tags = new List<Tags> { Tags.Human, Tags.Mercenary },
-            Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
-            Attack = 2,
-            Health = 2,
-            Range = 0,
-            Speed = 3,
-
-            Abilities = new List<AbilityData>() { },
-        };
-        CardList.Add(card278);
-
         var card279 = new UnitData()
         {
             Id = 279,
@@ -10770,6 +10735,146 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         };
         CardList.Add(card282);
 
+        var card285 = new UnitData()
+        {
+            Id = 285,
+            Name = "Tough Hireling",
+            ImageLocation = "Tough_Hireling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Warden</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Mercenary, Tags.Hireling },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card285);
+
+        var card286 = new UnitData()
+        {
+            Id = 286,
+            Name = "Persuasive Hireling",
+            ImageLocation = "Persuasive_Hireling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"Whenever this attacks, gain Gold equal to attack",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.GoldGain, Tags.Hireling },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card286);
+
+        var card287 = new UnitData()
+        {
+            Id = 287,
+            Name = "Shady Hireling",
+            ImageLocation = "Shady_Hireling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.Stealth, Tags.Hireling },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card287);
+
+        var card288 = new UnitData()
+        {
+            Id = 288,
+            Name = "Eager Hireling",
+            ImageLocation = "Eager_Hireling",
+
+            ResourceDevotion = null,
+            ResourceEnergy = null,
+            ResourceGold = 2,
+            ResourceKnowledge = null,
+            ResourceMana = null,
+            ResourceWild = null,
+            ResourceNeutral = null,
+
+            Text = @"<b>Prepared</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Mercenary, Tags.Hireling },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Human Mercenary",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card288);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -10789,7 +10894,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         card124.RelatedCards = new List<CardData> { card125 };
         card126.RelatedCards = new List<CardData> { card125 };
         card127.RelatedCards = new List<CardData> { card125 };
-        card131.RelatedCards = new List<CardData> { card278 };
+        card131.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card135.RelatedCards = new List<CardData> { card136 };
         card143.RelatedCards = new List<CardData> { card115 };
         card158.RelatedCards = new List<CardData> { card150, card151, card152, card153, card154, card155 };
@@ -10814,8 +10919,8 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         card260.RelatedCards = new List<CardData> { card248 };
         card264.RelatedCards = new List<CardData> { card125 };
         card271.RelatedCards = new List<CardData> { card272 };
-        card276.RelatedCards = new List<CardData> { card278 };
-        card277.RelatedCards = new List<CardData> { card278 };
+        card276.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card277.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card279.RelatedCards = new List<CardData> { card136 };
         card280.RelatedCards = new List<CardData> { card136 };
 
@@ -11083,7 +11188,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierOne, HeroTierTwo, HeroTierThree
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierOne, HeroTierTwo, HeroTierThree, Hireling, Transform
     }
 
     public enum Synergies

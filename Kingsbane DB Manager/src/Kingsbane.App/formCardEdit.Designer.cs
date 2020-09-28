@@ -130,7 +130,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(430, 1028);
+            this.buttonSave.Location = new System.Drawing.Point(430, 984);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -141,7 +141,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(518, 1028);
+            this.buttonCancel.Location = new System.Drawing.Point(518, 984);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -152,7 +152,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(606, 1028);
+            this.buttonDelete.Location = new System.Drawing.Point(606, 984);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -425,7 +425,7 @@
             this.lstTags.ItemHeight = 15;
             this.lstTags.Location = new System.Drawing.Point(75, 498);
             this.lstTags.Name = "lstTags";
-            this.lstTags.Size = new System.Drawing.Size(228, 94);
+            this.lstTags.Size = new System.Drawing.Size(228, 64);
             this.lstTags.TabIndex = 19;
             this.lstTags.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
@@ -445,7 +445,7 @@
             this.lstSynergies.ItemHeight = 15;
             this.lstSynergies.Location = new System.Drawing.Point(435, 496);
             this.lstSynergies.Name = "lstSynergies";
-            this.lstSynergies.Size = new System.Drawing.Size(228, 94);
+            this.lstSynergies.Size = new System.Drawing.Size(228, 64);
             this.lstSynergies.TabIndex = 19;
             this.lstSynergies.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
@@ -453,7 +453,7 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblType.Location = new System.Drawing.Point(12, 724);
+            this.lblType.Location = new System.Drawing.Point(12, 680);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(46, 21);
             this.lblType.TabIndex = 20;
@@ -463,7 +463,7 @@
             // 
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(75, 726);
+            this.cmbType.Location = new System.Drawing.Point(75, 682);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(120, 23);
             this.cmbType.TabIndex = 21;
@@ -485,7 +485,7 @@
             this.grpUnit.Controls.Add(this.txtUnitTag);
             this.grpUnit.Controls.Add(this.lblUnitTag);
             this.grpUnit.Enabled = false;
-            this.grpUnit.Location = new System.Drawing.Point(12, 755);
+            this.grpUnit.Location = new System.Drawing.Point(12, 711);
             this.grpUnit.Name = "grpUnit";
             this.grpUnit.Size = new System.Drawing.Size(651, 125);
             this.grpUnit.TabIndex = 22;
@@ -607,7 +607,7 @@
             this.grpItem.Controls.Add(this.lblDurability);
             this.grpItem.Controls.Add(this.txtItemTag);
             this.grpItem.Controls.Add(this.lblItemTag);
-            this.grpItem.Location = new System.Drawing.Point(10, 953);
+            this.grpItem.Location = new System.Drawing.Point(10, 909);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(651, 61);
             this.grpItem.TabIndex = 22;
@@ -652,7 +652,7 @@
             this.grpSpell.Controls.Add(this.lblSpellRange);
             this.grpSpell.Controls.Add(this.txtSpellType);
             this.grpSpell.Controls.Add(this.lblSpellType);
-            this.grpSpell.Location = new System.Drawing.Point(12, 886);
+            this.grpSpell.Location = new System.Drawing.Point(12, 842);
             this.grpSpell.Name = "grpSpell";
             this.grpSpell.Size = new System.Drawing.Size(651, 61);
             this.grpSpell.TabIndex = 22;
@@ -780,7 +780,7 @@
             // 
             this.lblRelatedCards.AutoSize = true;
             this.lblRelatedCards.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblRelatedCards.Location = new System.Drawing.Point(12, 609);
+            this.lblRelatedCards.Location = new System.Drawing.Point(12, 565);
             this.lblRelatedCards.Name = "lblRelatedCards";
             this.lblRelatedCards.Size = new System.Drawing.Size(114, 21);
             this.lblRelatedCards.TabIndex = 17;
@@ -790,7 +790,7 @@
             // 
             this.lstRelatedCards.FormattingEnabled = true;
             this.lstRelatedCards.ItemHeight = 15;
-            this.lstRelatedCards.Location = new System.Drawing.Point(103, 645);
+            this.lstRelatedCards.Location = new System.Drawing.Point(103, 601);
             this.lstRelatedCards.Name = "lstRelatedCards";
             this.lstRelatedCards.Size = new System.Drawing.Size(560, 64);
             this.lstRelatedCards.TabIndex = 28;
@@ -798,7 +798,7 @@
             // 
             // btnAddRelatedCard
             // 
-            this.btnAddRelatedCard.Location = new System.Drawing.Point(12, 645);
+            this.btnAddRelatedCard.Location = new System.Drawing.Point(12, 601);
             this.btnAddRelatedCard.Name = "btnAddRelatedCard";
             this.btnAddRelatedCard.Size = new System.Drawing.Size(75, 64);
             this.btnAddRelatedCard.TabIndex = 29;
@@ -810,7 +810,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 1061);
+            this.ClientSize = new System.Drawing.Size(700, 1011);
             this.Controls.Add(this.btnAddRelatedCard);
             this.Controls.Add(this.lstRelatedCards);
             this.Controls.Add(this.lblRelatedCards);
