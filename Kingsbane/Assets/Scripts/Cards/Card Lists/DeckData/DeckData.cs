@@ -76,6 +76,7 @@ public class DeckData : DeckSaveData
         {
             CardList.Add(GameManager.instance.libraryManager.GetCard(cardId));
         }
+        CardList = LibraryManager.OrderCardList(CardList);
     }
 
     public void SyncDeckCards(LibraryManager libraryManager)
@@ -87,6 +88,7 @@ public class DeckData : DeckSaveData
         {
             CardList.Add(libraryManager.GetCard(cardId));
         }
+        CardList = LibraryManager.OrderCardList(CardList);
     }
 
     public void LoadHero()
@@ -108,11 +110,13 @@ public class DeckData : DeckSaveData
     public void AddCard(CardData cardData)
     {
         CardList.Add(cardData);
+        CardIdList.Add(cardData.Id);
         CardList = LibraryManager.OrderCardList(CardList);
     }
 
     public void RemoveCard(CardData cardData)
     {
         CardList.Remove(cardData);
+        CardIdList.Remove(cardData.Id);
     }
 }
