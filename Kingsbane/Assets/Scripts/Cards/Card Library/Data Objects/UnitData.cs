@@ -7,7 +7,6 @@ using CategoryEnums;
 /// Object for storing unique data for unit cards
 /// 
 /// </summary>
-[Serializable]
 public class UnitData : CardData
 {
     public string UnitTag { get; set; }

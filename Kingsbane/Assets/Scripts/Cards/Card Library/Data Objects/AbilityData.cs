@@ -8,7 +8,6 @@ using System.Linq;
 /// Data for storing Abilities on cards
 /// 
 /// </summary>
-[Serializable]
 public class AbilityData
 {
     public int Id { get; set; }

@@ -17,6 +17,7 @@ namespace CategoryEnums
         public string ClassName { get { return ThisClass.ToString(); } }
         public List<ClassResourceType> ClassResources { get; internal set; }
         public bool IsPlayable { get; internal set; }
+        public List<DeckSaveData> DeckTemplates { get; internal set; }
         public Dictionary<ClassDataFields, string> ClassDataStringList { get; internal set; }
 
         public ClassData(Classes.ClassList neededClass)

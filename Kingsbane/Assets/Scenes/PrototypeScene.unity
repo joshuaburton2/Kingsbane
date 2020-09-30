@@ -10547,6 +10547,7 @@ MonoBehaviour:
   classWeighting: 25
   synergyWeighting: 2
   duplicateWeighting: -20
+  deckManager: {fileID: 1593085924}
 --- !u!1 &843648688
 GameObject:
   m_ObjectHideFlags: 0
@@ -21159,6 +21160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ad72db6679cd847947f0c8a51764be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  libraryManager: {fileID: 836981535}
 --- !u!4 &1593085925
 Transform:
   m_ObjectHideFlags: 0
@@ -25025,7 +25027,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459478712}
   m_HandleRect: {fileID: 459478711}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

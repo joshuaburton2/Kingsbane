@@ -20,7 +20,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     TextMeshProUGUI cardCountText;
 
-    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null, int? _deckId = null)
+    public void RefreshCardList(DeckData deckData = null, DeckListUI _deckListUI = null, int? _deckId = null)
     {
         deckListUI = _deckListUI;
 
@@ -30,10 +30,16 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
         }
         cardObjects.Clear();
         
-        if (_deckData != null)
+        if (deckData != null)
         {
-            deckCardList = _deckData.CardList;
+            deckCardList = deckData.CardList;
             deckId = _deckId;
+
+            var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
+            var heroData = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, deckData.HeroTier, deckData.AbilityTier);
+            heroCardObject.GetComponent<DeckCardObject>().InitCardObject(heroData, deckListUI, 1, deckId);
+            heroCardObject.name = $"Card- {heroData.Name}";
+            cardObjects.Add(heroCardObject);
 
             for (int cardIndex = 0; cardIndex < deckCardList.Count; cardIndex++)
             {
@@ -62,7 +68,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
                 cardIndex += numCopies - 1;
             }
 
-            cardCountText.text = $"Cards: {_deckData.DeckCount}";
+            cardCountText.text = $"Cards: {deckData.DeckCount}";
         }
     }
 

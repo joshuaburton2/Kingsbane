@@ -54,8 +54,6 @@ namespace Kingsbane.App
             sb.AppendLine("        AbilityList = new List<AbilityData>();");
             sb.AppendLine("");
 
-
-
             var abilityQuery = _context.Abilities;
 
             foreach (var item in abilityQuery)
@@ -81,8 +79,6 @@ namespace Kingsbane.App
                 sb.AppendLine(abilityText);
                 sb.AppendLine("");
             }
-
-
 
             var query = _context.Cards
                 .Include(x => x.Tags).ThenInclude(x => x.Tag)
@@ -124,7 +120,7 @@ namespace Kingsbane.App
 
                 switch (item.CardTypeId)
                 {
-                    case Database.Enums.CardTypes.Unit:
+                    case CardTypes.Unit:
                         var unit = item.Units.FirstOrDefault();
 
                         var unitAbilities = string.Join(",", unit.Abilities.Select(x => $"ability{x.Id}"));
@@ -133,7 +129,7 @@ namespace Kingsbane.App
                         sb.AppendLine("        {");
                         sb.AppendLine(commonCard);
                         sb.AppendLine($"            UnitTag = \"{unit?.UnitTag}\",");
-                        sb.AppendLine($"            Attack = {unit?.Attack??0},");
+                        sb.AppendLine($"            Attack = {unit?.Attack ?? 0},");
                         sb.AppendLine($"            Health = {unit?.Health ?? 0},");
                         sb.AppendLine($"            Range = {unit?.Range ?? 0},");
                         sb.AppendLine($"            Speed = {unit?.Speed ?? 0},");
@@ -141,7 +137,7 @@ namespace Kingsbane.App
                         sb.AppendLine($"            Abilities = new List<AbilityData>() {{{unitAbilities}}},");
                         sb.AppendLine("        };");
                         break;
-                    case Database.Enums.CardTypes.Spell:
+                    case CardTypes.Spell:
                         var spell = item.Spells.FirstOrDefault();
 
                         sb.AppendLine($"        var card{item.Id} = new SpellData()");
@@ -151,7 +147,7 @@ namespace Kingsbane.App
                         sb.AppendLine($"            Range = {spell?.Range ?? 0},");
                         sb.AppendLine("        };");
                         break;
-                    case Database.Enums.CardTypes.Item:
+                    case CardTypes.Item:
                         var cardItem = item.Items.FirstOrDefault();
 
                         sb.AppendLine($"        var card{item.Id} = new ItemData()");
@@ -180,40 +176,6 @@ namespace Kingsbane.App
                     continue;
                 }
                 sb.AppendLine($"        card{item.Id}.RelatedCards = new List<CardData> {{{relatedCards}}};");
-            }
-
-            sb.AppendLine("");
-            sb.AppendLine("        ClassDeckList = new Dictionary<Classes.ClassList, List<DeckData>>();");
-
-            var deckQuery = _context.CardClasses.Include(x => x.Decks).ThenInclude(x => x.DeckCards);
-
-            foreach (var thisClass in deckQuery)
-            {
-                sb.AppendLine("");
-                sb.AppendLine($"        ClassDeckList.Add(");
-                sb.AppendLine($"            Classes.ClassList.{thisClass.Id},");
-                sb.AppendLine($"            new List<DeckData>()");
-                sb.AppendLine($"            {{");
-                foreach (var deck in thisClass.Decks)
-                {
-                    var isNPCDeck = deck.NPCDeck.ToString().ToLower();
-
-                    sb.AppendLine($"                new DeckData()");
-                    sb.AppendLine($"                {{");
-                    sb.AppendLine($"                    Id = {deck.Id},");
-                    sb.AppendLine(@$"                    Name = ""{deck.Name}"",");
-                    sb.AppendLine($"                    DeckClass = Classes.ClassList.{thisClass.Id},");
-                    sb.AppendLine($"                    IsNPCDeck = {isNPCDeck},");
-                    sb.AppendLine($"                    CardList = new List<CardData>()");
-                    sb.AppendLine($"                    {{");
-                    foreach (var card in deck.DeckCards)
-                    {
-                        sb.AppendLine($"                        card{card.CardId}");
-                    }
-                    sb.AppendLine($"                    }}");
-                    sb.AppendLine($"                }},");
-                }
-                sb.AppendLine($"            }});");
             }
 
             sb.AppendLine("    }");
@@ -258,7 +220,7 @@ namespace Kingsbane.App
             sb.AppendLine("        internal static List<ClassData> ClassDataList = new List<ClassData>()");
             sb.AppendLine("        {");
 
-            var query = _context.CardClasses;
+            var query = _context.CardClasses.Include(x => x.Decks).ThenInclude(x => x.DeckCards);
 
             foreach (var item in query)
             {
@@ -273,6 +235,28 @@ namespace Kingsbane.App
                 sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.{item.SecondaryResource} }},");
                 sb.AppendLine($"                    }},");
                 sb.AppendLine($"                    IsPlayable = {isPlayable},");
+                sb.AppendLine($"                    DeckTemplates = new List<DeckSaveData>()");
+                sb.AppendLine($"                    {{");
+                foreach (var deck in item.Decks)
+                {
+                    var isNPCDeck = deck.NPCDeck.ToString().ToLower();
+
+                    sb.AppendLine($"                        new DeckSaveData()");
+                    sb.AppendLine($"                        {{");
+                    sb.AppendLine($"                            Id = {deck.Id},");
+                    sb.AppendLine(@$"                            Name = ""{deck.Name}"",");
+                    sb.AppendLine($"                            DeckClass = ClassList.{item.Id},");
+                    sb.AppendLine($"                            IsNPCDeck = {isNPCDeck},");
+                    sb.AppendLine($"                            CardIdList = new List<int>()");
+                    sb.AppendLine($"                            {{");
+                    foreach (var card in deck.DeckCards)
+                    {
+                        sb.AppendLine($"                                {card.CardId}");
+                    }
+                    sb.AppendLine($"                            }}");
+                    sb.AppendLine($"                        }},");
+                }
+                sb.AppendLine($"                    }},");
                 sb.AppendLine($"                    ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()");
                 sb.AppendLine($"                    {{");
                 sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Description, ""{item.Description}"" }},");

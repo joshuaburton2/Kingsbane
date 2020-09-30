@@ -7,28 +7,42 @@ using System.Linq;
 
 public class DeckManager : MonoBehaviour
 {
+    [SerializeField]
+    private LibraryManager libraryManager;
+
     public List<DeckData> PlayerDeckList { get; private set; }
     public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
-    private void Awake()
+    private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas)
     {
-        LoadDecks();
+        var deckDatas = new List<DeckData>();
+        foreach (var saveDeck in deckSaveDatas)
+        {
+            deckDatas.Add(new DeckData(saveDeck, libraryManager));
+        }
+
+        return deckDatas;
     }
 
     public List<DeckData> GetPlayerDeckTemplates(Classes.ClassList neededClass)
     {
-        var deckTemplates = DeckTemplates[neededClass].Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
-        return deckTemplates;
+        var classData = Classes.ClassDataList.FirstOrDefault(x => x.ThisClass == neededClass);
+        var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
+
+        return ConvertDeckSave(deckSaveTemplates);
     }
 
-    private void LoadDecks()
+    public void LoadDecks()
     {
         if(File.Exists(Application.persistentDataPath + deckFileName))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
-            PlayerDeckList = (List<DeckData>)bf.Deserialize(file);
+            var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
+
+            PlayerDeckList = ConvertDeckSave(saveDeckList);
+
             file.Close();
         }
         else
@@ -41,7 +55,14 @@ public class DeckManager : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + deckFileName);
-        bf.Serialize(file, PlayerDeckList);
+
+        var saveDeckList = new List<DeckSaveData>();
+        foreach (var deck in PlayerDeckList)
+        {
+            saveDeckList.Add(new DeckSaveData(deck));
+        }
+
+        bf.Serialize(file, saveDeckList);
         file.Close();
     }
 

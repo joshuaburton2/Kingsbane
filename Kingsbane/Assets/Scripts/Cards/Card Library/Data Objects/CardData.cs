@@ -9,7 +9,6 @@ using UnityEngine;
 /// Object for storing data about each card in the game
 /// 
 /// </summary>
-[Serializable]
 public class CardData
 {
     public int Id { get; set; }

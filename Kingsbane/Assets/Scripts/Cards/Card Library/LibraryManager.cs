@@ -33,6 +33,10 @@ public class LibraryManager : MonoBehaviour
     [SerializeField]
     private int duplicateWeighting;
 
+    [Header("Other Objects")]
+    [SerializeField]
+    private DeckManager deckManager;
+
     private CardLibrary cardLibrary;
 
     private Dictionary<Tags, List<CardData>> tagLookup;
@@ -49,32 +53,16 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<HeroTier, UnitData> heroLookup;
     private Dictionary<HeroTier, AbilityData> heroAbilityLookup;
 
-    private void Start()
+    private void Awake()
     {
         //Load in cardList upon initialization of the game
         cardLibrary = new CardLibrary();
         cardLibrary.InitLibrary();
 
         LoadDirectionaries();
-        LoadDeckTemplates();
-    }
 
-    /// <summary>
-    /// 
-    /// Load deck templates from the card library
-    /// 
-    /// </summary>
-    private void LoadDeckTemplates()
-    {
-        var deckTemplates = cardLibrary.ClassDeckList;
-        foreach (var classDecks in deckTemplates.Values)
-        {
-            foreach (var deck in classDecks)
-            {
-                deck.CardList = OrderCardList(deck.CardList);
-            }
-        }
-        GameManager.instance.deckManager.DeckTemplates = deckTemplates;
+        //Not accessed through Game Manager due to ordering of Awake functions being an issue
+        deckManager.LoadDecks();
     }
 
     /// <summary>
@@ -207,7 +195,7 @@ public class LibraryManager : MonoBehaviour
                 foreach (var card in tempHeroLookup[cardClass])
                 {
                     var heroCard = (UnitData)card;
-                    var heroTier = new HeroTier() { heroClass = cardClass, tierLevel = HeroTier.ConvertTierLevel(heroCard) };
+                    var heroTier = new HeroTier() { HeroClass = cardClass, TierLevel = HeroTier.ConvertTierLevel(heroCard) };
                     heroLookup.Add(heroTier, heroCard);
 
                     var heroAbility = heroCard.Abilities.FirstOrDefault(); //Should only be one element in the hero ability list
@@ -272,8 +260,8 @@ public class LibraryManager : MonoBehaviour
     {
         if (neededClass != Classes.ClassList.Default)
         {
-            var heroTier = new HeroTier() { heroClass = neededClass, tierLevel = heroTierLevel };
-            var abilityTier = new HeroTier() { heroClass = neededClass, tierLevel = abilityTierLevel };
+            var heroTier = new HeroTier() { HeroClass = neededClass, TierLevel = heroTierLevel };
+            var abilityTier = new HeroTier() { HeroClass = neededClass, TierLevel = abilityTierLevel };
 
             heroLookup.TryGetValue(heroTier, out var heroData);
             heroAbilityLookup.TryGetValue(abilityTier, out var abilityData);

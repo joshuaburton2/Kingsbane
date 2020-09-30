@@ -8,13 +8,21 @@ namespace CategoryEnums
     {
         Tier1,
         Tier2,
-        Tier3
+        Tier3,
+        Default,
     }
 
+    [Serializable]
     public class HeroTier
     {
-        public Classes.ClassList heroClass;
-        public TierLevel tierLevel;
+        public Classes.ClassList HeroClass { get; set; }
+        public TierLevel TierLevel { get; set; }
+
+        public HeroTier()
+        {
+            HeroClass = Classes.ClassList.Default;
+            TierLevel = TierLevel.Default;
+        }
 
         private static Dictionary<Tags, TierLevel> TierConversion = new Dictionary<Tags, TierLevel>
         {
@@ -32,7 +40,7 @@ namespace CategoryEnums
         {
             if (obj == null || !(obj is HeroTier)) 
                 return false;
-            return ((HeroTier)obj).heroClass == heroClass && ((HeroTier)obj).tierLevel == tierLevel;
+            return ((HeroTier)obj).HeroClass == HeroClass && ((HeroTier)obj).TierLevel == TierLevel;
         }
 
         /// <summary>
@@ -42,7 +50,7 @@ namespace CategoryEnums
         /// </summary>
         public override int GetHashCode()
         {
-            return heroClass.GetHashCode() + tierLevel.GetHashCode();
+            return HeroClass.GetHashCode() + TierLevel.GetHashCode();
         }
 
         /// <summary>

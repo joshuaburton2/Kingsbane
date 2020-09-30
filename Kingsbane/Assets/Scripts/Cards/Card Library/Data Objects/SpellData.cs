@@ -5,7 +5,6 @@
 /// Object for storing unique data for spell cards
 /// 
 /// </summary>
-[Serializable]
 public class SpellData : CardData
 {
     public string SpellType { get; set; }

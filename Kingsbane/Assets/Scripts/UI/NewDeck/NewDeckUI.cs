@@ -70,7 +70,7 @@ public class NewDeckUI : MonoBehaviour
             }
         }
 
-        var tierOptions = Enum.GetNames(typeof(TierLevel)).ToList();
+        var tierOptions = Enum.GetNames(typeof(TierLevel)).Where(x => x != TierLevel.Default.ToString()).ToList();
 
         for (int i = 0; i < tierOptions.Count; i++)
         {
@@ -176,7 +176,8 @@ public class NewDeckUI : MonoBehaviour
         {
             selectedTemplate = new DeckData(deckTemplates[deckTemplateDropdown.value]);
             deckNameText.text = selectedTemplate.Name;
-            selectedTemplate.AddCard(heroCard);
+            selectedTemplate.HeroTier = (TierLevel)heroTierDropdown.value;
+            selectedTemplate.AbilityTier = (TierLevel)abilityTierDropdown.value;
 
             deckCardList.RefreshCardList(selectedTemplate, deckList);
         }
