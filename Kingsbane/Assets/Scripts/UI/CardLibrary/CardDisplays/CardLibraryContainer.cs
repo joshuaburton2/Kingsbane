@@ -13,8 +13,15 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     float cardSizey;
 
+    [SerializeField]
+    private GameObject cardSelectionBorder;
+
     private CardDisplay cardDisplay;
     private DeckListUI deckListUI;
+
+    //Variables for handling loot generator
+    private LootGeneratorUI lootGeneratorUI;
+    private bool isSelected;
 
     private const float defaultScalingFactor = 0.37f;
 
@@ -23,14 +30,22 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
     /// Initialise the container object
     /// 
     /// </summary>
-    public void InitCardContainer(CardData cardData, DeckListUI _deckListUI, string cardName = "", float scalingFactor = defaultScalingFactor)
+    public void InitCardContainer(
+        CardData cardData,
+        DeckListUI _deckListUI,
+        string cardName = "",
+        float scalingFactor = defaultScalingFactor,
+        LootGeneratorUI _lootGeneratorUI = null)
     {
         deckListUI = _deckListUI;
+        lootGeneratorUI = _lootGeneratorUI;
+
+        isSelected = false;
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
         var newCardObj = GameManager.instance.libraryManager.CreateCard(cardData, gameObject.transform.parent, scalingFactor);
         newCardObj.name = cardName;
-        newCardObj.transform.SetSiblingIndex(0);
+        newCardObj.transform.SetSiblingIndex(1);
         cardDisplay = newCardObj.GetComponent<CardDisplay>();
     }
 
@@ -43,8 +58,29 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {
-            var updatedDeck = GameManager.instance.deckManager.AddToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
-            deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI, deckListUI.DeckEditId.Value);
+            if (lootGeneratorUI == null)
+            {
+                var updatedDeck = GameManager.instance.deckManager.AddToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
+                deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI, deckListUI.DeckEditId.Value);
+            }
+            else
+            {
+                if (!isSelected)
+                {
+                    if (!lootGeneratorUI.FullCardsSelected)
+                    {
+                        lootGeneratorUI.SelectLootCard(cardDisplay.card.cardData);
+                        isSelected = true;
+                        cardSelectionBorder.SetActive(true);
+                    }
+                }
+                else
+                {
+                    lootGeneratorUI.RemoveLootCard(cardDisplay.card.cardData);
+                    isSelected = false;
+                    cardSelectionBorder.SetActive(false);
+                }
+            }
         }
     }
 }

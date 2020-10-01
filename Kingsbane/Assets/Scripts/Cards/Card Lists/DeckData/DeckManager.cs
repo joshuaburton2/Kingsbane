@@ -174,6 +174,20 @@ public class DeckManager : MonoBehaviour
 
     /// <summary>
     /// 
+    /// Adds a list of cards to a particular deck
+    /// 
+    /// </summary>
+    public DeckData AddRangeToPlayerDeck(int id, List<CardData> cardDatas)
+    {
+        foreach (var cardData in cardDatas)
+        {
+            AddToPlayerDeck(id, cardData);
+        }
+        return PlayerDeckList[id];
+    }
+
+    /// <summary>
+    /// 
     /// Remove a card from a particular deck
     /// 
     /// </summary>
