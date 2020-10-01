@@ -3,6 +3,11 @@ using System.Linq;
 
 namespace CategoryEnums
 {
+    /// <summary>
+    /// 
+    /// Object for storing data about a particular class
+    /// 
+    /// </summary>
     public class ClassData
     {
         public enum ClassDataFields
@@ -25,7 +30,12 @@ namespace CategoryEnums
             ThisClass = neededClass;
         }
 
-        public string GetStringData(ClassData.ClassDataFields classDataField)
+        /// <summary>
+        /// 
+        /// Gets the type of string data needed. Uses a dictionary to store the data
+        /// 
+        /// </summary>
+        public string GetStringData(ClassDataFields classDataField)
         {
             return ClassDataStringList[classDataField];
         }

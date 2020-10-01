@@ -225,6 +225,11 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    /// <summary>
+    /// 
+    /// Event for clicking on card object
+    /// 
+    /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -233,6 +238,11 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    /// <summary>
+    /// 
+    /// Display the card detail
+    /// 
+    /// </summary>
     public void DisplayCardDetail()
     {
         GameManager.instance.uiManager.ActivateCardDetail(card.cardData);

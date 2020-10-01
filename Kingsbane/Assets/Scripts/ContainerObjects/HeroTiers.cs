@@ -24,6 +24,11 @@ namespace CategoryEnums
             TierLevel = TierLevel.Default;
         }
 
+        /// <summary>
+        /// 
+        /// Dictionary for converting Tier level tag to a tier level
+        /// 
+        /// </summary>
         private static Dictionary<Tags, TierLevel> TierConversion = new Dictionary<Tags, TierLevel>
         {
             { Tags.HeroTierOne, TierLevel.Tier1 },

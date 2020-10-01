@@ -36,7 +36,7 @@ public class CardData
     public List<Synergies> Synergies { get; set; }
     public List<CardData> RelatedCards { get; set; }
 
-    public bool IsHero { get { return Tags.Contains(CategoryEnums.Tags.Hero); } }
+    public bool IsHero { get { return Rarity == Rarity.Hero || Rarity == Rarity.NPCHero; } }
 
     /// <summary>
     /// 

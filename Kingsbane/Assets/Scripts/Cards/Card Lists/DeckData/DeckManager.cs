@@ -4,6 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using CategoryEnums;
 using System.Linq;
+using System;
 
 public class DeckManager : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class DeckManager : MonoBehaviour
     public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
+    /// <summary>
+    /// 
+    /// Convert a list of save data objects into deck objects
+    /// 
+    /// </summary>
     private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas)
     {
         var deckDatas = new List<DeckData>();
@@ -25,14 +31,26 @@ public class DeckManager : MonoBehaviour
         return deckDatas;
     }
 
+    /// <summary>
+    /// 
+    /// Gets a list of player deck templates for a particular class
+    /// 
+    /// </summary>
     public List<DeckData> GetPlayerDeckTemplates(Classes.ClassList neededClass)
     {
+        //Gets the relevant class object
         var classData = Classes.ClassDataList.FirstOrDefault(x => x.ThisClass == neededClass);
+        //Filters out any NPC decks
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
         return ConvertDeckSave(deckSaveTemplates);
     }
 
+    /// <summary>
+    /// 
+    /// Load saved decks from file
+    /// 
+    /// </summary>
     public void LoadDecks()
     {
         if(File.Exists(Application.persistentDataPath + deckFileName))
@@ -51,6 +69,11 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Save decks to file
+    /// 
+    /// </summary>
     private void SaveDecks()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -66,6 +89,11 @@ public class DeckManager : MonoBehaviour
         file.Close();
     }
 
+    /// <summary>
+    /// 
+    /// Reset save deck file
+    /// 
+    /// </summary>
     public void ResetDecks()
     {
         if (File.Exists(Application.persistentDataPath + deckFileName))
@@ -76,14 +104,21 @@ public class DeckManager : MonoBehaviour
         PlayerDeckList = new List<DeckData>();
     }
 
+    /// <summary>
+    /// 
+    /// Create a new player deck
+    /// 
+    /// </summary>
     public void CreatePlayerDeck(DeckData deck, string deckName)
     {
+        //Generate the ID of the deck. Takes the last deck id in the list and adds one to it
         var newId = 0;
         if (PlayerDeckList.Count > 0)
         {
             newId = PlayerDeckList.LastOrDefault().Id + 1;
         }
 
+        //Adds the deck to the list
         PlayerDeckList.Add(
             new DeckData(deck)
             {
@@ -91,22 +126,44 @@ public class DeckManager : MonoBehaviour
                 Name = deckName,
             });
 
+        //Save decks to file
         SaveDecks();
     }
-
+    
+    /// <summary>
+    /// 
+    /// Removes a player deck from the list
+    /// 
+    /// </summary>
     public void DeletePlayerDeck(DeckData deck)
     {
         PlayerDeckList.Remove(deck);
+        //Resets the deck indexes for the remaining decks
+        for (int deckIndex = 0; deckIndex < PlayerDeckList.Count; deckIndex++)
+        {
+            PlayerDeckList[deckIndex].Id = deckIndex;
+        }
         SaveDecks();
     }
 
+    /// <summary>
+    /// 
+    /// Gets a player deck of a particular ID
+    /// 
+    /// </summary>
     public DeckData GetPlayerDeck(int id)
     {
         return PlayerDeckList.FirstOrDefault(x => x.Id == id);
     }
 
+    /// <summary>
+    /// 
+    /// Adds a new card to a particular deck
+    /// 
+    /// </summary>
     public DeckData AddToPlayerDeck(int id, CardData cardData)
     {
+        //Cannot add hero or uncollectable cards to the deck
         if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)
         {
             PlayerDeckList[id].AddCard(cardData);
@@ -115,6 +172,11 @@ public class DeckManager : MonoBehaviour
         return PlayerDeckList[id];
     }
 
+    /// <summary>
+    /// 
+    /// Remove a card from a particular deck
+    /// 
+    /// </summary>
     public DeckData RemoveFromPlayerDeck(int id, CardData cardData)
     {
         if (!cardData.IsHero)

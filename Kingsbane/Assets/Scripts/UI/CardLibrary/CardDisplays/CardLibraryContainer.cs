@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 
+/// Object for storing cards so that they are more easily able to scale and also to handle adding cards to deck (don't want that functionality on card display)
+/// 
+/// </summary>
 public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
@@ -13,6 +18,11 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 
     private const float defaultScalingFactor = 0.37f;
 
+    /// <summary>
+    /// 
+    /// Initialise the container object
+    /// 
+    /// </summary>
     public void InitCardContainer(CardData cardData, DeckListUI _deckListUI, string cardName = "", float scalingFactor = defaultScalingFactor)
     {
         deckListUI = _deckListUI;
