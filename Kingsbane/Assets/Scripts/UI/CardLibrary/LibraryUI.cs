@@ -79,10 +79,18 @@ public class LibraryUI : MonoBehaviour
         InitDropdowns();
     }
 
+    /// <summary>
+    /// 
+    /// Initialise the card grid. Should only be called on start
+    /// 
+    /// </summary>
     private void InitGrid()
     {
         GameManager.DestroyAllChildren(rowParent.transform);
 
+        //Initialise the row objects in the grid. Row parent has a vertical layout group. Row has a horizontal layout group
+        //Reason for using these instead of grid layout group was for the purpose of object scaling, but also for easier control
+        //of size of grid. Could refactor if required but either way works well
         gridRows = new List<GameObject>();
         for (int row = 0; row < numRows; row++)
         {
@@ -90,36 +98,55 @@ public class LibraryUI : MonoBehaviour
             gridRows[row].name = $"Row{row + 1}";
         }
 
-        tabFilter = TabTypes.Classes;
         activeFilter = new CardFilter();
         SwitchTabText();
 
         InitTabs();
     }
 
+    /// <summary>
+    /// 
+    /// Initialises the filter dropdowns with their particular options
+    /// 
+    /// </summary>
     private void InitDropdowns()
     {
-        InitDropdown(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default });
-        InitDropdown(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable });
-        InitDropdown(setDropdown, new List<Sets>() { Sets.Default });
+        InitDropdownOfType(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default });
+        InitDropdownOfType(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable });
+        InitDropdownOfType(setDropdown, new List<Sets>() { Sets.Default });
     }
 
-    private void InitDropdown<T>(TMP_Dropdown dropdown, List<T> removedList)
+    /// <summary>
+    /// 
+    /// Initialise a given dropdowns options using an enum of type T. Removes a given set of values from the enum as options
+    /// 
+    /// </summary>
+    private void InitDropdownOfType<T>(TMP_Dropdown dropdown, List<T> removedList)
     {
+        //Get the string values of the enum
         var dropDownNames = Enum.GetNames(typeof(T)).ToList();
+        //Removes the necessary values from the list
         foreach (var removeItem in removedList)
         {
             var removeString = removeItem.ToString();
             dropDownNames.Remove(removeString);
         }
+        //Add the options to the dropdown box
         dropdown.AddOptions(dropDownNames);
     }
 
+    /// <summary>
+    /// 
+    /// Initialise the tabs in the library
+    /// 
+    /// </summary>
     private void InitTabs()
     {
+        //Destory all current tabs
         GameManager.DestroyAllChildren(tabParent.transform);
         tabList = new List<LibraryTab>();
 
+        //Load the tabs of the given tab type
         switch (tabFilter)
         {
             case TabTypes.Classes:
@@ -130,9 +157,11 @@ public class LibraryUI : MonoBehaviour
                 break;
         }
 
+        //Set the minimum and maximum tab index to check if the player is inside the active tabs
         minTab = 0;
         maxTab = tabList.Count - 1;
 
+        //Checks if there are any cards in the list to display
         if (tabList.Count != 0)
         {
             noResultsText.SetActive(false);
@@ -145,28 +174,43 @@ public class LibraryUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Load and initalise the tabs of the required tab type (Classes or Resources)
+    /// 
+    /// </summary>
     private void LoadTabsofType<T>() where T : Enum
     {
+        //Index is used for tracking the index of the tab in the list
         var index = 0;
 
+        //Loops through each of the possible tabs
         foreach (var type in Enum.GetValues(typeof(T)))
         {
+            //Gets the list of cards which would appear in the current tab, and starts initialising the tab if there are cards in the tab
             List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type, activeFilter);
             if (tabCardList.Count != 0)
             {
+                //Creates the tab object
                 var newTab = Instantiate(tabPrefab, tabParent.transform);
                 newTab.name = $"Tab{index}- {(T)type}";
 
+                //Initialise the tab properties
                 var libraryTab = newTab.GetComponent<LibraryTab>();
                 libraryTab.InitLibraryTab(index, tabCardList, this, (T)type);
-
                 tabList.Add(libraryTab);
 
+                //Increases the index
                 index++;
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// Resets the grid back to its default state
+    /// 
+    /// </summary>
     private void ResetGrid()
     {
         pageIndex = 0;
@@ -176,6 +220,11 @@ public class LibraryUI : MonoBehaviour
         RefreshGrid();
     }
 
+    /// <summary>
+    /// 
+    /// Loads the cards in the currently selected tab into the page list
+    /// 
+    /// </summary>
     private void LoadTabList()
     {
         pageList = tabList[selectedTabIndex].TabCardList;
@@ -255,10 +304,7 @@ public class LibraryUI : MonoBehaviour
     {
         foreach (GameObject row in gridRows)
         {
-            foreach (Transform child in row.transform)
-            {
-                Destroy(child.gameObject);
-            }
+            GameManager.DestroyAllChildren(row.transform);
         }
     }
 
