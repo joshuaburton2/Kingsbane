@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Script for handling the deck list in the library
+/// 
+/// </summary>
 public class DeckListUI : MonoBehaviour
 {
     [SerializeField]
@@ -25,6 +30,8 @@ public class DeckListUI : MonoBehaviour
     [SerializeField]
     private List<GameObject> deckListObjects;
 
+    //The Id of the deck currently being edited. This is public so that objects which can edit a decks state are able to come back here for info
+    //About which deck is being edited
     public int? DeckEditId { get; set; }
     public bool DeckEditMode { get { return DeckEditId.HasValue; } }
     public DeckCardListUI activeDeckCardList;
@@ -34,9 +41,14 @@ public class DeckListUI : MonoBehaviour
         newDeckPage.SetActive(false);
         lootGenerator.SetActive(false);
         upgradeManager.SetActive(false);
-        RefreshDeckList();
+        RefreshDeckList(false);
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for creating a new deck
+    /// 
+    /// </summary>
     public void CreateNewDeck()
     {
         DeckEditId = null;
@@ -44,14 +56,24 @@ public class DeckListUI : MonoBehaviour
         newDeckPage.GetComponent<NewDeckUI>().InitNewDeckPage();
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for resetting the saved player decks
+    /// 
+    /// </summary>
     public void ResetDecks()
     {
         GameManager.instance.deckManager.ResetDecks();
         DeckEditId = null;
-        RefreshDeckList(true);
+        RefreshDeckList();
     }
 
-    public void RefreshDeckList(bool resourceFilter = false)
+    /// <summary>
+    /// 
+    /// Refreshes the deck list. This will reset the UI on a deck being edited as well
+    /// 
+    /// </summary>
+    public void RefreshDeckList(bool resourceFilter = true)
     {
         DeckEditId = null;
         lootButton.interactable = false;
@@ -59,17 +81,18 @@ public class DeckListUI : MonoBehaviour
         upgradeButton.interactable = false;
         upgradeManager.SetActive(false);
 
+        //Resets the filter to not filter cards to be playable by a class. The if statement should only not be entered during the original initialisation of the UI
+        //i.e. In start on this script. This is because the filter object in the library UI doesn't exist yet as it is also created in start.
         if (resourceFilter)
         {
             libraryUI.ApplyClassPlayableFilter(Classes.ClassList.Default);
         }
 
-        foreach (Transform child in deckListParent.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        //Clears the deck list of objects
+        GameManager.instance.DestroyAllChildren(deckListParent.transform);
         deckListObjects.Clear();
 
+        //Initialise and create the objects in the deck list
         var deckList = GameManager.instance.deckManager.PlayerDeckList;
         foreach (var deck in deckList)
         {
@@ -80,11 +103,18 @@ public class DeckListUI : MonoBehaviour
         }
     }
 
-    public void EditDeck(int deckId, DeckCardListUI deckCardListUI)
+    /// <summary>
+    /// 
+    /// Initialises the editing a deck
+    /// 
+    /// </summary>
+    public void EditDeck(int deckId, Classes.ClassList selectedDeckClass, DeckCardListUI deckCardListUI)
     {
+        //Sets the properties of the deck currently being edited
         DeckEditId = deckId;
         activeDeckCardList = deckCardListUI;
 
+        //Hides all deck objects in the deck list except the one being edited
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
         {
             if (deckIndex != deckId)
@@ -93,13 +123,18 @@ public class DeckListUI : MonoBehaviour
             }
         }
 
-        var selectedDeck = deckListObjects[deckId].GetComponent<DeckListObject>().deckData;
-        libraryUI.ApplyClassPlayableFilter(selectedDeck.DeckClass);
+        //Filters the card library to only show cards which are available to the selected decks class
+        libraryUI.ApplyClassPlayableFilter(selectedDeckClass);
 
         lootButton.interactable = true;
         upgradeButton.interactable = true;
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for opening the loot generator
+    /// 
+    /// </summary>
     public void OpenLootGenerator()
     {
         if (lootGenerator.activeSelf)
@@ -113,6 +148,11 @@ public class DeckListUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for opening the deck upgrade manager. Need to add in initialisation functionality here
+    /// 
+    /// </summary>
     public void OpenUpgrades()
     {
         if (upgradeManager.activeSelf)

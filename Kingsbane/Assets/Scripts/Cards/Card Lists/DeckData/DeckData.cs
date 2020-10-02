@@ -167,6 +167,18 @@ public class DeckData : DeckSaveData
 
     /// <summary>
     /// 
+    /// Function for updating the tier level of the hero card
+    /// 
+    /// </summary>
+    public void UpdateHeroCard(TierLevel heroTier, TierLevel abilityTier)
+    {
+        HeroTier = heroTier;
+        AbilityTier = abilityTier;
+        HeroCard = GameManager.instance.libraryManager.GetHero(DeckClass, heroTier, abilityTier);
+    }
+
+    /// <summary>
+    /// 
     /// Remove a card from the deck
     /// 
     /// </summary>

@@ -3,6 +3,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Object for handling a deck UI object in a deck list
+/// 
+/// </summary>
 public class DeckListObject : MonoBehaviour, IPointerClickHandler
 {
     private int deckId;
@@ -19,8 +24,14 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     DeckCardListUI deckCardList;
 
+    /// <summary>
+    /// 
+    /// Initialise the deck object. Updates the text properties of the object
+    /// 
+    /// </summary>
     public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI)
     {
+        //Need to pass in the deck list UI to handle certain click interactions on this object
         deckListUI = _deckListUI;
         deckData = _deckData;
 
@@ -32,22 +43,34 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         deckCardList.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Click handler for the object
+    /// 
+    /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
+        //If there is a deck currently being edited, refreshes the deck list (which will close the card list panel for this object)
         if (deckListUI.DeckEditMode)
         {
-            deckListUI.RefreshDeckList(true);
+            deckListUI.RefreshDeckList();
         }
+        //If not, sets the deck list UI into edit mode and opens the card list panel on this object
         else
         {
-            deckListUI.EditDeck(deckId, deckCardList);
+            deckListUI.EditDeck(deckId, deckData.DeckClass, deckCardList);
             deckCardList.gameObject.SetActive(true);
         }
     }
 
+    /// <summary>
+    /// 
+    /// Function for deleting the deck
+    /// 
+    /// </summary>
     public void DeleteDeck()
     {
         GameManager.instance.deckManager.DeletePlayerDeck(deckData);
-        deckListUI.RefreshDeckList(true);
+        deckListUI.RefreshDeckList();
     }
 }

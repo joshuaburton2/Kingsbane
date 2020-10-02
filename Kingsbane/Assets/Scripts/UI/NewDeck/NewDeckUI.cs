@@ -175,9 +175,8 @@ public class NewDeckUI : MonoBehaviour
         if (selectedClassData.ThisClass != Classes.ClassList.Default)
         {
             selectedTemplate = new DeckData(deckTemplates[deckTemplateDropdown.value]);
+            selectedTemplate.UpdateHeroCard((TierLevel)heroTierDropdown.value, (TierLevel)abilityTierDropdown.value);
             deckNameText.text = selectedTemplate.Name;
-            selectedTemplate.HeroTier = (TierLevel)heroTierDropdown.value;
-            selectedTemplate.AbilityTier = (TierLevel)abilityTierDropdown.value;
 
             deckCardList.RefreshCardList(selectedTemplate, deckList);
         }
@@ -186,7 +185,7 @@ public class NewDeckUI : MonoBehaviour
     public void CreateNewDeck()
     {
         GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
-        deckList.RefreshDeckList(true);
+        deckList.RefreshDeckList();
         GameManager.instance.uiManager.ClosePanel(gameObject);
     }
 }

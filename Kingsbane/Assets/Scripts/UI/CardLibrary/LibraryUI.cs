@@ -15,7 +15,7 @@ public class LibraryUI : MonoBehaviour
         Resources
     }
 
-    [System.Serializable]
+    [Serializable]
     private class LibraryTab
     {
         public int tabIndex;
