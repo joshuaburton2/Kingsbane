@@ -89,7 +89,7 @@ public class DeckListUI : MonoBehaviour
         }
 
         //Clears the deck list of objects
-        GameManager.instance.DestroyAllChildren(deckListParent.transform);
+        GameManager.DestroyAllChildren(deckListParent.transform);
         deckListObjects.Clear();
 
         //Initialise and create the objects in the deck list

@@ -24,7 +24,7 @@ public class ClassListObject : MonoBehaviour, IPointerClickHandler
         var isPlayableText = Classes.GetClassData(_thisClass).IsPlayable ? "" : @" <color=""white"">(!)</color=""white"">";
         nameText.text = thisClass.ToString().ToUpper() + isPlayableText;
         objectBackground.color = GameManager.instance.colourManager.GetClassColour(_thisClass);
-        classIcon.sprite = GameManager.instance.iconManager.getIcon(_thisClass);
+        classIcon.sprite = GameManager.instance.iconManager.GetIcon(_thisClass);
     }
 
     public void OnPointerClick(PointerEventData eventData)

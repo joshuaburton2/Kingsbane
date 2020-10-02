@@ -27,7 +27,7 @@ public class IconManager : MonoBehaviour
     [SerializeField]
     List<ClassIcon> classIcons = new List<ClassIcon>();
 
-    public Sprite getIcon<T>(T iconID) where T : Enum
+    public Sprite GetIcon<T>(T iconID)
     {
         var icon = defaultIcon;
         var type = typeof(T);

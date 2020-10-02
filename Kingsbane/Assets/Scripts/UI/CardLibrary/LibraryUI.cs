@@ -15,15 +15,6 @@ public class LibraryUI : MonoBehaviour
         Resources
     }
 
-    [Serializable]
-    private class LibraryTab
-    {
-        public int tabIndex;
-        public string tabName;
-        public List<CardData> tabCardList;
-        public GameObject tabObject;
-    }
-
     [Header("Grid Settings")]
     [SerializeField]
     private GameObject rowParent;
@@ -49,7 +40,7 @@ public class LibraryUI : MonoBehaviour
     List<List<CardData>> pageListSplit;
     private int CardsPerPage { get { return numColumns * numRows; } }
     private int pageIndex;
-    private int tabIndex;
+    private int selectedTabIndex;
     private int tabPageCount;
 
     [Header("Tab Settings")]
@@ -59,10 +50,6 @@ public class LibraryUI : MonoBehaviour
     private GameObject tabPrefab;
     [SerializeField]
     private List<LibraryTab> tabList;
-    [SerializeField]
-    private Color selectedTabColour = new Color (1f, 1f, 1f);
-    [SerializeField]
-    private Color unselectedTabColour = new Color (0.5f, 0.5f, 0.5f);
     private int minTab;
     private int maxTab;
 
@@ -94,10 +81,7 @@ public class LibraryUI : MonoBehaviour
 
     private void InitGrid()
     {
-        foreach (Transform child in rowParent.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        GameManager.DestroyAllChildren(rowParent.transform);
 
         gridRows = new List<GameObject>();
         for (int row = 0; row < numRows; row++)
@@ -133,9 +117,7 @@ public class LibraryUI : MonoBehaviour
 
     private void InitTabs()
     {
-        foreach (var tab in tabList)
-            Destroy(tab.tabObject);
-
+        GameManager.DestroyAllChildren(tabParent.transform);
         tabList = new List<LibraryTab>();
 
         switch (tabFilter)
@@ -172,24 +154,15 @@ public class LibraryUI : MonoBehaviour
             List<CardData> tabCardList = GameManager.instance.libraryManager.GetDictionaryList((T)type, activeFilter);
             if (tabCardList.Count != 0)
             {
-                var libraryTab = new LibraryTab();
-
                 var newTab = Instantiate(tabPrefab, tabParent.transform);
-                var newTabButton = newTab.GetComponent<Button>();
-                var clickIndex = index;
-                newTabButton.onClick.AddListener( () => { SelectTab(clickIndex); });
-                index++;
+                newTab.name = $"Tab{index}- {(T)type}";
 
-                libraryTab.tabIndex = (int)type;
-                libraryTab.tabCardList = tabCardList;
-                libraryTab.tabName = ((T)type).ToString();
-                newTab.name = $"Tab{libraryTab.tabIndex}- {libraryTab.tabName}";
-                libraryTab.tabObject = newTab;
-
-                newTab.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite =
-                    GameManager.instance.iconManager.getIcon((T)type);
+                var libraryTab = newTab.GetComponent<LibraryTab>();
+                libraryTab.InitLibraryTab(index, tabCardList, this, (T)type);
 
                 tabList.Add(libraryTab);
+
+                index++;
             }
         }
     }
@@ -197,7 +170,7 @@ public class LibraryUI : MonoBehaviour
     private void ResetGrid()
     {
         pageIndex = 0;
-        tabIndex = minTab;
+        selectedTabIndex = minTab;
         
         LoadTabList();
         RefreshGrid();
@@ -205,7 +178,7 @@ public class LibraryUI : MonoBehaviour
 
     private void LoadTabList()
     {
-        pageList = GetTabList();
+        pageList = tabList[selectedTabIndex].TabCardList;
 
         tabPageCount = (int)Math.Ceiling((float)pageList.Count / CardsPerPage);
         pageListSplit = new List<List<CardData>>();
@@ -223,21 +196,13 @@ public class LibraryUI : MonoBehaviour
             else
                 endingPageIndex += pageList.Count % CardsPerPage;
 
-            
-
             for (int cardIndex = startingPageIndex; cardIndex < endingPageIndex; cardIndex++)
             {
                 pageListSplit[pageIndex].Add(pageList[cardIndex]);
             }
         }
 
-        UpdateTabColour(true);
-    }
-
-    private List<CardData> GetTabList()
-    {
-        var currentTab = tabList[tabIndex];
-        return currentTab.tabCardList;
+        tabList[selectedTabIndex].UpdateTabColour(true);
     }
 
     private void RefreshGrid()
@@ -269,12 +234,12 @@ public class LibraryUI : MonoBehaviour
             leftButton.SetActive(false);
             rightButton.SetActive(false);
         }
-        else if (tabIndex == minTab && pageIndex == 0)
+        else if (selectedTabIndex == minTab && pageIndex == 0)
         {
             leftButton.SetActive(false);
             rightButton.SetActive(true);
         }
-        else if (tabIndex == maxTab && pageIndex == tabPageCount - 1)
+        else if (selectedTabIndex == maxTab && pageIndex == tabPageCount - 1)
         {
             leftButton.SetActive(true);
             rightButton.SetActive(false);
@@ -283,9 +248,7 @@ public class LibraryUI : MonoBehaviour
         {
             leftButton.SetActive(true);
             rightButton.SetActive(true);
-        }
-
-        
+        }        
     }
 
     private void DestroyGridCards()
@@ -305,9 +268,9 @@ public class LibraryUI : MonoBehaviour
 
         if (pageIndex == -1 || pageIndex == tabPageCount)
         {
-            UpdateTabColour(false);
-            tabIndex += libraryDirection;
-            UpdateTabColour(true);
+            tabList[selectedTabIndex].UpdateTabColour(false);
+            selectedTabIndex += libraryDirection;
+            tabList[selectedTabIndex].UpdateTabColour(true);
             LoadTabList();
             pageIndex = libraryDirection == 1 ? 0 : tabPageCount - 1;
         }
@@ -317,24 +280,12 @@ public class LibraryUI : MonoBehaviour
 
     public void SelectTab(int newTabIndex)
     {
-        UpdateTabColour(false);
-        tabIndex = newTabIndex;
-        UpdateTabColour(true);
+        tabList[selectedTabIndex].UpdateTabColour(false);
+        selectedTabIndex = newTabIndex;
+        tabList[selectedTabIndex].UpdateTabColour(true);
         pageIndex = 0;
         LoadTabList();
         RefreshGrid();
-    }
-
-    public void UpdateTabColour(bool isNewTab)
-    {
-        Color tabColour;
-
-        if (isNewTab)
-            tabColour = selectedTabColour;
-        else
-            tabColour = unselectedTabColour;
-
-        tabList[tabIndex].tabObject.GetComponent<Image>().color = tabColour;
     }
 
     public void SwitchTabType()

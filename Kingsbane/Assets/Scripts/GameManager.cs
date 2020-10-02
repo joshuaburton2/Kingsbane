@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void DestroyAllChildren(Transform transform)
+    public static void DestroyAllChildren(Transform transform)
     {
         foreach (Transform child in transform)
         {
