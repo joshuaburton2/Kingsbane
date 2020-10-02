@@ -627,7 +627,12 @@ public class LibraryManager : MonoBehaviour
             var duplicateCount = deckData.CardList.Count(x => x.Id == card.Id);
             lootCard.Weighting += duplicateCount * duplicateWeighting;
 
-            lootCards.Add(lootCard);
+            //Prevents weighting from being considered if it is below 0
+            if (lootCard.Weighting > 0)
+            {
+                lootCards.Add(lootCard);
+            }
+            
             totalWeighting += lootCard.Weighting;
         }
 

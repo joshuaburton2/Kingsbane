@@ -10548,18 +10548,18 @@ MonoBehaviour:
     type: 3}
   rarityWeightings:
   - rarity: 1
-    weighting: 50
+    weighting: 100
   - rarity: 2
-    weighting: 25
+    weighting: 50
   - rarity: 3
-    weighting: 12
+    weighting: 25
   - rarity: 4
-    weighting: 6
+    weighting: 12
   - rarity: 5
-    weighting: 2
+    weighting: 6
   classWeighting: 25
-  synergyWeighting: 2
-  duplicateWeighting: -20
+  synergyWeighting: 1
+  duplicateWeighting: -30
   deckManager: {fileID: 1593085924}
 --- !u!1 &843648688
 GameObject:
@@ -25040,7 +25040,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459478712}
   m_HandleRect: {fileID: 459478711}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
