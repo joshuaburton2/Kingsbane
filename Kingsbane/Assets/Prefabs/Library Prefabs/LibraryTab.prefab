@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e4de920445c626a44b2ca67427ba97cb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb7ecbd0fb243e34eb98705655293570, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -207,6 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabImage: {fileID: 3447170301171944869}
+  selectedTabColour: {r: 1, g: 1, b: 1, a: 1}
+  unselectedTabColour: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  tabIndex: 0
 --- !u!1 &3447170302268562006
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,16 +50,19 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
-        //If there is a deck currently being edited, refreshes the deck list (which will close the card list panel for this object)
-        if (deckListUI.DeckEditMode)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            deckListUI.RefreshDeckList();
-        }
-        //If not, sets the deck list UI into edit mode and opens the card list panel on this object
-        else
-        {
-            deckListUI.EditDeck(deckId, deckData.DeckClass, deckCardList);
-            deckCardList.gameObject.SetActive(true);
+            //If there is a deck currently being edited, refreshes the deck list (which will close the card list panel for this object)
+            if (deckListUI.DeckEditMode)
+            {
+                deckListUI.RefreshDeckList();
+            }
+            //If not, sets the deck list UI into edit mode and opens the card list panel on this object
+            else
+            {
+                deckListUI.EditDeck(deckId, deckData.DeckClass, deckCardList);
+                deckCardList.gameObject.SetActive(true);
+            }
         }
     }
 

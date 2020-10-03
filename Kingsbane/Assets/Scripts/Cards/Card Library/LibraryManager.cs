@@ -592,6 +592,7 @@ public class LibraryManager : MonoBehaviour
         var lootCards = new List<LootCard>();
         totalWeighting = 0;
 
+        //Set up the filter and resources and obtain the cards playable by the relevant class
         var cardFilter = new CardFilter();
         var classResource = new ClassResources(deckData.DeckClass);
         var classPlayableList = GetDictionaryList(classResource, cardFilter);

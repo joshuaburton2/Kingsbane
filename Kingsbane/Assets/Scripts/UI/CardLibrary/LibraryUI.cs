@@ -7,6 +7,11 @@ using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Script for handling the library UI
+/// 
+/// </summary>
 public class LibraryUI : MonoBehaviour
 {
     private enum TabTypes
@@ -215,7 +220,7 @@ public class LibraryUI : MonoBehaviour
     {
         pageIndex = 0;
         selectedTabIndex = minTab;
-        
+
         LoadTabList();
         RefreshGrid();
     }
@@ -227,33 +232,63 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void LoadTabList()
     {
+        //Get the cards from the selected tabs
         pageList = tabList[selectedTabIndex].TabCardList;
 
+        //Gets the count of the number of pages that will be present in the tab (round up the number of cards divided by 
         tabPageCount = (int)Math.Ceiling((float)pageList.Count / CardsPerPage);
         pageListSplit = new List<List<CardData>>();
 
+        //Ending page index is the index of the next card following the last card on a page in the page list
+        //Initialily set to 0 to set up the starting page index
         var endingPageIndex = 0;
 
+        //Loops through each of the pages in the tab
         for (int pageIndex = 0; pageIndex < tabPageCount; pageIndex++)
         {
+            //Starting page index is the index of the first card on a page in the page list
+            //Sets the starting page index to be the 
             var startingPageIndex = endingPageIndex;
 
             pageListSplit.Add(new List<CardData>());
 
-            if (pageIndex < tabPageCount - 1 || (pageIndex == tabPageCount - 1 && pageList.Count % CardsPerPage == 0))
-                endingPageIndex += CardsPerPage; 
+            //if the page is not the last page in the tab, then page has the maximum number of cards per page, so increases ending index by that much
+            if (pageIndex < tabPageCount - 1)
+            {
+                endingPageIndex += CardsPerPage;
+            }
             else
-                endingPageIndex += pageList.Count % CardsPerPage;
+            {
+                //Determine how many cards are on the last page (this will be remainder of the division)
+                var cardsOnLastPage = pageList.Count % CardsPerPage;
+                //If the remainder is 0, this means taht the last page is full, and as such, increases the index to account for a full page
+                if (cardsOnLastPage == 0)
+                {
+                    endingPageIndex += CardsPerPage;
+                }
+                else
+                {
+                    //If last page is not full, then increases index by the number of cards on the page
+                    endingPageIndex += cardsOnLastPage;
+                }
+            }
 
+            //Loops through the card list between the starting and ending page index and adds them to the next current pages card list
             for (int cardIndex = startingPageIndex; cardIndex < endingPageIndex; cardIndex++)
             {
                 pageListSplit[pageIndex].Add(pageList[cardIndex]);
             }
         }
 
+        //Changes the colour of the currently selected tab
         tabList[selectedTabIndex].UpdateTabColour(true);
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the card grid with the currently selected page and tab cards
+    /// 
+    /// </summary>
     private void RefreshGrid()
     {
         var currentRow = 0;
@@ -261,16 +296,20 @@ public class LibraryUI : MonoBehaviour
 
         DestroyGridCards();
 
+        //Loops through each card in the current page
         foreach (var card in pageListSplit[pageIndex])
         {
+            //Initialise the card container
             var cardContainer = Instantiate(cardContainerPrefab, gridRows[currentRow].transform);
             cardContainer.name = $"Container {currentRow}.{currentColumn}- {card.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card{currentRow}.{currentColumn}- {card.Name}";
             cardLibaryContainer.InitCardContainer(card, deckListUI, cardName);
 
+            //Once a card is created, moves to the next column
             currentColumn++;
 
+            //If just passed the last column, moves into the next row and resets the columns
             if (currentColumn == numColumns)
             {
                 currentRow++;
@@ -278,28 +317,38 @@ public class LibraryUI : MonoBehaviour
             }
         }
 
+        //Conditions checking if the left or right button in the library need to be deactivated
+        //If there is only one tab and only one page in that tab, then both buttons are turned off
         if (minTab == maxTab && tabPageCount == 1)
         {
             leftButton.SetActive(false);
             rightButton.SetActive(false);
         }
+        //If in the minimum tab and in the first page of the tab, then disabled left button
         else if (selectedTabIndex == minTab && pageIndex == 0)
         {
             leftButton.SetActive(false);
             rightButton.SetActive(true);
         }
+        //If in the last tab and in the last page of that tab, disables the right button
         else if (selectedTabIndex == maxTab && pageIndex == tabPageCount - 1)
         {
             leftButton.SetActive(true);
             rightButton.SetActive(false);
         }
+        //Conditions for any other page
         else
         {
             leftButton.SetActive(true);
             rightButton.SetActive(true);
-        }        
+        }
     }
 
+    /// <summary>
+    /// 
+    /// Destroy all the cards in the grid
+    /// 
+    /// </summary>
     private void DestroyGridCards()
     {
         foreach (GameObject row in gridRows)
@@ -308,32 +357,64 @@ public class LibraryUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for switching pages
+    /// 
+    /// </summary>
     public void SwitchPage(int libraryDirection)
     {
-        pageIndex += libraryDirection;
-
-        if (pageIndex == -1 || pageIndex == tabPageCount)
+        //Library direction will either be 1 for moving right and -1 for moving left in the library
+        if (libraryDirection != 1 || libraryDirection != -1)
         {
-            tabList[selectedTabIndex].UpdateTabColour(false);
-            selectedTabIndex += libraryDirection;
-            tabList[selectedTabIndex].UpdateTabColour(true);
-            LoadTabList();
-            pageIndex = libraryDirection == 1 ? 0 : tabPageCount - 1;
-        }
+            //Change the page index by the library direction
+            pageIndex += libraryDirection;
 
-        RefreshGrid();
+            //If the page index goes outside of the range of the tabs pages, moves into the next tab
+            if (pageIndex == -1 || pageIndex == tabPageCount)
+            {
+                //Sets the inactive colour on the current tab, moves to the next tab and then sets the activated colour
+                tabList[selectedTabIndex].UpdateTabColour(false);
+                selectedTabIndex += libraryDirection;
+                tabList[selectedTabIndex].UpdateTabColour(true);
+                //Loads the new tab card list
+                LoadTabList();
+                //Determines if the new tab was moved into the from the left or the right. If right, index will be the lowest page index in the tab
+                //If left, index will be the highest page index in the tab
+                pageIndex = libraryDirection == 1 ? 0 : tabPageCount - 1;
+            }
+
+            RefreshGrid();
+        }
+        else
+        {
+            throw new Exception("Not a valid direction input");
+        }
     }
 
+    /// <summary>
+    /// 
+    /// Function for clicking on a library tab
+    /// 
+    /// </summary>
     public void SelectTab(int newTabIndex)
     {
+        //Sets the inactive colour on the current tab, moves to the next tab and then sets the activated colour
         tabList[selectedTabIndex].UpdateTabColour(false);
         selectedTabIndex = newTabIndex;
         tabList[selectedTabIndex].UpdateTabColour(true);
+        //Clicking on a new tab will always move page index to the default
         pageIndex = 0;
+        //Reload the cards in the tab, and refresh
         LoadTabList();
         RefreshGrid();
     }
 
+    /// <summary>
+    /// 
+    /// Button function for switching the type of tab filter
+    /// 
+    /// </summary>
     public void SwitchTabType()
     {
         switch (tabFilter)
@@ -351,43 +432,64 @@ public class LibraryUI : MonoBehaviour
         InitTabs();
     }
 
+    /// <summary>
+    /// 
+    /// Sets the text to display the active tab filter
+    /// 
+    /// </summary>
     private void SwitchTabText()
     {
         var text = "Current: " + tabFilter.ToString();
         tabFilterText.text = text;
     }
 
+    /// <summary>
+    /// 
+    /// Button click function for applying the current filter setting
+    /// 
+    /// </summary>
     public void ApplyFilter()
     {
+        //Checks if the filter already is already allowing uncollectable cards
         var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
+        //Stores the current class playable filter
         var resourceFilter = activeFilter.ClassPlayableFilter;
 
+        //Creates a new filter object
         activeFilter = new CardFilter();
 
-        if (includeUncollectables)
-        {
-            UpdateUncollectableStatus(true);
-        }
-
-        activeFilter.SearchString = searchStringInput.text;
+        //Updates the new filters with the carry over properties of the old filter
+        UpdateUncollectableStatus(includeUncollectables);
         activeFilter.ClassPlayableFilter = resourceFilter;
 
+        //Sets the uncollectable button to be turned on by default
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
+        //Updates the filter with the selected properties
+        activeFilter.SearchString = searchStringInput.text;
         activeFilter = ApplyDropdownFilter<CardTypes>(cardTypeDropdown, activeFilter);
         activeFilter = ApplyDropdownFilter<Rarity>(rarityDropdown, activeFilter);
         activeFilter = ApplyDropdownFilter<Sets>(setDropdown, activeFilter);
 
+        //Recreate the tabs
         InitTabs();
     }
 
+    /// <summary>
+    /// 
+    /// Apply the filter for a dropdown of a particular type
+    /// 
+    /// </summary>
     private CardFilter ApplyDropdownFilter<T>(TMP_Dropdown dropdown, CardFilter activeFilter)
     {
+        //If the text is All, do not need to apply the filter
         if (dropdown.captionText.text != "All")
         {
+            //Parses the selected value into the enum
             var selectedCardType = (T)Enum.Parse(typeof(T), dropdown.captionText.text);
             var type = typeof(T);
 
+            //Sets the filter to include the selected option based on the type of dropdown
             switch (type)
             {
                 case Type _ when type == typeof(CardTypes):
@@ -395,6 +497,7 @@ public class LibraryUI : MonoBehaviour
                     break;
                 case Type _ when type == typeof(Rarity):
                     activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
+                    //If there is a rarity filter, prevents uncollectable cards from being readded to the filter
                     if (activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
                     {
                         UpdateUncollectableStatus(false);
@@ -404,12 +507,30 @@ public class LibraryUI : MonoBehaviour
                 case Type _ when type == typeof(Sets):
                     activeFilter.SetFilter = new List<Sets>() { (Sets)(object)selectedCardType };
                     break;
-            }            
+            }
         }
 
         return activeFilter;
     }
 
+    /// <summary>
+    /// 
+    /// Applies the filter to filter out cards which are not available to the given class
+    /// 
+    /// </summary>
+    /// <param name="classAbailabilityFilter"></param>
+    public void ApplyClassPlayableFilter(Classes.ClassList classAbailabilityFilter)
+    {
+        activeFilter.ClassPlayableFilter = classAbailabilityFilter;
+
+        InitTabs();
+    }
+
+    /// <summary>
+    /// 
+    /// Button click function to filter in or out uncollectable cards
+    /// 
+    /// </summary>
     public void FilterUncollectables()
     {
         if (!activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
@@ -426,13 +547,11 @@ public class LibraryUI : MonoBehaviour
         InitTabs();
     }
 
-    public void ApplyClassPlayableFilter(Classes.ClassList classAbailabilityFilter)
-    {
-        activeFilter.ClassPlayableFilter = classAbailabilityFilter;
-
-        InitTabs();
-    }
-
+    /// <summary>
+    /// 
+    /// Updates the filter to either include or not include uncollectable cards
+    /// 
+    /// </summary>
     private void UpdateUncollectableStatus(bool isAdded)
     {
         if (isAdded)
