@@ -10,6 +10,8 @@ namespace Kingsbane.Database.Models
         public CardClass()
         {
             Cards = new HashSet<Card>();
+            Decks = new HashSet<Deck>();
+            ClassPrerequisites = new HashSet<ClassPrerequisite>();
         }
 
         [Key]
@@ -39,5 +41,6 @@ namespace Kingsbane.Database.Models
 
         public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<Deck> Decks { get; set; }
+        public virtual ICollection<ClassPrerequisite> ClassPrerequisites { get; set; }
     }
 }
