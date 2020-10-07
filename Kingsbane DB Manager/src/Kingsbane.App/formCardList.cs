@@ -49,9 +49,9 @@ namespace Kingsbane.App
         }
 
 
-        private void RefreshList(string nameSearch = null)
+        private void RefreshList()
         {
-            var cardList = GetCardList(nameSearch);
+            var cardList = GetCardList(txtSearch.Text);
 
             listCards.Items.Clear();
             foreach (var card in cardList)
@@ -68,15 +68,12 @@ namespace Kingsbane.App
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchString = txtSearch.Text;
-
-            txtSearch.Text = "";
-
-            RefreshList(searchString);
+            RefreshList();
         }
 
-        private void btnRefresh_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
+            txtSearch.Text = "";
             RefreshList();
         }
 

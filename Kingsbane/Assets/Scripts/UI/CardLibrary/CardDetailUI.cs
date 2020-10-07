@@ -1,10 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Script for handling the display of the card details
+/// 
+/// </summary>
 public class CardDetailUI : MonoBehaviour
 {
     [SerializeField]
@@ -20,27 +24,37 @@ public class CardDetailUI : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI synergiesText;
 
+    /// <summary>
+    /// 
+    /// Initialise the Card Detail display
+    /// 
+    /// </summary>
     public void ShowCardDetails(CardData cardData)
     {
-        DestroyAllChildren(mainCardParent.transform);
-        DestroyAllChildren(relatedCardList.transform);
+        //Reset all cards on the display
+        GameManager.DestroyAllChildren(mainCardParent.transform);
+        GameManager.DestroyAllChildren(relatedCardList.transform);
 
+        //Creates the main card on the display
         GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform);
         mainCard.name = $"Main Card- {cardData.Name}";
-        mainCard.GetComponent<CardDisplay>().isClickable = false;
 
+        //Add the tags and synergies to the display
         UpdateDetailText(cardData.Tags, tagsText);
         UpdateDetailText(cardData.Synergies, synergiesText);
 
+        //Checks if the card has any related cards
         if (cardData.RelatedCards != null)
         {
             relatedCardArea.SetActive(true);
 
             foreach (var relatedCard in cardData.RelatedCards.OrderBy(x => x.Name))
             {
+                //Initialises a parent of the related card to handle scaling of the card display in the grid display object
                 GameObject relatedCardParent = Instantiate(new GameObject($"Related Card- {relatedCard.Name}", typeof(RectTransform)), relatedCardList.transform);
                 GameManager.instance.libraryManager.CreateCard(relatedCard, relatedCardParent.transform);
             }
+            //Resets the scrolling of the related card area
             relatedCardScrollBar.value = 0;
         }
         else
@@ -49,19 +63,11 @@ public class CardDetailUI : MonoBehaviour
         }
     }
 
-    public void ClosePanel()
-    {
-        GameManager.instance.uiManager.ClosePanel(gameObject);
-    }
-
-    private void DestroyAllChildren(Transform transform)
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
+    /// <summary>
+    /// 
+    /// Concatonates a list of tags or synergies into a list of strings
+    /// 
+    /// </summary>
     private static void UpdateDetailText<T>(List<T> listToConnect, TextMeshProUGUI textObject)
     {
         string connectedList = string.Join(", ", listToConnect);

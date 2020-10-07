@@ -1,7 +1,13 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// 
+/// Data for storing Abilities on cards
+/// 
+/// </summary>
 public class AbilityData
 {
     public int Id { get; set; }

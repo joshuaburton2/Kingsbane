@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using CategoryEnums;
 using UnityEngine.EventSystems;
+using Helpers;
 
 /// <summary>
 /// 
@@ -58,7 +59,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     private TextMeshProUGUI durabilityText;
 
     [Header("Other Props")]
-    public bool isClickable = true;
+    public DeckListUI deckListUI;
 
     private void Awake()
     {
@@ -71,8 +72,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// 
     /// </summary>
     [ContextMenu("Initialise Display")]
-    public void InitDisplay()
+    public void InitDisplay(Card _card)
     {
+        card = _card;
+
         cardName.text = card.CardName;
         classText.text = card.CardClass.ToString();
         cardText.text = card.Text;
@@ -179,7 +182,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [ContextMenu("Update Properties")]
     public void UpdateProperties()
     {
-        resourceText.text = GenerateResourceText(card.ResourceCost);
+        resourceText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
 
         switch (card.Type)
         {
@@ -191,13 +194,14 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 unitRangeText.text = $"Range: {unitCard.Range}";
                 speedText.text = $"Speed: {unitCard.Speed}";
 
+                //Add the abilities to the card text
                 List<AbilityData> abilities = unitCard.Abilities;
                 if (abilities != null)
                 {
                     foreach (var ability in abilities)
                     {
-                        var resourceText = GenerateResourceText(ability.GetResources);
-                        var commaText = resourceText.Length == 0 ? "" : ", ";
+                        var resourceText = StringHelpers.GenerateResourceText(ability.GetResources);
+                        var commaText = resourceText.Length == 0 ? "" : ", "; //For handling in case the ability just costs an action, in which case doesn't need a comma
                         var actionText = ability.CostsAction ? $"{commaText}1 Action" : "";
                         var abilityText = $"<b>{ability.Name} ({resourceText}{actionText}):</b> {ability.Text}";
                         cardText.text = $"{cardText.text}\n{abilityText}";
@@ -224,36 +228,25 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
 
     /// <summary>
     /// 
-    /// Update the resource text to include the resource words
+    /// Event for clicking on card object
     /// 
     /// </summary>
-    private string GenerateResourceText(List<Resource> resourceList)
-    {
-        string resourceString = "";
-
-        foreach (var resource in resourceList)
-        {
-            var resourceVal = resource.Value.ToString().Replace("-", "");
-            resourceString += $"{resourceVal} {resource.ResourceType},";
-        }
-
-        // Remove the first space last comma from the resource text
-        if (resourceString.Length != 0)
-        {
-            resourceString = resourceString.Remove(resourceString.Length - 1);
-        }
-
-        resourceString = resourceString.Replace(",", ", ");
-
-        return resourceString;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && isClickable)
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
+            DisplayCardDetail();
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Display the card detail
+    /// 
+    /// </summary>
+    public void DisplayCardDetail()
+    {
+        GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
     }
 }
 

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using CategoryEnums;
 
+/// <summary>
+/// 
+/// Object for storing unique data for unit cards
+/// 
+/// </summary>
 public class UnitData : CardData
 {
     public string UnitTag { get; set; }

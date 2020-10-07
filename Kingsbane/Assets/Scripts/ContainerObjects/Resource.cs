@@ -1,5 +1,10 @@
 ﻿using CategoryEnums;
 
+/// <summary>
+/// 
+/// Object for storing resource data
+/// 
+/// </summary>
 public class Resource
 {
     public CardResources ResourceType { get; set; }

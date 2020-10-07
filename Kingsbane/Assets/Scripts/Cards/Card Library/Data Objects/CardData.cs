@@ -4,7 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[Serializable]
+/// <summary>
+/// 
+/// Object for storing data about each card in the game
+/// 
+/// </summary>
 public class CardData
 {
     public int Id { get; set; }
@@ -31,6 +35,8 @@ public class CardData
     public List<Tags> Tags { get; set; }
     public List<Synergies> Synergies { get; set; }
     public List<CardData> RelatedCards { get; set; }
+
+    public bool IsHero { get { return Rarity == Rarity.Hero || Rarity == Rarity.NPCHero; } }
 
     /// <summary>
     /// 

@@ -4,19 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Object for keeping track of the filters for a particular set of cards
+/// 
+/// </summary>
 public class CardFilter
 {
     public string SearchString { get; set; }
     public List<CardTypes> CardTypeFilter { get; set; }
     public List<Rarity> RaritiyFilter { get; set; }
     public List<Sets> SetFilter { get; set; }
-    public List<CardResources> ResourceFilter { get; set; }
+    public Classes.ClassList ClassPlayableFilter { get; set; }
 
+    /// <summary>
+    /// 
+    /// When searching through the library, can utilise commas to seperate search terms
+    /// 
+    /// </summary>
     public List<string> SearchStrings
     {
         get
         {
-            SearchString = SearchString.Replace(" ", "");
             return SearchString.Split(',').ToList();
         }
     }
@@ -35,6 +44,6 @@ public class CardFilter
         foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
             SetFilter.Add(set);
         SetFilter.Remove(Sets.Default);
-        ResourceFilter = new List<CardResources>();
+        ClassPlayableFilter = Classes.ClassList.Default;
     }
 }
