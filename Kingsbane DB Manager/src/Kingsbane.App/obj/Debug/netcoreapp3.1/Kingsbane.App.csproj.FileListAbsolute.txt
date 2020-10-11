@@ -133,3 +133,5 @@ D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formSelectionList.resources
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formEditAbility.resources
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formEditClasses.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formEditUpgrades.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formUpgradeList.resources

@@ -33,6 +33,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnClassList = new System.Windows.Forms.Button();
             this.btnExportClasses = new System.Windows.Forms.Button();
+            this.btnUpgrades = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -89,11 +90,23 @@
             this.btnExportClasses.UseVisualStyleBackColor = true;
             this.btnExportClasses.Click += new System.EventHandler(this.btnExportClasses_Click);
             // 
+            // btnUpgrades
+            // 
+            this.btnUpgrades.Location = new System.Drawing.Point(192, 65);
+            this.btnUpgrades.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUpgrades.Name = "btnUpgrades";
+            this.btnUpgrades.Size = new System.Drawing.Size(116, 52);
+            this.btnUpgrades.TabIndex = 0;
+            this.btnUpgrades.Text = "Upgrades";
+            this.btnUpgrades.UseVisualStyleBackColor = true;
+            this.btnUpgrades.Click += new System.EventHandler(this.btnUpgrades_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 188);
+            this.Controls.Add(this.btnUpgrades);
             this.Controls.Add(this.btnExportClasses);
             this.Controls.Add(this.btnClassList);
             this.Controls.Add(this.btnExport);
@@ -114,6 +127,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnClassList;
         private System.Windows.Forms.Button btnExportClasses;
+        private System.Windows.Forms.Button btnUpgrades;
     }
 }
 

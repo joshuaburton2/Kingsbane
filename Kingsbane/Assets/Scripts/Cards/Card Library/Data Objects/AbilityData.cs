@@ -31,27 +31,27 @@ public class AbilityData
     {
         get
         {
-            List<Resource> cardResources = new List<Resource>();
+            var abilityResources = new List<Resource>();
 
             if (ResourceDevotion.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Devotion, Value = -ResourceDevotion.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Devotion, Value = -ResourceDevotion.Value });
             if (ResourceEnergy.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Energy, Value = -ResourceEnergy.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Energy, Value = -ResourceEnergy.Value });
             if (ResourceGold.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Gold, Value = -ResourceGold.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Gold, Value = -ResourceGold.Value });
             if (ResourceKnowledge.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Knowledge, Value = -ResourceKnowledge.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Knowledge, Value = -ResourceKnowledge.Value });
             if (ResourceMana.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Mana, Value = -ResourceMana.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Mana, Value = -ResourceMana.Value });
             if (ResourceWild.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Wild, Value = -ResourceWild.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Wild, Value = -ResourceWild.Value });
             if (ResourceNeutral.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Neutral, Value = -ResourceNeutral.Value });
+                abilityResources.Add(new Resource() { ResourceType = CardResources.Neutral, Value = -ResourceNeutral.Value });
 
             //Order the resources by their largest value
-            cardResources = cardResources.OrderBy(x => x.Value).ToList();
+            abilityResources = abilityResources.OrderBy(x => x.Value).ToList();
 
-            return cardResources;
+            return abilityResources;
         }
     }
 }

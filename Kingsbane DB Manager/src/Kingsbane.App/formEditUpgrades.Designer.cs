@@ -45,10 +45,11 @@
             this.btnUpgradePrerequisite = new System.Windows.Forms.Button();
             this.lstUpgradePrerequisite = new System.Windows.Forms.ListBox();
             this.lblUpgradePrerequisite = new System.Windows.Forms.Label();
-            this.cmbUpgradeSelector = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.chkIsRepeatable = new System.Windows.Forms.CheckBox();
+            this.chkIsTierUpgrade = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -66,7 +67,7 @@
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtName.Location = new System.Drawing.Point(106, 3);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(324, 43);
+            this.txtName.Size = new System.Drawing.Size(341, 43);
             this.txtName.TabIndex = 1;
             // 
             // lblText
@@ -83,7 +84,7 @@
             this.txtText.Location = new System.Drawing.Point(12, 111);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(418, 135);
+            this.txtText.Size = new System.Drawing.Size(435, 135);
             this.txtText.TabIndex = 3;
             // 
             // lblHonourPoints
@@ -105,12 +106,13 @@
             // btnClassPrerequisite
             // 
             this.btnClassPrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClassPrerequisite.Location = new System.Drawing.Point(389, 255);
+            this.btnClassPrerequisite.Location = new System.Drawing.Point(406, 255);
             this.btnClassPrerequisite.Name = "btnClassPrerequisite";
             this.btnClassPrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnClassPrerequisite.TabIndex = 25;
             this.btnClassPrerequisite.Text = "+";
             this.btnClassPrerequisite.UseVisualStyleBackColor = true;
+            this.btnClassPrerequisite.Click += new System.EventHandler(this.btnClassPrerequisite_Click);
             // 
             // lstClassPrerequisites
             // 
@@ -118,8 +120,9 @@
             this.lstClassPrerequisites.ItemHeight = 15;
             this.lstClassPrerequisites.Location = new System.Drawing.Point(161, 284);
             this.lstClassPrerequisites.Name = "lstClassPrerequisites";
-            this.lstClassPrerequisites.Size = new System.Drawing.Size(269, 64);
+            this.lstClassPrerequisites.Size = new System.Drawing.Size(286, 64);
             this.lstClassPrerequisites.TabIndex = 19;
+            this.lstClassPrerequisites.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // lblClassPrerequisite
             // 
@@ -137,7 +140,7 @@
             this.cmbClassSelector.FormattingEnabled = true;
             this.cmbClassSelector.Location = new System.Drawing.Point(162, 255);
             this.cmbClassSelector.Name = "cmbClassSelector";
-            this.cmbClassSelector.Size = new System.Drawing.Size(221, 23);
+            this.cmbClassSelector.Size = new System.Drawing.Size(238, 23);
             this.cmbClassSelector.TabIndex = 26;
             // 
             // cmbResourceSelector
@@ -146,7 +149,7 @@
             this.cmbResourceSelector.FormattingEnabled = true;
             this.cmbResourceSelector.Location = new System.Drawing.Point(193, 360);
             this.cmbResourceSelector.Name = "cmbResourceSelector";
-            this.cmbResourceSelector.Size = new System.Drawing.Size(190, 23);
+            this.cmbResourceSelector.Size = new System.Drawing.Size(207, 23);
             this.cmbResourceSelector.TabIndex = 26;
             // 
             // lblResourcePrerequisite
@@ -165,28 +168,31 @@
             this.lstResourcePrerequisite.ItemHeight = 15;
             this.lstResourcePrerequisite.Location = new System.Drawing.Point(193, 389);
             this.lstResourcePrerequisite.Name = "lstResourcePrerequisite";
-            this.lstResourcePrerequisite.Size = new System.Drawing.Size(237, 64);
+            this.lstResourcePrerequisite.Size = new System.Drawing.Size(254, 64);
             this.lstResourcePrerequisite.TabIndex = 19;
+            this.lstResourcePrerequisite.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // btnResourcePrerequisite
             // 
             this.btnResourcePrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnResourcePrerequisite.Location = new System.Drawing.Point(389, 361);
+            this.btnResourcePrerequisite.Location = new System.Drawing.Point(406, 361);
             this.btnResourcePrerequisite.Name = "btnResourcePrerequisite";
             this.btnResourcePrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnResourcePrerequisite.TabIndex = 25;
             this.btnResourcePrerequisite.Text = "+";
             this.btnResourcePrerequisite.UseVisualStyleBackColor = true;
+            this.btnResourcePrerequisite.Click += new System.EventHandler(this.btnResourcePrerequisite_Click);
             // 
             // btnUpgradePrerequisite
             // 
             this.btnUpgradePrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpgradePrerequisite.Location = new System.Drawing.Point(389, 468);
+            this.btnUpgradePrerequisite.Location = new System.Drawing.Point(406, 468);
             this.btnUpgradePrerequisite.Name = "btnUpgradePrerequisite";
             this.btnUpgradePrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnUpgradePrerequisite.TabIndex = 25;
             this.btnUpgradePrerequisite.Text = "+";
             this.btnUpgradePrerequisite.UseVisualStyleBackColor = true;
+            this.btnUpgradePrerequisite.Click += new System.EventHandler(this.btnUpgradePrerequisite_Click);
             // 
             // lstUpgradePrerequisite
             // 
@@ -194,8 +200,9 @@
             this.lstUpgradePrerequisite.ItemHeight = 15;
             this.lstUpgradePrerequisite.Location = new System.Drawing.Point(193, 496);
             this.lstUpgradePrerequisite.Name = "lstUpgradePrerequisite";
-            this.lstUpgradePrerequisite.Size = new System.Drawing.Size(237, 64);
+            this.lstUpgradePrerequisite.Size = new System.Drawing.Size(254, 64);
             this.lstUpgradePrerequisite.TabIndex = 19;
+            this.lstUpgradePrerequisite.DoubleClick += new System.EventHandler(this.ClickListRecord);
             // 
             // lblUpgradePrerequisite
             // 
@@ -207,54 +214,69 @@
             this.lblUpgradePrerequisite.TabIndex = 17;
             this.lblUpgradePrerequisite.Text = "Upgrade Prerequisite";
             // 
-            // cmbUpgradeSelector
-            // 
-            this.cmbUpgradeSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUpgradeSelector.FormattingEnabled = true;
-            this.cmbUpgradeSelector.Location = new System.Drawing.Point(193, 468);
-            this.cmbUpgradeSelector.Name = "cmbUpgradeSelector";
-            this.cmbUpgradeSelector.Size = new System.Drawing.Size(190, 23);
-            this.cmbUpgradeSelector.TabIndex = 26;
-            // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(172, 574);
+            this.btnSave.Location = new System.Drawing.Point(189, 569);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 22);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(260, 574);
+            this.btnCancel.Location = new System.Drawing.Point(277, 569);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 22);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(348, 574);
+            this.btnDelete.Location = new System.Drawing.Point(365, 569);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(82, 22);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // chkIsRepeatable
+            // 
+            this.chkIsRepeatable.AutoSize = true;
+            this.chkIsRepeatable.Location = new System.Drawing.Point(237, 60);
+            this.chkIsRepeatable.Name = "chkIsRepeatable";
+            this.chkIsRepeatable.Size = new System.Drawing.Size(100, 19);
+            this.chkIsRepeatable.TabIndex = 27;
+            this.chkIsRepeatable.Text = "Is Repeatable?";
+            this.chkIsRepeatable.UseVisualStyleBackColor = true;
+            // 
+            // chkIsTierUpgrade
+            // 
+            this.chkIsTierUpgrade.AutoSize = true;
+            this.chkIsTierUpgrade.Location = new System.Drawing.Point(343, 60);
+            this.chkIsTierUpgrade.Name = "chkIsTierUpgrade";
+            this.chkIsTierUpgrade.Size = new System.Drawing.Size(109, 19);
+            this.chkIsTierUpgrade.TabIndex = 28;
+            this.chkIsTierUpgrade.Text = "Is Tier Upgrade?";
+            this.chkIsTierUpgrade.UseVisualStyleBackColor = true;
             // 
             // formEditUpgrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 602);
+            this.ClientSize = new System.Drawing.Size(459, 602);
+            this.Controls.Add(this.chkIsTierUpgrade);
+            this.Controls.Add(this.chkIsRepeatable);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.cmbUpgradeSelector);
             this.Controls.Add(this.lblUpgradePrerequisite);
             this.Controls.Add(this.lstUpgradePrerequisite);
             this.Controls.Add(this.btnUpgradePrerequisite);
@@ -274,6 +296,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "formEditUpgrades";
             this.Text = "formEditUpgrades";
+            this.Load += new System.EventHandler(this.formEditUpgrades_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,9 +321,10 @@
         private System.Windows.Forms.Button btnUpgradePrerequisite;
         private System.Windows.Forms.ListBox lstUpgradePrerequisite;
         private System.Windows.Forms.Label lblUpgradePrerequisite;
-        private System.Windows.Forms.ComboBox cmbUpgradeSelector;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.CheckBox chkIsRepeatable;
+        private System.Windows.Forms.CheckBox chkIsTierUpgrade;
     }
 }

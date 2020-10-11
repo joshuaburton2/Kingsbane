@@ -279,5 +279,12 @@ namespace Kingsbane.App
         {
             Application.Exit();
         }
+
+        private void btnUpgrades_Click(object sender, EventArgs e)
+        {
+            var formUpgradeList = _serviceProvider.GetRequiredService<formUpgradeList>();
+            formUpgradeList.Show();
+            this.Hide();
+        }
     }
 }

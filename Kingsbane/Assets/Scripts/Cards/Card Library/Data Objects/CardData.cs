@@ -90,7 +90,7 @@ public class CardData
     {
         get
         {
-            List<Resource> cardResources = new List<Resource>();
+            var cardResources = new List<Resource>();
 
             if(ResourceDevotion.HasValue)
                 cardResources.Add(new Resource() { ResourceType = CardResources.Devotion, Value = - ResourceDevotion.Value });
