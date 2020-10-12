@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 using Kingsbane.App.Extensions;
 using Kingsbane.Database;
 using Kingsbane.Database.Enums;
-using Kingsbane.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 // ref: https://marcominerva.wordpress.com/2020/03/09/using-hostbuilder-serviceprovider-and-dependency-injection-with-windows-forms-on-net-core-3/
 
@@ -46,7 +45,6 @@ namespace Kingsbane.App
             sb.AppendLine("{");
             sb.AppendLine("    public List<CardData> CardList { get; private set; }");
             sb.AppendLine("    public List<AbilityData> AbilityList { get; private set; }");
-            sb.AppendLine("    public Dictionary<Classes.ClassList, List<DeckData>> ClassDeckList { get; private set; }");
             sb.AppendLine("");
             sb.AppendLine("    public void InitLibrary()");
             sb.AppendLine("    {");
@@ -275,16 +273,119 @@ namespace Kingsbane.App
             MessageBox.Show("Exported content copied to clipboard");
         }
 
-        private void formMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btnUpgrades_Click(object sender, EventArgs e)
         {
             var formUpgradeList = _serviceProvider.GetRequiredService<formUpgradeList>();
             formUpgradeList.Show();
             this.Hide();
+        }
+
+        private void btnExportUpgrades_Click(object sender, EventArgs e)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine("using System.Collections.Generic;");
+            sb.AppendLine("using CategoryEnums;");
+            sb.AppendLine("");
+            sb.AppendLine("public class UpgradeLibrary");
+            sb.AppendLine("{");
+            sb.AppendLine("    public List<UpgradeData> UpgradeList { get; set; }");
+            sb.AppendLine("");
+            sb.AppendLine("    public void InitUpgradeList()");
+            sb.AppendLine("    {");
+            sb.AppendLine("        UpgradeList = new List<UpgradeData>();");
+
+            var query = _context.Upgrades
+                .Include(x => x.ResourcePrerequisites)
+                .Include(x => x.ClassPrerequisites)
+                .Include(x => x.UpgradePrerequisites);
+            var upgradeTags = new List<string>();
+
+            foreach (var item in query)
+            {
+                var tierLevelString = item.IsTierUpgrade ? $"Tier{item.TierLevel.ToString()}" : "Default";
+
+                sb.AppendLine("");
+                sb.AppendLine($"        var upgrade{item.Id} = new UpgradeData()");
+                sb.AppendLine($"        {{");
+                sb.AppendLine($"            Id = {item.Id},");
+                sb.AppendLine(@$"            Name = ""{item.Name}"",");
+                sb.AppendLine(@$"            Text = @""{item.Text.FixQuotes()}"",");
+                sb.AppendLine($"            HonourPoints = {item.HonourPoints},");
+                sb.AppendLine($"            IsRepeatable = {item.IsRepeatable.ToString().ToLower()},");
+                sb.AppendLine($"            TierLevel = TierLevel.{tierLevelString},");
+
+                sb.AppendLine($"            ResourcePrerequisites = new List<CardResources>()");
+                sb.AppendLine($"            {{");
+                foreach (var resourcePrerequisite in item.ResourcePrerequisites)
+                {
+                    sb.AppendLine($"                CardResources.{resourcePrerequisite.ResourceId},");
+                }
+                sb.AppendLine($"            }},");
+
+                sb.AppendLine($"            ClassPrerequisites = new List<Classes.ClassList>()");
+                sb.AppendLine($"            {{");
+                foreach (var classPrerequisite in item.ClassPrerequisites)
+                {
+                    sb.AppendLine($"                CardResources.{classPrerequisite.CardClassId},");
+                }
+                sb.AppendLine($"            }},");
+
+                string upgradeTag;
+                if (item.IsTierUpgrade)
+                {
+                    if (item.Name.Contains("Hero"))
+                        upgradeTag = "HeroUpgrade";
+                    else if (item.Name.Contains("Ability"))
+                        upgradeTag = "AbilityUpgrade";
+                    else
+                        upgradeTag = "ResourceUpgrade";
+                }
+                else
+                {
+                    upgradeTag = item.Name.Replace(" ", "");
+                }
+                if (!upgradeTags.Contains(upgradeTag))
+                {
+                    upgradeTags.Add(upgradeTag);
+                }
+                sb.AppendLine($"            UpgradeTag = UpgradeTags.{upgradeTag},");
+                sb.AppendLine($"        }};");
+            }
+
+            sb.AppendLine("");
+
+            foreach (var item in query)
+            {
+                var upgradePrerequisites = string.Join(",", item.UpgradePrerequisites.Select(x => $"upgrade{x.UpgradePrequisiteId}"));
+
+                if (string.IsNullOrWhiteSpace(upgradePrerequisites))
+                {
+                    continue;
+                }
+                sb.AppendLine($"        upgrade{item.Id}.UpgradePrerequisites = new List<UpgradeData> {{{upgradePrerequisites}}};");
+            }
+
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+            sb.AppendLine("");
+            sb.AppendLine("namespace CategoryEnums");
+            sb.AppendLine("{");
+            sb.AppendLine("    public enum UpgradeTags");
+            sb.AppendLine("    {");
+            sb.AppendLine($"        {string.Join(",", upgradeTags)}");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+
+            var x = sb.ToString();
+
+            Clipboard.SetText(x);
+            MessageBox.Show("Exported content copied to clipboard");
+        }
+
+        private void formMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

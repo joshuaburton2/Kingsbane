@@ -29,6 +29,7 @@ namespace Kingsbane.Database.Models
         public int HonourPoints { get; set; }
         public bool IsRepeatable { get; set; }
         public bool IsTierUpgrade { get; set; }
+        public int? TierLevel { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

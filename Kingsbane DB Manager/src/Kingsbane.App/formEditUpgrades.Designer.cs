@@ -50,6 +50,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.chkIsRepeatable = new System.Windows.Forms.CheckBox();
             this.chkIsTierUpgrade = new System.Windows.Forms.CheckBox();
+            this.txtTierLevel = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -267,11 +268,19 @@
             this.chkIsTierUpgrade.Text = "Is Tier Upgrade?";
             this.chkIsTierUpgrade.UseVisualStyleBackColor = true;
             // 
+            // txtTierLevel
+            // 
+            this.txtTierLevel.Location = new System.Drawing.Point(343, 86);
+            this.txtTierLevel.Name = "txtTierLevel";
+            this.txtTierLevel.Size = new System.Drawing.Size(100, 23);
+            this.txtTierLevel.TabIndex = 29;
+            // 
             // formEditUpgrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 602);
+            this.Controls.Add(this.txtTierLevel);
             this.Controls.Add(this.chkIsTierUpgrade);
             this.Controls.Add(this.chkIsRepeatable);
             this.Controls.Add(this.btnDelete);
@@ -326,5 +335,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.CheckBox chkIsRepeatable;
         private System.Windows.Forms.CheckBox chkIsTierUpgrade;
+        private System.Windows.Forms.TextBox txtTierLevel;
     }
 }

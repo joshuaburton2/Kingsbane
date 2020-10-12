@@ -4,14 +4,6 @@ using System;
 
 namespace CategoryEnums
 {
-    public enum TierLevel
-    {
-        Tier1,
-        Tier2,
-        Tier3,
-        Default,
-    }
-
     [Serializable]
     public class HeroTier
     {
@@ -31,9 +23,9 @@ namespace CategoryEnums
         /// </summary>
         private static Dictionary<Tags, TierLevel> TierConversion = new Dictionary<Tags, TierLevel>
         {
-            { Tags.HeroTierOne, TierLevel.Tier1 },
-            { Tags.HeroTierTwo, TierLevel.Tier2 },
-            { Tags.HeroTierThree, TierLevel.Tier3 },
+            { Tags.HeroTierOne, TierLevel.Tier0 },
+            { Tags.HeroTierTwo, TierLevel.Tier1 },
+            { Tags.HeroTierThree, TierLevel.Tier2 },
         };
 
         /// <summary>

@@ -66,6 +66,7 @@ namespace Kingsbane.App
             chkIsRepeatable.Checked = upgrade.IsRepeatable;
             chkIsTierUpgrade.Checked = upgrade.IsTierUpgrade;
             txtText.Text = upgrade.Text;
+            txtTierLevel.Text = upgrade.TierLevel.ToString();
 
             var classPrerequisites = upgrade.ClassPrerequisites.Select(x => new SelectListItem { Id = (int)x.CardClassId, Name = x.CardClassId.ToString() }).ToArray();
             lstClassPrerequisites.Items.Clear();
@@ -95,6 +96,10 @@ namespace Kingsbane.App
             }
             upgrade.IsRepeatable = chkIsRepeatable.Checked;
             upgrade.IsTierUpgrade = chkIsTierUpgrade.Checked;
+            if (int.TryParse(txtTierLevel.Text, out int tierLevel))
+            {
+                upgrade.TierLevel = tierLevel;
+            }
             upgrade.Text = txtText.Text;
 
             var classPrerequisiteIds = lstClassPrerequisites.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
