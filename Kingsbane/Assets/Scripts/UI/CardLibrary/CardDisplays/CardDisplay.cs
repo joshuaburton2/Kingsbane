@@ -112,7 +112,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         switch (card.Type)
         {
             case CardTypes.Unit:
-                Unit unitCard = (card as Unit);
+                var unitCard = (card as Unit);
 
                 if (card.Rarity == Rarity.Hero)
                 {
@@ -129,7 +129,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 unitProps.SetActive(true);
                 break;
             case CardTypes.Spell:
-                Spell spellCard = (card as Spell);
+                var spellCard = (card as Spell);
 
                 subTextString = "Spell";
 
@@ -137,7 +137,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 spellProps.SetActive(true);
                 break;
             case CardTypes.Item:
-                Item itemCard = card as Item;
+                var itemCard = card as Item;
                 subTextString = "Item - " + itemCard.ItemTag;
 
                 ResetProps();
@@ -159,7 +159,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void UpdateRarityBorder()
     {
-        Color borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity, card.CardClass);
+        var borderColour = GameManager.instance.colourManager.GetRarityColour(card.Rarity, card.CardClass);
 
         rarityBorder.color = borderColour;
     }
@@ -187,7 +187,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         switch (card.Type)
         {
             case CardTypes.Unit:
-                Unit unitCard = card as Unit;
+                var unitCard = card as Unit;
 
                 attackText.text = $"Attack: {unitCard.Attack}";
                 healthText.text = $"Health: {unitCard.Health}";
@@ -210,13 +210,13 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
 
                 break;
             case CardTypes.Spell:
-                Spell spellCard = card as Spell;
+                var spellCard = card as Spell;
 
                 spellRangeText.text = $"Range: {spellCard.SpellRange}";
 
                 break;
             case CardTypes.Item:
-                Item itemCard = card as Item;
+                var itemCard = card as Item;
 
                 durabilityText.text = $"Durability: {itemCard.Durability}";
 
