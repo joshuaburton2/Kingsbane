@@ -14,6 +14,7 @@ namespace Kingsbane.App
         Tag,
         Synergy,
         Cards,
+        Upgrades,
     }
 
     public partial class formSelectionList : Form
@@ -41,6 +42,7 @@ namespace Kingsbane.App
                     txtAdd.Enabled = true;
                     break;
                 case SelectionType.Cards:
+                case SelectionType.Upgrades:
                     btnAdd.Enabled = false;
                     txtAdd.Enabled = false;
                     break;
@@ -75,6 +77,9 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.Synergy:
                     newQuery = _context.Synergies.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = "" });
+                    break;
+                case SelectionType.Upgrades:
+                    newQuery = _context.Upgrades.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = "" });
                     break;
                 case SelectionType.Cards:
                 default:

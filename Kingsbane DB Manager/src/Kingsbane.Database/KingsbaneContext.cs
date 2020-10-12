@@ -34,6 +34,10 @@ namespace Kingsbane.Database
         public DbSet<CardRarity> CardRarities { get; set; }
         public DbSet<Deck> Decks { get; set; }
         public DbSet<DeckCard> DeckCards { get; set; }
+        public DbSet<Upgrade> Upgrades { get; set; }
+        public DbSet<ClassPrerequisite> ClassPrerequisites { get; set; }
+        public DbSet<ResourcePrerequisite> ResourcePrerequisites { get; set; }
+        public DbSet<UpgradePrerequisite> UpgradePrerequisites { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,6 +55,13 @@ namespace Kingsbane.Database
                 .HasKey(x => new { x.DeckId, x.CardId });
             modelBuilder.Entity<RelatedCards>()
                 .HasKey(x => new { x.CardId, x.RelatedCardId });
+
+            modelBuilder.Entity<ResourcePrerequisite>()
+                .HasKey(x => new { x.UpgradeId, x.ResourceId });
+            modelBuilder.Entity<ClassPrerequisite>()
+                .HasKey(x => new { x.UpgradeId, x.CardClassId });
+            modelBuilder.Entity<UpgradePrerequisite>()
+                .HasKey(x => new { x.UpgradeId, x.UpgradePrequisiteId });
         }
     }
 }

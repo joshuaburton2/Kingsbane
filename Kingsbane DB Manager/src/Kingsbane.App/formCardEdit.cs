@@ -506,7 +506,7 @@ namespace Kingsbane.App
                 switch (selectionType)
                 {
                     case SelectionType.Tag:
-                        if (!lstTags.Items.Cast<SelectListItem>().ToList().Contains(formSelectionList.selectionItem))
+                        if (!lstTags.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
                         {
                             lstTags.Items.Add(formSelectionList.selectionItem);
                         }
@@ -517,7 +517,7 @@ namespace Kingsbane.App
 
                         break;
                     case SelectionType.Synergy:
-                        if (!lstSynergies.Items.Contains(formSelectionList.selectionItem))
+                        if (!lstSynergies.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
                         {
                             lstSynergies.Items.Add(formSelectionList.selectionItem);
                         }
@@ -528,7 +528,7 @@ namespace Kingsbane.App
 
                         break;
                     case SelectionType.Cards:
-                        if (!lstRelatedCards.Items.Contains(formSelectionList.selectionItem))
+                        if (!lstRelatedCards.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
                         {
                             lstRelatedCards.Items.Add(formSelectionList.selectionItem);
                         }

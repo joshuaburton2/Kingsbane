@@ -5,7 +5,6 @@ public class CardLibrary
 {
     public List<CardData> CardList { get; private set; }
     public List<AbilityData> AbilityList { get; private set; }
-    public Dictionary<Classes.ClassList, List<DeckData>> ClassDeckList { get; private set; }
 
     public void InitLibrary()
     {
