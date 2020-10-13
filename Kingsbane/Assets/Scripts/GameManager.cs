@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public LibraryManager libraryManager;
+    public UpgradeManager upgradeManager;
     public IconManager iconManager;
     public UIManager uiManager;
     public DeckManager deckManager;

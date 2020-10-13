@@ -18,6 +18,7 @@ public class DeckSaveData
     // Tier of the hero ability
     public TierLevel AbilityTier { get; set; }
     public List<int> CardIdList { get; set; }
+    public List<int> UpgradeIdList { get; set; }
     public Classes.ClassList DeckClass { get; set; }
     public bool IsNPCDeck { get; set; }
 
@@ -40,6 +41,7 @@ public class DeckSaveData
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
         CardIdList = deckData.CardIdList.ToList();
+        UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
     }
@@ -49,6 +51,7 @@ public class DeckData : DeckSaveData
 {
     public UnitData HeroCard { get; set; }
     public List<CardData> CardList { get; set; }
+    public List<UpgradeData> UpgradeList { get; set; }
     public int DeckCount { get { return CardList.Count; } }
     public List<CardResources> DeckResources { get { return Classes.GetClassData(DeckClass).GetClassResources(); } }
 
@@ -64,6 +67,7 @@ public class DeckData : DeckSaveData
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
         CardIdList = deckData.CardIdList.ToList();
+        UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
 
@@ -77,18 +81,19 @@ public class DeckData : DeckSaveData
     /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
     /// 
     /// </summary>
-    public DeckData(DeckSaveData deckSaveData, LibraryManager libraryManager)
+    public DeckData(DeckSaveData deckSaveData, LibraryManager libraryManager, UpgradeManager upgradeManager)
     {
         Id = deckSaveData.Id;
         Name = deckSaveData.Name;
         HeroTier = deckSaveData.HeroTier;
         AbilityTier = deckSaveData.AbilityTier;
         CardIdList = deckSaveData.CardIdList.ToList();
+        UpgradeIdList = deckSaveData.UpgradeIdList.ToList();
         DeckClass = deckSaveData.DeckClass;
         IsNPCDeck = deckSaveData.IsNPCDeck;
 
         //Synchronizes the card Ids with the cards in the library
-        SyncDeckCards(libraryManager);
+        SyncDeckCards(libraryManager, upgradeManager);
     }
 
     /// <summary>
@@ -98,23 +103,19 @@ public class DeckData : DeckSaveData
     /// </summary>
     public void SyncDeckCards()
     {
-        LoadHero();
+        var libraryManager = GameManager.instance.libraryManager;
+        var upgradeManager = GameManager.instance.upgradeManager;
 
-        CardList = new List<CardData>();
-        foreach (var cardId in CardIdList)
-        {
-            CardList.Add(GameManager.instance.libraryManager.GetCard(cardId));
-        }
-        CardList = LibraryManager.OrderCardList(CardList);
+        SyncDeckCards(libraryManager, upgradeManager);
     }
 
     /// <summary>
     /// 
-    /// Synchronizes the card ids with the cards in the library. Since this is called in during Awake, have to reference
+    /// Synchronizes the card and upgrades ids with the values in their relevant library. Since this is called in during Awake, have to reference
     /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
     /// 
     /// </summary>
-    public void SyncDeckCards(LibraryManager libraryManager)
+    public void SyncDeckCards(LibraryManager libraryManager, UpgradeManager upgradeManager)
     {
         LoadHero(libraryManager);
 
@@ -124,18 +125,11 @@ public class DeckData : DeckSaveData
             CardList.Add(libraryManager.GetCard(cardId));
         }
         CardList = LibraryManager.OrderCardList(CardList);
-    }
 
-    /// <summary>
-    /// 
-    /// Load the hero card into the deck
-    /// 
-    /// </summary>
-    public void LoadHero()
-    {
-        if (HeroTier != TierLevel.Default)
+        UpgradeList = new List<UpgradeData>();
+        foreach (var upgradeId in UpgradeIdList)
         {
-            HeroCard = GameManager.instance.libraryManager.GetHero(DeckClass, HeroTier, AbilityTier);
+            UpgradeList.Add(upgradeManager.GetUpgrade(upgradeId));
         }
     }
 
@@ -193,6 +187,5 @@ public class DeckData : DeckSaveData
         {
             throw new Exception($"Card {cardData.Id} does not exist in the deck");
         }
-
     }
 }

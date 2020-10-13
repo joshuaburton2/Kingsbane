@@ -21175,6 +21175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   libraryManager: {fileID: 836981535}
+  upgradeManager: {fileID: 1910366161}
 --- !u!4 &1593085925
 Transform:
   m_ObjectHideFlags: 0
@@ -21657,6 +21658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   libraryManager: {fileID: 836981535}
+  upgradeManager: {fileID: 1910366161}
   iconManager: {fileID: 1252651224}
   uiManager: {fileID: 672637168}
   deckManager: {fileID: 1593085924}

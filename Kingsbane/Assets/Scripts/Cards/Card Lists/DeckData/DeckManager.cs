@@ -10,6 +10,8 @@ public class DeckManager : MonoBehaviour
 {
     [SerializeField]
     private LibraryManager libraryManager;
+    [SerializeField]
+    private UpgradeManager upgradeManager;
 
     public List<DeckData> PlayerDeckList { get; private set; }
     public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
@@ -25,7 +27,7 @@ public class DeckManager : MonoBehaviour
         var deckDatas = new List<DeckData>();
         foreach (var saveDeck in deckSaveDatas)
         {
-            deckDatas.Add(new DeckData(saveDeck, libraryManager));
+            deckDatas.Add(new DeckData(saveDeck, libraryManager, upgradeManager));
         }
 
         return deckDatas;
