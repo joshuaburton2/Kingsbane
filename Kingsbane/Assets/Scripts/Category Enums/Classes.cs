@@ -131,7 +131,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 67
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -161,7 +162,8 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -192,7 +194,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 37
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -223,7 +226,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 250
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -254,7 +258,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 91
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -285,7 +290,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 111
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -316,7 +322,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 156
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -347,7 +354,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 179
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -377,7 +385,8 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -407,7 +416,8 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -438,7 +448,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 204
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -469,7 +480,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 4
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -500,7 +512,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 231
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -530,7 +543,8 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -561,7 +575,8 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 299
-                            }
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()

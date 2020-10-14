@@ -251,7 +251,8 @@ namespace Kingsbane.App
                     {
                         sb.AppendLine($"                                {card.CardId}");
                     }
-                    sb.AppendLine($"                            }}");
+                    sb.AppendLine($"                            }},");
+                    sb.AppendLine($"                            UpgradeIdList = new List<int>(),");
                     sb.AppendLine($"                        }},");
                 }
                 sb.AppendLine($"                    }},");

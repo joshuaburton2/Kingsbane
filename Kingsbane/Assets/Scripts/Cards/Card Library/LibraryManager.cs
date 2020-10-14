@@ -118,23 +118,13 @@ public class LibraryManager : MonoBehaviour
                     foreach (var thisClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
                     {
                         var classResource = new ClassResources(thisClass);
-                        var classResources = classResource.resources;
-
                         var cardResources = card.GetResources.Select(x => x.ResourceType).ToList();
 
-                        var metResources = true;
-
-                        //Loops through all the resources the card costs. If the resource on the card costs a resource that the class cannot play, then
-                        // it will fail the test, and the ClassResources is not added as a key
-                        foreach (var resource in cardResources)
-                        {
-                            if (!classResources.Contains(resource))
-                            {
-                                metResources = false;
-                                break;
-                            }
-                        }
-                        if (metResources)
+                        //Gets the count of the card resources which are also in the given classes (the intersection)- i.e. any resources on the card which are not in the class
+                        //are removed
+                        //If the count of the intersection is the same as the original card resources, this means that no resources were removed and as such, there are no
+                        //resources in the class that are not on the card- as such, card is playable by this class
+                        if(cardResources.Intersect(classResource.resources).Count() == cardResources.Count())
                         {
                             keyList.Add((T)(object)classResource);
                         }
