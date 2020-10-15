@@ -331,6 +331,7 @@ namespace Kingsbane.App
                     sb.AppendLine($"                CardResources.{classPrerequisite.CardClassId},");
                 }
                 sb.AppendLine($"            }},");
+                sb.AppendLine($"            UpgradePrerequisites = new List<UpgradeData>(),");
 
                 string upgradeTag;
                 if (item.IsTierUpgrade)
@@ -352,6 +353,7 @@ namespace Kingsbane.App
                 }
                 sb.AppendLine($"            UpgradeTag = UpgradeTags.{upgradeTag},");
                 sb.AppendLine($"        }};");
+                sb.AppendLine($"        UpgradeList.Add(upgrade{item.Id});");
             }
 
             sb.AppendLine("");
