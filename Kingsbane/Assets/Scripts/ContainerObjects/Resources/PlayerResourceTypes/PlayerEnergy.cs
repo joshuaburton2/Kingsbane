@@ -34,7 +34,7 @@ public class PlayerEnergy : Resource
     public int UseSurge(out int numSurges)
     {
         Surges--;
-        Value *= 2;
+        Value += BaseEnergyGain;
 
         numSurges = Surges;
         return Value;

@@ -71,7 +71,6 @@ public class UpgradeManager : MonoBehaviour
                 }
             }
 
-
             //If all conditions are met by the upgrade
             if (numMetConditions == numActiveConditions)
             {

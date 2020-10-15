@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using CategoryEnums;
 
 public class UpgradeLibrary
@@ -25,6 +26,7 @@ public class UpgradeLibrary
             },
             UpgradeTag = UpgradeTags.HeroUpgrade,
         };
+        UpgradeList.Add(upgrade1);
 
         var upgrade2 = new UpgradeData()
         {

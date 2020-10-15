@@ -162,6 +162,7 @@ public class DeckListUI : MonoBehaviour
         else
         {
             upgradeManager.SetActive(true);
+            upgradeManager.GetComponent<UpgradeUI>().InitUpgradeUI();
         }
     }
 }
