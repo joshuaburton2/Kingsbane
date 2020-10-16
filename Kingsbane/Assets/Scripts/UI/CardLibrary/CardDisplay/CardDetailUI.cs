@@ -23,6 +23,8 @@ public class CardDetailUI : MonoBehaviour
     TextMeshProUGUI tagsText;
     [SerializeField]
     TextMeshProUGUI synergiesText;
+    [SerializeField]
+    float mainCardScaling;
 
     /// <summary>
     /// 
@@ -36,7 +38,7 @@ public class CardDetailUI : MonoBehaviour
         GameManager.DestroyAllChildren(relatedCardList.transform);
 
         //Creates the main card on the display
-        GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform);
+        GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform, mainCardScaling);
         mainCard.name = $"Main Card- {cardData.Name}";
 
         //Add the tags and synergies to the display
@@ -51,7 +53,10 @@ public class CardDetailUI : MonoBehaviour
             foreach (var relatedCard in cardData.RelatedCards.OrderBy(x => x.Name))
             {
                 //Initialises a parent of the related card to handle scaling of the card display in the grid display object
-                GameObject relatedCardParent = Instantiate(new GameObject($"Related Card- {relatedCard.Name}", typeof(RectTransform)), relatedCardList.transform);
+                GameObject relatedCardParent = new GameObject($"Related Card- {relatedCard.Name}", typeof(RectTransform));
+                relatedCardParent.transform.parent = relatedCardList.transform;
+                //Unsure why this happens, but parent scales to a strange scaling. Following line resets this
+                relatedCardParent.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
                 GameManager.instance.libraryManager.CreateCard(relatedCard, relatedCardParent.transform);
             }
             //Resets the scrolling of the related card area

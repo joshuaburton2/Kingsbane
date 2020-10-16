@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
 {
     public CardData cardData;
 
-    public int Id { get { return cardData.Id; } }
+    public int Id { get { return cardData.Id.Value; } }
     public string CardName { get { return cardData.Name; } }
 
     public Rarity Rarity { get { return cardData.Rarity; } }

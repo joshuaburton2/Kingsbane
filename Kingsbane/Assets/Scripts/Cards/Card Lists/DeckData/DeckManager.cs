@@ -117,7 +117,7 @@ public class DeckManager : MonoBehaviour
         var newId = 0;
         if (PlayerDeckList.Count > 0)
         {
-            newId = PlayerDeckList.LastOrDefault().Id + 1;
+            newId = PlayerDeckList.LastOrDefault().Id.Value + 1;
         }
 
         //Adds the deck to the list

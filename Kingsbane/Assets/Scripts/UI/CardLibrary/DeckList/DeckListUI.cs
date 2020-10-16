@@ -143,6 +143,7 @@ public class DeckListUI : MonoBehaviour
         }
         else
         {
+            upgradeManager.SetActive(false);
             lootGenerator.SetActive(true);
             lootGenerator.GetComponent<LootGeneratorUI>().RefreshLootGenerator();
         }
@@ -161,6 +162,7 @@ public class DeckListUI : MonoBehaviour
         }
         else
         {
+            lootGenerator.SetActive(false);
             upgradeManager.SetActive(true);
             upgradeManager.GetComponent<UpgradeUI>().InitUpgradeUI();
         }

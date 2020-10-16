@@ -12,7 +12,7 @@ using UnityEngine;
 [Serializable]
 public class DeckSaveData
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
     public string Name { get; set; }
     public TierLevel HeroTier { get; set; }
     // Tier of the hero ability
@@ -24,7 +24,7 @@ public class DeckSaveData
 
     public DeckSaveData()
     {
-        Id = -1;
+        Id = null;
         HeroTier = TierLevel.Default;
         AbilityTier = TierLevel.Default;
     }
@@ -155,7 +155,7 @@ public class DeckData : DeckSaveData
     public void AddCard(CardData cardData)
     {
         CardList.Add(cardData);
-        CardIdList.Add(cardData.Id);
+        CardIdList.Add(cardData.Id.Value);
         CardList = LibraryManager.OrderCardList(CardList);
     }
 
@@ -169,6 +169,21 @@ public class DeckData : DeckSaveData
         HeroTier = heroTier;
         AbilityTier = abilityTier;
         HeroCard = GameManager.instance.libraryManager.GetHero(DeckClass, heroTier, abilityTier);
+
+        //Add the hero upgrades. Loops between tier 1 and the selected Hero Tier
+        for (int tierIndex = (int)TierLevel.Tier1; tierIndex <= (int)heroTier; tierIndex++)
+        {
+            var heroUpgrade = GameManager.instance.upgradeManager.GetUpgrade(UpgradeTags.HeroUpgrade, (TierLevel)tierIndex);
+            UpgradeList.Add(heroUpgrade);
+            UpgradeIdList.Add(heroUpgrade.Id.Value);
+        }
+        //Add the hero ability upgrades. Loops between tier 1 and the selected Hero Tier
+        for (int tierIndex = (int)TierLevel.Tier1; tierIndex <= (int)abilityTier; tierIndex++)
+        {
+            var abilityUpgrade = GameManager.instance.upgradeManager.GetUpgrade(UpgradeTags.AbilityUpgrade, (TierLevel)tierIndex);
+            UpgradeList.Add(abilityUpgrade);
+            UpgradeIdList.Add(abilityUpgrade.Id.Value);
+        }
     }
 
     /// <summary>
@@ -178,10 +193,10 @@ public class DeckData : DeckSaveData
     /// </summary>
     public void RemoveCard(CardData cardData)
     {
-        if (CardIdList.Contains(cardData.Id))
+        if (CardIdList.Contains(cardData.Id.Value))
         {
             CardList.Remove(cardData);
-            CardIdList.Remove(cardData.Id);
+            CardIdList.Remove(cardData.Id.Value);
         }
         else
         {

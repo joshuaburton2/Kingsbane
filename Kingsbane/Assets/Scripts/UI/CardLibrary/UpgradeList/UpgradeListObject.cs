@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UpgradeListObject : MonoBehaviour
+public class UpgradeListObject : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     TextMeshProUGUI upgradeNameText;
@@ -20,5 +21,13 @@ public class UpgradeListObject : MonoBehaviour
 
         upgradeNameText.text = _upgradeData.Name;
         honourPointsText.text = _upgradeData.HonourPoints.ToString();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            upgradeUI.RefreshSelectedUpgrade(upgradeData);
+        }
     }
 }

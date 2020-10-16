@@ -35,7 +35,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         deckListUI = _deckListUI;
         deckData = _deckData;
 
-        deckId = deckData.Id;
+        deckId = deckData.Id.Value;
         nameText.text = deckData.Name;
         classBorder.color = GameManager.instance.colourManager.GetClassColour(deckData.DeckClass);
         classText.text = deckData.DeckClass.ToString();

@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class CardData
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
     public string Name { get; set; }
     public string ImageLocation { get; set; }
 
@@ -45,7 +45,7 @@ public class CardData
     /// </summary>
     public CardData()
     {
-        Id = -1;
+        Id = null;
     }
 
     /// <summary>

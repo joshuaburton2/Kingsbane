@@ -316,8 +316,9 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public GameObject CreateCard(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
-        GameObject createdCard = Instantiate(cardObject, parent);
-        createdCard.GetComponent<RectTransform>().localScale = new Vector3(scaling, scaling, 1.0f);
+        var createdCard = Instantiate(cardObject, parent);
+        createdCard.transform.localScale = new Vector3(scaling, scaling, 1.0f);
+        //createdCard.GetComponent<RectTransform>().localScale = new Vector3(scaling, scaling, 1.0f);
 
         switch (card.CardType)
         {

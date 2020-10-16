@@ -76,7 +76,7 @@ public class NewDeckUI : MonoBehaviour
         var tierOptions = Enum.GetNames(typeof(TierLevel)).Where(x => x != TierLevel.Default.ToString()).ToList();
         for (int i = 0; i < tierOptions.Count; i++)
         {
-            tierOptions[i] = tierOptions[i].Replace($"{i+1}", $" {i+1}");
+            tierOptions[i] = tierOptions[i].Replace($"{i}", $" {i}");
         }
         heroTierDropdown.AddOptions(tierOptions);
         abilityTierDropdown.AddOptions(tierOptions);
@@ -89,6 +89,10 @@ public class NewDeckUI : MonoBehaviour
     /// </summary>
     public void InitNewDeckPage()
     {
+        heroTierDropdown.value = 0;
+        abilityTierDropdown.value = 0;
+        deckTemplateDropdown.value = 0;
+
         RefreshClassData(Classes.ClassList.Default);
     }
 

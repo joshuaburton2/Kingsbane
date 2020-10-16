@@ -11,10 +11,13 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject cardDetailDisplay;
+    [SerializeField]
+    private GameObject upgradeDetailDisplay;
 
     private void Start()
     {
         cardDetailDisplay.SetActive(false);
+        upgradeDetailDisplay.SetActive(false);
     }
 
     /// <summary>
@@ -26,6 +29,17 @@ public class UIManager : MonoBehaviour
     {
         cardDetailDisplay.SetActive(true);
         cardDetailDisplay.GetComponent<CardDetailUI>().ShowCardDetails(cardData);
+    }
+
+    /// <summary>
+    /// 
+    /// Activates the upgrade detail display
+    /// 
+    /// </summary>
+    public void ActivateUpgradeDetail(UpgradeData upgradeData)
+    {
+        upgradeDetailDisplay.SetActive(true);
+        upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetail(upgradeData);
     }
 
     /// <summary>
