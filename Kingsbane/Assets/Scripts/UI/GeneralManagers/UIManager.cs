@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ActivateCardDetail(CardData cardData)
     {
+        upgradeDetailDisplay.SetActive(false);
         cardDetailDisplay.SetActive(true);
         cardDetailDisplay.GetComponent<CardDetailUI>().ShowCardDetails(cardData);
     }
@@ -36,10 +37,11 @@ public class UIManager : MonoBehaviour
     /// Activates the upgrade detail display
     /// 
     /// </summary>
-    public void ActivateUpgradeDetail(UpgradeData upgradeData)
+    public void ActivateUpgradeDetail(UpgradeData upgradeData, DeckData currentDeck)
     {
+        cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(true);
-        upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetail(upgradeData);
+        upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetails(upgradeData, currentDeck);
     }
 
     /// <summary>

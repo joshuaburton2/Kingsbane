@@ -3,9 +3,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Script for handling an upgrade card display
+/// 
+/// </summary>
 public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
 {
     UpgradeData upgradeData;
+    DeckData currentDeck;
 
     [Header("Main Card Objects")]
     [SerializeField]
@@ -21,9 +27,15 @@ public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Image upgradeImage;
 
-    public void InitDisplay(UpgradeData _upgradeData)
+    /// <summary>
+    /// 
+    /// Initialise the display. This is for properties which should not reset during the game
+    /// 
+    /// </summary>
+    public void InitDisplay(UpgradeData _upgradeData, DeckData _currentDeck)
     {
         upgradeData = _upgradeData;
+        currentDeck = _currentDeck;
 
         upgradeName.text = upgradeData.Name;
         upgradePrerequisites.text = $"Prerequisites: {upgradeData.PrerequisiteString()}";
@@ -41,7 +53,7 @@ public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData);
+            GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData, currentDeck);
         }
     }
 }

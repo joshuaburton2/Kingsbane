@@ -30,11 +30,16 @@ public class UpgradeManager : MonoBehaviour
         return upgradeLibrary.UpgradeList.FirstOrDefault(x => x.Id == id);
     }
 
-    public GameObject CreateUpgrade(UpgradeData upgrade, Transform parent, float scaling = defaultUpgradeScaling)
+    /// <summary>
+    /// 
+    /// Creates an upgrade card on a canvas
+    /// 
+    /// </summary>
+    public GameObject CreateUpgrade(UpgradeData upgrade, Transform parent, DeckData currentDeck, float scaling = defaultUpgradeScaling)
     {
         var createdUpgrade = Instantiate(upgradeObject, parent);
         createdUpgrade.transform.localScale = new Vector3(scaling, scaling, 1.0f);
-        createdUpgrade.GetComponent<UpgradeDisplay>().InitDisplay(upgrade);
+        createdUpgrade.GetComponent<UpgradeDisplay>().InitDisplay(upgrade, currentDeck);
         return createdUpgrade;
     }
 

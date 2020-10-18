@@ -32,7 +32,6 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField]
     Button cancelButton;
 
-
     UpgradeData selectedUpgrade;
 
     public void InitUpgradeUI()
@@ -46,7 +45,7 @@ public class UpgradeUI : MonoBehaviour
         foreach (var upgrade in availableUpgrades)
         {
             var newUpgradeObject = Instantiate(upgradeListObject, availableUpgradesArea.transform);
-            newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this);
+            newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this, selectedDeck);
 
             newUpgradeObject.name = $"Upgrade: {upgrade.Name}";
         }
@@ -74,7 +73,18 @@ public class UpgradeUI : MonoBehaviour
             isRepeatableText.text = selectedUpgrade.IsRepeatableString();
             prerequisiteText.text = selectedUpgrade.PrerequisiteString();
 
-            GameManager.instance.upgradeManager.CreateUpgrade(selectedUpgrade, upgradeDisplay.transform);
+            var currentDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+            GameManager.instance.upgradeManager.CreateUpgrade(selectedUpgrade, upgradeDisplay.transform, currentDeck);
         }
+    }
+
+    public void AddSelectedUpgrade()
+    {
+
+    }
+
+    public void CancelSelectedUpgrade()
+    {
+
     }
 }

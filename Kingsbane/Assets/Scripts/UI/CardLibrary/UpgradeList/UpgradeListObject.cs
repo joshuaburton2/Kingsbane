@@ -1,9 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 
+/// Script for handling an object detailing an upgrade in an upgrade list
+/// 
+/// </summary>
 public class UpgradeListObject : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
@@ -13,21 +16,37 @@ public class UpgradeListObject : MonoBehaviour, IPointerClickHandler
 
     UpgradeData upgradeData;
     UpgradeUI upgradeUI;
+    DeckData currentDeck;
 
-    public void InitUpgradeListObject(UpgradeData _upgradeData, UpgradeUI _upgradeUI)
+    /// <summary>
+    /// 
+    /// Initialise the upgrade list object. Updates the text properties of the object
+    /// 
+    /// </summary>
+    public void InitUpgradeListObject(UpgradeData _upgradeData, UpgradeUI _upgradeUI, DeckData _currentDeck)
     {
         upgradeData = _upgradeData;
         upgradeUI = _upgradeUI;
+        currentDeck = _currentDeck;
 
         upgradeNameText.text = _upgradeData.Name;
         honourPointsText.text = _upgradeData.HonourPoints.ToString();
     }
 
+    /// <summary>
+    /// 
+    /// Click event for the upgrade list object
+    /// 
+    /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             upgradeUI.RefreshSelectedUpgrade(upgradeData);
+        }
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData, currentDeck);
         }
     }
 }

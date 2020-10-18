@@ -23,9 +23,9 @@ namespace CategoryEnums
         /// </summary>
         private static Dictionary<Tags, TierLevel> TierConversion = new Dictionary<Tags, TierLevel>
         {
-            { Tags.HeroTierOne, TierLevel.Tier0 },
-            { Tags.HeroTierTwo, TierLevel.Tier1 },
-            { Tags.HeroTierThree, TierLevel.Tier2 },
+            { Tags.HeroTierZero, TierLevel.Tier0 },
+            { Tags.HeroTierOne, TierLevel.Tier1 },
+            { Tags.HeroTierTwo, TierLevel.Tier2 },
         };
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace CategoryEnums
         {
             if (card.Rarity == Rarity.Hero)
             {
-                Tags heroTierTag = card.Tags.FirstOrDefault(x => x == Tags.HeroTierOne || x == Tags.HeroTierTwo || x == Tags.HeroTierThree);
+                Tags heroTierTag = card.Tags.FirstOrDefault(x => x == Tags.HeroTierZero || x == Tags.HeroTierOne || x == Tags.HeroTierTwo);
                 //If one of the tier level tags doesn't exist, it will obtain the default tag
                 if (heroTierTag == Tags.Default)
                     throw new Exception("Card does not have a valid Tier Level");
