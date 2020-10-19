@@ -15,13 +15,7 @@ public class CardData
     public string Name { get; set; }
     public string ImageLocation { get; set; }
 
-    public int? ResourceDevotion { get; set; }
-    public int? ResourceEnergy { get; set; }
-    public int? ResourceGold { get; set; }
-    public int? ResourceKnowledge { get; set; }
-    public int? ResourceMana { get; set; }
-    public int? ResourceWild { get; set; }
-    public int? ResourceNeutral { get; set; }
+    public List<Resource> Resources { get; set; }
 
     public string Text { get; set; }
     public string LoreText { get; set; }
@@ -59,13 +53,7 @@ public class CardData
         Name = cardData.Name;
         ImageLocation = cardData.ImageLocation;
 
-        ResourceDevotion = cardData.ResourceDevotion;
-        ResourceEnergy = cardData.ResourceEnergy;
-        ResourceGold = cardData.ResourceGold;
-        ResourceKnowledge = cardData.ResourceKnowledge;
-        ResourceMana = cardData.ResourceMana;
-        ResourceNeutral = cardData.ResourceNeutral;
-        ResourceWild = cardData.ResourceWild;
+        Resources = cardData.Resources.ToList();
 
         Text = cardData.Text;
         LoreText = cardData.LoreText;
@@ -90,22 +78,12 @@ public class CardData
     {
         get
         {
-            var cardResources = new List<Resource>();
+            var cardResources = Resources.ToList();
 
-            if(ResourceDevotion.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Devotion, Value = - ResourceDevotion.Value });
-            if (ResourceEnergy.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Energy, Value = - ResourceEnergy.Value });
-            if (ResourceGold.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Gold, Value = - ResourceGold.Value });
-            if (ResourceKnowledge.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Knowledge, Value = - ResourceKnowledge.Value });
-            if (ResourceMana.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Mana, Value = - ResourceMana.Value });
-            if (ResourceWild.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Wild, Value = - ResourceWild.Value });
-            if (ResourceNeutral.HasValue)
-                cardResources.Add(new Resource() { ResourceType = CardResources.Neutral, Value = - ResourceNeutral.Value });
+            foreach (var resource in cardResources)
+            {
+                resource.Value *= -1;
+            }
 
             //Order the resources by their largest value
             cardResources = cardResources.OrderBy(x => x.Value).ToList();

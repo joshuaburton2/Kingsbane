@@ -17,13 +17,7 @@ public class CardLibrary
             Name = "Arcane Bolt",
             Text = @"Deal 2 damage to a unit within range 1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = true,
         };
@@ -35,13 +29,7 @@ public class CardLibrary
             Name = "Kalyan Strike",
             Text = @"<b>Stun</b> an adjacent enemy unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = true,
         };
@@ -53,13 +41,7 @@ public class CardLibrary
             Name = "Runesmith",
             Text = @"Give a friendly unit within Range 1 <b>Empowered +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             CostsAction = true,
         };
@@ -71,13 +53,7 @@ public class CardLibrary
             Name = "Sword Fling",
             Text = @"Deal damage equal to your <b>Empowered</b> value to a unit within Range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -89,13 +65,7 @@ public class CardLibrary
             Name = "Kalyan Training",
             Text = @"Give all other friendly melee units within Range 2 +2 Attack",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             CostsAction = true,
         };
@@ -107,13 +77,7 @@ public class CardLibrary
             Name = "Kalyan Strike",
             Text = @"<b>Stun</b> an adjacent enemy unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = true,
         };
@@ -125,13 +89,7 @@ public class CardLibrary
             Name = "Arcane Bolt",
             Text = @"Deal 4 damage to a unit within range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = true,
         };
@@ -143,13 +101,7 @@ public class CardLibrary
             Name = "Arcane Bolt",
             Text = @"Deal 6 damage to a unit within Range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = false,
         };
@@ -161,13 +113,7 @@ public class CardLibrary
             Name = "Arcane Knowledge",
             Text = @"Add a random playable spell to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             CostsAction = false,
         };
@@ -179,13 +125,7 @@ public class CardLibrary
             Name = "Arcane Knowledge",
             Text = @"Add a random playable spell to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = false,
         };
@@ -197,13 +137,7 @@ public class CardLibrary
             Name = "Arcane Knowledge",
             Text = @"Add 2 random playable spells to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = false,
         };
@@ -215,13 +149,7 @@ public class CardLibrary
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             CostsAction = true,
         };
@@ -233,13 +161,7 @@ public class CardLibrary
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +1 Attack, +1 Health",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             CostsAction = false,
         };
@@ -251,13 +173,7 @@ public class CardLibrary
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +2 Attack, +2 Health and <b>Spellshield</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = false,
         };
@@ -269,13 +185,7 @@ public class CardLibrary
             Name = "Info Exchange",
             Text = @"Shuffle a card in your hand into your deck. Draw a card",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             CostsAction = true,
         };
@@ -287,13 +197,7 @@ public class CardLibrary
             Name = "Info Exchange",
             Text = @"Shuffle a card in your hand into your deck. Draw a card",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             CostsAction = false,
         };
@@ -305,13 +209,7 @@ public class CardLibrary
             Name = "Info Exchange",
             Text = @"Shuffle two copies of a card in your hand into your deck. Draw a card",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = false,
         };
@@ -323,13 +221,7 @@ public class CardLibrary
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Sword"" item",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             CostsAction = false,
         };
@@ -341,13 +233,7 @@ public class CardLibrary
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = false,
         };
@@ -359,13 +245,7 @@ public class CardLibrary
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = false,
         };
@@ -377,13 +257,7 @@ public class CardLibrary
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +1</b> until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -395,13 +269,7 @@ public class CardLibrary
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +2</b> until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = false,
         };
@@ -413,13 +281,7 @@ public class CardLibrary
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +3</b> until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             CostsAction = false,
         };
@@ -431,13 +293,7 @@ public class CardLibrary
             Name = "Plant Growth",
             Text = @"<b>Root</b> an enemy unit within Range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             CostsAction = true,
         };
@@ -449,13 +305,7 @@ public class CardLibrary
             Name = "Plant Growth",
             Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             CostsAction = true,
         };
@@ -467,13 +317,7 @@ public class CardLibrary
             Name = "Plant Growth",
             Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 4",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 1,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
             CostsAction = false,
         };
@@ -485,13 +329,7 @@ public class CardLibrary
             Name = "Healing Word",
             Text = @"Restore 2 Health to a unit within Range 1",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             CostsAction = true,
         };
@@ -503,13 +341,7 @@ public class CardLibrary
             Name = "Healing Word",
             Text = @"Restore 2 Health to a unit within Range 2",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             CostsAction = true,
         };
@@ -521,13 +353,7 @@ public class CardLibrary
             Name = "Healing Word",
             Text = @"Restore 4 Health to a unit within Range 3",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             CostsAction = true,
         };
@@ -539,13 +365,7 @@ public class CardLibrary
             Name = "Preserve Knowledge",
             Text = @"Shuffle a copy of the next spell you cast this turn into your  deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             CostsAction = false,
         };
@@ -557,13 +377,7 @@ public class CardLibrary
             Name = "Preserve Knowledge",
             Text = @"Shuffle a copy of the next spell you cast this turn into your deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = false,
         };
@@ -575,13 +389,7 @@ public class CardLibrary
             Name = "Preserve Knowledge",
             Text = @"Shuffle two copies of the next spell you cast this turn into your deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = false,
         };
@@ -593,13 +401,7 @@ public class CardLibrary
             Name = "Foretell",
             Text = @"<b>Divinate 1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             CostsAction = false,
         };
@@ -611,13 +413,7 @@ public class CardLibrary
             Name = "Foretell",
             Text = @"<b>Divinate 2</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = false,
         };
@@ -629,13 +425,7 @@ public class CardLibrary
             Name = "Foretell",
             Text = @"<b>Divinate 3</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
             CostsAction = false,
         };
@@ -647,13 +437,7 @@ public class CardLibrary
             Name = "Enlist Hireling",
             Text = @"Deploy a random ""Hireling"" unit adjacent to your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             CostsAction = false,
         };
@@ -665,13 +449,7 @@ public class CardLibrary
             Name = "Enlist Hireling",
             Text = @"Deploy a ""Hireling"" unit of your choice adjacent to your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = false,
         };
@@ -683,13 +461,7 @@ public class CardLibrary
             Name = "Enlist Hireling",
             Text = @"Deploy a random ""Hireling"" adjacent to your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             CostsAction = true,
         };
@@ -701,13 +473,7 @@ public class CardLibrary
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
             CostsAction = false,
         };
@@ -719,13 +485,7 @@ public class CardLibrary
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 1 of the hero <b>Protected (3)</b>",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             CostsAction = false,
         };
@@ -737,13 +497,7 @@ public class CardLibrary
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 2 of the hero <b>Protected (3)</b>",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             CostsAction = false,
         };
@@ -755,13 +509,7 @@ public class CardLibrary
             Name = "Resupply",
             Text = @"Add a ""Shiv"" card to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             CostsAction = false,
         };
@@ -773,13 +521,7 @@ public class CardLibrary
             Name = "Resupply",
             Text = @"Add two ""Shiv"" cards to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             CostsAction = false,
         };
@@ -791,13 +533,7 @@ public class CardLibrary
             Name = "Resupply",
             Text = @"Add three ""Shiv"" cards to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = false,
         };
@@ -809,13 +545,7 @@ public class CardLibrary
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             CostsAction = true,
         };
@@ -827,13 +557,7 @@ public class CardLibrary
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +1 Attack",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             CostsAction = true,
         };
@@ -845,13 +569,7 @@ public class CardLibrary
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +3 Attack",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             CostsAction = false,
         };
@@ -863,13 +581,7 @@ public class CardLibrary
             Name = "Enrage",
             Text = @"Give your hero +2 Attack until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             CostsAction = false,
         };
@@ -881,13 +593,7 @@ public class CardLibrary
             Name = "Enrage",
             Text = @"Your hero gains +4 Attack and +2 Health until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = false,
         };
@@ -899,13 +605,7 @@ public class CardLibrary
             Name = "Enrage",
             Text = @"Your hero gains +6 Attack, +4 Health until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = false,
         };
@@ -917,13 +617,7 @@ public class CardLibrary
             Name = "Magic Missiles",
             Text = @"Deal 3 damage randomly split among all enemies in an area of Cone 3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -935,13 +629,7 @@ public class CardLibrary
             Name = "Studious Research",
             Text = @"<b>Study (3)</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = true,
         };
@@ -953,13 +641,7 @@ public class CardLibrary
             Name = "Stargaze",
             Text = @"<b>Divinate 1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -971,13 +653,7 @@ public class CardLibrary
             Name = "Lifedrain",
             Text = @"Deal 3 damage to a unit. Heal this unit for the amount of damage dealt",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             CostsAction = true,
         };
@@ -989,13 +665,7 @@ public class CardLibrary
             Name = "Brood Spawn",
             Text = @"Discard a card. Deploy two Abyss Imps beside this unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1007,13 +677,7 @@ public class CardLibrary
             Name = "Call of the Void",
             Text = @"Add a random Void unit to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1025,13 +689,7 @@ public class CardLibrary
             Name = "Consume",
             Text = @"Discard a card. Gain mana equal to its total cost",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1043,13 +701,7 @@ public class CardLibrary
             Name = "Rally the Horde",
             Text = @"Discard a card. Give all adjacent Void units Attack and Health equal to its total cost",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1061,13 +713,7 @@ public class CardLibrary
             Name = "Surveillance",
             Text = @"<b>Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1079,13 +725,7 @@ public class CardLibrary
             Name = "Triage",
             Text = @"Restore 2 Health to a unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = true,
         };
@@ -1097,13 +737,7 @@ public class CardLibrary
             Name = "Confiscate",
             Text = @"Remove a random card from your opponents hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             CostsAction = true,
         };
@@ -1115,13 +749,7 @@ public class CardLibrary
             Name = "Imprison",
             Text = @"Remove an enemy minion from the battlefield",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 4,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
             CostsAction = true,
         };
@@ -1133,13 +761,7 @@ public class CardLibrary
             Name = "Call to Arms",
             Text = @"Deploy two ""Goldland Loyalists"" adjacent to this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             CostsAction = true,
         };
@@ -1151,13 +773,7 @@ public class CardLibrary
             Name = "FIREBLAST!",
             Text = @"Deal damage to all other units within Range 2 equal to your <b>Empowered</b> value",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1169,13 +785,7 @@ public class CardLibrary
             Name = "Earthspike",
             Text = @"Deal damage to all units in an area of Cone 3 equal to your <b>Empowered</b> value and <b>Root</b> them",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1187,13 +797,7 @@ public class CardLibrary
             Name = "Call of the Winds",
             Text = @"Draw a card. If it is a spell, reduce its cost by (3). <b>Cycle -3</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             CostsAction = true,
         };
@@ -1205,13 +809,7 @@ public class CardLibrary
             Name = "Water Whip",
             Text = @"Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
@@ -1223,13 +821,7 @@ public class CardLibrary
             Name = "Master of the Elements",
             Text = @"Add a basic Elemental Spell to your hand. <b>Cycle -2</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             CostsAction = false,
         };
@@ -1241,13 +833,7 @@ public class CardLibrary
             Name = "Wild Ritual",
             Text = @"<b>Prayer +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1259,13 +845,7 @@ public class CardLibrary
             Name = "Faerie Charm",
             Text = @"Gain control of an enemy unit within Range 2 until the start of your next turn",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
             CostsAction = true,
         };
@@ -1277,13 +857,7 @@ public class CardLibrary
             Name = "Holy Ritual",
             Text = @"<b>Prayer +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1295,13 +869,7 @@ public class CardLibrary
             Name = "Soothe Wounds",
             Text = @"Restore 3 Health to a unit within Range 1",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             CostsAction = true,
         };
@@ -1313,13 +881,7 @@ public class CardLibrary
             Name = "Collect Dues",
             Text = @"Gain 2 Gold for every adjacent friendly unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1331,13 +893,7 @@ public class CardLibrary
             Name = "Potion Sale",
             Text = @"Add a random potion card to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = false,
         };
@@ -1349,13 +905,7 @@ public class CardLibrary
             Name = "Call the Host",
             Text = @"Deploy a ""Golden Host"" unit adjacent to this unit",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Gold, 1), },
 
             CostsAction = true,
         };
@@ -1367,13 +917,7 @@ public class CardLibrary
             Name = "Meditative Ritual",
             Text = @"<b>Prayer +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1385,13 +929,7 @@ public class CardLibrary
             Name = "Submit Collection",
             Text = @"<b>Study (3).</b> One of the <b>Inspiration</b> cards shuffled is placed on the top of your deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             CostsAction = true,
         };
@@ -1403,13 +941,7 @@ public class CardLibrary
             Name = "Search Archives",
             Text = @"Draw an <b>Inspiration</b> card from your deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             CostsAction = true,
         };
@@ -1421,13 +953,7 @@ public class CardLibrary
             Name = "Deep Exposure",
             Text = @"Deal damage to a unit within Range 3 equal to its attack.",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
             CostsAction = true,
         };
@@ -1439,13 +965,7 @@ public class CardLibrary
             Name = "Pull Record",
             Text = @"Draw a spell which did not start in your deck",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             CostsAction = false,
         };
@@ -1457,13 +977,7 @@ public class CardLibrary
             Name = "Heavenly Ritual",
             Text = @"<b>Prayer +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1475,13 +989,7 @@ public class CardLibrary
             Name = "Fetch Gear",
             Text = @"Draw a card",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = true,
         };
@@ -1493,13 +1001,7 @@ public class CardLibrary
             Name = "Hefty Bribe",
             Text = @"<b>Recruit</b> an enemy minion that has a total cost of (5) or less",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             CostsAction = true,
         };
@@ -1511,13 +1013,7 @@ public class CardLibrary
             Name = "Run Messages",
             Text = @"Draw a card for every 2 tiles moved this turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             CostsAction = false,
         };
@@ -1529,13 +1025,7 @@ public class CardLibrary
             Name = "Smuggle",
             Text = @"Return a friendly minion to your hand, or redeploy your hero",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = true,
         };
@@ -1547,13 +1037,7 @@ public class CardLibrary
             Name = "Shadowy Ritual",
             Text = @"<b>Prayer +1</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             CostsAction = true,
         };
@@ -1565,13 +1049,7 @@ public class CardLibrary
             Name = "Grey Blood",
             Text = @"<b>Regenerate, Cycle -3</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             CostsAction = true,
         };
@@ -1583,13 +1061,7 @@ public class CardLibrary
             Name = "Shapechange",
             Text = @"<b>Transform</b> this unit into a Hulking Beast. <b>Cycle -3</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             CostsAction = false,
         };
@@ -1601,13 +1073,7 @@ public class CardLibrary
             Name = "Roar",
             Text = @"<b>Stun</b> an enemy unit within Range 2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = true,
         };
@@ -1619,13 +1085,7 @@ public class CardLibrary
             Name = "Caw",
             Text = @"Reduce the attack of all adjacent enemy units by 3 until the start of your next turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             CostsAction = false,
         };
@@ -1637,13 +1097,7 @@ public class CardLibrary
             Name = "Leap",
             Text = @"Jump to an empty tile within Range 3, then melee attack a random adjacent enemy unit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = true,
         };
@@ -1655,13 +1109,7 @@ public class CardLibrary
             Name = "Rush",
             Text = @"Gain <b>Unleash</b> until the end of your turn",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = false,
         };
@@ -1673,13 +1121,7 @@ public class CardLibrary
             Name = "Spirit Walk",
             Text = @"<b>Regenerate. Cycle -3</b>",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             CostsAction = true,
         };
@@ -1691,13 +1133,7 @@ public class CardLibrary
             Name = "Brawler",
             Text = @"Add a random Brawl card to your hand",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = false,
         };
@@ -1709,13 +1145,7 @@ public class CardLibrary
             Name = "Runeblade",
             ImageLocation = "Runeblade1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -1744,13 +1174,7 @@ public class CardLibrary
             Name = "Arcane Rush",
             ImageLocation = "Arcane_Rush",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 0,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Mana, 3), },
 
             Text = @"Gain 4 Energy and give the caster +2 Attack until the end of your next turn.",
             LoreText = @"",
@@ -1774,13 +1198,7 @@ public class CardLibrary
             Name = "Blade Enchantment",
             ImageLocation = "Blade_Enchantment",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 1,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), new Resource(CardResources.Mana, 2), },
 
             Text = @"Give a melee unit +3 Attack. Improved by your <b>Empowered</b> value.",
             LoreText = @"",
@@ -1804,13 +1222,7 @@ public class CardLibrary
             Name = "Kalyan Duelist",
             ImageLocation = "Kalyan_Duelist",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Swiftstrike</b>",
             LoreText = @"",
@@ -1839,13 +1251,7 @@ public class CardLibrary
             Name = "Kalyan Strike",
             ImageLocation = "Kalyan_Strike",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"<b>Stun</b> an enemy unit. Draw a card",
             LoreText = @"",
@@ -1869,13 +1275,7 @@ public class CardLibrary
             Name = "Kalyan Warrior",
             ImageLocation = "Kalyan_Warrior",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Deals double damage to <b>Stunned</b> units.",
             LoreText = @"",
@@ -1904,13 +1304,7 @@ public class CardLibrary
             Name = "Rune Forger",
             ImageLocation = "Rune_Forger",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Empowered +1</b>",
             LoreText = @"",
@@ -1939,13 +1333,7 @@ public class CardLibrary
             Name = "Blade Dance",
             ImageLocation = "Blade_Dance",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 7,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 7), },
 
             Text = @"The caster gains <b>Swiftstrike</b> and <b>Protected (Infinite)</b> until the start of your next turn",
             LoreText = @"",
@@ -1969,13 +1357,7 @@ public class CardLibrary
             Name = "Feint",
             ImageLocation = "Feint",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             Text = @"The caster deals attack damage to an enemy and then moves 1 tile directly away from the target unit. Draw a card",
             LoreText = @"",
@@ -1999,13 +1381,7 @@ public class CardLibrary
             Name = "Magic Dash",
             ImageLocation = "Magic_Dash",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Mana, 3), },
 
             Text = @"Teleport the caster to an empty tile. Deal damage equal to the caster's attack to all enemies in between",
             LoreText = @"",
@@ -2029,13 +1405,7 @@ public class CardLibrary
             Name = "Blade Twirl",
             ImageLocation = "Blade_Twirl",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"Deal damage equal to the caster's attack to all adjacent units",
             LoreText = @"",
@@ -2059,13 +1429,7 @@ public class CardLibrary
             Name = "Swordcaster",
             ImageLocation = "Swordcaster",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Mana, 2), },
 
             Text = @"<b>Conduit, Empowered +1</b>",
             LoreText = @"",
@@ -2094,13 +1458,7 @@ public class CardLibrary
             Name = "Spectral Staff",
             ImageLocation = "Spectral_Staff",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Summon, Spellshield, Ethereal, Conduit, Empowered +2</b>",
             LoreText = @"",
@@ -2129,13 +1487,7 @@ public class CardLibrary
             Name = "Spectral Shield",
             ImageLocation = "Spectral_Shield",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Summon, Spellshield, Ethereal, Warden</b>
 Whenever an adjacent ally takes damage, this unit takes it instead",
@@ -2165,13 +1517,7 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
             Name = "Spectral Sword",
             ImageLocation = "Spectral_Sword",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Summon, Spellshield, Ethereal, Prepared</b>
 This units attack is increased by your <b>Empowered</b> value",
@@ -2201,13 +1547,7 @@ This units attack is increased by your <b>Empowered</b> value",
             Name = "Warding Rune",
             ImageLocation = "Warding_Rune",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"The caster gains <b>Protected (6)</b> until the start of your next turn. Until then, whenever the caster takes damage while still <b>Protected</b>, deal damage to all adjacent units equal to the amount of <b>Protected</b> removed",
             LoreText = @"",
@@ -2231,13 +1571,7 @@ This units attack is increased by your <b>Empowered</b> value",
             Name = "Retired Blademaster",
             ImageLocation = "Retired_Blademaster",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"<b>Deployment:</b> Use <b>Kalyan Training</b>",
             LoreText = @"",
@@ -2266,13 +1600,7 @@ This units attack is increased by your <b>Empowered</b> value",
             Name = "Mana Siphoner",
             ImageLocation = "Mana_Siphoner",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Conduit</b>
 Whenever this unit kills an enemy unit, gain 3 Mana",
@@ -2302,13 +1630,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Name = "Mirror Entity",
             ImageLocation = "Mirror_Entity",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"Whenever your Hero is attacked, take no damage",
             LoreText = @"",
@@ -2332,13 +1654,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Name = "Mirror Image",
             ImageLocation = "Mirror_Image",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"Equip your hero with a ""Mirror Entity"" item. Increase Durability of the item by your <b>Empowered</b> value",
             LoreText = @"",
@@ -2362,13 +1678,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Name = "Atarias, Blade of the Kalyan",
             ImageLocation = "Atarias",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 9,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 9), },
 
             Text = @"<b>Swiftstrike</b>
 This unit's <b>Swiftstrike</b> grants it two additional actions. It can use it's ability multiple times in a turn.
@@ -2399,13 +1709,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
             Name = "Nadalya, Sword of Stars",
             ImageLocation = "Nadalya",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 8,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Mana, 8), },
 
             Text = @"Your hero has <b>Overwhelm</b> and <b>Empowered +2</b>. Their attack is increased by your <b>Empowered</b> value.
 Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards to your hand.",
@@ -2430,13 +1734,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Magic Missiles",
             ImageLocation = "Magic_Missiles",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"Deal 3 damage randomly split among enemies within an area of cone 3",
             LoreText = @"",
@@ -2460,13 +1758,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Runeblade Duelist",
             ImageLocation = "Runeblade2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -2495,13 +1787,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Runeblade Blademaster",
             ImageLocation = "Runeblade3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -2530,13 +1816,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Arcanist",
             ImageLocation = "Arcanist1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -2565,13 +1845,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Arcanist Magician",
             ImageLocation = "Arcanist2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -2600,13 +1874,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Arcanist Archmage",
             ImageLocation = "Arcanist3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -2635,13 +1903,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Arcane Spike",
             ImageLocation = "Arcane_Spike",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             Text = @"Deal 3 damage to a unit. If that kills it, return this card to your hand at the end of your turn.",
             LoreText = @"",
@@ -2665,13 +1927,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Battlemage",
             ImageLocation = "Battlemage",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Conduit, Empowered +2</b>",
             LoreText = @"",
@@ -2700,13 +1956,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Kelari Librarian",
             ImageLocation = "Kelari_Librarian",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't reduce the number of <b>Inspiration</b> cards shuffled.",
             LoreText = @"",
@@ -2735,13 +1985,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Magical Inspiration",
             ImageLocation = "Magical_Inspiration",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
             Text = @"<b>Cast When Drawn</b>
 Increase your base Knowledge rate by 1",
@@ -2766,13 +2010,7 @@ Increase your base Knowledge rate by 1",
             Name = "Power Investment",
             ImageLocation = "Power_Investment",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Mana, 2), },
 
             Text = @"<b>Study (4)</b>
 Add a random playable spell to your hand",
@@ -2797,13 +2035,7 @@ Add a random playable spell to your hand",
             Name = "Spark of Power",
             ImageLocation = "Spark_of_Power",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"Draw 2 cards",
             LoreText = @"",
@@ -2827,13 +2059,7 @@ Add a random playable spell to your hand",
             Name = "Arcane Golem",
             ImageLocation = "Arcane_Golem",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Summon, Warden</b>
 After you cast a spell, gain +1 Attack, +1 Health",
@@ -2863,13 +2089,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Counterspell",
             ImageLocation = "Counterspel_Item",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 2), },
 
             Text = @"Whenever an enemy casts a spell within range 3, prevent it from being cast and gain mana equal to its total cost",
             LoreText = @"",
@@ -2893,13 +2113,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Counterspell",
             ImageLocation = "Counterspell",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 2), },
 
             Text = @"Equip a ""Counterspell"" item. If you already have a ""Counterspell"" item equipped, instead increase its durability by 1",
             LoreText = @"",
@@ -2923,13 +2137,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Dispel Magic",
             ImageLocation = "Dispel_Magic",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 1), },
 
             Text = @"<b>Spellbind</b> a unit. Draw a card",
             LoreText = @"",
@@ -2953,13 +2161,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Kelari Astromancer",
             ImageLocation = "Kelari_Astromancer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 6,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
             Text = @"<b>Deployment: Divinate (2)</b>",
             LoreText = @"",
@@ -2988,13 +2190,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Polymorph",
             ImageLocation = "Polymorph",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Transform</b> a unit into a ""Pig""",
             LoreText = @"",
@@ -3018,13 +2214,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Pig",
             ImageLocation = "Pig",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 0,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 0), },
 
             Text = @"",
             LoreText = @"",
@@ -3053,13 +2243,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
             Name = "Arcane Spirit",
             ImageLocation = "Arcane_Spirit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Summon, Conduit</b>
 The Mana cost of your spells is reduced by (2)",
@@ -3089,13 +2273,7 @@ The Mana cost of your spells is reduced by (2)",
             Name = "Callardis Academic",
             ImageLocation = "Callardis_Academic",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 4,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
             Text = @"<b>Deployment: Study (4)</b>
 Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is increased by an additional point. ",
@@ -3125,13 +2303,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Name = "Callardis Conjurer",
             ImageLocation = "Callardis_Conjurer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"Tiles adjacent to this unit are part of your deployment zone",
             LoreText = @"",
@@ -3160,13 +2332,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Name = "Homing Bolt",
             ImageLocation = "Homing_Bolt",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"Deal 3 damage to an enemy unit.If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
             LoreText = @"",
@@ -3190,13 +2356,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Name = "Archmage Staff",
             ImageLocation = "Archmage_Staff",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"Whenever you cast a spell, gain <b>Empowered +1</b> until the end of your turn",
             LoreText = @"",
@@ -3220,13 +2380,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
             Name = "Kelari Spellguard",
             ImageLocation = "Kelari_Spellguard",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 6,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
             Text = @"<b>Warden
 Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
@@ -3256,13 +2410,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
             Name = "Tome of Power",
             ImageLocation = "Tome_Of_Power",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 5,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
             Text = @"Add three random playable spells to your hand",
             LoreText = @"",
@@ -3286,13 +2434,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
             Name = "Archmage Tholas",
             ImageLocation = "Archmage_Tholas",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 8,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
             Text = @"<b>Conduit</b>
 After you cast a spell, add a random playable spell to your hand and reduce its cost by (2)",
@@ -3322,13 +2464,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             Name = "Enlightenment",
             ImageLocation = "Enlightenment",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"Choose the form of a “Mind” item to equip. At the start of each of your turns, choose a different form to change the item into and lose one Durability. The activated effects of the “Mind” items do not reduce Durability. If you already have a “Mind” item equipped, destroy it",
             LoreText = @"",
@@ -3352,13 +2488,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             Name = "Creative Mind",
             ImageLocation = "Creative_Mind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
 The cost of spells which did not start in your deck is reduced by (3)",
@@ -3383,13 +2513,7 @@ The cost of spells which did not start in your deck is reduced by (3)",
             Name = "Deep Mind",
             ImageLocation = "Deep_Mind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
 When you select this form, draw 3 cards",
@@ -3414,13 +2538,7 @@ When you select this form, draw 3 cards",
             Name = "Devastating Mind",
             ImageLocation = "Devastating_Mind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
 Your hero's attack is increased by your <b>Empowered</b> value. Whenever your hero kills a unit, any excess damage is randomly split among all enemy units within Range 2 of the killed unit",
@@ -3445,13 +2563,7 @@ Your hero's attack is increased by your <b>Empowered</b> value. Whenever your he
             Name = "Protected Mind",
             ImageLocation = "Protected_Mind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
 At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Protected</b> gained in this way at the start of your next turn",
@@ -3476,13 +2588,7 @@ At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Pr
             Name = "Replicative Mind",
             ImageLocation = "Replicative_Mind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
 Whenever you cast a spell, cast it again on the same target",
@@ -3507,13 +2613,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Abyssal",
             ImageLocation = "Abyssal1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -3542,13 +2642,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Abyssal Warlock",
             ImageLocation = "Abyssal2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -3577,13 +2671,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Abyssal Voidlord",
             ImageLocation = "Abyssal3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -3612,13 +2700,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Voidling",
             ImageLocation = "Voidling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Summon, Warden</b>",
             LoreText = @"",
@@ -3647,13 +2729,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Abyss Imp",
             ImageLocation = "Abyss_Imp",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"<b>Deployment:</b> Discard a card
 <b>Last Rites:</b> Shuffle an Abyss Imp into your deck. Draw a card",
@@ -3683,13 +2759,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Abyssal Cultist",
             ImageLocation = "Abyssal_Cultist",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
             LoreText = @"",
@@ -3718,13 +2788,7 @@ Whenever you cast a spell, cast it again on the same target",
             Name = "Bite",
             ImageLocation = "Bite",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Mana, 1), },
 
             Text = @"<b>Lifebond</b>
 Deal 4 damage to a unit",
@@ -3749,13 +2813,7 @@ Deal 4 damage to a unit",
             Name = "Dark Pact",
             ImageLocation = "Dark_Pact",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 0,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Mana, 0), },
 
             Text = @"Increase your mana by 4. Add a random Void unit to your hand",
             LoreText = @"",
@@ -3779,13 +2837,7 @@ Deal 4 damage to a unit",
             Name = "Void Soul",
             ImageLocation = "Void_Soul",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             Text = @"<b>Ethereal</b>
 Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
@@ -3815,13 +2867,7 @@ Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
             Name = "Void Touch",
             ImageLocation = "Void_Touch",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"Give a friendly unit with <b>Summon</b> +4 Attack, +4 Health. Gain additional Attack and Health points equal to your <b>Empowered</b> value.
 Deal damage to the caster equal to the additional points gained.",
@@ -3846,13 +2892,7 @@ Deal damage to the caster equal to the additional points gained.",
             Name = "Abyssal Dreadspeaker",
             ImageLocation = "Abyssal_Dreadspeaker",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Conduit, Empowered +1</b>
 Whenever you discard a card or a friendly unit dies within Range 2, draw a card",
@@ -3882,13 +2922,7 @@ Whenever you discard a card or a friendly unit dies within Range 2, draw a card"
             Name = "Blood Pact",
             ImageLocation = "Blood_Pact",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Destroy a friendly unit. Restore health equal to the destroyed unit's health to another unit. Draw a card",
             LoreText = @"",
@@ -3912,13 +2946,7 @@ Whenever you discard a card or a friendly unit dies within Range 2, draw a card"
             Name = "Dreadbolt",
             ImageLocation = "Dreadbolt",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"Deal 4 damage to a unit. Deal an equal amount of damage to the caster",
             LoreText = @"",
@@ -3942,13 +2970,7 @@ Whenever you discard a card or a friendly unit dies within Range 2, draw a card"
             Name = "Vampire Aristocrat",
             ImageLocation = "Vampire_Aristocrat",
 
-            ResourceDevotion = 6,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
             Text = @"<b>Lifebond</b>
 At the start of your turn, <b>Regenerate</b>
@@ -3979,13 +3001,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Name = "Vampire Courtesan",
             ImageLocation = "Vampire_Courtesan",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"<b>Lifebond</b>",
             LoreText = @"",
@@ -4014,13 +3030,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Name = "Abyss Knight",
             ImageLocation = "Abyss_Knight",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>
 Whenever you discard a card, gain Attack and Health equal to its total cost",
@@ -4050,13 +3060,7 @@ Whenever you discard a card, gain Attack and Health equal to its total cost",
             Name = "Abyssal Summoner",
             ImageLocation = "Abyssal_Summoner",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Deployment:</b> You can <b>Summon</b> one additional unit for the rest of the scenario. Deal 3 damage to your hero",
             LoreText = @"",
@@ -4085,13 +3089,7 @@ Whenever you discard a card, gain Attack and Health equal to its total cost",
             Name = "Eye of the Void",
             ImageLocation = "Eye_of_the_Void",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Summon, Flying</b>
 Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
@@ -4121,13 +3119,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "Imp Mother",
             ImageLocation = "Imp_Mother",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>",
             LoreText = @"",
@@ -4156,13 +3148,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "Abyssal Voidcaller",
             ImageLocation = "Abyssal_Voidcaller",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Deployment:</b> Use <b>Call of the Void</b>",
             LoreText = @"",
@@ -4191,13 +3177,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "Soul Consumer",
             ImageLocation = "Soul_Consumer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 7,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 7), },
 
             Text = @"Whenever this kills a unit, return a random card you discarded this game to your hand",
             LoreText = @"",
@@ -4226,13 +3206,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "The Void Hungers",
             ImageLocation = "The_Void_Hungers",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Mana, 3), },
 
             Text = @"Destroy a friendly unit. Deal damage to another unit equal to the destroyed unit's health",
             LoreText = @"",
@@ -4256,13 +3230,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "Abysslord Marrex",
             ImageLocation = "Abysslord_Marrex",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 7,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Mana, 7), },
 
             Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>",
             LoreText = @"",
@@ -4291,13 +3259,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             Name = "Realm Convergence",
             ImageLocation = "Realm_Convergence",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario
 Deal damage to your hero equal to half their remaining health",
@@ -4322,13 +3284,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Elementalist",
             ImageLocation = "Elementalist1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -4357,13 +3313,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Elementalist Shaman",
             ImageLocation = "Elementalist2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -4392,13 +3342,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Elementalist Elder",
             ImageLocation = "Elementalist3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -4427,13 +3371,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Fireball",
             ImageLocation = "Fireball",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"Deal 3 damage to all units within an area of Radius 2",
             LoreText = @"",
@@ -4457,13 +3395,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Goblin Blastmage",
             ImageLocation = "Goblin_Blastmage",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Empowered +1</b>",
             LoreText = @"",
@@ -4492,13 +3424,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Ice Blast",
             ImageLocation = "Ice_Blast",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"Deal 2 damage to a unit and <b>Stun</b> it",
             LoreText = @"",
@@ -4522,13 +3448,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Lightning Bolt",
             ImageLocation = "Lightning_Bolt",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"Deal 3 damage to all units within an area of Line 6 from the caster",
             LoreText = @"",
@@ -4552,13 +3472,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Mana Surge",
             ImageLocation = "Mana_Surge",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 0,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 0), new Resource(CardResources.Wild, 2), },
 
             Text = @"Increase your Mana by 3. Gain <b>Empowered +2</b> until the end of your turn",
             LoreText = @"",
@@ -4582,13 +3496,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Wave Sorceror",
             ImageLocation = "Wave_Sorceror",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 4,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
             Text = @"<b>Unleash</b>",
             LoreText = @"",
@@ -4617,13 +3525,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Air Elemental",
             ImageLocation = "Air_Elemental",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>",
             LoreText = @"",
@@ -4652,13 +3554,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Earth Elemental",
             ImageLocation = "Earth_Elemental",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>",
             LoreText = @"",
@@ -4687,13 +3583,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Fire Elemental",
             ImageLocation = "Fire_Elemental",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon Prepared</b>",
             LoreText = @"",
@@ -4722,13 +3612,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Tend the Elements",
             ImageLocation = "Tend_the_Elements",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             Text = @"<b>Cycle +3</b>
 Draw a card",
@@ -4753,13 +3637,7 @@ Draw a card",
             Name = "Water Elemental",
             ImageLocation = "Water_Elemental",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon</b>
 Whenever this unit deals damage to another unit, <b>Stun</b> it",
@@ -4789,13 +3667,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Earthbinder",
             ImageLocation = "Earthbinder",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = 1,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), new Resource(CardResources.Wild, 1), },
 
             Text = @"<b>Empowered +1</b>",
             LoreText = @"",
@@ -4824,13 +3696,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Elemental Rush",
             ImageLocation = "Elemental_Rush",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 5,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
             Text = @"Draw a card. Reduce the cost of all spells in your hand and deck by (2) <b>Cycle -5</b>",
             LoreText = @"",
@@ -4854,13 +3720,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Monk of the Four Winds",
             ImageLocation = "Monk_of_the_Four_Winds",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Deployment:</b> Use <b>Call of the Winds</b>",
             LoreText = @"",
@@ -4889,13 +3749,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Pummel",
             ImageLocation = "Pummel",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"Deal 3 damage to a unit. Move it up to 2 tiles away from the caster",
             LoreText = @"",
@@ -4919,13 +3773,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Hurricane",
             ImageLocation = "Hurricane",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 5,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), new Resource(CardResources.Wild, 3), },
 
             Text = @"Choose an area of Radius 2. Deal 4 damage to all units on the outer ring and push them in a line 2 tiles directly away from the centre of the area. If they impact any obstacle terrain, deal an additional 2 damage to them",
             LoreText = @"",
@@ -4949,13 +3797,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Earthquake",
             ImageLocation = "Earthquake",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 6,
-            ResourceWild = 8,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), new Resource(CardResources.Wild, 8), },
 
             Text = @"Deal 4 damage to all units within an area of Radius 3 and increase the movement cost of all tiles in the area by 1 until the end of your next turn. At the start of your next turn, deal 4 damage to all units within the same area.",
             LoreText = @"",
@@ -4979,13 +3821,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Wall of Fire",
             ImageLocation = "Wall_of_Fire",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 8,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
             Text = @"Deal 5 damage to all units in an area of Wall 5. If any unit enters this area until the end of your next turn, they take 5 damage",
             LoreText = @"",
@@ -5009,13 +3845,7 @@ Whenever this unit deals damage to another unit, <b>Stun</b> it",
             Name = "Master Kybas",
             ImageLocation = "Master_Kybas",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 8,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Conduit, Cycle -6</b>
 Reduce the cost of all spells generated by this unit to 0.
@@ -5046,13 +3876,7 @@ Reduce the cost of all spells generated by this unit to 0.
             Name = "Tidal Wave",
             ImageLocation = "Tidal_Wave",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 10,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 10), },
 
             Text = @"In an area of line 6 from the caster as well as both adjacent lines, deal 2 damage, <b>Stun</b> and push back 3 tiles all units in that area.
 The damage of this spell is multiplied by your <b>Empowered</b> score instead of being added. The damage of this spell cannot be reduced below 2",
@@ -5077,13 +3901,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Grovewatcher",
             ImageLocation = "Grovewatcher1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5112,13 +3930,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Grovewatcher Woodwalker",
             ImageLocation = "Grovewatcher2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5147,13 +3959,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Grovewatcher Archdruid",
             ImageLocation = "Grovewatcher3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5182,13 +3988,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Grasping Vine",
             ImageLocation = "Grasping_Vine",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"<b>Root</b> an enemy. Draw a card",
             LoreText = @"",
@@ -5212,13 +4012,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Honour the Old Gods",
             ImageLocation = "Honour_the_Old_Gods",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 0,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 0), },
 
             Text = @"Increase your Wild by 3 and <b>Cycle +3</b>. Draw a card",
             LoreText = @"",
@@ -5242,13 +4036,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Sosthrim Druid",
             ImageLocation = "Sosthrim_Druid",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Whenever this attacks a unit <b>Root</b> it",
             LoreText = @"",
@@ -5277,13 +4065,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Juicy Fruit",
             ImageLocation = "Juicy_Fruit",
 
-            ResourceDevotion = 0,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), },
 
             Text = @"Restore 5 Health to a unit",
             LoreText = @"",
@@ -5307,13 +4089,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Sosthrim Grovekeeper",
             ImageLocation = "Sosthrim_Grovekeeper",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"<b>Deployment:</b> Shuffle 5 ""Juicy Fruit"" cards into your deck. 
 At the end of each of your turns, draw a card",
@@ -5343,13 +4119,7 @@ At the end of each of your turns, draw a card",
             Name = "Woodland Sprite",
             ImageLocation = "Woodland_Sprite",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
             Text = @"<b>Lifebond, Spellshield</b>",
             LoreText = @"",
@@ -5378,13 +4148,7 @@ At the end of each of your turns, draw a card",
             Name = "Worldroot Sapling",
             ImageLocation = "Worldroot_Sapling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 1,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
             Text = @"<b>Deployment: Cycle -3</b>
 At the start of each of your turns, gain 2 Wild",
@@ -5414,13 +4178,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Earth Ritual",
             ImageLocation = "Earth_Ritual",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Give a unit and the caster +3 Health",
             LoreText = @"",
@@ -5444,13 +4202,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Faerie's Blessing",
             ImageLocation = "Faeries_Blessing",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
             Text = @"Give a unit <b>Spellshield</b> and <b>Lifebond</b>",
             LoreText = @"",
@@ -5474,13 +4226,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Patient Harvest",
             ImageLocation = "Patient_Harvest",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"At the start of your next turn, gain 4 Wild, <b>Cycle +4</b> and draw 2 cards",
             LoreText = @"",
@@ -5504,13 +4250,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Sosthrim Harvester",
             ImageLocation = "Sosthrim Harvester",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), },
 
             Text = @"Whenever a unit dies within Range 3, draw a card and <b>Prayer +2</b>",
             LoreText = @"",
@@ -5539,13 +4279,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Agent",
             ImageLocation = "Agent1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5574,13 +4308,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Agent Infiltrator",
             ImageLocation = "Agent2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5609,13 +4337,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Agent Spymaster",
             ImageLocation = "Agent3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5644,13 +4366,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Captain",
             ImageLocation = "Captain1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5679,13 +4395,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Battle Gear",
             ImageLocation = "Battle_Gear",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Whenever your hero attacks, gain +1 Attack and <b>Protected (1)</b> until the end of your turn",
             LoreText = @"",
@@ -5709,13 +4419,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Captain Champion",
             ImageLocation = "Captain2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5744,13 +4448,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Captain General",
             ImageLocation = "Captain3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5779,13 +4477,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Lifebringer",
             ImageLocation = "Lifebringer1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5814,13 +4506,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Lorekeeper",
             ImageLocation = "Lorekeeper1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5849,13 +4535,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Luminist",
             ImageLocation = "Luminist1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5884,13 +4564,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Mercenary",
             ImageLocation = "Mercenary1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5919,13 +4593,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Oathknight",
             ImageLocation = "Oathknight1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5954,13 +4622,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Trickster",
             ImageLocation = "Trickster1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -5989,13 +4651,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Shiv",
             ImageLocation = "Shiv",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Deal 2 damage to a unit",
             LoreText = @"",
@@ -6019,13 +4675,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Waystalker",
             ImageLocation = "Waystalker1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -6054,13 +4704,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Trained Hound",
             ImageLocation = "Trained_Hound",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 1,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
             Text = @"<b>Prepared</b>",
             LoreText = @"",
@@ -6089,13 +4733,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Wildkin",
             ImageLocation = "Wildkin1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -6124,13 +4762,7 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Worldroot Defender",
             ImageLocation = "Worldroot_Defender",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             Text = @"<b>Warden</b>
 Whenever this unit deals damage, <b>Cycle</b> for the same amount",
@@ -6160,13 +4792,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Name = "Faerie Guile",
             ImageLocation = "Faerie_Guile",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 2), },
 
             Text = @"Gain control of an enemy minion until the start of your next turn",
             LoreText = @"",
@@ -6190,13 +4816,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Name = "Spined Carapace",
             ImageLocation = "Spined_Carapace",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             Text = @"Whenever an enemy is rooted or melee attacks your hero, deal 2 damage to it",
             LoreText = @"",
@@ -6220,13 +4840,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Name = "Treeheart Censer",
             ImageLocation = "Treeheart_Censer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
             Text = @"Whenever a friendly unit dies wthin Range 3, shuffle a copy of it into your deck and <b>Cycle -2</b>",
             LoreText = @"",
@@ -6250,13 +4864,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Name = "Worldroot Dreamer",
             ImageLocation = "Worldroot_Dreamer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 7,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
             Text = @"<b>Deployment: Cycle -7</b>
 At the end of your turn, reduce the Wild cost of a random card in your hand by (6)",
@@ -6286,13 +4894,7 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
             Name = "Faerie Harbringer",
             ImageLocation = "Faerie_Harbringer",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 4,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Wild, 4), },
 
             Text = @"<b>Lifebond, Spellshield
 Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Attack, +2 Health",
@@ -6322,13 +4924,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
             Name = "Recycling",
             ImageLocation = "Recycling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 8,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
             Text = @"Deploy three friendly Treant units which died this game adjacent to the caster. <b>Cycle -6</b>",
             LoreText = @"",
@@ -6352,13 +4948,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
             Name = "Worldroot Ancient",
             ImageLocation = "Worldroot_Ancient",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 9,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 9), },
 
             Text = @"<b>Unleash, Warden
 Cycle -6</b>",
@@ -6388,13 +4978,7 @@ Cycle -6</b>",
             Name = "Queen Aedellaei",
             ImageLocation = "Queen_Aedellaei",
 
-            ResourceDevotion = 6,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Lifebond, Spellshield</b>",
             LoreText = @"",
@@ -6423,13 +5007,7 @@ Cycle -6</b>",
             Name = "Naharr, the Worldroot",
             ImageLocation = "Naharr_the_Worldroot",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 12,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 12), },
 
             Text = @"<b>Unleash, Warden, Cycle -9
 Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any enchantments gained from <b>Unleash</b>",
@@ -6459,13 +5037,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Lifebringer Cleric",
             ImageLocation = "Lifebringer2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -6494,13 +5066,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Lifebringer Archpriest",
             ImageLocation = "Lifebringer3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -6529,13 +5095,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Confusion",
             ImageLocation = "Potion_of_Confusion",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Swap a minions attack and health until the start of your next turn",
             LoreText = @"",
@@ -6559,13 +5119,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Decay",
             ImageLocation = "Potion_of_Decay",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Reduce a units attack by 3 until the start of your next turn",
             LoreText = @"",
@@ -6589,13 +5143,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Frost",
             ImageLocation = "Potion_of_Frost",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"<b>Stun</b> a unit",
             LoreText = @"",
@@ -6619,13 +5167,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Healing",
             ImageLocation = "Potion_of_Healing",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Restore 3 Health to a unit. Any excess healing increases the units attack by that amount until the start of your next turn",
             LoreText = @"",
@@ -6649,13 +5191,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Shadows",
             ImageLocation = "Potion_of_Shadows",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Give a unit <b>Stealth</b> until the start of your next turn",
             LoreText = @"",
@@ -6679,13 +5215,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Potion of Speed",
             ImageLocation = "Potion_of_Speed",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
             Text = @"Give a unit +2 Speed until the start of your next turn",
             LoreText = @"",
@@ -6709,13 +5239,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
             Name = "Divine Ritual",
             ImageLocation = "Divine_Ritual",
 
-            ResourceDevotion = 0,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Prayer +2</b>
 Give the caster +3 Health",
@@ -6740,13 +5264,7 @@ Give the caster +3 Health",
             Name = "Lay on Hands",
             ImageLocation = "Lay_on_Hands",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Restore 5 Health to a unit. If the unit has been <b>Spellbound</b>, restore any enchantments of text removed",
             LoreText = @"",
@@ -6770,13 +5288,7 @@ Give the caster +3 Health",
             Name = "Quick Alchemy",
             ImageLocation = "Quick_Alchemy",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 1,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             Text = @"Add a random potion card to your hand",
             LoreText = @"",
@@ -6800,13 +5312,7 @@ Give the caster +3 Health",
             Name = "Sorena Cleric",
             ImageLocation = "Sorena_Cleric",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"<b>Lifebond</b>",
             LoreText = @"",
@@ -6835,13 +5341,7 @@ Give the caster +3 Health",
             Name = "Tending Priest",
             ImageLocation = "Tending_Priest",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
             Text = @"<b>Deployment:</b> Use <b>Soothe Wounds</b>",
             LoreText = @"",
@@ -6870,13 +5370,7 @@ Give the caster +3 Health",
             Name = "Tithe Collector",
             ImageLocation = "Tithe_Collector",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"",
             LoreText = @"",
@@ -6905,13 +5399,7 @@ Give the caster +3 Health",
             Name = "Golden Host",
             ImageLocation = "Golden_Host",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Warden</b>
 Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>",
@@ -6941,13 +5429,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             Name = "Offer Alms",
             ImageLocation = "Offer_Alms",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Regenerate</b> a minion",
             LoreText = @"",
@@ -6971,13 +5453,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             Name = "Potion Seller",
             ImageLocation = "Potion_Seller",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             Text = @"<b>Deployment:</b> Use <b>Potion Sale</b>",
             LoreText = @"",
@@ -7006,13 +5482,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             Name = "Return Soul",
             ImageLocation = "Return_Soul",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Deploy a friendly minion which has died this game adjacent to the caster",
             LoreText = @"",
@@ -7036,13 +5506,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
             Name = "Sorena High Priest",
             ImageLocation = "Sorena_High_Priest",
 
-            ResourceDevotion = 6,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
             Text = @"<b>Conduit, Lifebond</b>
 Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is doubled",
@@ -7072,13 +5536,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Name = "Amulet of Divinity",
             ImageLocation = "Amulet_of_Divinity",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Gold, 2), },
 
             Text = @"Whenever a friendly unit dies within Range 2 of your hero, store its soul. 
 <b>Last Rites:</b> Deploy the stored units adjacent to your hero",
@@ -7103,13 +5561,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Name = "Binding Circle",
             ImageLocation = "Binding_Circle",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"<b>Spellbind</b> then <b>Root</b> a unit",
             LoreText = @"",
@@ -7133,13 +5585,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Name = "Golden Lifebinder",
             ImageLocation = "Golden_Lifebinder",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Deployment:</b> Choose one of three friendly units which have died this game to deploy adjacent to the caster",
             LoreText = @"",
@@ -7168,13 +5614,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Name = "Sanctuary",
             ImageLocation = "Sanctuary",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"Restore 4 Health to all friendly units in an area of Radius 2 from the caster. Whenever an ally starts its turn there, restore 2 Health to it",
             LoreText = @"",
@@ -7198,13 +5638,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Name = "Defender of Sorena",
             ImageLocation = "Defender_of_Sorena",
 
-            ResourceDevotion = 7,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), },
 
             Text = @"<b>Lifebond, Warden</b>
 Deal 2 damage to any enemy unit which damages friendly units within Range 2",
@@ -7234,13 +5668,7 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
             Name = "Golden Hostcaller",
             ImageLocation = "Golden_Hostcaller",
 
-            ResourceDevotion = 8,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 4), },
 
             Text = @"<b>Conduit
 Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
@@ -7270,13 +5698,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
             Name = "Potion Satchel",
             ImageLocation = "Potion_Satchel",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             Text = @"Whenever you add a potion card to your hand, add another copy of it to your hand",
             LoreText = @"",
@@ -7300,13 +5722,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
             Name = "Divine Intervention",
             ImageLocation = "Divine_Intervention",
 
-            ResourceDevotion = 30,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 30), },
 
             Text = @"Costs (1) Devotion less for each point your units have been healed since the last ""Divine Intervention"" was played.
 Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the caster. Draw 3 cards",
@@ -7331,13 +5747,7 @@ Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the
             Name = "Tythelia, Lady of Gold",
             ImageLocation = "Tythelia_Lady_of_Gold",
 
-            ResourceDevotion = 8,
-            ResourceEnergy = null,
-            ResourceGold = 6,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 6), },
 
             Text = @"<b>Warden
 Deployment:</b> Deploy two friendly units which have died this game beside this one. Whenever one of them dies, <b>Regenerate</b> this unit",
@@ -7367,13 +5777,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             Name = "Lorekeeper Keymaster",
             ImageLocation = "Lorekeeper2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -7402,13 +5806,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             Name = "Lorekeeper Vaultwarden",
             ImageLocation = "Lorekeeper3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -7437,13 +5835,7 @@ Deployment:</b> Deploy two friendly units which have died this game beside this 
             Name = "Recorded Inspiration",
             ImageLocation = "Studious_Inspiration",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
             Text = @"<b>Cast When Drawn</b>
 Increase your base Knowledge rate by 1",
@@ -7468,13 +5860,7 @@ Increase your base Knowledge rate by 1",
             Name = "Dedicated Preservation",
             ImageLocation = "Dedicated_Preservation",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Knowledge, 0), },
 
             Text = @"<b>Study (4).</b> Shuffle a copy of a spell in your hand into your deck",
             LoreText = @"",
@@ -7498,13 +5884,7 @@ Increase your base Knowledge rate by 1",
             Name = "Mind Collapse",
             ImageLocation = "Mind_Collapse",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Lifebond</b>
 Deal damage to a unit equal to its attack",
@@ -7529,13 +5909,7 @@ Deal damage to a unit equal to its attack",
             Name = "Oldari Acolyte",
             ImageLocation = "Oldari_Acolyte",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Whenever this attacks a unit, reduce its attack by 2 until the start of your next turn",
             LoreText = @"",
@@ -7564,13 +5938,7 @@ Deal damage to a unit equal to its attack",
             Name = "Ring the Bells",
             ImageLocation = "Ring_the_Bells",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"Draw a minion from your deck. Give it +2 Attack, +2 Health",
             LoreText = @"",
@@ -7594,13 +5962,7 @@ Deal damage to a unit equal to its attack",
             Name = "Subdue",
             ImageLocation = "Subdue",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"Destroy a minion with 5 or more attack",
             LoreText = @"",
@@ -7624,13 +5986,7 @@ Deal damage to a unit equal to its attack",
             Name = "Vault Collector",
             ImageLocation = "Vault_Collector",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Deployment:</b> Use <b>Submit Collection</b>",
             LoreText = @"",
@@ -7659,13 +6015,7 @@ Deal damage to a unit equal to its attack",
             Name = "Equalize",
             ImageLocation = "Equalize",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             Text = @"Set a minions Health equal to its attack",
             LoreText = @"",
@@ -7689,13 +6039,7 @@ Deal damage to a unit equal to its attack",
             Name = "Maddening Knowledge",
             ImageLocation = "Maddening_Knowledge",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Knowledge, 2), },
 
             Text = @"Force a minion to melee attack a random adjacent unit. It loses its next action",
             LoreText = @"",
@@ -7719,13 +6063,7 @@ Deal damage to a unit equal to its attack",
             Name = "Oldari Spellweaver",
             ImageLocation = "Oldari_Spellweaver",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"<b>Spellshield</b>
 After a unit casts a spell within Range 2, <b>Prayer +2</b>.
@@ -7756,13 +6094,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Name = "Pacify",
             ImageLocation = "Pacify",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             Text = @"Reduce a units attack by 3 until the start of your next turn",
             LoreText = @"",
@@ -7786,13 +6118,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Name = "Vault Archivist",
             ImageLocation = "Vault_Archivist",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 4,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
             Text = @"<b>Deployment: Study (4)</b>",
             LoreText = @"",
@@ -7821,13 +6147,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Name = "Book of Records",
             ImageLocation = "Book_of_Records",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"Whenever you cast a spell, shuffle a copy of it into your deck",
             LoreText = @"",
@@ -7851,13 +6171,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Name = "Deep Priest",
             ImageLocation = "Deep_Priest",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Knowledge, 3), },
 
             Text = @"<b>Lifebond
 Deployment:</b> Choose an enemy minion. Swap this units attack and Health with it",
@@ -7887,13 +6201,7 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
             Name = "Prevent Repetiton",
             ImageLocation = "Prevent_Repetition",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 6,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
             Text = @"<b>Divinate (3)</b>
 Draw 3 cards",
@@ -7918,13 +6226,7 @@ Draw 3 cards",
             Name = "Vault Catalyst",
             ImageLocation = "Vault_Catalyst",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 4,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
             Text = @"<b>Conduit</b>
 After you cast a spell, draw a spell of the same total cost from your deck",
@@ -7954,13 +6256,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Name = "Book of Madness",
             ImageLocation = "Book_of_Madness",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 5,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Knowledge, 5), },
 
             Text = @"Whenever an enemy within Range 3 of your hero attacks, it instead melee attacks a random adjacent unit and loses its next action",
             LoreText = @"",
@@ -7984,13 +6280,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Name = "Deep Conversion",
             ImageLocation = "Deep_Conversion",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Knowledge, 7), },
 
             Text = @"Gain control of an enemy minion",
             LoreText = @"",
@@ -8014,13 +6304,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Name = "Repress",
             ImageLocation = "Repress",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 5,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
             Text = @"Destroy all minions with 5 or more attack in an area of Radius 3",
             LoreText = @"",
@@ -8044,13 +6328,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Name = "Corthax, Keeper of the Deeps",
             ImageLocation = "Corthax_Keeper_of_the_Deeps",
 
-            ResourceDevotion = 6,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), new Resource(CardResources.Knowledge, 7), },
 
             Text = @"<b>Lifebond</b>
 <b>Last Rites:</b>Use <b>Deep Exposure</b> on all units within Range 2",
@@ -8080,13 +6358,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Name = "Grand Archivist Nurosi",
             ImageLocation = "Grand_Archivist_Nurosi",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 8,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
             Text = @"<b>Conduit</b>
 Spells in your hand which did not start in your deck have their cost reduced by (3)
@@ -8118,13 +6390,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Oathknight Guardian",
             ImageLocation = "Oathknight2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -8153,13 +6419,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Oathknight Sentinel",
             ImageLocation = "Oathknight3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -8188,13 +6448,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Aid From Above",
             ImageLocation = "Aid_From_Above",
 
-            ResourceDevotion = 6,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
             Text = @"Deploy two ""Angel of Protection"" units beside the caster",
             LoreText = @"",
@@ -8218,13 +6472,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Angel of Protection",
             ImageLocation = "Angel_of_Protection",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
             Text = @"<b>Warden, Flying, Lifebond</b>",
             LoreText = @"",
@@ -8253,13 +6501,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Angel of Devotion",
             ImageLocation = "Angel_of_Devotion",
 
-            ResourceDevotion = 2,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
             Text = @"<b>Flying</b>",
             LoreText = @"",
@@ -8288,13 +6530,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Battle Prayer",
             ImageLocation = "Battle_Prayer",
 
-            ResourceDevotion = 0,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Prayer +2.</b> Give the caster <b>Protected (3)</b>",
             LoreText = @"",
@@ -8318,13 +6554,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Divine Strength",
             ImageLocation = "Divine_Strength",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"Give a unit +4 Attack, +4 Health",
             LoreText = @"",
@@ -8348,13 +6578,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
             Name = "Eager Squire",
             ImageLocation = "Eager_Squire",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"<b>Prepared</b>
 At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack, +1 Health.",
@@ -8384,13 +6608,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
             Name = "Shield of Faith",
             ImageLocation = "Shield_of_Faith",
 
-            ResourceDevotion = 1,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
             Text = @"Give a unit <b>Protected (3).</b> Draw a card",
             LoreText = @"",
@@ -8414,13 +6632,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
             Name = "Angel of Purity",
             ImageLocation = "Angel_of_Purity",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), },
 
             Text = @"<b>Flying, Lifebond
 Lifebond</b> healing from this unit heals this unit as well as your hero",
@@ -8450,13 +6662,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Name = "Bravery",
             ImageLocation = "Bravery",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"The caster gains <b>Overwhelm</b> until the end of your turn. If the caster kills a unit before the end of your turn, give all friendly units within Range 2 +2 Attack and +2 Health",
             LoreText = @"",
@@ -8480,13 +6686,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Name = "Oathspeaker",
             ImageLocation = "Oathspeaker",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 2), },
 
             Text = @"<b>Deployment:</b> Draw an Oath from your deck. If you don't have an Oath in your deck, add a random Oath card to your hand",
             LoreText = @"",
@@ -8515,13 +6715,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Name = "Shield of Goldland",
             ImageLocation = "Shield_of_Goldland",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"<b>Warden, Protected (2)</b>
 At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
@@ -8551,13 +6745,7 @@ At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
             Name = "Warhorse",
             ImageLocation = "Warhorse",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Prepared</b>
 Gain +1 Attack for each tile moved this turn until the end of your turn",
@@ -8587,13 +6775,7 @@ Gain +1 Attack for each tile moved this turn until the end of your turn",
             Name = "Angel of Judgement",
             ImageLocation = "Angel_of_Judgement",
 
-            ResourceDevotion = 7,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), },
 
             Text = @"<b>Flying, Vanguard
 Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number of units it has killed",
@@ -8623,13 +6805,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
             Name = "Consecrate",
             ImageLocation = "Consecrate",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
             Text = @"Deal 2 damage to all enemy units within an area of Radius 2 from the caster. Whenever an enemy unit enters these tiles, deal 1 damage to it",
             LoreText = @"",
@@ -8653,13 +6829,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
             Name = "Mount Up",
             ImageLocation = "Mount_Up",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Choose a friendly Steed unit. The casters speed is increased up to that unit's speed and gains any text effect on it as an Enchantment until the end of your next turn",
             LoreText = @"",
@@ -8683,13 +6853,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
             Name = "Pegasus",
             ImageLocation = "Pegasus",
 
-            ResourceDevotion = 3,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Energy, 4), },
 
             Text = @"<b>Prepared, Flying</b>
 Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhelm</b> until the end of your turn",
@@ -8719,13 +6883,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Protection",
             ImageLocation = "Oath of Protection",
 
-            ResourceDevotion = 7,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), new Resource(CardResources.Energy, 4), },
 
             Text = @"Equip an ""Oath of Protection"" item. Destroy any other Oath item you have equipped",
             LoreText = @"",
@@ -8749,13 +6907,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Protection",
             ImageLocation = "Oath_of_Protection_Item",
 
-            ResourceDevotion = 7,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), new Resource(CardResources.Energy, 4), },
 
             Text = @"When this is equipped and at the start of each turn, your hero gains the following enchantments which end at the start of your next turn: <b>Warden.</b> At the start of your turn, gain <b>Protected (5).</b> All adjacent friendly units gain <b>Spellshield</b>",
             LoreText = @"",
@@ -8779,13 +6931,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Restoration",
             ImageLocation = "Oath_of_Restoration",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
             Text = @"Equip an ""Oath of Restoration"" item. Destroy any other Oath items you have equipped",
             LoreText = @"",
@@ -8809,13 +6955,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Restoration",
             ImageLocation = "Oath_of_Restoration_Item",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
             Text = @"When this is equipped and at the start of your each turn your hero gains the following enchantments which end at the start of your next turn: <b>Lifebond.</b> Whenever this unit is healed, heal all other friendly units within Range 2 for the same amount",
             LoreText = @"",
@@ -8839,13 +6979,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Retribution",
             ImageLocation = "Oath_of_Retribution_Item",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = 6,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
             Text = @"Equip an ""Oath of Retribution"" item. Destroy any other Oath items you have equipped",
             LoreText = @"",
@@ -8869,13 +7003,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Oath of Retribution",
             ImageLocation = "Oath_of_Retribution_Item",
 
-            ResourceDevotion = 4,
-            ResourceEnergy = 6,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
             Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of units the target has killed. Whenever this unit kills an enemy, draw a card",
             LoreText = @"",
@@ -8899,13 +7027,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Name = "Ethelia, Chosen of the Light",
             ImageLocation = "Ethelia_Chosen_of_the_Light",
 
-            ResourceDevotion = 15,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 15), },
 
             Text = @"<b>Flying, Lifebond, Vanguard</b>
 Costs (1) Devotion less for every Angel which has died this game.
@@ -8936,13 +7058,7 @@ Costs (1) Devotion less for every Angel which has died this game.
             Name = "Lord Seldoras Kerhall",
             ImageLocation = "Lord_Seldoras_Kerhall",
 
-            ResourceDevotion = 5,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Conduit, Protected (6)</b>
 Whenever your hero recieves an enchantment, this unit recieves it as well",
@@ -8972,13 +7088,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             Name = "Trickster Shadow",
             ImageLocation = "Trickster2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -9007,13 +7117,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             Name = "Trickster Wraith",
             ImageLocation = "Trickster3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -9042,13 +7146,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
             Name = "Bounty Hunter",
             ImageLocation = "Bounty_Hunter",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Vanguard, Stalker</b>
 Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
@@ -9078,13 +7176,7 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
             Name = "Deathsworn Infiltrator",
             ImageLocation = "Deathsworn_Infiltrator",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Mana, 2), },
 
             Text = @"<b>Vanguard, Empowered +2
 Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> value",
@@ -9114,13 +7206,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Name = "Flash",
             ImageLocation = "Flash",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             Text = @"Teleport the caster to an empty tile. Draw a card",
             LoreText = @"",
@@ -9144,13 +7230,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Name = "Shady Recruiter",
             ImageLocation = "Shady_Recruiter",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 5,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
 
             Text = @"<b>Deployment:</b> Use <b>Hefty Bribe</b>",
             LoreText = @"",
@@ -9179,13 +7259,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Name = "Street Tricks",
             ImageLocation = "Street_Tricks",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 0,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), new Resource(CardResources.Mana, 3), },
 
             Text = @"Gain 2 Gold. Add 2 Shivs to your hand",
             LoreText = @"",
@@ -9209,13 +7283,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Name = "Underbelly Cutthroat",
             ImageLocation = "Underbelly_Cutthroat",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Conduit
 Deployment:</b> Add 2 Shivs to your hand",
@@ -9245,13 +7313,7 @@ Deployment:</b> Add 2 Shivs to your hand",
             Name = "Deathsworn Assassin",
             ImageLocation = "Deathsworn_Assassin",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
             Text = @"<b>Deadly, Stalker, Stealth
 Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent additional <b>Bounty</b> of 3 Gold""",
@@ -9281,13 +7343,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Eliminate",
             ImageLocation = "Eliminate",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = 4,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Mana, 4), },
 
             Text = @"Deal 8 damage to a unit. If this spell kills the unit, gain additional <b>Bounty</b> equal to any excess damage",
             LoreText = @"",
@@ -9311,13 +7367,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Fade",
             ImageLocation = "Fade",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 1,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"Redeploy the caster or return a friendly minion to your hand. Draw a card",
             LoreText = @"",
@@ -9341,13 +7391,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Soul Blade",
             ImageLocation = "Soul_Blade",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Spellbind</b> and deal 4 damage to a unit. If this kills it, draw a card",
             LoreText = @"",
@@ -9371,13 +7415,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Underbelly Runner",
             ImageLocation = "Underbelly_Runner",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             Text = @"<b>Stalker</b>",
             LoreText = @"",
@@ -9406,13 +7444,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Blade Flurry",
             ImageLocation = "Blade_Flury",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             Text = @"Discard all shivs in your hand. Deal 1 damage to all other units within Range 1 of the caster for each shiv Discarded",
             LoreText = @"",
@@ -9436,13 +7468,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Enchanted Dagger",
             ImageLocation = "Enchanted_Dagger",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = 2,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
             Text = @"Whenever your hero attacks, give them <b>Deadly</b> until the end of your turn",
             LoreText = @"",
@@ -9466,13 +7492,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Shade Hunter",
             ImageLocation = "Shade_Hunter",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 5,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Summon, Stealth, Ethereal</b>",
             LoreText = @"",
@@ -9501,13 +7521,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Underbelly Smuggler",
             ImageLocation = "Underbelly_Smuggler",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 4,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
             Text = @"<b>Deployment:</b> Use <b>Smuggle</b>",
             LoreText = @"",
@@ -9536,13 +7550,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Name = "Convincin' Thug",
             ImageLocation = "Convincin_Thug",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 3,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Warden</b>
 Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
@@ -9572,13 +7580,7 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
             Name = "Deathsworn Cursebringer",
             ImageLocation = "Deathsworn_Cursebringer",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 5,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Conduit</b>
 Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
@@ -9608,13 +7610,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Name = "Cursed Shade",
             ImageLocation = "Cursed_Shade",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Ethereal, Stealth</b>",
             LoreText = @"",
@@ -9643,13 +7639,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Name = "Soulthief Shade",
             ImageLocation = "Soulthief_Shade",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = 8,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
             Text = @"<b>Ethereal, Summon, Stealth</b>
 Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
@@ -9679,13 +7669,7 @@ Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b
             Name = "King Toll of the Underbelly",
             ImageLocation = "King_Toll_of_the_Underbelly",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 8,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 8), },
 
             Text = @"<b>Deployment: Recruit</b> 3 enemy minions within Range 5
 Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not less than 1",
@@ -9715,13 +7699,7 @@ Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not le
             Name = "The Faceless One",
             ImageLocation = "The_Faceless_One",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = 3,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Conduit, Vanguard, Stalker
 Last Rites:</b> If killed by a minion, destroy it and return this unit to your hand with stats equal to the destroyed minion",
@@ -9751,13 +7729,7 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
             Name = "Battle Inspiration",
             ImageLocation = "Battle_Inspiration",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 0,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
             Text = @"<b>Cast When Drawn</b>
 Increase your base Knowledge rate by 1",
@@ -9782,13 +7754,7 @@ Increase your base Knowledge rate by 1",
             Name = "Battlefield Surveyor",
             ImageLocation = "Battlefield_Surveyor",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Deployment:</b> Use <b>Surveillance</b>",
             LoreText = @"",
@@ -9817,13 +7783,7 @@ Increase your base Knowledge rate by 1",
             Name = "Execute Plan",
             ImageLocation = "Execute_Plan",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 0,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Knowledge, 2), },
 
             Text = @"Gain 4 Energy until the end of your turn. Deploy a ""Man at Arms"" unit adjacent to the caster",
             LoreText = @"",
@@ -9847,13 +7807,7 @@ Increase your base Knowledge rate by 1",
             Name = "Man at Arms",
             ImageLocation = "Man_at_Arms",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"<b>Overwhelm</b>",
             LoreText = @"",
@@ -9882,13 +7836,7 @@ Increase your base Knowledge rate by 1",
             Name = "Field Medic",
             ImageLocation = "Field_Medic",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = 1,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Knowledge, 1), },
 
             Text = @"<b>Deployment</b> Gain either <b>Vanguard</b> or increase <b>Triage</b> healing by 2. Use <b>Triage</b>",
             LoreText = @"",
@@ -9917,13 +7865,7 @@ Increase your base Knowledge rate by 1",
             Name = "Goldland Knight",
             ImageLocation = "Goldland_Knight",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Prepared
 Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
@@ -9953,13 +7895,7 @@ Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
             Name = "Legionnaire",
             ImageLocation = "Legionnaire",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Warden
 Deployment:</b> Gain either +2 Attack or +2 Health",
@@ -9989,13 +7925,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Rally!",
             ImageLocation = "Rally!",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             Text = @"Grant all friendly units in Range 2 of the caster +2 Attack, +2 Health or Deploy 2 ""Man at Arms"" units adjacent to the caster",
             LoreText = @"",
@@ -10019,13 +7949,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Aggressive Stance",
             ImageLocation = "Aggressive_Stance",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Whenever your hero attacks, gain +4 Attack until the end of your turn",
             LoreText = @"",
@@ -10049,13 +7973,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Defensive Stance",
             ImageLocation = "Defensive_Stance",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"Whenever your hero attacks, gain <b>Protected (4)</b>",
             LoreText = @"",
@@ -10079,13 +7997,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Stable Stance",
             ImageLocation = "Stable_Stance",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Whenever your hero attacks, gain 1 Energy until the end of your turn",
             LoreText = @"",
@@ -10109,13 +8021,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Battle Stance",
             ImageLocation = "Battle_Stance",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If you have a Battle Sword equipped, add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
             LoreText = @"",
@@ -10139,13 +8045,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Field Commander",
             ImageLocation = "Field_Commander",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 5,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
             Text = @"<b>Conduit
 Deployment: Study (4)</b>
@@ -10176,13 +8076,7 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
             Name = "Forward Planning",
             ImageLocation = "Forward_Planning",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Divinate (2)</b>
 Reduce the cost of the the top two cards in your deck by (2)",
@@ -10207,13 +8101,7 @@ Reduce the cost of the the top two cards in your deck by (2)",
             Name = "Perfect Strike",
             ImageLocation = "Perfect_Strike",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"The caster attacks a target unit. If the target is killed, either draw a card or gain <b>Protected (5)</b>",
             LoreText = @"",
@@ -10237,13 +8125,7 @@ Reduce the cost of the the top two cards in your deck by (2)",
             Name = "Scout Regiment",
             ImageLocation = "Scout_Regiment",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = 2,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Stalker</b>
 Can target <b>Stealth</b> units
@@ -10274,13 +8156,7 @@ Can target <b>Stealth</b> units
             Name = "Battle Repair",
             ImageLocation = "Battle_Repair",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Give your equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Sword"" item",
             LoreText = @"",
@@ -10304,13 +8180,7 @@ Can target <b>Stealth</b> units
             Name = "Commander's Logbook",
             ImageLocation = "Commanders_Logbook",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"Whenever your hero attacks and kills a unit, <b>Divinate (1)</b> and draw a card",
             LoreText = @"",
@@ -10334,13 +8204,7 @@ Can target <b>Stealth</b> units
             Name = "Hardened Shield",
             ImageLocation = "Hardened_Shield",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             Text = @"Whenever your hero is attacked, gain <b>Protected (4)</b>",
             LoreText = @"",
@@ -10364,13 +8228,7 @@ Can target <b>Stealth</b> units
             Name = "Rallying Flag",
             ImageLocation = "Rallying_Flag",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"Tiles adjacent to your hero are part of your deployment zone. Whenever you deploy a unit there, lose 1 Durability",
             LoreText = @"",
@@ -10394,13 +8252,7 @@ Can target <b>Stealth</b> units
             Name = "Ballista",
             ImageLocation = "Ballista",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = 7,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Knowledge, 7), },
 
             Text = @"<b>Deployment:</b> Grant either +2 Attack, +1 Range or attacks hit enemy units adjacent to the target.
 This unit can target through obstacle terrain",
@@ -10430,13 +8282,7 @@ This unit can target through obstacle terrain",
             Name = "Captain of the Guard",
             ImageLocation = "Captain_of_the_Guard",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = 4,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 4), },
 
             Text = @"<b>Warden
 Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
@@ -10467,13 +8313,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
             Name = "Survey",
             ImageLocation = "Survey",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = 5,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
             Text = @"Choose an area of Radius 2. Draw a card for each enemy unit in the area. Your units ignore difficult terrain and <b>Warden</b> effects in the area. Remove <b>Stealth</b> from enemy units in the area",
             LoreText = @"",
@@ -10497,13 +8337,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
             Name = "Tessara, Lady of Goldland",
             ImageLocation = "Tessara_Lady_of_Goldland",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 8,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 8), },
 
             Text = @"<b>Vanguard
 Deployment:</b> Use <b>Call to Arms</b>",
@@ -10533,13 +8367,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
             Name = "Goldland Loyalist",
             ImageLocation = "Goldland_Loyalist",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"<b>Warden</b>",
             LoreText = @"",
@@ -10568,13 +8396,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
             Name = "Supreme Commander Tythas",
             ImageLocation = "Supreme_Commander_Tythas",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = 3,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 3), },
 
             Text = @"<b>Conduit, Prepared, Warden</b>
 Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected (4)</b>",
@@ -10604,13 +8426,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Luminist Starcaller",
             ImageLocation = "Luminist2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10639,13 +8455,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Luminist Moonsinger",
             ImageLocation = "Luminist3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10674,13 +8484,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Mercenary Boss",
             ImageLocation = "Mercenary2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10709,13 +8513,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Mercenary Warlord",
             ImageLocation = "Mercenary3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10744,13 +8542,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Waystalker Ranger",
             ImageLocation = "Waystalker1",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10779,13 +8571,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Waystalker Wildwalker",
             ImageLocation = "Waystalker3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10814,13 +8600,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Wildkin Shapechanger",
             ImageLocation = "Wildkin2",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10849,13 +8629,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Wildkin Berserker",
             ImageLocation = "Wildkin3",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { },
 
             Text = @"<b>Hero</b>",
             LoreText = @"",
@@ -10884,13 +8658,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Tough Hireling",
             ImageLocation = "Tough_Hireling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Warden</b>",
             LoreText = @"",
@@ -10919,13 +8687,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Persuasive Hireling",
             ImageLocation = "Persuasive_Hireling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"Whenever this attacks, gain Gold equal to attack",
             LoreText = @"",
@@ -10954,13 +8716,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Shady Hireling",
             ImageLocation = "Shady_Hireling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Stealth</b>",
             LoreText = @"",
@@ -10989,13 +8745,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Eager Hireling",
             ImageLocation = "Eager_Hireling",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = 2,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Prepared</b>",
             LoreText = @"",
@@ -11024,13 +8774,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Furious Brawl",
             ImageLocation = "Furious_Brawl",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 0,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), },
 
             Text = @"Add a random Brawl card to your hand",
             LoreText = @"",
@@ -11054,13 +8798,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Brawl: Grab",
             ImageLocation = "Brawl_Grab",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose an enemy unit in range. Move it in a line to a tile adjacent to the the caster, then attack it.
 If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
@@ -11085,13 +8823,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Brawl: Leap",
             ImageLocation = "Brawl_Shove",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Jump to an empty tile in range. Deal 2 damage to all adjacent units and the caster.
 If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
@@ -11116,13 +8848,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Brawl: Shove",
             ImageLocation = "Brawl_Shove",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 3 damage to a unit and move it up to 3 tiles away from the caster. If it impacts an obstacle, deal an additional 3 damage.
 If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
@@ -11147,13 +8873,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Brawl: Toss",
             ImageLocation = "Brawl_Toss",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose a friendly unit. Throw it to an empty tile within range 3. It attacks a random adjacent unit. 
 If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
@@ -11178,13 +8898,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Brawl: Whirlwind",
             ImageLocation = "Brawl_Whirlwind",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 2 damage to all units adjacent to your hero. Heal the caster for the amount of damage dealt.
 If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
@@ -11209,13 +8923,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Greywalker",
             ImageLocation = "Greywalker",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 4,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
             Text = @"<b>Stalker</b>
 Whenever this unit takes damage, <b>Cycle</b> for the same amount",
@@ -11245,13 +8953,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
             Name = "Othtal Axeman",
             ImageLocation = "Othtal_Axeman",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Overwhelm, Swiftstrike</b>",
             LoreText = @"",
@@ -11280,13 +8982,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
             Name = "Othtal Berserker",
             ImageLocation = "Othtal_Berserker",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"<b>Overwhelm</b>
 Whenever this unit takes damage, gain +2 Attack",
@@ -11316,13 +9012,7 @@ Whenever this unit takes damage, gain +2 Attack",
             Name = "Spirit Totem",
             ImageLocation = "Spirit_Totem",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
             Text = @"Whenever your hero takes damage on your turn, restore 4 health to them",
             LoreText = @"",
@@ -11346,13 +9036,7 @@ Whenever this unit takes damage, gain +2 Attack",
             Name = "Wild Fury",
             ImageLocation = "Wild_Fury",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 2,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"Gain 4 Energy and give the caster +2 Speed until the end of your turn",
             LoreText = @"",
@@ -11376,13 +9060,7 @@ Whenever this unit takes damage, gain +2 Attack",
             Name = "Blood Bond",
             ImageLocation = "Blood_Bond",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose a friendly unit. While both the target and the caster are alive, whenever the target takes damage, the caster takes it instead. If both units are alive, you also have 1 additional Energy gain at the start of each turn. If the caster casts this spell again, remove any previous Blood Bond effects they have cast",
             LoreText = @"",
@@ -11406,13 +9084,7 @@ Whenever this unit takes damage, gain +2 Attack",
             Name = "Grey Shaman",
             ImageLocation = "Grey_Shaman",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Conduit</b>
 Whenever this unit takes damage, heal your hero for the same amount.",
@@ -11442,13 +9114,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
             Name = "Rampage",
             ImageLocation = "Rampage",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"The caster melee attacks all adjacent units in a random order. If the caster kills a unit, restore 3 health to the caster",
             LoreText = @"",
@@ -11472,13 +9138,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
             Name = "Serrated Claws",
             ImageLocation = "Serrated_Claws",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 3,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Whenever your hero attacks and damages a unit, prevent it from being healed until the start of your next turn. Your hero has Swiftstrike",
             LoreText = @"",
@@ -11502,13 +9162,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
             Name = "Shapechanger",
             ImageLocation = "Shapechanger",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 4,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
             Text = @"Whenever this unit takes damage, reduce the cost and <b>Cycle</b> amount of <b>Shapechange</b> by 1.",
             LoreText = @"",
@@ -11537,13 +9191,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
             Name = "Hulking Beast",
             ImageLocation = "Hulking Beast",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 5,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
             Text = @"<b>Warden
 Last Rites: Transform</b> this unit back to its original form",
@@ -11573,13 +9221,7 @@ Last Rites: Transform</b> this unit back to its original form",
             Name = "Bear Aspect",
             ImageLocation = "Bear_Aspect",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Warden, Hero</b>
 Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied to this unit also applies to the original form of your hero.
@@ -11610,13 +9252,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
             Name = "Aspect of the Bear",
             ImageLocation = "Aspect_of_the_Bear",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Transform</b> your hero into a ""Bear Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
@@ -11640,13 +9276,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
             Name = "Eagle Aspect",
             ImageLocation = "Eagle_Aspect",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Flying, Hero</b>
 Whenever this unit takes damage, gain +2 Attack.
@@ -11677,13 +9307,7 @@ Whenever this unit takes damage, gain +2 Attack.
             Name = "Aspect of the Eagle",
             ImageLocation = "Aspect_of_the_Eagle",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Transform</b> your hero into an ""Eagle Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
@@ -11707,13 +9331,7 @@ Whenever this unit takes damage, gain +2 Attack.
             Name = "Sabretooth Aspect",
             ImageLocation = "Sabretooth_Aspect",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Overwhelm</b>
 Whenever this attacks and kills a unit, draw a card.
@@ -11744,13 +9362,7 @@ Whenever this attacks and kills a unit, draw a card.
             Name = "Aspect of the Sabretooth",
             ImageLocation = "Aspect_of_the_Sabretooth",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Transform</b> your hero into a ""Sabretooth Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
@@ -11774,13 +9386,7 @@ Whenever this attacks and kills a unit, draw a card.
             Name = "Wolf Aspect",
             ImageLocation = "Wolf_Aspect",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Stalker</b>
 Other friendly units within Range 2 have extra attack equal to attack gained from <b>Unleash.
@@ -11811,13 +9417,7 @@ Last Rites: Transform</b> this unit back into your hero.",
             Name = "Aspect of the Wolf",
             ImageLocation = "Aspect_of_the_Wolf",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 4,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 6,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Transform</b> your hero into a ""Wolf Aspect"". This unit is considred your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
@@ -11841,13 +9441,7 @@ Last Rites: Transform</b> this unit back into your hero.",
             Name = "Raging Beast",
             ImageLocation = "Raging_Beast",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Wild, 3), },
 
             Text = @"<b>Unleash
 Last Rites: Transform</b> back into this unit's original form. Any enchantments gained from <b>Unleash</b> apply to this and the original form",
@@ -11877,13 +9471,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
             Name = "Beastial Fury",
             ImageLocation = "Beastial_Fury",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 2,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 3,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Wild, 3), },
 
             Text = @"<b>Transform</b> a friendly minion into a ""Raging Beast""",
             LoreText = @"",
@@ -11907,13 +9495,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
             Name = "Cold Fury",
             ImageLocation = "Cold_Fury",
 
-            ResourceDevotion = null,
-            ResourceEnergy = null,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 8,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Stun</b> all adjacnet enemy units. Give the caster <b>Unleash</b> until the end of your turn. If the caster attacks and kills one of the <b>Stunned</b> units, refresh its action",
             LoreText = @"",
@@ -11937,13 +9519,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
             Name = "Othtal Undying",
             ImageLocation = "Othtal_Undying",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 8,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 8), },
 
             Text = @"<b>Prepared, Swiftstrike
 Last Rites:</b> Restore this unit to one health and refresh its actions. It cannot drop below one health until the end of your turn, at which point, it dies",
@@ -11973,13 +9549,7 @@ Last Rites:</b> Restore this unit to one health and refresh its actions. It cann
             Name = "The Great Spirit",
             ImageLocation = "The_Great_Spirit",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 6,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 8,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Unleash, Ethereal
 Last Rites: Transform</b> back into its original form. Any enchantments gained from <b>Unleash</b> apply to the original form",
@@ -12009,13 +9579,7 @@ Last Rites: Transform</b> back into its original form. Any enchantments gained f
             Name = "Spirit Walker Bragas",
             ImageLocation = "Spirit_Walker_Bragas",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 6,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = 8,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Conduit, Unleash
 Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> into the ""Great Spirit"". Any enchantments gained from <b>Unleash</b> apply to the new form.",
@@ -12045,13 +9609,7 @@ Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> in
             Name = "Warchief Aghazir",
             ImageLocation = "Warchief_Aghazir",
 
-            ResourceDevotion = null,
-            ResourceEnergy = 5,
-            ResourceGold = null,
-            ResourceKnowledge = null,
-            ResourceMana = null,
-            ResourceWild = null,
-            ResourceNeutral = null,
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
             Text = @"<b>Swiftstrike, Conduit, Warden</b>
 Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",

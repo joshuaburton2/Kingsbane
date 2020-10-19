@@ -8,6 +8,7 @@ using Kingsbane.Database.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 // ref: https://marcominerva.wordpress.com/2020/03/09/using-hostbuilder-serviceprovider-and-dependency-injection-with-windows-forms-on-net-core-3/
 
@@ -57,19 +58,26 @@ namespace Kingsbane.App
             foreach (var item in abilityQuery)
             {
                 var costsAction = item.CostsAction.ToString().ToLower();
+
+                var resourceString = $@"            Resources = new List<Resource>()
+            {{
+                {(item.ResourceDevotion.HasValue ? $"new Resource(CardResources.Devotion, {item.ResourceDevotion.Value})," : "")}
+                {(item.ResourceEnergy.HasValue ? $"new Resource(CardResources.Energy, {item.ResourceEnergy.Value})," : "")}
+                {(item.ResourceGold.HasValue ? $"new Resource(CardResources.Gold, {item.ResourceGold.Value})," : "")}
+                {(item.ResourceKnowledge.HasValue ? $"new Resource(CardResources.Knowledge, {item.ResourceKnowledge.Value})," : "")}
+                {(item.ResourceMana.HasValue ? $"new Resource(CardResources.Mana, {item.ResourceMana.Value})," : "")}
+                {(item.ResourceWild.HasValue ? $"new Resource(CardResources.Wild, {item.ResourceWild.Value})," : "")}
+                {(item.ResourceNeutral.HasValue ? $"new Resource(CardResources.Neutral, {item.ResourceNeutral.Value})," : "")}
+            }},";
+                resourceString = Regex.Replace(resourceString, @"\t|\n|\r", "");
+
                 var abilityText = @$"        var ability{item.Id} = new AbilityData()
         {{
             Id = {item.Id},
             Name = ""{item.Name}"",
             Text = @""{item.Text.FixQuotes()}"",
 
-            ResourceDevotion = {item.ResourceDevotion.ToNullableInt()},
-            ResourceEnergy = {item.ResourceEnergy.ToNullableInt()},
-            ResourceGold = {item.ResourceGold.ToNullableInt()},
-            ResourceKnowledge = {item.ResourceKnowledge.ToNullableInt()},
-            ResourceMana = {item.ResourceMana.ToNullableInt()},
-            ResourceWild = {item.ResourceWild.ToNullableInt()},
-            ResourceNeutral = {item.ResourceNeutral.ToNullableInt()},
+            {resourceString}
 
             CostsAction = {costsAction},
         }};
@@ -92,17 +100,23 @@ namespace Kingsbane.App
                 var cardTags = string.Join(",", item.Tags.Select(x => $"Tags.{x.Tag.Name}"));
                 var cardSynergies = string.Join(",", item.Synergies.Select(x => $"Synergies.{x.Synergy.Name}"));
 
+                var resourceString = $@"            Resources = new List<Resource>()
+            {{
+                {(item.ResourceDevotion.HasValue ? $"new Resource(CardResources.Devotion, {item.ResourceDevotion.Value})," : "")}
+                {(item.ResourceEnergy.HasValue ? $"new Resource(CardResources.Energy, {item.ResourceEnergy.Value})," : "")}
+                {(item.ResourceGold.HasValue ? $"new Resource(CardResources.Gold, {item.ResourceGold.Value})," : "")}
+                {(item.ResourceKnowledge.HasValue ? $"new Resource(CardResources.Knowledge, {item.ResourceKnowledge.Value})," : "")}
+                {(item.ResourceMana.HasValue ? $"new Resource(CardResources.Mana, {item.ResourceMana.Value})," : "")}
+                {(item.ResourceWild.HasValue ? $"new Resource(CardResources.Wild, {item.ResourceWild.Value})," : "")}
+                {(item.ResourceNeutral.HasValue ? $"new Resource(CardResources.Neutral, {item.ResourceNeutral.Value})," : "")}
+            }},";
+                resourceString = Regex.Replace(resourceString, @"\t|\n|\r", "");
+
                 var commonCard = @$"            Id = {item.Id},
             Name = ""{item.Name}"",
             ImageLocation = ""{item.ImageLocation}"",
 
-            ResourceDevotion = {item.ResourceDevotion.ToNullableInt()},
-            ResourceEnergy = {item.ResourceEnergy.ToNullableInt()},
-            ResourceGold = {item.ResourceGold.ToNullableInt()},
-            ResourceKnowledge = {item.ResourceKnowledge.ToNullableInt()},
-            ResourceMana = {item.ResourceMana.ToNullableInt()},
-            ResourceWild = {item.ResourceWild.ToNullableInt()},
-            ResourceNeutral = {item.ResourceNeutral.ToNullableInt()},
+            {resourceString}
 
             Text = @""{item.Text.FixQuotes()}"",
             LoreText = @""{item.LoreText.FixQuotes()}"",
