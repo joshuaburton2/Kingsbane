@@ -45,8 +45,8 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
         //Left click removes the upgrade from the player deck
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {
-            var updatedDeck = GameManager.instance.deckManager.RemoveUpgradeFromPlayerDeck(deckId.Value, upgradeData);
-            deckListUI.RefreshActiveDeckCardList(updatedDeck);
+            //var updatedDeck = GameManager.instance.deckManager.RemoveUpgradeFromPlayerDeck(deckId.Value, upgradeData);
+            //deckListUI.RefreshActiveDeckCardList(updatedDeck);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CategoryEnums;
 using UnityEngine;
 
-public class PlayerKnowledge : Resource
+public class PlayerKnowledge : PlayerResource
 {
     private const int DEFAULT_BASE_KNOWLEDGE = 2;
     private const int IGNORANCE_THRESHOLD = 3;
@@ -38,5 +38,16 @@ public class PlayerKnowledge : Resource
     {
         BaseKnowledgeGain += gainIncrease;
         return BaseKnowledgeGain;
+    }
+
+    /// <summary>
+    /// 
+    /// Reduces the player's Ignorance by 1 level
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public int ReduceIgnorance()
+    {
+        return Stagnation -= IGNORANCE_THRESHOLD;
     }
 }

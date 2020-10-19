@@ -1,9 +1,10 @@
 ﻿using CategoryEnums;
 
-public class PlayerMana : Resource
+public class PlayerMana : PlayerResource
 {
     private const int DEFAULT_MANA_VALUE = 12;
     private const int SET_OVERLOAD_MODIFIER = -1; //Value to modify Empowered, Attack and Health values by for each point Overloaded
+    private const int OVERLOAD_REDUCTION = 6;
 
     public int StartingMana { get; set; }
     public int PreviousOverload { get; set; }
@@ -46,5 +47,15 @@ public class PlayerMana : Resource
         CurrentOverload = Value < 0 ? - Value : 0;
 
         return Value;
+    }
+
+    /// <summary>
+    /// 
+    /// Reduce Overload from previous scenario by base reduction amount. Called when adding upgrades
+    /// 
+    /// </summary>
+    public int ReduceOverload()
+    {
+        return PreviousOverload -= OVERLOAD_REDUCTION;
     }
 }

@@ -24,7 +24,7 @@ public class AbilityData
     {
         get
         {
-            var abilityResources = new List<Resource>();
+            var abilityResources = Resources.ToList();
 
             foreach (var resource in abilityResources)
             {

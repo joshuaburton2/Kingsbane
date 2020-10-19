@@ -17,6 +17,7 @@ public class DeckSaveData
     public TierLevel HeroTier { get; set; }
     // Tier of the hero ability
     public TierLevel AbilityTier { get; set; }
+    public List<PlayerResource> PlayerResources { get; set; }
     public List<int> CardIdList { get; set; }
     public List<int> UpgradeIdList { get; set; }
     public Classes.ClassList DeckClass { get; set; }
@@ -213,6 +214,7 @@ public class DeckData : DeckSaveData
     {
         UpgradeList.Add(upgradeData);
         UpgradeIdList.Add(upgradeData.Id.Value);
+        GameManager.instance.upgradeManager.UpdateUpgradeEffect(upgradeData, this);
     }
 
     /// <summary>
@@ -231,5 +233,15 @@ public class DeckData : DeckSaveData
         {
             throw new Exception($"Upgrade {upgradeData.Id} does not exist in the deck");
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Gets a player resource of a particular type
+    /// 
+    /// </summary>
+    public PlayerResource GetPlayerResource(CardResources resource)
+    {
+        return PlayerResources.FirstOrDefault(x => x.ResourceType == resource);
     }
 }

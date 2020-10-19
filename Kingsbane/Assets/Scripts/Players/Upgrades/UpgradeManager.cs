@@ -144,4 +144,80 @@ public class UpgradeManager : MonoBehaviour
 
         return availableUpgrades;
     }
+
+    /// <summary>
+    /// 
+    /// Updates a deck with the effects of the given upgrade- may require a rework, don't like the switch statement
+    /// 
+    /// </summary>
+    public void UpdateUpgradeEffect(UpgradeData upgrade, DeckData deckData)
+    {
+        PlayerResource playerResource;
+
+        switch (upgrade.UpgradeTag)
+        {
+            case UpgradeTags.HeroUpgrade:
+                var newHeroTier = upgrade.TierLevel;
+
+                deckData.HeroTier = newHeroTier;
+                deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, newHeroTier, deckData.AbilityTier);
+                break;
+            case UpgradeTags.AbilityUpgrade:
+                var newAbilityTier = upgrade.TierLevel;
+
+                deckData.AbilityTier = newAbilityTier;
+                deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, deckData.HeroTier, newAbilityTier);
+                break;
+            case UpgradeTags.ClaimBounty:
+                playerResource = deckData.GetPlayerResource(CardResources.Gold);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.DevotedFollowers:
+                playerResource = deckData.GetPlayerResource(CardResources.Devotion);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.ManaReserves:
+                playerResource = deckData.GetPlayerResource(CardResources.Mana);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.StrengthofArms:
+                playerResource = deckData.GetPlayerResource(CardResources.Energy);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.WellofKnowledge:
+                playerResource = deckData.GetPlayerResource(CardResources.Knowledge);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.WildGrowth:
+                playerResource = deckData.GetPlayerResource(CardResources.Wild);
+                playerResource.TierLevel = upgrade.TierLevel;
+                break;
+            case UpgradeTags.LastingPrayers:
+                playerResource = deckData.GetPlayerResource(CardResources.Devotion);
+                ((PlayerDevotion)playerResource).IncreaseLastingPrayer();
+                break;
+            case UpgradeTags.BattleSurges:
+                playerResource = deckData.GetPlayerResource(CardResources.Energy);
+                ((PlayerEnergy)playerResource).AddSurges();
+                break;
+            case UpgradeTags.EmergencyReserves:
+                playerResource = deckData.GetPlayerResource(CardResources.Gold);
+                ((PlayerGold)playerResource).IncreaseGold();
+                break;
+            case UpgradeTags.StimulateLearning:
+                playerResource = deckData.GetPlayerResource(CardResources.Knowledge);
+                ((PlayerKnowledge)playerResource).ReduceIgnorance();
+                break;
+            case UpgradeTags.RestorePower:
+                playerResource = deckData.GetPlayerResource(CardResources.Mana);
+                ((PlayerMana)playerResource).ReduceOverload();
+                break;
+            case UpgradeTags.CycleofNature:
+                playerResource = deckData.GetPlayerResource(CardResources.Wild);
+                ((PlayerWild)playerResource).BaseCycleWild();
+                break;
+            default:
+                break;
+        }
+    }
 }

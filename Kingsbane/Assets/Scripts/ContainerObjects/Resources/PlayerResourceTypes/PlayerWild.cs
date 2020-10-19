@@ -1,10 +1,11 @@
 ﻿using CategoryEnums;
 using UnityEngine;
 
-public class PlayerWild : Resource
+public class PlayerWild : PlayerResource
 {
     private const int DEFAULT_WILD_GAIN = 2;
     private const int DEFAULT_MAX_WILD = 12;
+    private const int BASE_CYCLE_INCREASE = 5;
 
     public int WildGain { get; set; }
     public int MaxWild { get; set; }
@@ -63,5 +64,15 @@ public class PlayerWild : Resource
         MaxWild = Mathf.Max(MaxWild, 0);
 
         return MaxWild;
+    }
+
+    /// <summary>
+    /// 
+    /// Cycle Wild by its base value. Called when adding upgrades
+    /// 
+    /// </summary>
+    public int BaseCycleWild()
+    {
+        return CycleWild(BASE_CYCLE_INCREASE);
     }
 }

@@ -355,7 +355,11 @@ namespace Kingsbane.App
                     else if (item.Name.Contains("Ability"))
                         upgradeTag = "AbilityUpgrade";
                     else
-                        upgradeTag = "ResourceUpgrade";
+                    {
+                        upgradeTag = item.Name.Replace(" ", "");
+                        upgradeTag = upgradeTag.Replace("Tier", "");
+                        upgradeTag = upgradeTag.Replace("I", "");
+                    }
                 }
                 else
                 {

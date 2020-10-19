@@ -101,7 +101,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.DevotedFollowers,
         };
         UpgradeList.Add(upgrade5);
 
@@ -121,7 +121,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.DevotedFollowers,
         };
         UpgradeList.Add(upgrade6);
 
@@ -161,7 +161,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.StrengthofArms,
         };
         UpgradeList.Add(upgrade8);
 
@@ -181,7 +181,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.StrengthofArms,
         };
         UpgradeList.Add(upgrade9);
 
@@ -221,7 +221,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.ClaimBounty,
         };
         UpgradeList.Add(upgrade11);
 
@@ -241,7 +241,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.ClaimBounty,
         };
         UpgradeList.Add(upgrade12);
 
@@ -281,7 +281,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.WellofKnowledge,
         };
         UpgradeList.Add(upgrade14);
 
@@ -301,7 +301,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.WellofKnowledge,
         };
         UpgradeList.Add(upgrade15);
 
@@ -341,7 +341,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.ManaReserves,
         };
         UpgradeList.Add(upgrade17);
 
@@ -361,7 +361,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.ManaReserves,
         };
         UpgradeList.Add(upgrade18);
 
@@ -401,7 +401,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.WildGrowth,
         };
         UpgradeList.Add(upgrade20);
 
@@ -421,7 +421,7 @@ public class UpgradeLibrary
             {
             },
             UpgradePrerequisites = new List<UpgradeData>(),
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradeTag = UpgradeTags.WildGrowth,
         };
         UpgradeList.Add(upgrade21);
 
@@ -460,6 +460,6 @@ namespace CategoryEnums
 {
     public enum UpgradeTags
     {
-        HeroUpgrade, AbilityUpgrade, ResourceUpgrade, LastingPrayers, BattleSurges, EmergencyReserves, StimulateLearning, RestorePower, CycleofNature
+        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature
     }
 }

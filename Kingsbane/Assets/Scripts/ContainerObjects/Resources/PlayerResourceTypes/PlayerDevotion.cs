@@ -1,6 +1,6 @@
 ﻿using CategoryEnums;
 
-public class PlayerDevotion : Resource
+public class PlayerDevotion : PlayerResource
 {
     private const int DEFAULT_PRAYER_MOD = 0;
     private const int DEFAULT_LASTING_PRAYER = 2;

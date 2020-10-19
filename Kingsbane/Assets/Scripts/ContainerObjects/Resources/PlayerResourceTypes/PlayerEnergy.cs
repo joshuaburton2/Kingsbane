@@ -1,9 +1,10 @@
 ﻿using CategoryEnums;
 
-public class PlayerEnergy : Resource
+public class PlayerEnergy : PlayerResource
 {
     private const int DEFAULT_BASE_ENERGY = 3;
     private const int DEFAULT_SURGES = 2;
+    private const int SURGE_INCREASE_VALUE = 1;
 
     public int BaseEnergyGain { get; set; }
     public int Surges { get; set; }
@@ -38,5 +39,15 @@ public class PlayerEnergy : Resource
 
         numSurges = Surges;
         return Value;
+    }
+
+    /// <summary>
+    /// 
+    /// Increase number of surges
+    /// 
+    /// </summary>
+    public int AddSurges()
+    {
+        return Surges += SURGE_INCREASE_VALUE;
     }
 }
