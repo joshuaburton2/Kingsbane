@@ -53,7 +53,7 @@ public class LootGeneratorUI : MonoBehaviour
     public void RefreshLootGenerator()
     {
         //Refreshed the loot grid
-        GameManager.DestroyAllChildren(lootArea.transform);
+        GameManager.DestroyAllChildren(lootArea);
 
         addSelectedButton.interactable = false;
 
@@ -118,9 +118,9 @@ public class LootGeneratorUI : MonoBehaviour
     /// </summary>
     public void AddCardsToDeck()
     {
-        var updatedDeck = GameManager.instance.deckManager.AddRangeToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
+        var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
 
-        deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI, deckListUI.DeckEditId.Value);
+        deckListUI.RefreshActiveDeckCardList(updatedDeck);
         RefreshLootGenerator();
     }
 }

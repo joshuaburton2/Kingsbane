@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //Load game initialisation information. Order is important- must load decks after card and upgrade libraries are loaded
+        libraryManager.LoadLibrary();
+        upgradeManager.LoadLibrary();
+        deckManager.LoadDecks();
+
         //Singleton setup
         if(instance == null)
         {
@@ -37,9 +42,9 @@ public class GameManager : MonoBehaviour
     /// Destroy all child objects of an object
     /// 
     /// </summary>
-    public static void DestroyAllChildren(Transform transform)
+    public static void DestroyAllChildren(GameObject gameObject)
     {
-        foreach (Transform child in transform)
+        foreach (Transform child in gameObject.transform)
         {
             Destroy(child.gameObject);
         }

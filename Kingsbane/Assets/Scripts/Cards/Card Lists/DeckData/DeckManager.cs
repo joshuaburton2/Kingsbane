@@ -163,7 +163,7 @@ public class DeckManager : MonoBehaviour
     /// Adds a new card to a particular deck
     /// 
     /// </summary>
-    public DeckData AddToPlayerDeck(int id, CardData cardData)
+    public DeckData AddCardToPlayerDeck(int id, CardData cardData)
     {
         //Cannot add hero or uncollectable cards to the deck
         if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)
@@ -179,11 +179,11 @@ public class DeckManager : MonoBehaviour
     /// Adds a list of cards to a particular deck
     /// 
     /// </summary>
-    public DeckData AddRangeToPlayerDeck(int id, List<CardData> cardDatas)
+    public DeckData AddCardsToPlayerDeck(int id, List<CardData> cardDatas)
     {
         foreach (var cardData in cardDatas)
         {
-            AddToPlayerDeck(id, cardData);
+            AddCardToPlayerDeck(id, cardData);
         }
         return PlayerDeckList[id];
     }
@@ -193,13 +193,40 @@ public class DeckManager : MonoBehaviour
     /// Remove a card from a particular deck
     /// 
     /// </summary>
-    public DeckData RemoveFromPlayerDeck(int id, CardData cardData)
+    public DeckData RemoveCardFromPlayerDeck(int id, CardData cardData)
     {
         if (!cardData.IsHero)
         {
             PlayerDeckList[id].RemoveCard(cardData);
             SaveDecks();
         }
+        return PlayerDeckList[id];
+    }
+
+    /// <summary>
+    /// 
+    /// Adds a list of upgrades to a particular deck
+    /// 
+    /// </summary>
+    public DeckData AddUpgradesToPlayerDeck(int id, List<UpgradeData> upgradeDatas)
+    {
+        foreach (var upgradeData in upgradeDatas)
+        {
+            PlayerDeckList[id].AddUpgrade(upgradeData);
+        }
+        SaveDecks();
+        return PlayerDeckList[id];
+    }
+
+    /// <summary>
+    /// 
+    /// Removes an upgrade from a particular deck
+    /// 
+    /// </summary>
+    public DeckData RemoveUpgradeFromPlayerDeck(int id, UpgradeData upgradeData)
+    {
+        PlayerDeckList[id].RemoveUpgrade(upgradeData);
+        SaveDecks();
         return PlayerDeckList[id];
     }
 }

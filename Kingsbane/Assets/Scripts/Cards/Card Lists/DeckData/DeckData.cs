@@ -92,7 +92,7 @@ public class DeckData : DeckSaveData
         DeckClass = deckSaveData.DeckClass;
         IsNPCDeck = deckSaveData.IsNPCDeck;
 
-        //Synchronizes the card Ids with the cards in the library
+        //Synchronizes the card and upgrade Ids with the cards in the library
         SyncDeckCards(libraryManager, upgradeManager);
     }
 
@@ -201,6 +201,35 @@ public class DeckData : DeckSaveData
         else
         {
             throw new Exception($"Card {cardData.Id} does not exist in the deck");
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Adds an upgrade to the deck
+    /// 
+    /// </summary>
+    public void AddUpgrade(UpgradeData upgradeData)
+    {
+        UpgradeList.Add(upgradeData);
+        UpgradeIdList.Add(upgradeData.Id.Value);
+    }
+
+    /// <summary>
+    /// 
+    /// Removes an upgrade from the deck
+    /// 
+    /// </summary>
+    public void RemoveUpgrade(UpgradeData upgradeData)
+    {
+        if (UpgradeIdList.Contains(upgradeData.Id.Value))
+        {
+            UpgradeList.Remove(upgradeData);
+            UpgradeIdList.Remove(upgradeData.Id.Value);
+        }
+        else
+        {
+            throw new Exception($"Upgrade {upgradeData.Id} does not exist in the deck");
         }
     }
 }

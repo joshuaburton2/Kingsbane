@@ -29,7 +29,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
     /// <summary>
     /// 
-    /// Initialise the object. Refreshes the text properties on the card
+    /// Initialise the object. Refreshes the text properties of the card
     /// 
     /// </summary>
     public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int numCards, int? _deckId = null)
@@ -52,7 +52,6 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     /// Handler for clicking on the object
     /// 
     /// </summary>
-    /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
         //Right click always shows the card detail display
@@ -64,8 +63,8 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
         //Left click removes the card from the player deck
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {
-            var updatedDeck = GameManager.instance.deckManager.RemoveFromPlayerDeck(deckId.Value, cardData);
-            deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI, deckId.Value);
+            var updatedDeck = GameManager.instance.deckManager.RemoveCardFromPlayerDeck(deckId.Value, cardData);
+            deckListUI.RefreshActiveDeckCardList(updatedDeck);
         }
     }
 }

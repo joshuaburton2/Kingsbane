@@ -34,8 +34,8 @@ public class CardDetailUI : MonoBehaviour
     public void ShowCardDetails(CardData cardData)
     {
         //Reset all cards on the display
-        GameManager.DestroyAllChildren(mainCardParent.transform);
-        GameManager.DestroyAllChildren(relatedCardList.transform);
+        GameManager.DestroyAllChildren(mainCardParent);
+        GameManager.DestroyAllChildren(relatedCardList);
 
         //Creates the main card on the display
         GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform, mainCardScaling);

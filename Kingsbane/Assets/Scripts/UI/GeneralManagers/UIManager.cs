@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
     /// Activates the upgrade detail display
     /// 
     /// </summary>
-    public void ActivateUpgradeDetail(UpgradeData upgradeData, DeckData currentDeck)
+    public void ActivateUpgradeDetail(UpgradeData upgradeData, DeckData currentDeck = null)
     {
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(true);

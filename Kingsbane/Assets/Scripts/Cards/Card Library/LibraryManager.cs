@@ -33,10 +33,6 @@ public class LibraryManager : MonoBehaviour
     [SerializeField]
     private int duplicateWeighting;
 
-    [Header("Other Objects")]
-    [SerializeField]
-    private DeckManager deckManager;
-
     private CardLibrary cardLibrary;
 
     private Dictionary<Tags, List<CardData>> tagLookup;
@@ -53,16 +49,18 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<HeroTier, UnitData> heroLookup;
     private Dictionary<HeroTier, AbilityData> heroAbilityLookup;
 
-    private void Awake()
+    /// <summary>
+    /// 
+    /// Loading card library- to be called on initialisation of game
+    /// 
+    /// </summary>
+    public void LoadLibrary()
     {
         //Load in cardList upon initialization of the game
         cardLibrary = new CardLibrary();
         cardLibrary.InitLibrary();
 
         LoadDirectionaries();
-
-        //Not accessed through Game Manager due to ordering of Awake functions being an issue
-        deckManager.LoadDecks();
     }
 
     /// <summary>

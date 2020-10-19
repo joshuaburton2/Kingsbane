@@ -179,7 +179,7 @@ public class NewDeckUI : MonoBehaviour
     public void ResetHeroCard()
     {
         //Destroy any previous hero cards
-        GameManager.DestroyAllChildren(heroCardArea.transform);
+        GameManager.DestroyAllChildren(heroCardArea);
 
         //If card area is empty if the class is the default class
         if (selectedClassData.ThisClass != Classes.ClassList.Default)

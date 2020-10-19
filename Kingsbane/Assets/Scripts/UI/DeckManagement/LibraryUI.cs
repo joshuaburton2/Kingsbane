@@ -91,7 +91,7 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void InitGrid()
     {
-        GameManager.DestroyAllChildren(rowParent.transform);
+        GameManager.DestroyAllChildren(rowParent);
 
         //Initialise the row objects in the grid. Row parent has a vertical layout group. Row has a horizontal layout group
         //Reason for using these instead of grid layout group was for the purpose of object scaling, but also for easier control
@@ -148,7 +148,7 @@ public class LibraryUI : MonoBehaviour
     private void InitTabs()
     {
         //Destory all current tabs
-        GameManager.DestroyAllChildren(tabParent.transform);
+        GameManager.DestroyAllChildren(tabParent);
         tabList = new List<LibraryTab>();
 
         //Load the tabs of the given tab type
@@ -353,7 +353,7 @@ public class LibraryUI : MonoBehaviour
     {
         foreach (GameObject row in gridRows)
         {
-            GameManager.DestroyAllChildren(row.transform);
+            GameManager.DestroyAllChildren(row);
         }
     }
 

@@ -14,7 +14,12 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField]
     GameObject upgradeObject;
 
-    private void Awake()
+    /// <summary>
+    /// 
+    /// Loading upgrade library- to be called on initialisation of game
+    /// 
+    /// </summary>
+    public void LoadLibrary()
     {
         upgradeLibrary = new UpgradeLibrary();
         upgradeLibrary.InitUpgradeList();

@@ -70,8 +70,8 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
             //If the loot generator UI is null, this means the card is in the library display, and as such, the card just needs to be added to the deck
             if (lootGeneratorUI == null)
             {
-                var updatedDeck = GameManager.instance.deckManager.AddToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
-                deckListUI.activeDeckCardList.RefreshCardList(updatedDeck, deckListUI, deckListUI.DeckEditId.Value);
+                var updatedDeck = GameManager.instance.deckManager.AddCardToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
+                deckListUI.RefreshActiveDeckCardList(updatedDeck);
             }
             //If there is a loot generator, this means the card is being selected on the loot generator panel
             else

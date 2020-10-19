@@ -424,7 +424,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2939305132088165255}
   m_HandleRect: {fileID: 2939305132088165254}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -627,8 +627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardListArea: {fileID: 2939305132514768854}
-  cardObjects: []
   cardTemplate: {fileID: 4074441869473426074, guid: eb63039391990ed4b92af21e9f3dc8cb,
+    type: 3}
+  upgradeTemplate: {fileID: 5589189360322528574, guid: 5fd1cddeccf43b043bcc3bd2836d53c8,
     type: 3}
   cardCountText: {fileID: 3700611322340363257}
 --- !u!1 &2939305131720525507
@@ -1100,7 +1101,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2939305132514768841

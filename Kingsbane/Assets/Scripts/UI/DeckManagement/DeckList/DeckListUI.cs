@@ -34,7 +34,7 @@ public class DeckListUI : MonoBehaviour
     //About which deck is being edited
     public int? DeckEditId { get; set; }
     public bool DeckEditMode { get { return DeckEditId.HasValue; } }
-    public DeckCardListUI activeDeckCardList;
+    private DeckCardListUI activeDeckCardList;
 
     private void Start()
     {
@@ -89,7 +89,7 @@ public class DeckListUI : MonoBehaviour
         }
 
         //Clears the deck list of objects
-        GameManager.DestroyAllChildren(deckListParent.transform);
+        GameManager.DestroyAllChildren(deckListParent);
         deckListObjects.Clear();
 
         //Initialise and create the objects in the deck list
@@ -105,7 +105,7 @@ public class DeckListUI : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Initialises the editing a deck
+    /// Initialises the editing of a deck
     /// 
     /// </summary>
     public void EditDeck(int deckId, Classes.ClassList selectedDeckClass, DeckCardListUI deckCardListUI)
@@ -128,6 +128,11 @@ public class DeckListUI : MonoBehaviour
 
         lootButton.interactable = true;
         upgradeButton.interactable = true;
+    }
+
+    public void RefreshActiveDeckCardList(DeckData deckData = null)
+    {
+        activeDeckCardList.RefreshCardList(deckData, this);
     }
 
     /// <summary>

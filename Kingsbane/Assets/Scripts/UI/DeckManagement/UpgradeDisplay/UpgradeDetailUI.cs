@@ -25,9 +25,9 @@ public class UpgradeDetailUI : MonoBehaviour
     public void ShowUpgradeDetails(UpgradeData upgradeData, DeckData currentDeck)
     {
         //Reset all cards on the display
-        GameManager.DestroyAllChildren(upgradeParent.transform);
-        GameManager.DestroyAllChildren(currentHeroParent.transform);
-        GameManager.DestroyAllChildren(newHeroParent.transform);
+        GameManager.DestroyAllChildren(upgradeParent);
+        GameManager.DestroyAllChildren(currentHeroParent);
+        GameManager.DestroyAllChildren(newHeroParent);
 
         //Creates the main card on the display
         GameObject mainUpgrade = GameManager.instance.upgradeManager.CreateUpgrade(upgradeData, upgradeParent.transform, currentDeck, upgradeScaling);
@@ -36,7 +36,8 @@ public class UpgradeDetailUI : MonoBehaviour
         tagText.text = $"Upgrade Tag: {upgradeData.UpgradeTag}";
 
         //Checks if the card is a hero modifier
-        if (upgradeData.UpgradeTag == UpgradeTags.AbilityUpgrade || upgradeData.UpgradeTag == UpgradeTags.HeroUpgrade)
+        if ((upgradeData.UpgradeTag == UpgradeTags.AbilityUpgrade || upgradeData.UpgradeTag == UpgradeTags.HeroUpgrade)
+            && currentDeck != null)
         {
             heroUpgradeArea.SetActive(true);
 
