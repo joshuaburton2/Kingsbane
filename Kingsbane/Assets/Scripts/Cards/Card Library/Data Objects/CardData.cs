@@ -78,11 +78,11 @@ public class CardData
     {
         get
         {
-            var cardResources = Resources.ToList();
+            var cardResources = new List<Resource>();
 
-            foreach (var resource in cardResources)
+            foreach (var resource in Resources)
             {
-                resource.Value *= -1;
+                cardResources.Add(new Resource(resource.ResourceType, -resource.Value));
             }
 
             //Order the resources by their largest value

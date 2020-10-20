@@ -24,11 +24,11 @@ public class AbilityData
     {
         get
         {
-            var abilityResources = Resources.ToList();
+            var abilityResources = new List<Resource>();
 
-            foreach (var resource in abilityResources)
+            foreach (var resource in Resources)
             {
-                resource.Value *= -1;
+                abilityResources.Add(new Resource(resource.ResourceType, -resource.Value));
             }
 
             //Order the resources by their largest value
