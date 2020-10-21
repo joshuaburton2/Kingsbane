@@ -591,7 +591,7 @@ public class CardLibrary
         {
             Id = 62,
             Name = "Enrage",
-            Text = @"Your hero gains +4 Attack and +2 Health until the end of your turn",
+            Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (2)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -603,7 +603,7 @@ public class CardLibrary
         {
             Id = 63,
             Name = "Enrage",
-            Text = @"Your hero gains +6 Attack, +4 Health until the end of your turn",
+            Text = @"Your hero gains +6 Attackuntil the end of your turn and <b>Protected (4)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -663,7 +663,7 @@ public class CardLibrary
         {
             Id = 68,
             Name = "Brood Spawn",
-            Text = @"Discard a card. Deploy two Abyss Imps beside this unit",
+            Text = @"<b>Discard</b> a card. Deploy two Abyss Imps beside this unit",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -687,7 +687,7 @@ public class CardLibrary
         {
             Id = 70,
             Name = "Consume",
-            Text = @"Discard a card. Gain mana equal to its total cost",
+            Text = @"<b>Discard</b> a card. Gain mana equal to its total cost",
 
             Resources = new List<Resource>() { },
 
@@ -699,7 +699,7 @@ public class CardLibrary
         {
             Id = 71,
             Name = "Rally the Horde",
-            Text = @"Discard a card. Give all adjacent Void units Attack and Health equal to its total cost",
+            Text = @"<b>Discard</b> a card. Give all adjacent Void units Attack and Health equal to its total cost",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1905,7 +1905,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
-            Text = @"Deal 3 damage to a unit. If that kills it, return this card to your hand at the end of your turn.",
+            Text = @"Deal 3 damage to a unit. If that kills it, return this card from the Graveyard to your hand at the end of your turn.",
             LoreText = @"",
             Notes = @"",
 
@@ -1958,7 +1958,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
-            Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't reduce the number of <b>Inspiration</b> cards shuffled.",
+            Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't increase your <b>Stagnation</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2731,7 +2731,7 @@ Whenever you cast a spell, cast it again on the same target",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
-            Text = @"<b>Deployment:</b> Discard a card
+            Text = @"<b>Deployment: Discard</b> a card
 <b>Last Rites:</b> Shuffle an Abyss Imp into your deck. Draw a card",
             LoreText = @"",
             Notes = @"",
@@ -2895,7 +2895,7 @@ Deal damage to the caster equal to the additional points gained.",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"<b>Conduit, Empowered +1</b>
-Whenever you discard a card or a friendly unit dies within Range 2, draw a card",
+Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -3033,7 +3033,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>
-Whenever you discard a card, gain Attack and Health equal to its total cost",
+Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total cost",
             LoreText = @"",
             Notes = @"",
 
@@ -3062,7 +3062,7 @@ Whenever you discard a card, gain Attack and Health equal to its total cost",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Deployment:</b> You can <b>Summon</b> one additional unit for the rest of the scenario. Deal 3 damage to your hero",
+            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario"". Deal 3 damage to your hero",
             LoreText = @"",
             Notes = @"",
 
@@ -3179,7 +3179,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 7), },
 
-            Text = @"Whenever this kills a unit, return a random card you discarded this game to your hand",
+            Text = @"Whenever this kills a unit, return a random card in your <b>Discard</b> pool to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -3261,7 +3261,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario
+            Text = @"Gain the <b>Passive:</b>""You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario"".
 Deal damage to your hero equal to half their remaining health",
             LoreText = @"",
             Notes = @"",
@@ -4926,7 +4926,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
-            Text = @"Deploy three friendly Treant units which died this game adjacent to the caster. <b>Cycle -6</b>",
+            Text = @"Deploy three Treant minions in your Graveyard adjacent to the caster. <b>Cycle -6</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5372,7 +5372,7 @@ Give the caster +3 Health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
-            Text = @"",
+            Text = @"<b>Routing</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5402,7 +5402,8 @@ Give the caster +3 Health",
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Warden</b>
-Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>",
+Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>
+<b>Last Rites:</b> Shuffle an additional copy of this unit into your Graveyard",
             LoreText = @"",
             Notes = @"",
 
@@ -5455,7 +5456,8 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"<b>Deployment:</b> Use <b>Potion Sale</b>",
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Potion Sale</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5484,7 +5486,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
-            Text = @"Deploy a friendly minion which has died this game adjacent to the caster",
+            Text = @"Deploy a random minion in your Graveyard adjacent to the caster",
             LoreText = @"",
             Notes = @"",
 
@@ -5587,7 +5589,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Deployment:</b> Choose one of three friendly units which have died this game to deploy adjacent to the caster",
+            Text = @"<b>Deployment:</b> Choose one of three random units in your Graveyard to deploy adjacent to the caster",
             LoreText = @"",
             Notes = @"",
 
@@ -5750,7 +5752,7 @@ Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 6), },
 
             Text = @"<b>Warden
-Deployment:</b> Deploy two friendly units which have died this game beside this one. Whenever one of them dies, <b>Regenerate</b> this unit",
+Deployment:</b> Deploy two random unitsin your Graveyard besides this one. Whenever one of them dies, <b>Regenerate</b> this unit",
             LoreText = @"",
             Notes = @"",
 
@@ -7030,8 +7032,8 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 15), },
 
             Text = @"<b>Flying, Lifebond, Vanguard</b>
-Costs (1) Devotion less for every Angel which has died this game.
-<b>Deployment:</b> Deal damage to all adjacent enemy units equal to the number of Angels killed",
+Costs (1) Devotion less for every Angel in your Graveyard.
+<b>Deployment:</b> Deal damage to all adjacent enemy units equal to the number of Angels in your Graveyard",
             LoreText = @"",
             Notes = @"",
 
@@ -7148,7 +7150,7 @@ Whenever your hero recieves an enchantment, this unit recieves it as well",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
-            Text = @"<b>Vanguard, Stalker</b>
+            Text = @"<b>Vanguard, Stalker, Routing</b>
 Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
             LoreText = @"",
             Notes = @"",
@@ -7285,7 +7287,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Conduit
+            Text = @"<b>Conduit, Routing
 Deployment:</b> Add 2 Shivs to your hand",
             LoreText = @"",
             Notes = @"",
@@ -7417,7 +7419,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"<b>Stalker</b>",
+            Text = @"<b>Stalker, Routing</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7446,7 +7448,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"Discard all shivs in your hand. Deal 1 damage to all other units within Range 1 of the caster for each shiv Discarded",
+            Text = @"<b>Discard</b> all shivs in your hand. Deal 1 damage to all other units within Range 1 of the caster for each shiv <b>Discarded</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7523,7 +7525,8 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"<b>Deployment:</b> Use <b>Smuggle</b>",
+            Text = @"<b>Routing, 
+Deployment:</b> Use <b>Smuggle</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -8801,7 +8804,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose an enemy unit in range. Move it in a line to a tile adjacent to the the caster, then attack it.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
+If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -8826,7 +8829,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Jump to an empty tile in range. Deal 2 damage to all adjacent units and the caster.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
+If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -8851,7 +8854,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 3 damage to a unit and move it up to 3 tiles away from the caster. If it impacts an obstacle, deal an additional 3 damage.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
+If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -8876,7 +8879,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose a friendly unit. Throw it to an empty tile within range 3. It attacks a random adjacent unit. 
-If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
+If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -8901,7 +8904,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 2 damage to all units adjacent to your hero. Heal the caster for the amount of damage dealt.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. Discard this card at the end of your turn",
+If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -9669,6 +9672,8 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
         card225.RelatedCards = new List<CardData> { card134 };
         card226.RelatedCards = new List<CardData> { card134 };
         card231.RelatedCards = new List<CardData> { card134 };
+        card232.RelatedCards = new List<CardData> { card134 };
+        card238.RelatedCards = new List<CardData> { card134 };
         card243.RelatedCards = new List<CardData> { card244 };
         card249.RelatedCards = new List<CardData> { card248 };
         card250.RelatedCards = new List<CardData> { card251 };
