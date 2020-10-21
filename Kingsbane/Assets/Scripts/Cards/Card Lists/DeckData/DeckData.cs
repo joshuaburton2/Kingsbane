@@ -22,6 +22,7 @@ public class DeckSaveData
     public List<int> UpgradeIdList { get; set; }
     public Classes.ClassList DeckClass { get; set; }
     public bool IsNPCDeck { get; set; }
+    public List<CardResources> DeckResources { get { return Classes.GetClassData(DeckClass).GetClassResources(); } }
 
     public DeckSaveData()
     {
@@ -45,6 +46,83 @@ public class DeckSaveData
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
+
+        PlayerResources = deckData.CopyPlayerResources();
+    }
+
+    /// <summary>
+    /// 
+    /// Copies the player resources of the deck data to a new object to prevent referencing issues
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public List<PlayerResource> CopyPlayerResources()
+    {
+        var resourceCopy = new List<PlayerResource>();
+
+        foreach (var resource in PlayerResources)
+        {
+            if (resource is PlayerDevotion)
+                resourceCopy.Add(new PlayerDevotion((PlayerDevotion)resource));
+
+            else if (resource is PlayerEnergy)
+                resourceCopy.Add(new PlayerEnergy((PlayerEnergy)resource));
+
+            else if (resource is PlayerGold)
+                resourceCopy.Add(new PlayerGold((PlayerGold)resource));
+
+            else if (resource is PlayerKnowledge)
+                resourceCopy.Add(new PlayerKnowledge((PlayerKnowledge)resource));
+
+            else if (resource is PlayerMana)
+                resourceCopy.Add(new PlayerMana((PlayerMana)resource));
+
+            else if (resource is PlayerWild)
+                resourceCopy.Add(new PlayerWild((PlayerWild)resource));
+
+            else
+                throw new Exception("Not a valid Player Resource");
+        }
+
+        return resourceCopy;
+    }
+
+    /// <summary>
+    /// 
+    /// Initialise the player resource objects for the deck upon creation of the deck
+    /// 
+    /// </summary>
+    public void LoadDeckResources()
+    {
+        PlayerResources = new List<PlayerResource>();
+
+        foreach (var resource in DeckResources)
+        {
+            switch (resource)
+            {
+                case CardResources.Devotion:
+                    PlayerResources.Add(new PlayerDevotion());
+                    break;
+                case CardResources.Energy:
+                    PlayerResources.Add(new PlayerEnergy());
+                    break;
+                case CardResources.Gold:
+                    PlayerResources.Add(new PlayerGold());
+                    break;
+                case CardResources.Knowledge:
+                    PlayerResources.Add(new PlayerKnowledge());
+                    break;
+                case CardResources.Mana:
+                    PlayerResources.Add(new PlayerMana());
+                    break;
+                case CardResources.Wild:
+                    PlayerResources.Add(new PlayerWild());
+                    break;
+                case CardResources.Neutral:
+                default:
+                    throw new Exception("Not a valid resource type");
+            }
+        }
     }
 }
 
@@ -54,7 +132,6 @@ public class DeckData : DeckSaveData
     public List<CardData> CardList { get; set; }
     public List<UpgradeData> UpgradeList { get; set; }
     public int DeckCount { get { return CardList.Count; } }
-    public List<CardResources> DeckResources { get { return Classes.GetClassData(DeckClass).GetClassResources(); } }
 
     /// <summary>
     /// 
@@ -71,6 +148,8 @@ public class DeckData : DeckSaveData
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
+
+        PlayerResources = deckData.CopyPlayerResources();
 
         //Synchronizes the card Ids with the cards in the library
         SyncDeckCards();
@@ -92,6 +171,9 @@ public class DeckData : DeckSaveData
         UpgradeIdList = deckSaveData.UpgradeIdList.ToList();
         DeckClass = deckSaveData.DeckClass;
         IsNPCDeck = deckSaveData.IsNPCDeck;
+
+        deckSaveData.LoadDeckResources();
+        PlayerResources = deckSaveData.CopyPlayerResources();
 
         //Synchronizes the card and upgrade Ids with the cards in the library
         SyncDeckCards(libraryManager, upgradeManager);

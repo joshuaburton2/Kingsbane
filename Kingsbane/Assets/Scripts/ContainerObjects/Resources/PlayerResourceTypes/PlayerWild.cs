@@ -1,20 +1,46 @@
 ﻿using CategoryEnums;
 using UnityEngine;
+using System;
+
+[Serializable]
 
 public class PlayerWild : PlayerResource
 {
-    private const int DEFAULT_WILD_GAIN = 2;
-    private const int DEFAULT_MAX_WILD = 12;
-    private const int BASE_CYCLE_INCREASE = 5;
+    private readonly int[] WILD_GAIN_VALUES = new int[] { 2, 3, 4 };
+    private readonly int DEFAULT_MAX_WILD = 12;
+    private readonly int BASE_CYCLE_INCREASE = 5;
 
     public int WildGain { get; set; }
     public int MaxWild { get; set; }
 
     public PlayerWild()
     {
-        ResourceType = CardResources.Wild;
-        WildGain = DEFAULT_WILD_GAIN;
+        InitPlayerResource(CardResources.Wild);
+        ResetValue();
         MaxWild = DEFAULT_MAX_WILD;
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying player resource information
+    /// 
+    /// </summary>
+    public PlayerWild(PlayerWild playerWild)
+    {
+        CopyCommonResourceValues(playerWild);
+        WildGain = playerWild.WildGain;
+        MaxWild = playerWild.MaxWild;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the tier level of the player resource
+    /// 
+    /// </summary>
+    public override void SetTierLevel(TierLevel tierLevel)
+    {
+        base.SetTierLevel(tierLevel);
+        WildGain = WILD_GAIN_VALUES[(int)tierLevel];
     }
 
     /// <summary>

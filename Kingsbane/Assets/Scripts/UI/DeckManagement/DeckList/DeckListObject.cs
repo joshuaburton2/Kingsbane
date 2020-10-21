@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 /// <summary>
 /// 
@@ -15,6 +16,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
 
     public DeckData deckData;
 
+    [Header("Main Properties")]
     [SerializeField]
     Image classBorder;
     [SerializeField]
@@ -22,7 +24,18 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     TextMeshProUGUI classText;
     [SerializeField]
+    GameObject deckDetailsArea;
+
+    [Header("Card List Properties")]
+    [SerializeField]
     DeckCardListUI deckCardList;
+
+    [Header("Resource Properties")]
+    [SerializeField]
+    GameObject deckResourcesParent;
+    [SerializeField]
+    GameObject deckResourcePrefab;
+    List<DeckResourceDetailUI> deckResourceObjects;
 
     /// <summary>
     /// 
@@ -39,8 +52,33 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         nameText.text = deckData.Name;
         classBorder.color = GameManager.instance.colourManager.GetClassColour(deckData.DeckClass);
         classText.text = deckData.DeckClass.ToString();
+
         deckCardList.RefreshCardList(deckData, deckListUI);
-        deckCardList.gameObject.SetActive(false);
+
+        deckResourceObjects = new List<DeckResourceDetailUI>();
+        foreach (var resource in deckData.PlayerResources)
+        {
+            var deckResourceObject = Instantiate(deckResourcePrefab, deckResourcesParent.transform);
+            var deckResourceScript = deckResourceObject.GetComponent<DeckResourceDetailUI>();
+            deckResourceScript.InitDeckResourceDetail(resource);
+            deckResourceObjects.Add(deckResourceScript);
+        }
+        
+        deckDetailsArea.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// Refreshes the deck details of the object
+    /// 
+    /// </summary>
+    public void RefreshDeckDetails(DeckData deckData, DeckListUI deckListUI)
+    {
+        deckCardList.RefreshCardList(deckData, deckListUI);
+        foreach (var deckResourceObject in deckResourceObjects)  
+        {
+            deckResourceObject.RefreshResourceProperties();
+        }
     }
 
     /// <summary>
@@ -60,8 +98,8 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
             //If not, sets the deck list UI into edit mode and opens the card list panel on this object
             else
             {
-                deckListUI.EditDeck(deckId, deckData.DeckClass, deckCardList);
-                deckCardList.gameObject.SetActive(true);
+                deckListUI.EditDeck(deckId, deckData.DeckClass, this);
+                deckDetailsArea.gameObject.SetActive(true);
             }
         }
     }

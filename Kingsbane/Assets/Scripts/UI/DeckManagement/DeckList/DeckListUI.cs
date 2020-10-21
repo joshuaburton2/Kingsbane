@@ -34,7 +34,7 @@ public class DeckListUI : MonoBehaviour
     //About which deck is being edited
     public int? DeckEditId { get; set; }
     public bool DeckEditMode { get { return DeckEditId.HasValue; } }
-    private DeckCardListUI activeDeckCardList;
+    private DeckListObject activeDeckObject;
 
     private void Start()
     {
@@ -108,11 +108,11 @@ public class DeckListUI : MonoBehaviour
     /// Initialises the editing of a deck
     /// 
     /// </summary>
-    public void EditDeck(int deckId, Classes.ClassList selectedDeckClass, DeckCardListUI deckCardListUI)
+    public void EditDeck(int deckId, Classes.ClassList selectedDeckClass, DeckListObject _activeDeckObject)
     {
         //Sets the properties of the deck currently being edited
         DeckEditId = deckId;
-        activeDeckCardList = deckCardListUI;
+        activeDeckObject = _activeDeckObject;
 
         //Hides all deck objects in the deck list except the one being edited
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
@@ -130,9 +130,14 @@ public class DeckListUI : MonoBehaviour
         upgradeButton.interactable = true;
     }
 
-    public void RefreshActiveDeckCardList(DeckData deckData = null)
+    /// <summary>
+    /// 
+    /// Refreshes the details of the active deck's details
+    /// 
+    /// </summary>
+    public void RefreshActiveDeckDetails(DeckData deckData = null)
     {
-        activeDeckCardList.RefreshCardList(deckData, this);
+        activeDeckObject.RefreshDeckDetails(deckData, this);
     }
 
     /// <summary>

@@ -120,7 +120,7 @@ public class LootGeneratorUI : MonoBehaviour
     {
         var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
 
-        deckListUI.RefreshActiveDeckCardList(updatedDeck);
+        deckListUI.RefreshActiveDeckDetails(updatedDeck);
         RefreshLootGenerator();
     }
 }

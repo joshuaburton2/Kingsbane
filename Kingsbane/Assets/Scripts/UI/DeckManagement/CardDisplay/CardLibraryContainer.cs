@@ -71,7 +71,7 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
             if (lootGeneratorUI == null)
             {
                 var updatedDeck = GameManager.instance.deckManager.AddCardToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
-                deckListUI.RefreshActiveDeckCardList(updatedDeck);
+                deckListUI.RefreshActiveDeckDetails(updatedDeck);
             }
             //If there is a loot generator, this means the card is being selected on the loot generator panel
             else

@@ -1,10 +1,13 @@
 ﻿using CategoryEnums;
 using UnityEngine;
+using System;
+
+[Serializable]
 
 public class PlayerKnowledge : PlayerResource
 {
-    private const int DEFAULT_BASE_KNOWLEDGE = 2;
-    private const int IGNORANCE_THRESHOLD = 3;
+    private readonly int[] BASE_KNOWLEDGE_GAINS = new int[] { 2, 3, 4 };
+    public readonly int IGNORANCE_THRESHOLD = 3;
 
     public int BaseKnowledgeGain { get; set; }
     public int Stagnation { get; set; }
@@ -13,9 +16,31 @@ public class PlayerKnowledge : PlayerResource
 
     public PlayerKnowledge()
     {
-        ResourceType = CardResources.Knowledge;
-        BaseKnowledgeGain = DEFAULT_BASE_KNOWLEDGE;
+        InitPlayerResource(CardResources.Knowledge);
         Stagnation = 0;
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying player resource information
+    /// 
+    /// </summary>
+    public PlayerKnowledge(PlayerKnowledge playerKnowledge)
+    {
+        CopyCommonResourceValues(playerKnowledge);
+        BaseKnowledgeGain = playerKnowledge.BaseKnowledgeGain;
+        Stagnation = playerKnowledge.Stagnation;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the tier level of the player resource
+    /// 
+    /// </summary>
+    public override void SetTierLevel(TierLevel tierLevel)
+    {
+        base.SetTierLevel(tierLevel);
+        BaseKnowledgeGain = BASE_KNOWLEDGE_GAINS[(int)tierLevel];
     }
 
     /// <summary>
@@ -45,9 +70,9 @@ public class PlayerKnowledge : PlayerResource
     /// Reduces the player's Ignorance by 1 level
     /// 
     /// </summary>
-    /// <returns></returns>
     public int ReduceIgnorance()
     {
-        return Stagnation -= IGNORANCE_THRESHOLD;
+        //Makes sure to have a lower bound on stagnation to prevent it from being negative
+        return Stagnation =  Mathf.Max(0, Stagnation - IGNORANCE_THRESHOLD);
     }
 }

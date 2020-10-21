@@ -135,6 +135,32 @@ public class UpgradeManager : MonoBehaviour
                 }
             }
 
+            //Filters out repeatable resource upgrades which cannot be purchased due to restrictions
+            if (upgrade.UpgradeTag == UpgradeTags.StimulateLearning)
+            {
+                if (deck.PlayerResources.Select(x => x.ResourceType).Contains(CardResources.Knowledge))
+                {
+                    numActiveConditions++;
+                    var playerKnowledge = (PlayerKnowledge)deck.PlayerResources.FirstOrDefault(x => x.ResourceType == CardResources.Knowledge);
+                    if (playerKnowledge.Stagnation != 0)
+                    {
+                        numMetConditions++;
+                    }
+                }
+            }
+            if (upgrade.UpgradeTag == UpgradeTags.RestorePower)
+            {
+                if (deck.PlayerResources.Select(x => x.ResourceType).Contains(CardResources.Mana))
+                {
+                    numActiveConditions++;
+                    var playerMana = (PlayerMana)deck.PlayerResources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
+                    if (playerMana.PreviousOverload != 0)
+                    {
+                        numMetConditions++;
+                    }
+                }
+            }
+
             //If all conditions are met by the upgrade
             if (numMetConditions == numActiveConditions)
             {
@@ -159,38 +185,62 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeTags.HeroUpgrade:
                 var newHeroTier = upgrade.TierLevel;
 
-                deckData.HeroTier = newHeroTier;
-                deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, newHeroTier, deckData.AbilityTier);
+                if (deckData.HeroTier < newHeroTier)
+                {
+                    deckData.HeroTier = newHeroTier;
+                    deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, newHeroTier, deckData.AbilityTier);
+                }
                 break;
             case UpgradeTags.AbilityUpgrade:
                 var newAbilityTier = upgrade.TierLevel;
 
-                deckData.AbilityTier = newAbilityTier;
-                deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, deckData.HeroTier, newAbilityTier);
+                if (deckData.AbilityTier < newAbilityTier)
+                {
+                    deckData.AbilityTier = newAbilityTier;
+                    deckData.HeroCard = GameManager.instance.libraryManager.GetHero(deckData.DeckClass, deckData.HeroTier, newAbilityTier);
+                }
                 break;
             case UpgradeTags.ClaimBounty:
                 playerResource = deckData.GetPlayerResource(CardResources.Gold);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.DevotedFollowers:
                 playerResource = deckData.GetPlayerResource(CardResources.Devotion);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.ManaReserves:
                 playerResource = deckData.GetPlayerResource(CardResources.Mana);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.StrengthofArms:
                 playerResource = deckData.GetPlayerResource(CardResources.Energy);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.WellofKnowledge:
                 playerResource = deckData.GetPlayerResource(CardResources.Knowledge);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.WildGrowth:
                 playerResource = deckData.GetPlayerResource(CardResources.Wild);
-                playerResource.TierLevel = upgrade.TierLevel;
+                if (playerResource.TierLevel < upgrade.TierLevel)
+                {
+                    playerResource.SetTierLevel(upgrade.TierLevel);
+                }
                 break;
             case UpgradeTags.LastingPrayers:
                 playerResource = deckData.GetPlayerResource(CardResources.Devotion);

@@ -1,10 +1,13 @@
 ﻿using CategoryEnums;
+using System;
+
+[Serializable]
 
 public class PlayerMana : PlayerResource
 {
-    private const int DEFAULT_MANA_VALUE = 12;
-    private const int SET_OVERLOAD_MODIFIER = -1; //Value to modify Empowered, Attack and Health values by for each point Overloaded
-    private const int OVERLOAD_REDUCTION = 6;
+    private readonly int[] STARTING_MANA_VALUES = new int[] { 12, 16, 24 };
+    private readonly int SET_OVERLOAD_MODIFIER = -1; //Value to modify Empowered, Attack and Health values by for each point Overloaded
+    private readonly int OVERLOAD_REDUCTION = 6;
 
     public int StartingMana { get; set; }
     public int PreviousOverload { get; set; }
@@ -14,10 +17,32 @@ public class PlayerMana : PlayerResource
 
     public PlayerMana()
     {
-        ResourceType = CardResources.Mana;
-        StartingMana = DEFAULT_MANA_VALUE;
-        PreviousOverload = 0;
-        CurrentOverload = 0;
+        InitPlayerResource(CardResources.Mana);
+        ResetValue();
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying player resource information
+    /// 
+    /// </summary>
+    public PlayerMana(PlayerMana playerMana)
+    {
+        CopyCommonResourceValues(playerMana);
+        StartingMana = playerMana.StartingMana;
+        PreviousOverload = playerMana.PreviousOverload;
+        CurrentOverload = playerMana.CurrentOverload;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the tier level of the player resource
+    /// 
+    /// </summary>
+    public override void SetTierLevel(TierLevel tierLevel)
+    {
+        base.SetTierLevel(tierLevel);
+        StartingMana = STARTING_MANA_VALUES[(int)tierLevel];
     }
 
     /// <summary>

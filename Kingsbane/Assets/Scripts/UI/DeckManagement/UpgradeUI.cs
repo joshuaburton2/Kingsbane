@@ -154,7 +154,7 @@ public class UpgradeUI : MonoBehaviour
     {
         var deckData = GameManager.instance.deckManager.AddUpgradesToPlayerDeck(selectedDeck.Id.Value, upgradesToAdd);
         RefreshUpgradeList(upgradesToAddArea);
-        deckListUI.RefreshActiveDeckCardList(deckData);
+        deckListUI.RefreshActiveDeckDetails(deckData);
         upgradesToAdd = new List<UpgradeData>();
     }
 }

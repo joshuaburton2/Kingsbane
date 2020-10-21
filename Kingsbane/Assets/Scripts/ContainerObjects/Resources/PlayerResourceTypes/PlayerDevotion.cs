@@ -1,18 +1,44 @@
 ﻿using CategoryEnums;
+using System;
 
+[Serializable]
 public class PlayerDevotion : PlayerResource
 {
-    private const int DEFAULT_PRAYER_MOD = 0;
-    private const int DEFAULT_LASTING_PRAYER = 2;
+    private readonly int[] PRAYER_MODIFIERS = new int[] { 0, 1, 2 };
+    private readonly int DEFAULT_LASTING_PRAYER = 2;
+    private readonly int LASTING_PRAYER_INCREASE = 1;
 
     public int PrayerModifier { get; set; }
     public int LastingPrayer { get; set; }
 
     public PlayerDevotion()
     {
-        ResourceType = CardResources.Energy;
-        PrayerModifier = DEFAULT_PRAYER_MOD;
+        InitPlayerResource(CardResources.Devotion);
         LastingPrayer = DEFAULT_LASTING_PRAYER;
+        ResetValue();
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying player resource information
+    /// 
+    /// </summary>
+    public PlayerDevotion (PlayerDevotion playerDevotion)
+    {
+        CopyCommonResourceValues(playerDevotion);
+        PrayerModifier = playerDevotion.PrayerModifier;
+        LastingPrayer = playerDevotion.LastingPrayer;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the tier level of the player resource
+    /// 
+    /// </summary>
+    public override void SetTierLevel(TierLevel tierLevel)
+    {
+        base.SetTierLevel(tierLevel);
+        PrayerModifier = PRAYER_MODIFIERS[(int)tierLevel];
     }
 
     /// <summary>
@@ -40,8 +66,28 @@ public class PlayerDevotion : PlayerResource
     /// Functon for updating the players Devotion with their Lasting Prayer. To be called at the start of each turn
     /// 
     /// </summary>
-    public int IncreaseLastingPrayer()
+    public int TriggerLastingPrayer()
     {
         return ModifyValue(LastingPrayer);
+    }
+
+    /// <summary>
+    /// 
+    /// Increases the players lasting prayer by the base amount. Called when the upgrade is added
+    /// 
+    /// </summary>
+    public int IncreaseLastingPrayer()
+    {
+        return LastingPrayer += LASTING_PRAYER_INCREASE;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the base lasting prayer for the next scenario
+    /// 
+    /// </summary>
+    public int SetLastingPrayer(int numPrayerUnits)
+    {
+        return LastingPrayer = numPrayerUnits + 1;
     }
 }

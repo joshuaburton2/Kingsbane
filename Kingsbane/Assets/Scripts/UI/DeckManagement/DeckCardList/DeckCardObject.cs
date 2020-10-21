@@ -64,7 +64,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
         {
             var updatedDeck = GameManager.instance.deckManager.RemoveCardFromPlayerDeck(deckId.Value, cardData);
-            deckListUI.RefreshActiveDeckCardList(updatedDeck);
+            deckListUI.RefreshActiveDeckDetails(updatedDeck);
         }
     }
 }

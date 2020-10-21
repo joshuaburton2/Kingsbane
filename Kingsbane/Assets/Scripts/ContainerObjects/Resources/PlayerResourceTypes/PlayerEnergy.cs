@@ -1,19 +1,45 @@
 ﻿using CategoryEnums;
+using System;
+
+[Serializable]
 
 public class PlayerEnergy : PlayerResource
 {
-    private const int DEFAULT_BASE_ENERGY = 3;
-    private const int DEFAULT_SURGES = 2;
-    private const int SURGE_INCREASE_VALUE = 1;
+    private readonly int[] BASE_ENERGY_GAINS = new int[] { 3, 5, 7 };
+    private readonly int DEFAULT_SURGES = 2;
+    private readonly int SURGE_INCREASE_VALUE = 1;
 
     public int BaseEnergyGain { get; set; }
     public int Surges { get; set; }
 
     public PlayerEnergy()
     {
-        ResourceType = CardResources.Energy;
-        BaseEnergyGain = DEFAULT_BASE_ENERGY;
+        InitPlayerResource(CardResources.Energy);
+        RefreshValue();
         Surges = DEFAULT_SURGES;
+    }
+
+    /// <summary>
+    /// 
+    /// Constructor for copying player resource information
+    /// 
+    /// </summary>
+    public PlayerEnergy(PlayerEnergy playerEnergy)
+    {
+        CopyCommonResourceValues(playerEnergy);
+        BaseEnergyGain = playerEnergy.BaseEnergyGain;
+        Surges = playerEnergy.Surges;
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the tier level of the player resource
+    /// 
+    /// </summary>
+    public override void SetTierLevel(TierLevel tierLevel)
+    {
+        base.SetTierLevel(tierLevel);
+        BaseEnergyGain = BASE_ENERGY_GAINS[(int)tierLevel];
     }
 
     /// <summary>

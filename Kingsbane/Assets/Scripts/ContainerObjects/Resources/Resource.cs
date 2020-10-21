@@ -1,10 +1,12 @@
 ﻿using CategoryEnums;
+using System;
 
 /// <summary>
 /// 
 /// Object for storing resource data
 /// 
 /// </summary>
+[Serializable]
 public class Resource
 {
     public CardResources ResourceType { get; set; }
