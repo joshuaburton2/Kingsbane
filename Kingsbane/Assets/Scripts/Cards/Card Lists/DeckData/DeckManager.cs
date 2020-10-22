@@ -76,7 +76,7 @@ public class DeckManager : MonoBehaviour
     /// Save decks to file
     /// 
     /// </summary>
-    private void SaveDecks()
+    public void SaveDecks()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + deckFileName);

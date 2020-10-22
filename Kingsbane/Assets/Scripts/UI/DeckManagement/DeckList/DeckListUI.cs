@@ -36,14 +36,6 @@ public class DeckListUI : MonoBehaviour
     public bool DeckEditMode { get { return DeckEditId.HasValue; } }
     private DeckListObject activeDeckObject;
 
-    private void Start()
-    {
-        newDeckPage.SetActive(false);
-        lootGenerator.SetActive(false);
-        upgradeManager.SetActive(false);
-        RefreshDeckList(false);
-    }
-
     /// <summary>
     /// 
     /// Button click function for creating a new deck
@@ -75,6 +67,10 @@ public class DeckListUI : MonoBehaviour
     /// </summary>
     public void RefreshDeckList(bool resourceFilter = true)
     {
+        newDeckPage.SetActive(false);
+        lootGenerator.SetActive(false);
+        upgradeManager.SetActive(false);
+
         DeckEditId = null;
         lootButton.interactable = false;
         lootGenerator.SetActive(false);

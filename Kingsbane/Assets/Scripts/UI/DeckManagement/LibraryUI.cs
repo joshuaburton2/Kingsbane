@@ -72,13 +72,14 @@ public class LibraryUI : MonoBehaviour
     [SerializeField]
     private TMP_Dropdown setDropdown;
 
-    private CardFilter activeFilter;
-
     [Header("Other Objects")]
     [SerializeField]
     DeckListUI deckListUI;
 
-    private void Start()
+    public bool isLoaded = false;
+    private CardFilter activeFilter;
+
+    public void LibraryInitialisation()
     {
         InitGrid();
         InitDropdowns();
@@ -86,7 +87,7 @@ public class LibraryUI : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Initialise the card grid. Should only be called on start
+    /// Initialise the card grid
     /// 
     /// </summary>
     private void InitGrid()

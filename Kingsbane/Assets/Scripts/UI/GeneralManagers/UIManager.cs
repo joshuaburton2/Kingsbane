@@ -9,6 +9,13 @@ using UnityEngine;
 /// </summary>
 public class UIManager : MonoBehaviour
 {
+    [Header("Page Types")]
+    [SerializeField]
+    GameObject lobbyPage;
+    [SerializeField]
+    GameObject cardLibrary;
+
+    [Header("Detail Displays")]
     [SerializeField]
     private GameObject cardDetailDisplay;
     [SerializeField]
@@ -52,5 +59,37 @@ public class UIManager : MonoBehaviour
     public void ClosePanel(GameObject panel)
     {
         panel.SetActive(false);
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for opening the game lobby
+    /// 
+    /// </summary>
+    public void OpenLobby()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for opening the card library
+    /// 
+    /// </summary>
+    public void OpenCardLibrary()
+    {
+        cardLibrary.SetActive(true);
+        cardLibrary.GetComponent<CardLibraryParent>().RefreshCardLibrary();
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for exiting the game
+    /// 
+    /// </summary>
+    public void ExitGame()
+    {
+        GameManager.instance.deckManager.SaveDecks();
+        Application.Quit();
     }
 }
