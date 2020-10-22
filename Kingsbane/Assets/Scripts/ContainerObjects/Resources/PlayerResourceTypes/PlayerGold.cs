@@ -44,9 +44,9 @@ public class PlayerGold : PlayerResource
     /// Increases the gold value by the bounty amount
     /// 
     /// </summary>
-    public int TriggerBounty()
+    public int TriggerBounty(int extraBounty = 0, int multiplier = 1)
     { 
-        return ModifyValue(BountyGain);
+        return ModifyValue((BountyGain + extraBounty) * multiplier);
     }
 
     /// <summary>
