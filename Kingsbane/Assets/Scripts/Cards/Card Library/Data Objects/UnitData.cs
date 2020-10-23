@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CategoryEnums;
 
 /// <summary>
@@ -40,13 +41,7 @@ public class UnitData : CardData
         Name = unitData.Name;
         ImageLocation = unitData.ImageLocation;
 
-        ResourceDevotion = unitData.ResourceDevotion;
-        ResourceEnergy = unitData.ResourceEnergy;
-        ResourceGold = unitData.ResourceGold;
-        ResourceKnowledge = unitData.ResourceKnowledge;
-        ResourceMana = unitData.ResourceMana;
-        ResourceNeutral = unitData.ResourceNeutral;
-        ResourceWild = unitData.ResourceWild;
+        Resources = unitData.Resources.ToList();
 
         Text = unitData.Text;
         LoreText = unitData.LoreText;

@@ -627,8 +627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardListArea: {fileID: 2939305132514768854}
-  cardObjects: []
   cardTemplate: {fileID: 4074441869473426074, guid: eb63039391990ed4b92af21e9f3dc8cb,
+    type: 3}
+  upgradeTemplate: {fileID: 5589189360322528574, guid: 5fd1cddeccf43b043bcc3bd2836d53c8,
     type: 3}
   cardCountText: {fileID: 3700611322340363257}
 --- !u!1 &2939305131720525507

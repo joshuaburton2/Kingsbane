@@ -50,11 +50,10 @@ public class Player : MonoBehaviour
     /// <param name="resource">The resource which is being modified as well as the relevant value</param>
     public Resource CalcNewResource(Resource resource)
     {
-        return new Resource()
-        {
-            ResourceType = resource.ResourceType,
-            Value = resources.First(x => x.ResourceType == resource.ResourceType).Value + resource.Value
-        };
+        var selectedResource = resources.First(x => x.ResourceType == resource.ResourceType);
+        var newValue = selectedResource.CalcNewValue(resource.Value);
+
+        return new Resource(selectedResource.ResourceType, newValue);
     }
 
     /// <summary>
@@ -62,23 +61,22 @@ public class Player : MonoBehaviour
     /// Modifies a particular player resource with a given resource value
     /// 
     /// </summary>
-    public void ModifyResources(Resource resource)
+    public void ModifyResources(List<Resource> resourceChanges)
     {
-        for (int i = 0; i < resources.Count; i++)
+        foreach (var resourceChange in resourceChanges)
         {
-            if (resource.ResourceType == resources[i].ResourceType)
-            {
-                resources[i] = CalcNewResource(resource);
-            }
+            var resourceToChange = resources.First(x => x.ResourceType == resourceChange.ResourceType);
+
+            resourceToChange.ModifyValue(resourceChange.Value);
         }
     }
 
     #region Draw Functions
     public void Draw()
     {
-        GameObject drawnCard = deck.Draw();
+        var drawnCard = deck.Draw();
 
-        if(drawnCard != null)
+        if (drawnCard != null)
         {
             drawnCard.transform.parent = hand.gameObject.transform;
             hand.AddToHand(drawnCard);
@@ -91,9 +89,9 @@ public class Player : MonoBehaviour
 
     public void Draw(int numToDraw)
     {
-        List<GameObject> drawnCards = deck.Draw(numToDraw, out int failedDraws);
+        var drawnCards = deck.Draw(numToDraw, out int failedDraws);
 
-        if(drawnCards.Count != 0)
+        if (drawnCards.Count != 0)
         {
             foreach (GameObject drawnCard in drawnCards)
             {
@@ -111,7 +109,7 @@ public class Player : MonoBehaviour
 
     public void AddTestCard(GameObject testPrefab)
     {
-        GameObject newCard = Instantiate(testPrefab, deck.gameObject.transform);
+        var newCard = Instantiate(testPrefab, deck.gameObject.transform);
         newCard.name = $"Card {counter}";
         counter++;
 

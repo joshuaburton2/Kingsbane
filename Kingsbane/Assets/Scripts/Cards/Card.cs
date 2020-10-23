@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
 {
     public CardData cardData;
 
-    public int Id { get { return cardData.Id; } }
+    public int Id { get { return cardData.Id.Value; } }
     public string CardName { get { return cardData.Name; } }
 
     public Rarity Rarity { get { return cardData.Rarity; } }
@@ -69,19 +69,19 @@ public class Card : MonoBehaviour
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        List<Resource> playerResources = Owner.resources;
+        var playerResources = Owner.resources;
 
         //The resource differences will be the difference between the player's current resources and their mandatory spending
         //of their resources based on the cost of the card
-        List<Resource> resourceDifferences = new List<Resource>();
+        var resourceDifferences = new List<Resource>();
 
-        foreach (Resource resource in ResourceCost)
+        foreach (var resource in ResourceCost)
         {
             //Tests if the current resource is not a neutral cost
             if (resource.ResourceType != CardResources.Neutral)
             {
                 //Calculate the resource difference
-                Resource resourceDif = Owner.CalcNewResource(resource);
+                var resourceDif = Owner.CalcNewResource(resource);
                 resourceDifferences.Add(resourceDif);
 
                 //If the difference between the cost of a card and the player's resource is less than 0, this means the card cannot be played
@@ -95,7 +95,7 @@ public class Card : MonoBehaviour
             {
 
                 //Loops through all the resource difference values. Note that this will be filled since Neutral Resource is the last resource checked
-                foreach (Resource resourceDifference in resourceDifferences)
+                foreach (var resourceDifference in resourceDifferences)
                 {
                     //If the player has enough resources remaining after spending the mandatory cost of the card, they can play
                     //the card
@@ -118,7 +118,7 @@ public class Card : MonoBehaviour
     {
         foreach (var resource in ResourceCost)
         {
-            Owner.ModifyResources(resource);
+            //Owner.ModifyResources(resource);  //To Fix
         }
     }
 }

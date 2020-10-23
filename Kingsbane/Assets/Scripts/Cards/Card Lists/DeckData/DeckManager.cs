@@ -10,9 +10,10 @@ public class DeckManager : MonoBehaviour
 {
     [SerializeField]
     private LibraryManager libraryManager;
+    [SerializeField]
+    private UpgradeManager upgradeManager;
 
     public List<DeckData> PlayerDeckList { get; private set; }
-    public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
     /// <summary>
@@ -20,12 +21,12 @@ public class DeckManager : MonoBehaviour
     /// Convert a list of save data objects into deck objects
     /// 
     /// </summary>
-    private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas)
+    private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas, bool isNewDeck)
     {
         var deckDatas = new List<DeckData>();
         foreach (var saveDeck in deckSaveDatas)
         {
-            deckDatas.Add(new DeckData(saveDeck, libraryManager));
+            deckDatas.Add(new DeckData(saveDeck, libraryManager, upgradeManager, isNewDeck));
         }
 
         return deckDatas;
@@ -43,7 +44,19 @@ public class DeckManager : MonoBehaviour
         //Filters out any NPC decks
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
-        return ConvertDeckSave(deckSaveTemplates);
+        return ConvertDeckSave(deckSaveTemplates, true);
+    }
+
+    /// <summary>
+    /// 
+    /// Gets a list of all NPC decks- not sorted by class
+    /// 
+    /// </summary>
+    public List<DeckData> GetNPCDecks()
+    {
+        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
+
+        return ConvertDeckSave(npcDeckList, true);
     }
 
     /// <summary>
@@ -59,7 +72,7 @@ public class DeckManager : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
             var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
 
-            PlayerDeckList = ConvertDeckSave(saveDeckList);
+            PlayerDeckList = ConvertDeckSave(saveDeckList, false);
 
             file.Close();
         }
@@ -74,7 +87,7 @@ public class DeckManager : MonoBehaviour
     /// Save decks to file
     /// 
     /// </summary>
-    private void SaveDecks()
+    public void SaveDecks()
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + deckFileName);
@@ -115,7 +128,7 @@ public class DeckManager : MonoBehaviour
         var newId = 0;
         if (PlayerDeckList.Count > 0)
         {
-            newId = PlayerDeckList.LastOrDefault().Id + 1;
+            newId = PlayerDeckList.LastOrDefault().Id.Value + 1;
         }
 
         //Adds the deck to the list
@@ -161,7 +174,7 @@ public class DeckManager : MonoBehaviour
     /// Adds a new card to a particular deck
     /// 
     /// </summary>
-    public DeckData AddToPlayerDeck(int id, CardData cardData)
+    public DeckData AddCardToPlayerDeck(int id, CardData cardData)
     {
         //Cannot add hero or uncollectable cards to the deck
         if (!cardData.IsHero && cardData.Rarity != Rarity.Uncollectable)
@@ -177,11 +190,11 @@ public class DeckManager : MonoBehaviour
     /// Adds a list of cards to a particular deck
     /// 
     /// </summary>
-    public DeckData AddRangeToPlayerDeck(int id, List<CardData> cardDatas)
+    public DeckData AddCardsToPlayerDeck(int id, List<CardData> cardDatas)
     {
         foreach (var cardData in cardDatas)
         {
-            AddToPlayerDeck(id, cardData);
+            AddCardToPlayerDeck(id, cardData);
         }
         return PlayerDeckList[id];
     }
@@ -191,13 +204,40 @@ public class DeckManager : MonoBehaviour
     /// Remove a card from a particular deck
     /// 
     /// </summary>
-    public DeckData RemoveFromPlayerDeck(int id, CardData cardData)
+    public DeckData RemoveCardFromPlayerDeck(int id, CardData cardData)
     {
         if (!cardData.IsHero)
         {
             PlayerDeckList[id].RemoveCard(cardData);
             SaveDecks();
         }
+        return PlayerDeckList[id];
+    }
+
+    /// <summary>
+    /// 
+    /// Adds a list of upgrades to a particular deck
+    /// 
+    /// </summary>
+    public DeckData AddUpgradesToPlayerDeck(int id, List<UpgradeData> upgradeDatas)
+    {
+        foreach (var upgradeData in upgradeDatas)
+        {
+            PlayerDeckList[id].AddUpgrade(upgradeData);
+        }
+        SaveDecks();
+        return PlayerDeckList[id];
+    }
+
+    /// <summary>
+    /// 
+    /// Removes an upgrade from a particular deck
+    /// 
+    /// </summary>
+    public DeckData RemoveUpgradeFromPlayerDeck(int id, UpgradeData upgradeData)
+    {
+        PlayerDeckList[id].RemoveUpgrade(upgradeData);
+        SaveDecks();
         return PlayerDeckList[id];
     }
 }

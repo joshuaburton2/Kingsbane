@@ -23,8 +23,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.HeroUpgrade,
         };
+        UpgradeList.Add(upgrade1);
 
         var upgrade2 = new UpgradeData()
         {
@@ -40,8 +42,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.HeroUpgrade,
         };
+        UpgradeList.Add(upgrade2);
 
         var upgrade3 = new UpgradeData()
         {
@@ -57,8 +61,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.AbilityUpgrade,
         };
+        UpgradeList.Add(upgrade3);
 
         var upgrade4 = new UpgradeData()
         {
@@ -74,8 +80,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.AbilityUpgrade,
         };
+        UpgradeList.Add(upgrade4);
 
         var upgrade5 = new UpgradeData()
         {
@@ -92,8 +100,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.DevotedFollowers,
         };
+        UpgradeList.Add(upgrade5);
 
         var upgrade6 = new UpgradeData()
         {
@@ -110,8 +120,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.DevotedFollowers,
         };
+        UpgradeList.Add(upgrade6);
 
         var upgrade7 = new UpgradeData()
         {
@@ -128,8 +140,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.LastingPrayers,
         };
+        UpgradeList.Add(upgrade7);
 
         var upgrade8 = new UpgradeData()
         {
@@ -146,8 +160,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.StrengthofArms,
         };
+        UpgradeList.Add(upgrade8);
 
         var upgrade9 = new UpgradeData()
         {
@@ -164,8 +180,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.StrengthofArms,
         };
+        UpgradeList.Add(upgrade9);
 
         var upgrade10 = new UpgradeData()
         {
@@ -182,8 +200,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.BattleSurges,
         };
+        UpgradeList.Add(upgrade10);
 
         var upgrade11 = new UpgradeData()
         {
@@ -200,8 +220,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ClaimBounty,
         };
+        UpgradeList.Add(upgrade11);
 
         var upgrade12 = new UpgradeData()
         {
@@ -218,8 +240,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ClaimBounty,
         };
+        UpgradeList.Add(upgrade12);
 
         var upgrade13 = new UpgradeData()
         {
@@ -236,8 +260,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.EmergencyReserves,
         };
+        UpgradeList.Add(upgrade13);
 
         var upgrade14 = new UpgradeData()
         {
@@ -254,8 +280,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.WellofKnowledge,
         };
+        UpgradeList.Add(upgrade14);
 
         var upgrade15 = new UpgradeData()
         {
@@ -272,8 +300,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.WellofKnowledge,
         };
+        UpgradeList.Add(upgrade15);
 
         var upgrade16 = new UpgradeData()
         {
@@ -290,8 +320,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.StimulateLearning,
         };
+        UpgradeList.Add(upgrade16);
 
         var upgrade17 = new UpgradeData()
         {
@@ -308,8 +340,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ManaReserves,
         };
+        UpgradeList.Add(upgrade17);
 
         var upgrade18 = new UpgradeData()
         {
@@ -326,8 +360,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ManaReserves,
         };
+        UpgradeList.Add(upgrade18);
 
         var upgrade19 = new UpgradeData()
         {
@@ -344,8 +380,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.RestorePower,
         };
+        UpgradeList.Add(upgrade19);
 
         var upgrade20 = new UpgradeData()
         {
@@ -362,8 +400,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.WildGrowth,
         };
+        UpgradeList.Add(upgrade20);
 
         var upgrade21 = new UpgradeData()
         {
@@ -380,8 +420,10 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
-            UpgradeTag = UpgradeTags.ResourceUpgrade,
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.WildGrowth,
         };
+        UpgradeList.Add(upgrade21);
 
         var upgrade22 = new UpgradeData()
         {
@@ -398,9 +440,13 @@ public class UpgradeLibrary
             ClassPrerequisites = new List<Classes.ClassList>()
             {
             },
+            UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.CycleofNature,
         };
+        UpgradeList.Add(upgrade22);
 
+        upgrade2.UpgradePrerequisites = new List<UpgradeData> { upgrade1 };
+        upgrade4.UpgradePrerequisites = new List<UpgradeData> { upgrade3 };
         upgrade6.UpgradePrerequisites = new List<UpgradeData> { upgrade5 };
         upgrade9.UpgradePrerequisites = new List<UpgradeData> { upgrade8 };
         upgrade12.UpgradePrerequisites = new List<UpgradeData> { upgrade11 };
@@ -414,6 +460,6 @@ namespace CategoryEnums
 {
     public enum UpgradeTags
     {
-        HeroUpgrade, AbilityUpgrade, ResourceUpgrade, LastingPrayers, BattleSurges, EmergencyReserves, StimulateLearning, RestorePower, CycleofNature
+        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CategoryEnums;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// 
@@ -9,7 +10,7 @@ using CategoryEnums;
 /// </summary>
 public class UpgradeData
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
     public string Name { get; set; }
     public string Text { get; set; }
     public int HonourPoints { get; set; }
@@ -22,6 +23,47 @@ public class UpgradeData
 
     public UpgradeData()
     {
-        Id = -1;
+        Id = null;
+    }
+
+    /// <summary>
+    /// 
+    /// String for displaying if the card is repeatable
+    /// 
+    /// </summary>
+    public string IsRepeatableString()
+    {
+        return IsRepeatable ? "Yes" : "No";
+    }
+
+    /// <summary>
+    /// 
+    /// String for displaying the prerequisites of the upgrades as a single string
+    /// 
+    /// </summary>
+    public string PrerequisiteString()
+    {
+        var prerequisitesStrings = new List<string>();
+        var prerequisiteString = "-";
+
+        foreach (var classPrerequisite in ClassPrerequisites)
+        {
+            prerequisitesStrings.Add(classPrerequisite.ToString());
+        }
+        foreach (var resourcePrerequisite in ResourcePrerequisites)
+        {
+            prerequisitesStrings.Add(resourcePrerequisite.ToString());
+        }
+        foreach (var upgradePrerequisite in UpgradePrerequisites)
+        {
+            prerequisitesStrings.Add(upgradePrerequisite.Name);
+        }
+
+        if (prerequisitesStrings.Count != 0)
+        {
+            prerequisiteString = string.Join(", ", prerequisitesStrings);
+        }
+
+        return prerequisiteString;
     }
 }
