@@ -14,7 +14,6 @@ public class DeckManager : MonoBehaviour
     private UpgradeManager upgradeManager;
 
     public List<DeckData> PlayerDeckList { get; private set; }
-    public Dictionary<Classes.ClassList, List<DeckData>> DeckTemplates;
     private const string deckFileName = "/DeckData.dat";
 
     /// <summary>
@@ -46,6 +45,18 @@ public class DeckManager : MonoBehaviour
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
         return ConvertDeckSave(deckSaveTemplates, true);
+    }
+
+    /// <summary>
+    /// 
+    /// Gets a list of all NPC decks- not sorted by class
+    /// 
+    /// </summary>
+    public List<DeckData> GetNPCDecks()
+    {
+        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
+
+        return ConvertDeckSave(npcDeckList, true);
     }
 
     /// <summary>

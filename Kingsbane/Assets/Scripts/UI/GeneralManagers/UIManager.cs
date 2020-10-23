@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
         upgradeDetailDisplay.SetActive(false);
 
         activeMainPanel = ActiveMainPanels.Default;
+
+        lobbyPage.SetActive(false);
+        cardLibrary.SetActive(false);
     }
 
     /// <summary>
@@ -82,7 +85,8 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void OpenLobby()
     {
-
+        lobbyPage.SetActive(true);
+        lobbyPage.GetComponent<LobbyUI>().LoadLobbyUI();
     }
 
     /// <summary>

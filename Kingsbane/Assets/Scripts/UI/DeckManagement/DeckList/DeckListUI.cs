@@ -94,7 +94,7 @@ public class DeckListUI : MonoBehaviour
         {
             var deckListObject = Instantiate(deckListObjectPrefab, deckListParent.transform);
             deckListObject.name = $"Deck: {deck.Name}";
-            deckListObject.GetComponent<DeckListObject>().InitDeckListObject(deck, this);
+            deckListObject.GetComponent<DeckListObject>().InitDeckListObject(deck, _deckListUI: this);
             deckListObjects.Add(deckListObject);
         }
     }

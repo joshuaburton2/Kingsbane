@@ -13,6 +13,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
 {
     private int deckId;
     private DeckListUI deckListUI;
+    private LobbyDeckListUI lobbyDeckListUI;
 
     public DeckData deckData;
 
@@ -42,10 +43,11 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the deck object. Updates the text properties of the object
     /// 
     /// </summary>
-    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI)
+    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI = null, LobbyDeckListUI _lobbyDeckListUI = null)
     {
         //Need to pass in the deck list UI to handle certain click interactions on this object
         deckListUI = _deckListUI;
+        lobbyDeckListUI = _lobbyDeckListUI;
         deckData = _deckData;
 
         deckId = deckData.Id.Value;
