@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ActiveMainPanels
+{
+    Default,
+    Campaign,
+    Lobby,
+    Gameplay,
+    Library,
+}
+
 /// <summary>
 /// 
 /// Overall manager for the UI
@@ -21,10 +30,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject upgradeDetailDisplay;
 
+    [Header("Other Properties")]
+    public ActiveMainPanels activeMainPanel;
+
     private void Start()
     {
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(false);
+
+        activeMainPanel = ActiveMainPanels.Default;
     }
 
     /// <summary>
