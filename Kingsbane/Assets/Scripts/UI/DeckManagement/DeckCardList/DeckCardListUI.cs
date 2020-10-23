@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CategoryEnums;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -75,11 +76,33 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void AddUpgrades()
     {
+        var upgradeObjects = new List<GameObject>();
+
         foreach (var upgradeData in deckUpgradeList)
         {
-            var deckUpgradeObject = Instantiate(upgradeTemplate, cardListArea.transform);
-            deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckId);
-            deckUpgradeObject.name = $"Upgrade- {upgradeData.Name}";
+            if (!upgradeData.IsRepeatable)
+            {
+                var deckUpgradeObject = Instantiate(upgradeTemplate, cardListArea.transform);
+                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckId);
+                deckUpgradeObject.name = $"Upgrade- {upgradeData.Name}";
+
+                upgradeObjects.Add(deckUpgradeObject);
+
+                //Hides the upgrades which are of a lower tier of a tier upgrade (which will always be prerequisites of the current upgrade)
+                if (upgradeData.TierLevel != TierLevel.Default)
+                {
+                    foreach (var upgradePrerequisite in upgradeData.UpgradePrerequisites)
+                    {
+                        foreach (var priorObject in upgradeObjects)
+                        {
+                            if (priorObject.GetComponent<DeckUpgradeObject>().upgradeId == upgradePrerequisite.Id)
+                            {
+                                priorObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

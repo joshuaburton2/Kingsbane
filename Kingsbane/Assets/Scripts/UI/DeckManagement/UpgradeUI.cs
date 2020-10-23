@@ -138,6 +138,27 @@ public class UpgradeUI : MonoBehaviour
         {
             upgradesToAdd.Remove(selectedUpgrade);
             newDeck.RemoveUpgrade(selectedUpgrade);
+
+            //Finds any upgrades in the upgrade to add list which are invalid since their prerequisite is removed
+            var invalidUpgrades = new List<UpgradeData>();
+            foreach (var upgradeToAdd in upgradesToAdd)
+            {
+                foreach (var prerequisiteUpgrade in upgradeToAdd.UpgradePrerequisites)
+                {
+                    if (prerequisiteUpgrade.Id == selectedUpgrade.Id)
+                    {
+                        invalidUpgrades.Add(upgradeToAdd);
+                    }
+                }
+            }
+
+            //Removes any invalid upgrades from the list
+            foreach (var invalidUpgrade in invalidUpgrades)
+            {
+                upgradesToAdd.Remove(invalidUpgrade);
+                newDeck.RemoveUpgrade(invalidUpgrade);
+            }
+
         }
 
         //Refresh the upgrade lists

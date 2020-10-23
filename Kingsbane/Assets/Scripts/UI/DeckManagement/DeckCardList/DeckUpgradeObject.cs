@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
 {
+    public int upgradeId;
+
     UpgradeData upgradeData;
     private DeckListUI deckListUI;
     private int? deckId;
@@ -20,6 +22,7 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void InitUpgradeObject(UpgradeData _upgradeData, DeckListUI _deckListUI, int? _deckId = null)
     {
+        upgradeId = _upgradeData.Id.Value;
         upgradeData = _upgradeData;
         //Needs to pass in the deck list UI to this object in order to know which deck is being edited
         deckListUI = _deckListUI;
