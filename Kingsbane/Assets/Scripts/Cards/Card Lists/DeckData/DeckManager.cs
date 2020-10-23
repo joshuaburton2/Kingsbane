@@ -22,12 +22,12 @@ public class DeckManager : MonoBehaviour
     /// Convert a list of save data objects into deck objects
     /// 
     /// </summary>
-    private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas)
+    private List<DeckData> ConvertDeckSave(List<DeckSaveData> deckSaveDatas, bool isNewDeck)
     {
         var deckDatas = new List<DeckData>();
         foreach (var saveDeck in deckSaveDatas)
         {
-            deckDatas.Add(new DeckData(saveDeck, libraryManager, upgradeManager));
+            deckDatas.Add(new DeckData(saveDeck, libraryManager, upgradeManager, isNewDeck));
         }
 
         return deckDatas;
@@ -45,7 +45,7 @@ public class DeckManager : MonoBehaviour
         //Filters out any NPC decks
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
-        return ConvertDeckSave(deckSaveTemplates);
+        return ConvertDeckSave(deckSaveTemplates, true);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public class DeckManager : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
             var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
 
-            PlayerDeckList = ConvertDeckSave(saveDeckList);
+            PlayerDeckList = ConvertDeckSave(saveDeckList, false);
 
             file.Close();
         }

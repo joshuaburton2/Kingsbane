@@ -161,7 +161,7 @@ public class DeckData : DeckSaveData
     /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
     /// 
     /// </summary>
-    public DeckData(DeckSaveData deckSaveData, LibraryManager libraryManager, UpgradeManager upgradeManager)
+    public DeckData(DeckSaveData deckSaveData, LibraryManager libraryManager, UpgradeManager upgradeManager, bool isNewDeck)
     {
         Id = deckSaveData.Id;
         Name = deckSaveData.Name;
@@ -172,7 +172,11 @@ public class DeckData : DeckSaveData
         DeckClass = deckSaveData.DeckClass;
         IsNPCDeck = deckSaveData.IsNPCDeck;
 
-        deckSaveData.LoadDeckResources();
+        //Only need to create the deck resources if the deck is newly created, not loaded from file
+        if (isNewDeck)
+        {
+            deckSaveData.LoadDeckResources();
+        }
         PlayerResources = deckSaveData.CopyPlayerResources();
 
         //Synchronizes the card and upgrade Ids with the cards in the library
