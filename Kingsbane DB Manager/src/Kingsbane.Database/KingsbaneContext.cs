@@ -38,6 +38,14 @@ namespace Kingsbane.Database
         public DbSet<ClassPrerequisite> ClassPrerequisites { get; set; }
         public DbSet<ResourcePrerequisite> ResourcePrerequisites { get; set; }
         public DbSet<UpgradePrerequisite> UpgradePrerequisites { get; set; }
+        public DbSet<Map> Maps { get; set; }
+        public DbSet<Scenario> Scenarios { get; set; }
+        public DbSet<Campaign> Campaigns { get; set; }
+        public DbSet<ScenarioRule> ScenarioRules { get; set; }
+        public DbSet<ScenarioRuleSet> ScenarioRuleSets { get; set; }
+        public DbSet<Objective> Objectives { get; set; }
+        public DbSet<DeckUpgrade> DeckUpgrades { get; set; }
+        public DbSet<ResourceProperty> ResourceProperties { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,6 +70,11 @@ namespace Kingsbane.Database
                 .HasKey(x => new { x.UpgradeId, x.CardClassId });
             modelBuilder.Entity<UpgradePrerequisite>()
                 .HasKey(x => new { x.UpgradeId, x.UpgradePrequisiteId });
+            modelBuilder.Entity<DeckUpgrade>()
+                .HasKey(x => new { x.DeckId, x.UpgradeId });
+
+            modelBuilder.Entity<ScenarioRuleSet>()
+                .HasKey(x => new { x.RuleId, x.ScenarioId });
         }
     }
 }

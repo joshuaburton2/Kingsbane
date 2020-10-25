@@ -41,5 +41,7 @@ namespace Kingsbane.Database.Models
 
         [InverseProperty("Upgrade")]
         public virtual ICollection<UpgradePrerequisite> UpgradePrerequisites { get; set; }
+
+        public virtual ICollection<DeckUpgrade> DeckUpgrades { get; set; }
     }
 }
