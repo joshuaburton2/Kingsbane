@@ -30,7 +30,7 @@ namespace Kingsbane.Database.Models
 
         // Related Entities
 
-        public int HeroCardId { get; set; }
+        public int? HeroCardId { get; set; }
         public virtual Card HeroCard { get; set; }
 
         public CardClasses DeckClassId { get; set; }
