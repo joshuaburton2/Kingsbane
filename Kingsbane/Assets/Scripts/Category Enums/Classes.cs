@@ -406,7 +406,7 @@ namespace CategoryEnums
                         new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.Gold },
                         new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.Energy },
                     },
-                    IsPlayable = false,
+                    IsPlayable = true,
                     DeckTemplates = new List<DeckSaveData>()
                     {
                         new DeckSaveData()
@@ -417,6 +417,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
+                                326
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -589,5 +590,6 @@ namespace CategoryEnums
                     },
                     },
         };
+
     }
 }
