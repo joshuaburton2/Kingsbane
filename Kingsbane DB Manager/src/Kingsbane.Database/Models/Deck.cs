@@ -23,6 +23,8 @@ namespace Kingsbane.Database.Models
 
         public bool NPCDeck { get; set; }
 
+        public int InitialHandSize { get; set; }
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
