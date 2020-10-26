@@ -7,6 +7,12 @@ namespace Kingsbane.Database.Models
 {
     public class Deck
     {
+        public Deck()
+        {
+            DeckCards = new HashSet<DeckCard>();
+            DeckUpgrades = new HashSet<DeckUpgrade>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -22,9 +28,14 @@ namespace Kingsbane.Database.Models
 
         // Related Entities
 
+        public int HeroCardId { get; set; }
+        public virtual Card HeroCard { get; set; }
+
         public CardClasses DeckClassId { get; set; }
         public virtual CardClass DeckClass { get; set; }
 
         public virtual ICollection<DeckCard> DeckCards { get; set; }
+        public virtual ICollection<DeckUpgrade> DeckUpgrades { get; set; }
+        public virtual ICollection<ResourceProperty> ResourceProperties { get; set; }
     }
 }

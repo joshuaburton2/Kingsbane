@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class ScenarioRule
+public class Rule
 {
     public int? Id { get; set; }
     public string Name { get; set; }
