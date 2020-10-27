@@ -74,7 +74,7 @@ namespace Kingsbane.App
                 var abilityText = @$"        var ability{item.Id} = new AbilityData()
         {{
             Id = {item.Id},
-            Name = ""{item.Name}"",
+            Name = ""{item.Name.FixQuotes()}"",
             Text = @""{item.Text.FixQuotes()}"",
 
             {resourceString}
@@ -113,7 +113,7 @@ namespace Kingsbane.App
                 resourceString = Regex.Replace(resourceString, @"\t|\n|\r", "");
 
                 var commonCard = @$"            Id = {item.Id},
-            Name = ""{item.Name}"",
+            Name = ""{item.Name.FixQuotes()}"",
             ImageLocation = ""{item.ImageLocation}"",
 
             {resourceString}

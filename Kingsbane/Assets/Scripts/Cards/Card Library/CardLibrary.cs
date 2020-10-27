@@ -1139,6 +1139,78 @@ public class CardLibrary
         };
         AbilityList.Add(ability107);
 
+        var ability108 = new AbilityData()
+        {
+            Id = 108,
+            Name = "Feast",
+            Text = @"Restore 2 Health to all friendly adjacent units",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability108);
+
+        var ability109 = new AbilityData()
+        {
+            Id = 109,
+            Name = "Seduce",
+            Text = @"<b>Recruit</b> an adjacent enemy unit that has a total cost of (3) or less or restore 5 health to a friendly unit",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability109);
+
+        var ability110 = new AbilityData()
+        {
+            Id = 110,
+            Name = "Secret Techniques",
+            Text = @"Add a random playable spell that costs just Energy to your hand",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability110);
+
+        var ability111 = new AbilityData()
+        {
+            Id = 111,
+            Name = "Warcry",
+            Text = @"Give all adjacent friendly Goblin units +2 Attack until the end of your turn",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability111);
+
+        var ability1108 = new AbilityData()
+        {
+            Id = 1108,
+            Name = "Summon the Horde",
+            Text = @"Deploy 2 Goblin Hordes beside this unit",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1108);
+
+        var ability1109 = new AbilityData()
+        {
+            Id = 1109,
+            Name = "Enlistment",
+            Text = @"Add a Hireling of your choice to your hand",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1109);
+
         var card2 = new UnitData()
         {
             Id = 2,
@@ -2771,7 +2843,7 @@ Whenever you cast a spell, cast it again on the same target",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Abyssal, Tags.PrayerGain },
-            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Prayer },
+            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Ethereal, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Prayer },
             UnitTag = "Human Abyssal",
             Attack = 2,
             Health = 1,
@@ -2846,11 +2918,11 @@ Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Abyssal,
-            Rarity = Rarity.Common,
+            Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Ethereal, Tags.Void, Tags.Spirit },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice },
+            Synergies = new List<Synergies> { },
             UnitTag = "Void Spirit",
             Attack = 1,
             Health = 1,
@@ -2954,7 +3026,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Abyssal,
-            Rarity = Rarity.Uncommon,
+            Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.SingleDamage, Tags.SelfDamage },
@@ -3071,7 +3143,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage },
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Deployment, Synergies.ShortRange, Synergies.Restoration, Synergies.SelfDamage },
             UnitTag = "Human Abyssal",
             Attack = 3,
@@ -3102,7 +3174,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Void, Tags.Abomination, Tags.Flying },
-            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Mana, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Flying },
+            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Ethereal, Synergies.Mana, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Flying },
             UnitTag = "Void Summon",
             Attack = 3,
             Health = 5,
@@ -3271,7 +3343,7 @@ Deal damage to your hero equal to half their remaining health",
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SelfDamage, Tags.PassiveSpell },
+            Tags = new List<Tags> { Tags.SelfDamage, Tags.Passive },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigSpells, Synergies.Summon, Synergies.Mana, Synergies.Restoration, Synergies.SelfDamage },
             SpellType = "Other",
             Range = 0,
@@ -5381,11 +5453,11 @@ Give the caster +3 Health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Noble, Tags.GoldGain },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Gold },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Noble, Tags.GoldGain, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Gold, Synergies.Routing },
             UnitTag = "Human Noble",
-            Attack = 1,
-            Health = 2,
+            Attack = 2,
+            Health = 3,
             Range = 0,
             Speed = 4,
 
@@ -5466,11 +5538,11 @@ Deployment:</b> Use <b>Potion Sale</b>",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Stun, Tags.Deployment, Tags.Stealth, Tags.Merchant },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Potions },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Stun, Tags.Deployment, Tags.Stealth, Tags.Merchant, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Potions, Synergies.Routing },
             UnitTag = "Human Merchant",
-            Attack = 3,
-            Health = 3,
+            Attack = 4,
+            Health = 4,
             Range = 0,
             Speed = 3,
 
@@ -7160,11 +7232,11 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.GoldGain, Tags.Vanguard, Tags.Rogue, Tags.Stalker, Tags.Bounty },
-            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Removal, Synergies.Vanguard, Synergies.Death, Synergies.Gold },
+            Tags = new List<Tags> { Tags.Human, Tags.GoldGain, Tags.Vanguard, Tags.Rogue, Tags.Stalker, Tags.Bounty, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Removal, Synergies.Vanguard, Synergies.Death, Synergies.Gold, Synergies.Routing },
             UnitTag = "Human Rogue",
-            Attack = 2,
-            Health = 2,
+            Attack = 3,
+            Health = 3,
             Range = 0,
             Speed = 3,
 
@@ -7297,10 +7369,10 @@ Deployment:</b> Add 2 Shivs to your hand",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs },
-            UnitTag = "Human Rogue",
-            Attack = 2,
+            Tags = new List<Tags> { Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue, Tags.Ratfolk, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs, Synergies.Routing },
+            UnitTag = "Ratfolk Rogue",
+            Attack = 4,
             Health = 3,
             Range = 0,
             Speed = 3,
@@ -7428,11 +7500,11 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Rogue, Tags.Stalker },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw },
-            UnitTag = "Human Rogue",
+            Tags = new List<Tags> { Tags.Ability, Tags.Draw, Tags.Rogue, Tags.Stalker, Tags.Ratfolk, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw, Synergies.Routing },
+            UnitTag = "Ratfolk Rogue",
             Attack = 4,
-            Health = 3,
+            Health = 4,
             Range = 0,
             Speed = 4,
 
@@ -7535,9 +7607,9 @@ Deployment:</b> Use <b>Smuggle</b>",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Rogue },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Escape },
-            UnitTag = "Human Rogue",
+            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Rogue, Tags.Ratfolk, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Escape, Synergies.Routing },
+            UnitTag = "Ratfolk Rogue",
             Attack = 4,
             Health = 4,
             Range = 0,
@@ -7566,7 +7638,7 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Warden, Tags.Recruit, Tags.Ogre, Tags.Brigand },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Warden, Synergies.Value, Synergies.Removal, Synergies.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Defensive, Synergies.Value, Synergies.Removal, Synergies.Recruit },
             UnitTag = "Ogre Brigand",
             Attack = 4,
             Health = 3,
@@ -7674,7 +7746,7 @@ Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 8), },
 
-            Text = @"<b>Deployment: Recruit</b> 3 enemy minions within Range 5
+            Text = @"<b>Deployment: Recruit</b> 3 enemy minions within Range 5. Give them <b>Routing</b>
 Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not less than 1",
             LoreText = @"",
             Notes = @"",
@@ -7684,9 +7756,9 @@ Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not le
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Rogue, Tags.Recruit },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit },
-            UnitTag = "Human Rogue",
+            Tags = new List<Tags> { Tags.Rogue, Tags.Recruit, Tags.Ratfolk },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit, Synergies.Routing },
+            UnitTag = "Ratfolk Rogue",
             Attack = 5,
             Health = 5,
             Range = 0,
@@ -8675,7 +8747,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Mercenary, Tags.Hireling },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Mercenary",
-            Attack = 1,
+            Attack = 2,
             Health = 2,
             Range = 0,
             Speed = 3,
@@ -8704,7 +8776,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.GoldGain, Tags.Hireling },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Mercenary",
-            Attack = 1,
+            Attack = 2,
             Health = 2,
             Range = 0,
             Speed = 3,
@@ -8733,7 +8805,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.Stealth, Tags.Hireling },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Mercenary",
-            Attack = 1,
+            Attack = 2,
             Health = 2,
             Range = 0,
             Speed = 3,
@@ -8762,7 +8834,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Mercenary, Tags.Hireling },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Mercenary",
-            Attack = 1,
+            Attack = 2,
             Health = 2,
             Range = 0,
             Speed = 3,
@@ -9636,6 +9708,600 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
         };
         CardList.Add(card320);
 
+        var card321 = new SpellData()
+        {
+            Id = 321,
+            Name = "Ray of Consumption",
+            ImageLocation = "Ray_of_Consumption",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
+
+            Text = @"<b>Discard</b> a card to deal damage to a unit equal to the card's total cost. If this spell kills a unit, add a random card in your <b>Discard</b> pool to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Discard },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.Value, Synergies.SingleDamage, Synergies.Discard },
+            SpellType = "Damage",
+            Range = 3,
+        };
+        CardList.Add(card321);
+
+        var card322 = new UnitData()
+        {
+            Id = 322,
+            Name = "Camp Cook",
+            ImageLocation = "Camp_Cook",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Feast</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.Restoration, Synergies.Routing },
+            UnitTag = "Human Mercenary",
+            Attack = 2,
+            Health = 4,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability108 },
+        };
+        CardList.Add(card322);
+
+        var card323 = new ItemData()
+        {
+            Id = 323,
+            Name = "Deceptive Contract",
+            ImageLocation = "Deceptive_Contract",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"Whenever you deploy a Hireling, add a copy of it to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Wartorn, Tags.Scroll },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Value, Synergies.Equip, Synergies.Hireling },
+            ItemTag = "Wartorn Scroll",
+            Durability = 3,
+        };
+        CardList.Add(card323);
+
+        var card324 = new UnitData()
+        {
+            Id = 324,
+            Name = "Goblin Looter",
+            ImageLocation = "Goblin_Looter",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"<b>Routing</b>
+Whenever this attacks a unit, draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Goblin, Tags.Brigand, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Draw, Synergies.Swarm, Synergies.Goblin, Synergies.Routing },
+            UnitTag = "Goblin Brigand",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card324);
+
+        var card325 = new UnitData()
+        {
+            Id = 325,
+            Name = "Opportunistic Warband",
+            ImageLocation = "Opportunistic_Warlord",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"<b>Routing, Vanguard</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.Vanguard, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Swarm, Synergies.Vanguard, Synergies.Routing },
+            UnitTag = "Human Mercenary",
+            Attack = 4,
+            Health = 5,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card325);
+
+        var card326 = new SpellData()
+        {
+            Id = 326,
+            Name = "Persuasive Techniques",
+            ImageLocation = "Persuasive_Techniques",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 0), },
+
+            Text = @"Gain 3 Gold. Choose a Hireling to deploy adjacent to the caster",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Swarm, Synergies.Gold, Synergies.Hireling },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card326);
+
+        var card327 = new SpellData()
+        {
+            Id = 327,
+            Name = "Sucker Punch",
+            ImageLocation = "Sucker_Punch",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
+
+            Text = @"<b>Stun</b> a unit and push it in a line 1 tile away from the caster. If it impacts an obstacle, attack it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Stun, Synergies.Control, Synergies.ForceMove, Synergies.Brawler },
+            SpellType = "Enchantment, Other",
+            Range = 1,
+        };
+        CardList.Add(card327);
+
+        var card328 = new UnitData()
+        {
+            Id = 328,
+            Name = "Camp Follower",
+            ImageLocation = "Camp_Follower",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Seduce</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Mercenary, Tags.Recruit, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Deployment, Synergies.Removal, Synergies.Restoration, Synergies.Recruit, Synergies.Routing },
+            UnitTag = "Human Mercenary",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability109 },
+        };
+        CardList.Add(card328);
+
+        var card329 = new SpellData()
+        {
+            Id = 329,
+            Name = "CHARGE!",
+            ImageLocation = "Charge",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
+
+            Text = @"Give all adjacent friendly melee units +2 Attack and <b>Prepared</b> until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Prepared },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Swarm, Synergies.Vanguard, Synergies.Prepared },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card329);
+
+        var card330 = new SpellData()
+        {
+            Id = 330,
+            Name = "Intimidate",
+            ImageLocation = "Intimidate",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Gold, 2), },
+
+            Text = @"<b>Stun</b> a unit. Gain Gold equal to its remaining health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Stun, Synergies.Control, Synergies.Gold },
+            SpellType = "Enchantment, Resource",
+            Range = 1,
+        };
+        CardList.Add(card330);
+
+        var card331 = new UnitData()
+        {
+            Id = 331,
+            Name = "Mounted Raiders",
+            ImageLocation = "Mounted_Raiders",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
+
+            Text = @"<b>Routing, Prepared</b>
+Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Prepared, Tags.GoldGain, Tags.Brigand, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Draw, Synergies.BigMinions, Synergies.Prepared, Synergies.Gold, Synergies.Routing },
+            UnitTag = "Human Brigand",
+            Attack = 6,
+            Health = 5,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card331);
+
+        var card332 = new UnitData()
+        {
+            Id = 332,
+            Name = "Goblin Horde",
+            ImageLocation = "Goblin_Horde",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
+
+            Text = @"",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Goblin, Tags.Brigand },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Goblin Brigand",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card332);
+
+        var card333 = new SpellData()
+        {
+            Id = 333,
+            Name = "The Green Horde",
+            ImageLocation = "The_Green_Horde",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"Deploy 4 Goblin Horde units adjacent to the caster. This spell can be cast by any Goblin Warlord units",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Vanguard, Synergies.Goblin },
+            SpellType = "Deployment",
+            Range = 0,
+        };
+        CardList.Add(card333);
+
+        var card334 = new UnitData()
+        {
+            Id = 334,
+            Name = "Combat Insurer",
+            ImageLocation = "Combat_Insurer",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
+
+            Text = @"Whenever a friendly unit <b>Routs</b>, gain 3 Gold and draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Mercenary, Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Gold, Synergies.Routing },
+            UnitTag = "Human Mercenary",
+            Attack = 3,
+            Health = 6,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card334);
+
+        var card335 = new UnitData()
+        {
+            Id = 335,
+            Name = "Disgraced Veteran",
+            ImageLocation = "Disgraced_Veteran",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), },
+
+            Text = @"<b>Deployment:</b> Use <b>Secret Techniques</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Mercenary },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.SmallSpells, Synergies.BigSpells, Synergies.Deployment, Synergies.BigMinions, Synergies.Value },
+            UnitTag = "Human Mercenary",
+            Attack = 5,
+            Health = 7,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability110 },
+        };
+        CardList.Add(card335);
+
+        var card336 = new SpellData()
+        {
+            Id = 336,
+            Name = "Pin",
+            ImageLocation = "Pin",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+
+            Text = @"<b>Root</b> a unit and prevent it from attacking or using abilities on any unit other than the caster until the end of their next turn or until the caster moves",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Root },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Brawler },
+            SpellType = "Enchantment",
+            Range = 1,
+        };
+        CardList.Add(card336);
+
+        var card337 = new SpellData()
+        {
+            Id = 337,
+            Name = "Motivate Rifraf",
+            ImageLocation = "Motivate_Rifraf",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Gold, 2), },
+
+            Text = @"Give a friendly Hireling +4 Attack, +4 Health and <b>Routing</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Durable, Synergies.Routing, Synergies.Hireling },
+            SpellType = "Enchantment",
+            Range = 2,
+        };
+        CardList.Add(card337);
+
+        var card338 = new SpellData()
+        {
+            Id = 338,
+            Name = "Gather Forces",
+            ImageLocation = "Gather_Forces",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 5), },
+
+            Text = @"Deploy two random Hirelings beside the caster. Gain the <b>Passive:</b> ""Your Hirelings have +1 Attack and +1 Health for the rest of the scenario""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Passive },
+            Synergies = new List<Synergies> { Synergies.Durable, Synergies.Swarm, Synergies.Hireling },
+            SpellType = "Deployment",
+            Range = 0,
+        };
+        CardList.Add(card338);
+
+        var card339 = new UnitData()
+        {
+            Id = 339,
+            Name = "Goblin Boss",
+            ImageLocation = "Goblin_Boss",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
+
+            Text = @"<b>Routing
+Deployment:</b> Deploy two Goblin Hordes beside this unit.
+Whenever this unit is attacked, if there are friendly goblin units adjacent to the Boss, the attacker attacks a random adjacent goblin instead.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.Defensive, Synergies.Goblin, Synergies.Routing },
+            UnitTag = "Goblin Warlord",
+            Attack = 3,
+            Health = 5,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability111 },
+        };
+        CardList.Add(card339);
+
+        var card340 = new ItemData()
+        {
+            Id = 340,
+            Name = "Headhunter's Axe",
+            ImageLocation = "Headhunters_Axe",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), },
+
+            Text = @"Your hero has <b>Overwhelm</b>. Whenever your hero attacks, they all attack another random adjacent enemy unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Overwhelm, Tags.Metal, Tags.Axe },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Equip, Synergies.Brawler },
+            ItemTag = "Metal Axe",
+            Durability = 3,
+        };
+        CardList.Add(card340);
+
+        var card1322 = new UnitData()
+        {
+            Id = 1322,
+            Name = "Head Gobbo Mazgix",
+            ImageLocation = "Head_Gobbo_Magzix",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), },
+
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Rally the Horde</b>
+Your other goblins within Range 3 have <b>Prepared</b> and +2 Attack.
+Whenever this unit is attacked, if there are friendly goblin units adjacent to Mazgix, the attacker attacks a random adjacent goblin instead.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Defensive, Synergies.Prepared, Synergies.Goblin, Synergies.Routing },
+            UnitTag = "Goblin Warlord",
+            Attack = 5,
+            Health = 5,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1108 },
+        };
+        CardList.Add(card1322);
+
+        var card1323 = new UnitData()
+        {
+            Id = 1323,
+            Name = "Ragged Lord Allos",
+            ImageLocation = "Ragged Lord Allos",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 4), },
+
+            Text = @"<b>Conduit
+Deployment:</b> Add one of each type of Hireling to your hand.
+You can deploy Hirelings adjacent to this unit, including from abilities or spells.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Mercenary,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Mercenary },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Value, Synergies.Vanguard, Synergies.Hireling },
+            UnitTag = "Human Mercenary",
+            Attack = 5,
+            Health = 4,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability1109 },
+        };
+        CardList.Add(card1323);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -9699,6 +10365,14 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
         card313.RelatedCards = new List<CardData> { card312 };
         card315.RelatedCards = new List<CardData> { card314 };
         card319.RelatedCards = new List<CardData> { card318 };
+        card323.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card326.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card333.RelatedCards = new List<CardData> { card332 };
+        card337.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card338.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card339.RelatedCards = new List<CardData> { card332 };
+        card1322.RelatedCards = new List<CardData> { card332 };
+        card1323.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
     }
 }
 
@@ -9706,12 +10380,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe
     }
 
     public enum Synergies
     {
-        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling
     }
 
     public enum Sets
