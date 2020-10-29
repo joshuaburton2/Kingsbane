@@ -190,7 +190,7 @@ public class NewDeckUI : MonoBehaviour
 
             //Gets the hero card and create the card object
             heroCard = GameManager.instance.libraryManager.GetHero(selectedClassData.ThisClass, heroTier, abilityTier);
-            var heroCardObject = GameManager.instance.libraryManager.CreateCard(heroCard, heroCardArea.transform);
+            var heroCardObject = GameManager.instance.libraryManager.CreateCardObject(heroCard, heroCardArea.transform);
             heroCardObject.name = $"Hero Card: {heroCard.Name}";
 
             //Updates the deck template if there is a deck present

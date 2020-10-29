@@ -38,7 +38,7 @@ public class CardDetailUI : MonoBehaviour
         GameManager.DestroyAllChildren(relatedCardList);
 
         //Creates the main card on the display
-        GameObject mainCard = GameManager.instance.libraryManager.CreateCard(cardData, mainCardParent.transform, mainCardScaling);
+        GameObject mainCard = GameManager.instance.libraryManager.CreateCardObject(cardData, mainCardParent.transform, mainCardScaling);
         mainCard.name = $"Main Card- {cardData.Name}";
 
         //Add the tags and synergies to the display
@@ -57,7 +57,7 @@ public class CardDetailUI : MonoBehaviour
                 relatedCardParent.transform.parent = relatedCardList.transform;
                 //Unsure why this happens, but parent scales to a strange scaling. Following line resets this
                 relatedCardParent.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-                GameManager.instance.libraryManager.CreateCard(relatedCard, relatedCardParent.transform);
+                GameManager.instance.libraryManager.CreateCardObject(relatedCard, relatedCardParent.transform);
             }
             //Resets the scrolling of the related card area
             relatedCardScrollBar.value = 0;

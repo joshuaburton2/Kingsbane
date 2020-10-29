@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
@@ -309,10 +310,22 @@ public class LibraryManager : MonoBehaviour
 
     /// <summary>
     /// 
+    /// Creates a card object which does not require a display object
+    /// 
+    /// </summary>
+    public Card CreateCard(CardData cardData)
+    {
+        var card = new Card();
+        card.InitCard(cardData);
+        return card;
+    }
+
+    /// <summary>
+    /// 
     /// Instantiates a card in the scene
     /// 
     /// </summary>
-    public GameObject CreateCard(CardData card, Transform parent, float scaling = defaultCardScaling)
+    public GameObject CreateCardObject(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         var createdCard = Instantiate(cardObject, parent);
         createdCard.transform.localScale = new Vector3(scaling, scaling, 1.0f);
@@ -342,10 +355,10 @@ public class LibraryManager : MonoBehaviour
     /// Sets the card type of the card object. 
     /// 
     /// </summary>
-    private void SetCardType<T>(CardData cardData, GameObject createdCard)
+    private void SetCardType<T>(CardData cardData, GameObject createdCard) where T: new()
     {
-        //Adds the relevant script of the card type to the game object
-        T typeScript = (T)(object)createdCard.AddComponent(typeof(T));
+        //Creates the relevant script of the card type
+        T typeScript = new T();
 
         ((Card)(object)typeScript).InitCard(cardData);
 
@@ -357,11 +370,26 @@ public class LibraryManager : MonoBehaviour
     /// Instantiates a card of a particular Id
     /// 
     /// </summary>
-    public GameObject CreateCard(int Id, Transform parent, float scaling = defaultCardScaling)
+    public GameObject CreateCardObject(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
 
-        return CreateCard(card, parent, scaling);
+        return CreateCardObject(card, parent, scaling);
+    }
+
+    /// <summary>
+    /// 
+    /// Instantiates a card object in the scene where the card script already exists
+    /// 
+    /// </summary>
+    public GameObject CreateCardObject(Card card, Transform parent, float scaling = defaultCardScaling)
+    {
+        var createdCard = Instantiate(cardObject, parent);
+        createdCard.transform.localScale = new Vector3(scaling, scaling, 1.0f);
+
+        createdCard.GetComponent<CardDisplay>().InitDisplay(card);
+
+        return createdCard;
     }
 
     /// <summary>
@@ -369,11 +397,11 @@ public class LibraryManager : MonoBehaviour
     /// Instantiates a card on a world space canvas to move around in 3d
     /// 
     /// </summary>
-    public GameObject CreatedWorldCard(CardData card, Transform parent, float scaling = defaultCardScaling)
+    public GameObject CreatedWorldCardObject(CardData card, Transform parent, float scaling = defaultCardScaling)
     {
         GameObject worldCanvas = Instantiate(cardCanvas, parent);
 
-        CreateCard(card, worldCanvas.transform, scaling);
+        CreateCardObject(card, worldCanvas.transform, scaling);
 
         return worldCanvas;
     }
@@ -383,11 +411,11 @@ public class LibraryManager : MonoBehaviour
     /// Instantiates a card of a particular Id on a world space canvas to move around in 3d
     /// 
     /// </summary>
-    public GameObject CreateWorldCard(int Id, Transform parent, float scaling = defaultCardScaling)
+    public GameObject CreateWorldCardObject(int Id, Transform parent, float scaling = defaultCardScaling)
     {
         CardData card = GetCard(Id);
 
-        return CreatedWorldCard(card, parent, scaling);
+        return CreatedWorldCardObject(card, parent, scaling);
     }
 
     /// <summary>

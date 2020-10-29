@@ -5,7 +5,7 @@ using System.Dynamic;
 using System.Linq;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class Card
 {
     public CardData cardData;
 

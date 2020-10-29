@@ -44,7 +44,7 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
         //Object is instantiated on the parent of this object in order to prevent conflicts with click handling
-        var newCardObj = GameManager.instance.libraryManager.CreateCard(cardData, gameObject.transform.parent, scalingFactor);
+        var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, gameObject.transform.parent, scalingFactor);
         newCardObj.name = cardName;
         //Sibling Index is set to 1 so that the click handler on card display doesn't interfere with the click handler on the container (which is only used when adding cards to a deck)
         newCardObj.transform.SetSiblingIndex(1);

@@ -72,6 +72,6 @@ public class UpgradeDetailUI : MonoBehaviour
         //heroCardParent.transform.parent = parent;
         ////Unsure why this happens, but parent scales to a strange scaling. Following line resets this
         //heroCardParent.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
-        GameManager.instance.libraryManager.CreateCard(heroCard, parent);
+        GameManager.instance.libraryManager.CreateCardObject(heroCard, parent);
     }
 }
