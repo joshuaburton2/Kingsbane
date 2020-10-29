@@ -31,10 +31,13 @@ public class MapGrid : MonoBehaviour
     //Distance between the centres of the hexes in the x direction
     private float hexDistance = 10.0f;
 
+    [ContextMenu("Refresh Grid")]
     public void Start()
     {
         rowList = new GameObject[numY];
         cellList = new GameObject[numY][];
+
+        GameManager.DestroyAllChildren(gameObject);
 
         #region Row Initialisation
         //Initialise the rows to store each of the cells. This has no functional purpose but is for organisation within the scene

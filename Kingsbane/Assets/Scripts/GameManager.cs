@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     public DeckManager deckManager;
     public ColourManager colourManager;
 
+    public Map LoadedMap { get; set; }
+    public List<Player> LoadedPlayers { get; set; }
+
     private void Awake()
     {
         //Load game initialisation information. Order is important- must load decks after card and upgrade libraries are loaded
@@ -26,7 +30,7 @@ public class GameManager : MonoBehaviour
         deckManager.LoadDecks();
 
         //Singleton setup
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }

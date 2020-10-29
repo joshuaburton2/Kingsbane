@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class Player : MonoBehaviour
+public class Player
 {
     public string playerName;
     public Classes.ClassList playerClass = Classes.ClassList.Default;
@@ -15,31 +15,11 @@ public class Player : MonoBehaviour
     public Hand hand;
 
     public List<Resource> resources;
-    public List<CardResources> usedResources;
+    public List<CardResources> UsedResources { get; private set; }
 
-    int counter;
-
-    private void Start()
+    public void LoadPlayerData(DeckData deckData)
     {
-        counter = 0;
-
-        ResourceInit();
-    }
-
-    /// <summary>
-    /// 
-    /// Initialises the resource list used by the class. To be called on start
-    /// 
-    /// </summary>
-    private void ResourceInit()
-    {
-        usedResources = Classes.GetClassData(playerClass).GetClassResources();
-
-        resources = new List<Resource>();
-        foreach (var resource in usedResources)
-        {
-            resources.Add(new Resource() { ResourceType = resource });
-        }
+        
     }
 
     /// <summary>
@@ -78,7 +58,7 @@ public class Player : MonoBehaviour
 
         if (drawnCard != null)
         {
-            drawnCard.transform.parent = hand.gameObject.transform;
+            //drawnCard.transform.parent = hand.gameObject.transform;
             hand.AddToHand(drawnCard);
         }
         else
@@ -95,7 +75,7 @@ public class Player : MonoBehaviour
         {
             foreach (GameObject drawnCard in drawnCards)
             {
-                drawnCard.transform.parent = hand.gameObject.transform;
+                //drawnCard.transform.parent = hand.gameObject.transform;
                 hand.AddToHand(drawnCard);
             }
         }
@@ -106,13 +86,4 @@ public class Player : MonoBehaviour
     }
 
     #endregion
-
-    public void AddTestCard(GameObject testPrefab)
-    {
-        var newCard = Instantiate(testPrefab, deck.gameObject.transform);
-        newCard.name = $"Card {counter}";
-        counter++;
-
-        deck.AddToDeck(newCard, deck.DeckCount);
-    }
 }
