@@ -53,4 +53,15 @@ public class GameManager : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
+    public void InitialiseGame(List<DeckData> decks, Map map)
+    {
+        LoadedPlayers = new List<Player>();
+        LoadedMap = map;
+
+        foreach (var deck in decks)
+        {
+            LoadedPlayers.Add(new Player(deck));
+        }
+    }
 }

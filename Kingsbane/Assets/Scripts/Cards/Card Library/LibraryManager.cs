@@ -123,7 +123,7 @@ public class LibraryManager : MonoBehaviour
                         //are removed
                         //If the count of the intersection is the same as the original card resources, this means that no resources were removed and as such, there are no
                         //resources in the class that are not on the card- as such, card is playable by this class
-                        if(cardResources.Intersect(classResource.resources).Count() == cardResources.Count())
+                        if (cardResources.Intersect(classResource.resources).Count() == cardResources.Count())
                         {
                             keyList.Add((T)(object)classResource);
                         }
@@ -315,7 +315,25 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public Card CreateCard(CardData cardData)
     {
-        var card = new Card();
+        Card card;
+
+        switch (cardData.CardType)
+        {
+            case CardTypes.Unit:
+                card = new Unit();
+                break;
+            case CardTypes.Spell:
+                card = new Spell();
+                break;
+            case CardTypes.Item:
+                card = new Item();
+                break;
+            case CardTypes.Default:
+            default:
+                card = new Card();
+                break;
+        }
+
         card.InitCard(cardData);
         return card;
     }
@@ -355,7 +373,7 @@ public class LibraryManager : MonoBehaviour
     /// Sets the card type of the card object. 
     /// 
     /// </summary>
-    private void SetCardType<T>(CardData cardData, GameObject createdCard) where T: new()
+    private void SetCardType<T>(CardData cardData, GameObject createdCard) where T : new()
     {
         //Creates the relevant script of the card type
         T typeScript = new T();
@@ -650,7 +668,7 @@ public class LibraryManager : MonoBehaviour
             {
                 lootCards.Add(lootCard);
             }
-            
+
             totalWeighting += lootCard.Weighting;
         }
 
@@ -680,7 +698,7 @@ public class LibraryManager : MonoBehaviour
                         break;
                     }
                 }
-            //If the selection already contains the card, repeats the random selection
+                //If the selection already contains the card, repeats the random selection
             } while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
 
             lootSelection.Add(selectedLootCard);

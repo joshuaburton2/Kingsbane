@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hand
 {
-    public List<GameObject> handList;
+    public List<Card> handList;
 
     private const int maxHandSize = 10;
 
@@ -18,7 +18,7 @@ public class Hand
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <returns>Whether the card could be added or not</returns>
-    public bool AddToHand(GameObject card)
+    public bool AddToHand(Card card)
     {
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (HandCount < maxHandSize)
@@ -39,11 +39,11 @@ public class Hand
     /// </summary>
     /// <param name="cards">The list of cards to add</param>
     /// <returns>The list of cards which could not be added</returns>
-    public List<GameObject> AddToHand(List<GameObject> cards)
+    public List<Card> AddToHand(List<Card> cards)
     {
-        List<GameObject> failedCards = cards;
+        var failedCards = cards;
 
-        foreach (GameObject cardToAdd in cards)
+        foreach (var cardToAdd in cards)
         {
             //Checks if the hand is to full to take another card. If not adds, the card and removes it from the list of failed cards
             //If the hand grows larger than its max hand size at any point, then it breaks from the loop and returns the cards which were

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Deck
 {
-    public List<GameObject> deckList;
+    public List<Card> deckList;
 
     public int DeckCount { get { return deckList.Count; } }
 
-    private void Awake()
+    public Deck(List<CardData> cardList)
     {
-        deckList = new List<GameObject>();
+        foreach (var cardData in cardList)
+        {
+            var card = GameManager.instance.libraryManager.CreateCard(cardData);
+            AddToDeck(card);
+        }
     }
 
     #region Draw Function
@@ -20,14 +24,14 @@ public class Deck
     /// 
     /// </summary>
     /// <returns>Returns the card drawn. If there is no card in the deck, returns an empty card object</returns>
-    public GameObject Draw()
+    public Card Draw()
     {
         int currentCount = DeckCount;
         //Tests if there are cards in the deck to draw
         if(currentCount != 0)
         {
             //Saves the card to return and removes it from the deck list
-            GameObject drawnCard = deckList[DeckCount - 1];
+            var drawnCard = deckList[DeckCount - 1];
             deckList.RemoveAt(DeckCount - 1);
 
             return drawnCard;
@@ -47,9 +51,9 @@ public class Deck
     /// <param name="numToDraw">The number of cards to draw</param>
     /// <param name="failedDraws">If the player tries to draw a number of cards greater than the number left in the deck, this number will be the difference</param>
     /// <returns>The list of cards drawn. If list is smaller than numToDraw, then there were not enough cards in the deck to draw</returns>
-    public List<GameObject> Draw(int numToDraw, out int failedDraws)
+    public List<Card> Draw(int numToDraw, out int failedDraws)
     {
-        List<GameObject> drawnCards = new List<GameObject>();
+        var drawnCards = new List<Card>();
 
         failedDraws = numToDraw;
 
@@ -82,7 +86,7 @@ public class Deck
     /// 
     /// </summary>
     /// <param name="card">The card to shuffle</param>
-    public void ShuffleIntoDeck(GameObject card)
+    public void ShuffleIntoDeck(Card card)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = Random.Range(0, DeckCount + 1);
@@ -97,7 +101,7 @@ public class Deck
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <param name="position">The position in the deck to add it to. Note that cards are drawn from the end of the list</param>
-    public void AddToDeck(GameObject card, int position)
+    public void AddToDeck(Card card, int position = 0)
     {
         int currentCount = DeckCount;
 
@@ -144,7 +148,7 @@ public class Deck
             int randPos = Random.Range(0, currentCount);
 
             //Swaps the cards in each position
-            GameObject randCard = deckList[randPos];
+            var randCard = deckList[randPos];
             deckList[randPos] = deckList[currentPos];
             deckList[currentPos] = randCard;
         }

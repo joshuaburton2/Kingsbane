@@ -10,16 +10,23 @@ public class Player
     public string playerName;
     public Classes.ClassList playerClass = Classes.ClassList.Default;
 
-    public Deck defaultDeck; //Deck to be persisted between scenarios
-    public Deck deck; //Deck to be accessed during a scenario
-    public Hand hand;
+    private DeckData deckData;
 
-    public List<Resource> resources;
-    public List<CardResources> UsedResources { get; private set; }
+    private Deck deck;
+    private Hand hand;
 
-    public void LoadPlayerData(DeckData deckData)
+    public List<PlayerResource> resources;
+    public List<CardResources> UsedResources { get { return resources.Select(x => x.ResourceType).ToList(); } }
+
+    public Player (DeckData _deckData)
     {
-        
+        deckData = _deckData;
+
+        deck = new Deck(deckData.CardList);
+        hand = new Hand();
+
+        resources = deckData.PlayerResources;
+
     }
 
     /// <summary>
@@ -73,7 +80,7 @@ public class Player
 
         if (drawnCards.Count != 0)
         {
-            foreach (GameObject drawnCard in drawnCards)
+            foreach (var drawnCard in drawnCards)
             {
                 //drawnCard.transform.parent = hand.gameObject.transform;
                 hand.AddToHand(drawnCard);
