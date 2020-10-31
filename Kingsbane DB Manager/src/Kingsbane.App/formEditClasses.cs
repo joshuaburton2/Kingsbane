@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Kingsbane.App
 {
@@ -16,6 +17,10 @@ namespace Kingsbane.App
 
         private CardClass selectedClass;
         private Deck selectedDeck;
+
+        private List<GroupBox> resourceGroupBoxes;
+        private List<List<Label>> resourcePropertiesLabels;
+        private List<List<TextBox>> resourcePropertiesTextBoxes;
 
         public formEditClasses(
             IServiceProvider serviceProvider,
@@ -32,6 +37,16 @@ namespace Kingsbane.App
             LoadComboBoxes();
 
             cmbClass.SelectedIndex = 0;
+
+            resourceGroupBoxes = new List<GroupBox> { grpResource1, grpResouce2 };
+            resourcePropertiesLabels = new List<List<Label>> {
+                new List<Label> { lblResource1Prop1, lblResource1Prop2 },
+                new List<Label> { lblResource2Prop1, lblResource2Prop2 },
+                };
+            resourcePropertiesTextBoxes = new List<List<TextBox>> {
+                new List<TextBox> { txtResource1Prop1, txtResource1Prop2 },
+                new List<TextBox> { txtResource2Prop1, txtResource2Prop2 },
+                };
 
             RefreshFields();
         }
@@ -51,6 +66,8 @@ namespace Kingsbane.App
             var classId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
             selectedClass = _context.CardClasses
                 .Include(x => x.Decks).ThenInclude(x => x.DeckCards).ThenInclude(x => x.Card)
+                .Include(x => x.Decks).ThenInclude(x => x.ResourceProperties)
+                .Include(x => x.Decks).ThenInclude(x => x.DeckUpgrades).ThenInclude(x => x.Upgrade)
                 .Single(x => x.Id == classId);
 
             cmbDominant.SelectedItem = SetComboItem(cmbDominant, (int)selectedClass.DominantResource);
@@ -80,6 +97,7 @@ namespace Kingsbane.App
                 txtDeckName.Enabled = false;
                 btnSaveDeck.Enabled = false;
                 chkNPCDeck.Enabled = false;
+                grpNPCProperties.Enabled = false;
             }
             else
             {
@@ -115,6 +133,10 @@ namespace Kingsbane.App
             chkNPCDeck.Checked = selectedDeck.NPCDeck;
 
             RefreshDeckCardList();
+
+            RefreshDeckUpgradeList();
+
+            LoadNPCDeckProperties();
         }
 
         private bool RefreshDeckCardList()
@@ -140,6 +162,48 @@ namespace Kingsbane.App
             }
 
             return true;
+        }
+
+        private bool RefreshDeckUpgradeList()
+        {
+            lstUpgrades.Items.Clear();
+
+            if (selectedDeck.DeckUpgrades == null)
+            {
+                return false;
+            }
+            var upgradeList = selectedDeck.DeckUpgrades.Select(x => x.Upgrade).ToList();
+            var selectUpgardeList = upgradeList.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+
+            lstUpgrades.Items.AddRange(selectUpgardeList);
+
+            return true;
+        }
+
+        private void LoadNPCDeckProperties()
+        {
+            if (selectedDeck.NPCDeck)
+            {
+                txtHeroCard.Text = selectedDeck.HeroCard.Name;
+                txtHeroCard.Tag = selectedDeck.HeroCardId;
+
+                txtInitialMulligan.Text = selectedDeck.InitialHandSize.ToString();
+
+                var deckResources = new List<Resources> { selectedClass.DominantResource, selectedClass.SecondaryResource };
+
+                for (int resourceIndex = 0; resourceIndex < deckResources.Count; resourceIndex++)
+                {
+                    var deckResource = deckResources[resourceIndex];
+                    resourceGroupBoxes[resourceIndex].Text = $"Resource: {deckResource}";
+
+                    var resourceProperties = selectedDeck.ResourceProperties.Where(x => x.ResourceType == deckResource).ToList();
+                    for (int propertyIndex = 0; propertyIndex < resourceProperties.Count; propertyIndex++)
+                    {
+                        var resourceProperty = resourceProperties[propertyIndex];
+
+                    }
+                }
+            }
         }
 
         private SelectListItem SetComboItem(ComboBox cmb, int Id)
@@ -243,6 +307,11 @@ namespace Kingsbane.App
             _context.DeckCards.Remove(selectedDeckCard);
             _context.SaveChanges();
             RefreshDeckCardList();
+        }
+
+        private void chkNPCDeck_CheckedChanged(object sender, EventArgs e)
+        {
+            grpNPCProperties.Enabled = ((CheckBox)sender).Checked;
         }
     }
 }

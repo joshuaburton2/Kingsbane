@@ -23,9 +23,6 @@ namespace Kingsbane.Database.Models
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
 
-        public Resources DominantResource { get; set; }
-        public Resources SecondaryResource { get; set; }
-
         public bool IsPlayable { get; set; }
 
         [Column(TypeName = "varchar(max)")]
@@ -38,9 +35,9 @@ namespace Kingsbane.Database.Models
         public string Weaknesses { get; set; }
 
         // Related Entities
-
         public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<Deck> Decks { get; set; }
         public virtual ICollection<ClassPrerequisite> ClassPrerequisites { get; set; }
+        public virtual ICollection<ClassResource> ClassResources { get; set; }
     }
 }

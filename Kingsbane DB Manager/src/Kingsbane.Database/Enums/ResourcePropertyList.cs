@@ -1,9 +1,8 @@
 ﻿namespace Kingsbane.Database.Enums
 {
-    public enum ResourceProperties
+    public enum ResourcePropertyList
     {
         Default,
-        InitialHandSize,
         PrayerModifier,
         LastingPrayer,
         BaseEnergyGain,

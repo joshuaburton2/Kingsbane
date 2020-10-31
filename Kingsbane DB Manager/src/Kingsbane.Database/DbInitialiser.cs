@@ -20,9 +20,14 @@ namespace Kingsbane.Database
                     new Set { Name = "Standard"}
                 );
 
+            foreach (var value in Enum.GetValues(typeof(Resources)).Cast<Resources>())
+            {
+                await context.Resources.AddAsync(new Resource() { Id = value, Name = value.ToString(), Description = ""});
+            }
+
             foreach (var value in Enum.GetValues(typeof(CardClasses)).Cast<CardClasses>())
             {
-                await context.CardClasses.AddAsync(new CardClass { Id = value, Name = value.ToString(), DominantResource = Resources.Neutral, SecondaryResource = Resources.Neutral,
+                await context.CardClasses.AddAsync(new CardClass { Id = value, Name = value.ToString(), 
                 Description = "", Playstyle = "", Strengths = "", Weaknesses = "", IsPlayable = false });
             }
 
