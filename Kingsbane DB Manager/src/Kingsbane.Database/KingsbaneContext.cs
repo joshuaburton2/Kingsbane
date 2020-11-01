@@ -80,7 +80,7 @@ namespace Kingsbane.Database
                 .HasKey(x => new { x.RuleId, x.ScenarioId });
 
             modelBuilder.Entity<ClassResource>()
-                .HasKey(x => new { x.CardClassId, x.ResourceId });
+                .HasKey(x => new { x.CardClassId, x.ClassResourceType });
         }
     }
 }

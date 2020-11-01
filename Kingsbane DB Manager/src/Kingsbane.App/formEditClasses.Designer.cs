@@ -518,6 +518,7 @@
             this.btnHeroCard.TabIndex = 1;
             this.btnHeroCard.Text = "Add Hero Card";
             this.btnHeroCard.UseVisualStyleBackColor = true;
+            this.btnHeroCard.Click += new System.EventHandler(this.btnHeroCard_Click);
             // 
             // txtHeroCard
             // 
@@ -535,6 +536,7 @@
             this.lstUpgrades.Name = "lstUpgrades";
             this.lstUpgrades.Size = new System.Drawing.Size(222, 49);
             this.lstUpgrades.TabIndex = 24;
+            this.lstUpgrades.DoubleClick += new System.EventHandler(this.lstUpgrades_DoubleClick);
             // 
             // btnAddUpgrade
             // 
@@ -544,6 +546,7 @@
             this.btnAddUpgrade.TabIndex = 25;
             this.btnAddUpgrade.Text = "+";
             this.btnAddUpgrade.UseVisualStyleBackColor = true;
+            this.btnAddUpgrade.Click += new System.EventHandler(this.btnAddUpgrade_Click);
             // 
             // lblUpgrades
             // 

@@ -35,6 +35,8 @@
             this.btnExportClasses = new System.Windows.Forms.Button();
             this.btnUpgrades = new System.Windows.Forms.Button();
             this.btnExportUpgrades = new System.Windows.Forms.Button();
+            this.btnResources = new System.Windows.Forms.Button();
+            this.btnExportResources = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -112,11 +114,35 @@
             this.btnExportUpgrades.UseVisualStyleBackColor = true;
             this.btnExportUpgrades.Click += new System.EventHandler(this.btnExportUpgrades_Click);
             // 
+            // btnResources
+            // 
+            this.btnResources.Location = new System.Drawing.Point(12, 206);
+            this.btnResources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnResources.Name = "btnResources";
+            this.btnResources.Size = new System.Drawing.Size(116, 52);
+            this.btnResources.TabIndex = 0;
+            this.btnResources.Text = "Resources";
+            this.btnResources.UseVisualStyleBackColor = true;
+            this.btnResources.Click += new System.EventHandler(this.btnResources_Click);
+            // 
+            // btnExportResources
+            // 
+            this.btnExportResources.Location = new System.Drawing.Point(12, 262);
+            this.btnExportResources.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExportResources.Name = "btnExportResources";
+            this.btnExportResources.Size = new System.Drawing.Size(116, 52);
+            this.btnExportResources.TabIndex = 0;
+            this.btnExportResources.Text = "Export";
+            this.btnExportResources.UseVisualStyleBackColor = true;
+            this.btnExportResources.Click += new System.EventHandler(this.btnExportResources_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 188);
+            this.ClientSize = new System.Drawing.Size(504, 328);
+            this.Controls.Add(this.btnExportResources);
+            this.Controls.Add(this.btnResources);
             this.Controls.Add(this.btnExportUpgrades);
             this.Controls.Add(this.btnUpgrades);
             this.Controls.Add(this.btnExportClasses);
@@ -141,6 +167,8 @@
         private System.Windows.Forms.Button btnExportClasses;
         private System.Windows.Forms.Button btnUpgrades;
         private System.Windows.Forms.Button btnExportUpgrades;
+        private System.Windows.Forms.Button btnResources;
+        private System.Windows.Forms.Button btnExportResources;
     }
 }
 
