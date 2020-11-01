@@ -5,23 +5,17 @@ using System.Collections.Generic;
 
 namespace Kingsbane.Database.Models
 {
-    public class ResourceProperty
+    public class DeckResourceProperty
     {
-        public ResourceProperty()
-        {
-
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public ResourcePropertyList Type { get; set; }
+        public int Value { get; set; }
 
         //Related Entities
-        public Resources ResourceId { get; set; }
-        public virtual Resource Resource { get; set; }
-
-        public virtual ICollection<DeckResourceProperty> DeckResourceProperties { get; set; }
+        public int DeckId { get; set; }
+        public virtual Deck Deck { get; set; }
+        public int ResourcePropertyId { get; set; }
+        public virtual ResourceProperty ResourceProperty { get; set; }
     }
 }

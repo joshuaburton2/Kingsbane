@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -238,13 +238,16 @@ namespace Kingsbane.App
             {
                 var isPlayable = item.IsPlayable.ToString().ToLower();
 
-                sb.AppendLine($"                //{item.Name}       (Dominant:{item.DominantResource}, Secondary:{item.SecondaryResource})");
+                var dominantResource = item.ClassResources.FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Dominant).ResourceId;
+                var secondaryResource = item.ClassResources.FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Secondary).ResourceId;
+
+                sb.AppendLine($"                //{item.Name}       (Dominant:{dominantResource}, Secondary:{secondaryResource})");
                 sb.AppendLine($"                new ClassData(ClassList.{item.Name})");
                 sb.AppendLine($"                {{");
                 sb.AppendLine($"                    ClassResources = new List<ClassResourceType>()");
                 sb.AppendLine($"                    {{");
-                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.{item.DominantResource} }},");
-                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.{item.SecondaryResource} }},");
+                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.{dominantResource} }},");
+                sb.AppendLine($"                        new ClassResourceType() {{ ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.{secondaryResource} }},");
                 sb.AppendLine($"                    }},");
                 sb.AppendLine($"                    IsPlayable = {isPlayable},");
                 sb.AppendLine($"                    DeckTemplates = new List<DeckSaveData>()");
@@ -402,6 +405,18 @@ namespace Kingsbane.App
 
             Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
+        }
+
+        private void btnResources_Click(object sender, EventArgs e)
+        {
+            var formResources = _serviceProvider.GetRequiredService<formResources>();
+            formResources.Show();
+            this.Hide();
+        }
+
+        private void btnExportResources_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void formMain_FormClosed(object sender, FormClosedEventArgs e)

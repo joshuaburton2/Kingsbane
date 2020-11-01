@@ -61,6 +61,7 @@ namespace Kingsbane.App
             services.AddTransient<formEditClasses>();
             services.AddTransient<formUpgradeList>();
             services.AddTransient<formEditUpgrades>();
+            services.AddTransient<formResources>();
         }
     }
 }

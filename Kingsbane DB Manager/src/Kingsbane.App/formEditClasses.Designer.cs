@@ -61,11 +61,33 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtNewDeckName = new System.Windows.Forms.TextBox();
             this.btnAddCard = new System.Windows.Forms.Button();
+            this.grpNPCProperties = new System.Windows.Forms.GroupBox();
+            this.grpResouce2 = new System.Windows.Forms.GroupBox();
+            this.txtResource2Prop2 = new System.Windows.Forms.TextBox();
+            this.txtResource2Prop1 = new System.Windows.Forms.TextBox();
+            this.lblResource2Prop2 = new System.Windows.Forms.Label();
+            this.lblResource2Prop1 = new System.Windows.Forms.Label();
+            this.grpResource1 = new System.Windows.Forms.GroupBox();
+            this.txtResource1Prop2 = new System.Windows.Forms.TextBox();
+            this.txtResource1Prop1 = new System.Windows.Forms.TextBox();
+            this.lblResource1Prop2 = new System.Windows.Forms.Label();
+            this.lblResource1Prop1 = new System.Windows.Forms.Label();
+            this.lblInitialMulligan = new System.Windows.Forms.Label();
+            this.lblHeroCard = new System.Windows.Forms.Label();
+            this.txtInitialMulligan = new System.Windows.Forms.TextBox();
+            this.btnHeroCard = new System.Windows.Forms.Button();
+            this.txtHeroCard = new System.Windows.Forms.TextBox();
+            this.lstUpgrades = new System.Windows.Forms.ListBox();
+            this.btnAddUpgrade = new System.Windows.Forms.Button();
+            this.lblUpgrades = new System.Windows.Forms.Label();
+            this.grpNPCProperties.SuspendLayout();
+            this.grpResouce2.SuspendLayout();
+            this.grpResource1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(783, 520);
+            this.btnClose.Location = new System.Drawing.Point(783, 559);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 42);
             this.btnClose.TabIndex = 0;
@@ -75,7 +97,7 @@
             // 
             // btnSaveAndClose
             // 
-            this.btnSaveAndClose.Location = new System.Drawing.Point(682, 520);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(682, 559);
             this.btnSaveAndClose.Name = "btnSaveAndClose";
             this.btnSaveAndClose.Size = new System.Drawing.Size(95, 42);
             this.btnSaveAndClose.TabIndex = 1;
@@ -85,7 +107,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(577, 520);
+            this.btnSave.Location = new System.Drawing.Point(577, 559);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 42);
             this.btnSave.TabIndex = 2;
@@ -274,7 +296,7 @@
             this.lstDeckList.Location = new System.Drawing.Point(394, 143);
             this.lstDeckList.MultiSelect = false;
             this.lstDeckList.Name = "lstDeckList";
-            this.lstDeckList.Size = new System.Drawing.Size(464, 343);
+            this.lstDeckList.Size = new System.Drawing.Size(464, 187);
             this.lstDeckList.TabIndex = 17;
             this.lstDeckList.UseCompatibleStateImageBehavior = false;
             this.lstDeckList.View = System.Windows.Forms.View.Details;
@@ -312,12 +334,13 @@
             // chkNPCDeck
             // 
             this.chkNPCDeck.AutoSize = true;
-            this.chkNPCDeck.Location = new System.Drawing.Point(773, 492);
+            this.chkNPCDeck.Location = new System.Drawing.Point(394, 372);
             this.chkNPCDeck.Name = "chkNPCDeck";
             this.chkNPCDeck.Size = new System.Drawing.Size(84, 19);
             this.chkNPCDeck.TabIndex = 18;
             this.chkNPCDeck.Text = "NPC Deck?";
             this.chkNPCDeck.UseVisualStyleBackColor = true;
+            this.chkNPCDeck.CheckedChanged += new System.EventHandler(this.chkNPCDeck_CheckedChanged);
             // 
             // btnSaveDeck
             // 
@@ -348,7 +371,7 @@
             // 
             // btnAddCard
             // 
-            this.btnAddCard.Location = new System.Drawing.Point(394, 493);
+            this.btnAddCard.Location = new System.Drawing.Point(394, 343);
             this.btnAddCard.Name = "btnAddCard";
             this.btnAddCard.Size = new System.Drawing.Size(75, 23);
             this.btnAddCard.TabIndex = 22;
@@ -356,11 +379,194 @@
             this.btnAddCard.UseVisualStyleBackColor = true;
             this.btnAddCard.Click += new System.EventHandler(this.btnAddCard_Click);
             // 
+            // grpNPCProperties
+            // 
+            this.grpNPCProperties.Controls.Add(this.grpResouce2);
+            this.grpNPCProperties.Controls.Add(this.grpResource1);
+            this.grpNPCProperties.Controls.Add(this.lblInitialMulligan);
+            this.grpNPCProperties.Controls.Add(this.lblHeroCard);
+            this.grpNPCProperties.Controls.Add(this.txtInitialMulligan);
+            this.grpNPCProperties.Controls.Add(this.btnHeroCard);
+            this.grpNPCProperties.Controls.Add(this.txtHeroCard);
+            this.grpNPCProperties.Location = new System.Drawing.Point(394, 397);
+            this.grpNPCProperties.Name = "grpNPCProperties";
+            this.grpNPCProperties.Size = new System.Drawing.Size(463, 156);
+            this.grpNPCProperties.TabIndex = 23;
+            this.grpNPCProperties.TabStop = false;
+            this.grpNPCProperties.Text = "NPC Deck Properties";
+            // 
+            // grpResouce2
+            // 
+            this.grpResouce2.Controls.Add(this.txtResource2Prop2);
+            this.grpResouce2.Controls.Add(this.txtResource2Prop1);
+            this.grpResouce2.Controls.Add(this.lblResource2Prop2);
+            this.grpResouce2.Controls.Add(this.lblResource2Prop1);
+            this.grpResouce2.Location = new System.Drawing.Point(235, 68);
+            this.grpResouce2.Name = "grpResouce2";
+            this.grpResouce2.Size = new System.Drawing.Size(215, 76);
+            this.grpResouce2.TabIndex = 6;
+            this.grpResouce2.TabStop = false;
+            this.grpResouce2.Text = "Resource 2";
+            // 
+            // txtResource2Prop2
+            // 
+            this.txtResource2Prop2.Location = new System.Drawing.Point(74, 50);
+            this.txtResource2Prop2.Name = "txtResource2Prop2";
+            this.txtResource2Prop2.Size = new System.Drawing.Size(135, 23);
+            this.txtResource2Prop2.TabIndex = 2;
+            // 
+            // txtResource2Prop1
+            // 
+            this.txtResource2Prop1.Location = new System.Drawing.Point(74, 20);
+            this.txtResource2Prop1.Name = "txtResource2Prop1";
+            this.txtResource2Prop1.Size = new System.Drawing.Size(135, 23);
+            this.txtResource2Prop1.TabIndex = 1;
+            // 
+            // lblResource2Prop2
+            // 
+            this.lblResource2Prop2.AutoSize = true;
+            this.lblResource2Prop2.Location = new System.Drawing.Point(7, 53);
+            this.lblResource2Prop2.Name = "lblResource2Prop2";
+            this.lblResource2Prop2.Size = new System.Drawing.Size(61, 15);
+            this.lblResource2Prop2.TabIndex = 0;
+            this.lblResource2Prop2.Text = "Property 2";
+            // 
+            // lblResource2Prop1
+            // 
+            this.lblResource2Prop1.AutoSize = true;
+            this.lblResource2Prop1.Location = new System.Drawing.Point(7, 23);
+            this.lblResource2Prop1.Name = "lblResource2Prop1";
+            this.lblResource2Prop1.Size = new System.Drawing.Size(61, 15);
+            this.lblResource2Prop1.TabIndex = 0;
+            this.lblResource2Prop1.Text = "Property 1";
+            // 
+            // grpResource1
+            // 
+            this.grpResource1.Controls.Add(this.txtResource1Prop2);
+            this.grpResource1.Controls.Add(this.txtResource1Prop1);
+            this.grpResource1.Controls.Add(this.lblResource1Prop2);
+            this.grpResource1.Controls.Add(this.lblResource1Prop1);
+            this.grpResource1.Location = new System.Drawing.Point(6, 65);
+            this.grpResource1.Name = "grpResource1";
+            this.grpResource1.Size = new System.Drawing.Size(215, 76);
+            this.grpResource1.TabIndex = 6;
+            this.grpResource1.TabStop = false;
+            this.grpResource1.Text = "Resource 1";
+            // 
+            // txtResource1Prop2
+            // 
+            this.txtResource1Prop2.Location = new System.Drawing.Point(74, 50);
+            this.txtResource1Prop2.Name = "txtResource1Prop2";
+            this.txtResource1Prop2.Size = new System.Drawing.Size(135, 23);
+            this.txtResource1Prop2.TabIndex = 2;
+            // 
+            // txtResource1Prop1
+            // 
+            this.txtResource1Prop1.Location = new System.Drawing.Point(74, 20);
+            this.txtResource1Prop1.Name = "txtResource1Prop1";
+            this.txtResource1Prop1.Size = new System.Drawing.Size(135, 23);
+            this.txtResource1Prop1.TabIndex = 1;
+            // 
+            // lblResource1Prop2
+            // 
+            this.lblResource1Prop2.AutoSize = true;
+            this.lblResource1Prop2.Location = new System.Drawing.Point(7, 53);
+            this.lblResource1Prop2.Name = "lblResource1Prop2";
+            this.lblResource1Prop2.Size = new System.Drawing.Size(61, 15);
+            this.lblResource1Prop2.TabIndex = 0;
+            this.lblResource1Prop2.Text = "Property 2";
+            // 
+            // lblResource1Prop1
+            // 
+            this.lblResource1Prop1.AutoSize = true;
+            this.lblResource1Prop1.Location = new System.Drawing.Point(7, 23);
+            this.lblResource1Prop1.Name = "lblResource1Prop1";
+            this.lblResource1Prop1.Size = new System.Drawing.Size(61, 15);
+            this.lblResource1Prop1.TabIndex = 0;
+            this.lblResource1Prop1.Text = "Property 1";
+            // 
+            // lblInitialMulligan
+            // 
+            this.lblInitialMulligan.AutoSize = true;
+            this.lblInitialMulligan.Location = new System.Drawing.Point(313, 19);
+            this.lblInitialMulligan.Name = "lblInitialMulligan";
+            this.lblInitialMulligan.Size = new System.Drawing.Size(86, 15);
+            this.lblInitialMulligan.TabIndex = 4;
+            this.lblInitialMulligan.Text = "Initial Mulligan";
+            // 
+            // lblHeroCard
+            // 
+            this.lblHeroCard.AutoSize = true;
+            this.lblHeroCard.Location = new System.Drawing.Point(6, 19);
+            this.lblHeroCard.Name = "lblHeroCard";
+            this.lblHeroCard.Size = new System.Drawing.Size(61, 15);
+            this.lblHeroCard.TabIndex = 3;
+            this.lblHeroCard.Text = "Hero Card";
+            // 
+            // txtInitialMulligan
+            // 
+            this.txtInitialMulligan.Location = new System.Drawing.Point(313, 39);
+            this.txtInitialMulligan.Name = "txtInitialMulligan";
+            this.txtInitialMulligan.Size = new System.Drawing.Size(144, 23);
+            this.txtInitialMulligan.TabIndex = 2;
+            // 
+            // btnHeroCard
+            // 
+            this.btnHeroCard.Location = new System.Drawing.Point(211, 37);
+            this.btnHeroCard.Name = "btnHeroCard";
+            this.btnHeroCard.Size = new System.Drawing.Size(96, 23);
+            this.btnHeroCard.TabIndex = 1;
+            this.btnHeroCard.Text = "Add Hero Card";
+            this.btnHeroCard.UseVisualStyleBackColor = true;
+            this.btnHeroCard.Click += new System.EventHandler(this.btnHeroCard_Click);
+            // 
+            // txtHeroCard
+            // 
+            this.txtHeroCard.Location = new System.Drawing.Point(6, 37);
+            this.txtHeroCard.Name = "txtHeroCard";
+            this.txtHeroCard.ReadOnly = true;
+            this.txtHeroCard.Size = new System.Drawing.Size(199, 23);
+            this.txtHeroCard.TabIndex = 0;
+            // 
+            // lstUpgrades
+            // 
+            this.lstUpgrades.FormattingEnabled = true;
+            this.lstUpgrades.ItemHeight = 15;
+            this.lstUpgrades.Location = new System.Drawing.Point(636, 336);
+            this.lstUpgrades.Name = "lstUpgrades";
+            this.lstUpgrades.Size = new System.Drawing.Size(222, 49);
+            this.lstUpgrades.TabIndex = 24;
+            this.lstUpgrades.DoubleClick += new System.EventHandler(this.lstUpgrades_DoubleClick);
+            // 
+            // btnAddUpgrade
+            // 
+            this.btnAddUpgrade.Location = new System.Drawing.Point(597, 336);
+            this.btnAddUpgrade.Name = "btnAddUpgrade";
+            this.btnAddUpgrade.Size = new System.Drawing.Size(33, 23);
+            this.btnAddUpgrade.TabIndex = 25;
+            this.btnAddUpgrade.Text = "+";
+            this.btnAddUpgrade.UseVisualStyleBackColor = true;
+            this.btnAddUpgrade.Click += new System.EventHandler(this.btnAddUpgrade_Click);
+            // 
+            // lblUpgrades
+            // 
+            this.lblUpgrades.AutoSize = true;
+            this.lblUpgrades.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblUpgrades.Location = new System.Drawing.Point(515, 338);
+            this.lblUpgrades.Name = "lblUpgrades";
+            this.lblUpgrades.Size = new System.Drawing.Size(76, 20);
+            this.lblUpgrades.TabIndex = 26;
+            this.lblUpgrades.Text = "Upgrades";
+            // 
             // formEditClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(869, 571);
+            this.ClientSize = new System.Drawing.Size(869, 609);
+            this.Controls.Add(this.lblUpgrades);
+            this.Controls.Add(this.btnAddUpgrade);
+            this.Controls.Add(this.lstUpgrades);
+            this.Controls.Add(this.grpNPCProperties);
             this.Controls.Add(this.btnAddCard);
             this.Controls.Add(this.txtNewDeckName);
             this.Controls.Add(this.btnDelete);
@@ -392,6 +598,12 @@
             this.Text = "formEditClasses";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formEditClasses_FormClosed);
             this.Load += new System.EventHandler(this.formEditClasses_Load);
+            this.grpNPCProperties.ResumeLayout(false);
+            this.grpNPCProperties.PerformLayout();
+            this.grpResouce2.ResumeLayout(false);
+            this.grpResouce2.PerformLayout();
+            this.grpResource1.ResumeLayout(false);
+            this.grpResource1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,5 +644,24 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtNewDeckName;
         private System.Windows.Forms.Button btnAddCard;
+        private System.Windows.Forms.GroupBox grpNPCProperties;
+        private System.Windows.Forms.Label lblInitialMulligan;
+        private System.Windows.Forms.Label lblHeroCard;
+        private System.Windows.Forms.TextBox txtInitialMulligan;
+        private System.Windows.Forms.Button btnHeroCard;
+        private System.Windows.Forms.TextBox txtHeroCard;
+        private System.Windows.Forms.GroupBox grpResource1;
+        private System.Windows.Forms.Label lblResource1Prop1;
+        private System.Windows.Forms.GroupBox grpResouce2;
+        private System.Windows.Forms.TextBox txtResource2Prop2;
+        private System.Windows.Forms.TextBox txtResource2Prop1;
+        private System.Windows.Forms.Label lblResource2Prop2;
+        private System.Windows.Forms.Label lblResource2Prop1;
+        private System.Windows.Forms.TextBox txtResource1Prop2;
+        private System.Windows.Forms.TextBox txtResource1Prop1;
+        private System.Windows.Forms.Label lblResource1Prop2;
+        private System.Windows.Forms.ListBox lstUpgrades;
+        private System.Windows.Forms.Button btnAddUpgrade;
+        private System.Windows.Forms.Label lblUpgrades;
     }
 }

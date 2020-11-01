@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Kingsbane.App
 {
@@ -16,6 +17,10 @@ namespace Kingsbane.App
 
         private CardClass selectedClass;
         private Deck selectedDeck;
+
+        private List<GroupBox> resourceGroupBoxes;
+        private List<List<Label>> resourcePropertiesLabels;
+        private List<List<TextBox>> resourcePropertiesTextBoxes;
 
         public formEditClasses(
             IServiceProvider serviceProvider,
@@ -32,6 +37,16 @@ namespace Kingsbane.App
             LoadComboBoxes();
 
             cmbClass.SelectedIndex = 0;
+
+            resourceGroupBoxes = new List<GroupBox> { grpResource1, grpResouce2 };
+            resourcePropertiesLabels = new List<List<Label>> {
+                new List<Label> { lblResource1Prop1, lblResource1Prop2 },
+                new List<Label> { lblResource2Prop1, lblResource2Prop2 },
+                };
+            resourcePropertiesTextBoxes = new List<List<TextBox>> {
+                new List<TextBox> { txtResource1Prop1, txtResource1Prop2 },
+                new List<TextBox> { txtResource2Prop1, txtResource2Prop2 },
+                };
 
             RefreshFields();
         }
@@ -51,10 +66,34 @@ namespace Kingsbane.App
             var classId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
             selectedClass = _context.CardClasses
                 .Include(x => x.Decks).ThenInclude(x => x.DeckCards).ThenInclude(x => x.Card)
+                .Include(x => x.Decks).ThenInclude(x => x.ResourceProperties).ThenInclude(x => x.ResourceProperty)
+                .Include(x => x.Decks).ThenInclude(x => x.DeckUpgrades).ThenInclude(x => x.Upgrade)
+                .Include(x => x.Decks).ThenInclude(x => x.HeroCard)
+                .Include(x => x.ClassResources).ThenInclude(x => x.Resource).ThenInclude(x => x.ResourceProperties)
                 .Single(x => x.Id == classId);
 
-            cmbDominant.SelectedItem = SetComboItem(cmbDominant, (int)selectedClass.DominantResource);
-            cmbSecondary.SelectedItem = SetComboItem(cmbSecondary, (int)selectedClass.SecondaryResource);
+            if (!selectedClass.ClassResources.Any())
+            {
+                _context.ClassResources.Add(new ClassResource()
+                {
+                    CardClass = selectedClass,
+                    ClassResourceType = ClassResourceTypes.Dominant,
+                    ResourceId = Resources.Neutral
+                });
+                _context.ClassResources.Add(new ClassResource()
+                {
+                    CardClass = selectedClass,
+                    ClassResourceType = ClassResourceTypes.Secondary,
+                    ResourceId = Resources.Neutral
+                });
+
+                _context.SaveChanges();
+            }
+
+            cmbDominant.SelectedItem = SetComboItem(cmbDominant, (int)(selectedClass.ClassResources
+                .FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Dominant).ResourceId));
+            cmbSecondary.SelectedItem = SetComboItem(cmbSecondary, (int)(selectedClass.ClassResources
+                .FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Secondary).ResourceId));
 
             txtPlaystyle.Text = selectedClass.Playstyle;
             txtStrengths.Text = selectedClass.Strengths;
@@ -80,6 +119,10 @@ namespace Kingsbane.App
                 txtDeckName.Enabled = false;
                 btnSaveDeck.Enabled = false;
                 chkNPCDeck.Enabled = false;
+                grpNPCProperties.Enabled = false;
+                btnAddUpgrade.Enabled = false;
+                btnAddCard.Enabled = false;
+                lstUpgrades.Enabled = false;
             }
             else
             {
@@ -90,6 +133,9 @@ namespace Kingsbane.App
                 txtDeckName.Enabled = true;
                 btnSaveDeck.Enabled = true;
                 chkNPCDeck.Enabled = true;
+                btnAddUpgrade.Enabled = true;
+                btnAddCard.Enabled = true;
+                lstUpgrades.Enabled = true;
 
                 cmbDeck.Items.AddRange(deckList);
 
@@ -100,7 +146,7 @@ namespace Kingsbane.App
                 else
                 {
                     cmbDeck.SelectedIndex = 0;
-                }               
+                }
 
                 LoadDeckInfo();
             }
@@ -115,6 +161,10 @@ namespace Kingsbane.App
             chkNPCDeck.Checked = selectedDeck.NPCDeck;
 
             RefreshDeckCardList();
+
+            RefreshDeckUpgradeList();
+
+            LoadNPCDeckProperties();
         }
 
         private bool RefreshDeckCardList()
@@ -142,6 +192,66 @@ namespace Kingsbane.App
             return true;
         }
 
+        private bool RefreshDeckUpgradeList()
+        {
+            lstUpgrades.Items.Clear();
+
+            if (selectedDeck.DeckUpgrades == null)
+            {
+                return false;
+            }
+            var upgradeList = selectedDeck.DeckUpgrades.Select(x => x.Upgrade).ToList();
+            var selectUpgardeList = upgradeList.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+
+            lstUpgrades.Items.AddRange(selectUpgardeList);
+
+            return true;
+        }
+
+        private void LoadNPCDeckProperties()
+        {
+            if (selectedDeck.NPCDeck)
+            {
+                txtHeroCard.Text = _context.Cards.FirstOrDefault(x => x.Id == selectedDeck.HeroCardId).Name;
+                txtHeroCard.Tag = selectedDeck.HeroCardId;
+
+                txtInitialMulligan.Text = selectedDeck.InitialHandSize.ToString();
+            }
+            else
+            {
+                txtHeroCard.Text = "";
+                txtHeroCard.Tag = null;
+                txtInitialMulligan.Text = "";
+
+                txtResource1Prop1.Text = "";
+                txtResource1Prop2.Text = "";
+                txtResource2Prop1.Text = "";
+                txtResource2Prop2.Text = "";
+            }
+
+            var resourceIndex = 0;
+            foreach (var resource in selectedClass.ClassResources)
+            {
+                var propertyIndex = 0;
+
+                resourceGroupBoxes[resourceIndex].Text = resource.Resource.Name;
+
+                foreach (var resourceProp in resource.Resource.ResourceProperties)
+                {
+                    resourcePropertiesLabels[resourceIndex][propertyIndex].Text = resourceProp.Type.ToString();
+
+                    if (selectedDeck.ResourceProperties.Any())
+                    {
+                        resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text = selectedDeck.ResourceProperties.ToList()[propertyIndex].Value.ToString();
+                    }
+
+                    propertyIndex++;
+                }
+
+                resourceIndex++;
+            }
+        }
+
         private SelectListItem SetComboItem(ComboBox cmb, int Id)
         {
             return cmb.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == Id);
@@ -155,8 +265,11 @@ namespace Kingsbane.App
 
         private void SaveClass()
         {
-            selectedClass.DominantResource = (Resources)((SelectListItem)cmbDominant.SelectedItem).Id;
-            selectedClass.SecondaryResource = (Resources)((SelectListItem)cmbSecondary.SelectedItem).Id;
+            selectedClass.ClassResources.FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Dominant).ResourceId
+                = (Resources)((SelectListItem)cmbDominant.SelectedItem).Id;
+            selectedClass.ClassResources.FirstOrDefault(x => x.ClassResourceType == ClassResourceTypes.Secondary).ResourceId
+                = (Resources)((SelectListItem)cmbSecondary.SelectedItem).Id;
+
             selectedClass.Playstyle = txtPlaystyle.Text;
             selectedClass.Strengths = txtStrengths.Text;
             selectedClass.Weaknesses = txtWeaknesses.Text;
@@ -201,6 +314,7 @@ namespace Kingsbane.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            selectedDeck.ResourceProperties.Clear();
             _context.Remove(selectedDeck);
             _context.SaveChanges();
             InitDeckList();
@@ -215,9 +329,64 @@ namespace Kingsbane.App
         {
             selectedDeck.Name = txtDeckName.Text;
             selectedDeck.NPCDeck = chkNPCDeck.Checked;
+
+            var upgradeIds = lstUpgrades.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+
+            foreach (var upgradeId in upgradeIds)
+            {
+                var deckUpgrade = selectedDeck != null ? selectedDeck.DeckUpgrades.SingleOrDefault(x => x.UpgradeId == upgradeId) : null;
+                if (deckUpgrade == null)
+                    _context.DeckUpgrades.Add(new DeckUpgrade { Deck = selectedDeck, UpgradeId = upgradeId });
+            }
+            if (selectedDeck != null)
+            {
+                var deckUpgrades = selectedDeck.DeckUpgrades.Where(x => !upgradeIds.Contains(x.UpgradeId));
+                _context.DeckUpgrades.RemoveRange(deckUpgrades);
+            }
+
+            if (selectedDeck.NPCDeck)
+            {
+                selectedDeck.HeroCardId = (int)txtHeroCard.Tag;
+                selectedDeck.InitialHandSize = int.Parse(txtInitialMulligan.Text);
+
+                var resourceIndex = 0;
+
+                foreach (var resource in selectedClass.ClassResources)
+                {
+                    var propertyIndex = 0;
+
+                    foreach (var property in resource.Resource.ResourceProperties)
+                    {
+                        var propertyValue = int.Parse(resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text);
+
+                        if (selectedDeck.ResourceProperties.Where(x => x.ResourcePropertyId == property.Id).Any())
+                        {
+                            selectedDeck.ResourceProperties.FirstOrDefault(x => x.ResourcePropertyId == property.Id).Value = propertyValue;
+                        }
+                        else
+                        {
+                            _context.DeckResourceProperties.Add(new DeckResourceProperty()
+                            {
+                                Deck = selectedDeck,
+                                ResourceProperty = property,
+                                Value = propertyValue,
+                            }); ;
+                        }
+
+                        propertyIndex++;
+                    }
+
+                    resourceIndex++;
+                }
+            }
+            else
+            {
+                selectedDeck.ResourceProperties.Clear();
+            }
+
             _context.SaveChanges();
 
-            InitDeckList();
+            InitDeckList(selectedDeck.Id);
         }
 
         private void btnAddCard_Click(object sender, EventArgs e)
@@ -243,6 +412,55 @@ namespace Kingsbane.App
             _context.DeckCards.Remove(selectedDeckCard);
             _context.SaveChanges();
             RefreshDeckCardList();
+        }
+
+        private void chkNPCDeck_CheckedChanged(object sender, EventArgs e)
+        {
+            grpNPCProperties.Enabled = ((CheckBox)sender).Checked;
+        }
+
+        private void btnHeroCard_Click(object sender, EventArgs e)
+        {
+            var formSelectionList = _serviceProvider.GetRequiredService<formSelectionList>();
+            formSelectionList.selectionType = SelectionType.Cards;
+            var result = formSelectionList.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                txtHeroCard.Text = formSelectionList.selectionItem.Name;
+                txtHeroCard.Tag = formSelectionList.selectionItem.Id;
+            }
+        }
+
+        private void btnAddUpgrade_Click(object sender, EventArgs e)
+        {
+            var formSelectionList = _serviceProvider.GetRequiredService<formSelectionList>();
+            formSelectionList.selectionType = SelectionType.Upgrades;
+            var result = formSelectionList.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                if (!lstUpgrades.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
+                {
+                    lstUpgrades.Items.Add(formSelectionList.selectionItem);
+                }
+                else
+                {
+                    MessageBox.Show("Card already has that upgrade");
+                }
+            }
+        }
+
+        private void lstUpgrades_DoubleClick(object sender, EventArgs e)
+        {
+            var selectedRecord = lstUpgrades.SelectedItems.Cast<SelectListItem>().ToList()[0];
+
+            var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                lstUpgrades.Items.Remove(lstUpgrades.SelectedItems[0]);
+            }
         }
     }
 }

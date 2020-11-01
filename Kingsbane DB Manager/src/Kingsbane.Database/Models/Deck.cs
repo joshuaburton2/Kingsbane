@@ -38,6 +38,6 @@ namespace Kingsbane.Database.Models
 
         public virtual ICollection<DeckCard> DeckCards { get; set; }
         public virtual ICollection<DeckUpgrade> DeckUpgrades { get; set; }
-        public virtual ICollection<ResourceProperty> ResourceProperties { get; set; }
+        public virtual ICollection<DeckResourceProperty> ResourceProperties { get; set; }
     }
 }

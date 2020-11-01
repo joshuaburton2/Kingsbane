@@ -8,5 +8,6 @@ namespace Kingsbane.Database.Models
         public virtual Upgrade Upgrade { get; set; }
 
         public Resources ResourceId { get; set; }
+        public virtual Resource Resource { get; set; }
     }
 }

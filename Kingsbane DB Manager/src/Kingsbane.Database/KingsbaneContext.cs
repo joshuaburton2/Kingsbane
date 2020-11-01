@@ -30,6 +30,7 @@ namespace Kingsbane.Database
         public DbSet<RelatedCards> RelatedCards { get; set; }
         public DbSet<Set> Set { get; set; }
         public DbSet<CardClass> CardClasses { get; set; }
+        public DbSet<ClassResource> ClassResources { get; set; }
         public DbSet<CardType> CardTypes { get; set; }
         public DbSet<CardRarity> CardRarities { get; set; }
         public DbSet<Deck> Decks { get; set; }
@@ -45,7 +46,9 @@ namespace Kingsbane.Database
         public DbSet<ScenarioRuleSet> ScenarioRuleSets { get; set; }
         public DbSet<Objective> Objectives { get; set; }
         public DbSet<DeckUpgrade> DeckUpgrades { get; set; }
-        public DbSet<ResourceProperty> ResourceProperties { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<ResourceProperty> ResourceProps { get; set; }
+        public DbSet<DeckResourceProperty> DeckResourceProperties { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -75,6 +78,9 @@ namespace Kingsbane.Database
 
             modelBuilder.Entity<ScenarioRuleSet>()
                 .HasKey(x => new { x.RuleId, x.ScenarioId });
+
+            modelBuilder.Entity<ClassResource>()
+                .HasKey(x => new { x.CardClassId, x.ClassResourceType });
         }
     }
 }
