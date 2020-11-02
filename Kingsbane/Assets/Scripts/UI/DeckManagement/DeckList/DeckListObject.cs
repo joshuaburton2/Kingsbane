@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 /// <summary>
 /// 
@@ -92,17 +93,41 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            //If there is a deck currently being edited, refreshes the deck list (which will close the card list panel for this object)
-            if (deckListUI.DeckEditMode)
+            //For the deck list if its in the library and can be edited
+            if (deckListUI != null)
             {
-                deckListUI.RefreshDeckList();
+                //If there is a deck currently being edited, refreshes the deck list (which will close the card list panel for this object)
+                if (deckListUI.DeckEditMode)
+                {
+                    deckListUI.RefreshDeckList();
+                }
+                //If not, sets the deck list UI into edit mode and opens the card list panel on this object
+                else
+                {
+                    deckListUI.EditDeck(deckId, deckData.DeckClass, this);
+                    deckDetailsArea.gameObject.SetActive(true);
+                }
             }
-            //If not, sets the deck list UI into edit mode and opens the card list panel on this object
+            //For the deck list if its in the lobby and cannot be edited
+            else if (lobbyDeckListUI != null)
+            {
+                //If there is a deck currently selected, refreshes the deck list (which will close the card list panel for this object)
+                if (lobbyDeckListUI.DeckSelected)
+                {
+                    lobbyDeckListUI.RefreshDeckList();
+                }
+                //If not, sets the lobby deck list UI into selected mode and opens the card list panel on this object
+                else
+                {
+                    lobbyDeckListUI.SelectDeck(deckId, deckData);
+                    deckDetailsArea.gameObject.SetActive(true);
+                }
+            }
             else
             {
-                deckListUI.EditDeck(deckId, deckData.DeckClass, this);
-                deckDetailsArea.gameObject.SetActive(true);
+                throw new Exception("Deck list object not initialised properly. Requires an appropriate parent list.");
             }
+            
         }
     }
 

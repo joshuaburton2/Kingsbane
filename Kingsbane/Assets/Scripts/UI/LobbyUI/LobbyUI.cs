@@ -13,6 +13,8 @@ public enum GameModes
 
 public class LobbyUI : MonoBehaviour
 {
+    private const int NUM_PLAYERS = 2;
+
     public GameModes gameMode;
     private GameModes SelectedGameMode { get { return (GameModes)Enum.Parse(typeof(GameModes), gameModeDropdown.captionText.text); } }
     private bool IsPVE { get { return gameMode == GameModes.PVE; } }
@@ -21,21 +23,28 @@ public class LobbyUI : MonoBehaviour
     private TMP_Dropdown gameModeDropdown;
 
     [SerializeField]
-    LobbyDeckListUI PlayerOneDeckList;
-    [SerializeField]
-    LobbyDeckListUI PlayerTwoDeckList;
+    List<LobbyDeckListUI> playerDeckList;
+
+    private DeckData[] playerDecks;
 
     public void LoadLobbyUI()
     {
         gameMode = SelectedGameMode;
 
-        PlayerOneDeckList.RefreshDeckList(false, "Player 1 Deck List");
-        PlayerTwoDeckList.RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+        playerDecks = new DeckData[NUM_PLAYERS];       
+
+        playerDeckList[0].RefreshDeckList(false, "Player 1 Deck List");
+        playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
     }
 
     public void SwitchGameMode()
     {
         gameMode = SelectedGameMode;
-        PlayerTwoDeckList.RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+        playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+    }
+
+    public void SelectDeck(int playerId, DeckData deck)
+    {
+        playerDecks[playerId] = deck;
     }
 }

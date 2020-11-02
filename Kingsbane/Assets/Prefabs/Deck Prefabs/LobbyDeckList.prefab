@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: -20, y: 100}
+  m_SizeDelta: {x: -20, y: 70}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8174157394559997296
 CanvasRenderer:
@@ -165,9 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b706e0f2d2bc07f47a8d7a2805c70c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
+  lobbyUI: {fileID: 0}
   deckListParent: {fileID: 8174157395614351559}
   deckListObjectPrefab: {fileID: 3589997613452270799, guid: f8234530385831948a7a5c08d4c7b29a,
     type: 3}
+  listScrollArea: {fileID: 8174157396624128289}
   deckListObjects: []
   editDeckButton: {fileID: 8174157394876936313}
   titleText: {fileID: 8174157396318520631}
@@ -1273,8 +1276,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5, y: -27.5}
-  m_SizeDelta: {x: -30, y: -194.99998}
+  m_AnchoredPosition: {x: 5, y: 2.5000305}
+  m_SizeDelta: {x: -30, y: -175.00006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8174157396624128291
 CanvasRenderer:
@@ -1326,7 +1329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 8174157395614351558}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1

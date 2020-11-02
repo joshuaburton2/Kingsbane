@@ -16,6 +16,8 @@ public class DeckListUI : MonoBehaviour
     [SerializeField]
     private GameObject newDeckPage;
     [SerializeField]
+    private ScrollRect deckScrollArea;
+    [SerializeField]
     private GameObject lootGenerator;
     [SerializeField]
     private Button lootButton;
@@ -71,6 +73,9 @@ public class DeckListUI : MonoBehaviour
         lootGenerator.SetActive(false);
         upgradeManager.SetActive(false);
 
+        //Unlocks the deck scrolling
+        deckScrollArea.vertical = true;
+
         DeckEditId = null;
         lootButton.interactable = false;
         lootGenerator.SetActive(false);
@@ -109,6 +114,9 @@ public class DeckListUI : MonoBehaviour
         //Sets the properties of the deck currently being edited
         DeckEditId = deckId;
         activeDeckObject = _activeDeckObject;
+
+        //Locks the deck scrolling
+        deckScrollArea.vertical = false;
 
         //Hides all deck objects in the deck list except the one being edited
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
