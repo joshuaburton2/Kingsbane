@@ -314,7 +314,9 @@ namespace Kingsbane.App
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            selectedDeck.ResourceProperties.Clear();
+            _context.DeckResourceProperties.RemoveRange(_context.DeckResourceProperties.Where(x => x.DeckId == selectedDeck.Id));
+            _context.DeckCards.RemoveRange(_context.DeckCards.Where(x => x.DeckId == selectedDeck.Id));
+            _context.DeckUpgrades.RemoveRange(_context.DeckUpgrades.Where(x => x.DeckId == selectedDeck.Id));
             _context.Remove(selectedDeck);
             _context.SaveChanges();
             InitDeckList();
