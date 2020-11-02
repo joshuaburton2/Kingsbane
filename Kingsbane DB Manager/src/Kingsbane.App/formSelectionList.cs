@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Kingsbane.Database.Models;
 using Microsoft.EntityFrameworkCore.Internal;
+using Kingsbane.Database.Enums;
 
 namespace Kingsbane.App
 {
@@ -15,6 +16,7 @@ namespace Kingsbane.App
         Synergy,
         Cards,
         Upgrades,
+        NPCHero,
     }
 
     public partial class formSelectionList : Form
@@ -41,6 +43,7 @@ namespace Kingsbane.App
                     btnAdd.Enabled = true;
                     txtAdd.Enabled = true;
                     break;
+                case SelectionType.NPCHero:
                 case SelectionType.Cards:
                 case SelectionType.Upgrades:
                     btnAdd.Enabled = false;
@@ -80,6 +83,9 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.Upgrades:
                     newQuery = _context.Upgrades.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = "" });
+                    break;
+                case SelectionType.NPCHero:
+                    newQuery = _context.Cards.Where(x => x.RarityId == CardRarities.NPCHero).Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CardTypeId.ToString() });
                     break;
                 case SelectionType.Cards:
                 default:

@@ -19,6 +19,13 @@ public class PlayerEnergy : PlayerResource
         Surges = DEFAULT_SURGES;
     }
 
+    public PlayerEnergy(int baseEnergyGain, int surges)
+    {
+        ResourceType = CardResources.Energy;
+        BaseEnergyGain = baseEnergyGain;
+        Surges = surges;
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information

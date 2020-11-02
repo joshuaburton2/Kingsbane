@@ -111,14 +111,14 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "-" },
                         { ClassData.ClassDataFields.Weaknesses, "-" },
                     },
-                    },
-                //Abyssal       (Dominant:Devotion, Secondary:Mana)
+                },
+                //Abyssal       (Dominant:Mana, Secondary:Devotion)
                 new ClassData(ClassList.Abyssal)
                 {
                     ClassResources = new List<ClassResourceType>()
                     {
-                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.Devotion },
-                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.Mana },
+                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.Mana },
+                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.Devotion },
                     },
                     IsPlayable = true,
                     DeckTemplates = new List<DeckSaveData>()
@@ -135,6 +135,28 @@ namespace CategoryEnums
                             },
                             UpgradeIdList = new List<int>(),
                         },
+                        new DeckSaveData()
+                        {
+                            Id = 34,
+                            Name = "Test",
+                            DeckClass = ClassList.Abyssal,
+                            IsNPCDeck = true,
+                            CardIdList = new List<int>()
+                            {
+                                2
+                            },
+                            UpgradeIdList = new List<int>()
+                            {
+                                1,
+                                2,
+                            },
+                            HeroCardID = 1326,
+                            PlayerResources = new List<PlayerResource>()
+                            {
+                                new PlayerMana(10, 2),
+                                new PlayerDevotion(2, 10),
+                            },
+                        },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
                     {
@@ -143,7 +165,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Powerful damage spells, strong but cheap minions, decent healing for hero, constant protection from a familiar" },
                         { ClassData.ClassDataFields.Weaknesses, "Non-resource costs (discard, hero health, sacrifices), slow units, limited direct removal" },
                     },
-                    },
+                },
                 //Agent       (Dominant:Gold, Secondary:Knowledge)
                 new ClassData(ClassList.Agent)
                 {
@@ -174,7 +196,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Excellent removal tools, manipulation of enemy decks, good value generation" },
                         { ClassData.ClassDataFields.Weaknesses, "Limited and weak minions, limited escape tools" },
                     },
-                    },
+                },
                 //Arcanist       (Dominant:Knowledge, Secondary:Mana)
                 new ClassData(ClassList.Arcanist)
                 {
@@ -206,7 +228,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Strong chip damage spells, good value generation, good ranged units" },
                         { ClassData.ClassDataFields.Weaknesses, "Limited defensive tools, no healing, slow units" },
                     },
-                    },
+                },
                 //Captain       (Dominant:Energy, Secondary:Knowledge)
                 new ClassData(ClassList.Captain)
                 {
@@ -238,7 +260,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Strong unit base and hero, versatile units (choose mechanics), ability to manipulate the battlefield, wide buffs" },
                         { ClassData.ClassDataFields.Weaknesses, "Limited damage or removal spells, versatility makes units quite unfocused" },
                     },
-                    },
+                },
                 //Elementalist       (Dominant:Mana, Secondary:Wild)
                 new ClassData(ClassList.Elementalist)
                 {
@@ -270,7 +292,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "High damage area of effect spells, good empowered synergies, spell cost reductions, Manipulation of enemy positions" },
                         { ClassData.ClassDataFields.Weaknesses, "Vulnerable hero, limited units, weak single target damage" },
                     },
-                    },
+                },
                 //Grovewatcher       (Dominant:Wild, Secondary:Devotion)
                 new ClassData(ClassList.Grovewatcher)
                 {
@@ -302,7 +324,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Strong resource growth and card draw, powerful units, tools to slow the enemy, ability to continually play powerful units" },
                         { ClassData.ClassDataFields.Weaknesses, "Limited early game presence, very expensive units, relies on trades for removal" },
                     },
-                    },
+                },
                 //Lifebringer       (Dominant:Devotion, Secondary:Gold)
                 new ClassData(ClassList.Lifebringer)
                 {
@@ -334,7 +356,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Excellent healing, multiple high health minions, resurrection effects, good comeback tools" },
                         { ClassData.ClassDataFields.Weaknesses, "Situational removal, low damage output, no card draw" },
                     },
-                    },
+                },
                 //Lorekeeper       (Dominant:Knowledge, Secondary:Devotion)
                 new ClassData(ClassList.Lorekeeper)
                 {
@@ -366,7 +388,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Excellent value generation, good high end removal, tools to slow enemy plays, good tutored draws" },
                         { ClassData.ClassDataFields.Weaknesses, "No area of effect damage spells, limited high end units" },
                     },
-                    },
+                },
                 //Luminist       (Dominant:Knowledge, Secondary:Wild)
                 new ClassData(ClassList.Luminist)
                 {
@@ -397,7 +419,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Good deck manipulation and knowledge tools, Strong damage and removal spells/abilities, damage avoidance, lots of spellbind" },
                         { ClassData.ClassDataFields.Weaknesses, "Units have low stats (rely on abilities), resource intensive" },
                     },
-                    },
+                },
                 //Mercenary       (Dominant:Gold, Secondary:Energy)
                 new ClassData(ClassList.Mercenary)
                 {
@@ -429,7 +451,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Many and fast units, strong hero, Under-cost minions for their stats" },
                         { ClassData.ClassDataFields.Weaknesses, "Limited range, routing units, vulnerable to area of effect damage" },
                     },
-                    },
+                },
                 //Oathknight       (Dominant:Devotion, Secondary:Energy)
                 new ClassData(ClassList.Oathknight)
                 {
@@ -461,7 +483,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Strong units, flying units, well defended hero, multiple buff enchantments" },
                         { ClassData.ClassDataFields.Weaknesses, "Situational range, no hard removal" },
                     },
-                    },
+                },
                 //Runeblade       (Dominant:Energy, Secondary:Mana)
                 new ClassData(ClassList.Runeblade)
                 {
@@ -493,7 +515,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "High attack units, multiple enchantments for casters, Good manoeuvrability" },
                         { ClassData.ClassDataFields.Weaknesses, "Requires aggressive use of hero, limited card draw, limited range" },
                     },
-                    },
+                },
                 //Trickster       (Dominant:Gold, Secondary:Mana)
                 new ClassData(ClassList.Trickster)
                 {
@@ -525,7 +547,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Fast units, good escape tools, strong direct damage spells, some removal" },
                         { ClassData.ClassDataFields.Weaknesses, "Vulnerable hero, weak board control from units" },
                     },
-                    },
+                },
                 //Waystalker       (Dominant:Wild, Secondary:Gold)
                 new ClassData(ClassList.Waystalker)
                 {
@@ -556,7 +578,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Enhancements to hero attacks, strong early to mid-game beast units, fast ranged hero, fast units" },
                         { ClassData.ClassDataFields.Weaknesses, "Low-health hero, few late-game units" },
                     },
-                    },
+                },
                 //Wildkin       (Dominant:Energy, Secondary:Wild)
                 new ClassData(ClassList.Wildkin)
                 {
@@ -588,8 +610,7 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Strengths, "Very durable hero, can take upon powerful beastly aspects, strong but few units, self-damage synergies" },
                         { ClassData.ClassDataFields.Weaknesses, "Weak board presence, weak resource generation and card draw" },
                     },
-                    },
+                },
         };
-
     }
 }

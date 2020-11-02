@@ -18,6 +18,14 @@ public class PlayerDevotion : PlayerResource
         ResetValue();
     }
 
+    public PlayerDevotion(int prayerModifier, int lastingPrayer)
+    {
+        ResourceType = CardResources.Devotion;
+        PrayerModifier = prayerModifier;
+        LastingPrayer = lastingPrayer;
+        ResetValue();
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information

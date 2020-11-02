@@ -65,10 +65,7 @@ namespace Kingsbane.App
         {
             var classId = (CardClasses)((SelectListItem)cmbClass.SelectedItem).Id;
             selectedClass = _context.CardClasses
-                .Include(x => x.Decks).ThenInclude(x => x.DeckCards).ThenInclude(x => x.Card)
-                .Include(x => x.Decks).ThenInclude(x => x.ResourceProperties).ThenInclude(x => x.ResourceProperty)
-                .Include(x => x.Decks).ThenInclude(x => x.DeckUpgrades).ThenInclude(x => x.Upgrade)
-                .Include(x => x.Decks).ThenInclude(x => x.HeroCard)
+                .Include(x => x.Decks)
                 .Include(x => x.ClassResources).ThenInclude(x => x.Resource).ThenInclude(x => x.ResourceProperties)
                 .Single(x => x.Id == classId);
 
@@ -155,7 +152,12 @@ namespace Kingsbane.App
         private void LoadDeckInfo()
         {
             var selectedDeckId = ((SelectListItem)cmbDeck.SelectedItem).Id;
-            selectedDeck = selectedClass.Decks.FirstOrDefault(x => x.Id == selectedDeckId);
+            selectedDeck = _context.Decks
+                .Include(x => x.ResourceProperties).ThenInclude(x => x.ResourceProperty)
+                .Include(x => x.DeckUpgrades).ThenInclude(x => x.Upgrade)
+                .Include(x => x.DeckCards).ThenInclude(x => x.Card)
+                .Include(x => x.HeroCard)
+                .FirstOrDefault(x => x.Id == selectedDeckId);
 
             txtDeckName.Text = selectedDeck.Name;
             chkNPCDeck.Checked = selectedDeck.NPCDeck;
@@ -424,7 +426,7 @@ namespace Kingsbane.App
         private void btnHeroCard_Click(object sender, EventArgs e)
         {
             var formSelectionList = _serviceProvider.GetRequiredService<formSelectionList>();
-            formSelectionList.selectionType = SelectionType.Cards;
+            formSelectionList.selectionType = SelectionType.NPCHero;
             var result = formSelectionList.ShowDialog(this);
 
             if (result == DialogResult.OK)

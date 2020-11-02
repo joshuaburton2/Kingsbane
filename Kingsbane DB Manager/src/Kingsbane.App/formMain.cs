@@ -232,7 +232,11 @@ namespace Kingsbane.App
             sb.AppendLine("        internal static List<ClassData> ClassDataList = new List<ClassData>()");
             sb.AppendLine("        {");
 
-            var query = _context.CardClasses.Include(x => x.Decks).ThenInclude(x => x.DeckCards);
+            var query = _context.CardClasses
+                .Include(x => x.ClassResources)
+                .Include(x => x.Decks).ThenInclude(x => x.DeckCards)
+                .Include(x => x.Decks).ThenInclude(x => x.ResourceProperties).ThenInclude(x => x.ResourceProperty)
+                .Include(x => x.Decks).ThenInclude(x => x.DeckUpgrades);
 
             foreach (var item in query)
             {
@@ -269,7 +273,59 @@ namespace Kingsbane.App
                         sb.AppendLine($"                                {card.CardId}");
                     }
                     sb.AppendLine($"                            }},");
-                    sb.AppendLine($"                            UpgradeIdList = new List<int>(),");
+                    var commaText = deck.NPCDeck ? "" : ",";
+                    sb.AppendLine($"                            UpgradeIdList = new List<int>(){commaText}");
+                    if (deck.NPCDeck)
+                    {
+                        sb.AppendLine($"                            {{");
+                        foreach (var upgrade in deck.DeckUpgrades)
+                        {
+                            sb.AppendLine($"                                {upgrade.UpgradeId},");
+                        }
+                        sb.AppendLine($"                            }},");
+                        sb.AppendLine($"                            HeroCardID = {deck.HeroCardId},");
+                        sb.AppendLine($"                            PlayerResources = new List<PlayerResource>()");
+                        sb.AppendLine($"                            {{");
+                        foreach (var resource in item.ClassResources)
+                        {
+                            var propertyOne = 0;
+                            var propertyTwo = 0;
+
+                            switch (resource.ResourceId)
+                            {
+                                case Resources.Devotion:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.PrayerModifier).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.LastingPrayer).Value;
+                                    break;
+                                case Resources.Energy:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.BaseEnergyGain).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.Surges).Value;
+                                    break;
+                                case Resources.Gold:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.GoldValue).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.BountyGain).Value;
+                                    break;
+                                case Resources.Knowledge:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.BaseKnowledgeGain).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.Stagnation).Value;
+                                    break;
+                                case Resources.Mana:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.StartingMana).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.Overload).Value;
+                                    break;
+                                case Resources.Wild:
+                                    propertyOne = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.WildGain).Value;
+                                    propertyTwo = deck.ResourceProperties.FirstOrDefault(x => x.ResourceProperty.Type == ResourcePropertyList.MaxWild).Value;
+                                    break;
+                                case Resources.Neutral:
+                                default:
+                                    break;
+                            }
+
+                            sb.AppendLine($"                                new Player{resource.ResourceId}({propertyOne}, {propertyTwo}),");
+                        }
+                        sb.AppendLine($"                            }},");
+                    }
                     sb.AppendLine($"                        }},");
                 }
                 sb.AppendLine($"                    }},");
@@ -280,7 +336,7 @@ namespace Kingsbane.App
                 sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Strengths, ""{item.Strengths}"" }},");
                 sb.AppendLine($@"                        {{ ClassData.ClassDataFields.Weaknesses, ""{item.Weaknesses}"" }},");
                 sb.AppendLine($"                    }},");
-                sb.AppendLine($"                    }},");
+                sb.AppendLine($"                }},");
             }
 
             sb.AppendLine("        };");

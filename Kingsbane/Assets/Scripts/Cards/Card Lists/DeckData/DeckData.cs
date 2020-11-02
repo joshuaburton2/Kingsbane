@@ -17,6 +17,8 @@ public class DeckSaveData
     public TierLevel HeroTier { get; set; }
     // Tier of the hero ability
     public TierLevel AbilityTier { get; set; }
+    //Id of the hero card for NPC decks
+    public int HeroCardID { get; set; }
     public List<PlayerResource> PlayerResources { get; set; }
     public List<int> CardIdList { get; set; }
     public List<int> UpgradeIdList { get; set; }
@@ -228,9 +230,17 @@ public class DeckData : DeckSaveData
     /// </summary>
     public void LoadHero(LibraryManager libraryManager)
     {
-        if (HeroTier != TierLevel.Default)
+        if (IsNPCDeck)
         {
-            HeroCard = libraryManager.GetHero(DeckClass, HeroTier, AbilityTier);
+            HeroCard = (UnitData)libraryManager.GetCard(HeroCardID);
+            Debug.Log(HeroCard.Name);
+        }
+        else
+        {
+            if (HeroTier != TierLevel.Default)
+            {
+                HeroCard = libraryManager.GetHero(DeckClass, HeroTier, AbilityTier);
+            }
         }
     }
 

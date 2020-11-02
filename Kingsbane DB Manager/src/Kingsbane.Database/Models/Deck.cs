@@ -11,6 +11,7 @@ namespace Kingsbane.Database.Models
         {
             DeckCards = new HashSet<DeckCard>();
             DeckUpgrades = new HashSet<DeckUpgrade>();
+            ResourceProperties = new HashSet<DeckResourceProperty>();
         }
 
         [Key]

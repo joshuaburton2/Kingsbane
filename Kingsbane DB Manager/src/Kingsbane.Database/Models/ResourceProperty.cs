@@ -9,7 +9,7 @@ namespace Kingsbane.Database.Models
     {
         public ResourceProperty()
         {
-
+            DeckResourceProperties = new HashSet<DeckResourceProperty>();
         }
 
         [Key]

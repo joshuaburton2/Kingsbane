@@ -9,6 +9,7 @@ namespace Kingsbane.Database.Models
     {
         public Resource()
         {
+            ClassResources = new HashSet<ClassResource>();
             ResourceProperties = new HashSet<ResourceProperty>();
         }
 

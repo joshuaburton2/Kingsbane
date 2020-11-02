@@ -20,6 +20,13 @@ public class PlayerKnowledge : PlayerResource
         Stagnation = 0;
     }
 
+    public PlayerKnowledge(int baseKnowledgeGain, int stagnation)
+    {
+        ResourceType = CardResources.Knowledge;
+        BaseKnowledgeGain = baseKnowledgeGain;
+        Stagnation = stagnation;
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information

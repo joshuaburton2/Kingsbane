@@ -10302,6 +10302,35 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         };
         CardList.Add(card1323);
 
+        var card1326 = new UnitData()
+        {
+            Id = 1326,
+            Name = "Test NPC Hero",
+            ImageLocation = "Test_NPC_Hero",
+
+            Resources = new List<Resource>() { },
+
+            Text = @"",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Test",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 1,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1326);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };

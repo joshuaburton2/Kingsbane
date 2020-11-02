@@ -21,6 +21,13 @@ public class PlayerMana : PlayerResource
         ResetValue();
     }
 
+    public PlayerMana(int startingMana, int overload)
+    {
+        ResourceType = CardResources.Mana;
+        StartingMana = startingMana;
+        PreviousOverload = overload;
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information

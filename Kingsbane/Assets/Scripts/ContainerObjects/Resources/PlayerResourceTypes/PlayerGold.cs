@@ -17,6 +17,13 @@ public class PlayerGold : PlayerResource
         Value = DEFAULT_GOLD;
     }
 
+    public PlayerGold(int goldValue, int bountyGain)
+    {
+        ResourceType = CardResources.Gold;
+        Value = goldValue;
+        BountyGain = bountyGain;
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information

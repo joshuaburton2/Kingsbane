@@ -20,6 +20,13 @@ public class PlayerWild : PlayerResource
         MaxWild = DEFAULT_MAX_WILD;
     }
 
+    public PlayerWild(int wildGain, int maxWild)
+    {
+        ResourceType = CardResources.Wild;
+        WildGain = wildGain;
+        MaxWild = maxWild;
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying player resource information
