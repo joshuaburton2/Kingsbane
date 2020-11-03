@@ -41,6 +41,7 @@ public class LobbyUI : MonoBehaviour
     {
         gameMode = SelectedGameMode;
         playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+        playerDecks[1] = null;
     }
 
     public void SelectDeck(int playerId, DeckData deck)

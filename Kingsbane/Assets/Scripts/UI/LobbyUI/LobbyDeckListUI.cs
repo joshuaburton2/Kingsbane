@@ -78,7 +78,7 @@ public class LobbyDeckListUI : MonoBehaviour
         //Hides all deck objects in the deck list except the one being edited
         for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
         {
-            if (deckIndex != deckId)
+            if (deckListObjects[deckIndex].GetComponent<DeckListObject>().deckData.Id != deckId)
             {
                 deckListObjects[deckIndex].SetActive(false);
             }

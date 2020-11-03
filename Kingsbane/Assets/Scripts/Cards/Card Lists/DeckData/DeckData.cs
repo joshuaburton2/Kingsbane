@@ -44,6 +44,7 @@ public class DeckSaveData
         Name = deckData.Name;
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
+        HeroCardID = deckData.HeroCardID;
         CardIdList = deckData.CardIdList.ToList();
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
@@ -146,6 +147,7 @@ public class DeckData : DeckSaveData
         Name = deckData.Name;
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
+        HeroCardID = deckData.HeroCardID;
         CardIdList = deckData.CardIdList.ToList();
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
@@ -169,6 +171,7 @@ public class DeckData : DeckSaveData
         Name = deckSaveData.Name;
         HeroTier = deckSaveData.HeroTier;
         AbilityTier = deckSaveData.AbilityTier;
+        HeroCardID = deckSaveData.HeroCardID;
         CardIdList = deckSaveData.CardIdList.ToList();
         UpgradeIdList = deckSaveData.UpgradeIdList.ToList();
         DeckClass = deckSaveData.DeckClass;
@@ -233,7 +236,6 @@ public class DeckData : DeckSaveData
         if (IsNPCDeck)
         {
             HeroCard = (UnitData)libraryManager.GetCard(HeroCardID);
-            Debug.Log(HeroCard.Name);
         }
         else
         {

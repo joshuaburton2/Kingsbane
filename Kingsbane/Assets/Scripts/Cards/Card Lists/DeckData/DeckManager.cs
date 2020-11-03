@@ -56,7 +56,7 @@ public class DeckManager : MonoBehaviour
     {
         var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
 
-        return ConvertDeckSave(npcDeckList, true);
+        return ConvertDeckSave(npcDeckList, false);
     }
 
     /// <summary>

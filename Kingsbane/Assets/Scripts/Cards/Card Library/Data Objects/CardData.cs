@@ -109,8 +109,19 @@ public class CardData
             }
             else
             {
-                //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
-                totalResource = 3 - (int)((UnitData)this).GetHeroTier(); ;
+                if (Rarity == Rarity.Hero)
+                {
+                    //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
+                    totalResource = 3 - (int)((UnitData)this).GetHeroTier();
+                }
+                else if(Rarity == Rarity.NPCHero)
+                {
+                    totalResource = 1;
+                }
+                else
+                {
+                    throw new Exception("Card is not a hero");
+                }
             }
              
 
@@ -135,8 +146,19 @@ public class CardData
             }
             else
             {
-                //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
-                highestResource = 3 - (int)((UnitData)this).GetHeroTier();
+                if (Rarity == Rarity.Hero)
+                {
+                    //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
+                    highestResource = 3 - (int)((UnitData)this).GetHeroTier();
+                }
+                else if (Rarity == Rarity.NPCHero)
+                {
+                    highestResource = 1;
+                }
+                else
+                {
+                    throw new Exception("Card is not a hero");
+                }
             }
 
             return highestResource;
