@@ -14,6 +14,10 @@ namespace Assets.Scripts.Scenarios
 
         public void InitLibrary()
         {
+            MapList = new List<Map>();
+            ScenarioList = new List<Scenario>();
+            CampaignList = new List<Campaign>();
+
             var map0 = new Map()
             {
                 Id = 0,

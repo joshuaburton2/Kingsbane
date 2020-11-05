@@ -472,7 +472,22 @@ namespace Kingsbane.App
 
         private void btnExportResources_Click(object sender, EventArgs e)
         {
+            var sb = new StringBuilder();
 
+            var query = _context.Resources;
+
+            sb.AppendLine($"    public static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()");
+            sb.AppendLine($"    {{");
+            foreach (var item in query)
+            {
+                sb.AppendLine(@$"        {{ CardResources.{item.Name}, @""{item.Description}"" }},");
+                sb.AppendLine("");
+            }
+            sb.AppendLine($"    }};");
+
+            var x = sb.ToString();
+            Clipboard.SetText(x);
+            MessageBox.Show("Exported content copied to clipboard");
         }
 
         private void formMain_FormClosed(object sender, FormClosedEventArgs e)

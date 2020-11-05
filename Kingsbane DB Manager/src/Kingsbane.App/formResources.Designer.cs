@@ -53,7 +53,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(249, 321);
+            this.btnCancel.Location = new System.Drawing.Point(249, 429);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(60, 321);
+            this.btnSave.Location = new System.Drawing.Point(60, 429);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -85,12 +85,13 @@
             this.txtDescription.Location = new System.Drawing.Point(13, 72);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(305, 183);
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescription.Size = new System.Drawing.Size(305, 286);
             this.txtDescription.TabIndex = 4;
             // 
             // btnSaveAndClose
             // 
-            this.btnSaveAndClose.Location = new System.Drawing.Point(141, 321);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(141, 429);
             this.btnSaveAndClose.Name = "btnSaveAndClose";
             this.btnSaveAndClose.Size = new System.Drawing.Size(102, 23);
             this.btnSaveAndClose.TabIndex = 5;
@@ -102,7 +103,7 @@
             // 
             this.cmbProperty1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProperty1.FormattingEnabled = true;
-            this.cmbProperty1.Location = new System.Drawing.Point(83, 262);
+            this.cmbProperty1.Location = new System.Drawing.Point(90, 364);
             this.cmbProperty1.Name = "cmbProperty1";
             this.cmbProperty1.Size = new System.Drawing.Size(234, 23);
             this.cmbProperty1.TabIndex = 6;
@@ -111,7 +112,7 @@
             // 
             this.cmbProperty2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProperty2.FormattingEnabled = true;
-            this.cmbProperty2.Location = new System.Drawing.Point(83, 292);
+            this.cmbProperty2.Location = new System.Drawing.Point(90, 394);
             this.cmbProperty2.Name = "cmbProperty2";
             this.cmbProperty2.Size = new System.Drawing.Size(233, 23);
             this.cmbProperty2.TabIndex = 7;
@@ -119,7 +120,7 @@
             // lblProperty1
             // 
             this.lblProperty1.AutoSize = true;
-            this.lblProperty1.Location = new System.Drawing.Point(13, 265);
+            this.lblProperty1.Location = new System.Drawing.Point(20, 367);
             this.lblProperty1.Name = "lblProperty1";
             this.lblProperty1.Size = new System.Drawing.Size(64, 15);
             this.lblProperty1.TabIndex = 8;
@@ -128,7 +129,7 @@
             // lblProperty2
             // 
             this.lblProperty2.AutoSize = true;
-            this.lblProperty2.Location = new System.Drawing.Point(13, 291);
+            this.lblProperty2.Location = new System.Drawing.Point(20, 393);
             this.lblProperty2.Name = "lblProperty2";
             this.lblProperty2.Size = new System.Drawing.Size(64, 15);
             this.lblProperty2.TabIndex = 9;
@@ -138,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(336, 354);
+            this.ClientSize = new System.Drawing.Size(336, 464);
             this.Controls.Add(this.lblProperty2);
             this.Controls.Add(this.lblProperty1);
             this.Controls.Add(this.cmbProperty2);
