@@ -31,9 +31,15 @@ public class MapGrid : MonoBehaviour
     //Distance between the centres of the hexes in the x direction
     private float hexDistance = 10.0f;
 
+    [SerializeField]
+    private float scalingFactor = 1.0f;
+
     [ContextMenu("Refresh Grid")]
     public void Start()
     {
+        var scalingVector = new Vector3(scalingFactor, scalingFactor, scalingFactor);
+        hexDistance *= scalingFactor;
+
         rowList = new GameObject[numY];
         cellList = new GameObject[numY][];
 
@@ -53,7 +59,7 @@ public class MapGrid : MonoBehaviour
 
         #region Cell Instantiation
         //Set the first position to initialise (the bottom left of the grid)
-        Vector3 currentPos = gridOrigin;
+        Vector3 currentPos = gridOrigin * scalingFactor;
 
         //Calculate the x and y distances to offset the tiles in order for the hexes to tessalate
         //The y distance is the distance between the rows.
@@ -68,6 +74,7 @@ public class MapGrid : MonoBehaviour
             {
                 GameObject newCell = Instantiate(cellObject, currentPos, Quaternion.Euler(new Vector3(0, 0, 0)), rowList[y].transform);
                 newCell.name = string.Format("Cell{0}.{1}", y, x);
+                newCell.transform.localScale = scalingVector;
                 newCell.GetComponent<Cell>().gridIndex = new Vector2(y, x);
 
                 cellList[y][x] = newCell;

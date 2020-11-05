@@ -1,5 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1294613691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294613692}
+  - component: {fileID: 1294613693}
+  m_Layer: 0
+  m_Name: ScenarioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294613692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294613691}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8891978395487198524}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1294613693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294613691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea358147c408ea4387b82ccf5e61277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8891978394799893638
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryManager: {fileID: 8891978395917923695}
   upgradeManager: {fileID: 8891978394843756961}
+  scenarioManager: {fileID: 1294613693}
   iconManager: {fileID: 8891978395737921192}
   uiManager: {fileID: 8891978396315567744}
   deckManager: {fileID: 8891978395399055764}
@@ -262,6 +306,7 @@ Transform:
   - {fileID: 8891978396315567775}
   - {fileID: 8891978394799893640}
   - {fileID: 8891978394843756960}
+  - {fileID: 1294613692}
   m_Father: {fileID: 8891978395099848712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

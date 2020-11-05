@@ -34,21 +34,21 @@ public class LibraryManager : MonoBehaviour
     [SerializeField]
     private int duplicateWeighting;
 
-    private CardLibrary cardLibrary;
+    private CardLibrary CardLibrary { get; set; }
 
-    private Dictionary<Tags, List<CardData>> tagLookup;
-    private Dictionary<Synergies, List<CardData>> synergyLookup;
-    private Dictionary<Classes.ClassList, List<CardData>> classLookup;
-    private Dictionary<ClassResources, List<CardData>> classPlayableLookup;
-    private Dictionary<CardResources, List<CardData>> resourceLookup;
-    private Dictionary<Sets, List<CardData>> setLookup;
-    private Dictionary<Rarity, List<CardData>> rarityLookup;
-    private Dictionary<CardTypes, List<CardData>> typeLookup;
+    private Dictionary<Tags, List<CardData>> TagLookup { get; set; }
+    private Dictionary<Synergies, List<CardData>> SynergyLookup { get; set; }
+    private Dictionary<Classes.ClassList, List<CardData>> ClassLookup { get; set; }
+    private Dictionary<ClassResources, List<CardData>> ClassPlayableLookup { get; set; }
+    private Dictionary<CardResources, List<CardData>> ResourceLookup { get; set; }
+    private Dictionary<Sets, List<CardData>> SetLookup { get; set; }
+    private Dictionary<Rarity, List<CardData>> RarityLookup { get; set; }
+    private Dictionary<CardTypes, List<CardData>> TypeLookup { get; set; }
 
     //heroLookup and heroAbilityLookup should be used when creating player heroes to add to a deck and allow the customisation of abilities on the hero card
     //These should not be used to pull the hero cards into the library
-    private Dictionary<HeroTier, UnitData> heroLookup;
-    private Dictionary<HeroTier, AbilityData> heroAbilityLookup;
+    private Dictionary<HeroTier, UnitData> HeroLookup { get; set; }
+    private Dictionary<HeroTier, AbilityData> HeroAbilityLookup { get; set; }
 
     /// <summary>
     /// 
@@ -58,8 +58,8 @@ public class LibraryManager : MonoBehaviour
     public void LoadLibrary()
     {
         //Load in cardList upon initialization of the game
-        cardLibrary = new CardLibrary();
-        cardLibrary.InitLibrary();
+        CardLibrary = new CardLibrary();
+        CardLibrary.InitLibrary();
 
         LoadDirectionaries();
     }
@@ -71,14 +71,14 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     private void LoadDirectionaries()
     {
-        tagLookup = ConstructDictionary<Tags>();
-        synergyLookup = ConstructDictionary<Synergies>();
-        classLookup = ConstructDictionary<Classes.ClassList>();
-        classPlayableLookup = ConstructDictionary<ClassResources>();
-        resourceLookup = ConstructDictionary<CardResources>();
-        setLookup = ConstructDictionary<Sets>();
-        rarityLookup = ConstructDictionary<Rarity>();
-        typeLookup = ConstructDictionary<CardTypes>();
+        TagLookup = ConstructDictionary<Tags>();
+        SynergyLookup = ConstructDictionary<Synergies>();
+        ClassLookup = ConstructDictionary<Classes.ClassList>();
+        ClassPlayableLookup = ConstructDictionary<ClassResources>();
+        ResourceLookup = ConstructDictionary<CardResources>();
+        SetLookup = ConstructDictionary<Sets>();
+        RarityLookup = ConstructDictionary<Rarity>();
+        TypeLookup = ConstructDictionary<CardTypes>();
 
         ConstructHeroLookup();
     }
@@ -94,7 +94,7 @@ public class LibraryManager : MonoBehaviour
         var newDictionary = new Dictionary<T, List<CardData>>();
 
         // Loop through all cards and obtain which keys in the dictionary that card falls into
-        foreach (var card in cardLibrary.CardList)
+        foreach (var card in CardLibrary.CardList)
         {
             var keyList = new List<T>();
             var type = typeof(T);
@@ -171,24 +171,24 @@ public class LibraryManager : MonoBehaviour
     private void ConstructHeroLookup()
     {
         var tempHeroLookup = new Dictionary<Classes.ClassList, List<CardData>>();
-        heroLookup = new Dictionary<HeroTier, UnitData>();
-        heroAbilityLookup = new Dictionary<HeroTier, AbilityData>();
+        HeroLookup = new Dictionary<HeroTier, UnitData>();
+        HeroAbilityLookup = new Dictionary<HeroTier, AbilityData>();
 
         foreach (var cardClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
             if (cardClass != Classes.ClassList.Default)
             {
                 //Obtain all the heroes for a particular class. Intersects the rarity lookup and the classlookup
-                tempHeroLookup.Add(cardClass, rarityLookup[Rarity.Hero].Intersect(classLookup[cardClass]).ToList());
+                tempHeroLookup.Add(cardClass, RarityLookup[Rarity.Hero].Intersect(ClassLookup[cardClass]).ToList());
 
                 foreach (var card in tempHeroLookup[cardClass])
                 {
                     var heroCard = (UnitData)card;
                     var heroTier = new HeroTier() { HeroClass = cardClass, TierLevel = HeroTier.ConvertTierLevel(heroCard) };
-                    heroLookup.Add(heroTier, heroCard);
+                    HeroLookup.Add(heroTier, heroCard);
 
                     var heroAbility = heroCard.Abilities.FirstOrDefault(); //Should only be one element in the hero ability list
-                    heroAbilityLookup.Add(heroTier, heroAbility);
+                    HeroAbilityLookup.Add(heroTier, heroAbility);
                 }
             }
         }
@@ -207,28 +207,28 @@ public class LibraryManager : MonoBehaviour
         switch (type)
         {
             case Type _ when type == typeof(Tags):
-                tagLookup.TryGetValue((Tags)(object)key, out dictionaryList);
+                TagLookup.TryGetValue((Tags)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(Synergies):
-                synergyLookup.TryGetValue((Synergies)(object)key, out dictionaryList);
+                SynergyLookup.TryGetValue((Synergies)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(Classes.ClassList):
-                classLookup.TryGetValue((Classes.ClassList)(object)key, out dictionaryList);
+                ClassLookup.TryGetValue((Classes.ClassList)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(ClassResources):
-                classPlayableLookup.TryGetValue((ClassResources)(object)key, out dictionaryList);
+                ClassPlayableLookup.TryGetValue((ClassResources)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(CardResources):
-                resourceLookup.TryGetValue((CardResources)(object)key, out dictionaryList);
+                ResourceLookup.TryGetValue((CardResources)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(Sets):
-                setLookup.TryGetValue((Sets)(object)key, out dictionaryList);
+                SetLookup.TryGetValue((Sets)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(Rarity):
-                rarityLookup.TryGetValue((Rarity)(object)key, out dictionaryList);
+                RarityLookup.TryGetValue((Rarity)(object)key, out dictionaryList);
                 break;
             case Type _ when type == typeof(CardTypes):
-                typeLookup.TryGetValue((CardTypes)(object)key, out dictionaryList);
+                TypeLookup.TryGetValue((CardTypes)(object)key, out dictionaryList);
                 break;
             default:
                 throw new Exception("Not a valid Dictionary Type");
@@ -252,8 +252,8 @@ public class LibraryManager : MonoBehaviour
             var heroTier = new HeroTier() { HeroClass = neededClass, TierLevel = heroTierLevel };
             var abilityTier = new HeroTier() { HeroClass = neededClass, TierLevel = abilityTierLevel };
 
-            heroLookup.TryGetValue(heroTier, out var heroData);
-            heroAbilityLookup.TryGetValue(abilityTier, out var abilityData);
+            HeroLookup.TryGetValue(heroTier, out var heroData);
+            HeroAbilityLookup.TryGetValue(abilityTier, out var abilityData);
 
             //Removes the default ability on the hero card and replaces it with the required ability
             heroData.Abilities.Clear();
@@ -274,7 +274,7 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public CardData GetCard(int Id)
     {
-        return cardLibrary.CardList.FirstOrDefault(x => x.Id == Id);
+        return CardLibrary.CardList.FirstOrDefault(x => x.Id == Id);
     }
 
     /// <summary>
@@ -284,7 +284,7 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public CardData GetCard(string nameSearch)
     {
-        return cardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
+        return CardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
     }
 
     /// <summary>
@@ -294,7 +294,7 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public List<CardData> GetAllCards(CardFilter listFilter)
     {
-        return FilterCardList(OrderCardList(cardLibrary.CardList), listFilter);
+        return FilterCardList(OrderCardList(CardLibrary.CardList), listFilter);
     }
 
     /// <summary>

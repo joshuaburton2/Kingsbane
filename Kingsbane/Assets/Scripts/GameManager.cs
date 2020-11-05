@@ -10,10 +10,11 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance { get; set; }
 
     public LibraryManager libraryManager;
     public UpgradeManager upgradeManager;
+    public ScenarioManager scenarioManager;
     public IconManager iconManager;
     public UIManager uiManager;
     public DeckManager deckManager;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         libraryManager.LoadLibrary();
         upgradeManager.LoadLibrary();
         deckManager.LoadDecks();
+        scenarioManager.LoadScenarios();
 
         //Singleton setup
         if (instance == null)
