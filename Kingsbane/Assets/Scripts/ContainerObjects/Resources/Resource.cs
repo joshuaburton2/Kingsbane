@@ -64,7 +64,7 @@ public class Resource
         return description;
     }
 
-    public static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()
+    private static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()
     {
         { CardResources.Neutral, @"" },
 

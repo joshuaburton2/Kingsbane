@@ -476,7 +476,7 @@ namespace Kingsbane.App
 
             var query = _context.Resources;
 
-            sb.AppendLine($"    public static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()");
+            sb.AppendLine($"    private static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()");
             sb.AppendLine($"    {{");
             foreach (var item in query)
             {
