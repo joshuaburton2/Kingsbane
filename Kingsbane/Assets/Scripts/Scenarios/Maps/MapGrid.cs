@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 /// <summary>
@@ -34,11 +35,19 @@ public class MapGrid : MonoBehaviour
     [SerializeField]
     private float scalingFactor = 1.0f;
 
-    [ContextMenu("Refresh Grid")]
-    public void Start()
+    private Vector3 baseCellScale;
+
+    private void Start()
     {
-        var scalingVector = new Vector3(scalingFactor, scalingFactor, scalingFactor);
-        hexDistance *= scalingFactor;
+        baseCellScale = cellObject.transform.localScale;
+
+        RefreshGrid();
+    }
+
+    [ContextMenu("Refresh Grid")]
+    public void RefreshGrid()
+    {
+        var scaledHexDistance = hexDistance * scalingFactor;
 
         rowList = new GameObject[numY];
         cellList = new GameObject[numY][];
@@ -53,6 +62,7 @@ public class MapGrid : MonoBehaviour
 
             GameObject rowObject = new GameObject(string.Format("Row{0}", y));
             rowObject.transform.parent = transform;
+            rowObject.transform.localPosition = new Vector3();
             rowList[y] = rowObject;
         }
         #endregion
@@ -64,25 +74,26 @@ public class MapGrid : MonoBehaviour
         //Calculate the x and y distances to offset the tiles in order for the hexes to tessalate
         //The y distance is the distance between the rows.
         //The x offset is the shift every second row has to be pushed to the right
-        float xOffset = hexDistance / 2;
-        float yOffset = hexDistance * (Mathf.Sqrt(3)) / 2;
+        float xOffset = scaledHexDistance / 2;
+        float yOffset = scaledHexDistance * (Mathf.Sqrt(3)) / 2;
 
         //Loop for instantiation each of the cells within the scene and add it to the list of all cells
         for (int y = 0; y < numY; y++)
         {
             for (int x = 0; x < numX; x++)
             {
-                GameObject newCell = Instantiate(cellObject, currentPos, Quaternion.Euler(new Vector3(0, 0, 0)), rowList[y].transform);
+                GameObject newCell = Instantiate(cellObject, new Vector3(), Quaternion.Euler(new Vector3(0, 0, 0)), rowList[y].transform);
+                newCell.transform.localPosition = currentPos;
                 newCell.name = string.Format("Cell{0}.{1}", y, x);
-                newCell.transform.localScale = scalingVector;
+                newCell.transform.localScale = baseCellScale * scalingFactor;
                 newCell.GetComponent<Cell>().gridIndex = new Vector2(y, x);
 
                 cellList[y][x] = newCell;
 
-                currentPos += new Vector3(hexDistance, 0, 0);
+                currentPos += new Vector3(scaledHexDistance, 0, 0);
             }
 
-            currentPos += new Vector3((-hexDistance * numX), yOffset, 0);
+            currentPos += new Vector3((-scaledHexDistance * numX), yOffset, 0);
             currentPos.x = y % 2 == 0 ? currentPos.x + xOffset : currentPos.x - xOffset;
         }
         #endregion
