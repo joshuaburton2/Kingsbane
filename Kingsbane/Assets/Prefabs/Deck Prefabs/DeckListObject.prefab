@@ -168,6 +168,7 @@ MonoBehaviour:
   nameText: {fileID: 3589997615203870461}
   classText: {fileID: 3589997614056603199}
   deckDetailsArea: {fileID: 3884408076492145859}
+  deleteButton: {fileID: 6814626750541214931}
   deckCardList: {fileID: 288752056091172704}
   deckResourcesParent: {fileID: 5871326961698219047}
   deckResourcePrefab: {fileID: 9116479603263884264, guid: 64375942944006e4f8e9853b2653de4b,

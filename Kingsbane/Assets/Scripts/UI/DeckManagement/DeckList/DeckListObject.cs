@@ -27,6 +27,8 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     TextMeshProUGUI classText;
     [SerializeField]
     GameObject deckDetailsArea;
+    [SerializeField]
+    GameObject deleteButton;
 
     [Header("Card List Properties")]
     [SerializeField]
@@ -68,6 +70,16 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         }
         
         deckDetailsArea.SetActive(false);
+
+        if (_deckListUI != null)
+        {
+            deleteButton.SetActive(true);
+        }
+
+        if (_lobbyDeckListUI != null)
+        {
+            deleteButton.SetActive(false);
+        }
     }
 
     /// <summary>
