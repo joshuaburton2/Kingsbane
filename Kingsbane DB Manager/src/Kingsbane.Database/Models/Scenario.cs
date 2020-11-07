@@ -24,13 +24,6 @@ namespace Kingsbane.Database.Models
         [Column(TypeName = "varchar(max)")]
         public string Decription { get; set; }
 
-        [MaxLength(100)]
-        [Column(TypeName = "varchar(100)")]
-        public string DeploymentMapName { get; set; }
-        [MaxLength(100)]
-        [Column(TypeName = "varchar(100)")]
-        public string ObjectiveMapName { get; set; }
-
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
@@ -43,5 +36,7 @@ namespace Kingsbane.Database.Models
 
         public virtual ICollection<ScenarioRuleSet> ScenarioRuleSet { get; set; }
         public virtual ICollection<Objective> Objectives { get; set; }
+        public virtual ICollection<MapDeployment> DeploymentMap { get; set; }
+        public virtual ICollection<MapObjective> ObjectiveMap { get; set; }
     }
 }

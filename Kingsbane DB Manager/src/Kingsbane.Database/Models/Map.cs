@@ -24,14 +24,12 @@ namespace Kingsbane.Database.Models
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
         public string ColourMapName { get; set; }
-        [MaxLength(100)]
-        [Column(TypeName = "varchar(100)")]
-        public string TerrainMapName { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
         //Related Entities
         public virtual ICollection<Scenario> Scenarios { get; set; }
+        public virtual ICollection<MapTerrain> TerrainMap { get; set; }
     }
 }

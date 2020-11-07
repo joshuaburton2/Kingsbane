@@ -49,6 +49,9 @@ namespace Kingsbane.Database
         public DbSet<Resource> Resources { get; set; }
         public DbSet<ResourceProperty> ResourceProps { get; set; }
         public DbSet<DeckResourceProperty> DeckResourceProperties { get; set; }
+        public DbSet<MapDeployment> DeploymentMaps { get; set; }
+        public DbSet<MapObjective> ObjectiveMaps { get; set; }
+        public DbSet<MapTerrain> TerrainMaps { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -81,6 +84,13 @@ namespace Kingsbane.Database
 
             modelBuilder.Entity<ClassResource>()
                 .HasKey(x => new { x.CardClassId, x.ClassResourceType });
+
+            modelBuilder.Entity<MapDeployment>()
+                .HasKey(x => new { x.RowId, x.ColumnId, x.ScenarioId });
+            modelBuilder.Entity<MapObjective>()
+                .HasKey(x => new { x.RowId, x.ColumnId, x.ScenarioId });
+            modelBuilder.Entity<MapTerrain>()
+                .HasKey(x => new { x.RowId, x.ColumnId, x.MapId });
         }
     }
 }
