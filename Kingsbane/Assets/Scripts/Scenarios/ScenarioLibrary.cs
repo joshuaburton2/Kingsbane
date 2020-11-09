@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CategoryEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,19 @@ namespace Assets.Scripts.Scenarios
                 Name = "Map 0",
                 Description = "",
                 ColourMapName = "Map 0 Map",
-
+                TerrainMap = new TerrainTypes[][]
+                { 
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
+                },
             };
             MapList.Add(map0);
         }
