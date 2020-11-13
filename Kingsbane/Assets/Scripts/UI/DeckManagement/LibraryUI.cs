@@ -129,6 +129,9 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void InitDropdownOfType<T>(TMP_Dropdown dropdown, List<T> removedList)
     {
+        dropdown.options.Clear();
+        dropdown.options.Add(new TMP_Dropdown.OptionData("All"));
+
         //Get the string values of the enum
         var dropDownNames = Enum.GetNames(typeof(T)).ToList();
         //Removes the necessary values from the list
@@ -139,6 +142,8 @@ public class LibraryUI : MonoBehaviour
         }
         //Add the options to the dropdown box
         dropdown.AddOptions(dropDownNames);
+
+        dropdown.value = 0;
     }
 
     /// <summary>

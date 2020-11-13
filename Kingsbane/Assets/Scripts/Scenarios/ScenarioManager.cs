@@ -20,6 +20,11 @@ public class ScenarioManager : MonoBehaviour
         return ScenarioLibrary.MapList.FirstOrDefault(x => x.Id == id);
     }
 
+    public List<Map> GetMaps()
+    {
+        return ScenarioLibrary.MapList;
+    }
+
     public Scenario GetScenario(int id)
     {
         return ScenarioLibrary.ScenarioList.FirstOrDefault(x => x.Id == id);

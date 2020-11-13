@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Linq;
 
 public enum GameModes
 {
@@ -19,11 +20,30 @@ public class LobbyUI : MonoBehaviour
     private GameModes SelectedGameMode { get { return (GameModes)Enum.Parse(typeof(GameModes), gameModeDropdown.captionText.text); } }
     private bool IsPVE { get { return gameMode == GameModes.PVE; } }
 
+    Map selectedMap;
+    List<int> mapDropdownIds;
+    Scenario selectedScenario;
+    List<int> scenarioDropdownIds;
+
     [SerializeField]
     private TMP_Dropdown gameModeDropdown;
 
     [SerializeField]
     List<LobbyDeckListUI> playerDeckList;
+
+    [Header("Map UI Objects")]
+    [SerializeField]
+    private TMP_Dropdown mapDropdown;
+    [SerializeField]
+    private TMP_Dropdown scenarioDropdown;
+    [SerializeField]
+    private GameObject keyParent;
+    [SerializeField]
+    private TextMeshProUGUI mapDescription;
+    [SerializeField]
+    private TextMeshProUGUI scenarioDescription;
+    [SerializeField]
+    private GameObject rulesParent;
 
     private DeckData[] playerDecks;
 
@@ -35,6 +55,22 @@ public class LobbyUI : MonoBehaviour
 
         playerDeckList[0].RefreshDeckList(false, "Player 1 Deck List");
         playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+    }
+
+    public void RefreshMapList()
+    {
+        var mapList = GameManager.instance.scenarioManager.GetMaps();
+        mapDropdownIds = mapList.Select(x => x.Id.Value).ToList();
+        mapDropdown.options.AddRange(mapList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
+
+        mapDropdown.value = 0;
+    }
+
+    public void RefreshScenarioList()
+    {
+        var scenarioList = GameManager.instance.scenarioManager.GetMaps();
+        scenarioDropdownIds = scenarioList.Select(x => x.Id.Value).ToList();
+        mapDropdown.options.AddRange(scenarioList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
     }
 
     public void SwitchGameMode()
