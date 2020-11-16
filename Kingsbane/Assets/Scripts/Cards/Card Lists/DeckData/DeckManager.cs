@@ -8,11 +8,6 @@ using System;
 
 public class DeckManager : MonoBehaviour
 {
-    [SerializeField]
-    private LibraryManager libraryManager;
-    [SerializeField]
-    private UpgradeManager upgradeManager;
-
     public List<DeckData> PlayerDeckList { get; private set; }
     private const string deckFileName = "/DeckData.dat";
 
@@ -26,7 +21,7 @@ public class DeckManager : MonoBehaviour
         var deckDatas = new List<DeckData>();
         foreach (var saveDeck in deckSaveDatas)
         {
-            deckDatas.Add(new DeckData(saveDeck, libraryManager, upgradeManager, isNewDeck));
+            deckDatas.Add(new DeckData(saveDeck, isNewDeck));
         }
 
         return deckDatas;

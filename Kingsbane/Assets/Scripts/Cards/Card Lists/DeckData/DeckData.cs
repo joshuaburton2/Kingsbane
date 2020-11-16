@@ -165,7 +165,7 @@ public class DeckData : DeckSaveData
     /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
     /// 
     /// </summary>
-    public DeckData(DeckSaveData deckSaveData, LibraryManager libraryManager, UpgradeManager upgradeManager, bool isNewDeck)
+    public DeckData(DeckSaveData deckSaveData, bool isNewDeck)
     {
         Id = deckSaveData.Id;
         Name = deckSaveData.Name;
@@ -185,43 +185,29 @@ public class DeckData : DeckSaveData
         PlayerResources = deckSaveData.CopyPlayerResources();
 
         //Synchronizes the card and upgrade Ids with the cards in the library
-        SyncDeckCards(libraryManager, upgradeManager);
+        SyncDeckCards();
     }
 
     /// <summary>
     /// 
-    /// Synchronizes the card ids with the cards in the library
+    /// Synchronizes the card and upgrades ids with the values in their relevant library
     /// 
     /// </summary>
     public void SyncDeckCards()
     {
-        var libraryManager = GameManager.instance.libraryManager;
-        var upgradeManager = GameManager.instance.upgradeManager;
-
-        SyncDeckCards(libraryManager, upgradeManager);
-    }
-
-    /// <summary>
-    /// 
-    /// Synchronizes the card and upgrades ids with the values in their relevant library. Since this is called in during Awake, have to reference
-    /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
-    /// 
-    /// </summary>
-    public void SyncDeckCards(LibraryManager libraryManager, UpgradeManager upgradeManager)
-    {
-        LoadHero(libraryManager);
+        LoadHero();
 
         CardList = new List<CardData>();
         foreach (var cardId in CardIdList)
         {
-            CardList.Add(libraryManager.GetCard(cardId));
+            CardList.Add(GameManager.instance.libraryManager.GetCard(cardId));
         }
         CardList = LibraryManager.OrderCardList(CardList);
 
         UpgradeList = new List<UpgradeData>();
         foreach (var upgradeId in UpgradeIdList)
         {
-            UpgradeList.Add(upgradeManager.GetUpgrade(upgradeId));
+            UpgradeList.Add(GameManager.instance.upgradeManager.GetUpgrade(upgradeId));
         }
     }
 
@@ -231,17 +217,17 @@ public class DeckData : DeckSaveData
     /// Library Manager directly rather than through singleton Game Manager, since it is not initialised
     /// 
     /// </summary>
-    public void LoadHero(LibraryManager libraryManager)
+    public void LoadHero()
     {
         if (IsNPCDeck)
         {
-            HeroCard = (UnitData)libraryManager.GetCard(HeroCardID);
+            HeroCard = (UnitData)GameManager.instance.libraryManager.GetCard(HeroCardID);
         }
         else
         {
             if (HeroTier != TierLevel.Default)
             {
-                HeroCard = libraryManager.GetHero(DeckClass, HeroTier, AbilityTier);
+                HeroCard = GameManager.instance.libraryManager.GetHero(DeckClass, HeroTier, AbilityTier);
             }
         }
     }
