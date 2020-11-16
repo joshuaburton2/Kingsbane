@@ -55,6 +55,8 @@ public class LobbyUI : MonoBehaviour
 
         playerDeckList[0].RefreshDeckList(false, "Player 1 Deck List");
         playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
+
+        RefreshMapList();
     }
 
     public void RefreshMapList()
@@ -68,9 +70,11 @@ public class LobbyUI : MonoBehaviour
 
     public void RefreshScenarioList()
     {
-        var scenarioList = GameManager.instance.scenarioManager.GetMaps();
+        var scenarioList = selectedMap.Scenarios;
         scenarioDropdownIds = scenarioList.Select(x => x.Id.Value).ToList();
-        mapDropdown.options.AddRange(scenarioList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
+        scenarioDropdown.options.AddRange(scenarioList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
+
+        mapDropdown.value = 0;
     }
 
     public void SwitchGameMode()

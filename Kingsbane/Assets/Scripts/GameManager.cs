@@ -24,13 +24,7 @@ public class GameManager : MonoBehaviour
     public List<Player> LoadedPlayers { get; set; }
 
     private void Awake()
-    {
-        //Load game initialisation information. Order is important- must load decks after card and upgrade libraries are loaded
-        libraryManager.LoadLibrary();
-        upgradeManager.LoadLibrary();
-        deckManager.LoadDecks();
-        scenarioManager.LoadScenarios();
-
+    { 
         //Singleton setup
         if (instance == null)
         {
@@ -41,6 +35,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        //Load game initialisation information. Order is important- must load decks after card and upgrade libraries are loaded
+        libraryManager.LoadLibrary();
+        upgradeManager.LoadLibrary();
+        deckManager.LoadDecks();
+        scenarioManager.LoadScenarios();
     }
 
     /// <summary>

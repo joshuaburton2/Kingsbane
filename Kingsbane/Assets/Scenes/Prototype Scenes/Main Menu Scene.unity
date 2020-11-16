@@ -12840,8 +12840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 132.5, y: 10}
-  m_SizeDelta: {x: -285, y: 50}
+  m_AnchoredPosition: {x: 105, y: 10}
+  m_SizeDelta: {x: -230, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &461777347
 MonoBehaviour:
@@ -34815,7 +34815,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 2
+    lineCount: 1
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

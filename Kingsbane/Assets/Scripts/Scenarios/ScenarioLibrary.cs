@@ -22,11 +22,11 @@ namespace Assets.Scripts.Scenarios
             var map0 = new Map()
             {
                 Id = 0,
-                Name = "Map 0",
+                Name = "Test Map",
                 Description = "",
-                ColourMapName = "Map 0 Map",
+                ColourMapName = "Test Map Map",
                 TerrainMap = new TerrainTypes[][]
-                { 
+                {
                     new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, TerrainTypes.Regular, },
@@ -40,6 +40,44 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map0);
+
+            var scenario0 = new Scenario()
+            {
+                Id = 0,
+                Name = "Test Scenario",
+                Description = "",
+                DeploymentMap = new int?[][]
+                {
+                    new int?[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },
+                    new int?[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
+                    new int?[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, },
+                },
+                ObjectivesMap = new int?[][]
+                {
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                    new int?[] { null, null, null, null, null, null, null, null, null, null, },
+                },
+                Objectives = new List<Objective>(),
+                Rules = new List<Rule>(),
+            };
+            ScenarioList.Add(scenario0);
+
+            map0.Scenarios = new List<Scenario>() { scenario0, };
         }
     }
 }

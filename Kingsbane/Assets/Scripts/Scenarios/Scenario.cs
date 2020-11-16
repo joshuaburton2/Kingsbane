@@ -18,8 +18,8 @@ public class Scenario
     public int? Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
-    public int[][] DeploymentMap { get; set; }
-    public int[][] ObjectivesMap { get; set; }
+    public int?[][] DeploymentMap { get; set; }
+    public int?[][] ObjectivesMap { get; set; }
     public List<Objective> Objectives { get; set; }
     public List<Rule> Rules { get; set; }
     public DeckData EnemyDeck { get; set; }
