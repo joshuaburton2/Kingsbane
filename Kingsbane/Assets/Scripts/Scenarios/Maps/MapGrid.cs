@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +12,14 @@ using UnityEngine;
 /// </summary>
 public class MapGrid : MonoBehaviour
 {
+    public enum MapFilters
+    {
+        Colour,
+        Terrain,
+        Deployment,
+        Objective,
+    }
+
     private GameObject[] rowList;
     private GameObject[][] cellList;
 
@@ -40,12 +49,10 @@ public class MapGrid : MonoBehaviour
     private void Start()
     {
         baseCellScale = cellObject.transform.localScale;
-
-        RefreshGrid();
     }
 
     [ContextMenu("Refresh Grid")]
-    public void RefreshGrid()
+    public void RefreshGrid(Map mapData, int scenarioId)
     {
         var scaledHexDistance = hexDistance * scalingFactor;
 
@@ -68,7 +75,7 @@ public class MapGrid : MonoBehaviour
         #endregion
 
         #region Cell Instantiation
-        //Set the first position to initialise (the bottom left of the grid)
+        //Set the first position to initialise (the top left of the grid)
         Vector3 currentPos = gridOrigin * scalingFactor;
 
         //Calculate the x and y distances to offset the tiles in order for the hexes to tessalate
@@ -93,7 +100,9 @@ public class MapGrid : MonoBehaviour
                 currentPos += new Vector3(scaledHexDistance, 0, 0);
             }
 
-            currentPos += new Vector3((-scaledHexDistance * numX), yOffset, 0);
+            //Once the row has finished being initialised, resets the x pos to the start of the row and then moves the y position to the next row
+            currentPos += new Vector3(-scaledHexDistance * numX, - yOffset, 0);
+            //Shifts the row back or forth depending on whether in an odd or even row
             currentPos.x = y % 2 == 0 ? currentPos.x + xOffset : currentPos.x - xOffset;
         }
         #endregion
@@ -102,6 +111,13 @@ public class MapGrid : MonoBehaviour
         //Loop for setting the properties of each of the cells based on cell data of the particular level
         //Current data operated on is:
         // - adjacent cells
+        // - terrain type
+        // - deployment eligibility (basic)
+        // - objectives
+
+        //Gets the required scenario
+        var selectedScenario = mapData.Scenarios.FirstOrDefault(x => x.Id == scenarioId);
+
         for (int y = 0; y < numY; y++)
         {
             for (int x = 0; x < numX; x++)
@@ -158,6 +174,12 @@ public class MapGrid : MonoBehaviour
                 }
 
                 #endregion
+
+                cell.terrainType = mapData.TerrainMap[y][x];
+                cell.playerDeploymentId = selectedScenario.DeploymentMap[y][x];
+
+                var objectiveId = selectedScenario.ObjectivesMap[y][x];
+                cell.objective = selectedScenario.Objectives.FirstOrDefault(i => i.Id == objectiveId);
             }
         }
         #endregion
@@ -168,8 +190,34 @@ public class MapGrid : MonoBehaviour
     /// Retrieves the cell object from cell list based on its x and y coordinates in the grid
     /// 
     /// </summary>
-    public GameObject GetCell(int x, int y)
+    private GameObject GetCell(int x, int y)
     {
         return cellList[y][x];
+    }
+
+    public void SwitchMapFilter(MapFilters filterType)
+    {
+        for (int y = 0; y < numY; y++)
+        {
+            for (int x = 0; x < numX; x++)
+            {
+                Cell cell = GetCell(x, y).GetComponent<Cell>();
+                var cellBackgroundColour = new Color();
+
+                switch (filterType)
+                {
+                    case MapFilters.Colour:
+                        break;
+                    case MapFilters.Terrain:
+                        break;
+                    case MapFilters.Deployment:
+                        break;
+                    case MapFilters.Objective:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }

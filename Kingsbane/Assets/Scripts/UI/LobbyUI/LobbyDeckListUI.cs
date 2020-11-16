@@ -47,7 +47,7 @@ public class LobbyDeckListUI : MonoBehaviour
 
         if (isNPCList)
         {
-            deckList = GameManager.instance.deckManager.GetNPCDecks();
+            deckList = GameManager.instance.deckManager.NPCDeckList;
         }
         else
         {

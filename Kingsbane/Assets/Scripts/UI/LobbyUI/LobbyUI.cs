@@ -20,9 +20,9 @@ public class LobbyUI : MonoBehaviour
     private GameModes SelectedGameMode { get { return (GameModes)Enum.Parse(typeof(GameModes), gameModeDropdown.captionText.text); } }
     private bool IsPVE { get { return gameMode == GameModes.PVE; } }
 
-    Map selectedMap;
+    private Map selectedMap;
     List<int> mapDropdownIds;
-    Scenario selectedScenario;
+    int selectedScenarioId;
     List<int> scenarioDropdownIds;
 
     [SerializeField]
@@ -30,6 +30,7 @@ public class LobbyUI : MonoBehaviour
 
     [SerializeField]
     List<LobbyDeckListUI> playerDeckList;
+    private DeckData[] playerDecks;
 
     [Header("Map UI Objects")]
     [SerializeField]
@@ -44,8 +45,8 @@ public class LobbyUI : MonoBehaviour
     private TextMeshProUGUI scenarioDescription;
     [SerializeField]
     private GameObject rulesParent;
-
-    private DeckData[] playerDecks;
+    [SerializeField]
+    private MapGrid mapGrid;   
 
     public void LoadLobbyUI()
     {
@@ -59,22 +60,49 @@ public class LobbyUI : MonoBehaviour
         RefreshMapList();
     }
 
-    public void RefreshMapList()
+    private void RefreshMapList()
     {
+        mapDropdown.options.Clear();
+
         var mapList = GameManager.instance.scenarioManager.GetMaps();
         mapDropdownIds = mapList.Select(x => x.Id.Value).ToList();
         mapDropdown.options.AddRange(mapList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
 
         mapDropdown.value = 0;
+        RefreshSelectedMap();
     }
 
-    public void RefreshScenarioList()
+    public void RefreshSelectedMap()
     {
+        var selectedMapId = mapDropdownIds[mapDropdown.value];
+        selectedMap = GameManager.instance.scenarioManager.GetMap(selectedMapId);
+
+        mapDescription.text = selectedMap.Description;
+
+        RefreshScenarioList();
+
+        mapGrid.RefreshGrid(selectedMap, selectedScenarioId);
+    }
+
+    private void RefreshScenarioList()
+    {
+        scenarioDropdown.options.Clear();
+
         var scenarioList = selectedMap.Scenarios;
         scenarioDropdownIds = scenarioList.Select(x => x.Id.Value).ToList();
         scenarioDropdown.options.AddRange(scenarioList.Select(x => new TMP_Dropdown.OptionData(x.Name)));
 
-        mapDropdown.value = 0;
+        scenarioDropdown.value = 0;
+
+        RefreshSelectedScenario();
+    }
+
+    public void RefreshSelectedScenario()
+    {
+        selectedScenarioId = scenarioDropdownIds[scenarioDropdown.value];
+        var selectedScenario = selectedMap.Scenarios.FirstOrDefault(x => x.Id == selectedScenarioId);
+
+        scenarioDescription.text = selectedScenario.Description;
     }
 
     public void SwitchGameMode()
@@ -87,5 +115,11 @@ public class LobbyUI : MonoBehaviour
     public void SelectDeck(int playerId, DeckData deck)
     {
         playerDecks[playerId] = deck;
+    }
+
+    public void ChangeMapFilter(int mapFilterId)
+    {
+        var mapFilter = (MapGrid.MapFilters)mapFilterId;
+        mapGrid.SwitchMapFilter(mapFilter);
     }
 }

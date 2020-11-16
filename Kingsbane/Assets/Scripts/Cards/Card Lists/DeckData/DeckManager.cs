@@ -9,6 +9,8 @@ using System;
 public class DeckManager : MonoBehaviour
 {
     public List<DeckData> PlayerDeckList { get; private set; }
+    public List<DeckData> NPCDeckList { get; private set; }
+    
     private const string deckFileName = "/DeckData.dat";
 
     /// <summary>
@@ -44,18 +46,6 @@ public class DeckManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Gets a list of all NPC decks- not sorted by class
-    /// 
-    /// </summary>
-    public List<DeckData> GetNPCDecks()
-    {
-        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
-
-        return ConvertDeckSave(npcDeckList, false);
-    }
-
-    /// <summary>
-    /// 
     /// Load saved decks from file
     /// 
     /// </summary>
@@ -75,6 +65,10 @@ public class DeckManager : MonoBehaviour
         {
             PlayerDeckList = new List<DeckData>();
         }
+
+        //Load the NPC Deck List
+        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
+        NPCDeckList = ConvertDeckSave(npcDeckList, false);
     }
 
     /// <summary>
@@ -162,6 +156,16 @@ public class DeckManager : MonoBehaviour
     public DeckData GetPlayerDeck(int id)
     {
         return PlayerDeckList.FirstOrDefault(x => x.Id == id);
+    }
+
+    /// <summary>
+    /// 
+    /// Gets an NPC deck of a particular ID
+    /// 
+    /// </summary>
+    public DeckData GetNPCDeck(int id)
+    {
+        return NPCDeckList.FirstOrDefault(x => x.Id == id);
     }
 
     /// <summary>
