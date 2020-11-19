@@ -132,6 +132,24 @@ MonoBehaviour:
     classColour: {r: 0.10588236, g: 0.36862746, b: 0.09019608, a: 1}
   - Class: 15
     classColour: {r: 0.8000001, g: 0, b: 0.003921569, a: 1}
+  terrainColours:
+  - terrainType: 0
+    terrainColour: {r: 0.2627451, g: 0.6509804, b: 0.14509805, a: 1}
+  - terrainType: 1
+    terrainColour: {r: 0.87843144, g: 0.6627451, b: 0.20392159, a: 1}
+  - terrainType: 2
+    terrainColour: {r: 0.7254902, g: 0.34901962, b: 0.14901961, a: 1}
+  - terrainType: 3
+    terrainColour: {r: 0.67058825, g: 0, b: 0, a: 1}
+  - terrainType: 4
+    terrainColour: {r: 0.25490198, g: 0.25490198, b: 0.25490198, a: 1}
+  - terrainType: 5
+    terrainColour: {r: 0.07186719, g: 0.4771806, b: 0.8018868, a: 1}
+  playerColours:
+  - playerIndex: 0
+    playerColour: {r: 0.10196079, g: 0.18823531, b: 0.92549026, a: 1}
+  - playerIndex: 1
+    playerColour: {r: 0.8000001, g: 0.14117648, b: 0.14117648, a: 1}
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,8 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ad72db6679cd847947f0c8a51764be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  libraryManager: {fileID: 8891978395917923695}
-  upgradeManager: {fileID: 8891978394843756961}
 --- !u!1 &8891978395487198523
 GameObject:
   m_ObjectHideFlags: 0

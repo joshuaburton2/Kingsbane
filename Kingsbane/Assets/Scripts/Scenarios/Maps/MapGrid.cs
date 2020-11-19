@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -46,9 +48,12 @@ public class MapGrid : MonoBehaviour
 
     private Vector3 baseCellScale;
 
+    private MapFilters activeMapFilter;
+
     private void Start()
     {
         baseCellScale = cellObject.transform.localScale;
+        activeMapFilter = MapFilters.Colour;
     }
 
     [ContextMenu("Refresh Grid")]
@@ -101,7 +106,7 @@ public class MapGrid : MonoBehaviour
             }
 
             //Once the row has finished being initialised, resets the x pos to the start of the row and then moves the y position to the next row
-            currentPos += new Vector3(-scaledHexDistance * numX, - yOffset, 0);
+            currentPos += new Vector3(-scaledHexDistance * numX, -yOffset, 0);
             //Shifts the row back or forth depending on whether in an odd or even row
             currentPos.x = y % 2 == 0 ? currentPos.x + xOffset : currentPos.x - xOffset;
         }
@@ -165,7 +170,7 @@ public class MapGrid : MonoBehaviour
                     {
                         cell.adjCell.Add(GetCell(x - 1, y - 1));
                     }
-                }      
+                }
 
                 //Add cell to the left of the current cell. Does not consider the left hand column
                 if (x != 0)
@@ -183,6 +188,8 @@ public class MapGrid : MonoBehaviour
             }
         }
         #endregion
+
+        SwitchMapFilter(activeMapFilter);
     }
 
     /// <summary>
@@ -197,24 +204,44 @@ public class MapGrid : MonoBehaviour
 
     public void SwitchMapFilter(MapFilters filterType)
     {
+        activeMapFilter = filterType;
+
         for (int y = 0; y < numY; y++)
         {
             for (int x = 0; x < numX; x++)
             {
                 Cell cell = GetCell(x, y).GetComponent<Cell>();
-                var cellBackgroundColour = new Color();
 
                 switch (filterType)
                 {
-                    case MapFilters.Colour:
-                        break;
                     case MapFilters.Terrain:
+                        var terrainColour = GameManager.instance.colourManager.GetTerrainColour(cell.terrainType);
+                        cell.SetBackgroundColour(terrainColour, true);
                         break;
                     case MapFilters.Deployment:
+                        if (cell.playerDeploymentId.HasValue)
+                        {
+                            var deploymentColour = GameManager.instance.colourManager.GetPlayerColour(cell.playerDeploymentId.Value);
+                            cell.SetBackgroundColour(deploymentColour, true);
+                        }
+                        else
+                        {
+                            cell.HideBackground();
+                        }
                         break;
                     case MapFilters.Objective:
+                        if (cell.objective != null)
+                        {
+                            cell.SetBackgroundColour(cell.objective.Color, true);
+                        }
+                        else
+                        {
+                            cell.HideBackground();
+                        }
                         break;
                     default:
+                    case MapFilters.Colour:
+                        cell.HideBackground();
                         break;
                 }
             }

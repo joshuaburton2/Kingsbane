@@ -46,7 +46,9 @@ public class LobbyUI : MonoBehaviour
     [SerializeField]
     private GameObject rulesParent;
     [SerializeField]
-    private MapGrid mapGrid;   
+    private MapGrid mapGrid;
+    [SerializeField]
+    private MapKeyUI mapKey;
 
     public void LoadLobbyUI()
     {
@@ -121,5 +123,6 @@ public class LobbyUI : MonoBehaviour
     {
         var mapFilter = (MapGrid.MapFilters)mapFilterId;
         mapGrid.SwitchMapFilter(mapFilter);
+        mapKey.RefreshKey(mapFilter);
     }
 }
