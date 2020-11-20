@@ -5,12 +5,17 @@ using CategoryEnums;
 using System;
 using System.Linq;
 
+/// <summary>
+/// 
+/// Object for displaying key elements of a map
+/// 
+/// </summary>
 public class MapKeyUI : MonoBehaviour
 {
     private class KeyDetails
     {
-        public Color keyColour { get; set; }
-        public string keyText { get; set; }
+        public Color KeyColour { get; set; }
+        public string KeyText { get; set; }
     }
 
     [SerializeField]
@@ -20,13 +25,19 @@ public class MapKeyUI : MonoBehaviour
     [SerializeField]
     private GameObject noKeyText;
 
-    public void RefreshKey(MapGrid.MapFilters keyType, List<Objective> objectiveList = null)
+    /// <summary>
+    /// 
+    /// Refresh the key to display the correct elements
+    /// 
+    /// </summary>
+    /// <param name="objectiveList">Only required if the key elements are for an objective map</param>
+    public void RefreshKey(MapGrid.MapFilters keyType, int numPlayers, List<Objective> objectiveList = null)
     {
         noKeyText.SetActive(false);
         GameManager.DestroyAllChildren(keyColourParent);
 
+        //Constructs the key detail list based on the type of filter utilised. Key Detail requires a name and colour
         var keyDetailList = new List<KeyDetails>();
-
         switch (keyType)
         {
             case MapGrid.MapFilters.Terrain:
@@ -34,18 +45,18 @@ public class MapKeyUI : MonoBehaviour
                 {
                     keyDetailList.Add(new KeyDetails()
                     {
-                        keyColour = GameManager.instance.colourManager.GetTerrainColour(terrainKey),
-                        keyText = terrainKey.ToString(),
+                        KeyColour = GameManager.instance.colourManager.GetTerrainColour(terrainKey),
+                        KeyText = terrainKey.ToString(),
                     });
                 }
                 break;
             case MapGrid.MapFilters.Deployment:
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < numPlayers; i++)
                 {
                     keyDetailList.Add(new KeyDetails()
                     {
-                        keyColour = GameManager.instance.colourManager.GetPlayerColour(i),
-                        keyText = $"Player {i + 1}",
+                        KeyColour = GameManager.instance.colourManager.GetPlayerColour(i),
+                        KeyText = $"Player {i + 1}",
                     });
                 }
                 break;
@@ -54,21 +65,23 @@ public class MapKeyUI : MonoBehaviour
                 {
                     keyDetailList.Add(new KeyDetails()
                     {
-                        keyColour = objective.Color,
-                        keyText = objective.Name,
+                        KeyColour = objective.Color,
+                        KeyText = objective.Name,
                     });
                 }
                 break;
+            //Other cases have no key
             case MapGrid.MapFilters.Colour:
             default:
                 noKeyText.SetActive(true);
                 break;
         }
 
+        //Create each element in the key
         foreach (var key in keyDetailList)
         {
             var keyObject = Instantiate(keyColourPrefab, keyColourParent.transform);
-            keyObject.GetComponent<KeyColourObject>().RefreshKeyElement(key.keyColour, key.keyText);
+            keyObject.GetComponent<KeyColourObject>().RefreshKeyElement(key.KeyColour, key.KeyText);
         }
     }
 }

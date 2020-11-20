@@ -4,6 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Object for displaying data about an element of a key
+/// 
+/// </summary>
 public class KeyColourObject : MonoBehaviour
 {
     [SerializeField]

@@ -14,14 +14,6 @@ using UnityEngine;
 /// </summary>
 public class MapGrid : MonoBehaviour
 {
-    public enum MapFilters
-    {
-        Colour,
-        Terrain,
-        Deployment,
-        Objective,
-    }
-
     private GameObject[] rowList;
     private GameObject[][] cellList;
 
@@ -202,10 +194,29 @@ public class MapGrid : MonoBehaviour
         return cellList[y][x];
     }
 
+    public enum MapFilters
+    {
+        Colour,
+        Terrain,
+        Deployment,
+        Objective,
+    }
+
+    /// <summary>
+    /// 
+    /// Switches the map filter overlay to display information about the map using a given filter type. Current Filters are:
+    /// - No overlay
+    /// = Terrain
+    /// = Deployment
+    /// = Objective
+    /// 
+    /// </summary>
     public void SwitchMapFilter(MapFilters filterType)
     {
+        //Sets the active Filter type
         activeMapFilter = filterType;
 
+        //Loop through each cell in the map
         for (int y = 0; y < numY; y++)
         {
             for (int x = 0; x < numX; x++)
@@ -215,10 +226,13 @@ public class MapGrid : MonoBehaviour
                 switch (filterType)
                 {
                     case MapFilters.Terrain:
+                        //Terrain Colour Overlay. All tiles for the terrain overlay should have a colour filling
                         var terrainColour = GameManager.instance.colourManager.GetTerrainColour(cell.terrainType);
                         cell.SetBackgroundColour(terrainColour, true);
                         break;
                     case MapFilters.Deployment:
+                        //Deployment Overlay for the map. Currently only displays fixed deployment map. Temporary deployment tiles are not included
+                        //If the cell cannot be deployed into, cell will be blank
                         if (cell.playerDeploymentId.HasValue)
                         {
                             var deploymentColour = GameManager.instance.colourManager.GetPlayerColour(cell.playerDeploymentId.Value);
@@ -230,6 +244,8 @@ public class MapGrid : MonoBehaviour
                         }
                         break;
                     case MapFilters.Objective:
+                        //Objective overaly for the map
+                        // If the cell has no objective in it, cell will be blank
                         if (cell.objective != null)
                         {
                             cell.SetBackgroundColour(cell.objective.Color, true);
@@ -239,6 +255,7 @@ public class MapGrid : MonoBehaviour
                             cell.HideBackground();
                         }
                         break;
+                    //Other overlays will have no filled in cells and just show the colour map
                     default:
                     case MapFilters.Colour:
                         cell.HideBackground();

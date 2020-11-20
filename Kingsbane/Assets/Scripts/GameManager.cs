@@ -56,7 +56,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void InitialiseGame(List<DeckData> decks, Map map)
+    /// <summary>
+    /// 
+    /// Initialises a gameplay session. Requires a list of player decks and a map
+    /// 
+    /// </summary>
+    public void InitialiseGame(DeckData[] decks, Map map)
     {
         LoadedPlayers = new List<Player>();
         LoadedMap = map;

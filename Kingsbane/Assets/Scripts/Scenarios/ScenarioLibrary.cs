@@ -102,6 +102,7 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                     new Rule() { Id = 0, Name = "Test Rule", Description = "This is a test rule" },
+                    new Rule() { Id = 1, Name = "Test Rule 2", Description = "This is also a test rule" },
                 },
                 EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };

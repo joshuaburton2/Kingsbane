@@ -29,11 +29,21 @@ public class LobbyDeckListUI : MonoBehaviour
     public bool DeckSelected { get { return SelectedDeckId.HasValue; } }
     private DeckListObject activeDeckObject;
 
+    /// <summary>
+    /// 
+    /// Refreshes the deck list wihtout requiring inputs and using the inputs already initialised
+    /// 
+    /// </summary>
     public void RefreshDeckList()
     {
         RefreshDeckList(isNPCList, titleText.text);
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the deck list with new input values
+    /// 
+    /// </summary>
     public void RefreshDeckList(bool _isNPCList, string newTitle)
     {
         isNPCList = _isNPCList;
@@ -45,6 +55,7 @@ public class LobbyDeckListUI : MonoBehaviour
 
         List<DeckData> deckList;
 
+        //Retrives the required deck list
         if (isNPCList)
         {
             deckList = GameManager.instance.deckManager.NPCDeckList;
@@ -58,6 +69,7 @@ public class LobbyDeckListUI : MonoBehaviour
         GameManager.DestroyAllChildren(deckListParent);
         deckListObjects.Clear();
 
+        //Creates each deck list object for each deck in the deck list
         foreach (var deck in deckList)
         {
             var deckListObject = Instantiate(deckListObjectPrefab, deckListParent.transform);
@@ -65,8 +77,16 @@ public class LobbyDeckListUI : MonoBehaviour
             deckListObject.GetComponent<DeckListObject>().InitDeckListObject(deck, _lobbyDeckListUI: this);
             deckListObjects.Add(deckListObject);
         }
+
+        //Removes the deck selected
+        lobbyUI.SelectDeck(playerId, null);
     }
 
+    /// <summary>
+    /// 
+    /// Function call for selecing a deck for the player to play
+    /// 
+    /// </summary>
     public void SelectDeck(int deckId, DeckData deckData)
     {
         //Sets the properties of the deck currently being edited
