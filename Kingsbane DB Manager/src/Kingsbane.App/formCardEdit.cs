@@ -460,6 +460,10 @@ namespace Kingsbane.App
                     card.Items.Clear();
                     card.Tags.Clear();
                     card.Synergies.Clear();
+                    if (card.CardTypeId == CardTypes.Unit)
+                    {
+                        _context.Abilities.RemoveRange(_context.Abilities.Where(x => x.CardId == card.Id));
+                    }
                     _context.Remove(card);
                     _context.SaveChanges();
                     this.DialogResult = DialogResult.Abort;

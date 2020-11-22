@@ -397,7 +397,7 @@ namespace CategoryEnums
                         new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.Knowledge },
                         new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.Wild },
                     },
-                    IsPlayable = false,
+                    IsPlayable = true,
                     DeckTemplates = new List<DeckSaveData>()
                     {
                         new DeckSaveData()
@@ -408,6 +408,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
+                                1332
                             },
                             UpgradeIdList = new List<int>(),
                         },

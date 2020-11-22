@@ -1211,6 +1211,90 @@ public class CardLibrary
         };
         AbilityList.Add(ability1109);
 
+        var ability1110 = new AbilityData()
+        {
+            Id = 1110,
+            Name = "Glimpse",
+            Text = @"Look at the top 3 cards of your deck. Choose which one to place on top of your deck",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1110);
+
+        var ability1111 = new AbilityData()
+        {
+            Id = 1111,
+            Name = "Trade Tales",
+            Text = @"<b>Divinate (1)</b> and give an adjacent friendlly unit <b>Protected (2)</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1111);
+
+        var ability1112 = new AbilityData()
+        {
+            Id = 1112,
+            Name = "Exchange Stories",
+            Text = @"<b>Study (3).</b> The <b>Study</b> value of this effect cannot be reduced below 1",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1112);
+
+        var ability1114 = new AbilityData()
+        {
+            Id = 1114,
+            Name = "Starcall",
+            Text = @"This units next attack this turnalso deals 2 damage to all adjacent units",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1114);
+
+        var ability1115 = new AbilityData()
+        {
+            Id = 1115,
+            Name = "Moondrain",
+            Text = @"<b>Spellbind</b> a unit within Range 3. Deal damage to the unit equal to the nmber of enchantments removed. This unit gains any attack and health statistics removed",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1115);
+
+        var ability1116 = new AbilityData()
+        {
+            Id = 1116,
+            Name = "Prophecy",
+            Text = @"Choose to experience a vision of the Past, Present or Future",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1116);
+
+        var ability1117 = new AbilityData()
+        {
+            Id = 1117,
+            Name = "Conjure Mirror",
+            Text = @"Deploy a ""Mirror Aspect"" with stats equal to this unit adjacent. Destroy any ""Mirror Aspects"" previously created by this unit. <b>Cycle -2</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1117);
+
         var card2 = new UnitData()
         {
             Id = 2,
@@ -2082,7 +2166,7 @@ Increase your base Knowledge rate by 1",
             Name = "Power Investment",
             ImageLocation = "Power_Investment",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Mana, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Mana, 3), },
 
             Text = @"<b>Study (4)</b>
 Add a random playable spell to your hand",
@@ -2833,7 +2917,7 @@ Whenever you cast a spell, cast it again on the same target",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
-            Text = @"Whenever this kills a unit, deploy a <b>Void Soul</b> in its place",
+            Text = @"<b>Conduit</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -2842,8 +2926,8 @@ Whenever you cast a spell, cast it again on the same target",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Abyssal, Tags.PrayerGain },
-            Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Ethereal, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Prayer },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Abyssal, Tags.PrayerGain },
+            Synergies = new List<Synergies> { Synergies.Summon, Synergies.Midrange, Synergies.Prayer },
             UnitTag = "Human Abyssal",
             Attack = 2,
             Health = 1,
@@ -2909,7 +2993,7 @@ Deal 4 damage to a unit",
             Name = "Void Soul",
             ImageLocation = "Void_Soul",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"<b>Ethereal</b>
 Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
@@ -3161,7 +3245,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Name = "Eye of the Void",
             ImageLocation = "Eye_of_the_Void",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Mana, 5), },
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>
 Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
@@ -3684,7 +3768,7 @@ Deal damage to your hero equal to half their remaining health",
             Name = "Tend the Elements",
             ImageLocation = "Tend_the_Elements",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             Text = @"<b>Cycle +3</b>
 Draw a card",
@@ -4095,7 +4179,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Draw, Tags.WildGain },
+            Tags = new List<Tags> { Tags.Draw, Tags.CyclePlus, Tags.WildGain },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Wild },
             SpellType = "Resource",
             Range = 0,
@@ -9768,7 +9852,7 @@ Deployment:</b> Use <b>Feast</b>",
             Name = "Deceptive Contract",
             ImageLocation = "Deceptive_Contract",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), new Resource(CardResources.Gold, 3), },
 
             Text = @"Whenever you deploy a Hireling, add a copy of it to your hand",
             LoreText = @"",
@@ -10331,6 +10415,673 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         };
         CardList.Add(card1326);
 
+        var card1327 = new SpellData()
+        {
+            Id = 1327,
+            Name = "Luminous Inspiration",
+            ImageLocation = "Luminous_Inspiration",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
+
+            Text = @"<b>Cast When Drawn</b>
+Increase your base Knowledge rate by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1327);
+
+        var card1328 = new UnitData()
+        {
+            Id = 1328,
+            Name = "Fortune Teller",
+            ImageLocation = "Fortune_Teller",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"<b>Deployment</b> Use <b>Glimpse</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Prediction },
+            UnitTag = "Human Luminist",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1110 },
+        };
+        CardList.Add(card1328);
+
+        var card1329 = new SpellData()
+        {
+            Id = 1329,
+            Name = "Moonbeam",
+            ImageLocation = "Moonbeam",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
+
+            Text = @"Deal 2 damage to a unit. This can target units which are blocked by cover",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.SingleDamage },
+            SpellType = "Damage",
+            Range = 4,
+        };
+        CardList.Add(card1329);
+
+        var card1330 = new SpellData()
+        {
+            Id = 1330,
+            Name = "Moonpool Walk",
+            ImageLocation = "Moonpool Walk",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Cycle +3</b>
+Give the caster <b>Protected (3)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Protected, Tags.CyclePlus },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Protected, Synergies.Cycle },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1330);
+
+        var card1331 = new UnitData()
+        {
+            Id = 1331,
+            Name = "Roadside Wanderer",
+            ImageLocation = "Roadside_Wanderer",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
+
+            Text = @"<b>Vanguard
+Deployment:</b> Use <b>Trade Tales</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Protected, Tags.Deployment, Tags.Divinate, Tags.Vanguard, Tags.Wanderer },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Protected, Synergies.Deployment, Synergies.Prediction, Synergies.Vanguard },
+            UnitTag = "Human Wanderer",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1111 },
+        };
+        CardList.Add(card1331);
+
+        var card1332 = new SpellData()
+        {
+            Id = 1332,
+            Name = "Moonlight Premonition",
+            ImageLocation = "Moonlight_Premonition",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Study (4)
+Divinate (2)</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain, Tags.Divinate },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.Study, Synergies.Prediction },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1332);
+
+        var card1333 = new UnitData()
+        {
+            Id = 1333,
+            Name = "Wandering Storyteller",
+            ImageLocation = "Wandering_Storyteller",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"<b>Deployment:</b> Use <b>Exchange Stories</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Wanderer },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Human Wanderer",
+            Attack = 1,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1112 },
+        };
+        CardList.Add(card1333);
+
+        var card1334 = new UnitData()
+        {
+            Id = 1334,
+            Name = "Aedeline Mystic",
+            ImageLocation = "Aedeline_Mystic",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
+
+            Text = @"<b>Conduit
+Deployment: Study (4)</b>
+Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Midrange, Synergies.Deployment, Synergies.Study },
+            UnitTag = "Elven Luminist",
+            Attack = 1,
+            Health = 4,
+            Range = 2,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1334);
+
+        var card1336 = new SpellData()
+        {
+            Id = 1336,
+            Name = "Moondrain",
+            ImageLocation = "Moondrain",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"<b>Spellbind</b> a unit. Deal damage to the unit equal to number of enchantments removed. The caster gains any attack and health statistics removed",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Spellbind },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.SmallSpells, Synergies.Durable, Synergies.Antimagic },
+            SpellType = "Enchantment",
+            Range = 3,
+        };
+        CardList.Add(card1336);
+
+        var card1337 = new UnitData()
+        {
+            Id = 1337,
+            Name = "Starcaller",
+            ImageLocation = "Starcaller",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), new Resource(CardResources.Wild, 3), },
+
+            Text = @"<b>Conduit</b>
+Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess damage dealt.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Elven, Tags.Conduit, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Durable, Synergies.AreaDamage, Synergies.Summon, Synergies.BigMinions, Synergies.Study, Synergies.LongRange },
+            UnitTag = "Elven Luminist",
+            Attack = 4,
+            Health = 4,
+            Range = 3,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1114 },
+        };
+        CardList.Add(card1337);
+
+        var card1338 = new SpellData()
+        {
+            Id = 1338,
+            Name = "Meditative Vision",
+            ImageLocation = "Meditative_Vision",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"Restore health to the caster equal to twice the number of spells in your hand.
+<b>Divinate (1)",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Divinate },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.BigSpells, Synergies.Value, Synergies.Prediction, Synergies.Restoration },
+            SpellType = "Restoration",
+            Range = 0,
+        };
+        CardList.Add(card1338);
+
+        var card1339 = new SpellData()
+        {
+            Id = 1339,
+            Name = "Starfire",
+            ImageLocation = "Starfire",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Conduit</b>
+Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Antimagic, Synergies.Study },
+            SpellType = "Damage",
+            Range = 4,
+        };
+        CardList.Add(card1339);
+
+        var card1340 = new UnitData()
+        {
+            Id = 1340,
+            Name = "Mirror Aspect",
+            ImageLocation = "Mirror_Aspect",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
+
+            Text = @"<b>Ethereal</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ethereal, Tags.Mirrored, Tags.Entity },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Mirrored Entity",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1340);
+
+        var card1341 = new SpellData()
+        {
+            Id = 1341,
+            Name = "Aspect Mirror",
+            ImageLocation = "Aspect_Mirror",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
+
+            Text = @"Choose a friendly minion and deploy a ""Mirror Aspect"" with equal stats adjacent to it.
+<b>Divinate (1), Cycle -3</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Divinate, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.BigMinions, Synergies.Cycle },
+            SpellType = "Deployment",
+            Range = 2,
+        };
+        CardList.Add(card1341);
+
+        var card1342 = new SpellData()
+        {
+            Id = 1342,
+            Name = "Mirror on the Pool",
+            ImageLocation = "Mirror on the Pool",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 3), },
+
+            Text = @"Add a copy of all spells in your hand to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.Value, Synergies.Cycle },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1342);
+
+        var card1343 = new UnitData()
+        {
+            Id = 1343,
+            Name = "Moonweaver",
+            ImageLocation = "Moonweaver",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
+
+            Text = @"<b>Deployment:</b> Use <b>Moondrain</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Deployment, Tags.Spellbind, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.Melee, Synergies.Durable, Synergies.Antimagic, Synergies.Deployment },
+            UnitTag = "Elven Luminist",
+            Attack = 4,
+            Health = 6,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1115 },
+        };
+        CardList.Add(card1343);
+
+        var card1344 = new UnitData()
+        {
+            Id = 1344,
+            Name = "Pool Guardian",
+            ImageLocation = "Pool_Guardian",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
+
+            Text = @"<b>Conduit, Warden, Unleash
+Deployment: Cycle -5</b>
+This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
+",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Cycle, Synergies.Wild },
+            UnitTag = "Elven Luminist",
+            Attack = 6,
+            Health = 9,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1344);
+
+        var card1345 = new UnitData()
+        {
+            Id = 1345,
+            Name = "Aedeline Oracle",
+            ImageLocation = "Aedeline_Oracle",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
+
+            Text = @"<b>Conduit
+Deployment:</b> Use <b>Prophecy</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.BigSpells, Synergies.Summon, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.LongRange },
+            UnitTag = "Elven Luminist",
+            Attack = 4,
+            Health = 5,
+            Range = 3,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1116 },
+        };
+        CardList.Add(card1345);
+
+        var card1346 = new SpellData()
+        {
+            Id = 1346,
+            Name = "Vision of the Past",
+            ImageLocation = "Vision_of_the_Past",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
+
+            Text = @"Add a copy of a random spell in your Graveyard to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1346);
+
+        var card1347 = new SpellData()
+        {
+            Id = 1347,
+            Name = "Vision of the Present",
+            ImageLocation = "Vision_of_the_Present",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
+
+            Text = @"Add a copy of a random spell in your Graveyard to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1347);
+
+        var card1348 = new SpellData()
+        {
+            Id = 1348,
+            Name = "Vision of the Future",
+            ImageLocation = "Vision_of_the_Future",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
+
+            Text = @"Add a copy of a random spell in your deck to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1348);
+
+        var card1349 = new SpellData()
+        {
+            Id = 1349,
+            Name = "Lunar Eclipse",
+            ImageLocation = "Lunar_Eclipse",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
+
+            Text = @"<b>Cycle -4</b>
+Give all friendly units <b>Protected (3).</b> Until the start of your next turn gain, ""<b>Passive:</b> Whenever a friendly unit with <b>Protected takes damage, they take 1 damage instead""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Protected, Tags.CycleMinus, Tags.Passive },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Protected, Synergies.BigSpells, Synergies.Defensive, Synergies.Cycle, Synergies.Wild },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1349);
+
+        var card1350 = new SpellData()
+        {
+            Id = 1350,
+            Name = "Solar Eclipse",
+            ImageLocation = "Solar_Eclipse",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
+
+            Text = @"<b>Cycle -4</b>
+Deal 3 damage to all enemy units. Until the start of your next turn gain ""<b>Passive:</b> All your spells and abilities deal double double damage""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.CycleMinus },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Wild },
+            SpellType = "Damage",
+            Range = 0,
+        };
+        CardList.Add(card1350);
+
+        var card1351 = new SpellData()
+        {
+            Id = 1351,
+            Name = "Alter Fate",
+            ImageLocation = "Alter_Fate",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
+
+            Text = @"Look at the top number of cards in your deck equal to the number of cards in your hand. Choose whether to swap each card in your deck with a card in your hand. Shuffle the cards not put in your hand back into your deck.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Value, Synergies.Study, Synergies.Prediction },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1351);
+
+        var card1352 = new UnitData()
+        {
+            Id = 1352,
+            Name = "Sothyn, Moonpool Warden",
+            ImageLocation = "Sothyn_Moonpool_Warden",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 6), },
+
+            Text = @"<b>Warden, Unleash</b>
+Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activated on this unit whenever a ""Mirror Aspect"" created by this unit attacks and kills a unit.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.Cycle, Synergies.Wild },
+            UnitTag = "Elven Luminist",
+            Attack = 5,
+            Health = 7,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1117 },
+        };
+        CardList.Add(card1352);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -10342,7 +11093,6 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         card60.RelatedCards = new List<CardData> { card63 };
         card61.RelatedCards = new List<CardData> { card63 };
         card62.RelatedCards = new List<CardData> { card63 };
-        card65.RelatedCards = new List<CardData> { card68 };
         card77.RelatedCards = new List<CardData> { card68 };
         card78.RelatedCards = new List<CardData> { card64 };
         card105.RelatedCards = new List<CardData> { card87, card89, card90, card101 };
@@ -10402,6 +11152,12 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         card339.RelatedCards = new List<CardData> { card332 };
         card1322.RelatedCards = new List<CardData> { card332 };
         card1323.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
+        card1332.RelatedCards = new List<CardData> { card1327 };
+        card1333.RelatedCards = new List<CardData> { card1327 };
+        card1334.RelatedCards = new List<CardData> { card1327 };
+        card1341.RelatedCards = new List<CardData> { card1340 };
+        card1345.RelatedCards = new List<CardData> { card1346, card1347, card1348 };
+        card1352.RelatedCards = new List<CardData> { card1340 };
     }
 }
 
@@ -10409,7 +11165,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity
     }
 
     public enum Synergies
