@@ -10,6 +10,8 @@ public class Deck
 
     public Deck(List<CardData> cardList)
     {
+        deckList = new List<Card>();
+
         foreach (var cardData in cardList)
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData);

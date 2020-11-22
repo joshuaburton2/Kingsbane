@@ -284,6 +284,7 @@ namespace Kingsbane.App
                         }
                         sb.AppendLine($"                            }},");
                         sb.AppendLine($"                            HeroCardID = {deck.HeroCardId},");
+                        sb.AppendLine($"                            InitialHandSize = {deck.InitialHandSize},");
                         sb.AppendLine($"                            PlayerResources = new List<PlayerResource>()");
                         sb.AppendLine($"                            {{");
                         foreach (var resource in item.ClassResources)

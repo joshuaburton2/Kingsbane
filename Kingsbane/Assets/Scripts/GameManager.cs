@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public DeckManager deckManager;
     public ColourManager colourManager;
+    public GameSceneManager sceneManager;
 
     public Map LoadedMap { get; set; }
     public List<Player> LoadedPlayers { get; set; }
@@ -70,5 +72,7 @@ public class GameManager : MonoBehaviour
         {
             LoadedPlayers.Add(new Player(deck));
         }
+
+        sceneManager.LoadNewScene(SceneList.GameplayScene);
     }
 }
