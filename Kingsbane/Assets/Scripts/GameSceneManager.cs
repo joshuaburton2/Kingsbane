@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CategoryEnums;
+using System;
 
 namespace CategoryEnums
 {
@@ -16,6 +17,15 @@ namespace CategoryEnums
 
 public class GameSceneManager : MonoBehaviour
 {
+    public SceneList ActiveScene
+    {
+        get
+        {
+            Enum.TryParse(SceneManager.GetActiveScene().name, out SceneList result);
+            return result;
+        }
+    }
+
     /// <summary>
     /// 
     /// Load a scene of a given type
@@ -70,11 +80,11 @@ public class GameSceneManager : MonoBehaviour
     {
         if (scene.name == SceneList.MainMenuScene.ToString())
         {
-
+            GameManager.instance.uiManager.SyncMenuPages();
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
-
+            GameManager.instance.uiManager.SyncGameplayPages();
         }
     }
 

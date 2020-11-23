@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,10 @@ public enum ActiveMainPanels
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [Header("Page Types")]
+    [SerializeField]
+    GameObject currentSceneController;
+
+    [Header("Main Menu Pages")]
     [SerializeField]
     GameObject lobbyPage;
     [SerializeField]
@@ -40,8 +44,52 @@ public class UIManager : MonoBehaviour
 
         activeMainPanel = ActiveMainPanels.Default;
 
-        lobbyPage.SetActive(false);
-        cardLibrary.SetActive(false);
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.MainMenuScene)
+        {
+            lobbyPage.SetActive(false);
+            cardLibrary.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Finds the detail displays in the scene
+    /// 
+    /// </summary>
+    public void SyncDetailDisplays()
+    {
+        cardDetailDisplay = GameObject.FindGameObjectWithTag("CardDetailDisplay");
+        upgradeDetailDisplay = GameObject.FindGameObjectWithTag("UpgradeDetailDisplay");
+    }
+
+    /// <summary>
+    /// 
+    /// Find the required pages for the main menu
+    /// 
+    /// </summary>
+    public void SyncMenuPages()
+    {
+        currentSceneController = GameObject.FindGameObjectWithTag("MainMenuUIController");
+        var mainMenuUIReferences = currentSceneController.GetComponent<MainMenuUIReferences>();
+
+        cardDetailDisplay = mainMenuUIReferences.cardDetailDisplay;
+        upgradeDetailDisplay = mainMenuUIReferences.upgradeDetailDisplay;
+        lobbyPage = mainMenuUIReferences.lobbyUI;
+        cardLibrary = mainMenuUIReferences.libraryUI;
+    }
+
+    /// <summary>
+    /// 
+    /// Find the required pages for the gameplay section
+    /// 
+    /// </summary>
+    public void SyncGameplayPages()
+    {
+        currentSceneController = GameObject.FindGameObjectWithTag("GameplayUIController");
+        var gameplayUIReferences = currentSceneController.GetComponent<GameplayUIReferences>();
+
+        cardDetailDisplay = gameplayUIReferences.cardDetailDisplay;
+        upgradeDetailDisplay = gameplayUIReferences.upgradeDetailDisplay;
     }
 
     /// <summary>
