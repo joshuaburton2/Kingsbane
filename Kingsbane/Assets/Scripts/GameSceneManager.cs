@@ -84,6 +84,7 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
+            GameManager.instance.CheckGameInitialisation();
             GameManager.instance.uiManager.SyncGameplayPages();
         }
     }
@@ -105,7 +106,7 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
-
+            GameManager.instance.ResetGameState();
         }
     }
 }

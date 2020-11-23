@@ -6,4 +6,5 @@ public class GameplayUIReferences : MonoBehaviour
 {
     public GameObject cardDetailDisplay;
     public GameObject upgradeDetailDisplay;
+    public GameObject gameplayUI;
 }

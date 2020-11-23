@@ -1,6 +1,7 @@
 ﻿using CategoryEnums;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -22,11 +23,12 @@ public class GameManager : MonoBehaviour
     public ColourManager colourManager;
     public GameSceneManager sceneManager;
 
+    public bool IsInitialised { get; set; }
     public Map LoadedMap { get; set; }
     public List<Player> LoadedPlayers { get; set; }
 
     private void Awake()
-    { 
+    {
         //Singleton setup
         if (instance == null)
         {
@@ -60,19 +62,69 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// 
+    /// Resets the game state to default. Should be called when exiting gameplay scene
+    /// 
+    /// </summary>
+    public void ResetGameState()
+    {
+        IsInitialised = false;
+        LoadedPlayers = null;
+        LoadedMap = null;
+    }
+
+    /// <summary>
+    /// 
     /// Initialises a gameplay session. Requires a list of player decks and a map
     /// 
     /// </summary>
-    public void InitialiseGame(DeckData[] decks, Map map)
+    public void LoadGameplay(DeckData[] decks, Map map)
     {
-        LoadedPlayers = new List<Player>();
-        LoadedMap = map;
-
-        foreach (var deck in decks)
-        {
-            LoadedPlayers.Add(new Player(deck));
-        }
+        InitialiseGame(decks, map);
 
         sceneManager.LoadNewScene(SceneList.GameplayScene);
+    }
+
+    /// <summary>
+    /// 
+    /// Used for checking if the game is initialised properly. If not, then sets up a default set of players and map
+    /// Mostly used for testing if loading into game from gameplay scene. Change default decks and map as required
+    /// 
+    /// </summary>
+    public void CheckGameInitialisation()
+    {
+        if (!IsInitialised)
+        {
+            var defaultDecks = new DeckData[]
+            {
+                deckManager.NPCDeckList.FirstOrDefault(),
+                deckManager.NPCDeckList.FirstOrDefault(),
+            };
+            var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
+
+            InitialiseGame(defaultDecks, defaultMap);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Initialise the game with the given deck lists and map
+    /// 
+    /// </summary>
+    private void InitialiseGame(DeckData[] decks, Map map)
+    {
+        IsInitialised = true;
+
+        LoadedPlayers = decks.Select(x => new Player(x)).ToList();
+        LoadedMap = map;
+    }
+
+    /// <summary>
+    /// 
+    /// Gets a player of a particular Id
+    /// 
+    /// </summary>
+    public Player GetPlayer(int id)
+    {
+        return LoadedPlayers[id];
     }
 }

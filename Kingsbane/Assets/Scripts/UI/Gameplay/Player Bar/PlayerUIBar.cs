@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class PlayerUIBar : MonoBehaviour
 {
-    private Player player;
+    public int id;
+    private Player Player { get { return GameManager.instance.GetPlayer(id); } }
 }

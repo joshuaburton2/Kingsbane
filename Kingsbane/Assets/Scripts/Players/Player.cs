@@ -7,25 +7,25 @@ using System;
 
 public class Player
 {
-    public string playerName;
-    public Classes.ClassList playerClass = Classes.ClassList.Default;
+    public string Name { get { return DeckData.Name; } }
+    public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
 
-    private DeckData deckData;
+    private DeckData DeckData { get; set; }
 
-    private Deck deck;
-    private Hand hand;
+    private Deck Deck { get; set; }
+    private Hand Hand { get; set; }
 
-    public List<PlayerResource> resources;
+    public List<PlayerResource> resources { get; set; }
     public List<CardResources> UsedResources { get { return resources.Select(x => x.ResourceType).ToList(); } }
 
-    public Player (DeckData _deckData)
+    public Player(DeckData _deckData)
     {
-        deckData = _deckData;
+        DeckData = _deckData;
 
-        deck = new Deck(deckData.CardList);
-        hand = new Hand();
+        Deck = new Deck(DeckData.CardList);
+        Hand = new Hand();
 
-        resources = deckData.PlayerResources;
+        resources = DeckData.PlayerResources;
 
     }
 
@@ -61,12 +61,12 @@ public class Player
     #region Draw Functions
     public void Draw()
     {
-        var drawnCard = deck.Draw();
+        var drawnCard = Deck.Draw();
 
         if (drawnCard != null)
         {
             //drawnCard.transform.parent = hand.gameObject.transform;
-            hand.AddToHand(drawnCard);
+            Hand.AddToHand(drawnCard);
         }
         else
         {
@@ -76,14 +76,14 @@ public class Player
 
     public void Draw(int numToDraw)
     {
-        var drawnCards = deck.Draw(numToDraw, out int failedDraws);
+        var drawnCards = Deck.Draw(numToDraw, out int failedDraws);
 
         if (drawnCards.Count != 0)
         {
             foreach (var drawnCard in drawnCards)
             {
                 //drawnCard.transform.parent = hand.gameObject.transform;
-                hand.AddToHand(drawnCard);
+                Hand.AddToHand(drawnCard);
             }
         }
         else

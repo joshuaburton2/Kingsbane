@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject cardLibrary;
 
+    [Header("Gameplay Pages")]
+    [SerializeField]
+    GameObject gameplayUI;
+
     [Header("Detail Displays")]
     [SerializeField]
     private GameObject cardDetailDisplay;
@@ -74,7 +78,9 @@ public class UIManager : MonoBehaviour
 
         cardDetailDisplay = gameplayUIReferences.cardDetailDisplay;
         upgradeDetailDisplay = gameplayUIReferences.upgradeDetailDisplay;
+        gameplayUI = gameplayUIReferences.gameplayUI;
 
+        gameplayUI.SetActive(true);
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(false);
     }
