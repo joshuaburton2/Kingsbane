@@ -69,7 +69,7 @@ public class Card
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        var playerResources = Owner.resources;
+        var playerResources = Owner.Resources;
 
         //The resource differences will be the difference between the player's current resources and their mandatory spending
         //of their resources based on the cost of the card

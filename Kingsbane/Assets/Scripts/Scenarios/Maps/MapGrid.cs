@@ -42,7 +42,7 @@ public class MapGrid : MonoBehaviour
 
     private MapFilters activeMapFilter;
 
-    private void Start()
+    private void Awake()
     {
         baseCellScale = cellObject.transform.localScale;
         activeMapFilter = MapFilters.Colour;

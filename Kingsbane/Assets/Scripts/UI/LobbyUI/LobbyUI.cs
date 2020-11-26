@@ -226,6 +226,6 @@ public class LobbyUI : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        GameManager.instance.LoadGameplay(playerDecks, selectedMap);
+        GameManager.instance.LoadGameplay(playerDecks, selectedMap, selectedScenarioId);
     }
 }

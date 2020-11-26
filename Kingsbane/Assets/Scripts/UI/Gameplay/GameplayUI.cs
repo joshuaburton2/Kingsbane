@@ -6,4 +6,10 @@ public class GameplayUI : MonoBehaviour
 {
     [SerializeField]
     private List<PlayerUIBar> playerUIBars;
+
+    public void InitialiseUI()
+    {
+        foreach (var playerBar in playerUIBars)
+            playerBar.InitialisePlayerBar();
+    }
 }

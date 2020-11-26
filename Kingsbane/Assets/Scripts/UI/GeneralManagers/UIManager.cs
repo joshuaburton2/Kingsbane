@@ -83,6 +83,8 @@ public class UIManager : MonoBehaviour
         gameplayUI.SetActive(true);
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(false);
+
+        gameplayUI.GetComponent<GameplayUI>().InitialiseUI();
     }
 
     /// <summary>

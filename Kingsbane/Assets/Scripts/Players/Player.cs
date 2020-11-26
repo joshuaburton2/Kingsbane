@@ -15,8 +15,8 @@ public class Player
     private Deck Deck { get; set; }
     private Hand Hand { get; set; }
 
-    public List<PlayerResource> resources { get; set; }
-    public List<CardResources> UsedResources { get { return resources.Select(x => x.ResourceType).ToList(); } }
+    public List<PlayerResource> Resources { get; set; }
+    public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
 
     public Player(DeckData _deckData)
     {
@@ -25,7 +25,7 @@ public class Player
         Deck = new Deck(DeckData.CardList);
         Hand = new Hand();
 
-        resources = DeckData.PlayerResources;
+        Resources = DeckData.PlayerResources;
 
     }
 
@@ -37,7 +37,7 @@ public class Player
     /// <param name="resource">The resource which is being modified as well as the relevant value</param>
     public Resource CalcNewResource(Resource resource)
     {
-        var selectedResource = resources.First(x => x.ResourceType == resource.ResourceType);
+        var selectedResource = Resources.First(x => x.ResourceType == resource.ResourceType);
         var newValue = selectedResource.CalcNewValue(resource.Value);
 
         return new Resource(selectedResource.ResourceType, newValue);
@@ -52,7 +52,7 @@ public class Player
     {
         foreach (var resourceChange in resourceChanges)
         {
-            var resourceToChange = resources.First(x => x.ResourceType == resourceChange.ResourceType);
+            var resourceToChange = Resources.First(x => x.ResourceType == resourceChange.ResourceType);
 
             resourceToChange.ModifyValue(resourceChange.Value);
         }

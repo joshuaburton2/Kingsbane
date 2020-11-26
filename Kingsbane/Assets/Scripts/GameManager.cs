@@ -23,8 +23,11 @@ public class GameManager : MonoBehaviour
     public ColourManager colourManager;
     public GameSceneManager sceneManager;
 
-    public bool IsInitialised { get; set; }
+    public MapGrid mapGrid;
+
+    public bool IsLoaded { get; set; }
     public Map LoadedMap { get; set; }
+    public int LoadedScenarioId { get; set; }
     public List<Player> LoadedPlayers { get; set; }
 
     private void Awake()
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGameState()
     {
-        IsInitialised = false;
+        IsLoaded = false;
         LoadedPlayers = null;
         LoadedMap = null;
     }
@@ -77,9 +80,9 @@ public class GameManager : MonoBehaviour
     /// Initialises a gameplay session. Requires a list of player decks and a map
     /// 
     /// </summary>
-    public void LoadGameplay(DeckData[] decks, Map map)
+    public void LoadGameplay(DeckData[] decks, Map map, int scenarioId)
     {
-        InitialiseGame(decks, map);
+        LoadGameplayData(decks, map, scenarioId);
 
         sceneManager.LoadNewScene(SceneList.GameplayScene);
     }
@@ -90,9 +93,9 @@ public class GameManager : MonoBehaviour
     /// Mostly used for testing if loading into game from gameplay scene. Change default decks and map as required
     /// 
     /// </summary>
-    public void CheckGameInitialisation()
+    public void CheckGameLoad()
     {
-        if (!IsInitialised)
+        if (!IsLoaded)
         {
             var defaultDecks = new DeckData[]
             {
@@ -100,8 +103,9 @@ public class GameManager : MonoBehaviour
                 deckManager.NPCDeckList.FirstOrDefault(),
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
+            var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
 
-            InitialiseGame(defaultDecks, defaultMap);
+            LoadGameplayData(defaultDecks, defaultMap, defaultScenarioId);
         }
     }
 
@@ -110,12 +114,13 @@ public class GameManager : MonoBehaviour
     /// Initialise the game with the given deck lists and map
     /// 
     /// </summary>
-    private void InitialiseGame(DeckData[] decks, Map map)
+    private void LoadGameplayData(DeckData[] decks, Map map, int scenarioId)
     {
-        IsInitialised = true;
+        IsLoaded = true;
 
         LoadedPlayers = decks.Select(x => new Player(x)).ToList();
         LoadedMap = map;
+        LoadedScenarioId = scenarioId;
     }
 
     /// <summary>
@@ -126,5 +131,17 @@ public class GameManager : MonoBehaviour
     public Player GetPlayer(int id)
     {
         return LoadedPlayers[id];
+    }
+
+    /// <summary>
+    /// 
+    /// Initialise the gameplay scene with all required data
+    /// 
+    /// </summary>
+    public void InitialiseGameplayScene()
+    {
+        var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
+        mapGrid = mapGridObject.GetComponent<MapGrid>();
+        mapGrid.RefreshGrid(LoadedMap, LoadedScenarioId);
     }
 }
