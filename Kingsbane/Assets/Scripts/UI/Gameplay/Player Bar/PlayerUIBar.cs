@@ -19,6 +19,6 @@ public class PlayerUIBar : MonoBehaviour
 
     public void InitialisePlayerBar()
     {
-
+        handUI.DisplayUpgradeList(Player.Upgrades);
     }
 }

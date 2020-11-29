@@ -12,8 +12,9 @@ public class Player
 
     private DeckData DeckData { get; set; }
 
-    private Deck Deck { get; set; }
-    private Hand Hand { get; set; }
+    public Deck Deck { get; set; }
+    public Hand Hand { get; set; }
+    public List<UpgradeData> Upgrades { get; set; }
 
     public List<PlayerResource> Resources { get; set; }
     public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
@@ -24,6 +25,7 @@ public class Player
 
         Deck = new Deck(DeckData.CardList);
         Hand = new Hand();
+        Upgrades = DeckData.UpgradeList;
 
         Resources = DeckData.PlayerResources;
 
