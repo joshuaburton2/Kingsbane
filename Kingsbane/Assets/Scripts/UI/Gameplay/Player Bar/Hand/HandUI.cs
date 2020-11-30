@@ -8,6 +8,8 @@ public class HandUI : MonoBehaviour
     private GameObject handList;
     [SerializeField]
     private GameObject handContainerPrefab;
+    [SerializeField]
+    private float scalingFactor;
 
     public void DisplayCardList(List<Card> cardList)
     {
@@ -24,6 +26,7 @@ public class HandUI : MonoBehaviour
             upgradeContainer.name = $"Container- {upgrade.Name}";
             var handContainer = upgradeContainer.GetComponentInChildren<HandContainer>();
             var upgradeName = $"Name- {upgrade.Name}";
+            handContainer.InitHandContainer(upgradeData: upgrade, containerName: upgradeName, scalingFactor: scalingFactor);
         }
     }
 }

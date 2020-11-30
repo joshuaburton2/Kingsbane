@@ -53,7 +53,17 @@ public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData, currentDeck);
+            DisplayUpgradeDetail();
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Display the upgrade detail
+    /// 
+    /// </summary>
+    public void DisplayUpgradeDetail()
+    {
+        GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData, currentDeck);
     }
 }

@@ -40,7 +40,7 @@ public class UpgradeManager : MonoBehaviour
     /// Creates an upgrade card on a canvas
     /// 
     /// </summary>
-    public GameObject CreateUpgrade(UpgradeData upgrade, Transform parent, DeckData currentDeck, float scaling = defaultUpgradeScaling)
+    public GameObject CreateUpgrade(UpgradeData upgrade, Transform parent, DeckData currentDeck = null, float scaling = defaultUpgradeScaling)
     {
         var createdUpgrade = Instantiate(upgradeObject, parent);
         createdUpgrade.transform.localScale = new Vector3(scaling, scaling, 1.0f);
