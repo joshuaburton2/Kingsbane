@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,25 +14,40 @@ public class HandUI : MonoBehaviour
 
     private List<HandContainer> containerList;
 
-    public void DisplayCardList(List<Card> cardList)
-    {
-
-    }
-
-    public void DisplayUpgradeList(List<UpgradeData> upgradeList)
+    public void DisplayHandList <T>(List<T> handList)
     {
         containerList = new List<HandContainer>();
-        GameManager.DestroyAllChildren(handList);
+        GameManager.DestroyAllChildren(this.handList);
 
         int index = 0;
-        foreach (var upgrade in upgradeList)
+        foreach (var handObject in handList)
         {
-            var upgradeContainer = Instantiate(handContainerPrefab, handList.transform);
-            upgradeContainer.name = $"Container- {upgrade.Name}";
+            var upgradeContainer = Instantiate(handContainerPrefab, this.handList.transform);
+            
             var handContainer = upgradeContainer.GetComponentInChildren<HandContainer>();
             containerList.Add(handContainer);
-            var upgradeName = $"Name- {upgrade.Name}";
-            handContainer.InitHandContainer(this, index, upgradeData: upgrade, containerName: upgradeName, scalingFactor: scalingFactor);
+
+            var type = typeof(T);
+            string objectName;
+            switch (type)
+            {
+                case Type _ when type == typeof(Card):
+                    var card = (Card)(object)handObject;
+
+                    objectName = card.CardName;
+                    break;
+                case Type _ when type == typeof(UpgradeData):
+                    var upgrade = (UpgradeData)(object)handObject;
+
+                    objectName = upgrade.Name;
+                    break;
+                default:
+                    objectName = "";
+                    break;
+            }
+            upgradeContainer.name = $"Container- {objectName}";
+            var displayName = $"Name- {objectName}";
+            handContainer.InitHandContainer(this, index, objectData: handObject, containerName: objectName, scalingFactor: scalingFactor);
 
             index++;
         }

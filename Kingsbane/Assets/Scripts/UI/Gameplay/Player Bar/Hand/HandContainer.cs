@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,11 +31,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// Initialise the container object for a card
     /// 
     /// </summary>
-    public void InitHandContainer(
+    public void InitHandContainer <T>(
         HandUI _handUI,
         int _handIndex,
-        CardData cardData = null,
-        UpgradeData upgradeData = null,
+        T objectData,
         string containerName = "",
         float scalingFactor = defaultScalingFactor)
     {
@@ -45,26 +45,32 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         buttonArea.SetActive(false);
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
-        //Object is instantiated on the parent of this object in order to prevent conflicts with click handling
-        if (cardData == null)
-        {
-            var newUpgradeObj = GameManager.instance.upgradeManager.CreateUpgrade(upgradeData, gameObject.transform.parent, scaling: scalingFactor);
-            newUpgradeObj.name = containerName;
-            //Sibling Index is set to 0 so that the click handler on upgrade display doesn't interfere with the click handler on the container
-            newUpgradeObj.transform.SetSiblingIndex(0);
-            upgradeDisplay = newUpgradeObj.GetComponent<UpgradeDisplay>();
-            displayObject = newUpgradeObj;
-        }
-        else if (upgradeData == null)
-        {
-            var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, gameObject.transform.parent, scalingFactor);
-            newCardObj.name = containerName;
-            //Sibling Index is set to 0 so that the click handler on card display doesn't interfere with the click handler on the container (which is only used when adding cards to a deck)
-            newCardObj.transform.SetSiblingIndex(0);
-            cardDisplay = newCardObj.GetComponent<CardDisplay>();
-            displayObject = newCardObj;
-        }
 
+
+        var type = typeof(T);
+        switch (type)
+        {
+            case Type _ when type == typeof(Card):
+                var cardData = (CardData)(object)objectData;
+                var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, gameObject.transform.parent, scalingFactor);
+                newCardObj.name = containerName;
+
+                //Sibling Index is set to 0 so that the click handler on card display doesn't interfere with the click handler on the container (which is only used when adding cards to a deck)
+                newCardObj.transform.SetSiblingIndex(0);
+                cardDisplay = newCardObj.GetComponent<CardDisplay>();
+                displayObject = newCardObj;
+                break;
+            case Type _ when type == typeof(UpgradeData):
+                var upgradeData = (UpgradeData)(object)objectData;
+                var newUpgradeObj = GameManager.instance.upgradeManager.CreateUpgrade(upgradeData, gameObject.transform.parent, scaling: scalingFactor);
+                newUpgradeObj.name = containerName;
+
+                //Sibling Index is set to 0 so that the click handler on upgrade display doesn't interfere with the click handler on the container
+                newUpgradeObj.transform.SetSiblingIndex(0);
+                upgradeDisplay = newUpgradeObj.GetComponent<UpgradeDisplay>();
+                displayObject = newUpgradeObj;
+                break;
+        }
     }
 
     public void SelectDisplay(bool toSelect)
@@ -74,7 +80,9 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
             isSelected = toSelect;
             var transformVector = new Vector3(0, (toSelect ? 1 : -1) * ySelectionOffset);
             displayObject.transform.localPosition += transformVector;
-            buttonArea.SetActive(toSelect);
+
+            if (cardDisplay != null)
+                buttonArea.SetActive(toSelect);
 
             if (toSelect)
                 
