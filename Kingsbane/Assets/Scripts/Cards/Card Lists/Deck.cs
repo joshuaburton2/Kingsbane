@@ -8,13 +8,14 @@ public class Deck
 
     public int DeckCount { get { return deckList.Count; } }
 
-    public Deck(List<CardData> cardList)
+    public Deck(List<CardData> cardList, Player player)
     {
         deckList = new List<Card>();
 
         foreach (var cardData in cardList)
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData);
+            card.Owner = player;
             AddToDeck(card);
         }
     }

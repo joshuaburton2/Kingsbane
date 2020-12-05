@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 1338429577}
         m_MethodName: ClosePanel
         m_Mode: 2
         m_Arguments:
@@ -31604,7 +31604,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 1338429577}
         m_MethodName: ClosePanel
         m_Mode: 2
         m_Arguments:
@@ -33506,7 +33506,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 1338429577}
         m_MethodName: ClosePanel
         m_Mode: 2
         m_Arguments:
@@ -35558,7 +35558,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 1338429577}
         m_MethodName: ClosePanel
         m_Mode: 2
         m_Arguments:

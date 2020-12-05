@@ -15,6 +15,7 @@ public class Player
     public Deck Deck { get; set; }
     public Hand Hand { get; set; }
     public List<UpgradeData> Upgrades { get; set; }
+    public Unit Hero { get; set; }
 
     public List<PlayerResource> Resources { get; set; }
     public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
@@ -23,9 +24,10 @@ public class Player
     {
         DeckData = _deckData;
 
-        Deck = new Deck(DeckData.CardList);
+        Deck = new Deck(DeckData.CardList, this);
         Hand = new Hand();
         Upgrades = DeckData.UpgradeList;
+        Hero = (Unit)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard);
 
         Resources = DeckData.PlayerResources;
 

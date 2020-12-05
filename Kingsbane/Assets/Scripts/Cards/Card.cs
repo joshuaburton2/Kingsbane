@@ -24,7 +24,7 @@ public class Card
     public List<Synergies> Syngergies { get { return cardData.Synergies; } }
     public List<CardData> RelatedCards { get { return cardData.RelatedCards; } }
 
-    public Player Owner { get; private set; }
+    public Player Owner { get; set; }
 
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.

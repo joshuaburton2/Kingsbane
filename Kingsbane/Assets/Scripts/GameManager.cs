@@ -30,8 +30,13 @@ public class GameManager : MonoBehaviour
     public int LoadedScenarioId { get; set; }
     public List<Player> LoadedPlayers { get; set; }
 
+    public int? ActivePlayerId { get; set; }
+    public bool GameStarted { get { return ActivePlayerId.HasValue; } }
+
     private void Awake()
     {
+        ResetGameState();
+
         //Singleton setup
         if (instance == null)
         {
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour
         IsLoaded = false;
         LoadedPlayers = null;
         LoadedMap = null;
+        ActivePlayerId = null;
     }
 
     /// <summary>
@@ -123,6 +129,18 @@ public class GameManager : MonoBehaviour
         LoadedScenarioId = scenarioId;
     }
 
+    public Player GetActivePlayer()
+    {
+        if (ActivePlayerId.HasValue)
+        {
+            return GetPlayer(ActivePlayerId.Value);
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     /// <summary>
     /// 
     /// Gets a player of a particular Id
@@ -143,5 +161,10 @@ public class GameManager : MonoBehaviour
         var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
         mapGrid = mapGridObject.GetComponent<MapGrid>();
         mapGrid.RefreshGrid(LoadedMap, LoadedScenarioId);
+    }
+
+    public void StartGame()
+    {
+        ActivePlayerId = 0;
     }
 }
