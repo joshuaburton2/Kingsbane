@@ -46,7 +46,6 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
 
-
         var type = typeof(T);
         switch (type)
         {
@@ -85,7 +84,6 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
                 buttonArea.SetActive(toSelect);
 
             if (toSelect)
-                
                 handUI.SelectDisplay(handIndex);
         }
     }
@@ -112,7 +110,6 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-
             SelectDisplay(!isSelected);
         }
     }

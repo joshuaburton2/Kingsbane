@@ -12,10 +12,14 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private GameObject cardDisplayArea;
     [SerializeField]
+    private GameObject cardDisplayParent;
+    [SerializeField]
     private TextMeshProUGUI actionButtonText;
 
     public void InitialiseUI()
     {
+        cardDisplayArea.SetActive(false);
+
         var counter = 0;
         foreach (var playerBar in playerUIBars)
         {
@@ -28,16 +32,26 @@ public class GameplayUI : MonoBehaviour
 
     public void ActionButton()
     {
-        if (GameManager.instance.GameStarted)
+        switch (GameManager.instance.CurrentGamePhase)
         {
+            case GameManager.GamePhases.Menu:
+                break;
+            case GameManager.GamePhases.Setup:
+                GameManager.instance.StartGame();
+                SetPlayerTurnText();
 
-        }
-        else
-        {
-            GameManager.instance.StartGame();
-            SetPlayerTurnText();
-
-            ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
+                ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
+                break;
+            case GameManager.GamePhases.HeroDeploy:
+                break;
+            case GameManager.GamePhases.Mulligan:
+                break;
+            case GameManager.GamePhases.Gameplay:
+                break;
+            case GameManager.GamePhases.End:
+                break;
+            default:
+                break;
         }
     }
 
@@ -48,7 +62,8 @@ public class GameplayUI : MonoBehaviour
 
     public void ShowCardDisplay(Card card)
     {
-        GameManager.DestroyAllChildren(cardDisplayArea);
-        GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayArea.transform, 0.25f);
+        cardDisplayArea.SetActive(true);
+        GameManager.DestroyAllChildren(cardDisplayParent);
+        GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayParent.transform, 0.25f);
     }
 }

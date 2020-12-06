@@ -4033,7 +4033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUIBars:
   - {fileID: 1267383763}
-  cardDisplayArea: {fileID: 1226916770}
+  cardDisplayArea: {fileID: 1389397988}
+  cardDisplayParent: {fileID: 1226916770}
   actionButtonText: {fileID: 661066021}
 --- !u!1 &1901041043
 GameObject:

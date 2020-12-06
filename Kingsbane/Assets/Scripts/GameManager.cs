@@ -12,6 +12,16 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
+    public enum GamePhases
+    {
+        Menu,
+        Setup,
+        HeroDeploy,
+        Mulligan,
+        Gameplay,
+        End,
+    }
+
     public static GameManager instance { get; set; }
 
     public LibraryManager libraryManager;
@@ -25,13 +35,13 @@ public class GameManager : MonoBehaviour
 
     public MapGrid mapGrid;
 
-    public bool IsLoaded { get; set; }
     public Map LoadedMap { get; set; }
     public int LoadedScenarioId { get; set; }
     public List<Player> LoadedPlayers { get; set; }
+    public int NumPlayers { get { return LoadedPlayers.Count; } }
 
     public int? ActivePlayerId { get; set; }
-    public bool GameStarted { get { return ActivePlayerId.HasValue; } }
+    public GamePhases CurrentGamePhase { get; set; }
 
     private void Awake()
     {
@@ -75,10 +85,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGameState()
     {
-        IsLoaded = false;
         LoadedPlayers = null;
         LoadedMap = null;
         ActivePlayerId = null;
+        CurrentGamePhase = GamePhases.Menu;
     }
 
     /// <summary>
@@ -101,7 +111,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckGameLoad()
     {
-        if (!IsLoaded)
+        if (CurrentGamePhase == GamePhases.Menu)
         {
             var defaultDecks = new DeckData[]
             {
@@ -122,7 +132,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadGameplayData(DeckData[] decks, Map map, int scenarioId)
     {
-        IsLoaded = true;
+        CurrentGamePhase = GamePhases.Setup;
 
         LoadedPlayers = decks.Select(x => new Player(x)).ToList();
         LoadedMap = map;
@@ -132,13 +142,9 @@ public class GameManager : MonoBehaviour
     public Player GetActivePlayer()
     {
         if (ActivePlayerId.HasValue)
-        {
             return GetPlayer(ActivePlayerId.Value);
-        }
         else
-        {
             return null;
-        }
     }
 
     /// <summary>
@@ -166,5 +172,15 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ActivePlayerId = 0;
+        CurrentGamePhase = GamePhases.HeroDeploy;
+    }
+
+    public void NextPlayerTurn()
+    {
+        ActivePlayerId++;
+        if (ActivePlayerId == NumPlayers)
+        {
+            ActivePlayerId = 0;
+        }
     }
 }
