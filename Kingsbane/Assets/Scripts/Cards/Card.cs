@@ -37,7 +37,7 @@ public class Card
     public string LoreText { get { return cardData.LoreText; } }
     public string Notes { get { return cardData.Notes; } }
 
-    public void InitCard (CardData _cardData)
+    public virtual void InitCard (CardData _cardData)
     {
         cardData = _cardData;
         ResourceInit();

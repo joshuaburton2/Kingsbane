@@ -509,7 +509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffd45a55a230864a9471f77fbe1935c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 0}
   cardName: {fileID: 7213617643348227248}
   subText: {fileID: 7213617642886399506}
   resourceText: {fileID: 7213617642997785577}
@@ -2718,7 +2717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 77930616b45a0f34caac99ab8298859f, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

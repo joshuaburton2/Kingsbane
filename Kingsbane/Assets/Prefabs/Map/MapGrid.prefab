@@ -47,6 +47,6 @@ MonoBehaviour:
     type: 3}
   numX: 10
   numY: 10
-  gridOrigin: {x: -47.5, y: 40, z: 0}
+  gridOrigin: {x: -45, y: 40, z: 0}
   hexDistance: 10
   scalingFactor: 1

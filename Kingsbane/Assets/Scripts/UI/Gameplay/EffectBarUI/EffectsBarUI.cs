@@ -32,6 +32,7 @@ public class EffectsBarUI : MonoBehaviour
         foreach (var effect in phaseEffectList)
         {
             var effectObject = Instantiate(effect.effectPrefab, effectListParent.transform);
+            effectObject.GetComponent<EffectUI>().InitialiseEffectUI(effect.effectType);
         }
     }
 }
