@@ -43,6 +43,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea358147c408ea4387b82ccf5e61277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &641528684145314946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7832344600848277426}
+  - component: {fileID: 1912424445991444611}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7832344600848277426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641528684145314946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8891978395487198524}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912424445991444611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641528684145314946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cb41e54d4bb12418a57b29c1473f07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4079478786538098655
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +379,8 @@ MonoBehaviour:
   deckManager: {fileID: 8891978395399055764}
   colourManager: {fileID: 8891978394799893639}
   sceneManager: {fileID: 7393815019979545758}
+  effectManager: {fileID: 1912424445991444611}
+  mapGrid: {fileID: 0}
 --- !u!1 &8891978395399055763
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +460,7 @@ Transform:
   - {fileID: 1294613692}
   - {fileID: 4633520603800877702}
   - {fileID: 197248203711281230}
+  - {fileID: 7832344600848277426}
   m_Father: {fileID: 8891978395099848712}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -615,8 +661,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976e53a32283adc469e965072b522c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneController: {fileID: 0}
   lobbyPage: {fileID: 0}
   cardLibrary: {fileID: 0}
+  gameplayUI: {fileID: 0}
   cardDetailDisplay: {fileID: 0}
   upgradeDetailDisplay: {fileID: 0}
   activeMainPanel: 0

@@ -6,10 +6,15 @@ public class Unit : Card
 {
     public UnitData UnitData { get { return cardData as UnitData; } }
 
-    public int BaseAttack { get { return UnitData.Attack; } }
-    public int BaseHealth { get { return UnitData.Health; } }
-    public int BaseRange { get { return UnitData.Range; } }
-    public int BaseSpeed { get { return UnitData.Speed; } }
+    public int DefaultAttack { get { return UnitData.Attack; } }
+    public int DefaultHealth { get { return UnitData.Health; } }
+    public int DefaultRange { get { return UnitData.Range; } }
+    public int DefaultSpeed { get { return UnitData.Speed; } }
+
+    public int BaseAttack { get; set; }
+    public int BaseHealth { get; set; }
+    public int BaseRange { get; set; }
+    public int BaseSpeed { get; set; }
 
     public int Attack { get; set; }
     public int Health { get; set; }
@@ -24,10 +29,15 @@ public class Unit : Card
     {
         base.InitCard(_cardData);
 
-        Attack = BaseAttack;
-        Health = BaseHealth;
-        Range = BaseRange;
-        Speed = BaseSpeed;
+        BaseAttack = DefaultAttack;
+        BaseHealth = DefaultHealth;
+        BaseRange = DefaultRange;
+        BaseSpeed = DefaultSpeed;
+
+        Attack = DefaultAttack;
+        Health = DefaultHealth;
+        Range = DefaultRange;
+        Speed = DefaultSpeed;
     }
 
     public override void Play()

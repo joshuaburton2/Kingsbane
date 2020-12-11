@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public DeckManager deckManager;
     public ColourManager colourManager;
     public GameSceneManager sceneManager;
+    public EffectManager effectManager;
 
     public MapGrid mapGrid;
 

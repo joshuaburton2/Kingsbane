@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 643362873542974371}
   - component: {fileID: 1945863001467826341}
   - component: {fileID: -4889984507655634822}
+  - component: {fileID: 2818482052509712665}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   backgroundImage: {fileID: 6801558084069231290}
   defaultAlpha: 0.4
   terrainType: 0
+--- !u!136 &2818482052509712665
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643362873542974375}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 2.5
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7727042663085310816
 GameObject:
   m_ObjectHideFlags: 0

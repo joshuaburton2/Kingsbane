@@ -20,6 +20,23 @@ public class Cell : MonoBehaviour
     [SerializeField]
     public Objective objective;
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.name == transform.name)
+                {
+                    Debug.Log(gridIndex);
+                }
+            }
+        }
+    }
+
     public void SetBackgroundColour(Color colour, bool isTransparent)
     {
         colour.a = isTransparent ? defaultAlpha : 1.0f;
