@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class EffectsBarUI : MonoBehaviour
     public enum EffectTypes
     {
         Default,
+        [Description("Play Hero")]
         PlayHero,
     }
 

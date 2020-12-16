@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
         upgradeManager.LoadLibrary();
         deckManager.LoadDecks();
         scenarioManager.LoadScenarios();
+        effectManager.InitEffectManager();
     }
 
     /// <summary>

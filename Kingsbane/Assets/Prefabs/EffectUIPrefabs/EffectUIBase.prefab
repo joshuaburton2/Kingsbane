@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5120686175529119767}
   - component: {fileID: 5120686175529119765}
   - component: {fileID: 5120686175529119766}
-  - component: {fileID: 5120686175529119764}
   m_Layer: 5
   m_Name: EffectUIBase
   m_TagString: Untagged
@@ -76,19 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5120686175529119764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5120686175529119768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5754c2e81690ed4a9420b907d9bf975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectTitle: {fileID: 5120686175956259071}
 --- !u!1 &5120686175546665640
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +160,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5120686175649392215}
+  - component: {fileID: 6594638996311945815}
+  - component: {fileID: 2211825329489491924}
   m_Layer: 5
   m_Name: EffectButtonArea
   m_TagString: Untagged
@@ -200,6 +188,43 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -12.5}
   m_SizeDelta: {x: -10, y: -35}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6594638996311945815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120686175649392216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 1
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!225 &2211825329489491924
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5120686175649392216}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5120686175956259009
 GameObject:
   m_ObjectHideFlags: 0
