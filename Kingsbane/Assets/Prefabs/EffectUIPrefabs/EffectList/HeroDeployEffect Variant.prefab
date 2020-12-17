@@ -430,7 +430,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1138424261152112580}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 264665578}
+        m_MethodName: CancelButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &264665578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,8 +455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectTitle: {fileID: 458644677830658586}
-  deployButton: {fileID: 0}
-  cancelButton: {fileID: 0}
+  buttonGroup: {fileID: 6916615878359821617}
+  deployButton: {fileID: 6374352971466133275}
+  cancelButton: {fileID: 1665658464075466048}
 --- !u!1 &6971606568800272101
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +576,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8564964322700391925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 264665578}
+        m_MethodName: DeployButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7438745351983982211
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,6 +893,12 @@ MonoBehaviour:
 --- !u!224 &458644679669185714 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5120686175649392215, guid: c74f46143bb1b084783d53362f0e25d7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4705481050763565797}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &6916615878359821617 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2211825329489491924, guid: c74f46143bb1b084783d53362f0e25d7,
     type: 3}
   m_PrefabInstance: {fileID: 4705481050763565797}
   m_PrefabAsset: {fileID: 0}

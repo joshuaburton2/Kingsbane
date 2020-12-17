@@ -19,6 +19,16 @@ public class Cell : MonoBehaviour
     public int? playerDeploymentId;
     [SerializeField]
     public Objective objective;
+    [SerializeField]
+    private GameObject cellOccupant;
+    [SerializeField]
+    public UnitCounter occupantCounter;
+
+    private void Start()
+    {
+        cellOccupant = null;
+        occupantCounter = null;
+    }
 
     private void Update()
     {
@@ -31,7 +41,16 @@ public class Cell : MonoBehaviour
             {
                 if (hit.transform.name == transform.name)
                 {
-                    Debug.Log(gridIndex);
+                    switch (GameManager.instance.effectManager.activeEffect)
+                    {
+                        case EffectManager.ActiveEffectTypes.Deployment:
+                            cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform);
+                            occupantCounter = cellOccupant.GetComponent<UnitCounter>();
+                            break;
+                        case EffectManager.ActiveEffectTypes.None:
+                        default:
+                            break;
+                    }
                 }
             }
         }

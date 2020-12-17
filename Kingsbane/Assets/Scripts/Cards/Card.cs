@@ -37,9 +37,10 @@ public class Card
     public string LoreText { get { return cardData.LoreText; } }
     public string Notes { get { return cardData.Notes; } }
 
-    public virtual void InitCard (CardData _cardData)
+    public virtual void InitCard (CardData _cardData, Player owner)
     {
         cardData = _cardData;
+        Owner = owner;
         ResourceInit();
     }
 

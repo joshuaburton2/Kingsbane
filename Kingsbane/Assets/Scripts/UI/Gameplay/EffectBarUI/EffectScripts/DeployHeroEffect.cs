@@ -20,11 +20,21 @@ public class DeployHeroEffect : EffectUI
 
     public void DeployButtonClick()
     {
-
+        effectComplete = false;
+        var heroUnit = GameManager.instance.GetActivePlayer().Hero;
+        GameManager.instance.effectManager.SetSelectedUnit(heroUnit);
     }
 
     public void CancelButtonClick()
     {
 
+    }
+
+    public override void CompleteEffect()
+    {
+        base.CompleteEffect();
+
+        deployButton.interactable = false;
+        cancelButton.interactable = true;
     }
 }

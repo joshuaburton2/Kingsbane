@@ -313,7 +313,7 @@ public class LibraryManager : MonoBehaviour
     /// Creates a card object which does not require a display object
     /// 
     /// </summary>
-    public Card CreateCard(CardData cardData)
+    public Card CreateCard(CardData cardData, Player owner)
     {
         Card card;
 
@@ -334,7 +334,7 @@ public class LibraryManager : MonoBehaviour
                 break;
         }
 
-        card.InitCard(cardData);
+        card.InitCard(cardData, owner);
         return card;
     }
 
@@ -378,7 +378,7 @@ public class LibraryManager : MonoBehaviour
         //Creates the relevant script of the card type
         T typeScript = new T();
 
-        ((Card)(object)typeScript).InitCard(cardData);
+        ((Card)(object)typeScript).InitCard(cardData, null);
 
         createdCard.GetComponent<CardDisplay>().InitDisplay((Card)(object)typeScript);
     }

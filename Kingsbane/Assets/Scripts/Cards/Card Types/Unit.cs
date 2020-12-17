@@ -25,9 +25,9 @@ public class Unit : Card
 
     public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
-    public override void InitCard(CardData _cardData)
+    public override void InitCard(CardData _cardData, Player owner)
     {
-        base.InitCard(_cardData);
+        base.InitCard(_cardData, owner);
 
         BaseAttack = DefaultAttack;
         BaseHealth = DefaultHealth;

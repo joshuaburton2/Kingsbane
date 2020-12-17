@@ -14,8 +14,7 @@ public class Deck
 
         foreach (var cardData in cardList)
         {
-            var card = GameManager.instance.libraryManager.CreateCard(cardData);
-            card.Owner = player;
+            var card = GameManager.instance.libraryManager.CreateCard(cardData, player);
             AddToDeck(card);
         }
     }

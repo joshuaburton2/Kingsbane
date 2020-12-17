@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameplayUI : MonoBehaviour
 {
     [SerializeField]
+    private EffectsBarUI effectBarUI;
+    [SerializeField]
     private List<PlayerUIBar> playerUIBars;
 
     [Header("Miscellaneous Area")]
@@ -53,6 +55,8 @@ public class GameplayUI : MonoBehaviour
             default:
                 break;
         }
+
+        effectBarUI.RefreshEffectList();
     }
 
     private void SetPlayerTurnText()

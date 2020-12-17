@@ -28,7 +28,7 @@ public class Player
         Deck = new Deck(DeckData.CardList, this);
         Hand = new Hand();
         Upgrades = DeckData.UpgradeList;
-        Hero = (Unit)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard);
+        Hero = (Unit)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
 
         Resources = DeckData.PlayerResources;
