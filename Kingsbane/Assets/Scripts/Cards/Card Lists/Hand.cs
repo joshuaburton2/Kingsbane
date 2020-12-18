@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand
+public class Hand : CardList
 {
-    public List<Card> handList;
-
     private const int maxHandSize = 10;
 
-    public int HandCount { get { return handList.Count; } }
+    public int HandCount { get { return cardList.Count; } }
 
     #region Add to Hand Functions
     /// <summary>
@@ -23,7 +21,7 @@ public class Hand
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (HandCount < maxHandSize)
         {
-            handList.Add(card);
+            cardList.Add(card);
             return true;
         }
         else
@@ -50,7 +48,7 @@ public class Hand
             //not added
             if (HandCount < maxHandSize)
             {
-                handList.Add(cardToAdd);
+                cardList.Add(cardToAdd);
                 failedCards.Remove(cardToAdd);
             }
             else

@@ -14,6 +14,8 @@ public class Player
 
     public Deck Deck { get; set; }
     public Hand Hand { get; set; }
+    public CardList Graveyard { get; set; }
+    public CardList Discard { get; set; }
     public List<UpgradeData> Upgrades { get; set; }
     public Unit Hero { get; set; }
     public List<UnitCounter> DeployedUnits { get; set; }

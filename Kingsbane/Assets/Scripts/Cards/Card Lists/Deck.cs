@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deck
+public class Deck : CardList
 {
-    public List<Card> deckList;
+    public int DeckCount { get { return cardList.Count; } }
 
-    public int DeckCount { get { return deckList.Count; } }
-
-    public Deck(List<CardData> cardList, Player player)
+    public Deck(List<CardData> _cardList, Player player)
     {
-        deckList = new List<Card>();
+        cardList = new List<Card>();
 
-        foreach (var cardData in cardList)
+        foreach (var cardData in _cardList)
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData, player);
             AddToDeck(card);
@@ -33,8 +31,8 @@ public class Deck
         if(currentCount != 0)
         {
             //Saves the card to return and removes it from the deck list
-            var drawnCard = deckList[DeckCount - 1];
-            deckList.RemoveAt(DeckCount - 1);
+            var drawnCard = cardList[DeckCount - 1];
+            cardList.RemoveAt(DeckCount - 1);
 
             return drawnCard;
         }
@@ -66,8 +64,8 @@ public class Deck
             if (currentCount != 0)
             {
                 //Saves the card to return and removes it from the deck list
-                drawnCards.Add(deckList[DeckCount - 1]);
-                deckList.RemoveAt(DeckCount - 1);
+                drawnCards.Add(cardList[DeckCount - 1]);
+                cardList.RemoveAt(DeckCount - 1);
                 failedDraws--;
             }
             else
@@ -114,22 +112,22 @@ public class Deck
         if(position != currentCount)
         {
             //Add a new card to the deck as a duplicate of the card already in the last position
-            deckList.Add(deckList[currentCount - 1]);
+            cardList.Add(cardList[currentCount - 1]);
 
             //Loops down through the upper part of the list, shifting all cards one position up to account for the new card addition.
             //This will essentially duplicate each card one position up, and then overwrite the original with each iteration of the loop
             for (int i = currentCount - 1; i > position; i--)
             {
-                deckList[i] = deckList[i - 1];
+                cardList[i] = cardList[i - 1];
             }
 
             //Add the new card at the desired position
-            deckList[position] = card;
+            cardList[position] = card;
         }
         else
         {
             //If the new card is in the last position of the list, adds it
-            deckList.Add(card);
+            cardList.Add(card);
         }   
     }
 
@@ -150,9 +148,9 @@ public class Deck
             int randPos = Random.Range(0, currentCount);
 
             //Swaps the cards in each position
-            var randCard = deckList[randPos];
-            deckList[randPos] = deckList[currentPos];
-            deckList[currentPos] = randCard;
+            var randCard = cardList[randPos];
+            cardList[randPos] = cardList[currentPos];
+            cardList[currentPos] = randCard;
         }
     }
 
