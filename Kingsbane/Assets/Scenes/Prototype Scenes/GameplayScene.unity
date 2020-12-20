@@ -2367,8 +2367,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 403882059}
   m_HandleRect: {fileID: 403882058}
   m_Direction: 2
-  m_Value: 1.0000006
-  m_Size: 0.7582159
+  m_Value: 1.0000002
+  m_Size: 0.75821596
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4187,6 +4187,7 @@ MonoBehaviour:
     activeGamePhase: 2
     effectPrefab: {fileID: 458644679549954813, guid: b00031117d85f184a846be46d0b429ef,
       type: 3}
+  gameplayUI: {fileID: 1873261933}
 --- !u!1 &1660803602
 GameObject:
   m_ObjectHideFlags: 0
@@ -4802,6 +4803,8 @@ MonoBehaviour:
   - {fileID: 1267383763}
   cardDisplayArea: {fileID: 1389397988}
   cardDisplayParent: {fileID: 1226916770}
+  miscCanvasGroup: {fileID: 2024169727}
+  actionButton: {fileID: 1718310740}
   actionButtonText: {fileID: 661066021}
 --- !u!1 &1901041043
 GameObject:
@@ -5090,6 +5093,7 @@ GameObject:
   - component: {fileID: 2024169725}
   - component: {fileID: 2024169724}
   - component: {fileID: 2024169726}
+  - component: {fileID: 2024169727}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -5182,6 +5186,18 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!225 &2024169727
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024169722}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2035414920
 GameObject:
   m_ObjectHideFlags: 0

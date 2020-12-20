@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
             var defaultDecks = new DeckData[]
             {
                 deckManager.NPCDeckList.FirstOrDefault(),
-                deckManager.NPCDeckList.FirstOrDefault(),
+                //deckManager.NPCDeckList.FirstOrDefault(),
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
             var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
@@ -177,12 +177,13 @@ public class GameManager : MonoBehaviour
         CurrentGamePhase = GamePhases.HeroDeploy;
     }
 
-    public void NextPlayerTurn()
+    public int NextPlayerTurn()
     {
         ActivePlayerId++;
         if (ActivePlayerId == NumPlayers)
         {
             ActivePlayerId = 0;
         }
+        return ActivePlayerId.Value;
     }
 }

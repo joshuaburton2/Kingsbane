@@ -6,6 +6,7 @@ using UnityEngine;
 public class UnitCounter : MonoBehaviour
 {
     private Unit unit;
+    private Cell cell;
 
     [SerializeField]
     private Canvas canvas;
@@ -20,9 +21,10 @@ public class UnitCounter : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI speedText;
 
-    public void InitUnitCounter(Unit _unit)
+    public void InitUnitCounter(Unit _unit, Cell _cell)
     {
         unit = _unit;
+        cell = _cell;
         canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         RefreshUnitCounter();
     }

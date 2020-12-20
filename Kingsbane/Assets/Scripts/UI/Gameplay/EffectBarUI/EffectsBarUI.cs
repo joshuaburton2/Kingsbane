@@ -26,15 +26,19 @@ public class EffectsBarUI : MonoBehaviour
     private GameObject effectListParent;
     [SerializeField]
     private List<EffectObject> effectObjects;
+    [SerializeField]
+    private GameplayUI gameplayUI;
 
     public void RefreshEffectList()
     {
+        GameManager.DestroyAllChildren(effectListParent);
+
         var phaseEffectList = effectObjects.Where(x => x.activeGamePhase == GameManager.instance.CurrentGamePhase).ToList();
 
         foreach (var effect in phaseEffectList)
         {
             var effectObject = Instantiate(effect.effectPrefab, effectListParent.transform);
-            effectObject.GetComponent<EffectUI>().InitialiseEffectUI(effect.effectType);
+            effectObject.GetComponent<EffectUI>().InitialiseEffectUI(effect.effectType, gameplayUI);
         }
     }
 }

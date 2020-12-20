@@ -10,12 +10,19 @@ public class DeployHeroEffect : EffectUI
     [SerializeField]
     private Button cancelButton;
 
-    public override void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType)
+    public override void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI)
     {
-        base.InitialiseEffectUI(_effectType);
+        base.InitialiseEffectUI(_effectType, _gameplayUI);
 
+        ResetState();
+    }
+
+    public void ResetState()
+    {
         deployButton.interactable = true;
         cancelButton.interactable = false;
+
+        gameplayUI.SetActionButtonState(false);
     }
 
     public void DeployButtonClick()
@@ -27,7 +34,9 @@ public class DeployHeroEffect : EffectUI
 
     public void CancelButtonClick()
     {
+        GameManager.instance.effectManager.RemoveAllPlayerUnits(GameManager.instance.GetActivePlayer());
 
+        ResetState();
     }
 
     public override void CompleteEffect()
@@ -36,5 +45,7 @@ public class DeployHeroEffect : EffectUI
 
         deployButton.interactable = false;
         cancelButton.interactable = true;
+
+        gameplayUI.SetActionButtonState(true);
     }
 }

@@ -49,22 +49,35 @@ public class EffectManager : MonoBehaviour
         activeEffect = ActiveEffectTypes.Deployment;
     }
 
-    public GameObject DeploySelectedUnit(Transform parent)
+    public GameObject DeploySelectedUnit(Transform parent, Cell cell)
     {
-        var deployedUnit = DeployUnit(selectedUnit, parent);
+        var deployedUnit = DeployUnit(selectedUnit, parent, cell);
         selectedUnit = null;
         return deployedUnit;
     }
 
-    public GameObject DeployUnit (Unit unit, Transform parent)
+    public GameObject DeployUnit (Unit unit, Transform parent, Cell cell)
     {
         var createdCounter = Instantiate(unitCounter, parent);
 
         var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
-        unitCounterScript.InitUnitCounter(unit);
+        unitCounterScript.InitUnitCounter(unit, cell);
         unit.Owner.DeployedUnits.Add(unitCounterScript);
         RefreshEffectManager();
 
         return createdCounter;
+    }
+
+    public void RemoveAllPlayerUnits(Player player)
+    {
+        foreach (var unitCounter in player.DeployedUnits)
+            Destroy(unitCounter.gameObject);
+
+        player.DeployedUnits.Clear();
+    }
+
+    public void RemoveUnit(UnitCounter unitCounter)
+    {
+
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -16,7 +17,16 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private GameObject cardDisplayParent;
     [SerializeField]
+    private CanvasGroup miscCanvasGroup;
+    [SerializeField]
+    private Button actionButton;
+    [SerializeField]
     private TextMeshProUGUI actionButtonText;
+
+    public void Update()
+    {
+        miscCanvasGroup.interactable = !GameManager.instance.effectManager.isUILocked;
+    }
 
     public void InitialiseUI()
     {
@@ -62,6 +72,11 @@ public class GameplayUI : MonoBehaviour
     private void SetPlayerTurnText()
     {
         actionButtonText.text = $"End Turn <size=60%>(Player: {GameManager.instance.ActivePlayerId})";
+    }
+
+    public void SetActionButtonState(bool state)
+    {
+        actionButton.interactable = state;
     }
 
     public void ShowCardDisplay(Card card)

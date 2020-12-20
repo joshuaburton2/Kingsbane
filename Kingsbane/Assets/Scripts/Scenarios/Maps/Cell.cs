@@ -44,7 +44,7 @@ public class Cell : MonoBehaviour
                     switch (GameManager.instance.effectManager.activeEffect)
                     {
                         case EffectManager.ActiveEffectTypes.Deployment:
-                            cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform);
+                            cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);
                             occupantCounter = cellOccupant.GetComponent<UnitCounter>();
                             break;
                         case EffectManager.ActiveEffectTypes.None:
