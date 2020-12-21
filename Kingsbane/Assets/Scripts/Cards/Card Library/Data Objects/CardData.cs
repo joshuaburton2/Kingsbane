@@ -13,7 +13,7 @@ public class CardData
 {
     public int? Id { get; set; }
     public string Name { get; set; }
-    public string ImageLocation { get; set; }
+    public CardImageTags ImageTag { get; set; }
 
     public List<Resource> Resources { get; set; }
 
@@ -51,7 +51,7 @@ public class CardData
     {
         Id = cardData.Id;
         Name = cardData.Name;
-        ImageLocation = cardData.ImageLocation;
+        ImageTag = cardData.ImageTag;
 
         Resources = cardData.Resources.ToList();
 

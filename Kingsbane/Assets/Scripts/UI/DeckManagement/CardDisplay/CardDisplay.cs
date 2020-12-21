@@ -79,7 +79,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
         cardName.text = card.CardName;
         classText.text = card.CardClass.ToString();
         cardText.text = card.Text;
-        cardImage.sprite = card.cardArt;
+        cardImage.sprite = card.CardArt;
 
         UpdateCardType();
         UpdateRarityBorder();

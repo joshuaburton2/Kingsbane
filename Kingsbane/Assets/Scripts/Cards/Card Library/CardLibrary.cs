@@ -1371,7 +1371,7 @@ public class CardLibrary
         {
             Id = 2,
             Name = "Runeblade",
-            ImageLocation = "Runeblade1",
+            ImageTag = CardImageTags.Runeblade1,
 
             Resources = new List<Resource>() { },
 
@@ -1400,7 +1400,7 @@ public class CardLibrary
         {
             Id = 4,
             Name = "Arcane Rush",
-            ImageLocation = "Arcane_Rush",
+            ImageTag = CardImageTags.Arcane_Rush,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Mana, 3), },
 
@@ -1424,7 +1424,7 @@ public class CardLibrary
         {
             Id = 5,
             Name = "Blade Enchantment",
-            ImageLocation = "Blade_Enchantment",
+            ImageTag = CardImageTags.Blade_Enchantment,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), new Resource(CardResources.Mana, 2), },
 
@@ -1448,7 +1448,7 @@ public class CardLibrary
         {
             Id = 6,
             Name = "Kalyan Duelist",
-            ImageLocation = "Kalyan_Duelist",
+            ImageTag = CardImageTags.Kalyan_Duelist,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -1477,7 +1477,7 @@ public class CardLibrary
         {
             Id = 7,
             Name = "Kalyan Strike",
-            ImageLocation = "Kalyan_Strike",
+            ImageTag = CardImageTags.Kalyan_Strike,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1501,7 +1501,7 @@ public class CardLibrary
         {
             Id = 8,
             Name = "Kalyan Warrior",
-            ImageLocation = "Kalyan_Warrior",
+            ImageTag = CardImageTags.Kalyan_Warrior,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1530,7 +1530,7 @@ public class CardLibrary
         {
             Id = 9,
             Name = "Rune Forger",
-            ImageLocation = "Rune_Forger",
+            ImageTag = CardImageTags.Rune_Forger,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -1559,7 +1559,7 @@ public class CardLibrary
         {
             Id = 10,
             Name = "Blade Dance",
-            ImageLocation = "Blade_Dance",
+            ImageTag = CardImageTags.Blade_Dance,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 7), },
 
@@ -1583,7 +1583,7 @@ public class CardLibrary
         {
             Id = 11,
             Name = "Feint",
-            ImageLocation = "Feint",
+            ImageTag = CardImageTags.Feint,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -1607,7 +1607,7 @@ public class CardLibrary
         {
             Id = 12,
             Name = "Magic Dash",
-            ImageLocation = "Magic_Dash",
+            ImageTag = CardImageTags.Magic_Dash,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Mana, 3), },
 
@@ -1631,7 +1631,7 @@ public class CardLibrary
         {
             Id = 13,
             Name = "Blade Twirl",
-            ImageLocation = "Blade_Twirl",
+            ImageTag = CardImageTags.Blade_Twirl,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -1655,7 +1655,7 @@ public class CardLibrary
         {
             Id = 14,
             Name = "Swordcaster",
-            ImageLocation = "Swordcaster",
+            ImageTag = CardImageTags.Swordcaster,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Mana, 2), },
 
@@ -1684,7 +1684,7 @@ public class CardLibrary
         {
             Id = 15,
             Name = "Spectral Staff",
-            ImageLocation = "Spectral_Staff",
+            ImageTag = CardImageTags.Spectral_Staff,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -1713,7 +1713,7 @@ public class CardLibrary
         {
             Id = 16,
             Name = "Spectral Shield",
-            ImageLocation = "Spectral_Shield",
+            ImageTag = CardImageTags.Spectral_Shield,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -1743,7 +1743,7 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
         {
             Id = 17,
             Name = "Spectral Sword",
-            ImageLocation = "Spectral_Sword",
+            ImageTag = CardImageTags.Spectral_Sword,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -1773,7 +1773,7 @@ This units attack is increased by your <b>Empowered</b> value",
         {
             Id = 18,
             Name = "Warding Rune",
-            ImageLocation = "Warding_Rune",
+            ImageTag = CardImageTags.Warding_Rune,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -1797,7 +1797,7 @@ This units attack is increased by your <b>Empowered</b> value",
         {
             Id = 19,
             Name = "Retired Blademaster",
-            ImageLocation = "Retired_Blademaster",
+            ImageTag = CardImageTags.Retired_Blademaster,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -1826,7 +1826,7 @@ This units attack is increased by your <b>Empowered</b> value",
         {
             Id = 20,
             Name = "Mana Siphoner",
-            ImageLocation = "Mana_Siphoner",
+            ImageTag = CardImageTags.Mana_Siphoner,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -1856,7 +1856,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
         {
             Id = 21,
             Name = "Mirror Entity",
-            ImageLocation = "Mirror_Entity",
+            ImageTag = CardImageTags.Mirror_Entity,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -1880,7 +1880,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
         {
             Id = 24,
             Name = "Mirror Image",
-            ImageLocation = "Mirror_Image",
+            ImageTag = CardImageTags.Mirror_Image,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -1904,7 +1904,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
         {
             Id = 25,
             Name = "Atarias, Blade of the Kalyan",
-            ImageLocation = "Atarias",
+            ImageTag = CardImageTags.Atarias,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 9), },
 
@@ -1935,7 +1935,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
         {
             Id = 26,
             Name = "Nadalya, Sword of Stars",
-            ImageLocation = "Nadalya",
+            ImageTag = CardImageTags.Nadalya,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Mana, 8), },
 
@@ -1960,7 +1960,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 27,
             Name = "Magic Missiles",
-            ImageLocation = "Magic_Missiles",
+            ImageTag = CardImageTags.Magic_Missiles,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -1984,7 +1984,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 28,
             Name = "Runeblade Duelist",
-            ImageLocation = "Runeblade2",
+            ImageTag = CardImageTags.Runeblade2,
 
             Resources = new List<Resource>() { },
 
@@ -2013,7 +2013,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 29,
             Name = "Runeblade Blademaster",
-            ImageLocation = "Runeblade3",
+            ImageTag = CardImageTags.Runeblade3,
 
             Resources = new List<Resource>() { },
 
@@ -2042,7 +2042,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 30,
             Name = "Arcanist",
-            ImageLocation = "Arcanist1",
+            ImageTag = CardImageTags.Arcanist1,
 
             Resources = new List<Resource>() { },
 
@@ -2071,7 +2071,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 31,
             Name = "Arcanist Magician",
-            ImageLocation = "Arcanist2",
+            ImageTag = CardImageTags.Arcanist2,
 
             Resources = new List<Resource>() { },
 
@@ -2100,7 +2100,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 32,
             Name = "Arcanist Archmage",
-            ImageLocation = "Arcanist3",
+            ImageTag = CardImageTags.Arcanist3,
 
             Resources = new List<Resource>() { },
 
@@ -2129,7 +2129,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 33,
             Name = "Arcane Spike",
-            ImageLocation = "Arcane_Spike",
+            ImageTag = CardImageTags.Arcane_Spike,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -2153,7 +2153,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 34,
             Name = "Battlemage",
-            ImageLocation = "Battlemage",
+            ImageTag = CardImageTags.Battlemage,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -2182,7 +2182,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 35,
             Name = "Kelari Librarian",
-            ImageLocation = "Kelari_Librarian",
+            ImageTag = CardImageTags.Kelari_Librarian,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -2211,7 +2211,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
         {
             Id = 36,
             Name = "Magical Inspiration",
-            ImageLocation = "Magical_Inspiration",
+            ImageTag = CardImageTags.Magical_Inspiration,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -2236,7 +2236,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 37,
             Name = "Power Investment",
-            ImageLocation = "Power_Investment",
+            ImageTag = CardImageTags.Power_Investment,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Mana, 3), },
 
@@ -2261,7 +2261,7 @@ Add a random playable spell to your hand",
         {
             Id = 38,
             Name = "Spark of Power",
-            ImageLocation = "Spark_of_Power",
+            ImageTag = CardImageTags.Spark_of_Power,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -2285,7 +2285,7 @@ Add a random playable spell to your hand",
         {
             Id = 39,
             Name = "Arcane Golem",
-            ImageLocation = "Arcane_Golem",
+            ImageTag = CardImageTags.Arcane_Golem,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
@@ -2315,7 +2315,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 40,
             Name = "Counterspell",
-            ImageLocation = "Counterspel_Item",
+            ImageTag = CardImageTags.Counterspel_Item,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 2), },
 
@@ -2339,7 +2339,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 41,
             Name = "Counterspell",
-            ImageLocation = "Counterspell",
+            ImageTag = CardImageTags.Counterspell,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 2), },
 
@@ -2363,7 +2363,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 42,
             Name = "Dispel Magic",
-            ImageLocation = "Dispel_Magic",
+            ImageTag = CardImageTags.Dispel_Magic,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), new Resource(CardResources.Mana, 1), },
 
@@ -2387,7 +2387,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 43,
             Name = "Kelari Astromancer",
-            ImageLocation = "Kelari_Astromancer",
+            ImageTag = CardImageTags.Kelari_Astromancer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
@@ -2416,7 +2416,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 44,
             Name = "Polymorph",
-            ImageLocation = "Polymorph",
+            ImageTag = CardImageTags.Polymorph,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), new Resource(CardResources.Mana, 3), },
 
@@ -2440,7 +2440,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 45,
             Name = "Pig",
-            ImageLocation = "Pig",
+            ImageTag = CardImageTags.Pig,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 0), },
 
@@ -2469,7 +2469,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
         {
             Id = 46,
             Name = "Arcane Spirit",
-            ImageLocation = "Arcane_Spirit",
+            ImageTag = CardImageTags.Arcane_Spirit,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -2499,7 +2499,7 @@ The Mana cost of your spells is reduced by (2)",
         {
             Id = 47,
             Name = "Callardis Academic",
-            ImageLocation = "Callardis_Academic",
+            ImageTag = CardImageTags.Callardis_Academic,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
@@ -2529,7 +2529,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
         {
             Id = 48,
             Name = "Callardis Conjurer",
-            ImageLocation = "Callardis_Conjurer",
+            ImageTag = CardImageTags.Callardis_Conjurer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -2558,7 +2558,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
         {
             Id = 49,
             Name = "Homing Bolt",
-            ImageLocation = "Homing_Bolt",
+            ImageTag = CardImageTags.Homing_Bolt,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -2582,7 +2582,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
         {
             Id = 50,
             Name = "Archmage Staff",
-            ImageLocation = "Archmage_Staff",
+            ImageTag = CardImageTags.Archmage_Staff,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -2606,7 +2606,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
         {
             Id = 51,
             Name = "Kelari Spellguard",
-            ImageLocation = "Kelari_Spellguard",
+            ImageTag = CardImageTags.Kelari_Spellguard,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
@@ -2636,7 +2636,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
         {
             Id = 52,
             Name = "Tome of Power",
-            ImageLocation = "Tome_Of_Power",
+            ImageTag = CardImageTags.Tome_Of_Power,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
@@ -2660,7 +2660,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
         {
             Id = 53,
             Name = "Archmage Tholas",
-            ImageLocation = "Archmage_Tholas",
+            ImageTag = CardImageTags.Archmage_Tholas,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
@@ -2691,7 +2691,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
         {
             Id = 54,
             Name = "Enlightenment",
-            ImageLocation = "Enlightenment",
+            ImageTag = CardImageTags.Enlightenment,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2715,7 +2715,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
         {
             Id = 55,
             Name = "Creative Mind",
-            ImageLocation = "Creative_Mind",
+            ImageTag = CardImageTags.Creative_Mind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2740,7 +2740,7 @@ The cost of spells which did not start in your deck is reduced by (3)",
         {
             Id = 56,
             Name = "Deep Mind",
-            ImageLocation = "Deep_Mind",
+            ImageTag = CardImageTags.Deep_Mind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2765,7 +2765,7 @@ When you select this form, draw 3 cards",
         {
             Id = 57,
             Name = "Devastating Mind",
-            ImageLocation = "Devastating_Mind",
+            ImageTag = CardImageTags.Devastating_Mind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2790,7 +2790,7 @@ Your hero's attack is increased by your <b>Empowered</b> value. Whenever your he
         {
             Id = 58,
             Name = "Protected Mind",
-            ImageLocation = "Protected_Mind",
+            ImageTag = CardImageTags.Protected_Mind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2815,7 +2815,7 @@ At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Pr
         {
             Id = 59,
             Name = "Replicative Mind",
-            ImageLocation = "Replicative_Mind",
+            ImageTag = CardImageTags.Replicative_Mind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
@@ -2840,7 +2840,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 60,
             Name = "Abyssal",
-            ImageLocation = "Abyssal1",
+            ImageTag = CardImageTags.Abyssal1,
 
             Resources = new List<Resource>() { },
 
@@ -2869,7 +2869,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 61,
             Name = "Abyssal Warlock",
-            ImageLocation = "Abyssal2",
+            ImageTag = CardImageTags.Abyssal2,
 
             Resources = new List<Resource>() { },
 
@@ -2898,7 +2898,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 62,
             Name = "Abyssal Voidlord",
-            ImageLocation = "Abyssal3",
+            ImageTag = CardImageTags.Abyssal3,
 
             Resources = new List<Resource>() { },
 
@@ -2927,7 +2927,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 63,
             Name = "Voidling",
-            ImageLocation = "Voidling",
+            ImageTag = CardImageTags.Voidling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -2956,7 +2956,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 64,
             Name = "Abyss Imp",
-            ImageLocation = "Abyss_Imp",
+            ImageTag = CardImageTags.Abyss_Imp,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -2986,7 +2986,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 65,
             Name = "Abyssal Cultist",
-            ImageLocation = "Abyssal_Cultist",
+            ImageTag = CardImageTags.Abyssal_Cultist,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -3015,7 +3015,7 @@ Whenever you cast a spell, cast it again on the same target",
         {
             Id = 66,
             Name = "Bite",
-            ImageLocation = "Bite",
+            ImageTag = CardImageTags.Bite,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Mana, 1), },
 
@@ -3040,7 +3040,7 @@ Deal 4 damage to a unit",
         {
             Id = 67,
             Name = "Dark Pact",
-            ImageLocation = "Dark_Pact",
+            ImageTag = CardImageTags.Dark_Pact,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Mana, 0), },
 
@@ -3064,7 +3064,7 @@ Deal 4 damage to a unit",
         {
             Id = 68,
             Name = "Void Soul",
-            ImageLocation = "Void_Soul",
+            ImageTag = CardImageTags.Void_Soul,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -3094,7 +3094,7 @@ Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
         {
             Id = 69,
             Name = "Void Touch",
-            ImageLocation = "Void_Touch",
+            ImageTag = CardImageTags.Void_Touch,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -3119,7 +3119,7 @@ Deal damage to the caster equal to the additional points gained.",
         {
             Id = 70,
             Name = "Abyssal Dreadspeaker",
-            ImageLocation = "Abyssal_Dreadspeaker",
+            ImageTag = CardImageTags.Abyssal_Dreadspeaker,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -3149,7 +3149,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
         {
             Id = 71,
             Name = "Blood Pact",
-            ImageLocation = "Blood_Pact",
+            ImageTag = CardImageTags.Blood_Pact,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -3173,7 +3173,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
         {
             Id = 72,
             Name = "Dreadbolt",
-            ImageLocation = "Dreadbolt",
+            ImageTag = CardImageTags.Dreadbolt,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -3197,7 +3197,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
         {
             Id = 73,
             Name = "Vampire Aristocrat",
-            ImageLocation = "Vampire_Aristocrat",
+            ImageTag = CardImageTags.Vampire_Aristocrat,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
@@ -3228,7 +3228,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
         {
             Id = 74,
             Name = "Vampire Courtesan",
-            ImageLocation = "Vampire_Courtesan",
+            ImageTag = CardImageTags.Vampire_Courtesan,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -3257,7 +3257,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
         {
             Id = 75,
             Name = "Abyss Knight",
-            ImageLocation = "Abyss_Knight",
+            ImageTag = CardImageTags.Abyss_Knight,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3287,7 +3287,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
         {
             Id = 76,
             Name = "Abyssal Summoner",
-            ImageLocation = "Abyssal_Summoner",
+            ImageTag = CardImageTags.Abyssal_Summoner,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -3316,7 +3316,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
         {
             Id = 77,
             Name = "Eye of the Void",
-            ImageLocation = "Eye_of_the_Void",
+            ImageTag = CardImageTags.Eye_of_the_Void,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3346,7 +3346,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 78,
             Name = "Imp Mother",
-            ImageLocation = "Imp_Mother",
+            ImageTag = CardImageTags.Imp_Mother,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3375,7 +3375,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 79,
             Name = "Abyssal Voidcaller",
-            ImageLocation = "Abyssal_Voidcaller",
+            ImageTag = CardImageTags.Abyssal_Voidcaller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Mana, 5), },
 
@@ -3404,7 +3404,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 80,
             Name = "Soul Consumer",
-            ImageLocation = "Soul_Consumer",
+            ImageTag = CardImageTags.Soul_Consumer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 7), },
 
@@ -3433,7 +3433,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 81,
             Name = "The Void Hungers",
-            ImageLocation = "The_Void_Hungers",
+            ImageTag = CardImageTags.The_Void_Hungers,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Mana, 3), },
 
@@ -3457,7 +3457,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 82,
             Name = "Abysslord Marrex",
-            ImageLocation = "Abysslord_Marrex",
+            ImageTag = CardImageTags.Abysslord_Marrex,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Mana, 7), },
 
@@ -3486,7 +3486,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
         {
             Id = 83,
             Name = "Realm Convergence",
-            ImageLocation = "Realm_Convergence",
+            ImageTag = CardImageTags.Realm_Convergence,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3511,7 +3511,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 84,
             Name = "Elementalist",
-            ImageLocation = "Elementalist1",
+            ImageTag = CardImageTags.Elementalist1,
 
             Resources = new List<Resource>() { },
 
@@ -3540,7 +3540,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 85,
             Name = "Elementalist Shaman",
-            ImageLocation = "Elementalist2",
+            ImageTag = CardImageTags.Elementalist2,
 
             Resources = new List<Resource>() { },
 
@@ -3569,7 +3569,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 86,
             Name = "Elementalist Elder",
-            ImageLocation = "Elementalist3",
+            ImageTag = CardImageTags.Elementalist3,
 
             Resources = new List<Resource>() { },
 
@@ -3598,7 +3598,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 87,
             Name = "Fireball",
-            ImageLocation = "Fireball",
+            ImageTag = CardImageTags.Fireball,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -3622,7 +3622,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 88,
             Name = "Goblin Blastmage",
-            ImageLocation = "Goblin_Blastmage",
+            ImageTag = CardImageTags.Goblin_Blastmage,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -3651,7 +3651,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 89,
             Name = "Ice Blast",
-            ImageLocation = "Ice_Blast",
+            ImageTag = CardImageTags.Ice_Blast,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -3675,7 +3675,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 90,
             Name = "Lightning Bolt",
-            ImageLocation = "Lightning_Bolt",
+            ImageTag = CardImageTags.Lightning_Bolt,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
@@ -3699,7 +3699,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 91,
             Name = "Mana Surge",
-            ImageLocation = "Mana_Surge",
+            ImageTag = CardImageTags.Mana_Surge,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 0), new Resource(CardResources.Wild, 2), },
 
@@ -3723,7 +3723,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 92,
             Name = "Wave Sorceror",
-            ImageLocation = "Wave_Sorceror",
+            ImageTag = CardImageTags.Wave_Sorceror,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -3752,7 +3752,7 @@ Deal damage to your hero equal to half their remaining health",
         {
             Id = 93,
             Name = "Air Elemental",
-            ImageLocation = "Air_Elemental",
+            ImageTag = CardImageTags.Air_Elemental,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3782,7 +3782,7 @@ Whenever this unit takes damage from an Air Spell, it heals for the damage amoun
         {
             Id = 94,
             Name = "Earth Elemental",
-            ImageLocation = "Earth_Elemental",
+            ImageTag = CardImageTags.Earth_Elemental,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3812,7 +3812,7 @@ Whenever this unit takes damage from an Earth Spell, it heals for the damage amo
         {
             Id = 95,
             Name = "Fire Elemental",
-            ImageLocation = "Fire_Elemental",
+            ImageTag = CardImageTags.Fire_Elemental,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3842,7 +3842,7 @@ Whenever this unit takes damage from a Fire Spell, it heals for the damage amoun
         {
             Id = 96,
             Name = "Tend the Elements",
-            ImageLocation = "Tend_the_Elements",
+            ImageTag = CardImageTags.Tend_the_Elements,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -3867,7 +3867,7 @@ Draw a card",
         {
             Id = 97,
             Name = "Water Elemental",
-            ImageLocation = "Water_Elemental",
+            ImageTag = CardImageTags.Water_Elemental,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
@@ -3898,7 +3898,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 98,
             Name = "Earthbinder",
-            ImageLocation = "Earthbinder",
+            ImageTag = CardImageTags.Earthbinder,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), new Resource(CardResources.Wild, 1), },
 
@@ -3927,7 +3927,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 99,
             Name = "Elemental Rush",
-            ImageLocation = "Elemental_Rush",
+            ImageTag = CardImageTags.Elemental_Rush,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
@@ -3951,7 +3951,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 100,
             Name = "Monk of the Four Winds",
-            ImageLocation = "Monk_of_the_Four_Winds",
+            ImageTag = CardImageTags.Monk_of_the_Four_Winds,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
@@ -3980,7 +3980,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 101,
             Name = "Pummel",
-            ImageLocation = "Pummel",
+            ImageTag = CardImageTags.Pummel,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -4004,7 +4004,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 102,
             Name = "Hurricane",
-            ImageLocation = "Hurricane",
+            ImageTag = CardImageTags.Hurricane,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), new Resource(CardResources.Wild, 3), },
 
@@ -4028,7 +4028,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 103,
             Name = "Earthquake",
-            ImageLocation = "Earthquake",
+            ImageTag = CardImageTags.Earthquake,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), new Resource(CardResources.Wild, 8), },
 
@@ -4052,7 +4052,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 104,
             Name = "Wall of Fire",
-            ImageLocation = "Wall_of_Fire",
+            ImageTag = CardImageTags.Wall_of_Fire,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
@@ -4076,7 +4076,7 @@ Whenever this unit takes damage from a Water Spell, it heals for the damage amou
         {
             Id = 105,
             Name = "Master Kybas",
-            ImageLocation = "Master_Kybas",
+            ImageTag = CardImageTags.Master_Kybas,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), new Resource(CardResources.Wild, 6), },
 
@@ -4107,7 +4107,7 @@ Reduce the cost of all spells generated by this unit to 0.
         {
             Id = 106,
             Name = "Tidal Wave",
-            ImageLocation = "Tidal_Wave",
+            ImageTag = CardImageTags.Tidal_Wave,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 10), },
 
@@ -4132,7 +4132,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 107,
             Name = "Grovewatcher",
-            ImageLocation = "Grovewatcher1",
+            ImageTag = CardImageTags.Grovewatcher1,
 
             Resources = new List<Resource>() { },
 
@@ -4161,7 +4161,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 108,
             Name = "Grovewatcher Woodwalker",
-            ImageLocation = "Grovewatcher2",
+            ImageTag = CardImageTags.Grovewatcher2,
 
             Resources = new List<Resource>() { },
 
@@ -4190,7 +4190,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 109,
             Name = "Grovewatcher Archdruid",
-            ImageLocation = "Grovewatcher3",
+            ImageTag = CardImageTags.Grovewatcher3,
 
             Resources = new List<Resource>() { },
 
@@ -4219,7 +4219,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 110,
             Name = "Grasping Vine",
-            ImageLocation = "Grasping_Vine",
+            ImageTag = CardImageTags.Grasping_Vine,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -4243,7 +4243,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 111,
             Name = "Honour the Old Gods",
-            ImageLocation = "Honour_the_Old_Gods",
+            ImageTag = CardImageTags.Honour_the_Old_Gods,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 0), },
 
@@ -4267,7 +4267,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 112,
             Name = "Sosthrim Druid",
-            ImageLocation = "Sosthrim_Druid",
+            ImageTag = CardImageTags.Sosthrim_Druid,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -4296,7 +4296,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 113,
             Name = "Juicy Fruit",
-            ImageLocation = "Juicy_Fruit",
+            ImageTag = CardImageTags.Juicy_Fruit,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), },
 
@@ -4320,7 +4320,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
         {
             Id = 114,
             Name = "Sosthrim Grovekeeper",
-            ImageLocation = "Sosthrim_Grovekeeper",
+            ImageTag = CardImageTags.Sosthrim_Grovekeeper,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -4350,7 +4350,7 @@ At the end of each of your turns, draw a card",
         {
             Id = 115,
             Name = "Woodland Sprite",
-            ImageLocation = "Woodland_Sprite",
+            ImageTag = CardImageTags.Woodland_Sprite,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
@@ -4379,7 +4379,7 @@ At the end of each of your turns, draw a card",
         {
             Id = 116,
             Name = "Worldroot Sapling",
-            ImageLocation = "Worldroot_Sapling",
+            ImageTag = CardImageTags.Worldroot_Sapling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
@@ -4409,7 +4409,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 117,
             Name = "Earth Ritual",
-            ImageLocation = "Earth_Ritual",
+            ImageTag = CardImageTags.Earth_Ritual,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -4433,7 +4433,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 118,
             Name = "Faerie's Blessing",
-            ImageLocation = "Faeries_Blessing",
+            ImageTag = CardImageTags.Faeries_Blessing,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
@@ -4457,7 +4457,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 119,
             Name = "Patient Harvest",
-            ImageLocation = "Patient_Harvest",
+            ImageTag = CardImageTags.Patient_Harvest,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -4481,7 +4481,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 120,
             Name = "Sosthrim Harvester",
-            ImageLocation = "Sosthrim Harvester",
+            ImageTag = CardImageTags.Sosthrim_Harvester,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), },
 
@@ -4510,7 +4510,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 121,
             Name = "Agent",
-            ImageLocation = "Agent1",
+            ImageTag = CardImageTags.Agent1,
 
             Resources = new List<Resource>() { },
 
@@ -4539,7 +4539,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 122,
             Name = "Agent Infiltrator",
-            ImageLocation = "Agent2",
+            ImageTag = CardImageTags.Agent2,
 
             Resources = new List<Resource>() { },
 
@@ -4568,7 +4568,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 123,
             Name = "Agent Spymaster",
-            ImageLocation = "Agent3",
+            ImageTag = CardImageTags.Agent3,
 
             Resources = new List<Resource>() { },
 
@@ -4597,7 +4597,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 124,
             Name = "Captain",
-            ImageLocation = "Captain1",
+            ImageTag = CardImageTags.Captain1,
 
             Resources = new List<Resource>() { },
 
@@ -4626,7 +4626,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 125,
             Name = "Battle Gear",
-            ImageLocation = "Battle_Gear",
+            ImageTag = CardImageTags.Battle_Gear,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -4650,7 +4650,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 126,
             Name = "Captain Champion",
-            ImageLocation = "Captain2",
+            ImageTag = CardImageTags.Captain2,
 
             Resources = new List<Resource>() { },
 
@@ -4679,7 +4679,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 127,
             Name = "Captain General",
-            ImageLocation = "Captain3",
+            ImageTag = CardImageTags.Captain3,
 
             Resources = new List<Resource>() { },
 
@@ -4708,7 +4708,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 128,
             Name = "Lifebringer",
-            ImageLocation = "Lifebringer1",
+            ImageTag = CardImageTags.Lifebringer1,
 
             Resources = new List<Resource>() { },
 
@@ -4737,7 +4737,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 129,
             Name = "Lorekeeper",
-            ImageLocation = "Lorekeeper1",
+            ImageTag = CardImageTags.Lorekeeper1,
 
             Resources = new List<Resource>() { },
 
@@ -4766,7 +4766,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 130,
             Name = "Luminist",
-            ImageLocation = "Luminist1",
+            ImageTag = CardImageTags.Luminist1,
 
             Resources = new List<Resource>() { },
 
@@ -4795,7 +4795,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 131,
             Name = "Mercenary",
-            ImageLocation = "Mercenary1",
+            ImageTag = CardImageTags.Mercenary1,
 
             Resources = new List<Resource>() { },
 
@@ -4824,7 +4824,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 132,
             Name = "Oathknight",
-            ImageLocation = "Oathknight1",
+            ImageTag = CardImageTags.Oathknight1,
 
             Resources = new List<Resource>() { },
 
@@ -4853,7 +4853,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 133,
             Name = "Trickster",
-            ImageLocation = "Trickster1",
+            ImageTag = CardImageTags.Trickster1,
 
             Resources = new List<Resource>() { },
 
@@ -4882,7 +4882,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 134,
             Name = "Shiv",
-            ImageLocation = "Shiv",
+            ImageTag = CardImageTags.Shiv,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -4906,7 +4906,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 135,
             Name = "Waystalker",
-            ImageLocation = "Waystalker1",
+            ImageTag = CardImageTags.Waystalker1,
 
             Resources = new List<Resource>() { },
 
@@ -4935,7 +4935,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 136,
             Name = "Trained Hound",
-            ImageLocation = "Trained_Hound",
+            ImageTag = CardImageTags.Trained_Hound,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
@@ -4964,7 +4964,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 137,
             Name = "Wildkin",
-            ImageLocation = "Wildkin1",
+            ImageTag = CardImageTags.Wildkin1,
 
             Resources = new List<Resource>() { },
 
@@ -4993,7 +4993,7 @@ At the start of each of your turns, gain 2 Wild",
         {
             Id = 138,
             Name = "Worldroot Defender",
-            ImageLocation = "Worldroot_Defender",
+            ImageTag = CardImageTags.Worldroot_Defender,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -5023,7 +5023,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
         {
             Id = 139,
             Name = "Faerie Guile",
-            ImageLocation = "Faerie_Guile",
+            ImageTag = CardImageTags.Faerie_Guile,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 2), },
 
@@ -5047,7 +5047,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
         {
             Id = 140,
             Name = "Spined Carapace",
-            ImageLocation = "Spined_Carapace",
+            ImageTag = CardImageTags.Spined_Carapace,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -5071,7 +5071,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
         {
             Id = 141,
             Name = "Treeheart Censer",
-            ImageLocation = "Treeheart_Censer",
+            ImageTag = CardImageTags.Treeheart_Censer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
@@ -5095,7 +5095,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
         {
             Id = 142,
             Name = "Worldroot Dreamer",
-            ImageLocation = "Worldroot_Dreamer",
+            ImageTag = CardImageTags.Worldroot_Dreamer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
@@ -5125,7 +5125,7 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
         {
             Id = 143,
             Name = "Faerie Harbringer",
-            ImageLocation = "Faerie_Harbringer",
+            ImageTag = CardImageTags.Faerie_Harbringer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Wild, 4), },
 
@@ -5155,7 +5155,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
         {
             Id = 144,
             Name = "Recycling",
-            ImageLocation = "Recycling",
+            ImageTag = CardImageTags.Recycling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
@@ -5179,7 +5179,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
         {
             Id = 145,
             Name = "Worldroot Ancient",
-            ImageLocation = "Worldroot_Ancient",
+            ImageTag = CardImageTags.Worldroot_Ancient,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 9), },
 
@@ -5209,7 +5209,7 @@ Cycle -6</b>",
         {
             Id = 146,
             Name = "Queen Aedellaei",
-            ImageLocation = "Queen_Aedellaei",
+            ImageTag = CardImageTags.Queen_Aedellaei,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), new Resource(CardResources.Wild, 6), },
 
@@ -5238,7 +5238,7 @@ Cycle -6</b>",
         {
             Id = 147,
             Name = "Naharr, the Worldroot",
-            ImageLocation = "Naharr_the_Worldroot",
+            ImageTag = CardImageTags.Naharr_the_Worldroot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 12), },
 
@@ -5268,7 +5268,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 148,
             Name = "Lifebringer Cleric",
-            ImageLocation = "Lifebringer2",
+            ImageTag = CardImageTags.Lifebringer2,
 
             Resources = new List<Resource>() { },
 
@@ -5297,7 +5297,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 149,
             Name = "Lifebringer Archpriest",
-            ImageLocation = "Lifebringer3",
+            ImageTag = CardImageTags.Lifebringer3,
 
             Resources = new List<Resource>() { },
 
@@ -5326,7 +5326,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 150,
             Name = "Potion of Confusion",
-            ImageLocation = "Potion_of_Confusion",
+            ImageTag = CardImageTags.Potion_of_Confusion,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5350,7 +5350,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 151,
             Name = "Potion of Decay",
-            ImageLocation = "Potion_of_Decay",
+            ImageTag = CardImageTags.Potion_of_Decay,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5374,7 +5374,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 152,
             Name = "Potion of Frost",
-            ImageLocation = "Potion_of_Frost",
+            ImageTag = CardImageTags.Potion_of_Frost,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5398,7 +5398,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 153,
             Name = "Potion of Healing",
-            ImageLocation = "Potion_of_Healing",
+            ImageTag = CardImageTags.Potion_of_Healing,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5422,7 +5422,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 154,
             Name = "Potion of Shadows",
-            ImageLocation = "Potion_of_Shadows",
+            ImageTag = CardImageTags.Potion_of_Shadows,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5446,7 +5446,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 155,
             Name = "Potion of Speed",
-            ImageLocation = "Potion_of_Speed",
+            ImageTag = CardImageTags.Potion_of_Speed,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
@@ -5470,7 +5470,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
         {
             Id = 156,
             Name = "Divine Ritual",
-            ImageLocation = "Divine_Ritual",
+            ImageTag = CardImageTags.Divine_Ritual,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), new Resource(CardResources.Gold, 3), },
 
@@ -5495,7 +5495,7 @@ Give the caster +3 Health",
         {
             Id = 157,
             Name = "Lay on Hands",
-            ImageLocation = "Lay_on_Hands",
+            ImageTag = CardImageTags.Lay_on_Hands,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -5519,7 +5519,7 @@ Give the caster +3 Health",
         {
             Id = 158,
             Name = "Quick Alchemy",
-            ImageLocation = "Quick_Alchemy",
+            ImageTag = CardImageTags.Quick_Alchemy,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -5543,7 +5543,7 @@ Give the caster +3 Health",
         {
             Id = 159,
             Name = "Sorena Cleric",
-            ImageLocation = "Sorena_Cleric",
+            ImageTag = CardImageTags.Sorena_Cleric,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -5572,7 +5572,7 @@ Give the caster +3 Health",
         {
             Id = 160,
             Name = "Tending Priest",
-            ImageLocation = "Tending_Priest",
+            ImageTag = CardImageTags.Tending_Priest,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
@@ -5601,7 +5601,7 @@ Give the caster +3 Health",
         {
             Id = 161,
             Name = "Tithe Collector",
-            ImageLocation = "Tithe_Collector",
+            ImageTag = CardImageTags.Tithe_Collector,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -5630,7 +5630,7 @@ Give the caster +3 Health",
         {
             Id = 162,
             Name = "Golden Host",
-            ImageLocation = "Golden_Host",
+            ImageTag = CardImageTags.Golden_Host,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
@@ -5661,7 +5661,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
         {
             Id = 163,
             Name = "Offer Alms",
-            ImageLocation = "Offer_Alms",
+            ImageTag = CardImageTags.Offer_Alms,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -5685,7 +5685,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
         {
             Id = 164,
             Name = "Potion Seller",
-            ImageLocation = "Potion_Seller",
+            ImageTag = CardImageTags.Potion_Seller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -5715,7 +5715,7 @@ Deployment:</b> Use <b>Potion Sale</b>",
         {
             Id = 165,
             Name = "Return Soul",
-            ImageLocation = "Return_Soul",
+            ImageTag = CardImageTags.Return_Soul,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -5739,7 +5739,7 @@ Deployment:</b> Use <b>Potion Sale</b>",
         {
             Id = 166,
             Name = "Sorena High Priest",
-            ImageLocation = "Sorena_High_Priest",
+            ImageTag = CardImageTags.Sorena_High_Priest,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
@@ -5769,7 +5769,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
         {
             Id = 167,
             Name = "Amulet of Divinity",
-            ImageLocation = "Amulet_of_Divinity",
+            ImageTag = CardImageTags.Amulet_of_Divinity,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Gold, 2), },
 
@@ -5794,7 +5794,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
         {
             Id = 168,
             Name = "Binding Circle",
-            ImageLocation = "Binding_Circle",
+            ImageTag = CardImageTags.Binding_Circle,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -5818,7 +5818,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
         {
             Id = 169,
             Name = "Golden Lifebinder",
-            ImageLocation = "Golden_Lifebinder",
+            ImageTag = CardImageTags.Golden_Lifebinder,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Gold, 3), },
 
@@ -5847,7 +5847,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
         {
             Id = 170,
             Name = "Sanctuary",
-            ImageLocation = "Sanctuary",
+            ImageTag = CardImageTags.Sanctuary,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -5871,7 +5871,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
         {
             Id = 171,
             Name = "Defender of Sorena",
-            ImageLocation = "Defender_of_Sorena",
+            ImageTag = CardImageTags.Defender_of_Sorena,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), },
 
@@ -5901,7 +5901,7 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
         {
             Id = 172,
             Name = "Golden Hostcaller",
-            ImageLocation = "Golden_Hostcaller",
+            ImageTag = CardImageTags.Golden_Hostcaller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 4), },
 
@@ -5931,7 +5931,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
         {
             Id = 173,
             Name = "Potion Satchel",
-            ImageLocation = "Potion_Satchel",
+            ImageTag = CardImageTags.Potion_Satchel,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -5955,7 +5955,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
         {
             Id = 174,
             Name = "Divine Intervention",
-            ImageLocation = "Divine_Intervention",
+            ImageTag = CardImageTags.Divine_Intervention,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 30), },
 
@@ -5980,7 +5980,7 @@ Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the
         {
             Id = 175,
             Name = "Tythelia, Lady of Gold",
-            ImageLocation = "Tythelia_Lady_of_Gold",
+            ImageTag = CardImageTags.Tythelia_Lady_of_Gold,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 6), },
 
@@ -6010,7 +6010,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
         {
             Id = 176,
             Name = "Lorekeeper Keymaster",
-            ImageLocation = "Lorekeeper2",
+            ImageTag = CardImageTags.Lorekeeper2,
 
             Resources = new List<Resource>() { },
 
@@ -6039,7 +6039,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
         {
             Id = 177,
             Name = "Lorekeeper Vaultwarden",
-            ImageLocation = "Lorekeeper3",
+            ImageTag = CardImageTags.Lorekeeper3,
 
             Resources = new List<Resource>() { },
 
@@ -6068,7 +6068,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
         {
             Id = 178,
             Name = "Recorded Inspiration",
-            ImageLocation = "Studious_Inspiration",
+            ImageTag = CardImageTags.Studious_Inspiration,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -6093,7 +6093,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 179,
             Name = "Dedicated Preservation",
-            ImageLocation = "Dedicated_Preservation",
+            ImageTag = CardImageTags.Dedicated_Preservation,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Knowledge, 0), },
 
@@ -6117,7 +6117,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 180,
             Name = "Mind Collapse",
-            ImageLocation = "Mind_Collapse",
+            ImageTag = CardImageTags.Mind_Collapse,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
@@ -6142,7 +6142,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 181,
             Name = "Oldari Acolyte",
-            ImageLocation = "Oldari_Acolyte",
+            ImageTag = CardImageTags.Oldari_Acolyte,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -6171,7 +6171,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 182,
             Name = "Ring the Bells",
-            ImageLocation = "Ring_the_Bells",
+            ImageTag = CardImageTags.Ring_the_Bells,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -6195,7 +6195,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 183,
             Name = "Subdue",
-            ImageLocation = "Subdue",
+            ImageTag = CardImageTags.Subdue,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -6219,7 +6219,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 184,
             Name = "Vault Collector",
-            ImageLocation = "Vault_Collector",
+            ImageTag = CardImageTags.Vault_Collector,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -6248,7 +6248,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 185,
             Name = "Equalize",
-            ImageLocation = "Equalize",
+            ImageTag = CardImageTags.Equalize,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -6272,7 +6272,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 186,
             Name = "Maddening Knowledge",
-            ImageLocation = "Maddening_Knowledge",
+            ImageTag = CardImageTags.Maddening_Knowledge,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Knowledge, 2), },
 
@@ -6296,7 +6296,7 @@ Deal damage to a unit equal to its attack",
         {
             Id = 187,
             Name = "Oldari Spellweaver",
-            ImageLocation = "Oldari_Spellweaver",
+            ImageTag = CardImageTags.Oldari_Spellweaver,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -6327,7 +6327,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
         {
             Id = 188,
             Name = "Pacify",
-            ImageLocation = "Pacify",
+            ImageTag = CardImageTags.Pacify,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -6351,7 +6351,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
         {
             Id = 189,
             Name = "Vault Archivist",
-            ImageLocation = "Vault_Archivist",
+            ImageTag = CardImageTags.Vault_Archivist,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
@@ -6380,7 +6380,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
         {
             Id = 190,
             Name = "Book of Records",
-            ImageLocation = "Book_of_Records",
+            ImageTag = CardImageTags.Book_of_Records,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -6405,7 +6405,7 @@ Whenever you cast a spell, shuffle a copy of it into your deck",
         {
             Id = 191,
             Name = "Deep Priest",
-            ImageLocation = "Deep_Priest",
+            ImageTag = CardImageTags.Deep_Priest,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Knowledge, 3), },
 
@@ -6435,7 +6435,7 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
         {
             Id = 192,
             Name = "Prevent Repetiton",
-            ImageLocation = "Prevent_Repetition",
+            ImageTag = CardImageTags.Prevent_Repetition,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), },
 
@@ -6460,7 +6460,7 @@ Draw 3 cards",
         {
             Id = 193,
             Name = "Vault Catalyst",
-            ImageLocation = "Vault_Catalyst",
+            ImageTag = CardImageTags.Vault_Catalyst,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
@@ -6490,7 +6490,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
         {
             Id = 194,
             Name = "Book of Madness",
-            ImageLocation = "Book_of_Madness",
+            ImageTag = CardImageTags.Book_of_Madness,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Knowledge, 5), },
 
@@ -6514,7 +6514,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
         {
             Id = 195,
             Name = "Deep Conversion",
-            ImageLocation = "Deep_Conversion",
+            ImageTag = CardImageTags.Deep_Conversion,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Knowledge, 7), },
 
@@ -6538,7 +6538,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
         {
             Id = 196,
             Name = "Repress",
-            ImageLocation = "Repress",
+            ImageTag = CardImageTags.Repress,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
@@ -6562,7 +6562,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
         {
             Id = 197,
             Name = "Corthax, Keeper of the Deeps",
-            ImageLocation = "Corthax_Keeper_of_the_Deeps",
+            ImageTag = CardImageTags.Corthax_Keeper_of_the_Deeps,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), new Resource(CardResources.Knowledge, 7), },
 
@@ -6592,7 +6592,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
         {
             Id = 198,
             Name = "Grand Archivist Nurosi",
-            ImageLocation = "Grand_Archivist_Nurosi",
+            ImageTag = CardImageTags.Grand_Archivist_Nurosi,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
@@ -6624,7 +6624,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 199,
             Name = "Oathknight Guardian",
-            ImageLocation = "Oathknight2",
+            ImageTag = CardImageTags.Oathknight2,
 
             Resources = new List<Resource>() { },
 
@@ -6653,7 +6653,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 200,
             Name = "Oathknight Sentinel",
-            ImageLocation = "Oathknight3",
+            ImageTag = CardImageTags.Oathknight3,
 
             Resources = new List<Resource>() { },
 
@@ -6682,7 +6682,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 201,
             Name = "Aid From Above",
-            ImageLocation = "Aid_From_Above",
+            ImageTag = CardImageTags.Aid_From_Above,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
@@ -6706,7 +6706,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 202,
             Name = "Angel of Protection",
-            ImageLocation = "Angel_of_Protection",
+            ImageTag = CardImageTags.Angel_of_Protection,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
@@ -6735,7 +6735,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 203,
             Name = "Angel of Devotion",
-            ImageLocation = "Angel_of_Devotion",
+            ImageTag = CardImageTags.Angel_of_Devotion,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -6764,7 +6764,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 204,
             Name = "Battle Prayer",
-            ImageLocation = "Battle_Prayer",
+            ImageTag = CardImageTags.Battle_Prayer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 0), new Resource(CardResources.Energy, 3), },
 
@@ -6788,7 +6788,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 205,
             Name = "Divine Strength",
-            ImageLocation = "Divine_Strength",
+            ImageTag = CardImageTags.Divine_Strength,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -6812,7 +6812,7 @@ Spells in your hand which did not start in your deck have their cost reduced by 
         {
             Id = 206,
             Name = "Eager Squire",
-            ImageLocation = "Eager_Squire",
+            ImageTag = CardImageTags.Eager_Squire,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -6842,7 +6842,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
         {
             Id = 207,
             Name = "Shield of Faith",
-            ImageLocation = "Shield_of_Faith",
+            ImageTag = CardImageTags.Shield_of_Faith,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -6866,7 +6866,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
         {
             Id = 208,
             Name = "Angel of Purity",
-            ImageLocation = "Angel_of_Purity",
+            ImageTag = CardImageTags.Angel_of_Purity,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), },
 
@@ -6896,7 +6896,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
         {
             Id = 209,
             Name = "Bravery",
-            ImageLocation = "Bravery",
+            ImageTag = CardImageTags.Bravery,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -6920,7 +6920,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
         {
             Id = 210,
             Name = "Oathspeaker",
-            ImageLocation = "Oathspeaker",
+            ImageTag = CardImageTags.Oathspeaker,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 2), },
 
@@ -6949,7 +6949,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
         {
             Id = 211,
             Name = "Shield of Goldland",
-            ImageLocation = "Shield_of_Goldland",
+            ImageTag = CardImageTags.Shield_of_Goldland,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -6979,7 +6979,7 @@ At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
         {
             Id = 212,
             Name = "Warhorse",
-            ImageLocation = "Warhorse",
+            ImageTag = CardImageTags.Warhorse,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -7009,7 +7009,7 @@ Gain +1 Attack for each tile moved this turn until the end of your turn",
         {
             Id = 213,
             Name = "Angel of Judgement",
-            ImageLocation = "Angel_of_Judgement",
+            ImageTag = CardImageTags.Angel_of_Judgement,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), },
 
@@ -7039,7 +7039,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
         {
             Id = 214,
             Name = "Consecrate",
-            ImageLocation = "Consecrate",
+            ImageTag = CardImageTags.Consecrate,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
@@ -7063,7 +7063,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
         {
             Id = 215,
             Name = "Mount Up",
-            ImageLocation = "Mount_Up",
+            ImageTag = CardImageTags.Mount_Up,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -7087,7 +7087,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
         {
             Id = 216,
             Name = "Pegasus",
-            ImageLocation = "Pegasus",
+            ImageTag = CardImageTags.Pegasus,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Energy, 4), },
 
@@ -7117,7 +7117,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 217,
             Name = "Oath of Protection",
-            ImageLocation = "Oath of Protection",
+            ImageTag = CardImageTags.Oath_of_Protection,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), new Resource(CardResources.Energy, 4), },
 
@@ -7141,7 +7141,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 218,
             Name = "Oath of Protection",
-            ImageLocation = "Oath_of_Protection_Item",
+            ImageTag = CardImageTags.Oath_of_Protection_Item,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), new Resource(CardResources.Energy, 4), },
 
@@ -7165,7 +7165,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 219,
             Name = "Oath of Restoration",
-            ImageLocation = "Oath_of_Restoration",
+            ImageTag = CardImageTags.Oath_of_Restoration,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
@@ -7189,7 +7189,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 220,
             Name = "Oath of Restoration",
-            ImageLocation = "Oath_of_Restoration_Item",
+            ImageTag = CardImageTags.Oath_of_Restoration_Item,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
@@ -7213,7 +7213,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 221,
             Name = "Oath of Retribution",
-            ImageLocation = "Oath_of_Retribution_Item",
+            ImageTag = CardImageTags.Oath_of_Retribution,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
@@ -7237,7 +7237,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 222,
             Name = "Oath of Retribution",
-            ImageLocation = "Oath_of_Retribution_Item",
+            ImageTag = CardImageTags.Oath_of_Retribution_Item,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
@@ -7261,7 +7261,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
         {
             Id = 223,
             Name = "Ethelia, Chosen of the Light",
-            ImageLocation = "Ethelia_Chosen_of_the_Light",
+            ImageTag = CardImageTags.Ethelia_Chosen_of_the_Light,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 15), },
 
@@ -7292,7 +7292,7 @@ Costs (1) Devotion less for every Angel in your Graveyard.
         {
             Id = 224,
             Name = "Lord Seldoras Kerhall",
-            ImageLocation = "Lord_Seldoras_Kerhall",
+            ImageTag = CardImageTags.Lord_Seldoras_Kerhall,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
@@ -7322,7 +7322,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
         {
             Id = 225,
             Name = "Trickster Shadow",
-            ImageLocation = "Trickster2",
+            ImageTag = CardImageTags.Trickster2,
 
             Resources = new List<Resource>() { },
 
@@ -7351,7 +7351,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
         {
             Id = 226,
             Name = "Trickster Wraith",
-            ImageLocation = "Trickster3",
+            ImageTag = CardImageTags.Trickster3,
 
             Resources = new List<Resource>() { },
 
@@ -7380,7 +7380,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
         {
             Id = 227,
             Name = "Bounty Hunter",
-            ImageLocation = "Bounty_Hunter",
+            ImageTag = CardImageTags.Bounty_Hunter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -7410,7 +7410,7 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
         {
             Id = 228,
             Name = "Deathsworn Infiltrator",
-            ImageLocation = "Deathsworn_Infiltrator",
+            ImageTag = CardImageTags.Deathsworn_Infiltrator,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Mana, 2), },
 
@@ -7440,7 +7440,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
         {
             Id = 229,
             Name = "Flash",
-            ImageLocation = "Flash",
+            ImageTag = CardImageTags.Flash,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -7464,7 +7464,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
         {
             Id = 230,
             Name = "Shady Recruiter",
-            ImageLocation = "Shady_Recruiter",
+            ImageTag = CardImageTags.Shady_Recruiter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
 
@@ -7493,7 +7493,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
         {
             Id = 231,
             Name = "Street Tricks",
-            ImageLocation = "Street_Tricks",
+            ImageTag = CardImageTags.Street_Tricks,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), new Resource(CardResources.Mana, 3), },
 
@@ -7517,7 +7517,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
         {
             Id = 232,
             Name = "Underbelly Cutthroat",
-            ImageLocation = "Underbelly_Cutthroat",
+            ImageTag = CardImageTags.Underbelly_Cutthroat,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -7547,7 +7547,7 @@ Deployment:</b> Add 2 Shivs to your hand",
         {
             Id = 233,
             Name = "Deathsworn Assassin",
-            ImageLocation = "Deathsworn_Assassin",
+            ImageTag = CardImageTags.Deathsworn_Assassin,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
@@ -7577,7 +7577,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 234,
             Name = "Eliminate",
-            ImageLocation = "Eliminate",
+            ImageTag = CardImageTags.Eliminate,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Mana, 4), },
 
@@ -7601,7 +7601,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 235,
             Name = "Fade",
-            ImageLocation = "Fade",
+            ImageTag = CardImageTags.Fade,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -7625,7 +7625,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 236,
             Name = "Soul Blade",
-            ImageLocation = "Soul_Blade",
+            ImageTag = CardImageTags.Soul_Blade,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -7649,7 +7649,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 237,
             Name = "Underbelly Runner",
-            ImageLocation = "Underbelly_Runner",
+            ImageTag = CardImageTags.Underbelly_Runner,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -7678,7 +7678,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 238,
             Name = "Blade Flurry",
-            ImageLocation = "Blade_Flury",
+            ImageTag = CardImageTags.Blade_Flury,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -7702,7 +7702,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 239,
             Name = "Enchanted Dagger",
-            ImageLocation = "Enchanted_Dagger",
+            ImageTag = CardImageTags.Enchanted_Dagger,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
@@ -7726,7 +7726,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 240,
             Name = "Shade Hunter",
-            ImageLocation = "Shade_Hunter",
+            ImageTag = CardImageTags.Shade_Hunter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
@@ -7755,7 +7755,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
         {
             Id = 241,
             Name = "Underbelly Smuggler",
-            ImageLocation = "Underbelly_Smuggler",
+            ImageTag = CardImageTags.Underbelly_Smuggler,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -7785,7 +7785,7 @@ Deployment:</b> Use <b>Smuggle</b>",
         {
             Id = 242,
             Name = "Convincin' Thug",
-            ImageLocation = "Convincin_Thug",
+            ImageTag = CardImageTags.Convincin_Thug,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -7815,7 +7815,7 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
         {
             Id = 243,
             Name = "Deathsworn Cursebringer",
-            ImageLocation = "Deathsworn_Cursebringer",
+            ImageTag = CardImageTags.Deathsworn_Cursebringer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), new Resource(CardResources.Mana, 3), },
 
@@ -7845,7 +7845,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
         {
             Id = 244,
             Name = "Cursed Shade",
-            ImageLocation = "Cursed_Shade",
+            ImageTag = CardImageTags.Cursed_Shade,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -7874,7 +7874,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
         {
             Id = 245,
             Name = "Soulthief Shade",
-            ImageLocation = "Soulthief_Shade",
+            ImageTag = CardImageTags.Soulthief_Shade,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
@@ -7904,7 +7904,7 @@ Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b
         {
             Id = 246,
             Name = "King Toll of the Underbelly",
-            ImageLocation = "King_Toll_of_the_Underbelly",
+            ImageTag = CardImageTags.King_Toll_of_the_Underbelly,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 8), },
 
@@ -7934,7 +7934,7 @@ Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not le
         {
             Id = 247,
             Name = "The Faceless One",
-            ImageLocation = "The_Faceless_One",
+            ImageTag = CardImageTags.The_Faceless_One,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Mana, 3), },
 
@@ -7964,7 +7964,7 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
         {
             Id = 248,
             Name = "Battle Inspiration",
-            ImageLocation = "Battle_Inspiration",
+            ImageTag = CardImageTags.Battle_Inspiration,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -7989,7 +7989,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 249,
             Name = "Battlefield Surveyor",
-            ImageLocation = "Battlefield_Surveyor",
+            ImageTag = CardImageTags.Battlefield_Surveyor,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -8018,7 +8018,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 250,
             Name = "Execute Plan",
-            ImageLocation = "Execute_Plan",
+            ImageTag = CardImageTags.Execute_Plan,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Knowledge, 2), },
 
@@ -8042,7 +8042,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 251,
             Name = "Man at Arms",
-            ImageLocation = "Man_at_Arms",
+            ImageTag = CardImageTags.Man_at_Arms,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -8071,7 +8071,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 252,
             Name = "Field Medic",
-            ImageLocation = "Field_Medic",
+            ImageTag = CardImageTags.Field_Medic,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Knowledge, 1), },
 
@@ -8100,7 +8100,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 253,
             Name = "Goldland Knight",
-            ImageLocation = "Goldland_Knight",
+            ImageTag = CardImageTags.Goldland_Knight,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -8130,7 +8130,7 @@ Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
         {
             Id = 254,
             Name = "Legionnaire",
-            ImageLocation = "Legionnaire",
+            ImageTag = CardImageTags.Legionnaire,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -8160,7 +8160,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 255,
             Name = "Rally!",
-            ImageLocation = "Rally!",
+            ImageTag = CardImageTags.Rally,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -8184,7 +8184,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 256,
             Name = "Aggressive Stance",
-            ImageLocation = "Aggressive_Stance",
+            ImageTag = CardImageTags.Aggressive_Stance,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -8208,7 +8208,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 257,
             Name = "Defensive Stance",
-            ImageLocation = "Defensive_Stance",
+            ImageTag = CardImageTags.Defensive_Stance,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -8232,7 +8232,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 258,
             Name = "Stable Stance",
-            ImageLocation = "Stable_Stance",
+            ImageTag = CardImageTags.Stable_Stance,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -8256,7 +8256,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 259,
             Name = "Battle Stance",
-            ImageLocation = "Battle_Stance",
+            ImageTag = CardImageTags.Battle_Stance,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -8280,7 +8280,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
         {
             Id = 260,
             Name = "Field Commander",
-            ImageLocation = "Field_Commander",
+            ImageTag = CardImageTags.Field_Commander,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
@@ -8311,7 +8311,7 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
         {
             Id = 261,
             Name = "Forward Planning",
-            ImageLocation = "Forward_Planning",
+            ImageTag = CardImageTags.Forward_Planning,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -8336,7 +8336,7 @@ Reduce the cost of the the top two cards in your deck by (2)",
         {
             Id = 262,
             Name = "Perfect Strike",
-            ImageLocation = "Perfect_Strike",
+            ImageTag = CardImageTags.Perfect_Strike,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -8360,7 +8360,7 @@ Reduce the cost of the the top two cards in your deck by (2)",
         {
             Id = 263,
             Name = "Scout Regiment",
-            ImageLocation = "Scout_Regiment",
+            ImageTag = CardImageTags.Scout_Regiment,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Knowledge, 2), },
 
@@ -8391,7 +8391,7 @@ Can target <b>Stealth</b> units
         {
             Id = 264,
             Name = "Battle Repair",
-            ImageLocation = "Battle_Repair",
+            ImageTag = CardImageTags.Battle_Repair,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -8415,7 +8415,7 @@ Can target <b>Stealth</b> units
         {
             Id = 265,
             Name = "Commander's Logbook",
-            ImageLocation = "Commanders_Logbook",
+            ImageTag = CardImageTags.Commanders_Logbook,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -8439,7 +8439,7 @@ Can target <b>Stealth</b> units
         {
             Id = 266,
             Name = "Hardened Shield",
-            ImageLocation = "Hardened_Shield",
+            ImageTag = CardImageTags.Hardened_Shield,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -8463,7 +8463,7 @@ Can target <b>Stealth</b> units
         {
             Id = 267,
             Name = "Rallying Flag",
-            ImageLocation = "Rallying_Flag",
+            ImageTag = CardImageTags.Rallying_Flag,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -8487,7 +8487,7 @@ Can target <b>Stealth</b> units
         {
             Id = 268,
             Name = "Ballista",
-            ImageLocation = "Ballista",
+            ImageTag = CardImageTags.Ballista,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Knowledge, 7), },
 
@@ -8517,7 +8517,7 @@ This unit can target through obstacle terrain",
         {
             Id = 269,
             Name = "Captain of the Guard",
-            ImageLocation = "Captain_of_the_Guard",
+            ImageTag = CardImageTags.Captain_of_the_Guard,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 4), },
 
@@ -8548,7 +8548,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
         {
             Id = 270,
             Name = "Survey",
-            ImageLocation = "Survey",
+            ImageTag = CardImageTags.Survey,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
@@ -8572,7 +8572,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
         {
             Id = 271,
             Name = "Tessara, Lady of Goldland",
-            ImageLocation = "Tessara_Lady_of_Goldland",
+            ImageTag = CardImageTags.Tessara_Lady_of_Goldland,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 8), },
 
@@ -8602,7 +8602,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
         {
             Id = 272,
             Name = "Goldland Loyalist",
-            ImageLocation = "Goldland_Loyalist",
+            ImageTag = CardImageTags.Goldland_Loyalist,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -8631,7 +8631,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
         {
             Id = 273,
             Name = "Supreme Commander Tythas",
-            ImageLocation = "Supreme_Commander_Tythas",
+            ImageTag = CardImageTags.Supreme_Commander_Tythas,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 3), },
 
@@ -8661,7 +8661,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 274,
             Name = "Luminist Starcaller",
-            ImageLocation = "Luminist2",
+            ImageTag = CardImageTags.Luminist2,
 
             Resources = new List<Resource>() { },
 
@@ -8690,7 +8690,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 275,
             Name = "Luminist Moonsinger",
-            ImageLocation = "Luminist3",
+            ImageTag = CardImageTags.Luminist3,
 
             Resources = new List<Resource>() { },
 
@@ -8719,7 +8719,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 276,
             Name = "Mercenary Boss",
-            ImageLocation = "Mercenary2",
+            ImageTag = CardImageTags.Mercenary2,
 
             Resources = new List<Resource>() { },
 
@@ -8748,7 +8748,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 277,
             Name = "Mercenary Warlord",
-            ImageLocation = "Mercenary3",
+            ImageTag = CardImageTags.Mercenary3,
 
             Resources = new List<Resource>() { },
 
@@ -8777,7 +8777,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 279,
             Name = "Waystalker Ranger",
-            ImageLocation = "Waystalker1",
+            ImageTag = CardImageTags.Waystalker2,
 
             Resources = new List<Resource>() { },
 
@@ -8806,7 +8806,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 280,
             Name = "Waystalker Wildwalker",
-            ImageLocation = "Waystalker3",
+            ImageTag = CardImageTags.Waystalker3,
 
             Resources = new List<Resource>() { },
 
@@ -8835,7 +8835,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 281,
             Name = "Wildkin Shapechanger",
-            ImageLocation = "Wildkin2",
+            ImageTag = CardImageTags.Wildkin2,
 
             Resources = new List<Resource>() { },
 
@@ -8864,7 +8864,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 282,
             Name = "Wildkin Berserker",
-            ImageLocation = "Wildkin3",
+            ImageTag = CardImageTags.Wildkin3,
 
             Resources = new List<Resource>() { },
 
@@ -8893,7 +8893,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 285,
             Name = "Tough Hireling",
-            ImageLocation = "Tough_Hireling",
+            ImageTag = CardImageTags.Tough_Hireling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -8922,7 +8922,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 286,
             Name = "Persuasive Hireling",
-            ImageLocation = "Persuasive_Hireling",
+            ImageTag = CardImageTags.Persuasive_Hireling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -8951,7 +8951,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 287,
             Name = "Shady Hireling",
-            ImageLocation = "Shady_Hireling",
+            ImageTag = CardImageTags.Shady_Hireling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -8980,7 +8980,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 288,
             Name = "Eager Hireling",
-            ImageLocation = "Eager_Hireling",
+            ImageTag = CardImageTags.Eager_Hireling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -9009,7 +9009,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 289,
             Name = "Furious Brawl",
-            ImageLocation = "Furious_Brawl",
+            ImageTag = CardImageTags.Furious_Brawl,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), },
 
@@ -9033,7 +9033,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
         {
             Id = 290,
             Name = "Brawl: Grab",
-            ImageLocation = "Brawl_Grab",
+            ImageTag = CardImageTags.Brawl_Grab,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9058,7 +9058,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
         {
             Id = 291,
             Name = "Brawl: Leap",
-            ImageLocation = "Brawl_Shove",
+            ImageTag = CardImageTags.Brawl_Leap,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9083,7 +9083,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
         {
             Id = 292,
             Name = "Brawl: Shove",
-            ImageLocation = "Brawl_Shove",
+            ImageTag = CardImageTags.Brawl_Shove,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9108,7 +9108,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
         {
             Id = 293,
             Name = "Brawl: Toss",
-            ImageLocation = "Brawl_Toss",
+            ImageTag = CardImageTags.Brawl_Toss,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9133,7 +9133,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
         {
             Id = 294,
             Name = "Brawl: Whirlwind",
-            ImageLocation = "Brawl_Whirlwind",
+            ImageTag = CardImageTags.Brawl_Whirlwind,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9158,7 +9158,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
         {
             Id = 295,
             Name = "Greywalker",
-            ImageLocation = "Greywalker",
+            ImageTag = CardImageTags.Greywalker,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -9188,7 +9188,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
         {
             Id = 296,
             Name = "Othtal Axeman",
-            ImageLocation = "Othtal_Axeman",
+            ImageTag = CardImageTags.Othtal_Axeman,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9217,7 +9217,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
         {
             Id = 297,
             Name = "Othtal Berserker",
-            ImageLocation = "Othtal_Berserker",
+            ImageTag = CardImageTags.Othtal_Berserker,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -9247,7 +9247,7 @@ Whenever this unit takes damage, gain +2 Attack",
         {
             Id = 298,
             Name = "Spirit Totem",
-            ImageLocation = "Spirit_Totem",
+            ImageTag = CardImageTags.Spirit_Totem,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -9271,7 +9271,7 @@ Whenever this unit takes damage, gain +2 Attack",
         {
             Id = 299,
             Name = "Wild Fury",
-            ImageLocation = "Wild_Fury",
+            ImageTag = CardImageTags.Wild_Fury,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Wild, 2), },
 
@@ -9295,7 +9295,7 @@ Whenever this unit takes damage, gain +2 Attack",
         {
             Id = 300,
             Name = "Blood Bond",
-            ImageLocation = "Blood_Bond",
+            ImageTag = CardImageTags.Blood_Bond,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9319,7 +9319,7 @@ Whenever this unit takes damage, gain +2 Attack",
         {
             Id = 301,
             Name = "Grey Shaman",
-            ImageLocation = "Grey_Shaman",
+            ImageTag = CardImageTags.Grey_Shaman,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
@@ -9349,7 +9349,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
         {
             Id = 302,
             Name = "Rampage",
-            ImageLocation = "Rampage",
+            ImageTag = CardImageTags.Rampage,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -9373,7 +9373,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
         {
             Id = 303,
             Name = "Serrated Claws",
-            ImageLocation = "Serrated_Claws",
+            ImageTag = CardImageTags.Serrated_Claws,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -9397,7 +9397,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
         {
             Id = 304,
             Name = "Shapechanger",
-            ImageLocation = "Shapechanger",
+            ImageTag = CardImageTags.Shapechanger,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -9426,7 +9426,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
         {
             Id = 305,
             Name = "Hulking Beast",
-            ImageLocation = "Hulking Beast",
+            ImageTag = CardImageTags.Hulking_Beast,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
@@ -9456,7 +9456,7 @@ Last Rites: Transform</b> this unit back to its original form",
         {
             Id = 306,
             Name = "Bear Aspect",
-            ImageLocation = "Bear_Aspect",
+            ImageTag = CardImageTags.Bear_Aspect,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9487,7 +9487,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
         {
             Id = 307,
             Name = "Aspect of the Bear",
-            ImageLocation = "Aspect_of_the_Bear",
+            ImageTag = CardImageTags.Aspect_of_the_Bear,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9511,7 +9511,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
         {
             Id = 308,
             Name = "Eagle Aspect",
-            ImageLocation = "Eagle_Aspect",
+            ImageTag = CardImageTags.Eagle_Aspect,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9542,7 +9542,7 @@ Whenever this unit takes damage, gain +2 Attack.
         {
             Id = 309,
             Name = "Aspect of the Eagle",
-            ImageLocation = "Aspect_of_the_Eagle",
+            ImageTag = CardImageTags.Aspect_of_the_Eagle,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9566,7 +9566,7 @@ Whenever this unit takes damage, gain +2 Attack.
         {
             Id = 310,
             Name = "Sabretooth Aspect",
-            ImageLocation = "Sabretooth_Aspect",
+            ImageTag = CardImageTags.Sabretooth_Aspect,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9597,7 +9597,7 @@ Whenever this attacks and kills a unit, draw a card.
         {
             Id = 311,
             Name = "Aspect of the Sabretooth",
-            ImageLocation = "Aspect_of_the_Sabretooth",
+            ImageTag = CardImageTags.Aspect_of_the_Sabretooth,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9621,7 +9621,7 @@ Whenever this attacks and kills a unit, draw a card.
         {
             Id = 312,
             Name = "Wolf Aspect",
-            ImageLocation = "Wolf_Aspect",
+            ImageTag = CardImageTags.Wolf_Aspect,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9652,7 +9652,7 @@ Last Rites: Transform</b> this unit back into your hero.",
         {
             Id = 313,
             Name = "Aspect of the Wolf",
-            ImageLocation = "Aspect_of_the_Wolf",
+            ImageTag = CardImageTags.Aspect_of_the_Wolf,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
@@ -9676,7 +9676,7 @@ Last Rites: Transform</b> this unit back into your hero.",
         {
             Id = 314,
             Name = "Raging Beast",
-            ImageLocation = "Raging_Beast",
+            ImageTag = CardImageTags.Raging_Beast,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Wild, 3), },
 
@@ -9706,7 +9706,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
         {
             Id = 315,
             Name = "Beastial Fury",
-            ImageLocation = "Beastial_Fury",
+            ImageTag = CardImageTags.Beastial_Fury,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Wild, 3), },
 
@@ -9730,7 +9730,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
         {
             Id = 316,
             Name = "Cold Fury",
-            ImageLocation = "Cold_Fury",
+            ImageTag = CardImageTags.Cold_Fury,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
@@ -9754,7 +9754,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
         {
             Id = 317,
             Name = "Othtal Undying",
-            ImageLocation = "Othtal_Undying",
+            ImageTag = CardImageTags.Othtal_Undying,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 8), },
 
@@ -9784,7 +9784,7 @@ Last Rites:</b> Restore this unit to one health and refresh its actions. It cann
         {
             Id = 318,
             Name = "The Great Spirit",
-            ImageLocation = "The_Great_Spirit",
+            ImageTag = CardImageTags.The_Great_Spirit,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), new Resource(CardResources.Wild, 8), },
 
@@ -9814,7 +9814,7 @@ Last Rites: Transform</b> back into its original form. Any enchantments gained f
         {
             Id = 319,
             Name = "Spirit Walker Bragas",
-            ImageLocation = "Spirit_Walker_Bragas",
+            ImageTag = CardImageTags.Spirit_Walker_Bragas,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), new Resource(CardResources.Wild, 8), },
 
@@ -9844,7 +9844,7 @@ Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> in
         {
             Id = 320,
             Name = "Warchief Aghazir",
-            ImageLocation = "Warchief_Aghazir",
+            ImageTag = CardImageTags.Warchief_Aghazir,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), },
 
@@ -9874,7 +9874,7 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
         {
             Id = 321,
             Name = "Ray of Consumption",
-            ImageLocation = "Ray_of_Consumption",
+            ImageTag = CardImageTags.Ray_of_Consumption,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -9898,7 +9898,7 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
         {
             Id = 322,
             Name = "Camp Cook",
-            ImageLocation = "Camp_Cook",
+            ImageTag = CardImageTags.Camp_Cook,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -9928,7 +9928,7 @@ Deployment:</b> Use <b>Feast</b>",
         {
             Id = 323,
             Name = "Deceptive Contract",
-            ImageLocation = "Deceptive_Contract",
+            ImageTag = CardImageTags.Deceptive_Contract,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), new Resource(CardResources.Gold, 3), },
 
@@ -9952,7 +9952,7 @@ Deployment:</b> Use <b>Feast</b>",
         {
             Id = 324,
             Name = "Goblin Looter",
-            ImageLocation = "Goblin_Looter",
+            ImageTag = CardImageTags.Goblin_Looter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -9982,7 +9982,7 @@ Whenever this attacks a unit, draw a card",
         {
             Id = 325,
             Name = "Opportunistic Warband",
-            ImageLocation = "Opportunistic_Warlord",
+            ImageTag = CardImageTags.Opportunistic_Warlord,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -10011,7 +10011,7 @@ Whenever this attacks a unit, draw a card",
         {
             Id = 326,
             Name = "Persuasive Techniques",
-            ImageLocation = "Persuasive_Techniques",
+            ImageTag = CardImageTags.Persuasive_Techniques,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 0), },
 
@@ -10035,7 +10035,7 @@ Whenever this attacks a unit, draw a card",
         {
             Id = 327,
             Name = "Sucker Punch",
-            ImageLocation = "Sucker_Punch",
+            ImageTag = CardImageTags.Sucker_Punch,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -10059,7 +10059,7 @@ Whenever this attacks a unit, draw a card",
         {
             Id = 328,
             Name = "Camp Follower",
-            ImageLocation = "Camp_Follower",
+            ImageTag = CardImageTags.Camp_Follower,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -10089,7 +10089,7 @@ Deployment:</b> Use <b>Seduce</b>",
         {
             Id = 329,
             Name = "CHARGE!",
-            ImageLocation = "Charge",
+            ImageTag = CardImageTags.Charge,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -10113,7 +10113,7 @@ Deployment:</b> Use <b>Seduce</b>",
         {
             Id = 330,
             Name = "Intimidate",
-            ImageLocation = "Intimidate",
+            ImageTag = CardImageTags.Intimidate,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Gold, 2), },
 
@@ -10137,7 +10137,7 @@ Deployment:</b> Use <b>Seduce</b>",
         {
             Id = 331,
             Name = "Mounted Raiders",
-            ImageLocation = "Mounted_Raiders",
+            ImageTag = CardImageTags.Mounted_Raiders,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
 
@@ -10167,7 +10167,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 332,
             Name = "Goblin Horde",
-            ImageLocation = "Goblin_Horde",
+            ImageTag = CardImageTags.Goblin_Horde,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -10196,7 +10196,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 333,
             Name = "The Green Horde",
-            ImageLocation = "The_Green_Horde",
+            ImageTag = CardImageTags.The_Green_Horde,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -10220,7 +10220,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 334,
             Name = "Combat Insurer",
-            ImageLocation = "Combat_Insurer",
+            ImageTag = CardImageTags.Combat_Insurer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
 
@@ -10249,7 +10249,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 335,
             Name = "Disgraced Veteran",
-            ImageLocation = "Disgraced_Veteran",
+            ImageTag = CardImageTags.Disgraced_Veteran,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), },
 
@@ -10278,7 +10278,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 336,
             Name = "Pin",
-            ImageLocation = "Pin",
+            ImageTag = CardImageTags.Pin,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -10302,7 +10302,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 337,
             Name = "Motivate Rifraf",
-            ImageLocation = "Motivate_Rifraf",
+            ImageTag = CardImageTags.Motivate_Rifraf,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Gold, 2), },
 
@@ -10326,7 +10326,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 338,
             Name = "Gather Forces",
-            ImageLocation = "Gather_Forces",
+            ImageTag = CardImageTags.Gather_Forces,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 5), },
 
@@ -10350,7 +10350,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
         {
             Id = 339,
             Name = "Goblin Boss",
-            ImageLocation = "Goblin_Boss",
+            ImageTag = CardImageTags.Goblin_Boss,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -10381,7 +10381,7 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
         {
             Id = 340,
             Name = "Headhunter's Axe",
-            ImageLocation = "Headhunters_Axe",
+            ImageTag = CardImageTags.Headhunters_Axe,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), },
 
@@ -10405,7 +10405,7 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
         {
             Id = 1322,
             Name = "Head Gobbo Mazgix",
-            ImageLocation = "Head_Gobbo_Magzix",
+            ImageTag = CardImageTags.Head_Gobbo_Magzix,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), },
 
@@ -10437,7 +10437,7 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to M
         {
             Id = 1323,
             Name = "Ragged Lord Allos",
-            ImageLocation = "Ragged Lord Allos",
+            ImageTag = CardImageTags.Ragged_Lord_Allos,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 4), },
 
@@ -10468,7 +10468,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         {
             Id = 1326,
             Name = "Test NPC Hero",
-            ImageLocation = "Test_NPC_Hero",
+            ImageTag = CardImageTags.Test_NPC_Hero,
 
             Resources = new List<Resource>() { },
 
@@ -10497,7 +10497,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
         {
             Id = 1327,
             Name = "Luminous Inspiration",
-            ImageLocation = "Luminous_Inspiration",
+            ImageTag = CardImageTags.Luminous_Inspiration,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -10522,7 +10522,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 1328,
             Name = "Fortune Teller",
-            ImageLocation = "Fortune_Teller",
+            ImageTag = CardImageTags.Fortune_Teller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -10551,7 +10551,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 1329,
             Name = "Moonbeam",
-            ImageLocation = "Moonbeam",
+            ImageTag = CardImageTags.Moonbeam,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
@@ -10575,7 +10575,7 @@ Increase your base Knowledge rate by 1",
         {
             Id = 1330,
             Name = "Moonpool Walk",
-            ImageLocation = "Moonpool Walk",
+            ImageTag = CardImageTags.Moonpool_Walk,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -10600,7 +10600,7 @@ Give the caster <b>Protected (3)</b>",
         {
             Id = 1331,
             Name = "Roadside Wanderer",
-            ImageLocation = "Roadside_Wanderer",
+            ImageTag = CardImageTags.Roadside_Wanderer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -10630,7 +10630,7 @@ Deployment:</b> Use <b>Trade Tales</b>",
         {
             Id = 1332,
             Name = "Moonlight Premonition",
-            ImageLocation = "Moonlight_Premonition",
+            ImageTag = CardImageTags.Moonlight_Premonition,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), new Resource(CardResources.Wild, 2), },
 
@@ -10655,7 +10655,7 @@ Divinate (2)</b>",
         {
             Id = 1333,
             Name = "Wandering Storyteller",
-            ImageLocation = "Wandering_Storyteller",
+            ImageTag = CardImageTags.Wandering_Storyteller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -10684,7 +10684,7 @@ Divinate (2)</b>",
         {
             Id = 1334,
             Name = "Aedeline Mystic",
-            ImageLocation = "Aedeline_Mystic",
+            ImageTag = CardImageTags.Aedeline_Mystic,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -10715,7 +10715,7 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
         {
             Id = 1336,
             Name = "Moondrain",
-            ImageLocation = "Moondrain",
+            ImageTag = CardImageTags.Moondrain,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -10739,7 +10739,7 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
         {
             Id = 1337,
             Name = "Starcaller",
-            ImageLocation = "Starcaller",
+            ImageTag = CardImageTags.Starcaller,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), new Resource(CardResources.Wild, 3), },
 
@@ -10769,7 +10769,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
         {
             Id = 1338,
             Name = "Meditative Vision",
-            ImageLocation = "Meditative_Vision",
+            ImageTag = CardImageTags.Meditative_Vision,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), new Resource(CardResources.Wild, 1), },
 
@@ -10794,7 +10794,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
         {
             Id = 1339,
             Name = "Starfire",
-            ImageLocation = "Starfire",
+            ImageTag = CardImageTags.Starfire,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), new Resource(CardResources.Wild, 2), },
 
@@ -10819,7 +10819,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
         {
             Id = 1340,
             Name = "Mirror Aspect",
-            ImageLocation = "Mirror_Aspect",
+            ImageTag = CardImageTags.Mirror_Aspect,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -10848,7 +10848,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
         {
             Id = 1341,
             Name = "Aspect Mirror",
-            ImageLocation = "Aspect_Mirror",
+            ImageTag = CardImageTags.Aspect_Mirror,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -10873,7 +10873,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
         {
             Id = 1342,
             Name = "Mirror on the Pool",
-            ImageLocation = "Mirror on the Pool",
+            ImageTag = CardImageTags.Mirror_on_the_Pool,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 3), },
 
@@ -10898,7 +10898,7 @@ Add a copy of all spells in your hand to your hand",
         {
             Id = 1343,
             Name = "Moonweaver",
-            ImageLocation = "Moonweaver",
+            ImageTag = CardImageTags.Moonweaver,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
@@ -10927,7 +10927,7 @@ Add a copy of all spells in your hand to your hand",
         {
             Id = 1344,
             Name = "Pool Watcher",
-            ImageLocation = "Pool_Watcher",
+            ImageTag = CardImageTags.Pool_Watcher,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
@@ -10958,7 +10958,7 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
         {
             Id = 1345,
             Name = "Aedeline Oracle",
-            ImageLocation = "Aedeline_Oracle",
+            ImageTag = CardImageTags.Aedeline_Oracle,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
@@ -10988,7 +10988,7 @@ Deployment:</b> Use <b>Prophecy</b>",
         {
             Id = 1346,
             Name = "Vision of the Past",
-            ImageLocation = "Vision_of_the_Past",
+            ImageTag = CardImageTags.Vision_of_the_Past,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -11012,7 +11012,7 @@ Deployment:</b> Use <b>Prophecy</b>",
         {
             Id = 1347,
             Name = "Vision of the Present",
-            ImageLocation = "Vision_of_the_Present",
+            ImageTag = CardImageTags.Vision_of_the_Present,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -11036,7 +11036,7 @@ Deployment:</b> Use <b>Prophecy</b>",
         {
             Id = 1348,
             Name = "Vision of the Future",
-            ImageLocation = "Vision_of_the_Future",
+            ImageTag = CardImageTags.Vision_of_the_Future,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -11060,7 +11060,7 @@ Deployment:</b> Use <b>Prophecy</b>",
         {
             Id = 1349,
             Name = "Lunar Eclipse",
-            ImageLocation = "Lunar_Eclipse",
+            ImageTag = CardImageTags.Lunar_Eclipse,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
@@ -11085,7 +11085,7 @@ Give all friendly units <b>Protected (3).</b> Until the start of your next turn 
         {
             Id = 1350,
             Name = "Solar Eclipse",
-            ImageLocation = "Solar_Eclipse",
+            ImageTag = CardImageTags.Solar_Eclipse,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
@@ -11110,7 +11110,7 @@ Deal 3 damage to all enemy units. Until the start of your next turn gain ""<b>Pa
         {
             Id = 1351,
             Name = "Alter Fate",
-            ImageLocation = "Alter_Fate",
+            ImageTag = CardImageTags.Alter_Fate,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
@@ -11134,7 +11134,7 @@ Deal 3 damage to all enemy units. Until the start of your next turn gain ""<b>Pa
         {
             Id = 1352,
             Name = "Sothyn, Moonpool Warden",
-            ImageLocation = "Sothyn_Moonpool_Warden",
+            ImageTag = CardImageTags.Sothyn_Moonpool_Warden,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 6), },
 
@@ -11164,7 +11164,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1353,
             Name = "Arcane Shot",
-            ImageLocation = "Arcane_Shot",
+            ImageTag = CardImageTags.Arcane_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11188,7 +11188,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1354,
             Name = "Blood Shot",
-            ImageLocation = "Blood_Shot",
+            ImageTag = CardImageTags.Blood_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11212,7 +11212,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1355,
             Name = "Explosive Shot",
-            ImageLocation = "Explosive_Shot",
+            ImageTag = CardImageTags.Explosive_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11236,7 +11236,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1356,
             Name = "Stunning Shot",
-            ImageLocation = "Stunning_Shot",
+            ImageTag = CardImageTags.Stunning_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11260,7 +11260,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1357,
             Name = "Tracking Shot",
-            ImageLocation = "Tracking_Shot",
+            ImageTag = CardImageTags.Tracking_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11284,7 +11284,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1358,
             Name = "Venom Shot",
-            ImageLocation = "Venom_Shot",
+            ImageTag = CardImageTags.Venom_Shot,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
@@ -11308,7 +11308,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1359,
             Name = "Bear Guardian",
-            ImageLocation = "Bear_Guardian",
+            ImageTag = CardImageTags.Bear_Guardian,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -11337,7 +11337,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1360,
             Name = "Gilded Bow",
-            ImageLocation = "Gilded_Bow",
+            ImageTag = CardImageTags.Gilded_Bow,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -11361,7 +11361,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1361,
             Name = "Hunter's Mark",
-            ImageLocation = "Hunters_Mark",
+            ImageTag = CardImageTags.Hunters_Mark,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -11385,7 +11385,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1362,
             Name = "Predator's Instinct",
-            ImageLocation = "Predators_Instinct",
+            ImageTag = CardImageTags.Predators_Instinct,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Wild, 0), },
 
@@ -11409,7 +11409,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         {
             Id = 1363,
             Name = "Seeking Hawk",
-            ImageLocation = "Seeking_Hawk",
+            ImageTag = CardImageTags.Seeking_Hawk,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -11439,7 +11439,7 @@ Whenever this attacks and kills a unit, draw a card and <b>Cycle +3</b>",
         {
             Id = 1364,
             Name = "War Dog",
-            ImageLocation = "War_Dog",
+            ImageTag = CardImageTags.War_Dog,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -11469,7 +11469,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
         {
             Id = 1365,
             Name = "Loaded Quiver",
-            ImageLocation = "Loaded_Quiver",
+            ImageTag = CardImageTags.Loaded_Quiver,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), new Resource(CardResources.Wild, 1), },
 
@@ -11493,7 +11493,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
         {
             Id = 1366,
             Name = "Meat Bundle",
-            ImageLocation = "Meat_Bundle",
+            ImageTag = CardImageTags.Meat_Bundle,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -11517,7 +11517,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
         {
             Id = 1367,
             Name = "Mercy Offering",
-            ImageLocation = "Mercy_Offering",
+            ImageTag = CardImageTags.Mercy_Offering,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -11541,7 +11541,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
         {
             Id = 1368,
             Name = "Pack Leader",
-            ImageLocation = "Pack_Leader",
+            ImageTag = CardImageTags.Pack_Leader,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -11571,7 +11571,7 @@ Friendly beasts in range 2 have +1 Attack. Whenever a beast in range kills an en
         {
             Id = 1369,
             Name = "Rapid Fire",
-            ImageLocation = "Rapid_Fire",
+            ImageTag = CardImageTags.Rapid_Fire,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), new Resource(CardResources.Wild, 3), },
 
@@ -11595,7 +11595,7 @@ Friendly beasts in range 2 have +1 Attack. Whenever a beast in range kills an en
         {
             Id = 1370,
             Name = "Beast Trainer",
-            ImageLocation = "Beast_Trainer",
+            ImageTag = CardImageTags.Beast_Trainer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
@@ -11625,7 +11625,7 @@ Whenever a beast dies within Range 2, draw a card.",
         {
             Id = 1371,
             Name = "Brood Mother",
-            ImageLocation = "Brood_Mother",
+            ImageTag = CardImageTags.Brood_Mother,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
 
@@ -11655,7 +11655,7 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
         {
             Id = 1372,
             Name = "Spiderling",
-            ImageLocation = "Spiderling",
+            ImageTag = CardImageTags.Spiderling,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -11684,7 +11684,7 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
         {
             Id = 1373,
             Name = "Nakari Bowyer",
-            ImageLocation = "Nakari_Bowyer",
+            ImageTag = CardImageTags.Nakari_Bowyer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Wild, 2), },
 
@@ -11714,7 +11714,7 @@ Deployment:</b> Use <b>Craft Arrows</b>",
         {
             Id = 1374,
             Name = "Woodland Guide",
-            ImageLocation = "Woodland_Guide",
+            ImageTag = CardImageTags.Woodland_Guide,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -11744,7 +11744,7 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
         {
             Id = 1375,
             Name = "Blood Wolf",
-            ImageLocation = "Blood_Wolf",
+            ImageTag = CardImageTags.Blood_Wolf,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
 
@@ -11773,7 +11773,7 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
         {
             Id = 1376,
             Name = "Monster Hunter",
-            ImageLocation = "Monster_Hunter",
+            ImageTag = CardImageTags.Monster_Hunter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), },
 
@@ -11803,7 +11803,7 @@ Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an e
         {
             Id = 1377,
             Name = "Nakari Ranger",
-            ImageLocation = "Nakari_Ranger",
+            ImageTag = CardImageTags.Nakari_Ranger,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
@@ -11833,7 +11833,7 @@ Whenever you cast a shot spell, it affects this unit's next attack as well as yo
         {
             Id = 1378,
             Name = "Lokthar, The Untamed",
-            ImageLocation = "Lokthar_the_Untamed",
+            ImageTag = CardImageTags.Lokthar_the_Untamed,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
@@ -11863,7 +11863,7 @@ Whenever a beast dies within Range 2, <b>Regenerate.</b>",
         {
             Id = 1379,
             Name = "Selynthe, Bow of the Nakari",
-            ImageLocation = "Selynthe_Bow_of_the_Nakari",
+            ImageTag = CardImageTags.Selynthe_Bow_of_the_Nakari,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), new Resource(CardResources.Wild, 3), },
 
@@ -11987,5 +11987,10 @@ namespace CategoryEnums
     public enum Sets
     {
         Standard, Default
+    }
+
+    public enum CardImageTags
+    {
+        Runeblade1, Arcane_Rush, Blade_Enchantment, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Rune_Forger, Blade_Dance, Feint, Magic_Dash, Blade_Twirl, Swordcaster, Spectral_Staff, Spectral_Shield, Spectral_Sword, Warding_Rune, Retired_Blademaster, Mana_Siphoner, Mirror_Entity, Mirror_Image, Atarias, Nadalya, Magic_Missiles, Runeblade2, Runeblade3, Arcanist1, Arcanist2, Arcanist3, Arcane_Spike, Battlemage, Kelari_Librarian, Magical_Inspiration, Power_Investment, Spark_of_Power, Arcane_Golem, Counterspel_Item, Counterspell, Dispel_Magic, Kelari_Astromancer, Polymorph, Pig, Arcane_Spirit, Callardis_Academic, Callardis_Conjurer, Homing_Bolt, Archmage_Staff, Kelari_Spellguard, Tome_Of_Power, Archmage_Tholas, Enlightenment, Creative_Mind, Deep_Mind, Devastating_Mind, Protected_Mind, Replicative_Mind, Abyssal1, Abyssal2, Abyssal3, Voidling, Abyss_Imp, Abyssal_Cultist, Bite, Dark_Pact, Void_Soul, Void_Touch, Abyssal_Dreadspeaker, Blood_Pact, Dreadbolt, Vampire_Aristocrat, Vampire_Courtesan, Abyss_Knight, Abyssal_Summoner, Eye_of_the_Void, Imp_Mother, Abyssal_Voidcaller, Soul_Consumer, The_Void_Hungers, Abysslord_Marrex, Realm_Convergence, Elementalist1, Elementalist2, Elementalist3, Fireball, Goblin_Blastmage, Ice_Blast, Lightning_Bolt, Mana_Surge, Wave_Sorceror, Air_Elemental, Earth_Elemental, Fire_Elemental, Tend_the_Elements, Water_Elemental, Earthbinder, Elemental_Rush, Monk_of_the_Four_Winds, Pummel, Hurricane, Earthquake, Wall_of_Fire, Master_Kybas, Tidal_Wave, Grovewatcher1, Grovewatcher2, Grovewatcher3, Grasping_Vine, Honour_the_Old_Gods, Sosthrim_Druid, Juicy_Fruit, Sosthrim_Grovekeeper, Woodland_Sprite, Worldroot_Sapling, Earth_Ritual, Faeries_Blessing, Patient_Harvest, Sosthrim_Harvester, Agent1, Agent2, Agent3, Captain1, Battle_Gear, Captain2, Captain3, Lifebringer1, Lorekeeper1, Luminist1, Mercenary1, Oathknight1, Trickster1, Shiv, Waystalker1, Trained_Hound, Wildkin1, Worldroot_Defender, Faerie_Guile, Spined_Carapace, Treeheart_Censer, Worldroot_Dreamer, Faerie_Harbringer, Recycling, Worldroot_Ancient, Queen_Aedellaei, Naharr_the_Worldroot, Lifebringer2, Lifebringer3, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Divine_Ritual, Lay_on_Hands, Quick_Alchemy, Sorena_Cleric, Tending_Priest, Tithe_Collector, Golden_Host, Offer_Alms, Potion_Seller, Return_Soul, Sorena_High_Priest, Amulet_of_Divinity, Binding_Circle, Golden_Lifebinder, Sanctuary, Defender_of_Sorena, Golden_Hostcaller, Potion_Satchel, Divine_Intervention, Tythelia_Lady_of_Gold, Lorekeeper2, Lorekeeper3, Studious_Inspiration, Dedicated_Preservation, Mind_Collapse, Oldari_Acolyte, Ring_the_Bells, Subdue, Vault_Collector, Equalize, Maddening_Knowledge, Oldari_Spellweaver, Pacify, Vault_Archivist, Book_of_Records, Deep_Priest, Prevent_Repetition, Vault_Catalyst, Book_of_Madness, Deep_Conversion, Repress, Corthax_Keeper_of_the_Deeps, Grand_Archivist_Nurosi, Oathknight2, Oathknight3, Aid_From_Above, Angel_of_Protection, Angel_of_Devotion, Battle_Prayer, Divine_Strength, Eager_Squire, Shield_of_Faith, Angel_of_Purity, Bravery, Oathspeaker, Shield_of_Goldland, Warhorse, Angel_of_Judgement, Consecrate, Mount_Up, Pegasus, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Ethelia_Chosen_of_the_Light, Lord_Seldoras_Kerhall, Trickster2, Trickster3, Bounty_Hunter, Deathsworn_Infiltrator, Flash, Shady_Recruiter, Street_Tricks, Underbelly_Cutthroat, Deathsworn_Assassin, Eliminate, Fade, Soul_Blade, Underbelly_Runner, Blade_Flury, Enchanted_Dagger, Shade_Hunter, Underbelly_Smuggler, Convincin_Thug, Deathsworn_Cursebringer, Cursed_Shade, Soulthief_Shade, King_Toll_of_the_Underbelly, The_Faceless_One, Battle_Inspiration, Battlefield_Surveyor, Execute_Plan, Man_at_Arms, Field_Medic, Goldland_Knight, Legionnaire, Rally, Aggressive_Stance, Defensive_Stance, Stable_Stance, Battle_Stance, Field_Commander, Forward_Planning, Perfect_Strike, Scout_Regiment, Battle_Repair, Commanders_Logbook, Hardened_Shield, Rallying_Flag, Ballista, Captain_of_the_Guard, Survey, Tessara_Lady_of_Goldland, Goldland_Loyalist, Supreme_Commander_Tythas, Luminist2, Luminist3, Mercenary2, Mercenary3, Waystalker2, Waystalker3, Wildkin2, Wildkin3, Tough_Hireling, Persuasive_Hireling, Shady_Hireling, Eager_Hireling, Furious_Brawl, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Greywalker, Othtal_Axeman, Othtal_Berserker, Spirit_Totem, Wild_Fury, Blood_Bond, Grey_Shaman, Rampage, Serrated_Claws, Shapechanger, Hulking_Beast, Bear_Aspect, Aspect_of_the_Bear, Eagle_Aspect, Aspect_of_the_Eagle, Sabretooth_Aspect, Aspect_of_the_Sabretooth, Wolf_Aspect, Aspect_of_the_Wolf, Raging_Beast, Beastial_Fury, Cold_Fury, Othtal_Undying, The_Great_Spirit, Spirit_Walker_Bragas, Warchief_Aghazir, Ray_of_Consumption, Camp_Cook, Deceptive_Contract, Goblin_Looter, Opportunistic_Warlord, Persuasive_Techniques, Sucker_Punch, Camp_Follower, Charge, Intimidate, Mounted_Raiders, Goblin_Horde, The_Green_Horde, Combat_Insurer, Disgraced_Veteran, Pin, Motivate_Rifraf, Gather_Forces, Goblin_Boss, Headhunters_Axe, Head_Gobbo_Magzix, Ragged_Lord_Allos, Test_NPC_Hero, Luminous_Inspiration, Fortune_Teller, Moonbeam, Moonpool_Walk, Roadside_Wanderer, Moonlight_Premonition, Wandering_Storyteller, Aedeline_Mystic, Moondrain, Starcaller, Meditative_Vision, Starfire, Mirror_Aspect, Aspect_Mirror, Mirror_on_the_Pool, Moonweaver, Pool_Watcher, Aedeline_Oracle, Vision_of_the_Past, Vision_of_the_Present, Vision_of_the_Future, Lunar_Eclipse, Solar_Eclipse, Alter_Fate, Sothyn_Moonpool_Warden, Arcane_Shot, Blood_Shot, Explosive_Shot, Stunning_Shot, Tracking_Shot, Venom_Shot, Bear_Guardian, Gilded_Bow, Hunters_Mark, Predators_Instinct, Seeking_Hawk, War_Dog, Loaded_Quiver, Meat_Bundle, Mercy_Offering, Pack_Leader, Rapid_Fire, Beast_Trainer, Brood_Mother, Spiderling, Nakari_Bowyer, Woodland_Guide, Blood_Wolf, Monster_Hunter, Nakari_Ranger, Lokthar_the_Untamed, Selynthe_Bow_of_the_Nakari
     }
 }

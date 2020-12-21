@@ -95,10 +95,13 @@ namespace Kingsbane.App
                 .Include(x => x.Spells)
                 .Include(x => x.Items);
 
+            var imageTagList = new List<string>();
+
             foreach (var item in query)
             {
                 var cardTags = string.Join(",", item.Tags.Select(x => $"Tags.{x.Tag.Name}"));
                 var cardSynergies = string.Join(",", item.Synergies.Select(x => $"Synergies.{x.Synergy.Name}"));
+                imageTagList.Add(item.ImageLocation);
 
                 var resourceString = $@"            Resources = new List<Resource>()
             {{
@@ -114,7 +117,7 @@ namespace Kingsbane.App
 
                 var commonCard = @$"            Id = {item.Id},
             Name = ""{item.Name.FixQuotes()}"",
-            ImageLocation = ""{item.ImageLocation}"",
+            ImageTag = CardImageTags.{item.ImageLocation},
 
             {resourceString}
 
@@ -208,6 +211,11 @@ namespace Kingsbane.App
             sb.AppendLine("    public enum Sets");
             sb.AppendLine("    {");
             sb.AppendLine($"         {string.Join(",", _context.Set.Select(x => x.Name))}");
+            sb.AppendLine("    }");
+            sb.AppendLine("");
+            sb.AppendLine("    public enum CardImageTags");
+            sb.AppendLine("    {");
+            sb.AppendLine($"         {string.Join(",", imageTagList)}");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

@@ -17,8 +17,8 @@ public class Card
     public Classes.ClassList CardClass { get { return cardData.Class; } }
     public Sets Set { get { return cardData.Set; } }
 
-    public Sprite cardArt;
-    private string ImageLocation { get { return cardData.ImageLocation; } }
+    public Sprite CardArt { get; set; }
+    private CardImageTags ImageTag { get { return cardData.ImageTag; } }
 
     public List<Tags> Tags { get { return cardData.Tags; } }
     public List<Synergies> Syngergies { get { return cardData.Synergies; } }
@@ -41,6 +41,7 @@ public class Card
     {
         cardData = _cardData;
         Owner = owner;
+        CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag);
         ResourceInit();
     }
 

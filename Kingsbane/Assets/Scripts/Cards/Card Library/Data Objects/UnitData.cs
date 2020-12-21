@@ -39,7 +39,7 @@ public class UnitData : CardData
         //Not sure if there is a way to improve this to use the copying constructor of CardData as a base. Should investigate
         Id = unitData.Id;
         Name = unitData.Name;
-        ImageLocation = unitData.ImageLocation;
+        ImageTag = unitData.ImageTag;
 
         Resources = unitData.Resources.ToList();
 

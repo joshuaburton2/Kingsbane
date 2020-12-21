@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public DeckManager deckManager;
     public ColourManager colourManager;
+    public ImageManager imageManager;
     public GameSceneManager sceneManager;
     public EffectManager effectManager;
 
