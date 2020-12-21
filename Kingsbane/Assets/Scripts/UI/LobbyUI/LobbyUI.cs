@@ -165,11 +165,20 @@ public class LobbyUI : MonoBehaviour
     {
         foreach (var ruleObject in ruleObjectList)
         {
+
             if (id.HasValue)
                 if (ruleObject.GetComponent<RuleDisplayObject>().rule.Id != id)
+                {
                     ruleObject.SetActive(false);
+                }
+                else
+                {
+                    ruleObject.SetActive(true);
+                }
             else
+            {
                 ruleObject.SetActive(true);
+            }
         }
     }
 
