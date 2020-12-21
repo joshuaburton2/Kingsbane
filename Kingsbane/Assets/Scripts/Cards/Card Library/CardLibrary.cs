@@ -567,7 +567,7 @@ public class CardLibrary
         {
             Id = 60,
             Name = "Hound Training",
-            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +3 Attack",
+            Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +2 Attack",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -843,7 +843,7 @@ public class CardLibrary
         {
             Id = 83,
             Name = "Faerie Charm",
-            Text = @"Gain control of an enemy unit within Range 2 until the start of your next turn",
+            Text = @"Gain control of an enemy minion within Range 2 until the start of your next turn",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
@@ -999,7 +999,7 @@ public class CardLibrary
         {
             Id = 96,
             Name = "Hefty Bribe",
-            Text = @"<b>Recruit</b> an enemy minion that has a total cost of (5) or less",
+            Text = @"<b>Recruit</b> an enemy minion within Range 5 that has a total cost of (5) or less",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -1099,7 +1099,7 @@ public class CardLibrary
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            CostsAction = true,
+            CostsAction = false,
         };
         AbilityList.Add(ability104);
 
@@ -1190,7 +1190,7 @@ public class CardLibrary
         var ability1108 = new AbilityData()
         {
             Id = 1108,
-            Name = "Summon the Horde",
+            Name = "Rally the Horde",
             Text = @"Deploy 2 Goblin Hordes beside this unit",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
@@ -1294,6 +1294,78 @@ public class CardLibrary
             CostsAction = true,
         };
         AbilityList.Add(ability1117);
+
+        var ability1118 = new AbilityData()
+        {
+            Id = 1118,
+            Name = "Scouting Mission",
+            Text = @"<b>Divinate (1)</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1118);
+
+        var ability1119 = new AbilityData()
+        {
+            Id = 1119,
+            Name = "Deep Study",
+            Text = @"<b>Divinate (1)</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1119);
+
+        var ability1120 = new AbilityData()
+        {
+            Id = 1120,
+            Name = "War Training",
+            Text = @"Give all beasts in your hand +1 Attack, +1 Health",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1120);
+
+        var ability1121 = new AbilityData()
+        {
+            Id = 1121,
+            Name = "Craft Arrows",
+            Text = @"Choose one of three random shot spells to add to your hand",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1121);
+
+        var ability1122 = new AbilityData()
+        {
+            Id = 1122,
+            Name = "Blood Leap",
+            Text = @"Choose a damage enemy unit within range 2. Move this unit directly to a tile adjacent and attack the target",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1122);
+
+        var ability1123 = new AbilityData()
+        {
+            Id = 1123,
+            Name = "Devour",
+            Text = @"Destroy an adjacent minion with less attack than this. This ability activates <b>Unleash. Cycle -2</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1123);
 
         var card2 = new UnitData()
         {
@@ -2153,7 +2225,7 @@ Increase your base Knowledge rate by 1",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn, Tags.Inspiration },
             Synergies = new List<Synergies> { },
             SpellType = "Resource",
             Range = 0,
@@ -2592,7 +2664,8 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
-            Text = @"<b>Conduit</b>
+            Text = @"<b>Conduit
+Deployment: Divinate (2)</b>
 After you cast a spell, add a random playable spell to your hand and reduce its cost by (2)",
             LoreText = @"",
             Notes = @"",
@@ -2602,8 +2675,8 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Arcanist, Tags.Conduit },
-            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.Summon, Synergies.BigMinions, Synergies.Value, Synergies.Study },
+            Tags = new List<Tags> { Tags.Human, Tags.Arcanist, Tags.Conduit, Tags.Divinate },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.Summon, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.Prediction },
             UnitTag = "Human Arcanist",
             Attack = 3,
             Health = 8,
@@ -3683,7 +3756,8 @@ Deal damage to your hero equal to half their remaining health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"<b>Summon, Flying</b>",
+            Text = @"<b>Summon, Flying</b>
+Whenever this unit takes damage from an Air Spell, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3712,7 +3786,8 @@ Deal damage to your hero equal to half their remaining health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"<b>Summon, Warden</b>",
+            Text = @"<b>Summon, Warden</b>
+Whenever this unit takes damage from an Earth Spell, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3741,7 +3816,8 @@ Deal damage to your hero equal to half their remaining health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"<b>Summon Prepared</b>",
+            Text = @"<b>Summon Prepared</b>
+Whenever this unit takes damage from a Fire Spell, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3796,7 +3872,8 @@ Draw a card",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon</b>
-Whenever this unit deals damage to another unit, <b>Stun</b> it",
+Whenever this unit deals damage to another unit, <b>Stun</b> it.
+Whenever this unit takes damage from a Water Spell, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -4100,9 +4177,9 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Grovewatcher",
-            Attack = 2,
+            Attack = 3,
             Health = 19,
-            Range = 3,
+            Range = 2,
             Speed = 2,
 
             Abilities = new List<AbilityData>() { ability31 },
@@ -4129,9 +4206,9 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
             UnitTag = "Human Grovewatcher",
-            Attack = 3,
-            Health = 28,
-            Range = 4,
+            Attack = 4,
+            Health = 30,
+            Range = 3,
             Speed = 2,
 
             Abilities = new List<AbilityData>() { ability32 },
@@ -4360,7 +4437,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
-            Text = @"Give a unit <b>Spellshield</b> and <b>Lifebond</b>",
+            Text = @"Give a minion <b>Spellshield</b> and <b>Lifebond</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5774,7 +5851,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
-            Text = @"Restore 4 Health to all friendly units in an area of Radius 2 from the caster. Whenever an ally starts its turn there, restore 2 Health to it",
+            Text = @"Restore 4 Health to all friendly units in an area of Radius 2 from the caster. Until the start of your next turn, whenever an ally enters the area for the first time on a turn, restore 2 Health to it",
             LoreText = @"",
             Notes = @"",
 
@@ -5908,7 +5985,7 @@ Give the caster <b>Protected (10).</b> Destroy all enemy minions adjacent to the
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 8), new Resource(CardResources.Gold, 6), },
 
             Text = @"<b>Warden
-Deployment:</b> Deploy two random unitsin your Graveyard besides this one. Whenever one of them dies, <b>Regenerate</b> this unit",
+Deployment:</b> Deploy two random units in your Graveyard besides this one. Whenever one of them dies, <b>Regenerate</b> this unit",
             LoreText = @"",
             Notes = @"",
 
@@ -6005,7 +6082,7 @@ Increase your base Knowledge rate by 1",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn, Tags.Inspiration },
             Synergies = new List<Synergies> { },
             SpellType = "Resource",
             Range = 0,
@@ -6307,7 +6384,8 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
-            Text = @"Whenever you cast a spell, shuffle a copy of it into your deck",
+            Text = @"<b>Deployment: Divinate (2)</b>
+Whenever you cast a spell, shuffle a copy of it into your deck",
             LoreText = @"",
             Notes = @"",
 
@@ -6341,15 +6419,15 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Deployment, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.Deployment, Synergies.Prayer, Synergies.Restoration, Synergies.Equalize, Synergies.Pacify },
+            Tags = new List<Tags> { Tags.Deployment, Tags.Divinate, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.Deployment, Synergies.Prediction, Synergies.Prayer, Synergies.Restoration, Synergies.Equalize, Synergies.Pacify },
             UnitTag = "Dragonkin Lorekeeper",
             Attack = 3,
             Health = 3,
             Range = 0,
             Speed = 2,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability1119 },
         };
         CardList.Add(card191);
 
@@ -6965,7 +7043,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
-            Text = @"Deal 2 damage to all enemy units within an area of Radius 2 from the caster. Whenever an enemy unit enters these tiles, deal 1 damage to it",
+            Text = @"Deal 2 damage to all enemy units within an area of Radius 2 from the caster. Until the start of your next turn, whenever an enemy unit enters these tiles for the first time on a turn, deal 2 damage to it",
             LoreText = @"",
             Notes = @"",
 
@@ -7219,7 +7297,7 @@ Costs (1) Devotion less for every Angel in your Graveyard.
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Conduit, Protected (6)</b>
-Whenever your hero recieves an enchantment, this unit recieves it as well",
+Whenever your hero recieves an enchantment on your turn, this unit recieves it as well",
             LoreText = @"",
             Notes = @"",
 
@@ -7900,7 +7978,7 @@ Increase your base Knowledge rate by 1",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn, Tags.Inspiration },
             Synergies = new List<Synergies> { },
             SpellType = "Resource",
             Range = 0,
@@ -8297,15 +8375,15 @@ Can target <b>Stealth</b> units
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Deployment, Tags.Stalker, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.Choices },
+            Tags = new List<Tags> { Tags.Deployment, Tags.Divinate, Tags.Stalker, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.Prediction, Synergies.Choices },
             UnitTag = "Human Scout",
             Attack = 2,
             Health = 3,
             Range = 2,
             Speed = 3,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability1118 },
         };
         CardList.Add(card263);
 
@@ -9195,7 +9273,7 @@ Whenever this unit takes damage, gain +2 Attack",
             Name = "Wild Fury",
             ImageLocation = "Wild_Fury",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 0), new Resource(CardResources.Wild, 2), },
 
             Text = @"Gain 4 Energy and give the caster +2 Speed until the end of your turn",
             LoreText = @"",
@@ -9741,7 +9819,7 @@ Last Rites: Transform</b> back into its original form. Any enchantments gained f
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Conduit, Unleash
-Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> into the ""Great Spirit"". Any enchantments gained from <b>Unleash</b> apply to the new form.",
+Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> into ""The Great Spirit"". Any enchantments gained from <b>Unleash</b> apply to the new form.",
             LoreText = @"",
             Notes = @"",
 
@@ -10433,7 +10511,7 @@ Increase your base Knowledge rate by 1",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn },
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn, Tags.Inspiration },
             Synergies = new List<Synergies> { },
             SpellType = "Resource",
             Range = 0,
@@ -10693,10 +10771,10 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
             Name = "Meditative Vision",
             ImageLocation = "Meditative_Vision",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), new Resource(CardResources.Wild, 1), },
 
             Text = @"Restore health to the caster equal to twice the number of spells in your hand.
-<b>Divinate (1)",
+<b>Divinate (1)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -10799,7 +10877,8 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 3), },
 
-            Text = @"Add a copy of all spells in your hand to your hand",
+            Text = @"<b>Cycle -3</b>
+Add a copy of all spells in your hand to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -10847,13 +10926,12 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
         var card1344 = new UnitData()
         {
             Id = 1344,
-            Name = "Pool Guardian",
-            ImageLocation = "Pool_Guardian",
+            Name = "Pool Watcher",
+            ImageLocation = "Pool_Watcher",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
-            Text = @"<b>Conduit, Warden, Unleash
-Deployment: Cycle -5</b>
+            Text = @"<b>Conduit, Warden, Unleash</b>
 This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
 ",
             LoreText = @"",
@@ -10864,8 +10942,8 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Cycle, Synergies.Wild },
+            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Warden, Tags.Luminist, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild },
             UnitTag = "Elven Luminist",
             Attack = 6,
             Health = 9,
@@ -10938,7 +11016,7 @@ Deployment:</b> Use <b>Prophecy</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
-            Text = @"Add a copy of a random spell in your Graveyard to your hand",
+            Text = @"Add a copy of a random spell in your hand to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -11082,6 +11160,731 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         };
         CardList.Add(card1352);
 
+        var card1353 = new SpellData()
+        {
+            Id = 1353,
+            Name = "Arcane Shot",
+            ImageLocation = "Arcane_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attack this turn <b>Spellbinds</b> the target",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Spellbind },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1353);
+
+        var card1354 = new SpellData()
+        {
+            Id = 1354,
+            Name = "Blood Shot",
+            ImageLocation = "Blood_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attack this turn causes the target to take double damage from beast attacks until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1354);
+
+        var card1355 = new SpellData()
+        {
+            Id = 1355,
+            Name = "Explosive Shot",
+            ImageLocation = "Explosive_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attack this turn also damages all units adjacent to the target",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.AreaDamage },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1355);
+
+        var card1356 = new SpellData()
+        {
+            Id = 1356,
+            Name = "Stunning Shot",
+            ImageLocation = "Stunning_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attack this turn <b>Stuns</b> the target",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Stun },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1356);
+
+        var card1357 = new SpellData()
+        {
+            Id = 1357,
+            Name = "Tracking Shot",
+            ImageLocation = "Tracking_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attack this turn has +4 Range",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1357);
+
+        var card1358 = new SpellData()
+        {
+            Id = 1358,
+            Name = "Venom Shot",
+            ImageLocation = "Venom_Shot",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Your hero's next attck this turn deals +3 damage and prevents the target from being healed until the start of your next turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1358);
+
+        var card1359 = new UnitData()
+        {
+            Id = 1359,
+            Name = "Bear Guardian",
+            ImageLocation = "Bear_Guardian",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+
+            Text = @"<b>Warden, Unleash</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Warden, Tags.Beast, Tags.Trained, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Beasts },
+            UnitTag = "Trained Beast",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1359);
+
+        var card1360 = new ItemData()
+        {
+            Id = 1360,
+            Name = "Gilded Bow",
+            ImageLocation = "Gilded_Bow",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"Your hero has +2 Range. Whenever they attack, reduce this items durability",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Equip, Tags.Ornate, Tags.Bow },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Defensive, Synergies.Equip, Synergies.Archery },
+            ItemTag = "Ornate Bow",
+            Durability = 3,
+        };
+        CardList.Add(card1360);
+
+        var card1361 = new SpellData()
+        {
+            Id = 1361,
+            Name = "Hunter's Mark",
+            ImageLocation = "Hunters_Mark",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"Give an enemy unit, ""This unit takes double damage from attacks from your hero or units with <b>Conduit</b>""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Defensive, Synergies.Removal, Synergies.Archery },
+            SpellType = "Enchantment",
+            Range = 4,
+        };
+        CardList.Add(card1361);
+
+        var card1362 = new SpellData()
+        {
+            Id = 1362,
+            Name = "Predator's Instinct",
+            ImageLocation = "Predators_Instinct",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Wild, 0), },
+
+            Text = @"Gain 2 Wild and give the caster +2 range until the end of your turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.WildGain },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Defensive, Synergies.Wild, Synergies.Archery },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1362);
+
+        var card1363 = new UnitData()
+        {
+            Id = 1363,
+            Name = "Seeking Hawk",
+            ImageLocation = "Seeking_Hawk",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
+
+            Text = @"<b>Flying</b>
+Whenever this attacks and kills a unit, draw a card and <b>Cycle +3</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Beast, Tags.Flying, Tags.CyclePlus, Tags.Trained },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Flying, Synergies.Cycle, Synergies.Beasts },
+            UnitTag = "Trained Beast",
+            Attack = 4,
+            Health = 3,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1363);
+
+        var card1364 = new UnitData()
+        {
+            Id = 1364,
+            Name = "War Dog",
+            ImageLocation = "War_Dog",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Prepared
+Deployment:</b> Deploy a copy of this unit adjacent to it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Prepared, Tags.Deployment, Tags.Beast, Tags.Trained },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Swarm, Synergies.Prepared, Synergies.Beasts },
+            UnitTag = "Trained Beast",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1364);
+
+        var card1365 = new SpellData()
+        {
+            Id = 1365,
+            Name = "Loaded Quiver",
+            ImageLocation = "Loaded_Quiver",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), new Resource(CardResources.Wild, 1), },
+
+            Text = @"Add a random Shot spell to your hand",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Stun, Tags.AreaDamage, Tags.Spellbind },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Defensive, Synergies.Value, Synergies.Archery },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1365);
+
+        var card1366 = new ItemData()
+        {
+            Id = 1366,
+            Name = "Meat Bundle",
+            ImageLocation = "Meat_Bundle",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
+
+            Text = @"Whenever you play a beast, give it +2 Attack, +2 Health",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.Wartorn, Tags.Satchel },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Swarm, Synergies.Equip, Synergies.Beasts },
+            ItemTag = "Wartorn Satchel",
+            Durability = 4,
+        };
+        CardList.Add(card1366);
+
+        var card1367 = new SpellData()
+        {
+            Id = 1367,
+            Name = "Mercy Offering",
+            ImageLocation = "Mercy_Offering",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"<b>Recruit</b> an enemy minion with less health than the caster's attack",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Removal, Synergies.Recruit },
+            SpellType = "Removal",
+            Range = 2,
+        };
+        CardList.Add(card1367);
+
+        var card1368 = new UnitData()
+        {
+            Id = 1368,
+            Name = "Pack Leader",
+            ImageLocation = "Pack_Leader",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+
+            Text = @"<b>Stalker</b>
+Friendly beasts in range 2 have +1 Attack. Whenever a beast in range kills an enemy, increase this extra attack by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Beast, Tags.Stalker, Tags.Feral },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Swarm, Synergies.Death, Synergies.Beasts },
+            UnitTag = "Feral Beast",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1368);
+
+        var card1369 = new SpellData()
+        {
+            Id = 1369,
+            Name = "Rapid Fire",
+            ImageLocation = "Rapid_Fire",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), new Resource(CardResources.Wild, 3), },
+
+            Text = @"The caster gains 2 additional actions this turn",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Enchantment },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Defensive, Synergies.Removal, Synergies.Archery },
+            SpellType = "Enchantment",
+            Range = 0,
+        };
+        CardList.Add(card1369);
+
+        var card1370 = new UnitData()
+        {
+            Id = 1370,
+            Name = "Beast Trainer",
+            ImageLocation = "Beast_Trainer",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
+
+            Text = @"<b>Deployment:</b> Use <b>War Training</b>
+Whenever a beast dies within Range 2, draw a card.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Deployment, Tags.Beastmaster },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Swarm, Synergies.ShortRange, Synergies.Beasts },
+            UnitTag = "Human Beastmaster",
+            Attack = 3,
+            Health = 4,
+            Range = 1,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability1120 },
+        };
+        CardList.Add(card1370);
+
+        var card1371 = new UnitData()
+        {
+            Id = 1371,
+            Name = "Brood Mother",
+            ImageLocation = "Brood_Mother",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 6), },
+
+            Text = @"<b>Stealth, Unleash
+Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and health equal to this unit's attack in front of this unit",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Deployment, Tags.Beast, Tags.LastRites, Tags.Unleash, Tags.Stealth, Tags.Feral },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Deployment, Synergies.Swarm, Synergies.LastRites, Synergies.Wild, Synergies.Shadows, Synergies.Beasts },
+            UnitTag = "Feral Beast",
+            Attack = 2,
+            Health = 6,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1371);
+
+        var card1372 = new UnitData()
+        {
+            Id = 1372,
+            Name = "Spiderling",
+            ImageLocation = "Spiderling",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Beast, Tags.Stealth, Tags.Feral },
+            Synergies = new List<Synergies> { },
+            UnitTag = "Feral Beast",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1372);
+
+        var card1373 = new UnitData()
+        {
+            Id = 1373,
+            Name = "Nakari Bowyer",
+            ImageLocation = "Nakari_Bowyer",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Wild, 2), },
+
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Craft Arrows</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Stun, Tags.AreaDamage, Tags.Elven, Tags.Deployment, Tags.Spellbind, Tags.Routing, Tags.Craftsman },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Defensive, Synergies.Value, Synergies.Routing, Synergies.Archery },
+            UnitTag = "Elven Craftsman",
+            Attack = 4,
+            Health = 5,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { ability1121 },
+        };
+        CardList.Add(card1373);
+
+        var card1374 = new UnitData()
+        {
+            Id = 1374,
+            Name = "Woodland Guide",
+            ImageLocation = "Woodland_Guide",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
+
+            Text = @"<b>Routing, Stalker</b>
+Difficult terrain tiles in range 2 do not require additional movement for friendly units",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Waystalker, Tags.Stalker, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Swarm, Synergies.Routing },
+            UnitTag = "Human Waystalker",
+            Attack = 2,
+            Health = 3,
+            Range = 2,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1374);
+
+        var card1375 = new UnitData()
+        {
+            Id = 1375,
+            Name = "Blood Wolf",
+            ImageLocation = "Blood_Wolf",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 5), },
+
+            Text = @"<b>Unleash, Stalker, Cycle -5</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Beast, Tags.CycleMinus, Tags.Unleash, Tags.Stalker, Tags.Feral },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.BigMinions, Synergies.Cycle, Synergies.Wild, Synergies.Beasts },
+            UnitTag = "Feral Beast",
+            Attack = 6,
+            Health = 5,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1122 },
+        };
+        CardList.Add(card1375);
+
+        var card1376 = new UnitData()
+        {
+            Id = 1376,
+            Name = "Monster Hunter",
+            ImageLocation = "Monster_Hunter",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), },
+
+            Text = @"<b>Stalker
+Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an enemy minion dies which shares any minion tags with the target, double their bounty""",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Waystalker, Tags.GoldGain, Tags.Stalker, Tags.Passive },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold },
+            UnitTag = "Human Waystalker",
+            Attack = 4,
+            Health = 3,
+            Range = 2,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1376);
+
+        var card1377 = new UnitData()
+        {
+            Id = 1377,
+            Name = "Nakari Ranger",
+            ImageLocation = "Nakari_Ranger",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
+
+            Text = @"<b>Conduit, Stalker</b>
+Whenever you cast a shot spell, it affects this unit's next attack as well as your hero",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Waystalker, Tags.Stalker },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Control, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild, Synergies.Archery },
+            UnitTag = "Elven Waystalker",
+            Attack = 3,
+            Health = 5,
+            Range = 3,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1377);
+
+        var card1378 = new UnitData()
+        {
+            Id = 1378,
+            Name = "Lokthar, The Untamed",
+            ImageLocation = "Lokthar_the_Untamed",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
+
+            Text = @"<b>Stalker, Unleash, Cycle -4</b>
+Whenever a beast dies within Range 2, <b>Regenerate.</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Ability, Tags.Regenerate, Tags.CycleMinus, Tags.Unleash, Tags.Stalker },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.Swarm, Synergies.BigMinions, Synergies.Removal, Synergies.Cycle, Synergies.Beasts },
+            UnitTag = "Feral Beast",
+            Attack = 4,
+            Health = 4,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1123 },
+        };
+        CardList.Add(card1378);
+
+        var card1379 = new ItemData()
+        {
+            Id = 1379,
+            Name = "Selynthe, Bow of the Nakari",
+            ImageLocation = "Selynthe_Bow_of_the_Nakari",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), new Resource(CardResources.Wild, 3), },
+
+            Text = @"<b>Cycle -3
+Deployment:</b> Choose a shot spell in your hand and <b>Discard</b> it.
+Whenever your hero attacks, the effect of the chosen shot applies to it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Deployment, Tags.Equip, Tags.Magic, Tags.Discard, Tags.CycleMinus, Tags.Bow },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Deployment, Synergies.Defensive, Synergies.Equip, Synergies.Discard, Synergies.Gold, Synergies.Archery },
+            ItemTag = "Magic Bow",
+            Durability = 3,
+        };
+        CardList.Add(card1379);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -11090,6 +11893,11 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         card44.RelatedCards = new List<CardData> { card45 };
         card47.RelatedCards = new List<CardData> { card36 };
         card54.RelatedCards = new List<CardData> { card55, card56, card57, card58, card59 };
+        card55.RelatedCards = new List<CardData> { card56, card57, card58, card59 };
+        card56.RelatedCards = new List<CardData> { card55, card57, card58, card59 };
+        card57.RelatedCards = new List<CardData> { card55, card56, card58, card59 };
+        card58.RelatedCards = new List<CardData> { card55, card56, card57, card59 };
+        card59.RelatedCards = new List<CardData> { card55, card56, card57, card58 };
         card60.RelatedCards = new List<CardData> { card63 };
         card61.RelatedCards = new List<CardData> { card63 };
         card62.RelatedCards = new List<CardData> { card63 };
@@ -11144,6 +11952,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         card313.RelatedCards = new List<CardData> { card312 };
         card315.RelatedCards = new List<CardData> { card314 };
         card319.RelatedCards = new List<CardData> { card318 };
+        card320.RelatedCards = new List<CardData> { card290, card291, card292, card293, card294 };
         card323.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card326.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card333.RelatedCards = new List<CardData> { card332 };
@@ -11158,6 +11967,8 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
         card1341.RelatedCards = new List<CardData> { card1340 };
         card1345.RelatedCards = new List<CardData> { card1346, card1347, card1348 };
         card1352.RelatedCards = new List<CardData> { card1340 };
+        card1365.RelatedCards = new List<CardData> { card1353, card1354, card1355, card1356, card1357, card1358 };
+        card1371.RelatedCards = new List<CardData> { card1372 };
     }
 }
 
@@ -11165,12 +11976,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman
     }
 
     public enum Synergies
     {
-        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery
     }
 
     public enum Sets

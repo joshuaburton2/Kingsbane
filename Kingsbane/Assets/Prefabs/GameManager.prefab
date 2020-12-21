@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb41e54d4bb12418a57b29c1473f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitCounter: {fileID: 0}
 --- !u!1 &4079478786538098655
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ MonoBehaviour:
   - Rarity: 2
     rarityColour: {r: 0.2627451, g: 0.43529415, b: 0.8117648, a: 1}
   - Rarity: 3
-    rarityColour: {r: 0.3803922, g: 0.29803923, b: 0.6784314, a: 1}
+    rarityColour: {r: 0.47312126, g: 0.29423285, b: 0.7169812, a: 1}
   - Rarity: 4
     rarityColour: {r: 0.67058825, g: 0.21176472, b: 0.10196079, a: 1}
   - Rarity: 5

@@ -120,7 +120,7 @@ public class CardData
                 }
                 else
                 {
-                    throw new Exception("Card is not a hero");
+                    throw new Exception($"Card {Name} is not a hero");
                 }
             }
              
@@ -157,7 +157,7 @@ public class CardData
                 }
                 else
                 {
-                    throw new Exception("Card is not a hero");
+                    throw new Exception($"Card {Name} is not a hero");
                 }
             }
 
