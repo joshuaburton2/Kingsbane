@@ -14,35 +14,46 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     float ySelectionOffset;
     [SerializeField]
     private GameObject buttonArea;
+    [SerializeField]
+    private GameObject cardBack;
 
     private bool isSelected;
 
-    private GameObject displayObject;
-    private CardDisplay cardDisplay;
-    private UpgradeDisplay upgradeDisplay;
+    private GameObject DisplayObject { get; set; }
+    private CardDisplay CardDisplay { get; set; }
+    private UpgradeDisplay UpgradeDisplay { get; set; }
+    private bool CardMoveUpward { get; set; }
 
-    private HandUI handUI;
-    public int handIndex { get; private set; }
+    private HandUI HandUI { get; set; }
+    public int HandIndex { get; private set; }
 
     private const float defaultScalingFactor = 0.20f;
+
+    
 
     /// <summary>
     /// 
     /// Initialise the container object for a card
     /// 
     /// </summary>
-    public void InitHandContainer <T>(
+    public void InitHandContainer<T>(
         HandUI _handUI,
         int _handIndex,
         T objectData,
         string containerName = "",
-        float scalingFactor = defaultScalingFactor)
+        float scalingFactor = defaultScalingFactor,
+        bool cardMoveUpward = true)
     {
-        handUI = _handUI;
-        handIndex = _handIndex;
+        HandUI = _handUI;
+        HandIndex = _handIndex;
         isSelected = false;
 
+        var directionMod = CardMoveUpward ? 1 : -1;
+        buttonArea.transform.localPosition *= directionMod;
         buttonArea.SetActive(false);
+        ShowCardBack(false);
+
+        CardMoveUpward = cardMoveUpward;
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
 
@@ -56,8 +67,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
                 //Sibling Index is set to 0 so that the click handler on card display doesn't interfere with the click handler on the container (which is only used when adding cards to a deck)
                 newCardObj.transform.SetSiblingIndex(0);
-                cardDisplay = newCardObj.GetComponent<CardDisplay>();
-                displayObject = newCardObj;
+                CardDisplay = newCardObj.GetComponent<CardDisplay>();
+                DisplayObject = newCardObj;
                 break;
             case Type _ when type == typeof(UpgradeData):
                 var upgradeData = (UpgradeData)(object)objectData;
@@ -66,8 +77,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
                 //Sibling Index is set to 0 so that the click handler on upgrade display doesn't interfere with the click handler on the container
                 newUpgradeObj.transform.SetSiblingIndex(0);
-                upgradeDisplay = newUpgradeObj.GetComponent<UpgradeDisplay>();
-                displayObject = newUpgradeObj;
+                UpgradeDisplay = newUpgradeObj.GetComponent<UpgradeDisplay>();
+                DisplayObject = newUpgradeObj;
                 break;
         }
     }
@@ -77,14 +88,15 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         if (isSelected || toSelect)
         {
             isSelected = toSelect;
-            var transformVector = new Vector3(0, (toSelect ? 1 : -1) * ySelectionOffset);
-            displayObject.transform.localPosition += transformVector;
+            var directionMod = CardMoveUpward ? 1 : -1;
+            var transformVector = new Vector3(0, (toSelect ? 1 : -1) * ySelectionOffset * directionMod);
+            DisplayObject.transform.localPosition += transformVector;
 
-            if (cardDisplay != null)
+            if (CardDisplay != null)
                 buttonArea.SetActive(toSelect);
 
             if (toSelect)
-                handUI.SelectDisplay(handIndex);
+                HandUI.SelectDisplay(HandIndex);
         }
     }
 
@@ -98,13 +110,13 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         //Right clicking on a card always shows the detail display
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (cardDisplay == null)
+            if (CardDisplay == null)
             {
-                upgradeDisplay.DisplayUpgradeDetail();
+                UpgradeDisplay.DisplayUpgradeDetail();
             }
-            else if (upgradeDisplay == null)
+            else if (UpgradeDisplay == null)
             {
-                cardDisplay.DisplayCardDetail();
+                CardDisplay.DisplayCardDetail();
             }
         }
 
@@ -112,5 +124,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         {
             SelectDisplay(!isSelected);
         }
+    }
+
+    public void ShowCardBack(bool toShow)
+    {
+        cardBack.SetActive(toShow);
     }
 }

@@ -197,7 +197,7 @@ public class CardLibrary
             Name = "Info Exchange",
             Text = @"Shuffle a card in your hand into your deck. Draw a card",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
             CostsAction = false,
         };

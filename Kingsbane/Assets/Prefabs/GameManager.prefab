@@ -289,7 +289,7 @@ MonoBehaviour:
   - Rarity: 2
     rarityColour: {r: 0.2627451, g: 0.43529415, b: 0.8117648, a: 1}
   - Rarity: 3
-    rarityColour: {r: 0.47312126, g: 0.29423285, b: 0.7169812, a: 1}
+    rarityColour: {r: 0.62728536, g: 0.15143289, b: 0.7830189, a: 1}
   - Rarity: 4
     rarityColour: {r: 0.67058825, g: 0.21176472, b: 0.10196079, a: 1}
   - Rarity: 5

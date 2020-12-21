@@ -11,6 +11,8 @@ public class HandUI : MonoBehaviour
     private GameObject handContainerPrefab;
     [SerializeField]
     private float scalingFactor;
+    [SerializeField]
+    private bool cardMoveUpward; //True is the cards in hand move upward when clicked. False for downward
 
     private List<HandContainer> containerList;
 
@@ -47,7 +49,7 @@ public class HandUI : MonoBehaviour
             }
             upgradeContainer.name = $"Container- {objectName}";
             var displayName = $"Name- {objectName}";
-            handContainer.InitHandContainer(this, index, objectData: handObject, containerName: objectName, scalingFactor: scalingFactor);
+            handContainer.InitHandContainer(this, index, handObject, objectName, scalingFactor, cardMoveUpward);
 
             index++;
         }
@@ -57,7 +59,7 @@ public class HandUI : MonoBehaviour
     {
         foreach (var container in containerList)
         {
-            if (selectedIndex != container.handIndex)
+            if (selectedIndex != container.HandIndex)
             {
                 container.SelectDisplay(false);
             }

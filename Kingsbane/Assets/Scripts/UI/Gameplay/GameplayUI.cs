@@ -55,6 +55,13 @@ public class GameplayUI : MonoBehaviour
                 ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
                 break;
             case GameManager.GamePhases.HeroDeploy:
+                var isNewRound = GameManager.instance.NextPlayerTurn();
+                SetPlayerTurnText();
+
+                if (isNewRound)
+                {
+
+                }
                 break;
             case GameManager.GamePhases.Mulligan:
                 break;
@@ -79,7 +86,12 @@ public class GameplayUI : MonoBehaviour
         actionButton.interactable = state;
     }
 
-    public void ShowCardDisplay(Card card)
+    private void HideCardDisplay()
+    {
+        cardDisplayArea.SetActive(false);
+    }
+
+    private void ShowCardDisplay(Card card)
     {
         cardDisplayArea.SetActive(true);
         GameManager.DestroyAllChildren(cardDisplayParent);
