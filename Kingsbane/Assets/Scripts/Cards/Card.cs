@@ -41,7 +41,7 @@ public class Card
     {
         cardData = _cardData;
         Owner = owner;
-        CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag);
+        CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
         ResourceInit();
     }
 

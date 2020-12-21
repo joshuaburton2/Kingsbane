@@ -215,7 +215,7 @@ namespace Kingsbane.App
             sb.AppendLine("");
             sb.AppendLine("    public enum CardImageTags");
             sb.AppendLine("    {");
-            sb.AppendLine($"         {string.Join(",", imageTagList)}");
+            sb.AppendLine($"         Default, {string.Join(",", imageTagList)}");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 
