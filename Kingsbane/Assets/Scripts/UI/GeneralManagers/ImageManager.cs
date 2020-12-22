@@ -54,4 +54,31 @@ public class ImageManager : MonoBehaviour
 
         return image;
     }
+
+    /// <summary>
+    /// 
+    /// Context Menu function for syncing the card images with their appropriate tags.
+    /// Make sure to keep image names consistent with tags.
+    /// 
+    /// SHOULD NOT BE CALLED IN GAME
+    /// 
+    /// </summary>
+    [ContextMenu("Sync Image Tags")]
+    public void SyncImageTags()
+    {
+        foreach (var Class in classImageList)
+        {
+            foreach (var image in Class.imageList)
+            {
+                if (Enum.TryParse(image.imageSprite.name, true, out CardImageTags imageTag))
+                    image.imageTag = imageTag;
+                else
+                {
+                    Debug.Log($"Missing Tag for {image.imageSprite.name}");
+                    image.imageTag = CardImageTags.Default;
+                }
+                    
+            }
+        }
+    }
 }
