@@ -3757,7 +3757,7 @@ Deal damage to your hero equal to half their remaining health",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>
-Whenever this unit takes damage from an Air Spell, it heals for the damage amount instead",
+Whenever this unit takes damage from an Air Spell or Unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3787,7 +3787,7 @@ Whenever this unit takes damage from an Air Spell, it heals for the damage amoun
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>
-Whenever this unit takes damage from an Earth Spell, it heals for the damage amount instead",
+Whenever this unit takes damage from an Earth Spell or Unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3817,7 +3817,7 @@ Whenever this unit takes damage from an Earth Spell, it heals for the damage amo
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon Prepared</b>
-Whenever this unit takes damage from a Fire Spell, it heals for the damage amount instead",
+Whenever this unit takes damage from a Fire Spell or Unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3873,7 +3873,7 @@ Draw a card",
 
             Text = @"<b>Summon</b>
 Whenever this unit deals damage to another unit, <b>Stun</b> it.
-Whenever this unit takes damage from a Water Spell, it heals for the damage amount instead",
+Whenever this unit takes damage from a Water Spell or Unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -11805,7 +11805,7 @@ Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an e
             Name = "Nakari Ranger",
             ImageTag = CardImageTags.Nakari_Ranger,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Wild, 7), },
 
             Text = @"<b>Conduit, Stalker</b>
 Whenever you cast a shot spell, it affects this unit's next attack as well as your hero",
