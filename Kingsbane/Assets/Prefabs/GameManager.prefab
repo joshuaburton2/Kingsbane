@@ -175,71 +175,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 15715ea6b30addf4c9c1f1ad2898d1af, type: 3}
   mapImages: []
-  abyssalCardImages:
-  - imageTag: 60
-    imageSprite: {fileID: 21300000, guid: 7b9af983d8c282540be0bf15db695ec8, type: 3}
-  - imageTag: 71
-    imageSprite: {fileID: 21300000, guid: 44bbf2ac2d638b248b304011d316bbbb, type: 3}
-  - imageTag: 56
-    imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
-  - imageTag: 57
-    imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
-  - imageTag: 58
-    imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
-  - imageTag: 61
-    imageSprite: {fileID: 21300000, guid: 6ee79b9948d8a784480a4e778554e8d0, type: 3}
-  - imageTag: 66
-    imageSprite: {fileID: 21300000, guid: 9fd3df7e0ca116e43a3119f8c47173d0, type: 3}
-  - imageTag: 72
-    imageSprite: {fileID: 21300000, guid: 017b52e73a49d814d90567c1af3ee506, type: 3}
-  - imageTag: 78
-    imageSprite: {fileID: 21300000, guid: 03ab151f63a9e244e83927573c0e80e5, type: 3}
-  - imageTag: 62
-    imageSprite: {fileID: 21300000, guid: 42332af29cafb744fa1d5b541ef7385d, type: 3}
-  - imageTag: 67
-    imageSprite: {fileID: 21300000, guid: f5364cf49cc5bae4bbf85d8e093a460b, type: 3}
-  - imageTag: 63
-    imageSprite: {fileID: 21300000, guid: 83fabc6207be9ce4ab1351a666c32d81, type: 3}
-  - imageTag: 68
-    imageSprite: {fileID: 21300000, guid: ac6c11d178559924cb59445084b8ffbf, type: 3}
-  - imageTag: 73
-    imageSprite: {fileID: 21300000, guid: cca4085c21adeb048ab119e7bf51e719, type: 3}
-  - imageTag: 74
-    imageSprite: {fileID: 21300000, guid: 677769979f397fe49bc3d588b967d264, type: 3}
-  - imageTag: 314
-    imageSprite: {fileID: 21300000, guid: 06c254a51c06d9f4db7ac29c9dca56e7, type: 3}
-  - imageTag: 79
-    imageSprite: {fileID: 21300000, guid: 5156bd03f2fa06a469816240e18b32d5, type: 3}
-  - imageTag: 76
-    imageSprite: {fileID: 21300000, guid: bf9d51b4e58f31b44afeef45c8ebf323, type: 3}
-  - imageTag: 77
-    imageSprite: {fileID: 21300000, guid: 7941013d1a48b164db35b9ca16bafaa0, type: 3}
-  - imageTag: 69
-    imageSprite: {fileID: 21300000, guid: 61388cc2fd07f1c4a9e015da8cb852d3, type: 3}
-  - imageTag: 70
-    imageSprite: {fileID: 21300000, guid: 7e6799f456ffc6242b7301b66462888c, type: 3}
-  - imageTag: 64
-    imageSprite: {fileID: 21300000, guid: dc2207f8f502d264eb5d6ab647d4e707, type: 3}
-  - imageTag: 65
-    imageSprite: {fileID: 21300000, guid: ade1ceb6b7cf7984dbc80dd80e171eb3, type: 3}
-  - imageTag: 59
-    imageSprite: {fileID: 21300000, guid: afc6c064c3eb552489dcb58a9fc006d2, type: 3}
-  - imageTag: 75
-    imageSprite: {fileID: 21300000, guid: 83c54355db5249748b1aa014f7eb79ed, type: 3}
-  agentCardImages: []
-  arcanistCardImages: []
-  captainCardImages: []
-  elementalistCardImages: []
-  grovewatcherCardImages: []
-  lifebringerCardImages: []
-  lorekeeperCardImages: []
-  luministCardImages: []
-  mercenaryCardImages: []
-  oathknightCardImages: []
-  runebladeCardImages: []
-  tricksterCardImages: []
-  waystalkerCardImages: []
-  wildkinCardImages: []
+  classImageList:
+  - Class: 1
+    imageList:
+    - imageTag: 1
+      imageSprite: {fileID: 21300000, guid: 7b9af983d8c282540be0bf15db695ec8, type: 3}
+    - imageTag: 2
+      imageSprite: {fileID: 21300000, guid: 44bbf2ac2d638b248b304011d316bbbb, type: 3}
+    - imageTag: 7
+      imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
+    - imageTag: 8
+      imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
+    - imageTag: 9
+      imageSprite: {fileID: 21300000, guid: b4d0b3cb93e6ff741b3c51d6d1c5b24e, type: 3}
+    - imageTag: 3
+      imageSprite: {fileID: 21300000, guid: 6ee79b9948d8a784480a4e778554e8d0, type: 3}
+    - imageTag: 4
+      imageSprite: {fileID: 21300000, guid: 9fd3df7e0ca116e43a3119f8c47173d0, type: 3}
+    - imageTag: 5
+      imageSprite: {fileID: 21300000, guid: 017b52e73a49d814d90567c1af3ee506, type: 3}
+    - imageTag: 6
+      imageSprite: {fileID: 21300000, guid: 83c54355db5249748b1aa014f7eb79ed, type: 3}
+    - imageTag: 10
+      imageSprite: {fileID: 21300000, guid: 03ab151f63a9e244e83927573c0e80e5, type: 3}
+    - imageTag: 54
+      imageSprite: {fileID: 21300000, guid: 42332af29cafb744fa1d5b541ef7385d, type: 3}
+    - imageTag: 60
+      imageSprite: {fileID: 21300000, guid: f5364cf49cc5bae4bbf85d8e093a460b, type: 3}
+    - imageTag: 92
+      imageSprite: {fileID: 21300000, guid: 83fabc6207be9ce4ab1351a666c32d81, type: 3}
+    - imageTag: 109
+      imageSprite: {fileID: 21300000, guid: ac6c11d178559924cb59445084b8ffbf, type: 3}
+    - imageTag: 128
+      imageSprite: {fileID: 21300000, guid: cca4085c21adeb048ab119e7bf51e719, type: 3}
+    - imageTag: 169
+      imageSprite: {fileID: 21300000, guid: 677769979f397fe49bc3d588b967d264, type: 3}
+    - imageTag: 278
+      imageSprite: {fileID: 21300000, guid: 06c254a51c06d9f4db7ac29c9dca56e7, type: 3}
+    - imageTag: 279
+      imageSprite: {fileID: 21300000, guid: 5156bd03f2fa06a469816240e18b32d5, type: 3}
+    - imageTag: 312
+      imageSprite: {fileID: 21300000, guid: bf9d51b4e58f31b44afeef45c8ebf323, type: 3}
+    - imageTag: 340
+      imageSprite: {fileID: 21300000, guid: 7941013d1a48b164db35b9ca16bafaa0, type: 3}
+    - imageTag: 355
+      imageSprite: {fileID: 21300000, guid: 61388cc2fd07f1c4a9e015da8cb852d3, type: 3}
+    - imageTag: 356
+      imageSprite: {fileID: 21300000, guid: 7e6799f456ffc6242b7301b66462888c, type: 3}
+    - imageTag: 364
+      imageSprite: {fileID: 21300000, guid: dc2207f8f502d264eb5d6ab647d4e707, type: 3}
+    - imageTag: 365
+      imageSprite: {fileID: 21300000, guid: ade1ceb6b7cf7984dbc80dd80e171eb3, type: 3}
+    - imageTag: 366
+      imageSprite: {fileID: 21300000, guid: afc6c064c3eb552489dcb58a9fc006d2, type: 3}
+  - Class: 2
+    imageList: []
+  - Class: 3
+    imageList: []
+  - Class: 4
+    imageList: []
+  - Class: 5
+    imageList: []
+  - Class: 6
+    imageList: []
+  - Class: 7
+    imageList: []
+  - Class: 8
+    imageList: []
+  - Class: 9
+    imageList: []
+  - Class: 10
+    imageList: []
+  - Class: 11
+    imageList: []
+  - Class: 12
+    imageList: []
+  - Class: 13
+    imageList: []
+  - Class: 14
+    imageList: []
+  - Class: 15
+    imageList: []
 --- !u!1 &8891978394799893638
 GameObject:
   m_ObjectHideFlags: 0

@@ -193,6 +193,8 @@ namespace Kingsbane.App
                 sb.AppendLine($"        card{item.Id}.RelatedCards = new List<CardData> {{{relatedCards}}};");
             }
 
+            imageTagList.Sort();
+
             sb.AppendLine("    }");
             sb.AppendLine("}");
             sb.AppendLine("");
