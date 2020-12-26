@@ -603,7 +603,7 @@ public class CardLibrary
         {
             Id = 63,
             Name = "Enrage",
-            Text = @"Your hero gains +6 Attackuntil the end of your turn and <b>Protected (4)</b>",
+            Text = @"Your hero gains +6 Attack until the end of your turn and <b>Protected (4)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -698,7 +698,7 @@ public class CardLibrary
         var ability71 = new AbilityData()
         {
             Id = 71,
-            Name = "Rally the Horde",
+            Name = "For the Void",
             Text = @"<b>Discard</b> a card. Give all adjacent Void units Attack and Health equal to its total cost",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
@@ -713,7 +713,7 @@ public class CardLibrary
             Name = "Surveillance",
             Text = @"<b>Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
 
-            Resources = new List<Resource>() { },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
             CostsAction = true,
         };
@@ -749,7 +749,7 @@ public class CardLibrary
             Name = "Imprison",
             Text = @"Remove an enemy minion from the battlefield",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
             CostsAction = true,
         };
@@ -819,7 +819,7 @@ public class CardLibrary
         {
             Id = 81,
             Name = "Master of the Elements",
-            Text = @"Add a basic Elemental Spell to your hand. <b>Cycle -2</b>",
+            Text = @"Add a random basic Elemental Spell to your hand. <b>Cycle -2</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -1347,7 +1347,7 @@ public class CardLibrary
         {
             Id = 1122,
             Name = "Blood Leap",
-            Text = @"Choose a damage enemy unit within range 2. Move this unit directly to a tile adjacent and attack the target",
+            Text = @"Choose a damaged enemy unit within range 2. Move this unit directly to a tile adjacent and attack the target",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1366,6 +1366,54 @@ public class CardLibrary
             CostsAction = true,
         };
         AbilityList.Add(ability1123);
+
+        var ability1124 = new AbilityData()
+        {
+            Id = 1124,
+            Name = "Infiltration",
+            Text = @"<b>Study (3)</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1124);
+
+        var ability1125 = new AbilityData()
+        {
+            Id = 1125,
+            Name = "Disappear",
+            Text = @"Gain <b>Stealth</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1125);
+
+        var ability1126 = new AbilityData()
+        {
+            Id = 1126,
+            Name = "Make Arrangements",
+            Text = @"Shuffle a card in your hand into your deck, then draw it",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1126);
+
+        var ability1127 = new AbilityData()
+        {
+            Id = 1127,
+            Name = "Spycraft",
+            Text = @"Look at 3 cards in your opponent's hand. Choose to <b>Recruit</b> a copy of one of them",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1127);
 
         var card2 = new UnitData()
         {
@@ -1860,7 +1908,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"Whenever your Hero is attacked, take no damage",
+            Text = @"Whenever your Hero is attacked, they take no damage",
             LoreText = @"",
             Notes = @"",
 
@@ -2420,7 +2468,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Transform</b> a unit into a ""Pig""",
+            Text = @"<b>Transform</b> a minion into a ""Pig""",
             LoreText = @"",
             Notes = @"",
 
@@ -2562,7 +2610,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
-            Text = @"Deal 3 damage to an enemy unit.If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
+            Text = @"Deal 3 damage to an enemy unit. If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
             LoreText = @"",
             Notes = @"",
 
@@ -2820,7 +2868,7 @@ At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Pr
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 7), new Resource(CardResources.Mana, 5), },
 
             Text = @"<b>Empowered +3</b>
-Whenever you cast a spell, cast it again on the same target",
+After you cast the first spell on your turn, cast it again on the same target",
             LoreText = @"",
             Notes = @"",
 
@@ -3069,7 +3117,7 @@ Deal 4 damage to a unit",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
             Text = @"<b>Ethereal</b>
-Has +1 Attack, +1 Health for ever other friendly Void unit within Range 2",
+Has +1 Attack, +1 Health for every other friendly Void unit within Range 2",
             LoreText = @"",
             Notes = @"",
 
@@ -3291,7 +3339,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario"". Deal 3 damage to your hero",
+            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario."" Deal 3 damage to your hero",
             LoreText = @"",
             Notes = @"",
 
@@ -3461,7 +3509,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Mana, 7), },
 
-            Text = @"<b>Deployment:</b> Use <b>Rally the Horde</b>",
+            Text = @"<b>Deployment:</b> Use <b>For the Void</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3490,7 +3538,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"Gain the <b>Passive:</b>""You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario"".
+            Text = @"Gain the <b>Passive:</b> ""You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario.""
 Deal damage to your hero equal to half their remaining health",
             LoreText = @"",
             Notes = @"",
@@ -3757,7 +3805,7 @@ Deal damage to your hero equal to half their remaining health",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>
-Whenever this unit takes damage from an Air Spell or Unit, it heals for the damage amount instead",
+Whenever this unit takes damage from an Air spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3787,7 +3835,7 @@ Whenever this unit takes damage from an Air Spell or Unit, it heals for the dama
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>
-Whenever this unit takes damage from an Earth Spell or Unit, it heals for the damage amount instead",
+Whenever this unit takes damage from an Earth spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3817,7 +3865,7 @@ Whenever this unit takes damage from an Earth Spell or Unit, it heals for the da
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon Prepared</b>
-Whenever this unit takes damage from a Fire Spell or Unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a Fire spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -3873,7 +3921,7 @@ Draw a card",
 
             Text = @"<b>Summon</b>
 Whenever this unit deals damage to another unit, <b>Stun</b> it.
-Whenever this unit takes damage from a Water Spell or Unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a Water spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -4044,7 +4092,7 @@ Whenever this unit takes damage from a Water Spell or Unit, it heals for the dam
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Earth },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Wild },
             SpellType = "Damage",
-            Range = -1,
+            Range = 5,
         };
         CardList.Add(card103);
 
@@ -4223,7 +4271,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
-            Text = @"<b>Root</b> an enemy. Draw a card",
+            Text = @"<b>Root</b> an enemy unit. Draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -4435,9 +4483,9 @@ At the start of each of your turns, gain 2 Wild",
             Name = "Faerie's Blessing",
             ImageTag = CardImageTags.Faeries_Blessing,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
-            Text = @"Give a minion <b>Spellshield</b> and <b>Lifebond</b>",
+            Text = @"Give a minion <b>Spellshield</b> and <b>Lifebond</b> until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -4630,7 +4678,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            Text = @"Whenever your hero attacks, gain +1 Attack and <b>Protected (1)</b> until the end of your turn",
+            Text = @"Whenever your hero attacks, gain +1 Attack  until the end of your turn and <b>Protected (1)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -4997,7 +5045,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
-            Text = @"<b>Warden</b>
+            Text = @"<b>Warden, Unleash</b>
 Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             LoreText = @"",
             Notes = @"",
@@ -5008,10 +5056,10 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Warden, Tags.CyclePlus, Tags.Soldier, Tags.Treant },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Defensive, Synergies.Cycle, Synergies.Treant },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Cycle, Synergies.Treant },
             UnitTag = "Treant Soldier",
             Attack = 2,
-            Health = 6,
+            Health = 5,
             Range = 0,
             Speed = 2,
 
@@ -5099,7 +5147,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
-            Text = @"<b>Deployment: Cycle -7</b>
+            Text = @"<b>Cycle -7</b>
 At the end of your turn, reduce the Wild cost of a random card in your hand by (6)",
             LoreText = @"",
             Notes = @"",
@@ -5159,7 +5207,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
-            Text = @"Deploy three Treant minions in your Graveyard adjacent to the caster. <b>Cycle -6</b>",
+            Text = @"Deploy three random Treant minions in your Graveyard adjacent to the caster. <b>Cycle -6</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -6597,8 +6645,8 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
             Text = @"<b>Conduit</b>
-Spells in your hand which did not start in your deck have their cost reduced by (3)
 <b>Deployment:</b> Shuffle a copy of all spells in your hand into your deck.
+Spells in your hand which did not start in your deck have their cost reduced by (3).
 ",
             LoreText = @"",
             Notes = @"",
@@ -7227,7 +7275,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Enchantment, Tags.Swiftstrike, Tags.Draw, Tags.Equip, Tags.Overwhelm, Tags.Oath },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Enchantment, Synergies.Draw, Synergies.BigSpells, Synergies.Retribution, Synergies.Oaths },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Enchantment, Synergies.Draw, Synergies.BigSpells, Synergies.Retribution, Synergies.Angels, Synergies.Oaths },
             SpellType = "Enchantment",
             Range = 0,
         };
@@ -7241,7 +7289,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
-            Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of units the target has killed. Whenever this unit kills an enemy, draw a card",
+            Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of angels in your Graveyard. Whenever this unit kills an enemy, draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -7879,7 +7927,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
             Text = @"<b>Ethereal, Summon, Stealth</b>
-Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
+After this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7909,7 +7957,7 @@ Whenever this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 8), },
 
             Text = @"<b>Deployment: Recruit</b> 3 enemy minions within Range 5. Give them <b>Routing</b>
-Whenever you <b>Recruit</b> an enemy unit, reduce its cost by 3 Gold, but not less than 1",
+Whenever you <b>Recruit</b> a card, reduce its cost by 3 Gold, but not less than 1",
             LoreText = @"",
             Notes = @"",
 
@@ -8260,7 +8308,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If you have a Battle Sword equipped, add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
+            Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If you have a ""Battle Gear"" item already equipped, add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
             LoreText = @"",
             Notes = @"",
 
@@ -8366,7 +8414,7 @@ Reduce the cost of the the top two cards in your deck by (2)",
 
             Text = @"<b>Stalker</b>
 Can target <b>Stealth</b> units
-<b>Deployment:</b> Gain either +1 Range of +1 Speed",
+<b>Deployment:</b> Gain either +1 Range or +1 Speed",
             LoreText = @"",
             Notes = @"",
 
@@ -8395,7 +8443,7 @@ Can target <b>Stealth</b> units
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            Text = @"Give your equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Sword"" item",
+            Text = @"Give your equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Gear"" item",
             LoreText = @"",
             Notes = @"",
 
@@ -9377,7 +9425,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Whenever your hero attacks and damages a unit, prevent it from being healed until the start of your next turn. Your hero has Swiftstrike",
+            Text = @"Whenever your hero attacks and damages a unit, prevent it from being healed until the start of your next turn. Your hero has <b>Swiftstrike</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -10385,7 +10433,7 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 6), },
 
-            Text = @"Your hero has <b>Overwhelm</b>. Whenever your hero attacks, they all attack another random adjacent enemy unit",
+            Text = @"Your hero has <b>Overwhelm</b>. Whenever your hero attacks, they also attack another random adjacent enemy unit",
             LoreText = @"",
             Notes = @"",
 
@@ -10798,8 +10846,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), new Resource(CardResources.Wild, 2), },
 
-            Text = @"<b>Conduit</b>
-Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess",
+            Text = @"Deal 3 damage to all units in an area of Radius 3. Prevent them from using abilities or casting spells until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -11065,7 +11112,7 @@ Deployment:</b> Use <b>Prophecy</b>",
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Cycle -4</b>
-Give all friendly units <b>Protected (3).</b> Until the start of your next turn gain, ""<b>Passive:</b> Whenever a friendly unit with <b>Protected takes damage, they take 1 damage instead""",
+Give all friendly units <b>Protected (3).</b> Until the start of your next turn gain, ""<b>Passive:</b> Whenever a friendly unit with <b>Protected</b> takes damage, they take 1 damage instead""",
             LoreText = @"",
             Notes = @"",
 
@@ -11521,7 +11568,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Recruit</b> an enemy minion with less health than the caster's attack",
+            Text = @"<b>Recruit</b> an enemy minion with less than or equal health than the caster's attack",
             LoreText = @"",
             Notes = @"",
 
@@ -11885,6 +11932,589 @@ Whenever your hero attacks, the effect of the chosen shot applies to it",
         };
         CardList.Add(card1379);
 
+        var card1380 = new SpellData()
+        {
+            Id = 1380,
+            Name = "Cunning Inspiration",
+            ImageTag = CardImageTags.Cunning_Inspiration,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
+
+            Text = @"<b>Cast when Drawn</b>
+Increase your base Knowledge rate by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncollectable,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.StudyGain, Tags.CastWhenDrawn, Tags.Inspiration },
+            Synergies = new List<Synergies> { },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1380);
+
+        var card1381 = new UnitData()
+        {
+            Id = 1381,
+            Name = "Corrupt Guildmaster",
+            ImageTag = CardImageTags.Corrupt_Guidlmaster,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"<b>Routing
+Deployment:</b> Gain 3 Gold
+<b>Last Rites:</b> Lose 3 Gold",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.LastRites, Tags.GoldGain, Tags.Merchant, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.LastRites, Synergies.Gold, Synergies.Routing },
+            UnitTag = "Human Merchant",
+            Attack = 4,
+            Health = 6,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1381);
+
+        var card1382 = new UnitData()
+        {
+            Id = 1382,
+            Name = "Dark Blade",
+            ImageTag = CardImageTags.Dark_Blade,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Knowledge, 1), },
+
+            Text = @"<b>Conduit, Stealth</b>
+The first spell this unit casts each turn does not break <b>Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Agent, Tags.Stealth },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Shadows },
+            UnitTag = "Human Agent",
+            Attack = 3,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1382);
+
+        var card1383 = new SpellData()
+        {
+            Id = 1383,
+            Name = "Extortion",
+            ImageTag = CardImageTags.Extortion,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"Gain 3 Gold. <b>Recruit</b> a copy of the top card of your opponent's deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.GoldGain, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Value, Synergies.Gold, Synergies.Recruit, Synergies.Spies },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1383);
+
+        var card1384 = new UnitData()
+        {
+            Id = 1384,
+            Name = "Medlar Spy",
+            ImageTag = CardImageTags.Medlar_Spy,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+
+            Text = @"<b>Deployment:</b> Use <b>Infiltration</b>
+Whenever you draw this card, reduce your <b>Stagnation</b> by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Agent },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability1124 },
+        };
+        CardList.Add(card1384);
+
+        var card1385 = new UnitData()
+        {
+            Id = 1385,
+            Name = "Pickpocket",
+            ImageTag = CardImageTags.Pickpocket,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"<b>Stealth</b>
+Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your opponent's deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Stealth, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Recruit, Synergies.Shadows, Synergies.Spies },
+            UnitTag = "Human Agent",
+            Attack = 2,
+            Health = 1,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1385);
+
+        var card1386 = new UnitData()
+        {
+            Id = 1386,
+            Name = "Shadowy Assassin",
+            ImageTag = CardImageTags.Shadowy_Assassin,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
+
+            Text = @"<b>Deadly, Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Common,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Stealth, Tags.Deadly },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Removal, Synergies.Shadows },
+            UnitTag = "Human Agent",
+            Attack = 1,
+            Health = 1,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1386);
+
+        var card1387 = new UnitData()
+        {
+            Id = 1387,
+            Name = "Efficient Bookkeeper",
+            ImageTag = CardImageTags.Efficient_Bookkeeper,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
+
+            Text = @"<b>Deployment: Study (4)</b>
+After you draw an <b>Inspiration</b> card, shuffle another back into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.StudyGain, Tags.Agent },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 4,
+            Health = 5,
+            Range = 0,
+            Speed = 2,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1387);
+
+        var card1388 = new ItemData()
+        {
+            Id = 1388,
+            Name = "Pickpocket's Knife",
+            ImageTag = CardImageTags.Pickpockets_Knife,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"After your hero attacks a unit, gain 2 Gold",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Equip, Tags.GoldGain, Tags.Dagger, Tags.Hidden },
+            Synergies = new List<Synergies> { Synergies.Equip, Synergies.Gold },
+            ItemTag = "Hidden Dagger",
+            Durability = 3,
+        };
+        CardList.Add(card1388);
+
+        var card1389 = new SpellData()
+        {
+            Id = 1389,
+            Name = "Planned Removal",
+            ImageTag = CardImageTags.Planned_Removal,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
+
+            Text = @"Destroy an enemy minion. Whenever you shuffle this card into your deck, reduce its cost by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleRemoval },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Study, Synergies.Removal, Synergies.Exchanges },
+            SpellType = "Removal",
+            Range = 2,
+        };
+        CardList.Add(card1389);
+
+        var card1390 = new SpellData()
+        {
+            Id = 1390,
+            Name = "Spycraft",
+            ImageTag = CardImageTags.Spycraft,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            Text = @"Look at three random cards from your opponent's hand. Choose to <b>Recruit</b> a copy of one of them",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Value, Synergies.Recruit, Synergies.Spies },
+            SpellType = "Resource",
+            Range = 0,
+        };
+        CardList.Add(card1390);
+
+        var card1391 = new SpellData()
+        {
+            Id = 1391,
+            Name = "The Right Tool",
+            ImageTag = CardImageTags.The_Right_Tool,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"Shuffle your hand into your deck, then draw that many cards",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Uncommon,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.Draw },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Exchanges },
+            SpellType = "Draw",
+            Range = 0,
+        };
+        CardList.Add(card1391);
+
+        var card1392 = new SpellData()
+        {
+            Id = 1392,
+            Name = "Assassination Contract",
+            ImageTag = CardImageTags.Assassination_Contract,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"Destory an enemy minion. Multiply its <b>Bounty</b> by 2. Whenever you shuffle this card into your deck, increase the multiplier by 1",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Spell,
+
+            Tags = new List<Tags> { Tags.SingleRemoval, Tags.GoldGain },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Draw, Synergies.Removal, Synergies.Gold, Synergies.Exchanges },
+            SpellType = "Removal",
+            Range = 2,
+        };
+        CardList.Add(card1392);
+
+        var card1393 = new ItemData()
+        {
+            Id = 1393,
+            Name = "Laundering Record",
+            ImageTag = CardImageTags.Laundering_Record,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
+
+            Text = @"After you draw the first card on your turn, choose whether to shuffle it back into your deck and draw a card",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Item,
+
+            Tags = new List<Tags> { Tags.Draw, Tags.Equip, Tags.Scroll, Tags.Shady },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Equip, Synergies.Exchanges },
+            ItemTag = "Shady Scroll",
+            Durability = 4,
+        };
+        CardList.Add(card1393);
+
+        var card1394 = new UnitData()
+        {
+            Id = 1394,
+            Name = "Master Thief",
+            ImageTag = CardImageTags.Master_Thief,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+
+            Text = @"<b>Conduit, Stealth</b>
+After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Agent, Tags.Stealth, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Recruit, Synergies.Shadows, Synergies.Spies },
+            UnitTag = "Human Agent",
+            Attack = 2,
+            Health = 3,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { ability1125 },
+        };
+        CardList.Add(card1394);
+
+        var card1395 = new UnitData()
+        {
+            Id = 1395,
+            Name = "Medlar Saboteur",
+            ImageTag = CardImageTags.Medlar_Saboteur,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
+
+            Text = @"<b>Deployment:</b>Increase the cost of a random card in your opponents hand by (2)
+Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Rare,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Divinate, Tags.Agent },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Prediction, Synergies.Spies, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 5,
+            Health = 4,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1395);
+
+        var card1396 = new UnitData()
+        {
+            Id = 1396,
+            Name = "Escape Artist",
+            ImageTag = CardImageTags.Escape_Artist,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), new Resource(CardResources.Knowledge, 3), },
+
+            Text = @"<b>Routing
+Deployment:</b> Use <b>Make Arrangements</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Agent, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold, Synergies.Routing, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 5,
+            Health = 9,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability1126 },
+        };
+        CardList.Add(card1396);
+
+        var card1397 = new UnitData()
+        {
+            Id = 1397,
+            Name = "Hidden Informant",
+            ImageTag = CardImageTags.Hidden_Informant,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
+
+            Text = @"<b>Routing
+Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand by (1)",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Agent, Tags.Recruit, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Recruit, Synergies.Spies },
+            UnitTag = "Human Agent",
+            Attack = 4,
+            Health = 5,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1397);
+
+        var card1398 = new UnitData()
+        {
+            Id = 1398,
+            Name = "Shadowblade",
+            ImageTag = CardImageTags.Shadowblade,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Knowledge, 2), },
+
+            Text = @"Whenever you draw this, it gains a new one of the following keywords at random for the rest of the scenario: <b>Conduit, Deadly, Ethereal, Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Epic,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Ethereal, Tags.Agent, Tags.Stealth, Tags.Deadly },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.BigMinions, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 3,
+            Health = 3,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1398);
+
+        var card1399 = new UnitData()
+        {
+            Id = 1399,
+            Name = "Omaris, Lord of Shadows",
+            ImageTag = CardImageTags.Omaris_Lord_of_Shadows,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Knowledge, 3), },
+
+            Text = @"<b>Routing</b>
+Whenever you shuffle this card into your deck, give it +2 Attack, +2 Health.
+If this unit <b>Routs</b> shuffle a new copy of it back into your deck",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Routing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Value, Synergies.Routing, Synergies.Exchanges },
+            UnitTag = "Human Agent",
+            Attack = 2,
+            Health = 2,
+            Range = 0,
+            Speed = 4,
+
+            Abilities = new List<AbilityData>() { },
+        };
+        CardList.Add(card1399);
+
+        var card1400 = new UnitData()
+        {
+            Id = 1400,
+            Name = "Spymaster Luren",
+            ImageTag = CardImageTags.Spymaster_Luren,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 7), },
+
+            Text = @"<b>Conduit
+Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play any of them, return the other two to their hand and restore their previous cost.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Agent,
+            Rarity = Rarity.Legendary,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Agent, Tags.Recruit },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold, Synergies.Recruit, Synergies.Spies },
+            UnitTag = "Human Agent",
+            Attack = 6,
+            Health = 6,
+            Range = 0,
+            Speed = 3,
+
+            Abilities = new List<AbilityData>() { ability1127 },
+        };
+        CardList.Add(card1400);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -11969,6 +12599,8 @@ Whenever your hero attacks, the effect of the chosen shot applies to it",
         card1352.RelatedCards = new List<CardData> { card1340 };
         card1365.RelatedCards = new List<CardData> { card1353, card1354, card1355, card1356, card1357, card1358 };
         card1371.RelatedCards = new List<CardData> { card1372 };
+        card1384.RelatedCards = new List<CardData> { card1380 };
+        card1387.RelatedCards = new List<CardData> { card1380 };
     }
 }
 
@@ -11976,12 +12608,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady
     }
 
     public enum Synergies
     {
-        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery, Spies, Exchanges
     }
 
     public enum Sets
@@ -11991,6 +12623,6 @@ namespace CategoryEnums
 
     public enum CardImageTags
     {
-        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Atarias, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flury, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cursed_Shade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Magzix, Headhunters_Axe, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Meat_Bundle, Meditative_Vision, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Opportunistic_Warlord, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pig, Pin, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Stable_Stance, Starcaller, Starfire, Street_Tricks, Studious_Inspiration, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
+        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flury, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Escape_Artist, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Magzix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warlord, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Studious_Inspiration, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
     }
 }
