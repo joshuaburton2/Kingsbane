@@ -967,7 +967,7 @@ MonoBehaviour:
   - rarity: 5
     weighting: 6
   classWeighting: 25
-  synergyWeighting: 1
+  synergyWeighting: 2
   duplicateWeighting: -30
 --- !u!1 &8891978396315567774
 GameObject:
