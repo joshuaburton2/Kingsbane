@@ -131,7 +131,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                67
+                                67,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -143,7 +143,7 @@ namespace CategoryEnums
                             IsNPCDeck = true,
                             CardIdList = new List<int>()
                             {
-                                2
+                                2,
                             },
                             UpgradeIdList = new List<int>()
                             {
@@ -157,6 +157,69 @@ namespace CategoryEnums
                                 new PlayerMana(10, 2),
                                 new PlayerDevotion(2, 10),
                             },
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 35,
+                            Name = "Dark Summoner",
+                            DeckClass = ClassList.Abyssal,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                64,
+                                65,
+                                67,
+                                69,
+                                75,
+                                76,
+                                182,
+                                205,
+                                240,
+                                321,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 36,
+                            Name = "Void Swarm",
+                            DeckClass = ClassList.Abyssal,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                48,
+                                64,
+                                67,
+                                70,
+                                77,
+                                78,
+                                120,
+                                160,
+                                205,
+                                207,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 37,
+                            Name = "Blooddrinkers",
+                            DeckClass = ClassList.Abyssal,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                9,
+                                66,
+                                71,
+                                72,
+                                73,
+                                74,
+                                117,
+                                159,
+                                168,
+                                236,
+                            },
+                            UpgradeIdList = new List<int>(),
                         },
                     },
                     ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
@@ -186,7 +249,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                1383
+                                1383,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 38,
+                            Name = "Spies and Infiltrators",
+                            DeckClass = ClassList.Agent,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                190,
+                                230,
+                                261,
+                                1381,
+                                1383,
+                                1384,
+                                1385,
+                                1388,
+                                1390,
+                                1394,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 39,
+                            Name = "Deadly Assassins",
+                            DeckClass = ClassList.Agent,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                183,
+                                227,
+                                232,
+                                249,
+                                1360,
+                                1361,
+                                1382,
+                                1386,
+                                1389,
+                                1392,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 40,
+                            Name = "Into the Shadows",
+                            DeckClass = ClassList.Agent,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                241,
+                                1328,
+                                1360,
+                                1382,
+                                1384,
+                                1387,
+                                1389,
+                                1391,
+                                1393,
+                                1395,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -218,7 +344,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                37
+                                37,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 41,
+                            Name = "Knowledge is Power",
+                            DeckClass = ClassList.Arcanist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                35,
+                                37,
+                                38,
+                                43,
+                                47,
+                                51,
+                                190,
+                                261,
+                                265,
+                                1328,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 42,
+                            Name = "Magical Destruction",
+                            DeckClass = ClassList.Arcanist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                15,
+                                20,
+                                27,
+                                33,
+                                34,
+                                35,
+                                38,
+                                39,
+                                90,
+                                236,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 43,
+                            Name = "Arcane Master",
+                            DeckClass = ClassList.Arcanist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                33,
+                                35,
+                                37,
+                                41,
+                                42,
+                                44,
+                                46,
+                                51,
+                                229,
+                                1336,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -250,7 +439,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                250
+                                250,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 44,
+                            Name = "Master Swordsman",
+                            DeckClass = ClassList.Captain,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                7,
+                                11,
+                                13,
+                                250,
+                                259,
+                                262,
+                                264,
+                                266,
+                                336,
+                                1333,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 45,
+                            Name = "Ultimate Tactician",
+                            DeckClass = ClassList.Captain,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                206,
+                                212,
+                                249,
+                                254,
+                                260,
+                                261,
+                                263,
+                                265,
+                                335,
+                                1391,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 46,
+                            Name = "We Are Legion",
+                            DeckClass = ClassList.Captain,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                209,
+                                249,
+                                250,
+                                252,
+                                253,
+                                254,
+                                255,
+                                267,
+                                329,
+                                1331,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -282,7 +534,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                91
+                                91,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 47,
+                            Name = "Elemental Fury",
+                            DeckClass = ClassList.Elementalist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                20,
+                                34,
+                                87,
+                                88,
+                                90,
+                                91,
+                                93,
+                                95,
+                                99,
+                                1329,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 48,
+                            Name = "Push and Pull",
+                            DeckClass = ClassList.Elementalist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                9,
+                                89,
+                                92,
+                                94,
+                                97,
+                                98,
+                                101,
+                                110,
+                                140,
+                                229,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 49,
+                            Name = "Restore Balance",
+                            DeckClass = ClassList.Elementalist,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                9,
+                                33,
+                                46,
+                                90,
+                                91,
+                                96,
+                                100,
+                                236,
+                                1329,
+                                1344,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -314,7 +629,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                111
+                                111,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 50,
+                            Name = "Treant Wardens",
+                            DeckClass = ClassList.Grovewatcher,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                96,
+                                111,
+                                114,
+                                116,
+                                119,
+                                138,
+                                141,
+                                145,
+                                165,
+                                1341,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 51,
+                            Name = "Faerie Warriors",
+                            DeckClass = ClassList.Grovewatcher,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                115,
+                                117,
+                                118,
+                                120,
+                                139,
+                                170,
+                                201,
+                                203,
+                                205,
+                                1363,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 52,
+                            Name = "Deep Woodland",
+                            DeckClass = ClassList.Grovewatcher,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                89,
+                                101,
+                                110,
+                                111,
+                                112,
+                                114,
+                                139,
+                                140,
+                                168,
+                                188,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -346,7 +724,70 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                156
+                                156,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 53,
+                            Name = "Healers and Priests",
+                            DeckClass = ClassList.Lifebringer,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                117,
+                                118,
+                                156,
+                                157,
+                                159,
+                                163,
+                                160,
+                                170,
+                                208,
+                                166,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 54,
+                            Name = "Master Alchemist",
+                            DeckClass = ClassList.Lifebringer,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                158,
+                                1386,
+                                322,
+                                328,
+                                1381,
+                                232,
+                                164,
+                                114,
+                                334,
+                                168,
+                            },
+                            UpgradeIdList = new List<int>(),
+                        },
+                        new DeckSaveData()
+                        {
+                            Id = 55,
+                            Name = "Golden Army",
+                            DeckClass = ClassList.Lifebringer,
+                            IsNPCDeck = false,
+                            CardIdList = new List<int>()
+                            {
+                                165,
+                                159,
+                                161,
+                                156,
+                                162,
+                                205,
+                                169,
+                                167,
+                                120,
+                                201,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -378,7 +819,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                179
+                                179,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -410,7 +851,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                1332
+                                1332,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -442,7 +883,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                326
+                                326,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -474,7 +915,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                204
+                                204,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -506,7 +947,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                4
+                                4,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -538,7 +979,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                231
+                                231,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -570,7 +1011,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                1362
+                                1362,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -602,7 +1043,7 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                299
+                                299,
                             },
                             UpgradeIdList = new List<int>(),
                         },

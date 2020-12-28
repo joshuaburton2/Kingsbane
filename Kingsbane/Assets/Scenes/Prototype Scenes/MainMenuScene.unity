@@ -8850,7 +8850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.00006}
+  m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: -1220, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500413259
@@ -11334,9 +11334,9 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 513
   m_characterSpacing: 0
@@ -11512,7 +11512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 665, y: -50.00006}
+  m_AnchoredPosition: {x: 665, y: -50}
   m_SizeDelta: {x: -1430, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630308835
@@ -19439,7 +19439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -660, y: -50.00006}
+  m_AnchoredPosition: {x: -660, y: -50}
   m_SizeDelta: {x: -1420, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1020902791
@@ -32875,9 +32875,9 @@ MonoBehaviour:
   m_fontSize: 24
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 12
+  m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 513
   m_characterSpacing: 0
@@ -39894,7 +39894,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.50006}
+  m_AnchoredPosition: {x: 0, y: -52.5}
   m_SizeDelta: {x: 800, y: -295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2111280254
@@ -41258,11 +41258,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: synergyWeighting
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dffceaad4eff8b8478537273baa686a0, type: 3}

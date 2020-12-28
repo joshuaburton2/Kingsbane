@@ -2344,7 +2344,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Uncommon,
+            Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Arcane, Tags.Warden },
@@ -2397,7 +2397,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Uncommon,
+            Rarity = Rarity.Rare,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.ManaGain, Tags.Equip },
@@ -2474,7 +2474,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Uncommon,
+            Rarity = Rarity.Rare,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.SingleRemoval, Tags.Transform },
@@ -2558,7 +2558,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Rare,
+            Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.StudyGain, Tags.Scholar },
@@ -2587,7 +2587,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Rare,
+            Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Arcanist },
@@ -2616,7 +2616,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Rare,
+            Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.SplitDamage, Tags.SingleDamage },
@@ -2665,7 +2665,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Arcanist,
-            Rarity = Rarity.Epic,
+            Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Arcanist, Tags.Elven, Tags.Warden, Tags.Deployment, Tags.LastRites },
@@ -3660,7 +3660,7 @@ Deal damage to your hero equal to half their remaining health",
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage, Synergies.Fire },
             SpellType = "Damage",
             Range = 4,
         };
@@ -3684,7 +3684,7 @@ Deal damage to your hero equal to half their remaining health",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Ability, Tags.Empowered, Tags.Elementalist, Tags.Fire, Tags.Goblin },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Midrange, Synergies.Goblin },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Midrange, Synergies.Goblin, Synergies.Fire },
             UnitTag = "Goblin Elementalist",
             Attack = 1,
             Health = 2,
@@ -3713,7 +3713,7 @@ Deal damage to your hero equal to half their remaining health",
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Stun, Tags.SingleDamage, Tags.Water },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Stun, Synergies.SingleDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Stun, Synergies.SingleDamage, Synergies.Water },
             SpellType = "Damage",
             Range = 3,
         };
@@ -3737,7 +3737,7 @@ Deal damage to your hero equal to half their remaining health",
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Air },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage, Synergies.Air },
             SpellType = "Damage",
             Range = 0,
         };
@@ -3785,7 +3785,7 @@ Deal damage to your hero equal to half their remaining health",
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Elementalist, Tags.Water, Tags.ForceMove },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.ForceMove, Synergies.Water },
             UnitTag = "Elven Elementalist",
             Attack = 3,
             Health = 5,
@@ -3815,7 +3815,7 @@ Whenever this unit takes damage from an Air spell or unit, it heals for the dama
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Flying, Tags.Air, Tags.Elemental },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Flying },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Flying, Synergies.Air },
             UnitTag = "Elemental Summon",
             Attack = 7,
             Health = 5,
@@ -3845,7 +3845,7 @@ Whenever this unit takes damage from an Earth spell or unit, it heals for the da
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Elemental, Tags.Earth },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Earth },
             UnitTag = "Elemental Summon",
             Attack = 4,
             Health = 12,
@@ -3875,7 +3875,7 @@ Whenever this unit takes damage from a Fire spell or unit, it heals for the dama
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Summon, Tags.Prepared, Tags.Fire, Tags.Elemental },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Prepared },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Prepared, Synergies.Fire },
             UnitTag = "Elemental Summon",
             Attack = 8,
             Health = 6,
@@ -3931,7 +3931,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Stun, Tags.Summon, Tags.Water, Tags.Elemental },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Stun, Synergies.Summon, Synergies.Mana, Synergies.BigMinions },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Stun, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Water },
             UnitTag = "Elemental Summon",
             Attack = 5,
             Health = 9,
@@ -3960,7 +3960,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Empowered, Tags.Elementalist, Tags.Earth, Tags.Root },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Root },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Root, Synergies.Earth },
             UnitTag = "Dwarven Elementalist",
             Attack = 3,
             Health = 5,
@@ -4013,7 +4013,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Deployment, Tags.Elementalist, Tags.Air, Tags.CycleMinus },
-            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.ShortRange, Synergies.Wild },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.ShortRange, Synergies.Wild, Synergies.Air },
             UnitTag = "Human Elementalist",
             Attack = 3,
             Health = 3,
@@ -4042,7 +4042,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.SingleDamage, Tags.ForceMove, Tags.Earth },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.SingleDamage, Synergies.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.SingleDamage, Synergies.ForceMove, Synergies.Earth },
             SpellType = "Damage",
             Range = 3,
         };
@@ -4066,7 +4066,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Air, Tags.ForceMove },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Air },
             SpellType = "Damage",
             Range = 4,
         };
@@ -4090,7 +4090,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Earth },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Wild },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Wild, Synergies.Earth },
             SpellType = "Damage",
             Range = 5,
         };
@@ -4114,7 +4114,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.Mana, Synergies.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.Mana, Synergies.ForceMove, Synergies.Fire },
             SpellType = "Damage",
             Range = 3,
         };
@@ -4140,7 +4140,7 @@ Reduce the cost of all spells generated by this unit to 0.
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Elementalist, Tags.Fire, Tags.Water, Tags.Air, Tags.Earth, Tags.CycleMinus },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Mana, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.ShortRange, Synergies.Cycle, Synergies.Wild },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Mana, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.ShortRange, Synergies.Cycle, Synergies.Wild, Synergies.Fire, Synergies.Water, Synergies.Air, Synergies.Earth },
             UnitTag = "Human Elementalist",
             Attack = 5,
             Health = 5,
@@ -4170,7 +4170,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Stun, Tags.AreaDamage, Tags.Water, Tags.ForceMove },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Stun, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Stun, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage, Synergies.Mana, Synergies.ForceMove, Synergies.Water },
             SpellType = "Damage",
             Range = 0,
         };
@@ -5154,7 +5154,7 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Grovewatcher,
-            Rarity = Rarity.Rare,
+            Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Deployment, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant },
@@ -5238,7 +5238,7 @@ Cycle -6</b>",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Grovewatcher,
-            Rarity = Rarity.Epic,
+            Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Warden, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant, Tags.Unleash },
@@ -8443,7 +8443,7 @@ Can target <b>Stealth</b> units
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            Text = @"Give your equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Gear"" item",
+            Text = @"Give an equipped item +2 Durability. If you do not have an item equipped, equip a ""Battle Gear"" item",
             LoreText = @"",
             Notes = @"",
 
@@ -12368,8 +12368,8 @@ Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
         var card1396 = new UnitData()
         {
             Id = 1396,
-            Name = "Escape Artist",
-            ImageTag = CardImageTags.Escape_Artist,
+            Name = "Medlar Fence",
+            ImageTag = CardImageTags.Medlar_Fence,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), new Resource(CardResources.Knowledge, 3), },
 
@@ -12613,7 +12613,7 @@ namespace CategoryEnums
 
     public enum Synergies
     {
-        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery, Spies, Exchanges
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery, Spies, Exchanges, Fire, Water, Air, Earth
     }
 
     public enum Sets
@@ -12623,6 +12623,6 @@ namespace CategoryEnums
 
     public enum CardImageTags
     {
-        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flury, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Escape_Artist, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Magzix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warlord, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Studious_Inspiration, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
+        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flury, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Magzix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Fence, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warlord, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Studious_Inspiration, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
     }
 }

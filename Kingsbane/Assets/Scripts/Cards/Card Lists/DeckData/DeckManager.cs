@@ -41,6 +41,22 @@ public class DeckManager : MonoBehaviour
         //Filters out any NPC decks
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
+        //Moves the Empty Deck Template to the begining of the template list and shift everything else in alphabetical order up
+        for (int i = 0; i < deckSaveTemplates.Count; i++)
+        {
+            if (deckSaveTemplates[i].Name == "Empty Deck")
+            {
+                var emptyDeckTemplate = deckSaveTemplates[i];
+                //Move down from where the empty deck is and shift all decks one unit up to replace it
+                for (int j = i; j > 0; j--)
+                {
+                    deckSaveTemplates[j] = deckSaveTemplates[j - 1];
+                }
+                //Replace the first element in the list with the empty deck
+                deckSaveTemplates[0] = emptyDeckTemplate;
+            }
+        }
+
         return ConvertDeckSave(deckSaveTemplates, true);
     }
 
