@@ -280,7 +280,10 @@ namespace Kingsbane.App
                     sb.AppendLine($"                            {{");
                     foreach (var card in deck.DeckCards)
                     {
-                        sb.AppendLine($"                                {card.CardId},");
+                        for (int i = 0; i < card.Count; i++)
+                        {
+                            sb.AppendLine($"                                {card.CardId},");
+                        }
                     }
                     sb.AppendLine($"                            }},");
                     var commaText = deck.NPCDeck ? "" : ",";
