@@ -177,13 +177,21 @@ namespace Kingsbane.App
             {
                 return false;
             }
-            var deckList = selectedDeck.DeckCards.Select(x => x.Card).ToList();
-            var cardList = deckList.Select(x => new CardListItem { Id = x.Id, Name = x.Name, CardType = x.CardTypeId, Class = x.CardClassId, Rarity = x.RarityId });
+            var cardList = selectedDeck.DeckCards.Select(x => new CardListItem
+            {
+                Id = x.Card.Id,
+                Name = x.Card.Name,
+                Count = x.Count,
+                CardType = x.Card.CardTypeId,
+                Class = x.Card.CardClassId,
+                Rarity = x.Card.RarityId
+            });
 
             foreach (var card in cardList)
             {
                 var listItem = new ListViewItem(card.Id.ToString());
                 listItem.SubItems.Add(card.Name);
+                listItem.SubItems.Add(card.Count.ToString());
                 listItem.SubItems.Add(card.CardType.ToString());
                 listItem.SubItems.Add(card.Class.ToString());
                 listItem.SubItems.Add(card.Rarity.ToString());
@@ -402,7 +410,15 @@ namespace Kingsbane.App
             if (result == DialogResult.OK)
             {
                 var newCard = _context.Cards.FirstOrDefault(x => x.Id == formSelectionList.selectionItem.Id);
-                _context.DeckCards.Add(new DeckCard { Card = newCard, Deck = selectedDeck });
+                if (_context.DeckCards.Where(x => x.Deck == selectedDeck).Select(x => x.CardId).Contains(newCard.Id))
+                {
+                    _context.DeckCards.FirstOrDefault(x => x.CardId == newCard.Id && x.Deck == selectedDeck).Count += 1;
+                }
+                else
+                {
+                    _context.DeckCards.Add(new DeckCard { Card = newCard, Deck = selectedDeck, Count = 1 });
+                }
+                
                 _context.SaveChanges();
 
                 RefreshDeckCardList();
@@ -412,8 +428,16 @@ namespace Kingsbane.App
         private void lstDeckList_DoubleClick(object sender, EventArgs e)
         {
             var id = (int)lstDeckList.SelectedItems[0].Tag;
-            var selectedDeckCard = selectedDeck.DeckCards.Single(x => x.CardId == id);
-            _context.DeckCards.Remove(selectedDeckCard);
+            var selectedDeckCard = selectedDeck.DeckCards.Single(x => x.CardId == id && x.Deck == selectedDeck);
+            if (selectedDeckCard.Count == 1)
+            {
+                _context.DeckCards.Remove(selectedDeckCard);
+            }
+            else
+            {
+                _context.DeckCards.Single(x => x == selectedDeckCard).Count--;
+            }
+            
             _context.SaveChanges();
             RefreshDeckCardList();
         }

@@ -80,6 +80,7 @@
             this.lstUpgrades = new System.Windows.Forms.ListBox();
             this.btnAddUpgrade = new System.Windows.Forms.Button();
             this.lblUpgrades = new System.Windows.Forms.Label();
+            this.colCount = new System.Windows.Forms.ColumnHeader();
             this.grpNPCProperties.SuspendLayout();
             this.grpResouce2.SuspendLayout();
             this.grpResource1.SuspendLayout();
@@ -287,6 +288,7 @@
             this.lstDeckList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colId,
             this.colName,
+            this.colCount,
             this.colType,
             this.colClass,
             this.colRarity});
@@ -306,6 +308,7 @@
             // 
             this.colId.Name = "colId";
             this.colId.Text = "Id";
+            this.colId.Width = 50;
             // 
             // colName
             // 
@@ -317,7 +320,6 @@
             // 
             this.colType.Name = "colType";
             this.colType.Text = "Type";
-            this.colType.Width = 80;
             // 
             // colClass
             // 
@@ -558,6 +560,12 @@
             this.lblUpgrades.TabIndex = 26;
             this.lblUpgrades.Text = "Upgrades";
             // 
+            // colCount
+            // 
+            this.colCount.Name = "colCount";
+            this.colCount.Text = "Count";
+            this.colCount.Width = 50;
+            // 
             // formEditClasses
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -663,5 +671,6 @@
         private System.Windows.Forms.ListBox lstUpgrades;
         private System.Windows.Forms.Button btnAddUpgrade;
         private System.Windows.Forms.Label lblUpgrades;
+        private System.Windows.Forms.ColumnHeader colCount;
     }
 }

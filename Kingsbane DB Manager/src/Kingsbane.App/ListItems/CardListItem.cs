@@ -9,6 +9,7 @@ namespace Kingsbane.App
     {
         public int Id { get; internal set; }
         public string Name { get; internal set; }
+        public int Count { get; set; }
         public CardTypes CardType { get; internal set; }
         public CardClasses Class { get; internal set; }
         public CardRarities Rarity { get; internal set; }
