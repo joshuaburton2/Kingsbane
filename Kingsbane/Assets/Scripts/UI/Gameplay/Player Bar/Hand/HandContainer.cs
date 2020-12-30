@@ -29,7 +29,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
     private const float defaultScalingFactor = 0.20f;
 
-    
+
 
     /// <summary>
     /// 
@@ -40,6 +40,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         HandUI _handUI,
         int _handIndex,
         T objectData,
+        bool showCard,
         string containerName = "",
         float scalingFactor = defaultScalingFactor,
         bool cardMoveUpward = true)
@@ -47,13 +48,11 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         HandUI = _handUI;
         HandIndex = _handIndex;
         isSelected = false;
+        CardMoveUpward = cardMoveUpward;
 
         var directionMod = CardMoveUpward ? 1 : -1;
         buttonArea.transform.localPosition *= directionMod;
         buttonArea.SetActive(false);
-        ShowCardBack(false);
-
-        CardMoveUpward = cardMoveUpward;
 
         transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
 
@@ -61,7 +60,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         switch (type)
         {
             case Type _ when type == typeof(Card):
-                var cardData = (CardData)(object)objectData;
+                var cardData = (Card)(object)objectData;
                 var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, gameObject.transform.parent, scalingFactor);
                 newCardObj.name = containerName;
 
@@ -81,6 +80,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
                 DisplayObject = newUpgradeObj;
                 break;
         }
+
+        ShowCard(showCard);
     }
 
     public void SelectDisplay(bool toSelect)
@@ -88,16 +89,22 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         if (isSelected || toSelect)
         {
             isSelected = toSelect;
-            var directionMod = CardMoveUpward ? 1 : -1;
-            var transformVector = new Vector3(0, (toSelect ? 1 : -1) * ySelectionOffset * directionMod);
-            DisplayObject.transform.localPosition += transformVector;
+            MoveCard(toSelect);
 
             if (CardDisplay != null)
-                buttonArea.SetActive(toSelect);
+                if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+                    buttonArea.SetActive(toSelect);
 
             if (toSelect)
                 HandUI.SelectDisplay(HandIndex);
         }
+    }
+
+    private void MoveCard(bool toMoveOut)
+    {
+        var directionMod = CardMoveUpward ? 1 : -1;
+        var transformVector = new Vector3(0, (toMoveOut ? 1 : -1) * ySelectionOffset * directionMod);
+        DisplayObject.transform.localPosition += transformVector;
     }
 
     /// <summary>
@@ -126,8 +133,11 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void ShowCardBack(bool toShow)
+    public void ShowCard(bool toShow)
     {
-        cardBack.SetActive(toShow);
+        if (isSelected)
+            MoveCard(false);
+
+        cardBack.SetActive(!toShow);
     }
 }

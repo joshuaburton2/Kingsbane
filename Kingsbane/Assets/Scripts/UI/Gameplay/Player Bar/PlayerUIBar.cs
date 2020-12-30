@@ -6,6 +6,7 @@ public class PlayerUIBar : MonoBehaviour
 {
     public int Id { get; set; }
     private Player Player { get { return GameManager.instance.GetPlayer(Id); } }
+    public bool IsActivePlayerBar { get { return Id == GameManager.instance.ActivePlayerId; } }
 
     [Header("Bar Controllers")]
     [SerializeField]
@@ -21,6 +22,11 @@ public class PlayerUIBar : MonoBehaviour
     {
         Id = _id;
 
-        handUI.DisplayHandList(Player.Upgrades);
+        handUI.DisplayHandList(Player.Upgrades, true);
+    }
+
+    public void RefreshPlayerBar()
+    {
+        handUI.DisplayHandList(Player.Hand.cardList, IsActivePlayerBar);
     }
 }

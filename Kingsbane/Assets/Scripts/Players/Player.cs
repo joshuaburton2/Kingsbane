@@ -7,6 +7,8 @@ using System;
 
 public class Player
 {
+    public const int MULLIGAN_SIZE = 4;
+
     public string Name { get { return DeckData.Name; } }
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
 
@@ -34,7 +36,12 @@ public class Player
         DeployedUnits = new List<UnitCounter>();
 
         Resources = DeckData.PlayerResources;
+    }
 
+    public void InitialisePlayer()
+    {
+        Deck.Shuffle();
+        DrawMulligan();
     }
 
     /// <summary>
@@ -67,9 +74,18 @@ public class Player
     }
 
     #region Draw Functions
+    public void DrawMulligan()
+    {
+        var cardsToMulligan = Hand.cardList.ToList();
+        Hand.EmptyList();
+        Draw(MULLIGAN_SIZE);
+        Deck.ShuffleIntoDeck(cardsToMulligan);
+    }
+
     public void Draw()
     {
         var drawnCard = Deck.Draw();
+        Debug.Log(Deck.cardList.Count());
 
         if (drawnCard != null)
         {

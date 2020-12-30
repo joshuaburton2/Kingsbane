@@ -85,13 +85,23 @@ public class Deck : CardList
     /// Shuffle a card into a random position in the deck
     /// 
     /// </summary>
-    /// <param name="card">The card to shuffle</param>
     public void ShuffleIntoDeck(Card card)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = Random.Range(0, DeckCount + 1);
 
         AddToDeck(card, randPos);
+    }
+
+    /// <summary>
+    /// 
+    /// Shuffle a list of cards into random posistions in the deck
+    /// 
+    /// </summary>
+    public void ShuffleIntoDeck(List<Card> cards)
+    {
+        foreach (var card in cards)
+            ShuffleIntoDeck(card);
     }
 
     /// <summary>
@@ -154,5 +164,5 @@ public class Deck : CardList
         }
     }
 
-   
+    
 }

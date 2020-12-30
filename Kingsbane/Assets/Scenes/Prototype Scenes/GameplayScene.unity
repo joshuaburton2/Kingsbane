@@ -414,7 +414,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 70
+  orthographic size: 73
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -791,26 +791,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CardDetailDisplay
-      objectReference: {fileID: 0}
-    - target: {fileID: 947949829028271838, guid: 40d556606fb9ee946a1dfa59bc7b3ecf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1223024380}
-    - target: {fileID: 947949829028271838, guid: 40d556606fb9ee946a1dfa59bc7b3ecf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 947949829069727491, guid: 40d556606fb9ee946a1dfa59bc7b3ecf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1223024380}
-    - target: {fileID: 947949829069727491, guid: 40d556606fb9ee946a1dfa59bc7b3ecf,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40d556606fb9ee946a1dfa59bc7b3ecf, type: 3}
@@ -1276,7 +1256,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00008010864
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
@@ -1921,18 +1901,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dffceaad4eff8b8478537273baa686a0, type: 3}
---- !u!114 &1223024380 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8891978396315567744, guid: dffceaad4eff8b8478537273baa686a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1223024379}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976e53a32283adc469e965072b522c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1226916770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,7 +2070,7 @@ PrefabInstance:
     - target: {fileID: 8839209130521398564, guid: c331bbf5b4c57d1458fe87f3f70ab1b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8839209130521398564, guid: c331bbf5b4c57d1458fe87f3f70ab1b3,
         type: 3}
@@ -2715,7 +2683,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3140,6 +3108,10 @@ MonoBehaviour:
     activeGamePhase: 2
     effectPrefab: {fileID: 458644679549954813, guid: b00031117d85f184a846be46d0b429ef,
       type: 3}
+  - effectType: 2
+    activeGamePhase: 3
+    effectPrefab: {fileID: 7954373625630920079, guid: dde1c0bfc4aa5de44bd0bfdbd543532d,
+      type: 3}
   gameplayUI: {fileID: 1873261933}
 --- !u!1 &1715897741
 GameObject:
@@ -3386,26 +3358,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1873261932}
     m_Modifications:
-    - target: {fileID: 5192576569060208789, guid: e0201e7cddb103341a846b5162015f92,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1223024380}
-    - target: {fileID: 5192576569060208789, guid: e0201e7cddb103341a846b5162015f92,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 5192576569386107412, guid: e0201e7cddb103341a846b5162015f92,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1223024380}
-    - target: {fileID: 5192576569386107412, guid: e0201e7cddb103341a846b5162015f92,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ClosePanel
-      objectReference: {fileID: 0}
     - target: {fileID: 5192576569490288200, guid: e0201e7cddb103341a846b5162015f92,
         type: 3}
       propertyPath: m_Name
@@ -4103,6 +4055,11 @@ PrefabInstance:
       propertyPath: cardMoveUpward
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3703786855776254251, guid: 5679a79d32e902946afb97572d5baab0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3703786856015901553, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4226,7 +4183,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00008010864
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856897069987, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}

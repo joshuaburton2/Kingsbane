@@ -32,7 +32,7 @@ public class Cell : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,15 +41,19 @@ public class Cell : MonoBehaviour
             {
                 if (hit.transform.name == transform.name)
                 {
-                    switch (GameManager.instance.effectManager.activeEffect)
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        case EffectManager.ActiveEffectTypes.Deployment:
-                            cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);
-                            occupantCounter = cellOccupant.GetComponent<UnitCounter>();
-                            break;
-                        case EffectManager.ActiveEffectTypes.None:
-                        default:
-                            break;
+                        switch (GameManager.instance.effectManager.activeEffect)
+                        {
+                            case EffectManager.ActiveEffectTypes.Deployment:
+                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);
+                                occupantCounter = cellOccupant.GetComponent<UnitCounter>();
+                                break;
+                        }
+                    }
+                    else if (Input.GetMouseButtonDown(1) && occupantCounter != null)
+                    {
+                        occupantCounter.ShowCardDetail();
                     }
                 }
             }

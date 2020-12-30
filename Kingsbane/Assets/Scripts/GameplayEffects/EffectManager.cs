@@ -17,7 +17,7 @@ public class EffectManager : MonoBehaviour
     Unit selectedUnit;
 
     [SerializeField]
-    private GameObject unitCounter;
+    private GameObject unitCounterPrefab;
 
     private void Update()
     {
@@ -58,7 +58,7 @@ public class EffectManager : MonoBehaviour
 
     public GameObject DeployUnit (Unit unit, Transform parent, Cell cell)
     {
-        var createdCounter = Instantiate(unitCounter, parent);
+        var createdCounter = Instantiate(unitCounterPrefab, parent);
 
         var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
         unitCounterScript.InitUnitCounter(unit, cell);
@@ -71,13 +71,27 @@ public class EffectManager : MonoBehaviour
     public void RemoveAllPlayerUnits(Player player)
     {
         foreach (var unitCounter in player.DeployedUnits)
-            Destroy(unitCounter.gameObject);
-
+        {
+            DestroyUnitCounter(unitCounter);
+        }
+            
         player.DeployedUnits.Clear();
     }
 
     public void RemoveUnit(UnitCounter unitCounter)
     {
+        DestroyUnitCounter(unitCounter);
+        unitCounter.Owner.DeployedUnits.Remove(unitCounter);
+    }
 
+    private void DestroyUnitCounter(UnitCounter unitCounter)
+    {
+        Destroy(unitCounter.gameObject);
+        unitCounter.Cell.occupantCounter = null;
+    }
+
+    public void MulliganHand()
+    {
+        GameManager.instance.GetActivePlayer().DrawMulligan();
     }
 }

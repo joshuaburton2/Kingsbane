@@ -142,6 +142,11 @@ public class GameManager : MonoBehaviour
         LoadedScenarioId = scenarioId;
     }
 
+    /// <summary>
+    /// 
+    /// Gets the active player
+    /// 
+    /// </summary>
     public Player GetActivePlayer()
     {
         if (ActivePlayerId.HasValue)
@@ -176,6 +181,9 @@ public class GameManager : MonoBehaviour
     {
         ActivePlayerId = 0;
         CurrentGamePhase = GamePhases.HeroDeploy;
+
+        foreach (var player in LoadedPlayers)
+            player.InitialisePlayer();
     }
 
     public bool NextPlayerTurn()
@@ -184,6 +192,12 @@ public class GameManager : MonoBehaviour
         if (ActivePlayerId == NumPlayers)
         {
             ActivePlayerId = 0;
+
+            if (CurrentGamePhase == GamePhases.HeroDeploy || CurrentGamePhase == GamePhases.Mulligan)
+            {
+                CurrentGamePhase++;
+            }
+
             return true;
         }
         return false;

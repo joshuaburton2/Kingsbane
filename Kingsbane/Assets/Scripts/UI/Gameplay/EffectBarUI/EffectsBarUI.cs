@@ -12,6 +12,8 @@ public class EffectsBarUI : MonoBehaviour
         Default,
         [Description("Play Hero")]
         PlayHero,
+        [Description("Mulligan Hand")]
+        MulliganHand,
     }
 
     [Serializable]

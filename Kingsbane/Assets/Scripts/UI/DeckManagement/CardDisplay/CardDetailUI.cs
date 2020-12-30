@@ -79,4 +79,14 @@ public class CardDetailUI : MonoBehaviour
         textObject.text = $"{typeof(T)}: {connectedList}";
         textObject.text = textObject.text.Replace("CategoryEnums.", "");
     }
+
+    /// <summary>
+    /// 
+    /// Button click event for closing the panel
+    /// 
+    /// </summary>
+    public void CloseCardDetail()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -144,6 +144,17 @@ namespace CategoryEnums
                             CardIdList = new List<int>()
                             {
                                 2,
+                                10,
+                                4,
+                                5,
+                                6,
+                                7,
+                                8,
+                                11,
+                                13,
+                                13,
+                                34,
+                                43,
                             },
                             UpgradeIdList = new List<int>()
                             {
@@ -741,11 +752,11 @@ namespace CategoryEnums
                                 156,
                                 157,
                                 159,
-                                163,
                                 160,
+                                163,
+                                166,
                                 170,
                                 208,
-                                166,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -757,16 +768,16 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
+                                114,
                                 158,
-                                1386,
+                                164,
+                                168,
+                                232,
                                 322,
                                 328,
-                                1381,
-                                232,
-                                164,
-                                114,
                                 334,
-                                168,
+                                1381,
+                                1386,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -778,16 +789,16 @@ namespace CategoryEnums
                             IsNPCDeck = false,
                             CardIdList = new List<int>()
                             {
-                                165,
+                                120,
+                                156,
                                 159,
                                 161,
-                                156,
                                 162,
-                                205,
-                                169,
+                                165,
                                 167,
-                                120,
+                                169,
                                 201,
+                                205,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -1057,5 +1068,6 @@ namespace CategoryEnums
                     },
                 },
         };
+
     }
 }

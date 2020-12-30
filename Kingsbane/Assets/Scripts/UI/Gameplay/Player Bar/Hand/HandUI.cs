@@ -16,7 +16,7 @@ public class HandUI : MonoBehaviour
 
     private List<HandContainer> containerList;
 
-    public void DisplayHandList <T>(List<T> handList)
+    public void DisplayHandList <T>(List<T> handList, bool showHand)
     {
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
@@ -49,7 +49,7 @@ public class HandUI : MonoBehaviour
             }
             upgradeContainer.name = $"Container- {objectName}";
             var displayName = $"Name- {objectName}";
-            handContainer.InitHandContainer(this, index, handObject, objectName, scalingFactor, cardMoveUpward);
+            handContainer.InitHandContainer(this, index, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
 
             index++;
         }
@@ -63,6 +63,14 @@ public class HandUI : MonoBehaviour
             {
                 container.SelectDisplay(false);
             }
+        }
+    }
+
+    public void ShowHand(bool toShow)
+    {
+        foreach (var cardContainer in containerList)
+        {
+            cardContainer.ShowCard(!toShow);
         }
     }
 }

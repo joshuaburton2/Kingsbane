@@ -74,4 +74,14 @@ public class UpgradeDetailUI : MonoBehaviour
         //heroCardParent.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         GameManager.instance.libraryManager.CreateCardObject(heroCard, parent);
     }
+
+    /// <summary>
+    /// 
+    /// Button click event for closing the panel
+    /// 
+    /// </summary>
+    public void CloseUpgradeDetail()
+    {
+        gameObject.SetActive(false);
+    }
 }

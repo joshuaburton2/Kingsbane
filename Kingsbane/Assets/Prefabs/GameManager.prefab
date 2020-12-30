@@ -86,7 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb41e54d4bb12418a57b29c1473f07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitCounter: {fileID: 0}
+  unitCounterPrefab: {fileID: 2569808057702046814, guid: 8203e896cd73c944388e3d86f104a94f,
+    type: 3}
 --- !u!1 &4079478786538098655
 GameObject:
   m_ObjectHideFlags: 0

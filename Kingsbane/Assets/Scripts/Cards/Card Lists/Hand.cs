@@ -8,7 +8,6 @@ public class Hand : CardList
 
     public int HandCount { get { return cardList.Count; } }
 
-    #region Add to Hand Functions
     /// <summary>
     /// 
     /// Adds a card to the hand
@@ -59,6 +58,4 @@ public class Hand : CardList
 
         return failedCards;
     }
-
-    #endregion
 }

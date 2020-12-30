@@ -44,6 +44,8 @@ public class GameplayUI : MonoBehaviour
 
     public void ActionButton()
     {
+        var isNewRound = false;
+
         switch (GameManager.instance.CurrentGamePhase)
         {
             case GameManager.GamePhases.Menu:
@@ -55,15 +57,31 @@ public class GameplayUI : MonoBehaviour
                 ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
                 break;
             case GameManager.GamePhases.HeroDeploy:
-                var isNewRound = GameManager.instance.NextPlayerTurn();
+                isNewRound = GameManager.instance.NextPlayerTurn();
                 SetPlayerTurnText();
 
                 if (isNewRound)
                 {
-
+                    ShowCardDisplay();
+                    RefreshPlayerBar();
+                }
+                else
+                {
+                    ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
                 }
                 break;
             case GameManager.GamePhases.Mulligan:
+                isNewRound = GameManager.instance.NextPlayerTurn();
+                SetPlayerTurnText();
+
+                if (isNewRound)
+                {
+                    RefreshPlayerBar();
+                }
+                else
+                {
+                    RefreshPlayerBar();
+                }
                 break;
             case GameManager.GamePhases.Gameplay:
                 break;
@@ -86,15 +104,32 @@ public class GameplayUI : MonoBehaviour
         actionButton.interactable = state;
     }
 
-    private void HideCardDisplay()
+    private void ShowCardDisplay(Card card = null)
     {
-        cardDisplayArea.SetActive(false);
+        if (card != null)
+        {
+            cardDisplayArea.SetActive(true);
+            GameManager.DestroyAllChildren(cardDisplayParent);
+            GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayParent.transform, 0.25f);
+        }
+        else
+        {
+            cardDisplayArea.SetActive(false);
+        }
     }
 
-    private void ShowCardDisplay(Card card)
+    public void RefreshPlayerBar(int? id = null)
     {
-        cardDisplayArea.SetActive(true);
-        GameManager.DestroyAllChildren(cardDisplayParent);
-        GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayParent.transform, 0.25f);
+        if (id == null)
+        {
+            foreach (var playerBar in playerUIBars)
+            {
+                playerBar.RefreshPlayerBar();
+            }
+        }
+        else
+        {
+            playerUIBars[id.Value].RefreshPlayerBar();
+        }
     }
 }
