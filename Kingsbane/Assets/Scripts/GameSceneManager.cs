@@ -17,12 +17,21 @@ namespace CategoryEnums
 
 public class GameSceneManager : MonoBehaviour
 {
+    private bool SceneLoaded { get; set; }
+
     public SceneList ActiveScene
     {
         get
         {
-            Enum.TryParse(SceneManager.GetActiveScene().name, out SceneList result);
-            return result;
+            try
+            {
+                Enum.TryParse(SceneManager.GetActiveScene().name, out SceneList result);
+                return result;
+            }
+            catch
+            {
+                throw new Exception("Scene Name does not exist in Scene List");
+            }
         }
     }
 
@@ -47,6 +56,7 @@ public class GameSceneManager : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
+        SceneLoaded = false;
         SceneManager.sceneUnloaded += OldSceneUnloaded;
         SceneManager.sceneLoaded += NewSceneLoaded;
     }
@@ -78,16 +88,21 @@ public class GameSceneManager : MonoBehaviour
     /// <param name="mode"></param>
     private void NewSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == SceneList.MainMenuScene.ToString())
+        if (!SceneLoaded)
         {
-            GameManager.instance.uiManager.SyncMenuPages();
-        }
-        else if (scene.name == SceneList.GameplayScene.ToString())
-        {
-            GameManager.instance.CheckGameLoad();
-            GameManager.instance.InitialiseGameplayScene();
+            if (scene.name == SceneList.MainMenuScene.ToString())
+            {
+                GameManager.instance.uiManager.SyncMenuPages();
+            }
+            else if (scene.name == SceneList.GameplayScene.ToString())
+            {
+                GameManager.instance.CheckGameLoad();
+                GameManager.instance.InitialiseGameplayScene();
 
-            GameManager.instance.uiManager.SyncGameplayPages();
+                GameManager.instance.uiManager.SyncGameplayPages();
+            }
+
+            SceneLoaded = true;
         }
     }
 

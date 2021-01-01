@@ -31,7 +31,7 @@ public class GameplayUI : MonoBehaviour
     public void InitialiseUI()
     {
         cardDisplayArea.SetActive(false);
-
+        
         var counter = 0;
         foreach (var playerBar in playerUIBars)
         {
