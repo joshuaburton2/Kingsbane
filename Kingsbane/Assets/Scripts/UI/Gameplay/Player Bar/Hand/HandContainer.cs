@@ -84,12 +84,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         ShowCard(showCard);
     }
 
-    public void SelectDisplay(bool toSelect)
+    public void SelectDisplay(bool toSelect, bool isSelectedCard)
     {
         if (isSelected || toSelect)
         {
-            HandUI.HideHandArea(toSelect, isSelected);
-            isSelected = toSelect;
             MoveCard(toSelect);            
 
             if (CardDisplay != null)
@@ -97,7 +95,17 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
                     buttonArea.SetActive(toSelect);
 
             if (toSelect)
+            {
+
                 HandUI.SelectDisplay(HandIndex);
+            }
+
+            if (isSelectedCard)
+            {
+                HandUI.HideHandArea(toSelect);
+            }
+
+            isSelected = toSelect;
         }
     }
 
@@ -130,7 +138,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            SelectDisplay(!isSelected);
+            SelectDisplay(!isSelected, true);
         }
     }
 

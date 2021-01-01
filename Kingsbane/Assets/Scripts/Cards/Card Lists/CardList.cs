@@ -15,7 +15,7 @@ public class CardList
 
     public void AddCard(Card card)
     {
-        cardList.Remove(card);
+        cardList.Add(card);
         cardList.OrderBy(x => x.TotalResource);
     }
 

@@ -23,10 +23,12 @@ public class PlayerUIBar : MonoBehaviour
         Id = _id;
 
         handUI.DisplayHandList(Player.Upgrades, true);
+        cardListsUI.InitCardLists(Player);
     }
 
     public void RefreshPlayerBar()
     {
         handUI.DisplayHandList(Player.Hand.cardList, IsActivePlayerBar);
+        cardListsUI.RefreshCurrentList();
     }
 }

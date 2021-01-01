@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// Script for handling the tabs in the library screen
 /// 
 /// </summary>
-public class LibraryTab : MonoBehaviour, IPointerClickHandler
+public class LibraryTab : MonoBehaviour
 {
     [SerializeField]
     private Image tabImage;
@@ -59,14 +59,11 @@ public class LibraryTab : MonoBehaviour, IPointerClickHandler
 
     /// <summary>
     /// 
-    /// Click handler for when tab is clicked
+    /// Button click event for selecting the tab
     /// 
     /// </summary>
-    public void OnPointerClick(PointerEventData eventData)
+    public void SelectTab()
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
-        {
-            libraryUI.SelectTab(tabIndex);
-        }
+        libraryUI.SelectTab(tabIndex);
     }
 }

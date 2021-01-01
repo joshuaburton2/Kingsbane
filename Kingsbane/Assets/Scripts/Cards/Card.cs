@@ -11,7 +11,7 @@ public class Card
     public CardData cardData;
 
     public int Id { get { return cardData.Id.Value; } }
-    public string CardName { get { return cardData.Name; } }
+    public string Name { get { return cardData.Name; } }
 
     public Rarity Rarity { get { return cardData.Rarity; } }
     public CardTypes Type { get { return cardData.CardType; } }
@@ -66,7 +66,7 @@ public class Card
                 }
                 else
                 {
-                    throw new Exception($"Card {CardName} is not a hero");
+                    throw new Exception($"Card {Name} is not a hero");
                 }
             }
 
@@ -103,7 +103,7 @@ public class Card
                 }
                 else
                 {
-                    throw new Exception($"Card {CardName} is not a hero");
+                    throw new Exception($"Card {Name} is not a hero");
                 }
             }
 

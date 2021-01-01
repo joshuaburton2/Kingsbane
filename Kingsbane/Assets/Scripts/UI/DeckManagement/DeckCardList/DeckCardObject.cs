@@ -11,9 +11,11 @@ using UnityEngine.UI;
 /// </summary>
 public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 {
-    CardData cardData;
+    CardData cardData;    
     private DeckListUI deckListUI;
     private int? deckId;
+
+    Card card;
 
     [SerializeField]
     TextMeshProUGUI nameText;
@@ -29,7 +31,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
     /// <summary>
     /// 
-    /// Initialise the object. Refreshes the text properties of the card
+    /// Initialise the object with card data. Refreshes the text properties of the card. Used for library lists
     /// 
     /// </summary>
     public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int numCards, int? _deckId = null)
@@ -41,10 +43,34 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
         nameText.text = cardData.Name;
         typeText.text = cardData.CardType.ToString();
+
         cardCountText.text = cardData.IsHero ? "Hero" : $"x{numCards}";
+
         rarityBorder.color = GameManager.instance.colourManager.GetRarityColour(cardData.Rarity, cardData.Class);
 
         totalCostText.text = StringHelpers.GenerateResourceText(cardData.GetResources);
+    }
+
+    /// <summary>
+    /// 
+    /// Initialise the object with a card. Refreshes the text properties of the card. Used for gameplay lists
+    /// 
+    /// </summary>
+    public void InitCardObject(Card _card)
+    {
+        card = _card;
+        cardData = card.cardData;
+
+        deckListUI = null;
+
+        nameText.text = card.Name;
+        typeText.text = card.Type.ToString();
+
+        cardCountText.gameObject.SetActive(false);
+
+        rarityBorder.color = GameManager.instance.colourManager.GetRarityColour(card.Rarity, card.CardClass);
+
+        totalCostText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
     }
 
     /// <summary>
@@ -60,11 +86,14 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
             GameManager.instance.uiManager.ActivateCardDetail(cardData);
         }
 
-        //Left click removes the card from the player deck
-        if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
-            var updatedDeck = GameManager.instance.deckManager.RemoveCardFromPlayerDeck(deckId.Value, cardData);
-            deckListUI.RefreshActiveDeckDetails(updatedDeck);
+            //Left click removes the card from the player deck
+            if (deckListUI != null && deckListUI.DeckEditMode)
+            {
+                var updatedDeck = GameManager.instance.deckManager.RemoveCardFromPlayerDeck(deckId.Value, cardData);
+                deckListUI.RefreshActiveDeckDetails(updatedDeck);
+            }
         }
     }
 }

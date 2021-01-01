@@ -25,7 +25,7 @@ public class HandUI : MonoBehaviour
 
     private List<HandContainer> containerList;
 
-    public void DisplayHandList <T>(List<T> handList, bool showHand)
+    public void DisplayHandList<T>(List<T> handList, bool showHand)
     {
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
@@ -34,7 +34,7 @@ public class HandUI : MonoBehaviour
         foreach (var handObject in handList)
         {
             var upgradeContainer = Instantiate(handContainerPrefab, this.handList.transform);
-            
+
             var handContainer = upgradeContainer.GetComponentInChildren<HandContainer>();
             containerList.Add(handContainer);
 
@@ -45,7 +45,7 @@ public class HandUI : MonoBehaviour
                 case Type _ when type == typeof(Card):
                     var card = (Card)(object)handObject;
 
-                    objectName = card.CardName;
+                    objectName = card.Name;
                     break;
                 case Type _ when type == typeof(UpgradeData):
                     var upgrade = (UpgradeData)(object)handObject;
@@ -72,18 +72,14 @@ public class HandUI : MonoBehaviour
         {
             if (selectedIndex != container.HandIndex)
             {
-                container.SelectDisplay(false);
+                container.SelectDisplay(false, false);
             }
         }
     }
 
-    public void HideHandArea(bool toHide, bool isSelected)
+    public void HideHandArea(bool toHide)
     {
-        if (isSelected)
-        {
-            handCountArea.alpha = toHide ? handCountHideAlpha : 1.0f;
-        }
-        
+        handCountArea.alpha = toHide ? handCountHideAlpha : 1.0f;
     }
 
     public void ShowHand(bool toShow)

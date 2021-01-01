@@ -31,6 +31,8 @@ public class Player
 
         Deck = new Deck(DeckData.CardList, this);
         Hand = new Hand();
+        Graveyard = new CardList();
+        Discard = new CardList();
         Upgrades = DeckData.UpgradeList;
         Hero = (Unit)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
@@ -88,8 +90,7 @@ public class Player
 
         if (drawnCard != null)
         {
-            //drawnCard.transform.parent = hand.gameObject.transform;
-            Hand.AddToHand(drawnCard);
+            AddToHand(drawnCard);
         }
         else
         {
@@ -105,13 +106,21 @@ public class Player
         {
             foreach (var drawnCard in drawnCards)
             {
-                //drawnCard.transform.parent = hand.gameObject.transform;
-                Hand.AddToHand(drawnCard);
+                AddToHand(drawnCard);
             }
         }
         else
         {
             Debug.Log("Deck is empty");
+        }
+    }
+
+    public void AddToHand(Card newCard)
+    {
+        var handFull = !Hand.AddToHand(newCard);
+        if (handFull)
+        {
+            Discard.AddCard(newCard);
         }
     }
 

@@ -41,7 +41,7 @@ public class UnitCounter : MonoBehaviour
         if (GameManager.instance.imageManager.IsDefaultImage(unit.CardArt))
         {
             nameArea.SetActive(true);
-            nameText.text = unit.CardName;
+            nameText.text = unit.Name;
             unitImage.sprite = null;
         }
         else

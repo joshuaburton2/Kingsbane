@@ -20,7 +20,7 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the object. Refreshes the text properties of the upgrade
     /// 
     /// </summary>
-    public void InitUpgradeObject(UpgradeData _upgradeData, DeckListUI _deckListUI, int? _deckId = null)
+    public void InitUpgradeObject(UpgradeData _upgradeData, DeckListUI _deckListUI = null, int? _deckId = null)
     {
         upgradeId = _upgradeData.Id.Value;
         upgradeData = _upgradeData;
@@ -45,11 +45,14 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
             GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData);
         }
 
-        //Left click removes the upgrade from the player deck
-        if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
+        if (deckListUI != null)
         {
-            //var updatedDeck = GameManager.instance.deckManager.RemoveUpgradeFromPlayerDeck(deckId.Value, upgradeData);
-            //deckListUI.RefreshActiveDeckCardList(updatedDeck);
+            //Left click removes the upgrade from the player deck
+            if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
+            {
+                //var updatedDeck = GameManager.instance.deckManager.RemoveUpgradeFromPlayerDeck(deckId.Value, upgradeData);
+                //deckListUI.RefreshActiveDeckCardList(updatedDeck);
+            }
         }
     }
 }

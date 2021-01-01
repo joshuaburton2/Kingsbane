@@ -76,7 +76,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     {
         card = _card;
 
-        cardName.text = card.CardName;
+        cardName.text = card.Name;
         classText.text = card.CardClass.ToString();
         cardText.text = card.Text;
         cardImage.sprite = card.CardArt;
