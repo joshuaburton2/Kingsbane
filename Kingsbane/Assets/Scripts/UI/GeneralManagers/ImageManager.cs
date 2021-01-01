@@ -81,4 +81,14 @@ public class ImageManager : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// 
+    /// Determines if the image of the card is the default image
+    /// 
+    /// </summary>
+    public bool IsDefaultImage(Sprite sprite)
+    {
+        return sprite == defaultImage;
+    }
 }

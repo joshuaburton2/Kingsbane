@@ -38,7 +38,7 @@ public class UnitCounter : MonoBehaviour
         unit = _unit;
         Cell = _cell;
         canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        if (unit.ImageTag == CardImageTags.Default)
+        if (GameManager.instance.imageManager.IsDefaultImage(unit.CardArt))
         {
             nameArea.SetActive(true);
             nameText.text = unit.CardName;

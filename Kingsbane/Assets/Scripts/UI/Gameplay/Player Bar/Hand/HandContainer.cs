@@ -88,8 +88,9 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     {
         if (isSelected || toSelect)
         {
+            HandUI.HideHandArea(toSelect, isSelected);
             isSelected = toSelect;
-            MoveCard(toSelect);
+            MoveCard(toSelect);            
 
             if (CardDisplay != null)
                 if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)

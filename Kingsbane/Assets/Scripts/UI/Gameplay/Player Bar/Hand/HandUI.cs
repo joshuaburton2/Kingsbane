@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HandUI : MonoBehaviour
 {
+    [Header("Hand Objects")]
     [SerializeField]
     private GameObject handList;
     [SerializeField]
@@ -13,6 +15,13 @@ public class HandUI : MonoBehaviour
     private float scalingFactor;
     [SerializeField]
     private bool cardMoveUpward; //True is the cards in hand move upward when clicked. False for downward
+    [Header("Hand Count Objects")]
+    [SerializeField]
+    private TextMeshProUGUI handCountText;
+    [SerializeField]
+    private CanvasGroup handCountArea;
+    [SerializeField]
+    private float handCountHideAlpha;
 
     private List<HandContainer> containerList;
 
@@ -53,6 +62,8 @@ public class HandUI : MonoBehaviour
 
             index++;
         }
+
+        handCountText.text = $"Cards in Hand: {handList.Count}";
     }
 
     public void SelectDisplay(int selectedIndex)
@@ -64,6 +75,15 @@ public class HandUI : MonoBehaviour
                 container.SelectDisplay(false);
             }
         }
+    }
+
+    public void HideHandArea(bool toHide, bool isSelected)
+    {
+        if (isSelected)
+        {
+            handCountArea.alpha = toHide ? handCountHideAlpha : 1.0f;
+        }
+        
     }
 
     public void ShowHand(bool toShow)

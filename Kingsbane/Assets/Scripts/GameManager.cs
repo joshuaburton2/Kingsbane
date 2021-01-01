@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
     public bool NextPlayerTurn()
     {
         ActivePlayerId++;
+
         if (ActivePlayerId == NumPlayers)
         {
             ActivePlayerId = 0;
@@ -198,8 +199,23 @@ public class GameManager : MonoBehaviour
                 CurrentGamePhase++;
             }
 
+            ActivePlayerStartTurn();
+
             return true;
         }
+
+        ActivePlayerStartTurn();
+        
         return false;
+    }
+
+    public void ActivePlayerStartTurn()
+    {
+        if (CurrentGamePhase == GamePhases.Gameplay)
+        {
+            var activePlayer = GetActivePlayer();
+
+            activePlayer.Draw();
+        }
     }
 }

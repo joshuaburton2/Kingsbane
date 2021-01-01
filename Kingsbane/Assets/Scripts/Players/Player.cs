@@ -85,7 +85,6 @@ public class Player
     public void Draw()
     {
         var drawnCard = Deck.Draw();
-        Debug.Log(Deck.cardList.Count());
 
         if (drawnCard != null)
         {

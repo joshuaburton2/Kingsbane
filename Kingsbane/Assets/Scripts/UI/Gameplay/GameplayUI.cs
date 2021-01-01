@@ -84,6 +84,11 @@ public class GameplayUI : MonoBehaviour
                 }
                 break;
             case GameManager.GamePhases.Gameplay:
+                isNewRound = GameManager.instance.NextPlayerTurn();
+                SetPlayerTurnText();
+
+                RefreshPlayerBar();
+
                 break;
             case GameManager.GamePhases.End:
                 break;
