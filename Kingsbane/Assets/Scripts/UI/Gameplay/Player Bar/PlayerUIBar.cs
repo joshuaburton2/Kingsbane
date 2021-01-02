@@ -8,6 +8,8 @@ public class PlayerUIBar : MonoBehaviour
     private Player Player { get { return GameManager.instance.GetPlayer(Id); } }
     public bool IsActivePlayerBar { get { return Id == GameManager.instance.ActivePlayerId; } }
 
+    [SerializeField]
+    private GameObject turnIndicator;
     [Header("Bar Controllers")]
     [SerializeField]
     private HandUI handUI;
@@ -24,11 +26,20 @@ public class PlayerUIBar : MonoBehaviour
 
         handUI.DisplayHandList(Player.Upgrades, true);
         cardListsUI.InitCardLists(Player);
+
+        turnIndicator.SetActive(false);
     }
 
     public void RefreshPlayerBar()
     {
+        UpdateTurnIndicator();
+
         handUI.DisplayHandList(Player.Hand.cardList, IsActivePlayerBar);
         cardListsUI.RefreshCurrentList();
+    }
+
+    public void UpdateTurnIndicator()
+    {
+        turnIndicator.SetActive(IsActivePlayerBar);
     }
 }

@@ -25,7 +25,12 @@ public class HandUI : MonoBehaviour
 
     private List<HandContainer> containerList;
 
-    public void DisplayHandList<T>(List<T> handList, bool showHand)
+    /// <summary>
+    /// 
+    /// Displays the hand list. Can input either a Card or UpgradeData list
+    /// 
+    /// </summary>
+    public void DisplayHandList<T>(List<T> handList, bool showHand) where T : class
     {
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
@@ -33,13 +38,14 @@ public class HandUI : MonoBehaviour
         int index = 0;
         foreach (var handObject in handList)
         {
-            var upgradeContainer = Instantiate(handContainerPrefab, this.handList.transform);
-
-            var handContainer = upgradeContainer.GetComponentInChildren<HandContainer>();
+            //Creates the hand object and script
+            var handContainerObject = Instantiate(handContainerPrefab, this.handList.transform);
+            var handContainer = handContainerObject.GetComponentInChildren<HandContainer>();
             containerList.Add(handContainer);
 
             var type = typeof(T);
             string objectName;
+            //Determines the type of list input (card or upgradeData)
             switch (type)
             {
                 case Type _ when type == typeof(Card):
@@ -53,40 +59,38 @@ public class HandUI : MonoBehaviour
                     objectName = upgrade.Name;
                     break;
                 default:
-                    objectName = "";
-                    break;
+                    throw new Exception("Not a valid list type");
             }
-            upgradeContainer.name = $"Container- {objectName}";
-            var displayName = $"Name- {objectName}";
+            //Sets the properties of the object
+            handContainerObject.name = $"Container- {objectName}";
             handContainer.InitHandContainer(this, index, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
 
             index++;
         }
 
+        //Sets the hand count text
         handCountText.text = $"Cards in Hand: {handList.Count}";
     }
 
-    public void SelectDisplay(int selectedIndex)
+    /// <summary>
+    /// 
+    /// Minimises all the non selected cards
+    /// 
+    /// </summary>
+    public void MinimiseNonSelectedCards(int selectedIndex)
     {
         foreach (var container in containerList)
-        {
             if (selectedIndex != container.HandIndex)
-            {
-                container.SelectDisplay(false, false);
-            }
-        }
+                container.MinimiseDisplay();
     }
 
-    public void HideHandArea(bool toHide)
+    /// <summary>
+    /// 
+    /// Hides the hand count area to prevent card blocking
+    /// 
+    /// </summary>
+    public void HideHandCountArea(bool toHide)
     {
         handCountArea.alpha = toHide ? handCountHideAlpha : 1.0f;
-    }
-
-    public void ShowHand(bool toShow)
-    {
-        foreach (var cardContainer in containerList)
-        {
-            cardContainer.ShowCard(!toShow);
-        }
     }
 }

@@ -54,7 +54,8 @@ public class GameplayUI : MonoBehaviour
                 GameManager.instance.StartGame();
                 SetPlayerTurnText();
 
-                ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
+                RefreshHeroDeployUI();
+
                 break;
             case GameManager.GamePhases.HeroDeploy:
                 isNewRound = GameManager.instance.NextPlayerTurn();
@@ -67,7 +68,7 @@ public class GameplayUI : MonoBehaviour
                 }
                 else
                 {
-                    ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
+                    RefreshHeroDeployUI();
                 }
                 break;
             case GameManager.GamePhases.Mulligan:
@@ -97,6 +98,13 @@ public class GameplayUI : MonoBehaviour
         }
 
         effectBarUI.RefreshEffectList();
+    }
+
+    private void RefreshHeroDeployUI()
+    {
+        foreach (var playerBar in playerUIBars)
+            playerBar.UpdateTurnIndicator();
+        ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
     }
 
     private void SetPlayerTurnText()

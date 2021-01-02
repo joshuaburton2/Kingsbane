@@ -29,8 +29,6 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
     private const float defaultScalingFactor = 0.20f;
 
-
-
     /// <summary>
     /// 
     /// Initialise the container object for a card
@@ -49,12 +47,13 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         HandIndex = _handIndex;
         isSelected = false;
         CardMoveUpward = cardMoveUpward;
-
+        
+        //Direction Mod is used to determine which way to move the card when it is clicked- varies depending on if the bar is at the top or bottom of the screen
         var directionMod = CardMoveUpward ? 1 : -1;
         buttonArea.transform.localPosition *= directionMod;
         buttonArea.SetActive(false);
 
-        transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
+        //transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
 
         var type = typeof(T);
         switch (type)
@@ -84,31 +83,53 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         ShowCard(showCard);
     }
 
-    public void SelectDisplay(bool toSelect, bool isSelectedCard)
+    /// <summary>
+    /// 
+    /// Selects the card in hand
+    /// 
+    /// </summary>
+    public void SelectDisplay()
     {
-        if (isSelected || toSelect)
+        //Sets the card being selected to the opposite of its current state
+        isSelected = !isSelected;
+
+        //Moves the card in or out depending on its state
+        MoveCard(isSelected);
+
+        //Only shows the buttons if there is a card display object (not an upgrade display)
+        if (CardDisplay != null)
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+                buttonArea.SetActive(isSelected);
+
+        //If the card is being selected, updates all other cards in hand to minimise
+        if (isSelected)
+            HandUI.MinimiseNonSelectedCards(HandIndex);
+
+        //Hides the hand count area based on whether the card is selected or not
+        HandUI.HideHandCountArea(isSelected);
+    }
+
+    /// <summary>
+    /// 
+    /// Minimises the card. To be called on the other cards in the hand if they are not the one being selected
+    /// 
+    /// </summary>
+    public void MinimiseDisplay()
+    {
+        //Only needs to be update if it is being selected
+        if (isSelected)
         {
-            MoveCard(toSelect);            
-
-            if (CardDisplay != null)
-                if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-                    buttonArea.SetActive(toSelect);
-
-            if (toSelect)
-            {
-
-                HandUI.SelectDisplay(HandIndex);
-            }
-
-            if (isSelectedCard)
-            {
-                HandUI.HideHandArea(toSelect);
-            }
-
-            isSelected = toSelect;
+            isSelected = false;
+            MoveCard(false);
         }
     }
 
+    /// <summary>
+    /// 
+    /// Moves the card in or out depending on if it is being selected or not
+    /// 
+    /// </summary>
+    /// <param name="toMoveOut">True if the card is being selected. False if the card is being deselected</param>
     private void MoveCard(bool toMoveOut)
     {
         var directionMod = CardMoveUpward ? 1 : -1;
@@ -136,17 +157,25 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
             }
         }
 
+        //Left click selects the card in hand
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            SelectDisplay(!isSelected, true);
+            SelectDisplay();
         }
     }
 
+    /// <summary>
+    /// 
+    /// Shows or hides the card with the card back
+    /// 
+    /// </summary>
     public void ShowCard(bool toShow)
     {
+        //Minimises the card if it is already selected
         if (isSelected)
-            MoveCard(false);
+            MinimiseDisplay();
 
+        //Shows or hides the card back
         cardBack.SetActive(!toShow);
     }
 }
