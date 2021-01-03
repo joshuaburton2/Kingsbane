@@ -10,6 +10,7 @@
         Legendary,
         Uncollectable,
         Hero,
-        NPCHero
+        NPCHero,
+        Deleted
     }
 }

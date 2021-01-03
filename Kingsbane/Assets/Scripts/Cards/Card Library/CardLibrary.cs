@@ -7599,7 +7599,7 @@ Deployment:</b> Add 2 Shivs to your hand",
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
             Text = @"<b>Deadly, Stalker, Stealth
-Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent additional <b>Bounty</b> of 3 Gold""",
+Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
             LoreText = @"",
             Notes = @"",
 
@@ -7753,7 +7753,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
-            Text = @"Whenever your hero attacks, give them <b>Deadly</b> until the end of your turn",
+            Text = @"Whenever your hero attacks, give them <b>Deadly</b> for that attack",
             LoreText = @"",
             Notes = @"",
 
@@ -7777,7 +7777,8 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
-            Text = @"<b>Summon, Stealth, Ethereal</b>",
+            Text = @"<b>Summon, Stealth, Ethereal</b>
+Whenever this attacks a unit, if the target has no adjacent allies, it takes double damage",
             LoreText = @"",
             Notes = @"",
 
@@ -7789,7 +7790,7 @@ Deployment:</b> Give an enemy unit ""<b>Last Rites:</b> Give your opponent addit
             Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Shadow },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
             UnitTag = "Shadow Summon",
-            Attack = 5,
+            Attack = 4,
             Health = 5,
             Range = 0,
             Speed = 4,
