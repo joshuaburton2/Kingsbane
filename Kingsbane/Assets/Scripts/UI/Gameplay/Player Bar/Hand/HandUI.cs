@@ -70,6 +70,7 @@ public class HandUI : MonoBehaviour
 
         //Sets the hand count text
         handCountText.text = $"Cards in Hand: {handList.Count}";
+        HideHandCountArea(false);
     }
 
     /// <summary>
