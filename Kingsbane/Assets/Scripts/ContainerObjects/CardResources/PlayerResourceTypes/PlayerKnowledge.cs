@@ -1,6 +1,7 @@
 ﻿using CategoryEnums;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
 
@@ -8,6 +9,7 @@ public class PlayerKnowledge : PlayerResource
 {
     private readonly int[] BASE_KNOWLEDGE_GAINS = new int[] { 2, 3, 4 };
     public readonly int IGNORANCE_THRESHOLD = 3;
+    private readonly int STAGNATION_MODIFIER = -1;
 
     public int BaseKnowledgeGain { get; set; }
     public int Stagnation { get; set; }
@@ -63,6 +65,30 @@ public class PlayerKnowledge : PlayerResource
 
     /// <summary>
     /// 
+    /// Functionality for triggering a study effect
+    /// 
+    /// </summary>
+    /// <param name="cardClass">The class of the card triggering the study effect. Used to identify which inspiration card to shuffle</param>
+    public void TriggerStudy(int studyVal, Player player, Classes.ClassList cardClass)
+    {
+        var inspirationCards = GameManager.instance.libraryManager.GetDictionaryList(Tags.Inspiration, new CardFilter(false));
+        var classCards = GameManager.instance.libraryManager.GetDictionaryList(cardClass, new CardFilter(false));
+        //Finds the required inpiration card
+        var inspirationCardData = inspirationCards.Intersect(classCards).FirstOrDefault();
+
+        //Shuffles the required number of inspiration cards into the deck
+        for (int i = 0; i < studyVal; i++)
+        {
+            var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, player);
+            player.Deck.ShuffleIntoDeck(inspirationCard);
+        }
+
+        //Modifies the players Stagnation each time they activate a Study effect
+        ModifyStagnation(STAGNATION_MODIFIER);
+    }
+
+    /// <summary>
+    /// 
     /// Update the players Knowledge base gain. 
     /// 
     /// </summary>
@@ -74,12 +100,32 @@ public class PlayerKnowledge : PlayerResource
 
     /// <summary>
     /// 
-    /// Reduces the player's Ignorance by 1 level
+    /// Reduces the player's stagnation by a given amount
+    /// 
+    /// </summary>
+    public int ModifyStagnation(int modifier)
+    {
+        return Stagnation = Mathf.Max(0, Stagnation + modifier);
+    }
+
+    /// <summary>
+    /// 
+    /// Reduces the player's Ignorance by 1 level. Should only be called through upgrades
     /// 
     /// </summary>
     public int ReduceIgnorance()
     {
         //Makes sure to have a lower bound on stagnation to prevent it from being negative
         return Stagnation =  Mathf.Max(0, Stagnation - IGNORANCE_THRESHOLD);
+    }
+
+    /// <summary>
+    /// 
+    /// Start of turn update for knowledge
+    /// 
+    /// </summary>
+    public override void StartOfTurnUpdate()
+    {
+        RefreshValue();
     }
 }

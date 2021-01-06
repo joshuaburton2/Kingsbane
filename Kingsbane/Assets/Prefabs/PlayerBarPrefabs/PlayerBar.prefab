@@ -2689,7 +2689,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3703786857399504617}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.7746479
+  m_Size: 0.75821596
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4606,7 +4606,7 @@ GameObject:
   - component: {fileID: 1843137861238033849}
   - component: {fileID: 2745565378300395038}
   m_Layer: 5
-  m_Name: DevotionDetail
+  m_Name: ResourceDetailUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

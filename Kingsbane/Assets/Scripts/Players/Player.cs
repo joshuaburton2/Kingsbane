@@ -46,6 +46,20 @@ public class Player
         DrawMulligan();
     }
 
+    public void StartOfTurn()
+    {
+        Draw();
+        ResourceStartOfTurnUpdate();
+    }
+
+    private void ResourceStartOfTurnUpdate()
+    {
+        foreach (var resource in Resources)
+        {
+            resource.StartOfTurnUpdate();
+        }
+    }
+
     /// <summary>
     /// 
     /// Calculates the difference in resources if an effect is to change them
@@ -74,6 +88,8 @@ public class Player
             resourceToChange.ModifyValue(resourceChange.Value);
         }
     }
+
+    
 
     #region Draw Functions
     public void DrawMulligan()

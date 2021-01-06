@@ -7,7 +7,7 @@ public class PlayerGold : PlayerResource
 {
     private readonly int DEFAULT_GOLD = 12;
     private readonly int[] BOUNTY_GAINS = new int[] { 1, 2, 3 };
-    private readonly int GOLD_INCREASE = 3;
+    private readonly int UPGRADE_GOLD_INCREASE = 3;
 
     public int BountyGain { get; set; }
 
@@ -61,8 +61,8 @@ public class PlayerGold : PlayerResource
     /// Increases Gold amount. Intended to be used through an upgrade
     /// 
     /// </summary>
-    public int IncreaseGold()
+    public int UpgradeIncreaseGold()
     {
-        return ModifyValue(GOLD_INCREASE);
+        return ModifyValue(UPGRADE_GOLD_INCREASE);
     }
 }

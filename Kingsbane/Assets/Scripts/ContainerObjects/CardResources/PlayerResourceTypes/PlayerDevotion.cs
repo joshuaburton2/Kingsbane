@@ -98,4 +98,14 @@ public class PlayerDevotion : PlayerResource
     {
         return LastingPrayer = numPrayerUnits + 1;
     }
+
+    /// <summary>
+    /// 
+    /// Start of turn update for devotion
+    /// 
+    /// </summary>
+    public override void StartOfTurnUpdate()
+    {
+        TriggerLastingPrayer();
+    }
 }

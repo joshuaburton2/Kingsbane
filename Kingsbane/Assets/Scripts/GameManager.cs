@@ -213,9 +213,7 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentGamePhase == GamePhases.Gameplay)
         {
-            var activePlayer = GetActivePlayer();
-
-            activePlayer.Draw();
+            GetActivePlayer().StartOfTurn();
         }
     }
 }

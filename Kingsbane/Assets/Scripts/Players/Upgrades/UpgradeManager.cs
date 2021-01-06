@@ -252,7 +252,7 @@ public class UpgradeManager : MonoBehaviour
                 break;
             case UpgradeTags.EmergencyReserves:
                 playerResource = deckData.GetPlayerResource(CardResources.Gold);
-                ((PlayerGold)playerResource).IncreaseGold();
+                ((PlayerGold)playerResource).UpgradeIncreaseGold();
                 break;
             case UpgradeTags.StimulateLearning:
                 playerResource = deckData.GetPlayerResource(CardResources.Knowledge);

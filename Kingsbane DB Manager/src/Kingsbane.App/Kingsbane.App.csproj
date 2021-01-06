@@ -19,12 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="formMapList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="formUpgradeList.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="formMapList.cs" />
+    <Compile Update="formUpgradeList.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,7 @@
 ﻿using CategoryEnums;
 using System;
+using System.Linq;
+using UnityEngine;
 
 [Serializable]
 
@@ -76,7 +78,7 @@ public class PlayerMana : PlayerResource
         base.ModifyValue(valueChange);
 
         //If the value is less than 0, it means there is an Overload value
-        CurrentOverload = Value < 0 ? - Value : 0;
+        CurrentOverload = Value < 0 ? -Value : 0;
 
         return Value;
     }
@@ -89,5 +91,15 @@ public class PlayerMana : PlayerResource
     public int ReduceOverload()
     {
         return PreviousOverload -= OVERLOAD_REDUCTION;
+    }
+
+    private void SetOverloadModifiers(Player player)
+    {
+        //Need to add Empowered debuff in here when determined how this is going to work
+
+        foreach (var unit in player.DeployedUnits.Select(x => x.unit))
+        {
+            //unit.Attack = Mathf.Max(1, )
+        }
     }
 }

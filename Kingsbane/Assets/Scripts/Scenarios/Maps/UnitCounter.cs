@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UnitCounter : MonoBehaviour
 {
-    private Unit unit;
+    public Unit unit;
     public Cell Cell { get; set; }
 
     [SerializeField]

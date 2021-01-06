@@ -83,4 +83,14 @@ public class PlayerEnergy : PlayerResource
     {
         return Surges += SURGE_INCREASE_VALUE;
     }
+
+    /// <summary>
+    /// 
+    /// Start of turn update for energy
+    /// 
+    /// </summary>
+    public override void StartOfTurnUpdate()
+    {
+        RefreshValue();
+    }
 }

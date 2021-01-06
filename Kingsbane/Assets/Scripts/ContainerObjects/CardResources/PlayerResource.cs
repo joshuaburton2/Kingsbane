@@ -38,4 +38,15 @@ public class PlayerResource : Resource
         ResourceType = playerResource.ResourceType;
         TierLevel = playerResource.TierLevel;
     }
+
+    /// <summary>
+    /// 
+    /// Function to be called at the start of each players turn for each of their resources. Function here should be empty,
+    /// and only certain resources are required to utilise it
+    /// 
+    /// </summary>
+    public virtual void StartOfTurnUpdate()
+    {
+
+    }
 }

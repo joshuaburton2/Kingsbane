@@ -32,18 +32,30 @@ public class CardFilter
 
     /// <summary>
     /// 
-    /// Default filter. Includes all cards except Uncollectable ones and Neutral Cards
+    /// If true generates the default filter. Includes all cards except Uncollectable ones and Neutral Cards
+    /// If false generates a blank filter
     /// 
     /// </summary>
-    public CardFilter()
+    public CardFilter(bool isDefault = true)
     {
-        SearchString = "";
-        CardTypeFilter = new List<CardTypes>() { CardTypes.Unit, CardTypes.Spell, CardTypes.Item };
-        RaritiyFilter = new List<Rarity>() { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary };
-        SetFilter = new List<Sets>();
-        foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
-            SetFilter.Add(set);
-        SetFilter.Remove(Sets.Default);
-        ClassPlayableFilter = Classes.ClassList.Default;
+        if (isDefault)
+        {
+            SearchString = "";
+            CardTypeFilter = new List<CardTypes>() { CardTypes.Unit, CardTypes.Spell, CardTypes.Item };
+            RaritiyFilter = new List<Rarity>() { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary };
+            SetFilter = new List<Sets>();
+            foreach (var set in Enum.GetValues(typeof(Sets)).Cast<Sets>())
+                SetFilter.Add(set);
+            SetFilter.Remove(Sets.Default);
+            ClassPlayableFilter = Classes.ClassList.Default;
+        }
+        else
+        {
+            SearchString = "";
+            CardTypeFilter = new List<CardTypes>();
+            RaritiyFilter = new List<Rarity>();
+            SetFilter = new List<Sets>();
+            ClassPlayableFilter = Classes.ClassList.Default;
+        }
     }
 }

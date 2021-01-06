@@ -95,6 +95,8 @@ public class PlayerWild : PlayerResource
 
         //Ensures the max wild cannot go below 0
         MaxWild = Mathf.Max(MaxWild, 0);
+        //Checks if the max wild has gone below the current value of the resource, and adjusts the value accordingly
+        Value = Mathf.Min(Value, MaxWild);
 
         return MaxWild;
     }
@@ -107,5 +109,15 @@ public class PlayerWild : PlayerResource
     public int BaseCycleWild()
     {
         return CycleWild(BASE_CYCLE_INCREASE);
+    }
+
+    /// <summary>
+    /// 
+    /// Start of turn update for wild
+    /// 
+    /// </summary>
+    public override void StartOfTurnUpdate()
+    {
+        IncreaseWild();
     }
 }
