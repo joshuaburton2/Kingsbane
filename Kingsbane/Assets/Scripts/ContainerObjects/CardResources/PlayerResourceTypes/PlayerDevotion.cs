@@ -64,9 +64,9 @@ public class PlayerDevotion : PlayerResource
     /// Function for when a card triggers a prayer effect
     /// 
     /// </summary>
-    public int TriggerPrayer(int basePrayer)
+    public void TriggerPrayer(int basePrayer)
     {
-        return ModifyValue(basePrayer + PrayerModifier);
+        ModifyValue(basePrayer + PrayerModifier);
     }
 
     /// <summary>
@@ -74,9 +74,9 @@ public class PlayerDevotion : PlayerResource
     /// Functon for updating the players Devotion with their Lasting Prayer. To be called at the start of each turn
     /// 
     /// </summary>
-    public int TriggerLastingPrayer()
+    public void TriggerLastingPrayer()
     {
-        return ModifyValue(LastingPrayer);
+        ModifyValue(LastingPrayer);
     }
 
     /// <summary>
@@ -84,9 +84,9 @@ public class PlayerDevotion : PlayerResource
     /// Increases the players lasting prayer by the base amount. Called when the upgrade is added
     /// 
     /// </summary>
-    public int IncreaseLastingPrayer()
+    public void IncreaseLastingPrayer()
     {
-        return LastingPrayer += LASTING_PRAYER_INCREASE;
+        LastingPrayer += LASTING_PRAYER_INCREASE;
     }
 
     /// <summary>
@@ -94,9 +94,21 @@ public class PlayerDevotion : PlayerResource
     /// Sets the base lasting prayer for the next scenario
     /// 
     /// </summary>
-    public int SetLastingPrayer(int numPrayerUnits)
+    public void SetLastingPrayer(int numPrayerUnits)
     {
-        return LastingPrayer = numPrayerUnits + 1;
+        LastingPrayer = numPrayerUnits + 1;
+    }
+
+    /// <summary>
+    /// 
+    /// Start of game update for devotion
+    /// 
+    /// </summary>
+    public override void StartOfGameUpdate(Player player)
+    {
+        base.StartOfGameUpdate(player);
+
+        ResetValue();
     }
 
     /// <summary>

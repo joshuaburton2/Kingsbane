@@ -52,10 +52,9 @@ public class Resource
     /// Modify the value of the resource
     /// 
     /// </summary>
-    public virtual int ModifyValue(int valueChange)
+    public virtual void ModifyValue(int valueChange)
     {
         Value = CalcNewValue(valueChange);
-        return Value;
     }
 
     public static string GetResoourceDescription(CardResources cardResource)

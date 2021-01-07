@@ -25,6 +25,7 @@ public class PlayerWild : PlayerResource
         ResourceType = CardResources.Wild;
         WildGain = wildGain;
         MaxWild = maxWild;
+        ResetValue();
     }
 
     /// <summary>
@@ -65,9 +66,9 @@ public class PlayerWild : PlayerResource
     /// Increase the players wild by their gain. Should be called at the start of each turn
     /// 
     /// </summary>
-    public int IncreaseWild()
+    public void IncreaseWild()
     {
-        return ModifyValue(WildGain);
+        ModifyValue(WildGain);
     }
 
     /// <summary>
@@ -75,13 +76,11 @@ public class PlayerWild : PlayerResource
     /// Modifying the value of Wild requires a check to ensure it does not go above the maximum
     /// 
     /// </summary>
-    public override int ModifyValue(int valueChange)
+    public override void ModifyValue(int valueChange)
     {
         base.ModifyValue(valueChange);
 
         Value = Mathf.Min(Value, MaxWild);
-
-        return Value;
     }
 
     /// <summary>
@@ -89,7 +88,7 @@ public class PlayerWild : PlayerResource
     /// Should be called whenever a cycle effect is activated and modifies the maximum wild
     /// 
     /// </summary>
-    public int CycleWild(int cycleValue)
+    public void CycleWild(int cycleValue)
     {
         MaxWild += cycleValue;
 
@@ -97,8 +96,6 @@ public class PlayerWild : PlayerResource
         MaxWild = Mathf.Max(MaxWild, 0);
         //Checks if the max wild has gone below the current value of the resource, and adjusts the value accordingly
         Value = Mathf.Min(Value, MaxWild);
-
-        return MaxWild;
     }
 
     /// <summary>
@@ -106,9 +103,21 @@ public class PlayerWild : PlayerResource
     /// Cycle Wild by its base value. Called when adding upgrades
     /// 
     /// </summary>
-    public int BaseCycleWild()
+    public void BaseCycleWild()
     {
-        return CycleWild(BASE_CYCLE_INCREASE);
+        CycleWild(BASE_CYCLE_INCREASE);
+    }
+
+    /// <summary>
+    /// 
+    /// Start of game update for wild
+    /// 
+    /// </summary>
+    public override void StartOfGameUpdate(Player player)
+    {
+        base.StartOfGameUpdate(player);
+
+        ResetValue();
     }
 
     /// <summary>

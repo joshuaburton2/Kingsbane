@@ -44,6 +44,9 @@ public class Player
     {
         Deck.Shuffle();
         DrawMulligan();
+
+        foreach (var resource in Resources)
+            resource.StartOfGameUpdate(this);
     }
 
     public void StartOfTurn()
@@ -55,9 +58,7 @@ public class Player
     private void ResourceStartOfTurnUpdate()
     {
         foreach (var resource in Resources)
-        {
             resource.StartOfTurnUpdate();
-        }
     }
 
     /// <summary>

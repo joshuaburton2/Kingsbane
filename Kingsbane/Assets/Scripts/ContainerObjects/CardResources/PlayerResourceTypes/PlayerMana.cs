@@ -59,13 +59,12 @@ public class PlayerMana : PlayerResource
     /// Reset the resouce values. To be called at the start of each scenario
     /// 
     /// </summary>
-    public int ResetValue()
+    public void ResetValue()
     {
         Value = StartingMana;
         //Sets the Overload from the previous scenario and resets the new Overload value
         PreviousOverload = CurrentOverload;
         CurrentOverload = 0;
-        return Value;
     }
 
     /// <summary>
@@ -73,14 +72,12 @@ public class PlayerMana : PlayerResource
     /// Modifying the resource value for mana requires a check to update Overload value as well
     /// 
     /// </summary>
-    public override int ModifyValue(int valueChange)
+    public override void ModifyValue(int valueChange)
     {
         base.ModifyValue(valueChange);
 
         //If the value is less than 0, it means there is an Overload value
         CurrentOverload = Value < 0 ? -Value : 0;
-
-        return Value;
     }
 
     /// <summary>
@@ -101,5 +98,17 @@ public class PlayerMana : PlayerResource
         {
             //unit.Attack = Mathf.Max(1, )
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Start of game update for Mana
+    /// 
+    /// </summary>
+    public override void StartOfGameUpdate(Player player)
+    {
+        base.StartOfGameUpdate(player);
+
+        ResetValue();
     }
 }

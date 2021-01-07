@@ -20,6 +20,7 @@ public class PlayerKnowledge : PlayerResource
     {
         InitPlayerResource(CardResources.Knowledge);
         Stagnation = 0;
+        ResetValue();
     }
 
     public PlayerKnowledge(int baseKnowledgeGain, int stagnation)
@@ -27,6 +28,7 @@ public class PlayerKnowledge : PlayerResource
         ResourceType = CardResources.Knowledge;
         BaseKnowledgeGain = baseKnowledgeGain;
         Stagnation = stagnation;
+        ResetValue();
     }
 
     /// <summary>
@@ -54,13 +56,22 @@ public class PlayerKnowledge : PlayerResource
 
     /// <summary>
     /// 
+    /// Resets the value to 0. To be called at the start of each scenario
+    /// 
+    /// </summary>
+    public void ResetValue()
+    {
+        Value = 0;
+    }
+
+    /// <summary>
+    /// 
     /// Refresh Knowledge to its base amount. Should be called at the start of the player's turn
     /// 
     /// </summary>
-    public int RefreshValue()
+    public void RefreshValue()
     {
         Value = BaseKnowledgeGain;
-        return Value;
     }
 
     /// <summary>
@@ -69,7 +80,7 @@ public class PlayerKnowledge : PlayerResource
     /// 
     /// </summary>
     /// <param name="cardClass">The class of the card triggering the study effect. Used to identify which inspiration card to shuffle</param>
-    public void TriggerStudy(int studyVal, Player player, Classes.ClassList cardClass)
+    public void TriggerStudy(int studyVal, Classes.ClassList cardClass)
     {
         var inspirationCards = GameManager.instance.libraryManager.GetDictionaryList(Tags.Inspiration, new CardFilter(false));
         var classCards = GameManager.instance.libraryManager.GetDictionaryList(cardClass, new CardFilter(false));
@@ -79,8 +90,8 @@ public class PlayerKnowledge : PlayerResource
         //Shuffles the required number of inspiration cards into the deck
         for (int i = 0; i < studyVal; i++)
         {
-            var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, player);
-            player.Deck.ShuffleIntoDeck(inspirationCard);
+            var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, Player);
+            Player.Deck.ShuffleIntoDeck(inspirationCard);
         }
 
         //Modifies the players Stagnation each time they activate a Study effect
@@ -92,10 +103,9 @@ public class PlayerKnowledge : PlayerResource
     /// Update the players Knowledge base gain. 
     /// 
     /// </summary>
-    public int UpdateBaseGain(int gainIncrease)
+    public void UpdateBaseGain(int gainIncrease)
     {
         BaseKnowledgeGain += gainIncrease;
-        return BaseKnowledgeGain;
     }
 
     /// <summary>
@@ -103,9 +113,9 @@ public class PlayerKnowledge : PlayerResource
     /// Reduces the player's stagnation by a given amount
     /// 
     /// </summary>
-    public int ModifyStagnation(int modifier)
+    public void ModifyStagnation(int modifier)
     {
-        return Stagnation = Mathf.Max(0, Stagnation + modifier);
+        Stagnation = Mathf.Max(0, Stagnation + modifier);
     }
 
     /// <summary>
@@ -113,10 +123,22 @@ public class PlayerKnowledge : PlayerResource
     /// Reduces the player's Ignorance by 1 level. Should only be called through upgrades
     /// 
     /// </summary>
-    public int ReduceIgnorance()
+    public void ReduceIgnorance()
     {
         //Makes sure to have a lower bound on stagnation to prevent it from being negative
-        return Stagnation =  Mathf.Max(0, Stagnation - IGNORANCE_THRESHOLD);
+        Stagnation =  Mathf.Max(0, Stagnation - IGNORANCE_THRESHOLD);
+    }
+
+    /// <summary>
+    /// 
+    /// Start of game update for knowledge
+    /// 
+    /// </summary>
+    public override void StartOfGameUpdate(Player player)
+    {
+        base.StartOfGameUpdate(player);
+
+        ResetValue();
     }
 
     /// <summary>

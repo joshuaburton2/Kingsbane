@@ -11,12 +11,14 @@ public class PlayerEnergy : PlayerResource
 
     public int BaseEnergyGain { get; set; }
     public int Surges { get; set; }
+    public bool UsedSurge { get; set; }
 
     public PlayerEnergy()
     {
         InitPlayerResource(CardResources.Energy);
         RefreshValue();
         Surges = DEFAULT_SURGES;
+        ResetValue();
     }
 
     public PlayerEnergy(int baseEnergyGain, int surges)
@@ -24,6 +26,7 @@ public class PlayerEnergy : PlayerResource
         ResourceType = CardResources.Energy;
         BaseEnergyGain = baseEnergyGain;
         Surges = surges;
+        ResetValue();
     }
 
     /// <summary>
@@ -51,13 +54,24 @@ public class PlayerEnergy : PlayerResource
 
     /// <summary>
     /// 
+    /// Resets the value to 0. To be called at the start of each scenario
+    /// 
+    /// </summary>
+    public void ResetValue()
+    {
+        Value = 0;
+        UsedSurge = false;
+    }
+
+    /// <summary>
+    /// 
     /// Refresh Energy to its base amount. Should be called at the start of the players turn
     /// 
     /// </summary>
-    public int RefreshValue()
+    public void RefreshValue()
     {
         Value = BaseEnergyGain;
-        return Value;
+        UsedSurge = false;
     }
 
     /// <summary>
@@ -65,13 +79,11 @@ public class PlayerEnergy : PlayerResource
     /// To be called when the player uses a Surge
     /// 
     /// </summary>
-    public int UseSurge(out int numSurges)
+    public void UseSurge()
     {
         Surges--;
         Value += BaseEnergyGain;
-
-        numSurges = Surges;
-        return Value;
+        UsedSurge = true;
     }
 
     /// <summary>
@@ -79,9 +91,21 @@ public class PlayerEnergy : PlayerResource
     /// Increase number of surges
     /// 
     /// </summary>
-    public int AddSurges()
+    public void AddSurges()
     {
-        return Surges += SURGE_INCREASE_VALUE;
+        Surges += SURGE_INCREASE_VALUE;
+    }
+
+    /// <summary>
+    /// 
+    /// Start of game update for energy
+    /// 
+    /// </summary>
+    public override void StartOfGameUpdate(Player player)
+    {
+        base.StartOfGameUpdate(player);
+
+        ResetValue();
     }
 
     /// <summary>

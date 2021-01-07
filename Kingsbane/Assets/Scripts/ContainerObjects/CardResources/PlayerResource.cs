@@ -5,6 +5,7 @@ using System;
 public class PlayerResource : Resource
 {
     public TierLevel TierLevel { get; set; }
+    public Player Player { get; set; }
 
     /// <summary>
     /// 
@@ -37,6 +38,16 @@ public class PlayerResource : Resource
         Value = playerResource.Value;
         ResourceType = playerResource.ResourceType;
         TierLevel = playerResource.TierLevel;
+    }
+
+    /// <summary>
+    /// 
+    /// Function to be called at the start of the game for each player for each of their resources. Also inserts the player object at the start of the game
+    /// 
+    /// </summary>
+    public virtual void StartOfGameUpdate(Player player)
+    {
+        Player = player;
     }
 
     /// <summary>
