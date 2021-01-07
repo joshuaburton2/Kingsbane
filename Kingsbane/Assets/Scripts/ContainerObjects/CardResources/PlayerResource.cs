@@ -5,7 +5,7 @@ using System;
 public class PlayerResource : Resource
 {
     public TierLevel TierLevel { get; set; }
-    public Player Player { get; set; }
+    public int PlayerId { get; set; }
 
     /// <summary>
     /// 
@@ -45,9 +45,9 @@ public class PlayerResource : Resource
     /// Function to be called at the start of the game for each player for each of their resources. Also inserts the player object at the start of the game
     /// 
     /// </summary>
-    public virtual void StartOfGameUpdate(Player player)
+    public virtual void StartOfGameUpdate(int playerId)
     {
-        Player = player;
+        PlayerId = playerId;
     }
 
     /// <summary>
@@ -59,5 +59,15 @@ public class PlayerResource : Resource
     public virtual void StartOfTurnUpdate()
     {
 
+    }
+
+    /// <summary>
+    /// 
+    /// Returns the player associated with the resource. If not in game will be null. Needs to be function to avoid serialization issues
+    /// 
+    /// </summary>
+    public Player Player()
+    {
+        return GameManager.instance.GetPlayer(PlayerId);
     }
 }

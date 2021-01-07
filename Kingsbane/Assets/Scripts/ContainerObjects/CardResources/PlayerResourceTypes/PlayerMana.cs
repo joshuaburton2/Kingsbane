@@ -105,9 +105,9 @@ public class PlayerMana : PlayerResource
     /// Start of game update for Mana
     /// 
     /// </summary>
-    public override void StartOfGameUpdate(Player player)
+    public override void StartOfGameUpdate(int playerId)
     {
-        base.StartOfGameUpdate(player);
+        base.StartOfGameUpdate(playerId);
 
         ResetValue();
     }

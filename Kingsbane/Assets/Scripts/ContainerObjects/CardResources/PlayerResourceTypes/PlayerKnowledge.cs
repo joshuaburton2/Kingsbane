@@ -90,8 +90,8 @@ public class PlayerKnowledge : PlayerResource
         //Shuffles the required number of inspiration cards into the deck
         for (int i = 0; i < studyVal; i++)
         {
-            var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, Player);
-            Player.Deck.ShuffleIntoDeck(inspirationCard);
+            var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, Player());
+            Player().Deck.ShuffleIntoDeck(inspirationCard);
         }
 
         //Modifies the players Stagnation each time they activate a Study effect
@@ -134,9 +134,9 @@ public class PlayerKnowledge : PlayerResource
     /// Start of game update for knowledge
     /// 
     /// </summary>
-    public override void StartOfGameUpdate(Player player)
+    public override void StartOfGameUpdate(int playerId)
     {
-        base.StartOfGameUpdate(player);
+        base.StartOfGameUpdate(playerId);
 
         ResetValue();
     }

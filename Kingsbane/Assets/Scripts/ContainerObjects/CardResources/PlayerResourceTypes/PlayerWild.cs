@@ -113,9 +113,9 @@ public class PlayerWild : PlayerResource
     /// Start of game update for wild
     /// 
     /// </summary>
-    public override void StartOfGameUpdate(Player player)
+    public override void StartOfGameUpdate(int playerId)
     {
-        base.StartOfGameUpdate(player);
+        base.StartOfGameUpdate(playerId);
 
         ResetValue();
     }

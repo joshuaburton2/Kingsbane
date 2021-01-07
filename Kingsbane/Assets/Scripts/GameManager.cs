@@ -182,8 +182,13 @@ public class GameManager : MonoBehaviour
         ActivePlayerId = 0;
         CurrentGamePhase = GamePhases.HeroDeploy;
 
+        var index = 0;
         foreach (var player in LoadedPlayers)
-            player.InitialisePlayer();
+        {
+            player.InitialisePlayer(index);
+            index++;
+        }
+            
     }
 
     public bool NextPlayerTurn()

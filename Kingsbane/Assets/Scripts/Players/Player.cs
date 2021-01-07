@@ -40,13 +40,13 @@ public class Player
         Resources = DeckData.PlayerResources;
     }
 
-    public void InitialisePlayer()
+    public void InitialisePlayer(int id)
     {
         Deck.Shuffle();
         DrawMulligan();
 
         foreach (var resource in Resources)
-            resource.StartOfGameUpdate(this);
+            resource.StartOfGameUpdate(id);
     }
 
     public void StartOfTurn()

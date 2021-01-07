@@ -101,9 +101,9 @@ public class PlayerEnergy : PlayerResource
     /// Start of game update for energy
     /// 
     /// </summary>
-    public override void StartOfGameUpdate(Player player)
+    public override void StartOfGameUpdate(int playerId)
     {
-        base.StartOfGameUpdate(player);
+        base.StartOfGameUpdate(playerId);
 
         ResetValue();
     }

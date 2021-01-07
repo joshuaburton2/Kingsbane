@@ -104,9 +104,9 @@ public class PlayerDevotion : PlayerResource
     /// Start of game update for devotion
     /// 
     /// </summary>
-    public override void StartOfGameUpdate(Player player)
+    public override void StartOfGameUpdate(int playerId)
     {
-        base.StartOfGameUpdate(player);
+        base.StartOfGameUpdate(playerId);
 
         ResetValue();
     }
