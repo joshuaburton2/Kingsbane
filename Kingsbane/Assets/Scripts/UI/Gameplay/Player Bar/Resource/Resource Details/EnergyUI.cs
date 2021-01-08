@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnergyUI : ResourceDetailUI
 {
+    //Converts the player resource to energy
     private PlayerEnergy ResourceEnergy { get { return (PlayerEnergy)playerResource; } }
 
     [SerializeField]
@@ -13,6 +14,11 @@ public class EnergyUI : ResourceDetailUI
     [SerializeField]
     private Button surgeButton;
 
+    /// <summary>
+    /// 
+    /// Refreshes the resource details
+    /// 
+    /// </summary>
     public override void RefreshResourceDetailUI()
     {
         base.RefreshResourceDetailUI();
@@ -22,6 +28,11 @@ public class EnergyUI : ResourceDetailUI
         surgeButton.interactable = !ResourceEnergy.UsedSurge;
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing energy for the turn
+    /// 
+    /// </summary>
     public void EnergyButton()
     {
         if (int.TryParse(energyInput.text, out int energyVal))
@@ -30,6 +41,11 @@ public class EnergyUI : ResourceDetailUI
         RefreshResourceDetailUI();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for activating a surge
+    /// 
+    /// </summary>
     public void SurgeButton()
     {
         ResourceEnergy.UseSurge();

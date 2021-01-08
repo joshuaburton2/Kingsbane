@@ -8,6 +8,7 @@ using System;
 
 public class KnowledgeUI : ResourceDetailUI
 {
+    //Converts the player resource to knowledge
     private PlayerKnowledge ResourceKnowledge { get { return (PlayerKnowledge)playerResource; } }
 
     [SerializeField]
@@ -17,6 +18,11 @@ public class KnowledgeUI : ResourceDetailUI
     [SerializeField]
     private TMP_Dropdown studyClassDropdown;
 
+    /// <summary>
+    /// 
+    /// Refreshes the resource details
+    /// 
+    /// </summary>
     public override void RefreshResourceDetailUI()
     {
         base.RefreshResourceDetailUI();
@@ -26,6 +32,7 @@ public class KnowledgeUI : ResourceDetailUI
         studyInput.text = "";
         stagnationInput.text = "";
 
+        //Updates the dropdown for selecting which inspiration card to shuffle with study
         studyClassDropdown.ClearOptions();
         studyClassDropdown.AddOptions(
             new List<TMP_Dropdown.OptionData>()
@@ -39,29 +46,50 @@ public class KnowledgeUI : ResourceDetailUI
         );
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for triggering study effects
+    /// 
+    /// </summary>
     public void StudyButton()
     {
         if (int.TryParse(studyInput.text, out int studyVal))
         {
-            var selectedClass = (Classes.ClassList)Enum.Parse(typeof(Classes.ClassList), studyClassDropdown.options[studyClassDropdown.value].text);
-            ResourceKnowledge.TriggerStudy(studyVal, selectedClass);
+            //var selectedClass = (Classes.ClassList)Enum.Parse(typeof(Classes.ClassList), studyClassDropdown.options[studyClassDropdown.value].text);
+            ResourceKnowledge.TriggerStudy(studyVal, ResourceKnowledge.Player().PlayerClass);
         }
 
-        RefreshResourceDetailUI();            
+        //Due to the deck lists needing to be refreshed when shuffling study cards. As such refreshes the whole UI, including the resource UI
+        playerBar.RefreshPlayerBar();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing the players base knowledge gain
+    /// 
+    /// </summary>
     public void IncreaseButton()
     {
         ResourceKnowledge.UpdateBaseGain(1);
         RefreshResourceDetailUI();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for refreshing the players knowledge
+    /// 
+    /// </summary>
     public void RefreshButton()
     {
         ResourceKnowledge.RefreshValue();
         RefreshResourceDetailUI();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for modifying the players stagnation
+    /// 
+    /// </summary>
     public void StagnationButton()
     {
         if (int.TryParse(stagnationInput.text, out int stagnationVal))

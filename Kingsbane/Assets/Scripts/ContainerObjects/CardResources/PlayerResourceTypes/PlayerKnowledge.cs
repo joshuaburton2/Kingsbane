@@ -9,7 +9,7 @@ public class PlayerKnowledge : PlayerResource
 {
     private readonly int[] BASE_KNOWLEDGE_GAINS = new int[] { 2, 3, 4 };
     public readonly int IGNORANCE_THRESHOLD = 3;
-    private readonly int STAGNATION_MODIFIER = -1;
+    private readonly int STAGNATION_MODIFIER = 1;
 
     public int BaseKnowledgeGain { get; set; }
     public int Stagnation { get; set; }

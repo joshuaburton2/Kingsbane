@@ -7,7 +7,7 @@ using System;
 
 public class Player
 {
-    public const int MULLIGAN_SIZE = 4;
+    public const int MULLIGAN_SIZE = 3;
 
     public string Name { get { return DeckData.Name; } }
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }

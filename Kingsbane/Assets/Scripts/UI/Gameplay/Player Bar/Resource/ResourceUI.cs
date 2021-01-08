@@ -21,7 +21,12 @@ public class ResourceUI : MonoBehaviour
 
     private List<ResourceDetailUI> resourceDetailScripts;
 
-    public void InitResourceUI(List<PlayerResource> resources)
+    /// <summary>
+    /// 
+    /// Initialises the resource UI. Instantiates all the resource details
+    /// 
+    /// </summary>
+    public void InitResourceUI(List<PlayerResource> resources, PlayerUIBar playerBar)
     {
         resourceDetailScripts = new List<ResourceDetailUI>();
 
@@ -31,16 +36,19 @@ public class ResourceUI : MonoBehaviour
             var resourceDetailObject = Instantiate(resourcePrefab, resourceDetailParent.transform);
             var resourceDetailScript = resourceDetailObject.GetComponent<ResourceDetailUI>();
 
-            resourceDetailScript.InitResourceDetailUI(resource);
+            resourceDetailScript.InitResourceDetailUI(resource, playerBar);
             resourceDetailScripts.Add(resourceDetailScript);
         }
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes all the resource details
+    /// 
+    /// </summary>
     public void RefreshResourceUI()
     {
         foreach (var resourceDetail in resourceDetailScripts)
-        {
             resourceDetail.RefreshResourceDetailUI();
-        }
     }
 }

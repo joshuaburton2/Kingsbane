@@ -26,7 +26,7 @@ public class PlayerUIBar : MonoBehaviour
 
         handUI.DisplayHandList(Player.Upgrades, true);
         cardListsUI.InitCardLists(Player);
-        resourceUI.InitResourceUI(Player.Resources);
+        resourceUI.InitResourceUI(Player.Resources, this);
 
         turnIndicator.SetActive(false);
     }

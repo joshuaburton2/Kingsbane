@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WildUI : ResourceDetailUI
 {
+    //Converts the player resource to wild
     private PlayerWild ResourceWild { get { return (PlayerWild)playerResource; } }
 
     [SerializeField]
@@ -12,6 +13,11 @@ public class WildUI : ResourceDetailUI
     [SerializeField]
     private TMP_InputField cycleInput;
 
+    /// <summary>
+    /// 
+    /// Refreshes the resource details
+    /// 
+    /// </summary>
     public override void RefreshResourceDetailUI()
     {
         base.RefreshResourceDetailUI();
@@ -21,6 +27,11 @@ public class WildUI : ResourceDetailUI
         cycleInput.text = "";
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing wild
+    /// 
+    /// </summary>
     public void WildButton()
     {
         if (int.TryParse(wildInput.text, out int wildVal))
@@ -29,10 +40,15 @@ public class WildUI : ResourceDetailUI
         RefreshResourceDetailUI();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for triggering cycle effects
+    /// 
+    /// </summary>
     public void CycleButton()
     {
         if (int.TryParse(cycleInput.text, out int cycleVal))
-            ResourceWild.ModifyValue(cycleVal);
+            ResourceWild.CycleWild(cycleVal);
 
         RefreshResourceDetailUI();
     }
