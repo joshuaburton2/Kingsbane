@@ -683,6 +683,21 @@ MonoBehaviour:
     rarityColour: {r: 0.909804, g: 0.5882353, b: 0.078431375, a: 1}
   - Rarity: 6
     rarityColour: {r: 0.9803922, g: 1, b: 0.89019614, a: 1}
+  resourceColours:
+  - Resource: 0
+    resourceColour: {r: 1, g: 1, b: 1, a: 1}
+  - Resource: 1
+    resourceColour: {r: 1, g: 0.9422581, b: 0.4009434, a: 1}
+  - Resource: 2
+    resourceColour: {r: 0.8490566, g: 0.32123706, b: 0.09211465, a: 1}
+  - Resource: 3
+    resourceColour: {r: 0.8773585, g: 0.7122984, b: 0.3186632, a: 1}
+  - Resource: 4
+    resourceColour: {r: 0.8113208, g: 0.17986828, b: 0.43322888, a: 1}
+  - Resource: 5
+    resourceColour: {r: 0.2511125, g: 0.42904335, b: 0.9339623, a: 1}
+  - Resource: 6
+    resourceColour: {r: 0.05579125, g: 0.5943396, b: 0, a: 1}
   classColours:
   - Class: 0
     classColour: {r: 0, g: 0, b: 0, a: 1}

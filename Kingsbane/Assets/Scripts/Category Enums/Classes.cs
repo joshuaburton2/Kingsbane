@@ -87,6 +87,16 @@ namespace CategoryEnums
 
         /// <summary>
         /// 
+        /// Retrive the data of a particular class based on the utilised resources
+        /// 
+        /// </summary>
+        public static ClassData GetClassData(List<CardResources> classResources)
+        {
+            return ClassDataList.FirstOrDefault(x => x.ClassResources.Select(x => x.CardResource).All(classResources.Contains));
+        }
+
+        /// <summary>
+        /// 
         /// List of the default class data. Pregenerated code
         /// 
         /// </summary>

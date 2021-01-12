@@ -6,7 +6,19 @@ using System;
 
 /// <summary>
 /// 
-/// Object for storing the rarity border colour for a class's hero
+/// Object for storing the resource colours
+/// 
+/// </summary>
+[Serializable]
+public class ResourceColour
+{
+    public CardResources Resource;
+    public Color resourceColour;
+}
+
+/// <summary>
+/// 
+/// Object for storing the class colours
 /// 
 /// </summary>
 [Serializable]
@@ -15,7 +27,6 @@ public class ClassColour
     public Classes.ClassList Class;
     public Color classColour;
 }
-
 
 /// <summary>
 /// 
@@ -59,7 +70,11 @@ public class ColourManager : MonoBehaviour
     [SerializeField]
     List<RarityColour> rarityColours;
 
-    [Header("Hero Border Colours")]
+    [Header("Resource Colours")]
+    [SerializeField]
+    private List<ResourceColour> resourceColours;
+
+    [Header("Class Colours")]
     [SerializeField]
     private List<ClassColour> classColours;
 
@@ -91,6 +106,22 @@ public class ColourManager : MonoBehaviour
         }
         
         return rarityColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular resource colour
+    /// 
+    /// </summary>
+    public Color GetResourceColour(CardResources neededResource)
+    {
+        var resourceColour = new Color();
+        resourceColour = resourceColours.FirstOrDefault(x => x.Resource == neededResource).resourceColour;
+        if (resourceColour == null)
+        {
+            resourceColour = new Color();
+        }
+        return resourceColour;
     }
 
     /// <summary>

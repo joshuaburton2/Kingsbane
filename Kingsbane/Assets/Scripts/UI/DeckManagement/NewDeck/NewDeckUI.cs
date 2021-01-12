@@ -8,15 +8,21 @@ using UnityEngine.UI;
 
 public class NewDeckUI : MonoBehaviour
 {
+    private List<CardResources> selectedResources;
     public ClassData selectedClassData;
     private UnitData heroCard;
     List<DeckData> deckTemplates;
     DeckData selectedTemplate;
 
+    [Header("Class Selection")]
     [SerializeField]
     GameObject classListParent;
     [SerializeField]
     GameObject classListPrefab;
+
+    [Header("ResourceSelection")]
+    [SerializeField]
+    private List<ResourceList> resourceLists;
 
     [Header("Class Details Fields")]
     [SerializeField]
@@ -60,7 +66,7 @@ public class NewDeckUI : MonoBehaviour
 
     private void Start()
     {
-        //Loop through each class and create a class list object
+        //Loop through each class and create a class list object- DEPRICATED. Leaving code here in case changing back
         foreach (var newClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
             //Ignore the default class
@@ -70,6 +76,12 @@ public class NewDeckUI : MonoBehaviour
                 classListObject.GetComponent<ClassListObject>().InitClassListObject(newClass, this);
                 classListObject.name = $"Class: {newClass}";
             }
+        }
+
+        selectedResources = new List<CardResources>();
+        foreach (var resourceList in resourceLists)
+        {
+            resourceList.RefreshResourceList();
         }
 
         //Create the tier options string list then add them into dropdowns
@@ -94,6 +106,42 @@ public class NewDeckUI : MonoBehaviour
         deckTemplateDropdown.value = 0;
 
         RefreshClassData(Classes.ClassList.Default);
+    }
+
+    public void SelectResource(bool toSelect, CardResources selectedResource, ResourceList resourceList)
+    {
+        if (toSelect)
+        {
+            selectedResources.Add(selectedResource);
+            if (selectedResources.Count == 1)
+            {
+
+            }
+            if (selectedResources.Count == 2)
+            {
+                var 
+            }
+            else
+            {
+                throw new Exception("Too many resource selected");
+            }
+        }
+        else
+        {
+            selectedResources.Remove(selectedResource);
+            if (selectedResources.Count == 0)
+            {
+                RefreshClassData(Classes.ClassList.Default);
+            }
+            if (selectedResources.Count == 1)
+            {
+
+            }
+            else
+            {
+                throw new Exception("Too many resource selected");
+            }
+        }
     }
 
     /// <summary>
