@@ -67,24 +67,33 @@ public class DeckManager : MonoBehaviour
     /// </summary>
     public void LoadDecks()
     {
-        if(File.Exists(Application.persistentDataPath + deckFileName))
+        //If there is an exception to loading the save file, creates a new version, then loads them again
+        try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
-            var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
+            if (File.Exists(Application.persistentDataPath + deckFileName))
+            {
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
+                var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
 
-            PlayerDeckList = ConvertDeckSave(saveDeckList, false);
+                PlayerDeckList = ConvertDeckSave(saveDeckList, false);
 
-            file.Close();
+                file.Close();
+            }
+            else
+            {
+                PlayerDeckList = new List<DeckData>();
+            }
+
+            //Load the NPC Deck List
+            var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
+            NPCDeckList = ConvertDeckSave(npcDeckList, false);
         }
-        else
+        catch
         {
-            PlayerDeckList = new List<DeckData>();
+            ResetDecks();
+            LoadDecks();
         }
-
-        //Load the NPC Deck List
-        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
-        NPCDeckList = ConvertDeckSave(npcDeckList, false);
     }
 
     /// <summary>
