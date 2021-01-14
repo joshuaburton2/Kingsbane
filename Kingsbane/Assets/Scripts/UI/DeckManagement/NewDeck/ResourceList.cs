@@ -7,7 +7,8 @@ using System.Linq;
 
 public class ResourceList : MonoBehaviour
 {
-    private List<ResourceListObject> resourceListScripts;
+    private bool isSelected;
+    private List<ResourceListObject> resourceListObjects;
 
     [SerializeField]
     private NewDeckUI newDeckUI;
@@ -16,27 +17,50 @@ public class ResourceList : MonoBehaviour
     [SerializeField]
     private GameObject resourceListPrefab;
 
-    public void RefreshResourceList(CardResources? selectedResource = null)
+    private void Start()
     {
-        GameManager.DestroyAllChildren(resourceListParent);
-        resourceListScripts = new List<ResourceListObject>();
+        isSelected = false;
+    }
 
-        foreach (var resource in Enum.GetValues(typeof(CardResources)))
+    /// <summary>
+    /// 
+    /// Refreshes the resource list with the resource list objects
+    /// 
+    /// </summary>
+    /// <param name="exemptResource">The other selected resource to exempt from the list</param>
+    public void RefreshResourceList(CardResources? exemptResource = null)
+    {
+        if (!isSelected)
         {
-            if ((CardResources)resource != CardResources.Neutral && (CardResources)resource != selectedResource)
-            {
-                var resourceListObject = Instantiate(resourceListPrefab, resourceListParent.transform);
+            GameManager.DestroyAllChildren(resourceListParent);
+            resourceListObjects = new List<ResourceListObject>();
 
-                var resourceListScript = resourceListObject.GetComponent<ResourceListObject>();
-                resourceListScript.InitResourceListObject((CardResources)resource, this);
-                resourceListScripts.Add(resourceListScript);
+            //Loops through each resource in the game
+            foreach (var resource in Enum.GetValues(typeof(CardResources)))
+            {
+                //Ignores the neutral resource and the exempt resource
+                if ((CardResources)resource != CardResources.Neutral && (CardResources)resource != exemptResource)
+                {
+                    //Creates the resource list objects and initialises them
+                    var resourceListObject = Instantiate(resourceListPrefab, resourceListParent.transform);
+                    var resourceListScript = resourceListObject.GetComponent<ResourceListObject>();
+                    resourceListScript.InitResourceListObject((CardResources)resource, this);
+                    resourceListObjects.Add(resourceListScript);
+                }
             }
         }
     }
 
+    /// <summary>
+    /// 
+    /// Function to call when a resource in the list is selected
+    /// 
+    /// </summary>
+    /// <param name="toSelect">Whether the resource is being selected (true) or deselected (false)</param>
     public void SelectResource(CardResources selectedResource, bool toSelect)
     {
-        foreach (var resourceObject in resourceListScripts)
+        //Loops through each resource object and shows or hides them based on whether the resource is selected or not
+        foreach (var resourceObject in resourceListObjects)
         {
             if (resourceObject.cardResource != selectedResource)
             {
@@ -44,6 +68,7 @@ public class ResourceList : MonoBehaviour
             }
         }
 
+        isSelected = toSelect;
         newDeckUI.SelectResource(toSelect, selectedResource, this);
     }
 }

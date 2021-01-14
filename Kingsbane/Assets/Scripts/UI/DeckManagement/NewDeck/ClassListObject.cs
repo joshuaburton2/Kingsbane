@@ -49,7 +49,7 @@ public class ClassListObject : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            newDeckUI.RefreshClassData(thisClass);
+            newDeckUI.SelectClassData(thisClass);
         }
     }
 }

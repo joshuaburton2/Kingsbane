@@ -52,7 +52,9 @@ public class ResourceListObject : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
+            //Switches the state of the object (being selected or not)
             isSelected = !isSelected;
+            //Updates the resource description area and selects the resource in the resource list
             resourceDescriptionArea.SetActive(isSelected);
             resourceList.SelectResource(cardResource, isSelected);
         }

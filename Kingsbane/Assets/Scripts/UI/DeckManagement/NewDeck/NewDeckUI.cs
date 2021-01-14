@@ -78,6 +78,7 @@ public class NewDeckUI : MonoBehaviour
             }
         }
 
+        //Initialises each resource list
         selectedResources = new List<CardResources>();
         foreach (var resourceList in resourceLists)
         {
@@ -105,43 +106,85 @@ public class NewDeckUI : MonoBehaviour
         abilityTierDropdown.value = 0;
         deckTemplateDropdown.value = 0;
 
-        RefreshClassData(Classes.ClassList.Default);
+        SelectClassData(Classes.ClassList.Default);
     }
 
+    /// <summary>
+    /// 
+    /// Function call for selecting a resource from the list
+    /// 
+    /// </summary>
+    /// <param name="toSelect">Boolean function to say if the resource is being selected or deselected</param>
+    /// <param name="selectedResource">The resource which has been selected</param>
+    /// <param name="resourceList">The resource list object which caused the click event</param>
     public void SelectResource(bool toSelect, CardResources selectedResource, ResourceList resourceList)
     {
+        //If a resource is being selected, then add it to the list of selected resource
         if (toSelect)
         {
             selectedResources.Add(selectedResource);
+            //If only one resource is selected, then removes the resource from the other list and sets up the class data as the default list
             if (selectedResources.Count == 1)
             {
-
+                foreach (var list in resourceLists)
+                    if (list != resourceList)
+                        list.RefreshResourceList(selectedResource);
+                SelectClassData(Classes.ClassList.Default);
             }
-            if (selectedResources.Count == 2)
-            {
-                var 
-            }
+            //If both resources are selected, then selects the class based on the two resources selected
+            else if (selectedResources.Count == 2)
+                SelectClassData(selectedResources);
             else
-            {
                 throw new Exception("Too many resource selected");
-            }
         }
+        //If a resource is being deselected, then remove it from the list of selected resource
         else
         {
             selectedResources.Remove(selectedResource);
+            //If there are no resources selected refresh the other list with all resources and selects the default class
             if (selectedResources.Count == 0)
             {
-                RefreshClassData(Classes.ClassList.Default);
+                foreach (var list in resourceLists)
+                    if (list != resourceList)
+                        list.RefreshResourceList();
+                SelectClassData(Classes.ClassList.Default);
             }
-            if (selectedResources.Count == 1)
+            //If there is only one resource selected, refreshes the list removed from, exempting the resource selected in the other list
+            else if (selectedResources.Count == 1)
             {
-
+                foreach (var list in resourceLists)
+                    if (list == resourceList)
+                        list.RefreshResourceList(selectedResources.FirstOrDefault());
+                SelectClassData(Classes.ClassList.Default);
             }
             else
-            {
                 throw new Exception("Too many resource selected");
-            }
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Selects the class data and refreshes UI based on a given class
+    /// 
+    /// </summary>
+    public void SelectClassData(Classes.ClassList selectedClass)
+    {
+        //Load in the selected class
+        selectedClassData = Classes.GetClassData(selectedClass);
+
+        RefreshClassData();
+    }
+
+    /// <summary>
+    /// 
+    /// Selects the class data and refreshes UI based on a given set of resources
+    /// 
+    /// </summary>
+    public void SelectClassData(List<CardResources> selectedResources)
+    {
+        selectedClassData = Classes.GetClassData(selectedResources);
+
+        RefreshClassData();
     }
 
     /// <summary>
@@ -149,11 +192,8 @@ public class NewDeckUI : MonoBehaviour
     /// Refresh the class information that pertains to the selected class
     /// 
     /// </summary>
-    /// <param name="selectedClass"></param>
-    public void RefreshClassData(Classes.ClassList selectedClass)
+    private void RefreshClassData()
     {
-        //Load in the selected class
-        selectedClassData = Classes.GetClassData(selectedClass);
         //Clears the deck template dropdown of options
         deckTemplateDropdown.options.Clear();
         //Set the value of the deck template dropdown to the initial value
@@ -196,7 +236,7 @@ public class NewDeckUI : MonoBehaviour
             deckTemplateDropdown.interactable = true;
 
             //Load the deck templates of the 
-            deckTemplates = GameManager.instance.deckManager.GetPlayerDeckTemplates(selectedClass);
+            deckTemplates = GameManager.instance.deckManager.GetPlayerDeckTemplates(selectedClassData.ThisClass);
             foreach (var deck in deckTemplates)
             {
                 deckTemplateDropdown.AddOptions(new List<string>() { deck.Name, });

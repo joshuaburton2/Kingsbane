@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace CategoryEnums
 {
@@ -92,7 +93,10 @@ namespace CategoryEnums
         /// </summary>
         public static ClassData GetClassData(List<CardResources> classResources)
         {
-            return ClassDataList.FirstOrDefault(x => x.ClassResources.Select(x => x.CardResource).All(classResources.Contains));
+            if (classResources.Count != 2)
+                throw new Exception("Not a valid number of resources provided");
+
+            return ClassDataList.FirstOrDefault(x => x.ClassResources.Select(y => y.CardResource).All(classResources.Contains));
         }
 
         /// <summary>
