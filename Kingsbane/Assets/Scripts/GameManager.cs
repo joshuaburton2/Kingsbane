@@ -93,8 +93,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGameState()
     {
-        deckManager.SaveDecks();
-
         LoadedPlayers = null;
         LoadedMap = null;
         ActivePlayerId = null;
