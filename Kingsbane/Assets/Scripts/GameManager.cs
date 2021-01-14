@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
         effectManager.InitEffectManager();
     }
 
+    private void OnApplicationQuit()
+    {
+        deckManager.SaveDecks();
+    }
+
     /// <summary>
     /// 
     /// Destroy all child objects of an object
@@ -88,6 +93,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ResetGameState()
     {
+        deckManager.SaveDecks();
+
         LoadedPlayers = null;
         LoadedMap = null;
         ActivePlayerId = null;

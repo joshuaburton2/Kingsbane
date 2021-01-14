@@ -10,6 +10,8 @@ public class GameplayUI : MonoBehaviour
     private EffectsBarUI effectBarUI;
     [SerializeField]
     private List<PlayerUIBar> playerUIBars;
+    [SerializeField]
+    private GameObject menuPopup;
 
     [Header("Miscellaneous Area")]
     [SerializeField]
@@ -31,6 +33,7 @@ public class GameplayUI : MonoBehaviour
     public void InitialiseUI()
     {
         cardDisplayArea.SetActive(false);
+        menuPopup.SetActive(false);
         
         var counter = 0;
         foreach (var playerBar in playerUIBars)
@@ -115,6 +118,11 @@ public class GameplayUI : MonoBehaviour
     public void SetActionButtonState(bool state)
     {
         actionButton.interactable = state;
+    }
+
+    public void MenuButton()
+    {
+        menuPopup.SetActive(true);
     }
 
     private void ShowCardDisplay(Card card = null)

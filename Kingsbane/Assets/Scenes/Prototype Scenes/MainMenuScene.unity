@@ -615,7 +615,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 668735503}
         m_MethodName: OpenCardLibrary
         m_Mode: 1
         m_Arguments:
@@ -12173,6 +12173,7 @@ GameObject:
   - component: {fileID: 668735500}
   - component: {fileID: 668735502}
   - component: {fileID: 668735501}
+  - component: {fileID: 668735503}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -12238,6 +12239,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668735499}
   m_CullTransparentMesh: 0
+--- !u!114 &668735503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668735499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cd74c44db53c04aa2785675eba39fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyUI: {fileID: 2036373503}
+  libraryUI: {fileID: 1431290170}
 --- !u!114 &672637168 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8891978396315567744, guid: dffceaad4eff8b8478537273baa686a0,
@@ -19518,7 +19533,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 668735503}
         m_MethodName: OpenLobby
         m_Mode: 1
         m_Arguments:
@@ -22446,7 +22461,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 668735503}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
