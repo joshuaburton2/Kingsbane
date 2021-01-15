@@ -20,6 +20,6 @@ public class GameplayMenuUI : MonoBehaviour
     /// </summary>
     public void QuitButton()
     {
-        Application.Quit();
+        GameManager.instance.ExitGame();
     }
 }

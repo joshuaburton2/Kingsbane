@@ -10,8 +10,8 @@ public class EffectManager : MonoBehaviour
         Deployment,
     }
 
-    public ActiveEffectTypes activeEffect { get; set; }
-    public bool isUILocked { get { return activeEffect != ActiveEffectTypes.None; } }
+    public ActiveEffectTypes ActiveEffect { get; set; }
+    public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None; } }
     public bool CancelEffect { get; set; }
 
     Unit selectedUnit;
@@ -21,7 +21,7 @@ public class EffectManager : MonoBehaviour
 
     private void Update()
     {
-        if (isUILocked)
+        if (IsUILocked)
         {
             if (Input.GetMouseButtonDown(1))
             {
@@ -37,16 +37,38 @@ public class EffectManager : MonoBehaviour
         RefreshEffectManager();
     }
 
-    private void RefreshEffectManager()
+    public void RefreshEffectManager()
     {
-        activeEffect = ActiveEffectTypes.None;
+        ActiveEffect = ActiveEffectTypes.None;
         selectedUnit = null;
+    }
+
+    public void PlayCard(Card card)
+    {
+        switch (card.Type)
+        {
+            case CategoryEnums.CardTypes.Unit:
+                break;
+            case CategoryEnums.CardTypes.Spell:
+                break;
+            case CategoryEnums.CardTypes.Item:
+                break;
+            case CategoryEnums.CardTypes.Default:
+            default:
+                break;
+        }
+    }
+
+    public void DiscardCard(Card card)
+    {
+        card.Owner.DiscardFromHand(card);
+        GameManager.instance.uiManager.RefreshGameplayUI();
     }
 
     public void SetSelectedUnit(Unit _selectedUnit)
     {
         selectedUnit = _selectedUnit;
-        activeEffect = ActiveEffectTypes.Deployment;
+        ActiveEffect = ActiveEffectTypes.Deployment;
     }
 
     public GameObject DeploySelectedUnit(Transform parent, Cell cell)
@@ -56,7 +78,7 @@ public class EffectManager : MonoBehaviour
         return deployedUnit;
     }
 
-    public GameObject DeployUnit (Unit unit, Transform parent, Cell cell)
+    public GameObject DeployUnit(Unit unit, Transform parent, Cell cell)
     {
         var createdCounter = Instantiate(unitCounterPrefab, parent);
 
@@ -74,7 +96,7 @@ public class EffectManager : MonoBehaviour
         {
             DestroyUnitCounter(unitCounter);
         }
-            
+
         player.DeployedUnits.Clear();
     }
 

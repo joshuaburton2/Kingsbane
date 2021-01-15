@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Gameplay Pages")]
     [SerializeField]
-    GameObject gameplayUI;
+    public GameObject gameplayUI;
 
     [Header("Detail Displays")]
     [SerializeField]
@@ -109,6 +109,16 @@ public class UIManager : MonoBehaviour
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(true);
         upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetails(upgradeData, currentDeck);
+    }
+
+    /// <summary>
+    /// 
+    /// Refreshes the Gameplay UI
+    /// 
+    /// </summary>
+    public void RefreshGameplayUI()
+    {
+        gameplayUI.GetComponent<GameplayUI>().RefreshPlayerBar();
     }
 
     /// <summary>

@@ -256,7 +256,7 @@ MonoBehaviour:
   cardSizex: 768
   cardSizey: 1064
   ySelectionOffset: 95
-  buttonArea: {fileID: 6982091105777053520}
+  buttonGroup: {fileID: 7174023569046609192}
   cardBack: {fileID: 7679788118660544179}
 --- !u!222 &2200691842894789261
 CanvasRenderer:
@@ -413,7 +413,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8303452063039755930}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2200691842894789263}
+        m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3814481732938325548
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +699,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 170299388613172482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2200691842894789263}
+        m_MethodName: DiscardButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6982091105777053520
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +722,7 @@ GameObject:
   - component: {fileID: 1183111106240035682}
   - component: {fileID: 1152116252001201606}
   - component: {fileID: 9132112660641167}
+  - component: {fileID: 7174023569046609192}
   m_Layer: 5
   m_Name: ButtonArea
   m_TagString: Untagged
@@ -761,6 +784,18 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!225 &7174023569046609192
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982091105777053520}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7679788118660544179
 GameObject:
   m_ObjectHideFlags: 0

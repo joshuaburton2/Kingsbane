@@ -10,7 +10,7 @@ public class DeckManager : MonoBehaviour
 {
     public List<DeckData> PlayerDeckList { get; private set; }
     public List<DeckData> NPCDeckList { get; private set; }
-    
+
     private const string deckFileName = "/DeckData.dat";
 
     /// <summary>
@@ -67,9 +67,9 @@ public class DeckManager : MonoBehaviour
     /// </summary>
     public void LoadDecks()
     {
-        //If there is an exception to loading the save file, creates a new version, then loads them again
         try
         {
+            //If there is an exception to loading the save file, creates a new version, then loads them again
             if (File.Exists(Application.persistentDataPath + deckFileName))
             {
                 BinaryFormatter bf = new BinaryFormatter();
@@ -114,6 +114,7 @@ public class DeckManager : MonoBehaviour
 
         bf.Serialize(file, saveDeckList);
         file.Close();
+        Debug.Log("Decks Saved");
     }
 
     /// <summary>
@@ -156,7 +157,7 @@ public class DeckManager : MonoBehaviour
         //Save decks to file
         SaveDecks();
     }
-    
+
     /// <summary>
     /// 
     /// Removes a player deck from the list

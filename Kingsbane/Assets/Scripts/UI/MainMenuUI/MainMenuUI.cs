@@ -38,6 +38,6 @@ public class MainMenuUI : MonoBehaviour
     /// </summary>
     public void ExitGame()
     {
-        Application.Quit();
+        GameManager.instance.ExitGame();
     }
 }

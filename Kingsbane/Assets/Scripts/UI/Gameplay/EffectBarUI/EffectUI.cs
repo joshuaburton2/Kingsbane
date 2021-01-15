@@ -18,9 +18,9 @@ public class EffectUI : MonoBehaviour
 
     private void Update()
     {
-        buttonGroup.interactable = !GameManager.instance.effectManager.isUILocked;
+        buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
 
-        if (!GameManager.instance.effectManager.isUILocked && !effectComplete)
+        if (!GameManager.instance.effectManager.IsUILocked && !effectComplete)
         {
             if (!GameManager.instance.effectManager.CancelEffect)
             {

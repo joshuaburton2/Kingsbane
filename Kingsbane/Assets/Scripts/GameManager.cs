@@ -68,9 +68,10 @@ public class GameManager : MonoBehaviour
         effectManager.InitEffectManager();
     }
 
-    private void OnApplicationQuit()
+    public void ExitGame()
     {
         deckManager.SaveDecks();
+        Application.Quit();
     }
 
     /// <summary>

@@ -27,7 +27,7 @@ public class GameplayUI : MonoBehaviour
 
     public void Update()
     {
-        miscCanvasGroup.interactable = !GameManager.instance.effectManager.isUILocked;
+        miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
     }
 
     public void InitialiseUI()

@@ -24,7 +24,7 @@ public class ResourceDetailUI : MonoBehaviour
     {
         //Checks whether the game is UI locked and disables the buttons if so
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-            buttonGroup.interactable = !GameManager.instance.effectManager.isUILocked;
+            buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
     }
 
     /// <summary>

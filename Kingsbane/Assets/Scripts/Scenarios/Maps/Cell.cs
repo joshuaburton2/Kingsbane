@@ -43,7 +43,7 @@ public class Cell : MonoBehaviour
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        switch (GameManager.instance.effectManager.activeEffect)
+                        switch (GameManager.instance.effectManager.ActiveEffect)
                         {
                             case EffectManager.ActiveEffectTypes.Deployment:
                                 cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);

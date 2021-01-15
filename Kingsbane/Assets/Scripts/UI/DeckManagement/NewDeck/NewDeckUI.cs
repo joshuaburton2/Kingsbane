@@ -78,13 +78,6 @@ public class NewDeckUI : MonoBehaviour
             }
         }
 
-        //Initialises each resource list
-        selectedResources = new List<CardResources>();
-        foreach (var resourceList in resourceLists)
-        {
-            resourceList.RefreshResourceList();
-        }
-
         //Create the tier options string list then add them into dropdowns
         var tierOptions = Enum.GetNames(typeof(TierLevel)).Where(x => x != TierLevel.Default.ToString()).ToList();
         for (int i = 0; i < tierOptions.Count; i++)
@@ -105,6 +98,13 @@ public class NewDeckUI : MonoBehaviour
         heroTierDropdown.value = 0;
         abilityTierDropdown.value = 0;
         deckTemplateDropdown.value = 0;
+
+        //Initialises each resource list
+        selectedResources = new List<CardResources>();
+        foreach (var resourceList in resourceLists)
+        {
+            resourceList.InitResourceList();
+        }
 
         SelectClassData(Classes.ClassList.Default);
     }
@@ -141,12 +141,11 @@ public class NewDeckUI : MonoBehaviour
         else
         {
             selectedResources.Remove(selectedResource);
-            //If there are no resources selected refresh the other list with all resources and selects the default class
+            //If there are no resources selected refresh all the lists with all resources and selects the default class
             if (selectedResources.Count == 0)
             {
                 foreach (var list in resourceLists)
-                    if (list != resourceList)
-                        list.RefreshResourceList();
+                    list.RefreshResourceList();
                 SelectClassData(Classes.ClassList.Default);
             }
             //If there is only one resource selected, refreshes the list removed from, exempting the resource selected in the other list

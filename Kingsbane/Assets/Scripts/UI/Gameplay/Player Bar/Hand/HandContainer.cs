@@ -13,7 +13,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     float ySelectionOffset;
     [SerializeField]
-    private GameObject buttonArea;
+    private CanvasGroup buttonGroup;
     [SerializeField]
     private GameObject cardBack;
 
@@ -28,6 +28,11 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     public int HandIndex { get; private set; }
 
     private const float defaultScalingFactor = 0.20f;
+
+    private void Update()
+    {
+        buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
+    }
 
     /// <summary>
     /// 
@@ -50,8 +55,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         
         //Direction Mod is used to determine which way to move the card when it is clicked- varies depending on if the bar is at the top or bottom of the screen
         var directionMod = CardMoveUpward ? 1 : -1;
-        buttonArea.transform.localPosition *= directionMod;
-        buttonArea.SetActive(false);
+        buttonGroup.gameObject.transform.localPosition *= directionMod;
+        buttonGroup.gameObject.SetActive(false);
 
         //transform.parent.gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2(cardSizex * scalingFactor, cardSizey * scalingFactor);
 
@@ -99,7 +104,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         //Only shows the buttons if there is a card display object (not an upgrade display)
         if (CardDisplay != null)
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-                buttonArea.SetActive(isSelected);
+                buttonGroup.gameObject.SetActive(isSelected);
 
         //If the card is being selected, updates all other cards in hand to minimise
         if (isSelected)
@@ -157,8 +162,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
             }
         }
 
-        //Left click selects the card in hand
-        if (eventData.button == PointerEventData.InputButton.Left)
+        //Left click selects the card in hand. Can't click cards if UI locked
+        if (eventData.button == PointerEventData.InputButton.Left && !GameManager.instance.effectManager.IsUILocked)
         {
             SelectDisplay();
         }
@@ -177,5 +182,26 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         //Shows or hides the card back
         cardBack.SetActive(!toShow);
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for playing the card
+    /// 
+    /// </summary>
+    public void PlayButton()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for discarding the card
+    /// 
+    /// </summary>
+    public void DiscardButton()
+    {
+        GameManager.instance.effectManager.DiscardCard(CardDisplay.card);
+
     }
 }

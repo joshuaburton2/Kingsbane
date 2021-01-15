@@ -90,9 +90,6 @@ public class Player
         }
     }
 
-    
-
-    #region Draw Functions
     public void DrawMulligan()
     {
         var cardsToMulligan = Hand.cardList.ToList();
@@ -141,5 +138,9 @@ public class Player
         }
     }
 
-    #endregion
+    public void DiscardFromHand(Card discardCard)
+    {
+        Hand.RemoveCard(discardCard);
+        Discard.AddCard(discardCard);
+    }
 }
