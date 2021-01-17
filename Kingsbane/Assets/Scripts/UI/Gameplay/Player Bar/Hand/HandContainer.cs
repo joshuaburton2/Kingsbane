@@ -16,16 +16,21 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     private CanvasGroup buttonGroup;
     [SerializeField]
     private GameObject cardBack;
+    [SerializeField]
+    private GameObject cardMarker;
 
     private bool isSelected;
 
     private GameObject DisplayObject { get; set; }
     private CardDisplay CardDisplay { get; set; }
+    private Card Card { get { return CardDisplay.card; } }
     private UpgradeDisplay UpgradeDisplay { get; set; }
     private bool CardMoveUpward { get; set; }
 
     private HandUI HandUI { get; set; }
+    private GameplayUI GameplayUI { get; set; }
     public int HandIndex { get; private set; }
+    public int PlayerIndex { get; private set; }
 
     private const float defaultScalingFactor = 0.20f;
 
@@ -41,7 +46,9 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void InitHandContainer<T>(
         HandUI _handUI,
+        GameplayUI gameplayUI,
         int _handIndex,
+        int playerIndex,
         T objectData,
         bool showCard,
         string containerName = "",
@@ -49,10 +56,12 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         bool cardMoveUpward = true)
     {
         HandUI = _handUI;
+        GameplayUI = gameplayUI;
         HandIndex = _handIndex;
+        PlayerIndex = playerIndex;
         isSelected = false;
         CardMoveUpward = cardMoveUpward;
-        
+
         //Direction Mod is used to determine which way to move the card when it is clicked- varies depending on if the bar is at the top or bottom of the screen
         var directionMod = CardMoveUpward ? 1 : -1;
         buttonGroup.gameObject.transform.localPosition *= directionMod;
@@ -182,6 +191,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         //Shows or hides the card back
         cardBack.SetActive(!toShow);
+        //Shows or hides the card marker if its playable. It also must not be hidden
+        cardMarker.SetActive(CardDisplay != null && toShow && Card.IsPlayable());
     }
 
     /// <summary>
@@ -191,7 +202,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void PlayButton()
     {
-
+        GameManager.instance.effectManager.PlayCard(Card);
+        GameplayUI.ShowCardDisplay(Card);
     }
 
     /// <summary>
@@ -201,7 +213,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void DiscardButton()
     {
-        GameManager.instance.effectManager.DiscardCard(CardDisplay.card);
-
+        GameManager.instance.effectManager.DiscardCard(Card);
+        GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
 }

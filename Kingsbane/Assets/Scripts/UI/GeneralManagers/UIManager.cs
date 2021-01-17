@@ -113,16 +113,6 @@ public class UIManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Refreshes the Gameplay UI
-    /// 
-    /// </summary>
-    public void RefreshGameplayUI()
-    {
-        gameplayUI.GetComponent<GameplayUI>().RefreshPlayerBar();
-    }
-
-    /// <summary>
-    /// 
     /// General function for closing a panel
     /// 
     /// </summary>

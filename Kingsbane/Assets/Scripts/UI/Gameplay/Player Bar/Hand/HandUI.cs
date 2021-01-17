@@ -30,7 +30,7 @@ public class HandUI : MonoBehaviour
     /// Displays the hand list. Can input either a Card or UpgradeData list
     /// 
     /// </summary>
-    public void DisplayHandList<T>(List<T> handList, bool showHand) where T : class
+    public void DisplayHandList<T>(GameplayUI gameplayUI, List<T> handList, bool showHand, int playerIndex) where T : class
     {
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
@@ -63,7 +63,7 @@ public class HandUI : MonoBehaviour
             }
             //Sets the properties of the object
             handContainerObject.name = $"Container- {objectName}";
-            handContainer.InitHandContainer(this, index, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
+            handContainer.InitHandContainer(this, gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
 
             index++;
         }

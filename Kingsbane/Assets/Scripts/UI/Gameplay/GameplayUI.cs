@@ -125,7 +125,7 @@ public class GameplayUI : MonoBehaviour
         menuPopup.SetActive(true);
     }
 
-    private void ShowCardDisplay(Card card = null)
+    public void ShowCardDisplay(Card card = null)
     {
         if (card != null)
         {

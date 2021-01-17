@@ -45,6 +45,7 @@ public class EffectManager : MonoBehaviour
 
     public void PlayCard(Card card)
     {
+        card.Play();
         switch (card.Type)
         {
             case CategoryEnums.CardTypes.Unit:
@@ -62,7 +63,6 @@ public class EffectManager : MonoBehaviour
     public void DiscardCard(Card card)
     {
         card.Owner.DiscardFromHand(card);
-        GameManager.instance.uiManager.RefreshGameplayUI();
     }
 
     public void SetSelectedUnit(Unit _selectedUnit)

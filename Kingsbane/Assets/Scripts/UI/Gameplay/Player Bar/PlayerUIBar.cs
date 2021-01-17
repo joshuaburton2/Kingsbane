@@ -20,12 +20,14 @@ public class PlayerUIBar : MonoBehaviour
     private HeroUI heroUI;
     [SerializeField]
     private CardListsUI cardListsUI;
+    [SerializeField]
+    private GameplayUI gameplayUI;
 
     public void InitialisePlayerBar(int _id)
     {
         Id = _id;
 
-        handUI.DisplayHandList(Player.Upgrades, true);
+        handUI.DisplayHandList(gameplayUI, Player.Upgrades, true, Id);
         cardListsUI.InitCardLists(Player);
         resourceUI.InitResourceUI(Player.Resources, this);
 
@@ -36,7 +38,7 @@ public class PlayerUIBar : MonoBehaviour
     {
         UpdateTurnIndicator();
 
-        handUI.DisplayHandList(Player.Hand.cardList, IsActivePlayerBar);
+        handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
         cardListsUI.RefreshCurrentList();
         resourceUI.RefreshResourceUI();
     }
