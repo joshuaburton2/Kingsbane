@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HandContainer : MonoBehaviour, IPointerClickHandler
 {
@@ -13,13 +14,18 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     float ySelectionOffset;
     [SerializeField]
+    private Button playButton;
+    [SerializeField]
     private CanvasGroup buttonGroup;
+    [SerializeField]
+    private GameObject cardParent;
     [SerializeField]
     private GameObject cardBack;
     [SerializeField]
     private GameObject cardMarker;
 
     private bool isSelected;
+    private bool isHidden;
 
     private GameObject DisplayObject { get; set; }
     private CardDisplay CardDisplay { get; set; }
@@ -74,21 +80,21 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         {
             case Type _ when type == typeof(Card):
                 var cardData = (Card)(object)objectData;
-                var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, gameObject.transform.parent, scalingFactor);
+                var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, cardParent.transform, scalingFactor);
                 newCardObj.name = containerName;
 
-                //Sibling Index is set to 0 so that the click handler on card display doesn't interfere with the click handler on the container (which is only used when adding cards to a deck)
-                newCardObj.transform.SetSiblingIndex(0);
+                //Sibling Index is set to 1 so that it is set in the correct order of the marker and the back
+                newCardObj.transform.SetSiblingIndex(1);
                 CardDisplay = newCardObj.GetComponent<CardDisplay>();
                 DisplayObject = newCardObj;
                 break;
             case Type _ when type == typeof(UpgradeData):
                 var upgradeData = (UpgradeData)(object)objectData;
-                var newUpgradeObj = GameManager.instance.upgradeManager.CreateUpgrade(upgradeData, gameObject.transform.parent, scaling: scalingFactor);
+                var newUpgradeObj = GameManager.instance.upgradeManager.CreateUpgrade(upgradeData, cardParent.transform, scaling: scalingFactor);
                 newUpgradeObj.name = containerName;
 
-                //Sibling Index is set to 0 so that the click handler on upgrade display doesn't interfere with the click handler on the container
-                newUpgradeObj.transform.SetSiblingIndex(0);
+                //Sibling Index is set to 1 so that it is set in the correct order of the marker and the back
+                newUpgradeObj.transform.SetSiblingIndex(1);
                 UpgradeDisplay = newUpgradeObj.GetComponent<UpgradeDisplay>();
                 DisplayObject = newUpgradeObj;
                 break;
@@ -134,6 +140,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         if (isSelected)
         {
             isSelected = false;
+            buttonGroup.gameObject.SetActive(false);
             MoveCard(false);
         }
     }
@@ -148,7 +155,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     {
         var directionMod = CardMoveUpward ? 1 : -1;
         var transformVector = new Vector3(0, (toMoveOut ? 1 : -1) * ySelectionOffset * directionMod);
-        DisplayObject.transform.localPosition += transformVector;
+        cardParent.transform.localPosition += transformVector;
+        transform.localPosition += transformVector;
     }
 
     /// <summary>
@@ -172,7 +180,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         }
 
         //Left click selects the card in hand. Can't click cards if UI locked
-        if (eventData.button == PointerEventData.InputButton.Left && !GameManager.instance.effectManager.IsUILocked)
+        if (eventData.button == PointerEventData.InputButton.Left && !GameManager.instance.effectManager.IsUILocked && !isHidden)
         {
             SelectDisplay();
         }
@@ -191,8 +199,17 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
         //Shows or hides the card back
         cardBack.SetActive(!toShow);
-        //Shows or hides the card marker if its playable. It also must not be hidden
-        cardMarker.SetActive(CardDisplay != null && toShow && Card.IsPlayable());
+        //Shows or hides the card marker if its playable. It also must not be hidden and it must be in the gameplay phase
+        cardMarker.SetActive(
+            toShow && 
+            CardDisplay != null &&
+            GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay && 
+            Card.IsPlayable()
+            );
+        //Locks the play button in case the card isn't playable
+        playButton.interactable = CardDisplay != null && Card.IsPlayable();
+
+        isHidden = !toShow;
     }
 
     /// <summary>
@@ -202,8 +219,9 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void PlayButton()
     {
-        GameManager.instance.effectManager.PlayCard(Card);
+        Card.Play();
         GameplayUI.ShowCardDisplay(Card);
+        GameplayUI.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -213,7 +231,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void DiscardButton()
     {
-        GameManager.instance.effectManager.DiscardCard(Card);
+        Card.Discard();
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
 }

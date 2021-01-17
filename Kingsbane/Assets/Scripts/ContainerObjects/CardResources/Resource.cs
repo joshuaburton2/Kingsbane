@@ -11,7 +11,7 @@ using System.Collections.Generic;
 public class Resource
 {
     public CardResources ResourceType { get; set; }
-    public int Value { get; set; } //To add Protected clause to Set
+    public int Value { get; set; }
 
     public Resource()
     {

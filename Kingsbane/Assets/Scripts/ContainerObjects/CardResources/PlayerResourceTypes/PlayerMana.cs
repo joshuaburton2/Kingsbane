@@ -27,7 +27,7 @@ public class PlayerMana : PlayerResource
     {
         ResourceType = CardResources.Mana;
         StartingMana = startingMana;
-        PreviousOverload = overload;
+        CurrentOverload = overload;
     }
 
     /// <summary>

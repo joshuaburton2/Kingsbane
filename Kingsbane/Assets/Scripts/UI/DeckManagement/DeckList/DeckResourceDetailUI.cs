@@ -66,7 +66,7 @@ public class DeckResourceDetailUI : MonoBehaviour, IPointerClickHandler
             case CategoryEnums.CardResources.Mana:
                 var playerMana = (PlayerMana)playerResource;
                 propertyOneText.text = $"Starting Mana: {playerMana.StartingMana}";
-                propertyTwoText.text = $"Overload: {playerMana.PreviousOverload}";
+                propertyTwoText.text = $"Overload: {playerMana.CurrentOverload}";
                 break;
             case CategoryEnums.CardResources.Wild:
                 var playerWild = (PlayerWild)playerResource;

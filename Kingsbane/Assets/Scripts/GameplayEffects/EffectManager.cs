@@ -8,6 +8,8 @@ public class EffectManager : MonoBehaviour
     {
         None,
         Deployment,
+        Spell,
+        Equip,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -15,6 +17,8 @@ public class EffectManager : MonoBehaviour
     public bool CancelEffect { get; set; }
 
     Unit selectedUnit;
+    Spell selectedSpell;
+    Item selectedItem;
 
     [SerializeField]
     private GameObject unitCounterPrefab;
@@ -40,29 +44,32 @@ public class EffectManager : MonoBehaviour
     public void RefreshEffectManager()
     {
         ActiveEffect = ActiveEffectTypes.None;
+
         selectedUnit = null;
+        selectedSpell = null;
+        selectedItem = null;
     }
 
     public void PlayCard(Card card)
     {
-        card.Play();
         switch (card.Type)
         {
             case CategoryEnums.CardTypes.Unit:
+                selectedUnit = (Unit)card;
+                ActiveEffect = ActiveEffectTypes.Deployment;
                 break;
             case CategoryEnums.CardTypes.Spell:
+                selectedSpell = (Spell)card;
+                ActiveEffect = ActiveEffectTypes.Spell;
                 break;
             case CategoryEnums.CardTypes.Item:
+                selectedItem = (Item)card;
+                ActiveEffect = ActiveEffectTypes.Equip;
                 break;
             case CategoryEnums.CardTypes.Default:
             default:
                 break;
         }
-    }
-
-    public void DiscardCard(Card card)
-    {
-        card.Owner.DiscardFromHand(card);
     }
 
     public void SetSelectedUnit(Unit _selectedUnit)

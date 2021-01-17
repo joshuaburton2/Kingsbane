@@ -34,7 +34,9 @@ public class GameplayUI : MonoBehaviour
     {
         cardDisplayArea.SetActive(false);
         menuPopup.SetActive(false);
-        
+
+        GameManager.instance.StartGame();
+
         var counter = 0;
         foreach (var playerBar in playerUIBars)
         {
@@ -54,7 +56,7 @@ public class GameplayUI : MonoBehaviour
             case GameManager.GamePhases.Menu:
                 break;
             case GameManager.GamePhases.Setup:
-                GameManager.instance.StartGame();
+                GameManager.instance.CurrentGamePhase = GameManager.GamePhases.HeroDeploy;
                 SetPlayerTurnText();
 
                 RefreshHeroDeployUI();

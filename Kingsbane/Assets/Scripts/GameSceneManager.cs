@@ -123,6 +123,7 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
+            GameManager.instance.deckManager.LoadNPCDecks();
             GameManager.instance.deckManager.SaveDecks();
             GameManager.instance.ResetGameState();
         }

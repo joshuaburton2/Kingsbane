@@ -85,15 +85,24 @@ public class DeckManager : MonoBehaviour
                 PlayerDeckList = new List<DeckData>();
             }
 
-            //Load the NPC Deck List
-            var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
-            NPCDeckList = ConvertDeckSave(npcDeckList, false);
+            LoadNPCDecks();
         }
         catch
         {
             ResetDecks();
             LoadDecks();
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Load NPC Decks
+    /// 
+    /// </summary>
+    public void LoadNPCDecks()
+    {
+        var npcDeckList = Classes.ClassDataList.SelectMany(x => x.DeckTemplates).Where(x => x.IsNPCDeck == true).ToList();
+        NPCDeckList = ConvertDeckSave(npcDeckList, false);
     }
 
     /// <summary>
@@ -114,7 +123,6 @@ public class DeckManager : MonoBehaviour
 
         bf.Serialize(file, saveDeckList);
         file.Close();
-        Debug.Log("Decks Saved");
     }
 
     /// <summary>

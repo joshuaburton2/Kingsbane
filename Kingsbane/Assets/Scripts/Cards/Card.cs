@@ -153,8 +153,13 @@ public class Card
 
         foreach (var resource in ResourceCost)
         {
+            //Mana can go infinitely negative, so always returns true
+            if (resource.ResourceType == CardResources.Mana)
+            {
+                return true;
+            }
             //Tests if the current resource is not a neutral cost
-            if (resource.ResourceType != CardResources.Neutral)
+            else if (resource.ResourceType != CardResources.Neutral)
             {
                 //Calculate the resource difference
                 var resourceDif = Owner.CalcNewResource(resource);
@@ -192,9 +197,11 @@ public class Card
 
     public virtual void Play()
     {
-        foreach (var resource in ResourceCost)
-        {
-            //Owner.ModifyResources(resource);  //To Fix
-        }
+        Owner.ModifyResources(ResourceCost);
+    }
+
+    public void Discard()
+    {
+        Owner.DiscardFromHand(this);
     }
 }

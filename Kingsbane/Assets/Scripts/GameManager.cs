@@ -186,7 +186,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ActivePlayerId = 0;
-        CurrentGamePhase = GamePhases.HeroDeploy;
 
         var index = 0;
         foreach (var player in LoadedPlayers)
