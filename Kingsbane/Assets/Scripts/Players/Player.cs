@@ -7,8 +7,6 @@ using System;
 
 public class Player
 {
-    public const int MULLIGAN_SIZE = 3;
-
     public string Name { get { return DeckData.Name; } }
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
 
@@ -19,8 +17,9 @@ public class Player
     public CardList Graveyard { get; set; }
     public CardList Discard { get; set; }
     public List<UpgradeData> Upgrades { get; set; }
-    public Unit Hero { get; set; }
+    public Hero Hero { get; set; }
     public List<UnitCounter> DeployedUnits { get; set; }
+    public int ItemCapacity { get { return DeckData.ItemCapacity; } }
 
     public List<PlayerResource> Resources { get; set; }
     public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
@@ -34,7 +33,7 @@ public class Player
         Graveyard = new CardList();
         Discard = new CardList();
         Upgrades = DeckData.UpgradeList;
-        Hero = (Unit)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
+        Hero = (Hero)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
 
         Resources = DeckData.PlayerResources;
@@ -94,7 +93,7 @@ public class Player
     {
         var cardsToMulligan = Hand.cardList.ToList();
         Hand.EmptyList();
-        Draw(MULLIGAN_SIZE);
+        Draw(DeckData.InitialHandSize);
         Deck.ShuffleIntoDeck(cardsToMulligan);
     }
 
@@ -138,9 +137,19 @@ public class Player
         }
     }
 
+    public void PlayFromHand(Card playedCard)
+    {
+        Hand.RemoveCard(playedCard);
+    }
+
     public void DiscardFromHand(Card discardCard)
     {
         Hand.RemoveCard(discardCard);
         Discard.AddCard(discardCard);
+    }
+
+    public void AddToGraveyard(Card deadCard)
+    {
+        Graveyard.AddCard(deadCard);
     }
 }

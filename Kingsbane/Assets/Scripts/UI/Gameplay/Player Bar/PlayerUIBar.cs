@@ -30,6 +30,7 @@ public class PlayerUIBar : MonoBehaviour
         handUI.DisplayHandList(gameplayUI, Player.Upgrades, true, Id);
         cardListsUI.InitCardLists(Player);
         resourceUI.InitResourceUI(Player.Resources, this);
+        heroUI.InitHeroUI(Player.Hero);
 
         turnIndicator.SetActive(false);
     }
@@ -41,6 +42,7 @@ public class PlayerUIBar : MonoBehaviour
         handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
         cardListsUI.RefreshCurrentList();
         resourceUI.RefreshResourceUI();
+        heroUI.RefreshHeroUI();
     }
 
     public void UpdateTurnIndicator()

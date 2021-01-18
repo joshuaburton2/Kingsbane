@@ -49,6 +49,9 @@ public class Cell : MonoBehaviour
                                 cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);
                                 occupantCounter = cellOccupant.GetComponent<UnitCounter>();
                                 break;
+                            case EffectManager.ActiveEffectTypes.Spell:
+                                GameManager.instance.effectManager.CastSpell(this);
+                                break;
                         }
                     }
                     else if (Input.GetMouseButtonDown(1) && occupantCounter != null)

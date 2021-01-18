@@ -16,6 +16,7 @@ public class EffectManager : MonoBehaviour
     public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None; } }
     public bool CancelEffect { get; set; }
 
+    Card selectedCard;
     Unit selectedUnit;
     Spell selectedSpell;
     Item selectedItem;
@@ -45,6 +46,7 @@ public class EffectManager : MonoBehaviour
     {
         ActiveEffect = ActiveEffectTypes.None;
 
+        selectedCard = null;
         selectedUnit = null;
         selectedSpell = null;
         selectedItem = null;
@@ -52,6 +54,8 @@ public class EffectManager : MonoBehaviour
 
     public void PlayCard(Card card)
     {
+        selectedCard = card;
+
         switch (card.Type)
         {
             case CategoryEnums.CardTypes.Unit:
@@ -80,9 +84,7 @@ public class EffectManager : MonoBehaviour
 
     public GameObject DeploySelectedUnit(Transform parent, Cell cell)
     {
-        var deployedUnit = DeployUnit(selectedUnit, parent, cell);
-        selectedUnit = null;
-        return deployedUnit;
+        return DeployUnit(selectedUnit, parent, cell);
     }
 
     public GameObject DeployUnit(Unit unit, Transform parent, Cell cell)
@@ -92,9 +94,41 @@ public class EffectManager : MonoBehaviour
         var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
         unitCounterScript.InitUnitCounter(unit, cell);
         unit.Owner.DeployedUnits.Add(unitCounterScript);
+
+        if (selectedCard != null)
+        {
+            selectedCard.Play();
+            GameManager.instance.uiManager.RefreshUI();
+        }
+
         RefreshEffectManager();
 
         return createdCounter;
+    }
+
+    public void CastSpell(Cell targetCell)
+    {
+        if (selectedCard != null)
+        {
+            selectedCard.Play();
+            GameManager.instance.uiManager.RefreshUI();
+            RefreshEffectManager();
+        }
+    }
+
+    public void EquipItem(Item itemToReplace)
+    {
+        if (selectedCard != null)
+        {
+            if (itemToReplace != null)
+            {
+                itemToReplace.DestroyItem();
+            }
+
+            selectedCard.Play();
+            GameManager.instance.uiManager.RefreshUI();
+            RefreshEffectManager();
+        }
     }
 
     public void RemoveAllPlayerUnits(Player player)

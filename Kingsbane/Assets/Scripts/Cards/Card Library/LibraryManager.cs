@@ -320,7 +320,12 @@ public class LibraryManager : MonoBehaviour
         switch (cardData.CardType)
         {
             case CardTypes.Unit:
-                card = new Unit();
+                //Initialises unit as unit or hero
+                if (cardData.Rarity == Rarity.Hero || cardData.Rarity == Rarity.NPCHero)
+                    card = new Hero();
+                else
+                    card = new Unit();
+                
                 break;
             case CardTypes.Spell:
                 card = new Spell();

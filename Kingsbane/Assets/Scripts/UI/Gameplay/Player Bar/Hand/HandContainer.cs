@@ -219,9 +219,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void PlayButton()
     {
-        Card.Play();
+        GameManager.instance.effectManager.PlayCard(Card);
         GameplayUI.ShowCardDisplay(Card);
-        GameplayUI.RefreshPlayerBar();
     }
 
     /// <summary>

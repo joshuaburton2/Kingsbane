@@ -21,7 +21,9 @@ public class DeckSaveData
     public int HeroCardID { get; set; }
     public List<PlayerResource> PlayerResources { get; set; }
     public int InitialHandSize { get; set; }
-    private const int DEFAULT_HAND_SiZE = 4;
+    private const int DEFAULT_HAND_SIZE = 3;
+    public int ItemCapacity { get; set; }
+    private const int DEFAULT_ITEM_CAPACITY = 1;
     public List<int> CardIdList { get; set; }
     public List<int> UpgradeIdList { get; set; }
     public Classes.ClassList DeckClass { get; set; }
@@ -33,7 +35,8 @@ public class DeckSaveData
         Id = null;
         HeroTier = TierLevel.Default;
         AbilityTier = TierLevel.Default;
-        InitialHandSize = DEFAULT_HAND_SiZE;
+        InitialHandSize = DEFAULT_HAND_SIZE;
+        ItemCapacity = DEFAULT_ITEM_CAPACITY;
     }
 
     /// <summary>
@@ -48,6 +51,7 @@ public class DeckSaveData
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
         InitialHandSize = deckData.InitialHandSize;
+        ItemCapacity = deckData.ItemCapacity;
         HeroCardID = deckData.HeroCardID;
         CardIdList = deckData.CardIdList.ToList();
         UpgradeIdList = deckData.UpgradeIdList.ToList();
@@ -152,6 +156,7 @@ public class DeckData : DeckSaveData
         HeroTier = deckData.HeroTier;
         AbilityTier = deckData.AbilityTier;
         InitialHandSize = deckData.InitialHandSize;
+        ItemCapacity = deckData.ItemCapacity;
         HeroCardID = deckData.HeroCardID;
         CardIdList = deckData.CardIdList.ToList();
         UpgradeIdList = deckData.UpgradeIdList.ToList();
@@ -177,6 +182,7 @@ public class DeckData : DeckSaveData
         HeroTier = deckSaveData.HeroTier;
         AbilityTier = deckSaveData.AbilityTier;
         InitialHandSize = deckSaveData.InitialHandSize;
+        ItemCapacity = deckSaveData.ItemCapacity;
         HeroCardID = deckSaveData.HeroCardID;
         CardIdList = deckSaveData.CardIdList.ToList();
         UpgradeIdList = deckSaveData.UpgradeIdList.ToList();

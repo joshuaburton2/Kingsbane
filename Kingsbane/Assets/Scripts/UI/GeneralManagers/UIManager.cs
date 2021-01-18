@@ -1,4 +1,5 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,6 +110,25 @@ public class UIManager : MonoBehaviour
         cardDetailDisplay.SetActive(false);
         upgradeDetailDisplay.SetActive(true);
         upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetails(upgradeData, currentDeck);
+    }
+
+    /// <summary>
+    /// 
+    /// Refreshes the UI based on the scene currently in
+    /// 
+    /// </summary>
+    public void RefreshUI()
+    {
+        switch (GameManager.instance.sceneManager.ActiveScene)
+        {
+            case SceneList.MainMenuScene:
+                throw new Exception("Not a valid scene to refresh");
+            case SceneList.GameplayScene:
+                gameplayUI.GetComponent<GameplayUI>().RefreshPlayerBar();
+                break;
+            default:
+                throw new Exception("Not a valid scene to refresh");
+        }
     }
 
     /// <summary>

@@ -198,6 +198,10 @@ public class Card
     public virtual void Play()
     {
         Owner.ModifyResources(ResourceCost);
+
+        Owner.PlayFromHand(this);
+
+        //ToDo: Might need to pass out an on play parameter. This will determine the effect of spells as well as deployment effects for units and items
     }
 
     public void Discard()

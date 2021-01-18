@@ -171,6 +171,8 @@ namespace CategoryEnums
                                 75,
                                 76,
                                 77,
+                                50,
+                                50,
                             },
                             UpgradeIdList = new List<int>()
                             {
@@ -178,12 +180,13 @@ namespace CategoryEnums
                                 2,
                             },
                             HeroCardID = 1326,
-                            InitialHandSize = 2,
+                            InitialHandSize = 5,
                             PlayerResources = new List<PlayerResource>()
                             {
                                 new PlayerMana(10, 2),
                                 new PlayerDevotion(2, 10),
                             },
+                            ItemCapacity = 2,
                         },
                         new DeckSaveData()
                         {
