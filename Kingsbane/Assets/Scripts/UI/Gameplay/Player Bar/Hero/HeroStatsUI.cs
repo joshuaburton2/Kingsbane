@@ -51,12 +51,23 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     /// Refreshes the hero stats
     /// 
     /// </summary>
-    public void RefreshHeroStats(Hero _hero)
+    public void RefreshHeroStats()
     {
         attackText.text = hero.Attack.ToString();
+        var attackStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(attackStatType);
+
         healthText.text = hero.Health.ToString();
+        var healthStatType = hero.UnitIsDamaged ? Unit.UnitStatTypes.Damaged : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(healthStatType);
+
         rangeText.text = hero.Range.ToString();
+        var rangeStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(rangeStatType);
+
         speedText.text = hero.Speed.ToString();
+        var speedStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(speedStatType);
     }
 
     /// <summary>

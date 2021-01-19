@@ -64,6 +64,18 @@ public class PlayerColour
     public Color playerColour;
 }
 
+/// <summary>
+/// 
+/// Object for storing the colour of a unit stat on their counter
+/// 
+/// </summary>
+[Serializable]
+public class StatColours
+{
+    public Unit.UnitStatTypes unitStat;
+    public Color statColour;
+}
+
 public class ColourManager : MonoBehaviour
 {
     [Header("Border Colours")]
@@ -83,6 +95,10 @@ public class ColourManager : MonoBehaviour
     private List<TerrainColour> terrainColours;
     [SerializeField]
     private List<PlayerColour> playerColours;
+
+    [Header("Unit Stat Colours")]
+    [SerializeField]
+    private List<StatColours> statColours;
 
     /// <summary>
     /// 
@@ -158,7 +174,7 @@ public class ColourManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Obtain a particular terrain colour
+    /// Obtain a particular player colour
     /// 
     /// </summary>
     public Color GetPlayerColour(int neededPlayer)
@@ -170,5 +186,21 @@ public class ColourManager : MonoBehaviour
             playerColour = new Color();
         }
         return playerColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular unit stat colour 
+    /// 
+    /// </summary>
+    public Color GetUnitStatColour(Unit.UnitStatTypes unitStatType)
+    {
+        var unitStatColour = new Color();
+        unitStatColour = statColours.FirstOrDefault(x => x.unitStat == unitStatType).statColour;
+        if (unitStatColour == null)
+        {
+            unitStatColour = new Color();
+        }
+        return unitStatColour;
     }
 }

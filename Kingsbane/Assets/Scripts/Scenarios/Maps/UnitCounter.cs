@@ -56,9 +56,21 @@ public class UnitCounter : MonoBehaviour
     public void RefreshUnitCounter()
     {
         attackText.text = unit.Attack.ToString();
+        var attackStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(attackStatType);
+
         healthText.text = unit.Health.ToString();
+        var healthStatType = unit.UnitIsDamaged ? Unit.UnitStatTypes.Damaged : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(healthStatType);
+
         rangeText.text = unit.Range.ToString();
+        var rangeStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(rangeStatType);
+
         speedText.text = unit.Speed.ToString();
+        var speedStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
+        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(speedStatType);
+
     }
 
     public void ShowCardDetail()

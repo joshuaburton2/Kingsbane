@@ -861,6 +861,13 @@ MonoBehaviour:
     playerColour: {r: 0.10196079, g: 0.18823531, b: 0.92549026, a: 1}
   - playerIndex: 1
     playerColour: {r: 0.8000001, g: 0.14117648, b: 0.14117648, a: 1}
+  statColours:
+  - unitStat: 0
+    statColour: {r: 1, g: 1, b: 1, a: 1}
+  - unitStat: 1
+    statColour: {r: 0.25256526, g: 0.7735849, b: 0.105820596, a: 1}
+  - unitStat: 2
+    statColour: {r: 0.8113208, g: 0.049750824, b: 0.049750824, a: 1}
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0

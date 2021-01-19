@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Unit : Card
 {
+    public enum UnitStatTypes
+    {
+        None,
+        Buffed,
+        Damaged,
+    }
+
     public UnitData UnitData { get { return cardData as UnitData; } }
 
     public int DefaultAttack { get { return UnitData.Attack; } }
@@ -20,6 +27,11 @@ public class Unit : Card
     public int Health { get; set; }
     public int Range { get; set; }
     public int Speed { get; set; }
+
+    public bool HasBuffedAttack { get { return Attack > BaseAttack; } }
+    public bool UnitIsDamaged { get { return Health < BaseHealth; } }
+    public bool HasBuffedRange { get { return Range > BaseRange; } }
+    public bool HasBuffedSpeed { get { return Speed > BaseSpeed; } }
 
     public string UnitTag { get { return UnitData.UnitTag; } }
 

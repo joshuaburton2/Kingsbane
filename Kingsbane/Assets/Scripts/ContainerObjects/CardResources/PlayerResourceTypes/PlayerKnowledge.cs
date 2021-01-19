@@ -87,8 +87,8 @@ public class PlayerKnowledge : PlayerResource
         //Finds the required inpiration card
         var inspirationCardData = inspirationCards.Intersect(classCards).FirstOrDefault();
 
-        //Shuffles the required number of inspiration cards into the deck
-        for (int i = 0; i < studyVal; i++)
+        //Shuffles the required number of inspiration cards into the deck. ALso subtracts the Ignorance value from the number of cards shuffled
+        for (int i = 0; i < studyVal - Ignorance; i++)
         {
             var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, Player());
             Player().Deck.ShuffleIntoDeck(inspirationCard);
