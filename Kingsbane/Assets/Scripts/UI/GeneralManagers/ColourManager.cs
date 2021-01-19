@@ -70,10 +70,22 @@ public class PlayerColour
 /// 
 /// </summary>
 [Serializable]
-public class StatColours
+public class StatModColours
 {
-    public Unit.UnitStatTypes unitStat;
+    public StatModTypes statMod;
     public Color statColour;
+}
+
+/// <summary>
+/// 
+/// Object for storing the colour of a unit status on their counter
+/// 
+/// </summary>
+[Serializable]
+public class UnitStatusColours
+{
+    public Unit.UnitStatuses unitStatus;
+    public Color statusColour;
 }
 
 public class ColourManager : MonoBehaviour
@@ -95,10 +107,12 @@ public class ColourManager : MonoBehaviour
     private List<TerrainColour> terrainColours;
     [SerializeField]
     private List<PlayerColour> playerColours;
-
-    [Header("Unit Stat Colours")]
     [SerializeField]
-    private List<StatColours> statColours;
+    private List<UnitStatusColours> unitStatusColours;
+
+    [Header("Other Colours")]
+    [SerializeField]
+    private List<StatModColours> statModColours;
 
     /// <summary>
     /// 
@@ -193,14 +207,30 @@ public class ColourManager : MonoBehaviour
     /// Obtain a particular unit stat colour 
     /// 
     /// </summary>
-    public Color GetUnitStatColour(Unit.UnitStatTypes unitStatType)
+    public Color GetStatModColour(StatModTypes statModType)
     {
-        var unitStatColour = new Color();
-        unitStatColour = statColours.FirstOrDefault(x => x.unitStat == unitStatType).statColour;
-        if (unitStatColour == null)
+        var statModColour = new Color();
+        statModColour = statModColours.FirstOrDefault(x => x.statMod == statModType).statColour;
+        if (statModColour == null)
         {
-            unitStatColour = new Color();
+            statModColour = new Color();
         }
-        return unitStatColour;
+        return statModColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular unit stat colour 
+    /// 
+    /// </summary>
+    public Color GetUnitStatusColour(Unit.UnitStatuses unitStatus)
+    {
+        var unitStatusColour = new Color();
+        unitStatusColour = unitStatusColours.FirstOrDefault(x => x.unitStatus == unitStatus).statusColour;
+        if (unitStatusColour == null)
+        {
+            unitStatusColour = new Color();
+        }
+        return unitStatusColour;
     }
 }

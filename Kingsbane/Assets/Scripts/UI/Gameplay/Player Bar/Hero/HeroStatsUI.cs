@@ -54,20 +54,16 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     public void RefreshHeroStats()
     {
         attackText.text = hero.Attack.ToString();
-        var attackStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(attackStatType);
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedAttack);
 
         healthText.text = hero.Health.ToString();
-        var healthStatType = hero.UnitIsDamaged ? Unit.UnitStatTypes.Damaged : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(healthStatType);
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.UnitIsDamaged);
 
         rangeText.text = hero.Range.ToString();
-        var rangeStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(rangeStatType);
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedRange);
 
-        speedText.text = hero.Speed.ToString();
-        var speedStatType = hero.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(speedStatType);
+        speedText.text = $"{hero.RemainingSpeed}/{hero.Speed}";
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedSpeed);
     }
 
     /// <summary>

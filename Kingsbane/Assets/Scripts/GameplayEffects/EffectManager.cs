@@ -18,8 +18,6 @@ public class EffectManager : MonoBehaviour
 
     Card selectedCard;
     Unit selectedUnit;
-    Spell selectedSpell;
-    Item selectedItem;
 
     [SerializeField]
     private GameObject unitCounterPrefab;
@@ -48,8 +46,6 @@ public class EffectManager : MonoBehaviour
 
         selectedCard = null;
         selectedUnit = null;
-        selectedSpell = null;
-        selectedItem = null;
     }
 
     public void PlayCard(Card card)
@@ -63,11 +59,9 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.Deployment;
                 break;
             case CategoryEnums.CardTypes.Spell:
-                selectedSpell = (Spell)card;
                 ActiveEffect = ActiveEffectTypes.Spell;
                 break;
             case CategoryEnums.CardTypes.Item:
-                selectedItem = (Item)card;
                 ActiveEffect = ActiveEffectTypes.Equip;
                 break;
             case CategoryEnums.CardTypes.Default:
@@ -101,6 +95,7 @@ public class EffectManager : MonoBehaviour
             GameManager.instance.uiManager.RefreshUI();
         }
 
+        unitCounterScript.RefreshUnitCounter();
         RefreshEffectManager();
 
         return createdCounter;

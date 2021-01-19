@@ -51,13 +51,15 @@ public class Player
     public void StartOfTurn()
     {
         Draw();
-        ResourceStartOfTurnUpdate();
-    }
 
-    private void ResourceStartOfTurnUpdate()
-    {
         foreach (var resource in Resources)
             resource.StartOfTurnUpdate();
+
+        foreach (var unit in DeployedUnits)
+        {
+            unit.unit.StartOfTurn();
+            unit.RefreshUnitCounter();
+        } 
     }
 
     /// <summary>

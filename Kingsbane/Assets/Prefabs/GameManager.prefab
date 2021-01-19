@@ -684,7 +684,7 @@ MonoBehaviour:
     - imageTag: 100
       imageSprite: {fileID: 21300000, guid: f9ffdca2ccc0cd2449d5cdc0492a5f5d, type: 3}
     - imageTag: 108
-      imageSprite: {fileID: 21300000, guid: 379fcfb48a2a8aa4696f562b6dc2a209, type: 3}
+      imageSprite: {fileID: 21300000, guid: de3782c71a23cc8408b74b5f6a101d2b, type: 3}
     - imageTag: 114
       imageSprite: {fileID: 21300000, guid: f66fbc12f026722438a6b9ba78d4cd51, type: 3}
     - imageTag: 148
@@ -861,13 +861,22 @@ MonoBehaviour:
     playerColour: {r: 0.10196079, g: 0.18823531, b: 0.92549026, a: 1}
   - playerIndex: 1
     playerColour: {r: 0.8000001, g: 0.14117648, b: 0.14117648, a: 1}
-  statColours:
-  - unitStat: 0
+  unitStatusColours:
+  - unitStatus: 0
+    statusColour: {r: 0.35624984, g: 0.764151, b: 0.09732112, a: 1}
+  - unitStatus: 1
+    statusColour: {r: 0.08187969, g: 0.27157784, b: 0.754717, a: 1}
+  - unitStatus: 2
+    statusColour: {r: 0.8207547, g: 0.68229085, b: 0.15873085, a: 1}
+  - unitStatus: 3
+    statusColour: {r: 0.8584906, g: 0.060591184, b: 0.03644534, a: 1}
+  statModColours:
+  - statMod: 0
     statColour: {r: 1, g: 1, b: 1, a: 1}
-  - unitStat: 1
-    statColour: {r: 0.25256526, g: 0.7735849, b: 0.105820596, a: 1}
-  - unitStat: 2
-    statColour: {r: 0.8113208, g: 0.049750824, b: 0.049750824, a: 1}
+  - statMod: 1
+    statColour: {r: 0.19790858, g: 0.764151, b: 0.111739054, a: 1}
+  - statMod: 2
+    statColour: {r: 0.7924528, g: 0.10888531, b: 0.04111784, a: 1}
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0

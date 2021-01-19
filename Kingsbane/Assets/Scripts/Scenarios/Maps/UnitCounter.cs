@@ -30,6 +30,8 @@ public class UnitCounter : MonoBehaviour
     private TextMeshProUGUI rangeText;
     [SerializeField]
     private TextMeshProUGUI speedText;
+    [SerializeField]
+    private Image statusIcon;
 
     public Player Owner { get { return unit.Owner; } }
 
@@ -49,28 +51,23 @@ public class UnitCounter : MonoBehaviour
             nameArea.SetActive(false);
             unitImage.sprite = unit.CardArt;
         }
-        
-        RefreshUnitCounter();
     }
 
     public void RefreshUnitCounter()
     {
         attackText.text = unit.Attack.ToString();
-        var attackStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(attackStatType);
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedAttack);
 
         healthText.text = unit.Health.ToString();
-        var healthStatType = unit.UnitIsDamaged ? Unit.UnitStatTypes.Damaged : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(healthStatType);
+        healthText.color = GameManager.instance.colourManager.GetStatModColour(unit.UnitIsDamaged);
 
         rangeText.text = unit.Range.ToString();
-        var rangeStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(rangeStatType);
+        rangeText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedAttack);
 
-        speedText.text = unit.Speed.ToString();
-        var speedStatType = unit.HasBuffedAttack ? Unit.UnitStatTypes.Buffed : Unit.UnitStatTypes.None;
-        attackText.color = GameManager.instance.colourManager.GetUnitStatColour(speedStatType);
+        speedText.text = $"{unit.RemainingSpeed}/{unit.Speed}";
+        speedText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedSpeed);
 
+        statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(unit.Status);
     }
 
     public void ShowCardDetail()
