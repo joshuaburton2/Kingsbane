@@ -7,6 +7,7 @@ using System;
 
 public class Player
 {
+    public int Id { get; set; }
     public string Name { get { return DeckData.Name; } }
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
 
@@ -41,11 +42,12 @@ public class Player
 
     public void InitialisePlayer(int id)
     {
+        Id = id;
         Deck.Shuffle();
         DrawMulligan();
 
         foreach (var resource in Resources)
-            resource.StartOfGameUpdate(id);
+            resource.StartOfGameUpdate(Id);
     }
 
     public void StarOfTurn(bool isActive)
