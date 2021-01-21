@@ -209,21 +209,23 @@ public class GameManager : MonoBehaviour
                 CurrentGamePhase++;
             }
 
-            ActivePlayerStartTurn();
+            PlayerStartOfTurn();
 
             return true;
         }
 
-        ActivePlayerStartTurn();
+        PlayerStartOfTurn();
         
         return false;
     }
 
-    public void ActivePlayerStartTurn()
+    public void PlayerStartOfTurn()
     {
-        if (CurrentGamePhase == GamePhases.Gameplay)
+        var activePlayer = GetActivePlayer();
+
+        foreach (var player in LoadedPlayers)
         {
-            GetActivePlayer().StartOfTurn();
+            player.StarOfTurn(player == activePlayer);
         }
     }
 }

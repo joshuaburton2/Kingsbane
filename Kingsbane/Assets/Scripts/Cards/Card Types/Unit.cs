@@ -10,7 +10,8 @@ public class Unit : Card
         Start, //Status for start of turn
         Preparing, //Status for just played
         Middle, //Status for still actions, movement or abilities to use
-        Finished //Status for all actions spent
+        Finished, //Status for all actions spent
+        Enemy, //Status for enemy cards
     }
 
     public UnitData UnitData { get { return cardData as UnitData; } }
@@ -69,12 +70,30 @@ public class Unit : Card
         Status = UnitStatuses.Preparing;
     }
 
-    public void StartOfTurn()
+    public void StartOfTurn(bool isActive)
     {
-        Status = UnitStatuses.Start;
+        if (isActive)
+        {
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Mulligan)
+            {
+                Status = UnitStatuses.Preparing;
 
-        RemainingSpeed = Speed;
-        ActionsLeft = 1;
-        AbilityUsesLeft = 1;
+                RemainingSpeed = 0;
+                ActionsLeft = 0;
+                AbilityUsesLeft = 0;
+            }
+            else if(GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            {
+                Status = UnitStatuses.Start;
+
+                RemainingSpeed = Speed;
+                ActionsLeft = 1;
+                AbilityUsesLeft = 1;
+            }
+        }
+        else
+        {
+            Status = UnitStatuses.Enemy;
+        }
     }
 }

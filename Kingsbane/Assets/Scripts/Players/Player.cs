@@ -48,18 +48,31 @@ public class Player
             resource.StartOfGameUpdate(id);
     }
 
-    public void StartOfTurn()
+    public void StarOfTurn(bool isActive)
     {
-        Draw();
+        if (isActive)
+        {
+            Draw();
 
-        foreach (var resource in Resources)
-            resource.StartOfTurnUpdate();
+            foreach (var resource in Resources)
+                resource.StartOfTurnUpdate();
 
+            UnitStartOfTurn(isActive);
+        }
+        else
+        {
+            UnitStartOfTurn(isActive);
+        }
+
+    }
+
+    private void UnitStartOfTurn(bool isActive)
+    {
         foreach (var unit in DeployedUnits)
         {
-            unit.unit.StartOfTurn();
+            unit.unit.StartOfTurn(isActive);
             unit.RefreshUnitCounter();
-        } 
+        }
     }
 
     /// <summary>

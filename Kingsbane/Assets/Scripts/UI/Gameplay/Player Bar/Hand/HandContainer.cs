@@ -221,6 +221,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     {
         GameManager.instance.effectManager.PlayCard(Card);
         GameplayUI.ShowCardDisplay(Card);
+        MinimiseDisplay();
     }
 
     /// <summary>
