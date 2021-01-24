@@ -4948,23 +4948,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Joshua\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\joshu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\KingsbaneV3\\src\\InitDatabase\\InitDatabase.csproj",
+      "projectUniqueName": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\Kingsbane DB Manager\\src\\InitDatabase\\InitDatabase.csproj",
       "projectName": "InitDatabase",
-      "projectPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\KingsbaneV3\\src\\InitDatabase\\InitDatabase.csproj",
-      "packagesPath": "C:\\Users\\Joshua\\.nuget\\packages\\",
-      "outputPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\KingsbaneV3\\src\\InitDatabase\\obj\\",
+      "projectPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\Kingsbane DB Manager\\src\\InitDatabase\\InitDatabase.csproj",
+      "packagesPath": "C:\\Users\\joshu\\.nuget\\packages\\",
+      "outputPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\Kingsbane DB Manager\\src\\InitDatabase\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Joshua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\joshu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4976,9 +4972,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\KingsbaneV3\\src\\Kingsbane.Database\\Kingsbane.Database.csproj": {
-              "projectPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\KingsbaneV3\\src\\Kingsbane.Database\\Kingsbane.Database.csproj"
+            "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\Kingsbane DB Manager\\src\\Kingsbane.Database\\Kingsbane.Database.csproj": {
+              "projectPath": "D:\\Game Development Work\\Unity Projects\\Kingsbane\\Kingsbane\\Kingsbane DB Manager\\src\\Kingsbane.Database\\Kingsbane.Database.csproj"
             }
           }
         }
@@ -4991,6 +4988,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -5006,7 +5004,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
