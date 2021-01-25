@@ -50,3 +50,6 @@ MonoBehaviour:
   gridOrigin: {x: -45, y: 40, z: 0}
   hexDistance: 10
   scalingFactor: 1
+  gameplayClickLayer:
+    serializedVersion: 2
+    m_Bits: 256

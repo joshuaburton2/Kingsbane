@@ -33,6 +33,8 @@ public class PlayerUIBar : MonoBehaviour
         heroUI.InitHeroUI(Player.Hero);
 
         turnIndicator.SetActive(false);
+
+        cardListsUI.gameObject.SetActive(false);
     }
 
     public void RefreshPlayerBar()
@@ -43,10 +45,18 @@ public class PlayerUIBar : MonoBehaviour
         cardListsUI.RefreshCurrentList();
         resourceUI.RefreshResourceUI();
         heroUI.RefreshHeroUI();
+
+        cardListsUI.gameObject.SetActive(false);
     }
 
     public void UpdateTurnIndicator()
     {
+        cardListsUI.gameObject.SetActive(false);
         turnIndicator.SetActive(IsActivePlayerBar);
+    }
+
+    public void SetCardListOpen()
+    {
+        cardListsUI.gameObject.SetActive(!cardListsUI.gameObject.activeSelf);
     }
 }

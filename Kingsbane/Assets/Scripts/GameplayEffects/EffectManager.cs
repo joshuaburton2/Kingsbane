@@ -83,22 +83,29 @@ public class EffectManager : MonoBehaviour
 
     public GameObject DeployUnit(Unit unit, Transform parent, Cell cell)
     {
-        var createdCounter = Instantiate(unitCounterPrefab, parent);
-
-        var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
-        unitCounterScript.InitUnitCounter(unit, cell);
-        unit.Owner.DeployedUnits.Add(unitCounterScript);
-
-        if (selectedCard != null)
+        if (cell.occupantCounter == null)
         {
-            selectedCard.Play();
-            GameManager.instance.uiManager.RefreshUI();
+            var createdCounter = Instantiate(unitCounterPrefab, parent);
+
+            var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
+            unitCounterScript.InitUnitCounter(unit, cell);
+            unit.Owner.DeployedUnits.Add(unitCounterScript);
+
+            if (selectedCard != null)
+            {
+                selectedCard.Play();
+                GameManager.instance.uiManager.RefreshUI();
+            }
+
+            unitCounterScript.RefreshUnitCounter();
+            RefreshEffectManager();
+
+            return createdCounter;
         }
-
-        unitCounterScript.RefreshUnitCounter();
-        RefreshEffectManager();
-
-        return createdCounter;
+        else
+        {
+            return null;
+        }
     }
 
     public void CastSpell(Cell targetCell)
