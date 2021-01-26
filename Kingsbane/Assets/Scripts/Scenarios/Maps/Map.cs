@@ -1,7 +1,5 @@
 ﻿using CategoryEnums;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine.XR.WSA.Input;
 
 public class Map
 {

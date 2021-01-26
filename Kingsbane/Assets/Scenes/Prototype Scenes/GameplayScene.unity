@@ -666,7 +666,9 @@ MonoBehaviour:
   camera: {fileID: 256233655}
   gameplayHitArea: {fileID: 938223122}
   scrollScaling: 30
-  minScrollPercentage: 0
+  panScaling: 0.5
+  minScrollScaling: 0.25
+  maxPanDistance: 55
   isOverGameplayArea: 0
 --- !u!1 &256774335
 GameObject:
@@ -4726,7 +4728,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1319074338}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5360,8 +5362,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1873261932}
   - {fileID: 938223123}
+  - {fileID: 1873261932}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5937,7 +5939,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7204,7 +7206,7 @@ RectTransform:
   - {fileID: 1725768626}
   - {fileID: 1408137988}
   m_Father: {fileID: 1319074338}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
