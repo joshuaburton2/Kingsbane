@@ -63,7 +63,6 @@ public class MapCameraController : MonoBehaviour
             camera.transform.position += Vector3.right * panScaling;
         }
 
-        Debug.Log(currentScaling);
         var currentMaxPanDistance = maxPanDistance * (1 - currentScaling);
         camera.transform.position = new Vector3
         (
