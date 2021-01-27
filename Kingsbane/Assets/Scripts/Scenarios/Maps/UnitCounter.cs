@@ -51,6 +51,8 @@ public class UnitCounter : MonoBehaviour
             nameArea.SetActive(false);
             unitImage.sprite = unit.CardArt;
         }
+
+        RefreshUnitCounter();
     }
 
     public void RefreshUnitCounter()

@@ -21,7 +21,14 @@ public class PlayerUIBar : MonoBehaviour
     [SerializeField]
     private CardListsUI cardListsUI;
     [SerializeField]
+    private UnitCommandUI unitCommandUI;
+    [SerializeField]
     private GameplayUI gameplayUI;
+
+    public void Update()
+    {
+        unitCommandUI.gameObject.SetActive(GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitCommand);
+    }
 
     public void InitialisePlayerBar(int _id)
     {

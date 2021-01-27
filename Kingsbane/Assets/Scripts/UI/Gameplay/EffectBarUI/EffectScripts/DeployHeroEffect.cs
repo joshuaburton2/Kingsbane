@@ -44,7 +44,7 @@ public class DeployHeroEffect : EffectUI
     {
         effectComplete = false;
         var heroUnit = GameManager.instance.GetActivePlayer().Hero;
-        GameManager.instance.effectManager.SetSelectedUnit(heroUnit);
+        GameManager.instance.effectManager.SetSelectedUnitDeploy(heroUnit);
     }
 
     /// <summary>

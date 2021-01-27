@@ -10,6 +10,10 @@ public class EffectManager : MonoBehaviour
         Deployment,
         Spell,
         Equip,
+        UnitCommand,
+        UnitMove,
+        UnitAttack,
+        UnitAbility,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -70,22 +74,22 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void SetSelectedUnit(Unit _selectedUnit)
+    public void SetSelectedUnitDeploy(Unit _selectedUnit)
     {
         selectedUnit = _selectedUnit;
         ActiveEffect = ActiveEffectTypes.Deployment;
     }
 
-    public GameObject DeploySelectedUnit(Transform parent, Cell cell)
+    public GameObject DeploySelectedUnit(Cell cell)
     {
-        return DeployUnit(selectedUnit, parent, cell);
+        return CreateUnit(selectedUnit, cell);
     }
 
-    public GameObject DeployUnit(Unit unit, Transform parent, Cell cell)
+    public GameObject CreateUnit(Unit unit, Cell cell)
     {
         if (cell.occupantCounter == null)
         {
-            var createdCounter = Instantiate(unitCounterPrefab, parent);
+            var createdCounter = Instantiate(unitCounterPrefab, cell.backgroundImage.transform);
 
             var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
             unitCounterScript.InitUnitCounter(unit, cell);
@@ -105,6 +109,14 @@ public class EffectManager : MonoBehaviour
         else
         {
             return null;
+        }
+    }
+
+    public void MoveSelectedUnit(Transform parent, Cell newCell)
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitMove)
+        {
+
         }
     }
 
@@ -159,4 +171,12 @@ public class EffectManager : MonoBehaviour
     {
         GameManager.instance.GetActivePlayer().DrawMulligan();
     }
+
+    public void SetSelectedUnitCommand(Unit _selectedUnit)
+    {
+        selectedUnit = _selectedUnit;
+        ActiveEffect = ActiveEffectTypes.UnitCommand;
+    }
+
+
 }

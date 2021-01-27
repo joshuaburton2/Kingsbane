@@ -10,7 +10,7 @@ public class Cell : MonoBehaviour
     [SerializeField]
     public Vector2 gridIndex;
     [SerializeField]
-    private SpriteRenderer backgroundImage;
+    public SpriteRenderer backgroundImage;
     [SerializeField]
     private float defaultAlpha;
     [SerializeField]
@@ -46,12 +46,20 @@ public class Cell : MonoBehaviour
                         switch (GameManager.instance.effectManager.ActiveEffect)
                         {
                             case EffectManager.ActiveEffectTypes.Deployment:
-                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(backgroundImage.transform, this);
+                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit( this);
                                 if (cellOccupant != null)
                                     occupantCounter = cellOccupant.GetComponent<UnitCounter>();
                                 break;
                             case EffectManager.ActiveEffectTypes.Spell:
                                 GameManager.instance.effectManager.CastSpell(this);
+                                break;
+                            case EffectManager.ActiveEffectTypes.None:
+                                if (cellOccupant != null)
+                                    if ()
+                                    {
+
+                                    }
+                                    GameManager.instance.effectManager.SetSelectedUnitCommand(cellOccupant);                                
                                 break;
                         }
                     }
