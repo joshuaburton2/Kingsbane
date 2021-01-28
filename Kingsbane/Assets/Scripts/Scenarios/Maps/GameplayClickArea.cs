@@ -10,16 +10,13 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class GameplayClickArea : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField]
-    private MapCameraController mapCameraController;
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        mapCameraController.isOverGameplayArea = true;
+        GameManager.instance.uiManager.OverGameplayArea = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        mapCameraController.isOverGameplayArea = false;
+        GameManager.instance.uiManager.OverGameplayArea = false;
     }
 }

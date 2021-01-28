@@ -19,7 +19,10 @@ public class MapGrid : MonoBehaviour
 
     [SerializeField]
     private GameObject cellObject;
+    [SerializeField]
+    private GameplayUI gameplayUI;
 
+    [Header("Grid Properties")]
     [SerializeField]
     //Number of cells in the x direction
     private int numX = 10;
@@ -120,6 +123,9 @@ public class MapGrid : MonoBehaviour
             for (int x = 0; x < numX; x++)
             {
                 Cell cell = GetCell(x, y).GetComponent<Cell>();
+
+                cell.gameplayUI = gameplayUI;
+
                 cell.adjCell = new List<GameObject>();
 
                 #region Adjacent Cell Handling

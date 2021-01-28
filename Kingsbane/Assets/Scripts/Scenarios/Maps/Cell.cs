@@ -24,6 +24,8 @@ public class Cell : MonoBehaviour
     [SerializeField]
     public UnitCounter occupantCounter;
 
+    public GameplayUI gameplayUI;
+
     private void Start()
     {
         cellOccupant = null;
@@ -46,29 +48,37 @@ public class Cell : MonoBehaviour
                         switch (GameManager.instance.effectManager.ActiveEffect)
                         {
                             case EffectManager.ActiveEffectTypes.Deployment:
-                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit( this);
-                                if (cellOccupant != null)
-                                    occupantCounter = cellOccupant.GetComponent<UnitCounter>();
+                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(this);
                                 break;
                             case EffectManager.ActiveEffectTypes.Spell:
                                 GameManager.instance.effectManager.CastSpell(this);
                                 break;
+                            case EffectManager.ActiveEffectTypes.UnitCommand:
+                                SelectCommandUnit();
+                                break;
                             case EffectManager.ActiveEffectTypes.None:
-                                if (cellOccupant != null)
-                                    if ()
-                                    {
-
-                                    }
-                                    GameManager.instance.effectManager.SetSelectedUnitCommand(cellOccupant);                                
+                                SelectCommandUnit();
                                 break;
                         }
                     }
-                    else if (Input.GetMouseButtonDown(1) && occupantCounter != null)
+                    else if (Input.GetMouseButtonDown(1))
                     {
-                        occupantCounter.ShowCardDetail();
+                        if (occupantCounter != null)
+                        {
+                            occupantCounter.ShowCardDetail();
+                        }
                     }
                 }
             }
+        }
+    }
+
+    private void SelectCommandUnit()
+    {
+        if (occupantCounter != null)
+        {
+            GameManager.instance.effectManager.SetSelectedUnitCommand(occupantCounter.unit);
+            gameplayUI.SetSelectedCommandUnit(occupantCounter.unit);
         }
     }
 

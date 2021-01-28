@@ -18,8 +18,6 @@ public class MapCameraController : MonoBehaviour
     [SerializeField]
     private int maxPanDistance;
 
-    public bool isOverGameplayArea;
-
     private float maxCameraSize;
     private float minCameraSize;
 
@@ -29,8 +27,6 @@ public class MapCameraController : MonoBehaviour
 
     private void Awake()
     {
-        isOverGameplayArea = false;
-
         maxCameraSize = camera.orthographicSize;
         minCameraSize = camera.orthographicSize * minScrollScaling;
         baseCameraPos = new Vector2(transform.position.x, transform.position.y);
@@ -38,7 +34,7 @@ public class MapCameraController : MonoBehaviour
 
     private void Update()
     {
-        if (isOverGameplayArea)
+        if (GameManager.instance.uiManager.OverGameplayArea)
         {
             camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollScaling;
             camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);

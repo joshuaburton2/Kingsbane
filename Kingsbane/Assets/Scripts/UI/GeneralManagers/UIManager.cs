@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject currentSceneController;
 
+    public bool OverGameplayArea { get; set; }
+
     [Header("Main Menu Pages")]
     [SerializeField]
     GameObject lobbyPage;

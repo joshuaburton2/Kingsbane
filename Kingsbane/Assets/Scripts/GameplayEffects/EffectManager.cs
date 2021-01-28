@@ -17,7 +17,7 @@ public class EffectManager : MonoBehaviour
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
-    public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None; } }
+    public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None && ActiveEffect != ActiveEffectTypes.UnitCommand; } }
     public bool CancelEffect { get; set; }
 
     Card selectedCard;
@@ -82,10 +82,10 @@ public class EffectManager : MonoBehaviour
 
     public GameObject DeploySelectedUnit(Cell cell)
     {
-        return CreateUnit(selectedUnit, cell);
+        return CreateUnitCounter(selectedUnit, cell);
     }
 
-    public GameObject CreateUnit(Unit unit, Cell cell)
+    public GameObject CreateUnitCounter(Unit unit, Cell cell)
     {
         if (cell.occupantCounter == null)
         {
@@ -93,7 +93,9 @@ public class EffectManager : MonoBehaviour
 
             var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
             unitCounterScript.InitUnitCounter(unit, cell);
-            unit.Owner.DeployedUnits.Add(unitCounterScript);
+            if (!unit.Owner.DeployedUnits.Contains(unitCounterScript))
+                unit.Owner.DeployedUnits.Add(unitCounterScript);
+            cell.occupantCounter = createdCounter.GetComponent<UnitCounter>();
 
             if (selectedCard != null)
             {
@@ -112,7 +114,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveSelectedUnit(Transform parent, Cell newCell)
+    public void MoveSelectedUnit(Cell newCell)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitMove)
         {
@@ -174,9 +176,10 @@ public class EffectManager : MonoBehaviour
 
     public void SetSelectedUnitCommand(Unit _selectedUnit)
     {
-        selectedUnit = _selectedUnit;
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+        {
+            selectedUnit = _selectedUnit;
+        }
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }
-
-
 }

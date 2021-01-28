@@ -28,6 +28,18 @@ public class GameplayUI : MonoBehaviour
     public void Update()
     {
         miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
+            {
+                if (GameManager.instance.uiManager.OverGameplayArea)
+                {
+                    GameManager.instance.effectManager.RefreshEffectManager();
+                    SetSelectedCommandUnit();
+                }
+            }
+        }
     }
 
     public void InitialiseUI()
@@ -103,6 +115,7 @@ public class GameplayUI : MonoBehaviour
         }
 
         effectBarUI.RefreshEffectList();
+        ShowCardDisplay();
     }
 
     private void RefreshHeroDeployUI()
@@ -153,6 +166,20 @@ public class GameplayUI : MonoBehaviour
         else
         {
             playerUIBars[id.Value].RefreshPlayerBar();
+        }
+    }
+
+    public void SetSelectedCommandUnit(Unit unit = null)
+    {
+        if (unit != null)
+        {
+            playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit(unit);
+            ShowCardDisplay(unit);
+        }
+        else
+        {
+            playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit();
+            ShowCardDisplay();
         }
     }
 }

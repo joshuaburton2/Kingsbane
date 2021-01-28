@@ -10,6 +10,7 @@ public class Player
     public int Id { get; set; }
     public string Name { get { return DeckData.Name; } }
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
+    public bool IsActivePlayer { get { return Id == GameManager.instance.ActivePlayerId; } }
 
     private DeckData DeckData { get; set; }
 
@@ -54,6 +55,8 @@ public class Player
     {
         if (isActive)
         {
+            GameManager.instance.effectManager.RefreshEffectManager();
+
             Draw();
 
             foreach (var resource in Resources)
