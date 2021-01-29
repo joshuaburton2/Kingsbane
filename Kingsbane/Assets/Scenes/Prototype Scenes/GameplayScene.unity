@@ -621,7 +621,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 85
+  orthographic size: 80
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -669,7 +669,6 @@ MonoBehaviour:
   panScaling: 0.75
   minScrollScaling: 0.25
   maxPanDistance: 55
-  isOverGameplayArea: 0
 --- !u!1 &256774335
 GameObject:
   m_ObjectHideFlags: 0
@@ -5624,7 +5623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea81e467b4fe9f49a63bcef38fff698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapCameraController: {fileID: 256233657}
 --- !u!1 &1203267809
 GameObject:
   m_ObjectHideFlags: 0
