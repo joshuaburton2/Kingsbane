@@ -71,6 +71,7 @@ public class PlayerUIBar : MonoBehaviour
         {
             unitCommandUI.gameObject.SetActive(true);
             unitCommandUI.SetCommandUnit(unit);
+            handUI.MinimiseAllCards();
         }
         else
         {

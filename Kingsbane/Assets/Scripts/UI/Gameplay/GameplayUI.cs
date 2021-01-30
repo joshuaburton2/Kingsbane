@@ -31,14 +31,19 @@ public class GameplayUI : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
+            if (GameManager.instance.uiManager.OverGameplayArea)
             {
-                if (GameManager.instance.uiManager.OverGameplayArea)
-                {
-                    GameManager.instance.effectManager.RefreshEffectManager();
-                    SetSelectedCommandUnit();
-                }
+                CancelEffects();
             }
+        }
+    }
+
+    public void CancelEffects()
+    {
+        GameManager.instance.effectManager.CancelEffectManager();
+        if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitCommand)
+        {
+            SetSelectedCommandUnit();
         }
     }
 

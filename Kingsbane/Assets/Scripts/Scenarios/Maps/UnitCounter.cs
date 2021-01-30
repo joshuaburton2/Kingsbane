@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UnitCounter : MonoBehaviour
 {
-    public Unit unit;
+    public Unit Unit { get; set; }
     public Cell Cell { get; set; }
 
     [SerializeField]
@@ -33,23 +33,23 @@ public class UnitCounter : MonoBehaviour
     [SerializeField]
     private Image statusIcon;
 
-    public Player Owner { get { return unit.Owner; } }
+    public Player Owner { get { return Unit.Owner; } }
 
     public void InitUnitCounter(Unit _unit, Cell _cell)
     {
-        unit = _unit;
+        Unit = _unit;
         Cell = _cell;
         canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        if (GameManager.instance.imageManager.IsDefaultImage(unit.CardArt))
+        if (GameManager.instance.imageManager.IsDefaultImage(Unit.CardArt))
         {
             nameArea.SetActive(true);
-            nameText.text = unit.Name;
+            nameText.text = Unit.Name;
             unitImage.sprite = null;
         }
         else
         {
             nameArea.SetActive(false);
-            unitImage.sprite = unit.CardArt;
+            unitImage.sprite = Unit.CardArt;
         }
 
         RefreshUnitCounter();
@@ -57,23 +57,23 @@ public class UnitCounter : MonoBehaviour
 
     public void RefreshUnitCounter()
     {
-        attackText.text = unit.Attack.ToString();
-        attackText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedAttack);
+        attackText.text = Unit.Attack.ToString();
+        attackText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedAttack);
 
-        healthText.text = unit.Health.ToString();
-        healthText.color = GameManager.instance.colourManager.GetStatModColour(unit.UnitIsDamaged);
+        healthText.text = Unit.Health.ToString();
+        healthText.color = GameManager.instance.colourManager.GetStatModColour(Unit.UnitIsDamaged);
 
-        rangeText.text = unit.Range.ToString();
-        rangeText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedAttack);
+        rangeText.text = Unit.Range.ToString();
+        rangeText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedAttack);
 
-        speedText.text = $"{unit.RemainingSpeed}/{unit.Speed}";
-        speedText.color = GameManager.instance.colourManager.GetStatModColour(unit.HasBuffedSpeed);
+        speedText.text = $"{Unit.RemainingSpeed}/{Unit.Speed}";
+        speedText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedSpeed);
 
-        statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(unit.Status);
+        statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(Unit.Status);
     }
 
     public void ShowCardDetail()
     {
-        GameManager.instance.uiManager.ActivateCardDetail(unit.cardData);
+        GameManager.instance.uiManager.ActivateCardDetail(Unit.cardData);
     }
 }

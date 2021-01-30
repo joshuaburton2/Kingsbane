@@ -46,6 +46,8 @@ public class Unit : Card
 
     public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
+    public UnitCounter UnitCounter { get; set; }
+
     public override void InitCard(CardData _cardData, Player owner)
     {
         base.InitCard(_cardData, owner);

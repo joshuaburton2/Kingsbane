@@ -94,7 +94,7 @@ public class PlayerMana : PlayerResource
     {
         //Need to add Empowered debuff in here when determined how this is going to work
 
-        foreach (var unit in player.DeployedUnits.Select(x => x.unit))
+        foreach (var unit in player.DeployedUnits.Select(x => x.Unit))
         {
             //unit.Attack = Mathf.Max(1, )
         }

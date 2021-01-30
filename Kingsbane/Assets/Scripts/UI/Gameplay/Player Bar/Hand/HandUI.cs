@@ -25,13 +25,17 @@ public class HandUI : MonoBehaviour
 
     private List<HandContainer> containerList;
 
+    private GameplayUI gameplayUI;
+
     /// <summary>
     /// 
     /// Displays the hand list. Can input either a Card or UpgradeData list
     /// 
     /// </summary>
-    public void DisplayHandList<T>(GameplayUI gameplayUI, List<T> handList, bool showHand, int playerIndex) where T : class
+    public void DisplayHandList<T>(GameplayUI _gameplayUI, List<T> handList, bool showHand, int playerIndex) where T : class
     {
+        gameplayUI = _gameplayUI;
+
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
 
@@ -63,13 +67,26 @@ public class HandUI : MonoBehaviour
             }
             //Sets the properties of the object
             handContainerObject.name = $"Container- {objectName}";
-            handContainer.InitHandContainer(this, gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
+            handContainer.InitHandContainer(this, _gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
 
             index++;
         }
 
         //Sets the hand count text
         handCountText.text = $"Cards in Hand: {handList.Count}";
+        HideHandCountArea(false);
+    }
+
+    /// <summary>
+    /// 
+    /// Minimises all the cards to their base position
+    /// 
+    /// </summary>
+    public void MinimiseAllCards()
+    {
+        foreach (var container in containerList)
+            container.MinimiseDisplay();
+
         HideHandCountArea(false);
     }
 
@@ -83,6 +100,8 @@ public class HandUI : MonoBehaviour
         foreach (var container in containerList)
             if (selectedIndex != container.HandIndex)
                 container.MinimiseDisplay();
+
+        gameplayUI.CancelEffects();
     }
 
     /// <summary>

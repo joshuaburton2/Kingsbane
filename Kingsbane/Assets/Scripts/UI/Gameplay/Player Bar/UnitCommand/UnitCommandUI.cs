@@ -56,4 +56,14 @@ public class UnitCommandUI : MonoBehaviour
         actionText.text = $"Action: {unit.ActionsLeft}";
         abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
     }
+
+    public void MoveCommandUnit()
+    {
+        GameManager.instance.effectManager.SetMoveUnitMode();
+    }
+
+    public void ForceMoveCommandUnit()
+    {
+        GameManager.instance.effectManager.SetForceMoveUnitMode();
+    }
 }

@@ -44,7 +44,7 @@ public class Cell : MonoBehaviour
                 if (hit.transform.name == transform.name)
                 {
                     if (Input.GetMouseButtonDown(0))
-                    {
+                    { 
                         switch (GameManager.instance.effectManager.ActiveEffect)
                         {
                             case EffectManager.ActiveEffectTypes.Deployment:
@@ -55,6 +55,12 @@ public class Cell : MonoBehaviour
                                 break;
                             case EffectManager.ActiveEffectTypes.UnitCommand:
                                 SelectCommandUnit();
+                                break;
+                            case EffectManager.ActiveEffectTypes.UnitMove:
+                                GameManager.instance.effectManager.MoveSelectedUnit(this);
+                                break;
+                            case EffectManager.ActiveEffectTypes.UnitForceMove:
+                                GameManager.instance.effectManager.MoveSelectedUnit(this);
                                 break;
                             case EffectManager.ActiveEffectTypes.None:
                                 SelectCommandUnit();
@@ -77,8 +83,8 @@ public class Cell : MonoBehaviour
     {
         if (occupantCounter != null)
         {
-            GameManager.instance.effectManager.SetSelectedUnitCommand(occupantCounter.unit);
-            gameplayUI.SetSelectedCommandUnit(occupantCounter.unit);
+            GameManager.instance.effectManager.SetSelectedUnitCommand(occupantCounter.Unit);
+            gameplayUI.SetSelectedCommandUnit(occupantCounter.Unit);
         }
     }
 

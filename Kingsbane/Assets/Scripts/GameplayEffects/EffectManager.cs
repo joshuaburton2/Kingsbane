@@ -11,6 +11,7 @@ public class EffectManager : MonoBehaviour
         Spell,
         Equip,
         UnitCommand,
+        UnitForceMove,
         UnitMove,
         UnitAttack,
         UnitAbility,
@@ -20,23 +21,16 @@ public class EffectManager : MonoBehaviour
     public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None && ActiveEffect != ActiveEffectTypes.UnitCommand; } }
     public bool CancelEffect { get; set; }
 
+    private readonly List<ActiveEffectTypes> CancelableEffects = new List<ActiveEffectTypes>()
+    {
+        ActiveEffectTypes.Deployment,
+    };
+
     Card selectedCard;
     Unit selectedUnit;
 
     [SerializeField]
     private GameObject unitCounterPrefab;
-
-    private void Update()
-    {
-        if (IsUILocked)
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                CancelEffect = true;
-                RefreshEffectManager();
-            }
-        }
-    }
 
     public void InitEffectManager()
     {
@@ -44,12 +38,35 @@ public class EffectManager : MonoBehaviour
         RefreshEffectManager();
     }
 
+    public void CancelEffectManager()
+    {
+        if (CancelableEffects.Contains(ActiveEffect))
+        {
+            CancelEffect = true;
+        }
+        RefreshEffectManager();
+    }
+
     public void RefreshEffectManager()
     {
-        ActiveEffect = ActiveEffectTypes.None;
+        switch (ActiveEffect)
+        {
+            default:
+                ActiveEffect = ActiveEffectTypes.None;
 
-        selectedCard = null;
-        selectedUnit = null;
+                selectedCard = null;
+                selectedUnit = null;
+
+                break;
+            case ActiveEffectTypes.UnitForceMove:
+            case ActiveEffectTypes.UnitMove:
+            case ActiveEffectTypes.UnitAttack:
+            case ActiveEffectTypes.UnitAbility:
+                ActiveEffect = ActiveEffectTypes.UnitCommand;
+
+                break;
+        }
+
     }
 
     public void PlayCard(Card card)
@@ -93,6 +110,7 @@ public class EffectManager : MonoBehaviour
 
             var unitCounterScript = createdCounter.GetComponent<UnitCounter>();
             unitCounterScript.InitUnitCounter(unit, cell);
+            unit.UnitCounter = unitCounterScript;
             if (!unit.Owner.DeployedUnits.Contains(unitCounterScript))
                 unit.Owner.DeployedUnits.Add(unitCounterScript);
             cell.occupantCounter = createdCounter.GetComponent<UnitCounter>();
@@ -114,11 +132,31 @@ public class EffectManager : MonoBehaviour
         }
     }
 
+    public void SetMoveUnitMode()
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitCommand)
+        {
+            ActiveEffect = ActiveEffectTypes.UnitMove;
+        }
+    }
+
+    public void SetForceMoveUnitMode()
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitCommand)
+        {
+            ActiveEffect = ActiveEffectTypes.UnitForceMove;
+        }
+    }
+
     public void MoveSelectedUnit(Cell newCell)
     {
-        if (ActiveEffect == ActiveEffectTypes.UnitMove)
+        if (ActiveEffect == ActiveEffectTypes.UnitMove || ActiveEffect == ActiveEffectTypes.UnitForceMove)
         {
-
+            if (newCell.occupantCounter == null)
+            {
+                RemoveUnit(selectedUnit.UnitCounter);
+                CreateUnitCounter(selectedUnit, newCell);
+            }
         }
     }
 

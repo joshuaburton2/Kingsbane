@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
             {
                 CurrentGamePhase++;
             }
-
+            
             PlayerStartOfTurn();
 
             return true;
@@ -221,11 +221,14 @@ public class GameManager : MonoBehaviour
 
     public void PlayerStartOfTurn()
     {
-        var activePlayer = GetActivePlayer();
-
-        foreach (var player in LoadedPlayers)
+        if (CurrentGamePhase == GamePhases.Gameplay)
         {
-            player.StarOfTurn(player == activePlayer);
+            var activePlayer = GetActivePlayer();
+
+            foreach (var player in LoadedPlayers)
+            {
+                player.StarOfTurn(player == activePlayer);
+            }
         }
     }
 }

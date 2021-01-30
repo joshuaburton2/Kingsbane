@@ -8,8 +8,6 @@ public class MapCameraController : MonoBehaviour
     [SerializeField]
     private Camera camera;
     [SerializeField]
-    private GameObject gameplayHitArea;
-    [SerializeField]
     private float scrollScaling;
     [SerializeField]
     private float panScaling;

@@ -75,7 +75,7 @@ public class Player
     {
         foreach (var unit in DeployedUnits)
         {
-            unit.unit.StartOfTurn(isActive);
+            unit.Unit.StartOfTurn(isActive);
             unit.RefreshUnitCounter();
         }
     }
