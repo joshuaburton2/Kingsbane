@@ -62,6 +62,9 @@ public class Cell : MonoBehaviour
                             case EffectManager.ActiveEffectTypes.UnitForceMove:
                                 GameManager.instance.effectManager.MoveSelectedUnit(this);
                                 break;
+                            case EffectManager.ActiveEffectTypes.UnitAttack:
+                                GameManager.instance.effectManager.UseAttack(occupantCounter.Unit);
+                                break;
                             case EffectManager.ActiveEffectTypes.None:
                                 SelectCommandUnit();
                                 break;

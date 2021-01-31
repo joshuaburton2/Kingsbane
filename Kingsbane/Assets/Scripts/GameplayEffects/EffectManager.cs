@@ -29,10 +29,10 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.UnitUseSpeed,
     };
 
-    Card selectedCard;
-    Unit selectedUnit;
+    private Card SelectedCard { get; set; }
+    private Unit SelectedUnit { get; set; }
 
-    Cell previousCell;
+    private Cell PreviousCell { get; set; }
 
     [SerializeField]
     private GameObject unitCounterPrefab;
@@ -59,8 +59,8 @@ public class EffectManager : MonoBehaviour
             default:
                 ActiveEffect = ActiveEffectTypes.None;
 
-                selectedCard = null;
-                selectedUnit = null;
+                SelectedCard = null;
+                SelectedUnit = null;
 
                 break;
             case ActiveEffectTypes.UnitForceMove:
@@ -69,7 +69,6 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
 
                 break;
-
             case ActiveEffectTypes.UnitMove:
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
                 CancelEffect = false;
@@ -78,11 +77,11 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.UnitUseSpeed:
                 if (CancelEffect)
                 {
-                    MoveSelectedUnit(previousCell, true);
+                    MoveSelectedUnit(PreviousCell, true);
                     CancelEffect = false;
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
-                previousCell = null;
+                PreviousCell = null;
 
                 break;
         }
@@ -90,12 +89,12 @@ public class EffectManager : MonoBehaviour
 
     public void PlayCard(Card card)
     {
-        selectedCard = card;
+        SelectedCard = card;
 
         switch (card.Type)
         {
             case CategoryEnums.CardTypes.Unit:
-                selectedUnit = (Unit)card;
+                SelectedUnit = (Unit)card;
                 ActiveEffect = ActiveEffectTypes.Deployment;
                 break;
             case CategoryEnums.CardTypes.Spell:
@@ -112,13 +111,13 @@ public class EffectManager : MonoBehaviour
 
     public void SetSelectedUnitDeploy(Unit _selectedUnit)
     {
-        selectedUnit = _selectedUnit;
+        SelectedUnit = _selectedUnit;
         ActiveEffect = ActiveEffectTypes.Deployment;
     }
 
     public GameObject DeploySelectedUnit(Cell cell)
     {
-        return CreateUnitCounter(selectedUnit, cell);
+        return CreateUnitCounter(SelectedUnit, cell);
     }
 
     public GameObject CreateUnitCounter(Unit unit, Cell cell)
@@ -134,9 +133,9 @@ public class EffectManager : MonoBehaviour
                 unit.Owner.DeployedUnits.Add(unitCounterScript);
             cell.occupantCounter = createdCounter.GetComponent<UnitCounter>();
 
-            if (selectedCard != null)
+            if (SelectedCard != null)
             {
-                selectedCard.Play();
+                SelectedCard.Play();
                 GameManager.instance.uiManager.RefreshUI();
             }
 
@@ -156,7 +155,7 @@ public class EffectManager : MonoBehaviour
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
-            previousCell = currentCell;
+            PreviousCell = currentCell;
         }
     }
 
@@ -174,17 +173,38 @@ public class EffectManager : MonoBehaviour
         {
             if (newCell.occupantCounter == null)
             {
-                RemoveUnit(selectedUnit.UnitCounter);
-                CreateUnitCounter(selectedUnit, newCell);
+                RemoveUnit(SelectedUnit.UnitCounter);
+                CreateUnitCounter(SelectedUnit, newCell);
+            }
+        }
+    }
+
+    public void SetAttackMode()
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitCommand)
+        {
+            ActiveEffect = ActiveEffectTypes.UnitAttack;
+        }
+    }
+
+    public void UseAttack(Unit targetUnit)
+    {
+        if (targetUnit != null)
+        {
+            if (SelectedUnit.Owner.Id != targetUnit.Owner.Id)
+            {
+                SelectedUnit.TriggerAttack(targetUnit);
+                RefreshEffectManager();
+                GameManager.instance.uiManager.RefreshUI();
             }
         }
     }
 
     public void CastSpell(Cell targetCell)
     {
-        if (selectedCard != null)
+        if (SelectedCard != null)
         {
-            selectedCard.Play();
+            SelectedCard.Play();
             GameManager.instance.uiManager.RefreshUI();
             RefreshEffectManager();
         }
@@ -192,14 +212,14 @@ public class EffectManager : MonoBehaviour
 
     public void EquipItem(Item itemToReplace)
     {
-        if (selectedCard != null)
+        if (SelectedCard != null)
         {
             if (itemToReplace != null)
             {
                 itemToReplace.DestroyItem();
             }
 
-            selectedCard.Play();
+            SelectedCard.Play();
             GameManager.instance.uiManager.RefreshUI();
             RefreshEffectManager();
         }
@@ -219,6 +239,11 @@ public class EffectManager : MonoBehaviour
     {
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
+
+        if (unitCounter.Unit == SelectedUnit && ActiveEffect == ActiveEffectTypes.UnitAttack)
+        {
+            SelectedUnit = null;
+        }
     }
 
     private void DestroyUnitCounter(UnitCounter unitCounter)
@@ -236,7 +261,7 @@ public class EffectManager : MonoBehaviour
     {
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
         {
-            selectedUnit = _selectedUnit;
+            SelectedUnit = _selectedUnit;
         }
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }

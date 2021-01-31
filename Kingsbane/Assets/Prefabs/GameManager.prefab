@@ -980,7 +980,7 @@ MonoBehaviour:
   - statMod: 1
     statColour: {r: 0.19790858, g: 0.764151, b: 0.111739054, a: 1}
   - statMod: 2
-    statColour: {r: 0.7924528, g: 0.10888531, b: 0.04111784, a: 1}
+    statColour: {r: 1, g: 0.08050716, b: 0, a: 1}
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0

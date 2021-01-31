@@ -55,7 +55,21 @@ public class PlayerUIBar : MonoBehaviour
 
     public void UpdateTurnIndicator()
     {
-        unitCommandUI.gameObject.SetActive(false);
+        if (IsActivePlayerBar)
+        {
+            if (GameManager.instance.effectManager.ActiveEffect != ActiveEffectTypes.UnitCommand)
+            {
+                unitCommandUI.gameObject.SetActive(false);
+            }
+            else
+            {
+                unitCommandUI.RefreshCommandBar();
+            }
+        }
+        else
+        {
+            unitCommandUI.gameObject.SetActive(false);
+        }
         cardListsUI.gameObject.SetActive(false);
         turnIndicator.SetActive(IsActivePlayerBar);
     }

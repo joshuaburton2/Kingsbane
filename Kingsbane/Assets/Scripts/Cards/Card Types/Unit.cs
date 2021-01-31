@@ -42,6 +42,8 @@ public class Unit : Card
     public int RemainingSpeed { get; set; }
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
+    public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
+    public bool CanAttack { get { return ActionsLeft > 0; } }
 
     public string UnitTag { get { return UnitData.UnitTag; } }
 
@@ -120,6 +122,39 @@ public class Unit : Card
 
             UnitCounter.RefreshUnitCounter();
             GameManager.instance.effectManager.RefreshEffectManager();
+        }
+    }
+
+    public void IncreaseActions(int value)
+    {
+        ActionsLeft += value;
+    }
+
+    public void TriggerAttack(Unit targetUnit)
+    {
+        ActionsLeft--;
+        if (ActionsLeft == 0)
+            Status = UnitStatuses.Finished;
+        else
+            Status = UnitStatuses.Middle;
+
+        targetUnit.DamageUnit(Attack);
+        if (Range == 0)
+            DamageUnit(targetUnit.Attack);
+    }
+
+    public void DamageUnit(int damageValue)
+    {
+        Health -= damageValue;
+
+        UnitCounter.RefreshUnitCounter();
+
+        if (Health <= 0)
+        {
+            GameManager.instance.effectManager.RemoveUnit(UnitCounter);
+            Owner.AddToGraveyard(this);
+
+            UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
         }
     }
 }

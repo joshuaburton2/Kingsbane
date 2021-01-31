@@ -89,14 +89,18 @@ public class UnitCommandUI : MonoBehaviour
         actionText.text = $"Action: {unit.ActionsLeft}";
         abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
 
-        moveButton.interactable = unit.RemainingSpeed > 0;
+        moveButton.interactable = unit.CanMove;
+        attackButton.interactable = unit.CanAttack;
         speedArea.SetActive(false);
+    }
+
+    public void ForceMoveCommandUnit()
+    {
+        GameManager.instance.effectManager.SetForceMoveUnitMode();
     }
 
     public void MoveCommandUnit()
     {
-        var currentCell = unit.UnitCounter.Cell.gridIndex;
-
         GameManager.instance.effectManager.SetMoveUnitMode(unit.UnitCounter.Cell);
     }
 
@@ -127,8 +131,14 @@ public class UnitCommandUI : MonoBehaviour
         RefreshCommandBar();
     }
 
-    public void ForceMoveCommandUnit()
+    public void IncreaseActions()
     {
-        GameManager.instance.effectManager.SetForceMoveUnitMode();
+        unit.IncreaseActions(1);
+        RefreshCommandBar();
+    }
+
+    public void UseAttack()
+    {
+        GameManager.instance.effectManager.SetAttackMode();
     }
 }
