@@ -15,7 +15,7 @@ using UnityEngine;
 public class MapGrid : MonoBehaviour
 {
     private GameObject[] rowList;
-    private GameObject[][] cellList;
+    private Cell[][] cellList;
 
     [SerializeField]
     private GameObject cellObject;
@@ -57,7 +57,7 @@ public class MapGrid : MonoBehaviour
         var scaledHexDistance = hexDistance * scalingFactor;
 
         rowList = new GameObject[numY];
-        cellList = new GameObject[numY][];
+        cellList = new Cell[numY][];
 
         GameManager.DestroyAllChildren(gameObject);
 
@@ -65,7 +65,7 @@ public class MapGrid : MonoBehaviour
         //Initialise the rows to store each of the cells. This has no functional purpose but is for organisation within the scene
         for (int y = 0; y < numY; y++)
         {
-            cellList[y] = new GameObject[numX];
+            cellList[y] = new Cell[numX];
 
             GameObject rowObject = new GameObject(string.Format("Row{0}", y));
             rowObject.transform.parent = transform;
@@ -93,9 +93,10 @@ public class MapGrid : MonoBehaviour
                 newCell.transform.localPosition = currentPos;
                 newCell.name = string.Format("Cell{0}.{1}", y, x);
                 newCell.transform.localScale = baseCellScale * scalingFactor;
-                newCell.GetComponent<Cell>().gridIndex = new Vector2(y, x);
 
-                cellList[y][x] = newCell;
+                var newCellScript = newCell.GetComponent<Cell>();
+                newCellScript.gridIndex = new Vector2(y, x);
+                cellList[y][x] = newCellScript;
 
                 currentPos += new Vector3(scaledHexDistance, 0, 0);
             }
@@ -122,11 +123,11 @@ public class MapGrid : MonoBehaviour
         {
             for (int x = 0; x < numX; x++)
             {
-                Cell cell = GetCell(x, y).GetComponent<Cell>();
+                Cell cell = GetCell(x, y);
 
                 cell.gameplayUI = gameplayUI;
 
-                cell.adjCell = new List<GameObject>();
+                cell.adjCell = new List<Cell>();
 
                 #region Adjacent Cell Handling
                 //Add cells above the current cell. Does not consider the top row
@@ -195,7 +196,7 @@ public class MapGrid : MonoBehaviour
     /// Retrieves the cell object from cell list based on its x and y coordinates in the grid
     /// 
     /// </summary>
-    private GameObject GetCell(int x, int y)
+    public Cell GetCell(int x, int y)
     {
         return cellList[y][x];
     }

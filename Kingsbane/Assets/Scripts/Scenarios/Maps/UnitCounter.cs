@@ -39,6 +39,7 @@ public class UnitCounter : MonoBehaviour
     {
         Unit = _unit;
         Cell = _cell;
+
         canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         if (GameManager.instance.imageManager.IsDefaultImage(Unit.CardArt))
         {

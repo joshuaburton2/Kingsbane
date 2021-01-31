@@ -12,6 +12,7 @@ public class EffectManager : MonoBehaviour
         Equip,
         UnitCommand,
         UnitForceMove,
+        UnitUseSpeed,
         UnitMove,
         UnitAttack,
         UnitAbility,
@@ -24,10 +25,14 @@ public class EffectManager : MonoBehaviour
     private readonly List<ActiveEffectTypes> CancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.Deployment,
+        ActiveEffectTypes.UnitMove,
+        ActiveEffectTypes.UnitUseSpeed,
     };
 
     Card selectedCard;
     Unit selectedUnit;
+
+    Cell previousCell;
 
     [SerializeField]
     private GameObject unitCounterPrefab;
@@ -59,14 +64,28 @@ public class EffectManager : MonoBehaviour
 
                 break;
             case ActiveEffectTypes.UnitForceMove:
-            case ActiveEffectTypes.UnitMove:
             case ActiveEffectTypes.UnitAttack:
             case ActiveEffectTypes.UnitAbility:
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
 
                 break;
-        }
 
+            case ActiveEffectTypes.UnitMove:
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
+                CancelEffect = false;
+
+                break;
+            case ActiveEffectTypes.UnitUseSpeed:
+                if (CancelEffect)
+                {
+                    MoveSelectedUnit(previousCell, true);
+                    CancelEffect = false;
+                }
+                ActiveEffect = ActiveEffectTypes.UnitCommand;
+                previousCell = null;
+
+                break;
+        }
     }
 
     public void PlayCard(Card card)
@@ -132,11 +151,12 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void SetMoveUnitMode()
+    public void SetMoveUnitMode(Cell currentCell)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
+            previousCell = currentCell;
         }
     }
 
@@ -148,9 +168,9 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveSelectedUnit(Cell newCell)
+    public void MoveSelectedUnit(Cell newCell, bool isCancel = false)
     {
-        if (ActiveEffect == ActiveEffectTypes.UnitMove || ActiveEffect == ActiveEffectTypes.UnitForceMove)
+        if (ActiveEffect == ActiveEffectTypes.UnitMove || ActiveEffect == ActiveEffectTypes.UnitForceMove || ActiveEffect == ActiveEffectTypes.UnitUseSpeed)
         {
             if (newCell.occupantCounter == null)
             {

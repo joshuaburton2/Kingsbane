@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public int? ActivePlayerId { get; set; }
     public GamePhases CurrentGamePhase { get; set; }
+    public int CurrentRound { get; set; }
 
     private void Awake()
     {
@@ -186,6 +187,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         ActivePlayerId = 0;
+        CurrentRound = 0;
 
         var index = 0;
         foreach (var player in LoadedPlayers)
@@ -208,6 +210,11 @@ public class GameManager : MonoBehaviour
             {
                 CurrentGamePhase++;
             }
+
+            if (CurrentGamePhase == GamePhases.Gameplay)
+            {
+                CurrentRound++;
+            }
             
             PlayerStartOfTurn();
 
@@ -221,14 +228,14 @@ public class GameManager : MonoBehaviour
 
     public void PlayerStartOfTurn()
     {
-        if (CurrentGamePhase == GamePhases.Gameplay)
-        {
+        //if (CurrentGamePhase == GamePhases.Gameplay)
+        //{
             var activePlayer = GetActivePlayer();
 
             foreach (var player in LoadedPlayers)
             {
                 player.StarOfTurn(player == activePlayer);
             }
-        }
+        //}
     }
 }

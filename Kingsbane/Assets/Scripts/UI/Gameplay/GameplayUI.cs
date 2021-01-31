@@ -41,6 +41,7 @@ public class GameplayUI : MonoBehaviour
     public void CancelEffects()
     {
         GameManager.instance.effectManager.CancelEffectManager();
+        
         if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitCommand)
         {
             SetSelectedCommandUnit();

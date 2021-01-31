@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField]
-    public List<GameObject> adjCell;
+    public List<Cell> adjCell;
     [SerializeField]
     public Vector2 gridIndex;
     [SerializeField]
@@ -44,7 +44,7 @@ public class Cell : MonoBehaviour
                 if (hit.transform.name == transform.name)
                 {
                     if (Input.GetMouseButtonDown(0))
-                    { 
+                    {
                         switch (GameManager.instance.effectManager.ActiveEffect)
                         {
                             case EffectManager.ActiveEffectTypes.Deployment:

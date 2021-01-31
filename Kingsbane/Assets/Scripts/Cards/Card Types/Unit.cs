@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CategoryEnums;
+using System;
 
 public class Unit : Card
 {
@@ -30,7 +31,7 @@ public class Unit : Card
     public int Health { get; set; }
     public int Range { get; set; }
     public int Speed { get; set; }
-    
+
 
     public StatModTypes HasBuffedAttack { get { return Attack > BaseAttack ? StatModTypes.Buffed : StatModTypes.None; } }
     public StatModTypes UnitIsDamaged { get { return Health < BaseHealth ? StatModTypes.Damaged : StatModTypes.None; } }
@@ -84,18 +85,41 @@ public class Unit : Card
                 ActionsLeft = 0;
                 AbilityUsesLeft = 0;
             }
-            else if(GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
-                Status = UnitStatuses.Start;
+                if (GameManager.instance.CurrentRound != 1)
+                {
+                    Status = UnitStatuses.Start;
 
-                RemainingSpeed = Speed;
-                ActionsLeft = 1;
-                AbilityUsesLeft = 1;
+                    RemainingSpeed = Speed;
+                    ActionsLeft = 1;
+                    AbilityUsesLeft = 1;
+                }
+                else
+                {
+                    Status = UnitStatuses.Preparing;
+                }
             }
         }
         else
         {
             Status = UnitStatuses.Enemy;
+        }
+    }
+
+    public void UseSpeed(int usedSpeed)
+    {
+        if (usedSpeed == 0)
+        {
+            throw new Exception("Cannot Use 0 Speed");
+        }
+        else
+        {
+            RemainingSpeed -= usedSpeed;
+            Status = UnitStatuses.Middle;
+
+            UnitCounter.RefreshUnitCounter();
+            GameManager.instance.effectManager.RefreshEffectManager();
         }
     }
 }

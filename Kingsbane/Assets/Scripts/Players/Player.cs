@@ -57,10 +57,13 @@ public class Player
         {
             GameManager.instance.effectManager.RefreshEffectManager();
 
-            Draw();
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            {
+                Draw();
 
-            foreach (var resource in Resources)
-                resource.StartOfTurnUpdate();
+                foreach (var resource in Resources)
+                    resource.StartOfTurnUpdate();
+            }
 
             UnitStartOfTurn(isActive);
         }
