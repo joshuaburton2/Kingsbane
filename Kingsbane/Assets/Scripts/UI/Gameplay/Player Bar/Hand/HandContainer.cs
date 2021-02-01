@@ -126,7 +126,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
             HandUI.MinimiseNonSelectedCards(HandIndex);
 
         //Hides the hand count area based on whether the card is selected or not
-        HandUI.HideHandCountArea(isSelected);
+        HandUI.UpdateHandObjects(isSelected);
     }
 
     /// <summary>

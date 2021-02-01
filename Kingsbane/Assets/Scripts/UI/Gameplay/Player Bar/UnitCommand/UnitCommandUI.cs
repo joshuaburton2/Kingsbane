@@ -4,6 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Script for controlling the unit command bar on a player bar
+/// 
+/// </summary>
 public class UnitCommandUI : MonoBehaviour
 {
     Unit unit;
@@ -61,6 +66,7 @@ public class UnitCommandUI : MonoBehaviour
         {
             buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
 
+            //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it
             if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed && !ModifyingSpeed)
             {
                 ModifyingSpeed = true;
@@ -79,6 +85,11 @@ public class UnitCommandUI : MonoBehaviour
             buttonGroup.interactable = false;
     }
 
+    /// <summary>
+    /// 
+    /// Sets the unit which is being commanded and refreshes the UI
+    /// 
+    /// </summary>
     public void SetCommandUnit(Unit _unit)
     {
         unit = _unit;
@@ -92,6 +103,11 @@ public class UnitCommandUI : MonoBehaviour
         RefreshCommandBar();
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the UI Component
+    /// 
+    /// </summary>
     public void RefreshCommandBar()
     {
         speedText.text = $"Speed: {unit.RemainingSpeed}/{unit.Speed}";
@@ -104,14 +120,21 @@ public class UnitCommandUI : MonoBehaviour
         speedArea.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the list of abilities with the ones the unit has
+    /// 
+    /// </summary>
     private void RefreshAbilities()
     {
         var hasAbilities = unit.Abilities.Count > 0;
+        //Hides the button area if the unit has no abilities
         abilityButtonArea.SetActive(unit.Owner.IsActivePlayer && hasAbilities);
         if (hasAbilities)
         {
             abilityButtonObjects = new List<AbilityButton>();
             GameManager.DestroyAllChildren(abilityButtonParent);
+            //Loops through each ability and creates a button for it
             foreach (var ability in unit.Abilities)
             {
                 var abilityButtonObject = Instantiate(abilityButtonPrefab, abilityButtonParent.transform);
@@ -123,16 +146,31 @@ public class UnitCommandUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Sets the game into force unit move mode
+    /// 
+    /// </summary>
     public void ForceMoveCommandUnit()
     {
         GameManager.instance.effectManager.SetForceMoveUnitMode();
     }
 
+    /// <summary>
+    /// 
+    /// Sets the game into move unit mode
+    /// 
+    /// </summary>
     public void MoveCommandUnit()
     {
         GameManager.instance.effectManager.SetMoveUnitMode(unit.UnitCounter.Cell);
     }
 
+    /// <summary>
+    /// 
+    /// Checks if the speed buttons can be selected or not and sets the speed text
+    /// 
+    /// </summary>
     private void CheckSpeedButtons()
     {
         speedInput.text = SetSpeed.ToString();
@@ -140,6 +178,11 @@ public class UnitCommandUI : MonoBehaviour
         plusButton.interactable = SetSpeed != unit.RemainingSpeed;
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing speed use
+    /// 
+    /// </summary>
     public void IncreaseSpeedUse()
     {
         SetSpeed++;
@@ -147,12 +190,22 @@ public class UnitCommandUI : MonoBehaviour
         CheckSpeedButtons();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for decreasing speed use
+    /// 
+    /// </summary>
     public void DecreaseSpeedUse()
     {
         SetSpeed--;
         CheckSpeedButtons();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for using the given speed
+    /// 
+    /// </summary>
     public void ConfirmSpeedUse()
     {
         ModifyingSpeed = false;
@@ -160,17 +213,32 @@ public class UnitCommandUI : MonoBehaviour
         RefreshCommandBar();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing the units number of actions
+    /// 
+    /// </summary>
     public void IncreaseActions()
     {
         unit.ModifyActions(1);
         RefreshCommandBar();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for setting attack mode for the unit
+    /// 
+    /// </summary>
     public void UseAttack()
     {
         GameManager.instance.effectManager.SetAttackMode();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for increasing the units number of ability uses
+    /// 
+    /// </summary>
     public void IncreaseAbilities()
     {
         unit.ModifyAbilities(1);

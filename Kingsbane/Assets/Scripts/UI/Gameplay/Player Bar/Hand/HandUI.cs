@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandUI : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class HandUI : MonoBehaviour
     private float scalingFactor;
     [SerializeField]
     private bool cardMoveUpward; //True is the cards in hand move upward when clicked. False for downward
+    [SerializeField]
+    private GameObject scrollAreaMask;
+    [SerializeField]
+    private GridLayoutGroup handGridLayout;
     [Header("Hand Count Objects")]
     [SerializeField]
     private TextMeshProUGUI handCountText;
@@ -74,7 +79,7 @@ public class HandUI : MonoBehaviour
 
         //Sets the hand count text
         handCountText.text = $"Cards in Hand: {handList.Count}";
-        HideHandCountArea(false);
+        UpdateHandObjects(false);
     }
 
     /// <summary>
@@ -87,7 +92,7 @@ public class HandUI : MonoBehaviour
         foreach (var container in containerList)
             container.MinimiseDisplay();
 
-        HideHandCountArea(false);
+        UpdateHandObjects(false);
     }
 
     /// <summary>
@@ -106,11 +111,23 @@ public class HandUI : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Hides the hand count area to prevent card blocking
+    /// Updates the hand when a card is selected
     /// 
     /// </summary>
-    public void HideHandCountArea(bool toHide)
+    public void UpdateHandObjects(bool cardSelected)
     {
-        handCountArea.alpha = toHide ? handCountHideAlpha : 1.0f;
+        handCountArea.alpha = cardSelected ? handCountHideAlpha : 1.0f;
+
+        //Shifts the hand area mask to prevent it blocking the map. Might be a better way of doing this but leave be for now
+        //Odd how the padding is not required to be changed for the top player bar, but wasn't able to determine why
+        if (cardMoveUpward)
+        {
+            scrollAreaMask.GetComponent<RectTransform>().SetTop(cardSelected ? -150 : 0);
+            handGridLayout.padding.top = cardSelected ? 155 : 5;
+        }
+        else
+        {
+            scrollAreaMask.GetComponent<RectTransform>().SetBottom(cardSelected ? -150 : 0);
+        }
     }
 }
