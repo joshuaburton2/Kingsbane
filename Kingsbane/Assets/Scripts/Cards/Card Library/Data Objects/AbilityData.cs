@@ -1,4 +1,5 @@
 ﻿using CategoryEnums;
+using Helpers;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -36,5 +37,21 @@ public class AbilityData
 
             return abilityResources;
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Generates the ability text to display to the player
+    /// 
+    /// </summary>
+    /// <param name="includeName">True if including the abilities name, false otherwise</param>
+    public string AbilityText(bool includeName = true)
+    {
+        var nameText = includeName ? $"{Name} " : "";
+        var resourceText = StringHelpers.GenerateResourceText(GetResources);
+        var commaText = resourceText.Length == 0 ? "" : ", "; //For handling in case the ability just costs an action, in which case doesn't need a comma
+        var actionText = CostsAction ? $"{commaText}1 Action" : "";
+
+        return $"<b>{nameText}({resourceText}{actionText}):</b> {Text}";
     }
 }

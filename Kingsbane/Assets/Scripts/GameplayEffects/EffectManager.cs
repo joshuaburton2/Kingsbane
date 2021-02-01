@@ -31,6 +31,7 @@ public class EffectManager : MonoBehaviour
 
     private Card SelectedCard { get; set; }
     private Unit SelectedUnit { get; set; }
+    private AbilityData SelectedAbility { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -198,6 +199,22 @@ public class EffectManager : MonoBehaviour
                 GameManager.instance.uiManager.RefreshUI();
             }
         }
+    }
+
+    public void SetUnitAbilityMode(AbilityData abilityData)
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitCommand)
+        {
+            ActiveEffect = ActiveEffectTypes.UnitAbility;
+            SelectedAbility = abilityData;
+        }
+    }
+
+    public void UseAbility()
+    {
+        SelectedUnit.UseAbility(SelectedAbility);
+        RefreshEffectManager();
+        GameManager.instance.uiManager.RefreshUI();
     }
 
     public void CastSpell(Cell targetCell)

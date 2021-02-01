@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
         LoadedMap = null;
         ActivePlayerId = null;
         CurrentGamePhase = GamePhases.Menu;
+        effectManager.RefreshEffectManager();
     }
 
     /// <summary>

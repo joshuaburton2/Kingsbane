@@ -39,20 +39,20 @@ public class MapCameraController : MonoBehaviour
             currentScaling = camera.orthographicSize / maxCameraSize;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             camera.transform.position += Vector3.up * panScaling;
 
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             camera.transform.position += Vector3.left * panScaling;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             camera.transform.position += Vector3.down * panScaling;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             camera.transform.position += Vector3.right * panScaling;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CategoryEnums;
 using System;
+using System.Linq;
 
 public class Unit : Card
 {
@@ -43,7 +44,7 @@ public class Unit : Card
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
-    public bool CanAttack { get { return ActionsLeft > 0; } }
+    public bool CanAction { get { return ActionsLeft > 0; } }
 
     public string UnitTag { get { return UnitData.UnitTag; } }
 
@@ -125,29 +126,30 @@ public class Unit : Card
         }
     }
 
-    public void IncreaseActions(int value)
+    public void ModifyActions(int value)
     {
         ActionsLeft += value;
+        if (ActionsLeft == 0)
+            Status = UnitStatuses.Finished;
+        else if(value <= 0)
+            Status = UnitStatuses.Middle;
     }
 
     public void TriggerAttack(Unit targetUnit)
     {
-        ActionsLeft--;
-        if (ActionsLeft == 0)
-            Status = UnitStatuses.Finished;
-        else
-            Status = UnitStatuses.Middle;
+        ModifyActions(-1);
 
         targetUnit.DamageUnit(Attack);
         if (Range == 0)
             DamageUnit(targetUnit.Attack);
+
+        UnitCounter.RefreshUnitCounter();
+        targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
     public void DamageUnit(int damageValue)
     {
         Health -= damageValue;
-
-        UnitCounter.RefreshUnitCounter();
 
         if (Health <= 0)
         {
@@ -156,5 +158,29 @@ public class Unit : Card
 
             UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
         }
+    }
+
+    public bool CanUseAbility(AbilityData ability)
+    {
+        var canSpendResources = Resource.CanSpendResources(Owner, ability.Resources);
+        var canSpendAction = ability.CostsAction ? CanAction : true;
+        var canUseability = AbilityUsesLeft > 0;
+
+        return canSpendResources && canSpendAction && canUseability;
+    }
+
+    public void ModifyAbilities(int value)
+    {
+        AbilityUsesLeft += value;
+    }
+
+    public void UseAbility(AbilityData ability)
+    {
+        Owner.ModifyResources(ability.Resources.Select(x => new Resource(x.ResourceType, x.Value * -1)).ToList());
+
+        ModifyAbilities(-1);
+        ModifyActions(ability.CostsAction ? -1 : 0);
+
+        UnitCounter.RefreshUnitCounter();
     }
 }

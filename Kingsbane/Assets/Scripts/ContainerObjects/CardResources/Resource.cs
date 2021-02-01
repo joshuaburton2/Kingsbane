@@ -1,6 +1,7 @@
 ﻿using CategoryEnums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// 
@@ -92,4 +93,58 @@ public class Resource
 <b>Ongoing Effect:</b> Whenever a player plays an effect with <b>Cycle</b>, the player's maximum Wild will increase or decrease as defined by the effect. The changes in their maximum will persist throughout a campaign." },
 
     };
+
+    public static bool CanSpendResources(Player player, List<Resource> spendingResources)
+    {
+        //The resource differences will be the difference between the player's current resources and their mandatory spending
+        //of their resources based on the cost of the effect
+        var resourceDifferences = new List<Resource>();
+
+        foreach (var resource in spendingResources)
+        {
+
+            //Tests if the current resource is not a neutral cost
+            if (resource.ResourceType != CardResources.Neutral)
+            {
+                Resource resourceDif;
+                //Mana can go infinitely negative, so forces there to be a positive value
+                if (resource.ResourceType == CardResources.Mana)
+                {
+                    resourceDif = new Resource(resource.ResourceType, 0);
+                }
+                else
+                {
+                    //Calculate the resource difference
+                    resourceDif = player.CalcNewResource(resource);
+                    resourceDifferences.Add(resourceDif);
+                }
+
+                //If the difference between the cost of the effect and the player's resource is less than 0, this means the effect cannot be used
+                if (resourceDif.Value < 0)
+                {
+                    return false;
+                }
+            }
+            //Case for if the effect has a neutral cost
+            else
+            {
+
+                //Loops through all the resource difference values. Note that this will be filled since Neutral Resource is the last resource checked
+                foreach (var resourceDifference in resourceDifferences)
+                {
+                    //If the player has enough resources remaining after spending the mandatory cost of the effect, they can use the effect
+                    if (resourceDifference.Value - spendingResources.First(x => x.ResourceType == resourceDifference.ResourceType).Value > 0)
+                    {
+                        return true;
+                    }
+                }
+
+                //If none of the player's resources have the neutral cost remaining after spending the mandatory cost of the effect, returns false
+                return false;
+            }
+        }
+
+        //Default outcome of the function. This will also return true if the effect has no cost associated with it
+        return true;
+    }
 }

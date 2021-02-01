@@ -145,54 +145,7 @@ public class Card
     /// <returns>True if the card can be played. False otherwise</returns>
     public bool IsPlayable()
     {
-        var playerResources = Owner.Resources;
-
-        //The resource differences will be the difference between the player's current resources and their mandatory spending
-        //of their resources based on the cost of the card
-        var resourceDifferences = new List<Resource>();
-
-        foreach (var resource in ResourceCost)
-        {
-            //Mana can go infinitely negative, so always returns true
-            if (resource.ResourceType == CardResources.Mana)
-            {
-                return true;
-            }
-            //Tests if the current resource is not a neutral cost
-            else if (resource.ResourceType != CardResources.Neutral)
-            {
-                //Calculate the resource difference
-                var resourceDif = Owner.CalcNewResource(resource);
-                resourceDifferences.Add(resourceDif);
-
-                //If the difference between the cost of a card and the player's resource is less than 0, this means the card cannot be played
-                if (resourceDif.Value < 0)
-                {
-                    return false;
-                }
-            }
-            //Case for if the card has a neutral cost
-            else
-            {
-
-                //Loops through all the resource difference values. Note that this will be filled since Neutral Resource is the last resource checked
-                foreach (var resourceDifference in resourceDifferences)
-                {
-                    //If the player has enough resources remaining after spending the mandatory cost of the card, they can play
-                    //the card
-                    if (resourceDifference.Value - ResourceCost.First(x => x.ResourceType == resourceDifference.ResourceType).Value > 0)
-                    {
-                        return true;
-                    }
-                }
-
-                //If none of the player's resources have the neutral cost remaining after spending the mandatory cost of the card, returns false
-                return false;
-            }
-        }
-
-        //Default outcome of the function. This will also return true if the card has no cost associated with it
-        return true;
+        return Resource.CanSpendResources(Owner, ResourceCost);
     }
 
     public virtual void Play()

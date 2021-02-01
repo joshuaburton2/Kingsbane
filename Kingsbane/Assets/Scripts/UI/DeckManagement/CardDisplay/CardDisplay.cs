@@ -200,11 +200,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 {
                     foreach (var ability in abilities)
                     {
-                        var resourceText = StringHelpers.GenerateResourceText(ability.GetResources);
-                        var commaText = resourceText.Length == 0 ? "" : ", "; //For handling in case the ability just costs an action, in which case doesn't need a comma
-                        var actionText = ability.CostsAction ? $"{commaText}1 Action" : "";
-                        var abilityText = $"<b>{ability.Name} ({resourceText}{actionText}):</b> {ability.Text}";
-                        cardText.text = $"{cardText.text}\n{abilityText}";
+                        cardText.text = $"{cardText.text}\n{ability.AbilityText()}";
                     }
                 }
 
