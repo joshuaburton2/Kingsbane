@@ -21,6 +21,8 @@ public class PlayerUIBar : MonoBehaviour
     [SerializeField]
     private CardListsUI cardListsUI;
     [SerializeField]
+    private CardFunctionUI cardFunctionUI;
+    [SerializeField]
     private UnitCommandUI unitCommandUI;
     [SerializeField]
     private GameplayUI gameplayUI;
@@ -33,6 +35,7 @@ public class PlayerUIBar : MonoBehaviour
         cardListsUI.InitCardLists(Player);
         resourceUI.InitResourceUI(Player.Resources, this);
         heroUI.InitHeroUI(Player.Hero);
+        cardFunctionUI.InitCardFunctionUI(Player, this);
 
         unitCommandUI.gameObject.SetActive(false);
 

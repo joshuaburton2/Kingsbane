@@ -38,6 +38,8 @@ public class Card
     public string LoreText { get { return cardData.LoreText; } }
     public string Notes { get { return cardData.Notes; } }
 
+    public string CreatedByName { get; set; }
+
     /// <summary>
     /// 
     /// The total resource cost of the card
@@ -116,6 +118,7 @@ public class Card
         cardData = _cardData;
         Owner = owner;
         CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
+        CreatedByName = "";
         ResourceInit();
     }
 

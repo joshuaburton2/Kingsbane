@@ -13,6 +13,7 @@ public class Deck : CardList
         foreach (var cardData in _cardList)
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData, player);
+            card.CreatedByName = "";
             AddToDeck(card);
         }
     }
