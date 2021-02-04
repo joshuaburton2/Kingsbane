@@ -15,12 +15,13 @@ public class Hand : CardList
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <returns>Whether the card could be added or not</returns>
-    public bool AddToHand(Card card)
+    public bool AddToHand(Card card, string createdBy)
     {
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (HandCount < maxHandSize)
         {
             cardList.Add(card);
+            card.CreatedByName = createdBy;
             return true;
         }
         else
@@ -36,7 +37,7 @@ public class Hand : CardList
     /// </summary>
     /// <param name="cards">The list of cards to add</param>
     /// <returns>The list of cards which could not be added</returns>
-    public List<Card> AddToHand(List<Card> cards)
+    public List<Card> AddToHand(List<Card> cards, string createdBy)
     {
         var failedCards = cards;
 
@@ -48,6 +49,7 @@ public class Hand : CardList
             if (HandCount < maxHandSize)
             {
                 cardList.Add(cardToAdd);
+                cardToAdd.CreatedByName = createdBy;
                 failedCards.Remove(cardToAdd);
             }
             else

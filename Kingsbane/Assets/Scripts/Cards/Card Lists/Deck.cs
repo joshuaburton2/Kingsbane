@@ -86,12 +86,12 @@ public class Deck : CardList
     /// Shuffle a card into a random position in the deck
     /// 
     /// </summary>
-    public void ShuffleIntoDeck(Card card)
+    public void ShuffleIntoDeck(Card card, string createdBy)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = Random.Range(0, DeckCount + 1);
 
-        AddToDeck(card, randPos);
+        AddToDeck(card, randPos, createdBy);
     }
 
     /// <summary>
@@ -99,10 +99,10 @@ public class Deck : CardList
     /// Shuffle a list of cards into random posistions in the deck
     /// 
     /// </summary>
-    public void ShuffleIntoDeck(List<Card> cards)
+    public void ShuffleIntoDeck(List<Card> cards, string createdBy = "")
     {
         foreach (var card in cards)
-            ShuffleIntoDeck(card);
+            ShuffleIntoDeck(card, createdBy);
     }
 
     /// <summary>
@@ -112,8 +112,11 @@ public class Deck : CardList
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <param name="position">The position in the deck to add it to. Note that cards are drawn from the end of the list</param>
-    public void AddToDeck(Card card, int position = 0)
+    public void AddToDeck(Card card, int position = 0, string createdBy = "")
     {
+        if (!string.IsNullOrWhiteSpace(createdBy))
+            card.CreatedByName = createdBy;
+        
         int currentCount = DeckCount;
 
         //Clamps the position to ensure it isn't outside the bounds of the deck

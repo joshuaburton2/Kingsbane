@@ -153,11 +153,16 @@ public class Unit : Card
 
         if (Health <= 0)
         {
-            GameManager.instance.effectManager.RemoveUnit(UnitCounter);
-            Owner.AddToGraveyard(this);
-
-            UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
+            DestroyUnit();
         }
+    }
+
+    public void DestroyUnit()
+    {
+        GameManager.instance.effectManager.RemoveUnit(UnitCounter);
+        Owner.AddToGraveyard(this);
+
+        UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
     }
 
     public bool CanUseAbility(AbilityData ability)

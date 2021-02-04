@@ -12,7 +12,7 @@ public class CardListFilter
     public Classes.ClassList Class { get; set; }
     public Tags Tag { get; set; }
     public CardResources Resource { get; set; }
-    public bool ScenarioCreated { get; set; }
+    public bool? ScenarioCreated { get; set; }
     public Dictionary<IntValueFilter, int> CostFilter { get; set; }
     public Dictionary<IntValueFilter, int> AttackFilter { get; set; }
     public Dictionary<IntValueFilter, int> HealthFilter { get; set; }

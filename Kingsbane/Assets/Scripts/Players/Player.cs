@@ -151,9 +151,9 @@ public class Player
         }
     }
 
-    public void AddToHand(Card newCard)
+    public void AddToHand(Card newCard, string createdBy = "")
     {
-        var handFull = !Hand.AddToHand(newCard);
+        var handFull = !Hand.AddToHand(newCard, createdBy);
         if (handFull)
         {
             Discard.AddCard(newCard);

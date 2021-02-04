@@ -282,4 +282,9 @@ public class EffectManager : MonoBehaviour
         }
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }
+
+    public void DestroyUnit(Unit unit)
+    {
+        unit.DestroyUnit();
+    }
 }

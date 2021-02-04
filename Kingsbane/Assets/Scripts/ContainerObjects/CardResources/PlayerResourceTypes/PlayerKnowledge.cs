@@ -91,7 +91,7 @@ public class PlayerKnowledge : PlayerResource
         for (int i = 0; i < studyVal - Ignorance; i++)
         {
             var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, Player());
-            Player().Deck.ShuffleIntoDeck(inspirationCard);
+            Player().Deck.ShuffleIntoDeck(inspirationCard, "Study");
         }
 
         //Modifies the players Stagnation each time they activate a Study effect

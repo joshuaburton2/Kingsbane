@@ -54,18 +54,48 @@ public class CardList
             {
                 numActiveFilters++;
                 if (filter.Name.Contains(card.Name))
-                {
                     numMetFilters++;
-                }
             }
 
             if (filter.Rarity != Rarity.Default)
             {
                 numActiveFilters++;
                 if (filter.Rarity == card.Rarity)
-                {
                     numMetFilters++;
-                }
+            }
+
+            if (filter.Class != Classes.ClassList.Default)
+            {
+                numActiveFilters++;
+                if (filter.Class == card.CardClass)
+                    numMetFilters++;
+            }
+
+            if (filter.Tag != Tags.Default)
+            {
+                numActiveFilters++;
+                if (card.Tags.Contains(filter.Tag))
+                    numMetFilters++;
+            }
+
+            if (filter.Resource != CardResources.Neutral)
+            {
+                numActiveFilters++;
+                if (card.Resources.Contains(filter.Resource))
+                    numMetFilters++;
+            }
+
+            if (filter.ScenarioCreated.HasValue)
+            {
+                numActiveFilters++;
+                if (filter.ScenarioCreated.Value != string.IsNullOrWhiteSpace(card.CreatedByName))
+                    numMetFilters++;
+            }
+
+            if (filter.CostFilter.Count > 0)
+            {
+                numActiveFilters++;
+                //IntValueFilterer.CheckIntValueFilter(card.ResourceCost, filter.CostFilter);
             }
 
             if (numMetFilters == numActiveFilters)
