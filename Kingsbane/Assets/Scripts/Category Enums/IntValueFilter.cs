@@ -6,6 +6,7 @@ namespace CategoryEnums
 {
     public enum IntValueFilter
     {
+        None,
         IsHighest,
         HigherThan,
         Equal,
@@ -15,29 +16,25 @@ namespace CategoryEnums
 
     public static class IntValueFilterer
     {
-        public static bool CheckIntValueFilter(int intValue, List<int> valueList, Dictionary<IntValueFilter, int> intFilter)
+        public static bool CheckIntValueFilter(int intValue, KeyValuePair<IntValueFilter, int?> intFilter)
         {
-            if (intFilter.Count > 1)
-            {
-                var filterOption = intFilter.FirstOrDefault();
+            if (intFilter.Key == IntValueFilter.HigherThan)
+                return intValue >= intFilter.Value;
 
-                if (filterOption.Key == IntValueFilter.HigherThan)
-                    return intValue >= filterOption.Value;
+            else if (intFilter.Key == IntValueFilter.Equal)
+                return intValue == intFilter.Value;
 
-                else if (filterOption.Key == IntValueFilter.Equal)
-                    return intValue == filterOption.Value;
+            else if (intFilter.Key == IntValueFilter.LowerThan)
+                return intValue <= intFilter.Value;
 
-                else if (filterOption.Key == IntValueFilter.LowerThan)
-                    return intValue <= filterOption.Value;
+            else if (intFilter.Key == IntValueFilter.IsHighest)
+                return true;
 
-                else
-                    throw new Exception("Not a valid filter type");
+            else if (intFilter.Key == IntValueFilter.IsLowest)
+                return true;
 
-            }
             else
-            {
-                throw new Exception("Not a valid integer filter");
-            }
+                throw new Exception("Not a valid filter type");
         }
     }
 }

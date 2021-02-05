@@ -92,15 +92,116 @@ public class CardList
                     numMetFilters++;
             }
 
-            if (filter.CostFilter.Count > 0)
+            foreach (var intFilter in filter.IntFilters)
             {
-                numActiveFilters++;
-                //IntValueFilterer.CheckIntValueFilter(card.ResourceCost, filter.CostFilter);
+                if (intFilter.Value.Key != IntValueFilter.None)
+                {
+                    int? value = null;
+                    numActiveFilters++;
+                    switch (intFilter.Key)
+                    {
+                        case CardListFilter.IntFilterTypes.Cost:
+                            value = card.TotalResource;
+                            break;
+                        case CardListFilter.IntFilterTypes.Attack:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Unit)card).Attack;
+                            break;
+                        case CardListFilter.IntFilterTypes.Health:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Unit)card).Health;
+                            break;
+                        case CardListFilter.IntFilterTypes.Range:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Unit)card).Range;
+                            break;
+                        case CardListFilter.IntFilterTypes.Speed:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Unit)card).Speed;
+                            break;
+                        case CardListFilter.IntFilterTypes.SpellRange:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Spell)card).SpellRange;
+                            break;
+                        case CardListFilter.IntFilterTypes.Durability:
+                            if (card.Type == CardTypes.Unit)
+                                value = ((Item)card).Durability;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    if (value.HasValue)
+                        if (IntValueFilterer.CheckIntValueFilter(value.Value, intFilter.Value))
+                            numMetFilters++;
+                }
             }
 
             if (numMetFilters == numActiveFilters)
             {
                 filteredCardList.Add(card);
+            }
+        }
+
+        foreach (var intFilter in filter.IntFilters)
+        {
+            if (intFilter.Value.Key == IntValueFilter.IsHighest)
+            {
+                switch (intFilter.Key)
+                {
+                    case CardListFilter.IntFilterTypes.Cost:
+                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Max(y => y.TotalResource)).ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Attack:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Attack == filteredCardList.Cast<Unit>().Max(y => y.Attack)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Health:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Health == filteredCardList.Cast<Unit>().Max(y => y.Health)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Range:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Range == filteredCardList.Cast<Unit>().Max(y => y.Range)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Speed:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Speed == filteredCardList.Cast<Unit>().Max(y => y.Speed)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.SpellRange:
+                        filteredCardList = filteredCardList.Cast<Spell>().Where(x => x.SpellRange == filteredCardList.Cast<Spell>().Max(y => y.SpellRange)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Durability:
+                        filteredCardList = filteredCardList.Cast<Item>().Where(x => x.Durability == filteredCardList.Cast<Item>().Max(y => y.Durability)).Cast<Card>().ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (intFilter.Value.Key == IntValueFilter.IsLowest)
+            {
+                switch (intFilter.Key)
+                {
+                    case CardListFilter.IntFilterTypes.Cost:
+                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Min(y => y.TotalResource)).ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Attack:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Attack == filteredCardList.Cast<Unit>().Min(y => y.Attack)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Health:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Health == filteredCardList.Cast<Unit>().Min(y => y.Health)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Range:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Range == filteredCardList.Cast<Unit>().Min(y => y.Range)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Speed:
+                        filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Speed == filteredCardList.Cast<Unit>().Min(y => y.Speed)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.SpellRange:
+                        filteredCardList = filteredCardList.Cast<Spell>().Where(x => x.SpellRange == filteredCardList.Cast<Spell>().Min(y => y.SpellRange)).Cast<Card>().ToList();
+                        break;
+                    case CardListFilter.IntFilterTypes.Durability:
+                        filteredCardList = filteredCardList.Cast<Item>().Where(x => x.Durability == filteredCardList.Cast<Item>().Min(y => y.Durability)).Cast<Card>().ToList();
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
