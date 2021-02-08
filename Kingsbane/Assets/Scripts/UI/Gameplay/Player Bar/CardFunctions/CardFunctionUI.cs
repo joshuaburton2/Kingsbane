@@ -7,6 +7,11 @@ public class CardFunctionUI : MonoBehaviour
     private Player Player { get; set; }
     public PlayerUIBar PlayerUIBar { get; set; }
 
+    [Header("Tutor Draw Area")]
+    private CardListFilter tutorDrawFilter;
+    [SerializeField]
+    private GameObject tutorDrawArea;
+
     [SerializeField]
     private CanvasGroup buttonGroup;
 
@@ -22,11 +27,23 @@ public class CardFunctionUI : MonoBehaviour
         PlayerUIBar = playerUIBar;
 
         buttonGroup.interactable = false;
+
+        tutorDrawArea.SetActive(false);
     }
 
     public void Draw()
     {
         Player.Draw();
         PlayerUIBar.RefreshPlayerBar();
+    }
+
+    public void OpenTutorDrawArea()
+    {
+        tutorDrawArea.SetActive(!tutorDrawArea.activeSelf);
+
+        if (tutorDrawArea.activeSelf)
+        {
+            tutorDrawFilter = new CardListFilter();
+        }
     }
 }
