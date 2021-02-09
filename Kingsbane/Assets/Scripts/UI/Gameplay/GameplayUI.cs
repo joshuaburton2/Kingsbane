@@ -36,6 +36,11 @@ public class GameplayUI : MonoBehaviour
                 CancelEffects();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menuPopup.SetActive(!menuPopup.activeSelf);
+        }
     }
 
     public void CancelEffects()

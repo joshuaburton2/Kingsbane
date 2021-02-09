@@ -53,8 +53,11 @@ public class EffectManager : MonoBehaviour
         RefreshEffectManager();
     }
 
-    public void RefreshEffectManager()
+    public void RefreshEffectManager(bool fullReset = false)
     {
+        if (fullReset)
+            ActiveEffect = ActiveEffectTypes.None;
+
         switch (ActiveEffect)
         {
             default:
