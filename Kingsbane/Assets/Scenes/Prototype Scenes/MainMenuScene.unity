@@ -4370,7 +4370,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672637168}
+      - m_Target: {fileID: 1338429577}
         m_MethodName: ClosePanel
         m_Mode: 2
         m_Arguments:
@@ -12253,18 +12253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbyUI: {fileID: 2036373503}
   libraryUI: {fileID: 1431290170}
---- !u!114 &672637168 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8891978396315567744, guid: dffceaad4eff8b8478537273baa686a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 8891978396716885616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 976e53a32283adc469e965072b522c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &683488705
 GameObject:
   m_ObjectHideFlags: 0
