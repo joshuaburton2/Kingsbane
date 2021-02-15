@@ -1,9 +1,6 @@
-﻿using System;
+﻿using CategoryEnums;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CategoryEnums;
 
 public class CardList
 {
@@ -47,49 +44,40 @@ public class CardList
 
         foreach (var card in cardList)
         {
-            var numActiveFilters = 0;
-            var numMetFilters = 0;
-
             if (filter.Name.Length > 0)
             {
-                numActiveFilters++;
-                if (filter.Name.Contains(card.Name))
-                    numMetFilters++;
+                if (!filter.Name.Contains(card.Name))
+                    continue;
             }
 
             if (filter.Rarity != Rarity.Default)
             {
-                numActiveFilters++;
-                if (filter.Rarity == card.Rarity)
-                    numMetFilters++;
+                if (filter.Rarity != card.Rarity)
+                    continue;
             }
 
             if (filter.Class != Classes.ClassList.Default)
             {
-                numActiveFilters++;
-                if (filter.Class == card.CardClass)
-                    numMetFilters++;
+                if (filter.Class != card.CardClass)
+                    continue;
             }
 
             if (filter.Tag != Tags.Default)
             {
-                numActiveFilters++;
-                if (card.Tags.Contains(filter.Tag))
-                    numMetFilters++;
+                if (!card.Tags.Contains(filter.Tag))
+                    continue;
             }
 
             if (filter.Resource != CardResources.Neutral)
             {
-                numActiveFilters++;
-                if (card.Resources.Contains(filter.Resource))
-                    numMetFilters++;
+                if (!card.Resources.Contains(filter.Resource))
+                    continue;
             }
 
             if (filter.ScenarioCreated.HasValue)
             {
-                numActiveFilters++;
-                if (filter.ScenarioCreated.Value != string.IsNullOrWhiteSpace(card.CreatedByName))
-                    numMetFilters++;
+                if (!filter.ScenarioCreated.Value != string.IsNullOrWhiteSpace(card.CreatedByName))
+                    continue;
             }
 
             foreach (var intFilter in filter.IntFilters)
@@ -97,7 +85,6 @@ public class CardList
                 if (intFilter.Value.Key != IntValueFilter.None)
                 {
                     int? value = null;
-                    numActiveFilters++;
                     switch (intFilter.Key)
                     {
                         case CardListFilter.IntFilterTypes.Cost:
@@ -132,15 +119,14 @@ public class CardList
                     }
 
                     if (value.HasValue)
-                        if (IntValueFilterer.CheckIntValueFilter(value.Value, intFilter.Value))
-                            numMetFilters++;
+                    {
+                        if (!IntValueFilterer.CheckIntValueFilter(value.Value, intFilter.Value))
+                            continue;
+                    }
                 }
             }
 
-            if (numMetFilters == numActiveFilters)
-            {
-                filteredCardList.Add(card);
-            }
+            filteredCardList.Add(card);
         }
 
         foreach (var intFilter in filter.IntFilters)

@@ -325,7 +325,7 @@ public class LibraryManager : MonoBehaviour
                     card = new Hero();
                 else
                     card = new Unit();
-                
+
                 break;
             case CardTypes.Spell:
                 card = new Spell();
@@ -460,16 +460,12 @@ public class LibraryManager : MonoBehaviour
 
         foreach (var card in cardList)
         {
-            //In order for a card to be added to the filter, it needs to meet all the active filters in the Card Filter object
-            var numActiveFilters = 0;
-            var numMetFilters = 0;
+            bool failedFlag = true;
 
             //Search string filtering. Only active if there is a non-empty string
             //Search string also looks through the cards tags
             if (listFilter.SearchString.Length != 0)
             {
-                numActiveFilters++;
-
                 var numStringsMet = 0;
 
                 foreach (var searchString in searchStrings)
@@ -499,53 +495,55 @@ public class LibraryManager : MonoBehaviour
                 }
 
                 //If the card contains all the given search terms, then it meets the filter
-                if (numStringsMet == numSearchStrings)
-                    numMetFilters++;
+                if (numStringsMet != numSearchStrings)
+                    continue;
             }
 
             //Card type filter area
             if (listFilter.CardTypeFilter.Count != 0)
             {
-                numActiveFilters++;
-
                 foreach (var cardType in listFilter.CardTypeFilter)
                     if (card.CardType == cardType)
                     {
-                        numMetFilters++;
+                        failedFlag = false;
                         break;
                     }
+                if (failedFlag)
+                    continue;
+                failedFlag = true;
             }
 
             //Rarity filter area
             if (listFilter.RaritiyFilter.Count != 0)
             {
-                numActiveFilters++;
-
                 foreach (var rarity in listFilter.RaritiyFilter)
                     if (card.Rarity == rarity)
                     {
-                        numMetFilters++;
+                        failedFlag = false;
                         break;
                     }
+                if (failedFlag)
+                    continue;
+                failedFlag = true;
             }
 
             //Set filter area
             if (listFilter.SetFilter.Count != 0)
             {
-                numActiveFilters++;
-
                 foreach (var set in listFilter.SetFilter)
                     if (card.Set == set)
                     {
-                        numMetFilters++;
+                        failedFlag = false;
                         break;
                     }
+                if (failedFlag)
+                    continue;
+                failedFlag = true;
             }
 
             //Class playable filter area
             if (listFilter.ClassPlayableFilter != Classes.ClassList.Default)
             {
-                numActiveFilters++;
                 //Filters out all heroes from the list
                 if (!card.IsHero)
                 {
@@ -553,18 +551,13 @@ public class LibraryManager : MonoBehaviour
                     //Uses the default filter when obtaining the dictionary list. Also adds uncollectable rarity to the filter
                     var cardFilter = new CardFilter();
                     cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
-                    if (GetDictionaryList(classResource, cardFilter).Contains(card))
-                    {
-                        numMetFilters++;
-                    }
+                    if (!GetDictionaryList(classResource, cardFilter).Contains(card))
+                        continue;
                 }
             }
 
-            //If the num of active filters are all met on the card, the card passes the filter
-            if (numMetFilters == numActiveFilters)
-            {
-                filteredCardList.Add(card);
-            }
+            //If reached this point in the loop, card can be added to the filtered list
+            filteredCardList.Add(card);
         }
 
         return filteredCardList;

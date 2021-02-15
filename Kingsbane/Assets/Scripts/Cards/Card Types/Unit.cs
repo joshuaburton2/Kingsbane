@@ -133,6 +133,8 @@ public class Unit : Card
             Status = UnitStatuses.Finished;
         else if(value <= 0)
             Status = UnitStatuses.Middle;
+
+        UnitCounter.RefreshUnitCounter();
     }
 
     public void TriggerAttack(Unit targetUnit)

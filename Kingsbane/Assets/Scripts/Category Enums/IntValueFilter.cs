@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace CategoryEnums
@@ -7,10 +8,15 @@ namespace CategoryEnums
     public enum IntValueFilter
     {
         None,
+        [Description("Highest")]
         IsHighest,
+        [Description("Higher Than")]
         HigherThan,
+        [Description("Equal")]
         Equal,
+        [Description("Lower Than")]
         LowerThan,
+        [Description("Lowest")]
         IsLowest,
     }
 
