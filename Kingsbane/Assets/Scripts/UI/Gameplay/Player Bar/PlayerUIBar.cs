@@ -52,6 +52,7 @@ public class PlayerUIBar : MonoBehaviour
         cardListsUI.RefreshCurrentList();
         resourceUI.RefreshResourceUI();
         heroUI.RefreshHeroUI();
+        cardFunctionUI.RefreshCardFunctionUI();
 
         cardListsUI.gameObject.SetActive(false);
     }

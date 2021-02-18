@@ -1,4 +1,5 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -80,6 +81,12 @@ public class CardList
                     continue;
             }
 
+            if (filter.CardType != CardTypes.Default)
+            {
+                if (filter.CardType != card.Type)
+                    continue;
+            }
+
             foreach (var intFilter in filter.IntFilters)
             {
                 if (intFilter.Value.Key != IntValueFilter.None)
@@ -115,7 +122,7 @@ public class CardList
                                 value = ((Item)card).Durability;
                             break;
                         default:
-                            break;
+                            throw new Exception("Not a valid filter type");
                     }
 
                     if (value.HasValue)

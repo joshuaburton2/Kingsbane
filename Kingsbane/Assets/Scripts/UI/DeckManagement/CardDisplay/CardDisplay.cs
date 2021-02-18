@@ -33,6 +33,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     private Image cardImage;
     [SerializeField]
     private Image rarityBorder;
+    [SerializeField]
+    private GameObject createdByArea;
+    [SerializeField]
+    private TextMeshProUGUI createdByText;
 
     [Header("Unit Card Objects")]
     [SerializeField]
@@ -183,6 +187,9 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     public void UpdateProperties()
     {
         resourceText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
+
+        createdByText.text = $"Created By: {card.CreatedByName}";
+        createdByArea.SetActive(!string.IsNullOrWhiteSpace(card.CreatedByName));
 
         switch (card.Type)
         {

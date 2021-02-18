@@ -127,6 +127,7 @@ public class Player
         if (drawnCard != null)
         {
             AddToHand(drawnCard);
+            Debug.Log(drawnCard.CreatedByName);
         }
         else
         {
@@ -153,6 +154,9 @@ public class Player
 
     public void AddToHand(Card newCard, string createdBy = "")
     {
+        if (string.IsNullOrWhiteSpace(createdBy))
+            createdBy = newCard.CreatedByName;
+
         var handFull = !Hand.AddToHand(newCard, createdBy);
         if (handFull)
         {

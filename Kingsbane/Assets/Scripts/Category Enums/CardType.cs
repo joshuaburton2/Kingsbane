@@ -1,10 +1,16 @@
-﻿namespace CategoryEnums
+﻿using System.ComponentModel;
+
+namespace CategoryEnums
 {
     public enum CardTypes
     {
+        [Description("Default")]
         Default,
-        Unit, 
-        Spell, 
+        [Description("Unit")]
+        Unit,
+        [Description("Spell")]
+        Spell,
+        [Description("Item")]
         Item
     }
 }

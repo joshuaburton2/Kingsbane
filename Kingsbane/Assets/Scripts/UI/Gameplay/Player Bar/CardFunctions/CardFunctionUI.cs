@@ -10,63 +10,10 @@ public class CardFunctionUI : MonoBehaviour
     public PlayerUIBar PlayerUIBar { get; set; }
 
     [Header("Tutor Draw Main Area")]
-    private CardListFilter tutorDrawFilter;
+    
     [SerializeField]
-    private GameObject tutorDrawArea;
-    [SerializeField]
-    private TMP_InputField nameInput;
-    [SerializeField]
-    private TMP_Dropdown rarityDropdown;
-    [SerializeField]
-    private TMP_Dropdown classDropdown;
-    [SerializeField]
-    private TMP_Dropdown tagDropdown;
-    [SerializeField]
-    private TMP_Dropdown resourceDropdown;
-    [SerializeField]
-    private Toggle isCreatedToggle;
-    [SerializeField]
-    private TMP_Dropdown costFilterDropdown;
-    [SerializeField]
-    private TMP_InputField costInput;
-    [SerializeField]
-    private TMP_Dropdown typeDropdown;
-
-    [Header("Unit Fields")]
-    [SerializeField]
-    private GameObject unitFieldArea;
-    [SerializeField]
-    private TMP_Dropdown attackFilterDropdown;
-    [SerializeField]
-    private TMP_InputField attackInput;
-    [SerializeField]
-    private TMP_Dropdown healthFilterDropdown;
-    [SerializeField]
-    private TMP_InputField healthInput;
-    [SerializeField]
-    private TMP_Dropdown rangeFilterDropdown;
-    [SerializeField]
-    private TMP_InputField rangeInput;
-    [SerializeField]
-    private TMP_Dropdown speedFilterDropdown;
-    [SerializeField]
-    private TMP_InputField speedInput;
-
-    [Header("Spell Fields")]
-    [SerializeField]
-    private GameObject spellFieldArea;
-    [SerializeField]
-    private TMP_Dropdown spellRangeFilterDropdown;
-    [SerializeField]
-    private TMP_InputField spellRangeInput;
-
-    [Header("Item Fields")]
-    [SerializeField]
-    private GameObject itemFieldArea;
-    [SerializeField]
-    private TMP_Dropdown durabilityFilterDropdown;
-    [SerializeField]
-    private TMP_InputField durabilityRangeInput;
+    private TutorDrawUI tutorDrawArea;
+    
 
     [SerializeField]
     private CanvasGroup buttonGroup;
@@ -82,9 +29,15 @@ public class CardFunctionUI : MonoBehaviour
         Player = player;
         PlayerUIBar = playerUIBar;
 
-        buttonGroup.interactable = false;
+        //buttonGroup.interactable = false;
 
-        tutorDrawArea.SetActive(false);
+        tutorDrawArea.InitTutorDraw(this);
+        tutorDrawArea.gameObject.SetActive(false);
+    }
+
+    public void RefreshCardFunctionUI()
+    {
+        tutorDrawArea.gameObject.SetActive(false);
     }
 
     public void Draw()
@@ -95,11 +48,16 @@ public class CardFunctionUI : MonoBehaviour
 
     public void OpenTutorDrawArea()
     {
-        tutorDrawArea.SetActive(!tutorDrawArea.activeSelf);
+        tutorDrawArea.gameObject.SetActive(!tutorDrawArea.gameObject.activeSelf);
 
-        if (tutorDrawArea.activeSelf)
+        if (tutorDrawArea.gameObject.activeSelf)
         {
-            tutorDrawFilter = new CardListFilter();
+            tutorDrawArea.OpenTutorDrawArea();
         }
+    }
+
+    public void TutorDraw(CardListFilter cardFilter)
+    {
+
     }
 }

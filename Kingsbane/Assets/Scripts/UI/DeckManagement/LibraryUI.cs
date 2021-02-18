@@ -79,6 +79,8 @@ public class LibraryUI : MonoBehaviour
     public bool isLoaded = false;
     private CardFilter activeFilter;
 
+    private const string DEFAULT_DROPDOWN_STRING = "All";
+
     public void LibraryInitialisation()
     {
         InitGrid();
@@ -117,33 +119,9 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void InitDropdowns()
     {
-        InitDropdownOfType(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default });
-        InitDropdownOfType(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable, Rarity.Deleted });
-        InitDropdownOfType(setDropdown, new List<Sets>() { Sets.Default });
-    }
-
-    /// <summary>
-    /// 
-    /// Initialise a given dropdowns options using an enum of type T. Removes a given set of values from the enum as options
-    /// 
-    /// </summary>
-    private void InitDropdownOfType<T>(TMP_Dropdown dropdown, List<T> removedList)
-    {
-        dropdown.options.Clear();
-        dropdown.options.Add(new TMP_Dropdown.OptionData("All"));
-
-        //Get the string values of the enum
-        var dropDownNames = Enum.GetNames(typeof(T)).ToList();
-        //Removes the necessary values from the list
-        foreach (var removeItem in removedList)
-        {
-            var removeString = removeItem.ToString();
-            dropDownNames.Remove(removeString);
-        }
-        //Add the options to the dropdown box
-        dropdown.AddOptions(dropDownNames);
-
-        dropdown.value = 0;
+        GeneralUIExtensions.InitDropdownOfType(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default }, DEFAULT_DROPDOWN_STRING);
+        GeneralUIExtensions.InitDropdownOfType(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable, Rarity.Deleted }, DEFAULT_DROPDOWN_STRING);
+        GeneralUIExtensions.InitDropdownOfType(setDropdown, new List<Sets>() { Sets.Default }, DEFAULT_DROPDOWN_STRING);
     }
 
     /// <summary>
@@ -181,6 +159,8 @@ public class LibraryUI : MonoBehaviour
         else
         {
             noResultsText.SetActive(true);
+            leftButton.SetActive(false);
+            rightButton.SetActive(false);
             DestroyGridCards();
         }
     }
@@ -489,20 +469,20 @@ public class LibraryUI : MonoBehaviour
     private CardFilter ApplyDropdownFilter<T>(TMP_Dropdown dropdown, CardFilter activeFilter)
     {
         //If the text is All, do not need to apply the filter
-        if (dropdown.captionText.text != "All")
+        if (dropdown.captionText.text != DEFAULT_DROPDOWN_STRING)
         {
             //Parses the selected value into the enum
-            var selectedCardType = (T)Enum.Parse(typeof(T), dropdown.captionText.text);
+            var selectedField = (T)Enum.Parse(typeof(T), dropdown.captionText.text);
             var type = typeof(T);
 
             //Sets the filter to include the selected option based on the type of dropdown
             switch (type)
             {
                 case Type _ when type == typeof(CardTypes):
-                    activeFilter.CardTypeFilter = new List<CardTypes>() { (CardTypes)(object)selectedCardType };
+                    activeFilter.CardTypeFilter = new List<CardTypes>() { (CardTypes)(object)selectedField };
                     break;
                 case Type _ when type == typeof(Rarity):
-                    activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedCardType };
+                    activeFilter.RaritiyFilter = new List<Rarity>() { (Rarity)(object)selectedField };
                     //If there is a rarity filter, prevents uncollectable cards from being readded to the filter
                     if (activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable))
                     {
@@ -511,7 +491,7 @@ public class LibraryUI : MonoBehaviour
                     uncollectableText.transform.parent.GetComponent<Button>().interactable = false;
                     break;
                 case Type _ when type == typeof(Sets):
-                    activeFilter.SetFilter = new List<Sets>() { (Sets)(object)selectedCardType };
+                    activeFilter.SetFilter = new List<Sets>() { (Sets)(object)selectedField };
                     break;
             }
         }
