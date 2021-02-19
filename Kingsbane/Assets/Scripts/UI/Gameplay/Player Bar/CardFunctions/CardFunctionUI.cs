@@ -29,7 +29,7 @@ public class CardFunctionUI : MonoBehaviour
         Player = player;
         PlayerUIBar = playerUIBar;
 
-        //buttonGroup.interactable = false;
+        buttonGroup.interactable = false;
 
         tutorDrawArea.InitTutorDraw(this);
         tutorDrawArea.gameObject.SetActive(false);
@@ -58,6 +58,7 @@ public class CardFunctionUI : MonoBehaviour
 
     public void TutorDraw(CardListFilter cardFilter)
     {
-
+        Player.Draw(cardFilter);
+        PlayerUIBar.RefreshPlayerBar();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Deck : CardList
@@ -32,8 +33,8 @@ public class Deck : CardList
         if(currentCount != 0)
         {
             //Saves the card to return and removes it from the deck list
-            var drawnCard = cardList[DeckCount - 1];
-            cardList.RemoveAt(DeckCount - 1);
+            var drawnCard = cardList.LastOrDefault();
+            cardList.Remove(drawnCard);
 
             return drawnCard;
         }
@@ -65,13 +66,77 @@ public class Deck : CardList
             if (currentCount != 0)
             {
                 //Saves the card to return and removes it from the deck list
-                drawnCards.Add(cardList[DeckCount - 1]);
-                cardList.RemoveAt(DeckCount - 1);
+                drawnCards.Add(cardList.LastOrDefault());
+                cardList.Remove(drawnCards.LastOrDefault());
                 failedDraws--;
             }
             else
             {
                 //If there are no cards left in the deck ends the loop
+                break;
+            }
+        }
+
+        return drawnCards;
+    }
+
+    public Card Draw(CardListFilter filter, out bool failedFilter)
+    {
+        int currentCount = DeckCount;
+        failedFilter = false;
+
+        if (currentCount != 0)
+        {
+            var filteredDeck = FilterCardList(filter);
+
+            if (filteredDeck.cardList.Count != 0)
+            {
+                var drawnCard = filteredDeck.cardList.LastOrDefault();
+                cardList.Remove(drawnCard);
+
+                return drawnCard;
+            }
+            else
+            {
+                failedFilter = true;
+                return null;
+            }
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public List<Card> Draw(int numToDraw, CardListFilter filter, out int failedDraws, out bool failedFilter)
+    {
+        var drawnCards = new List<Card>();
+
+        failedDraws = numToDraw;
+        failedFilter = false;
+
+        for (int count = 0; count < numToDraw; count++)
+        {
+            int currentCount = DeckCount;
+
+            if (currentCount != 0)
+            {
+                var filteredDeck = FilterCardList(filter);
+
+                if (filteredDeck.cardList.Count != 0)
+                {
+                    drawnCards.Add(filteredDeck.cardList.LastOrDefault());
+                    cardList.Remove(drawnCards.LastOrDefault());
+                    failedDraws--;
+                }
+                else
+                {
+                    failedFilter = true;
+                    break;
+                }
+            }
+            else
+            {
                 break;
             }
         }

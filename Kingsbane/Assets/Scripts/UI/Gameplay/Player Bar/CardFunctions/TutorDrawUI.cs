@@ -73,6 +73,8 @@ public class TutorDrawUI : MonoBehaviour
     private List<TMP_Dropdown> dropdownFields;
     private List<TMP_InputField> inputFields;
 
+    private bool isCreatedOn = false;
+
     public void InitTutorDraw(CardFunctionUI _cardFunctionUI)
     {
         cardFunctionUI = _cardFunctionUI;
@@ -106,7 +108,7 @@ public class TutorDrawUI : MonoBehaviour
 
         GeneralUIExtensions.InitDropdownOfType(rarityDropdown, new List<Rarity> { Rarity.Default, Rarity.Deleted, Rarity.Hero, Rarity.NPCHero }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(classDropdown, new List<Classes.ClassList> { Classes.ClassList.Default }, DEFAULT_DROPDOWN_STRING);
-        GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, DEFAULT_DROPDOWN_STRING);
+        GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, DEFAULT_DROPDOWN_STRING, true);
         GeneralUIExtensions.InitDropdownOfType(resourceDropdown, new List<CardResources> { }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(typeDropdown, new List<CardTypes> { CardTypes.Default }, DEFAULT_DROPDOWN_STRING);
 
@@ -131,6 +133,7 @@ public class TutorDrawUI : MonoBehaviour
         dropdownFields.ForEach(x => x.value = 0);
         inputFields.ForEach(x => x.text = "");
         isCreatedToggle.isOn = false;
+        isCreatedToggle.interactable = false;
 
         OnCardTypeChange();
     }
@@ -163,7 +166,12 @@ public class TutorDrawUI : MonoBehaviour
     public void ConfirmDraw()
     {
         tutorDrawFilter.Name = nameInput.text;
-        tutorDrawFilter.ScenarioCreated = isCreatedToggle.isOn;
+
+        if (isCreatedOn)
+            tutorDrawFilter.ScenarioCreated = isCreatedToggle.isOn;
+        else
+            tutorDrawFilter.ScenarioCreated = null;
+        
 
         ApplyDropdownFilter<Rarity>(rarityDropdown, tutorDrawFilter);
         ApplyDropdownFilter<Classes.ClassList>(classDropdown, tutorDrawFilter);
@@ -193,7 +201,7 @@ public class TutorDrawUI : MonoBehaviour
         if (dropdown.captionText.text != DEFAULT_DROPDOWN_STRING)
         {
             //Parses the selected value into the enum
-            var selectedField = (T)Enum.Parse(typeof(T), dropdown.captionText.text);
+            var selectedField = (T)Enum.Parse(typeof(T), dropdown.captionText.text.Replace(" ", ""));
             var type = typeof(T);
 
             //Sets the filter to include the selected option based on the type of dropdown
@@ -214,39 +222,55 @@ public class TutorDrawUI : MonoBehaviour
                 case Type _ when type == typeof(CardTypes):
                     activeFilter.CardType = (CardTypes)(object)selectedField;
                     break;
-                case Type _ when type == typeof(CardListFilter.IntFilterTypes):
+                case Type _ when type == typeof(IntValueFilter):
                     var intValueFilter = (IntValueFilter)(object)selectedField;
+
+                    string inputText = "";
 
                     switch (intFilterType)
                     {
                         case CardListFilter.IntFilterTypes.Cost:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(costInput.text));
+                            inputText = costInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.Attack:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(attackInput.text));
+                            inputText = attackInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.Health:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(healthInput.text));
+                            inputText = healthInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.Range:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(rangeInput.text));
+                            inputText = rangeInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.Speed:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(speedInput.text));
+                            inputText = speedInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.SpellRange:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(spellRangeInput.text));
+                            inputText = spellRangeInput.text;
                             break;
                         case CardListFilter.IntFilterTypes.Durability:
-                            activeFilter.AddIntFilter(intFilterType, intValueFilter, int.Parse(durabilityInput.text));
+                            inputText = durabilityInput.text;
                             break;
                         default:
                             throw new Exception("Not a valid int filter type");
                     }
+
+                    if (int.TryParse(inputText, out int result))
+                    {
+                        result = 0;
+                    }
+                    activeFilter.AddIntFilter(intFilterType, intValueFilter, result);
+
                     break;
             }
         }
 
         return activeFilter;
+    }
+
+    public void isCreatedButton()
+    {
+        isCreatedOn = !isCreatedOn;
+        isCreatedToggle.interactable = isCreatedOn;
+        isCreatedToggle.isOn = false;
     }
 }

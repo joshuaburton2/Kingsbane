@@ -75,6 +75,14 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnApplicationQuit()
+    {
+        if (!Application.isEditor)
+        {
+            deckManager.SaveDecks();
+        }
+    }
+
     /// <summary>
     /// 
     /// Destroy all child objects of an object

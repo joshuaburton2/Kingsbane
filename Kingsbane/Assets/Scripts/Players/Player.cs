@@ -127,7 +127,6 @@ public class Player
         if (drawnCard != null)
         {
             AddToHand(drawnCard);
-            Debug.Log(drawnCard.CreatedByName);
         }
         else
         {
@@ -145,10 +144,65 @@ public class Player
             {
                 AddToHand(drawnCard);
             }
+
+            if (failedDraws > 0)
+            {
+                Debug.Log($"Failed to draw {failedDraws} from the deck as there were not enough cards remaining");
+            }
         }
         else
         {
             Debug.Log("Deck is empty");
+        }
+    }
+
+    public void Draw(CardListFilter filter)
+    {
+        var drawnCard = Deck.Draw(filter, out bool failedFilter);
+
+        if (!failedFilter)
+        {
+            if (drawnCard != null)
+            {
+                AddToHand(drawnCard);
+            }
+            else
+            {
+                Debug.Log("Deck is empty");
+            }
+        }
+        else
+        {
+            Debug.Log("Given filter cannot draw any cards from the deck");
+        }
+    }
+
+    public void Draw(int numToDraw, CardListFilter filter)
+    {
+        var drawnCards = Deck.Draw(numToDraw, filter, out int failedDraws, out bool failedFilter);
+
+        if (!failedFilter)
+        {
+            if (drawnCards.Count != 0)
+            {
+                foreach (var drawnCard in drawnCards)
+                {
+                    AddToHand(drawnCard);
+                }
+
+                if (failedDraws > 0)
+                {
+                    Debug.Log($"Failed to draw {failedDraws} from the deck as there were not enough cards remaining");
+                }
+            }
+            else
+            {
+                Debug.Log("Deck is empty");
+            }
+        }
+        else
+        {
+            Debug.Log("Given filter cannot draw any cards from the deck");
         }
     }
 

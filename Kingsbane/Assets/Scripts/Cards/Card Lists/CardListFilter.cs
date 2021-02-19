@@ -36,7 +36,7 @@ public class CardListFilter
         Class = Classes.ClassList.Default;
         Tag = Tags.Default;
         Resource = CardResources.Neutral;
-        ScenarioCreated = false;
+        ScenarioCreated = null;
         CardType = CardTypes.Default;
         IntFilters = new Dictionary<IntFilterTypes, KeyValuePair<IntValueFilter, int?>>();
     }
@@ -60,6 +60,9 @@ public class CardListFilter
                     break;
                 case IntFilterTypes.Durability:
                     isValidFilter = CardType == CardTypes.Item;
+                    break;
+                default:
+                    isValidFilter = true;
                     break;
             }
         }

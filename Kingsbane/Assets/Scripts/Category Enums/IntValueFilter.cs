@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using UnityEngine;
 
 namespace CategoryEnums
 {
@@ -9,7 +10,7 @@ namespace CategoryEnums
     {
         None,
         [Description("Highest")]
-        IsHighest,
+        Highest,
         [Description("Higher Than")]
         HigherThan,
         [Description("Equal")]
@@ -17,7 +18,7 @@ namespace CategoryEnums
         [Description("Lower Than")]
         LowerThan,
         [Description("Lowest")]
-        IsLowest,
+        Lowest,
     }
 
     public static class IntValueFilterer
@@ -33,10 +34,10 @@ namespace CategoryEnums
             else if (intFilter.Key == IntValueFilter.LowerThan)
                 return intValue <= intFilter.Value;
 
-            else if (intFilter.Key == IntValueFilter.IsHighest)
+            else if (intFilter.Key == IntValueFilter.Highest)
                 return true;
 
-            else if (intFilter.Key == IntValueFilter.IsLowest)
+            else if (intFilter.Key == IntValueFilter.Lowest)
                 return true;
 
             else

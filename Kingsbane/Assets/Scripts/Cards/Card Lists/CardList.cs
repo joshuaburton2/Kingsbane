@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class CardList
 {
@@ -45,6 +46,8 @@ public class CardList
 
         foreach (var card in cardList)
         {
+            
+
             if (filter.Name.Length > 0)
             {
                 if (!filter.Name.Contains(card.Name))
@@ -87,6 +90,8 @@ public class CardList
                     continue;
             }
 
+            bool intFilterFlag = false;
+
             foreach (var intFilter in filter.IntFilters)
             {
                 if (intFilter.Value.Key != IntValueFilter.None)
@@ -95,7 +100,8 @@ public class CardList
                     switch (intFilter.Key)
                     {
                         case CardListFilter.IntFilterTypes.Cost:
-                            value = card.TotalResource;
+                            //Convert total cost to a positive, as total resource provides a negative value
+                            value = -card.TotalResource;
                             break;
                         case CardListFilter.IntFilterTypes.Attack:
                             if (card.Type == CardTypes.Unit)
@@ -128,22 +134,28 @@ public class CardList
                     if (value.HasValue)
                     {
                         if (!IntValueFilterer.CheckIntValueFilter(value.Value, intFilter.Value))
-                            continue;
+                        {
+                            intFilterFlag = true;
+                            break;
+                        }
                     }
                 }
             }
+
+            if (intFilterFlag)
+                continue;
 
             filteredCardList.Add(card);
         }
 
         foreach (var intFilter in filter.IntFilters)
         {
-            if (intFilter.Value.Key == IntValueFilter.IsHighest)
+            if (intFilter.Value.Key == IntValueFilter.Highest)
             {
                 switch (intFilter.Key)
                 {
                     case CardListFilter.IntFilterTypes.Cost:
-                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Max(y => y.TotalResource)).ToList();
+                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Min(y => y.TotalResource)).ToList();
                         break;
                     case CardListFilter.IntFilterTypes.Attack:
                         filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Attack == filteredCardList.Cast<Unit>().Max(y => y.Attack)).Cast<Card>().ToList();
@@ -167,12 +179,12 @@ public class CardList
                         break;
                 }
             }
-            else if (intFilter.Value.Key == IntValueFilter.IsLowest)
+            else if (intFilter.Value.Key == IntValueFilter.Lowest)
             {
                 switch (intFilter.Key)
                 {
                     case CardListFilter.IntFilterTypes.Cost:
-                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Min(y => y.TotalResource)).ToList();
+                        filteredCardList = filteredCardList.Where(x => x.TotalResource == filteredCardList.Max(y => y.TotalResource)).ToList();
                         break;
                     case CardListFilter.IntFilterTypes.Attack:
                         filteredCardList = filteredCardList.Cast<Unit>().Where(x => x.Attack == filteredCardList.Cast<Unit>().Min(y => y.Attack)).Cast<Card>().ToList();
