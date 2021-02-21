@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using CategoryEnums;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Filter object for searching through a card list
+/// 
+/// </summary>
 public class CardListFilter
 {
     public enum IntFilterTypes
@@ -41,12 +46,22 @@ public class CardListFilter
         IntFilters = new Dictionary<IntFilterTypes, KeyValuePair<IntValueFilter, int?>>();
     }
 
+    /// <summary>
+    /// 
+    /// Adds an integer filter of a given type to the filter
+    /// 
+    /// </summary>
+    /// <param name="filterType">The type of filter required to check</param>
+    /// <param name="valueFilterType">The comparison type required for the filter</param>
+    /// <param name="value">The value to use in the comparison</param>
     public void AddIntFilter(IntFilterTypes filterType, IntValueFilter valueFilterType, int? value)
     {
-        var isValidFilter = false;
+        bool isValidFilter;
 
+        //Checks if the filter type is not a default. Otherwise throws an exception
         if (filterType != IntFilterTypes.None)
         {
+            //Checks if the given filter type is valid for the filters given card type. Note that certain filter types may not require a particular card type
             switch (filterType)
             {
                 case IntFilterTypes.Attack:
@@ -65,10 +80,22 @@ public class CardListFilter
                     isValidFilter = true;
                     break;
             }
+
+            //Sets the null value for highest and lowest filters as the value here is not required
+            if (valueFilterType == IntValueFilter.Highest || valueFilterType == IntValueFilter.Lowest)
+            {
+                value = null;
+            }
+        }
+        else
+        {
+            throw new Exception("Not a valid filter type");
         }
 
+        //Checks if a valid filter
         if (isValidFilter)
         {
+            //Creates the key value pair and adds it to the filter
             var valueFilter = new KeyValuePair<IntValueFilter, int?>(valueFilterType, value);
             IntFilters.Add(filterType, valueFilter);
         }

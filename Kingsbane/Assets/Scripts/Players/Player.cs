@@ -60,7 +60,6 @@ public class Player
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
                 Draw();
-
                 foreach (var resource in Resources)
                     resource.StartOfTurnUpdate();
             }
@@ -125,13 +124,9 @@ public class Player
         var drawnCard = Deck.Draw();
 
         if (drawnCard != null)
-        {
             AddToHand(drawnCard);
-        }
         else
-        {
             Debug.Log("Deck is empty");
-        }
     }
 
     public void Draw(int numToDraw)
@@ -141,39 +136,32 @@ public class Player
         if (drawnCards.Count != 0)
         {
             foreach (var drawnCard in drawnCards)
-            {
                 AddToHand(drawnCard);
-            }
 
             if (failedDraws > 0)
-            {
                 Debug.Log($"Failed to draw {failedDraws} from the deck as there were not enough cards remaining");
-            }
         }
         else
-        {
             Debug.Log("Deck is empty");
-        }
     }
 
-    public void Draw(CardListFilter filter)
+    public bool Draw(CardListFilter filter)
     {
         var drawnCard = Deck.Draw(filter, out bool failedFilter);
 
         if (!failedFilter)
         {
             if (drawnCard != null)
-            {
                 AddToHand(drawnCard);
-            }
             else
-            {
                 Debug.Log("Deck is empty");
-            }
+
+            return true;
         }
         else
         {
             Debug.Log("Given filter cannot draw any cards from the deck");
+            return false;
         }
     }
 
@@ -186,24 +174,16 @@ public class Player
             if (drawnCards.Count != 0)
             {
                 foreach (var drawnCard in drawnCards)
-                {
                     AddToHand(drawnCard);
-                }
 
                 if (failedDraws > 0)
-                {
                     Debug.Log($"Failed to draw {failedDraws} from the deck as there were not enough cards remaining");
-                }
             }
             else
-            {
                 Debug.Log("Deck is empty");
-            }
         }
         else
-        {
             Debug.Log("Given filter cannot draw any cards from the deck");
-        }
     }
 
     public void AddToHand(Card newCard, string createdBy = "")
@@ -213,9 +193,7 @@ public class Player
 
         var handFull = !Hand.AddToHand(newCard, createdBy);
         if (handFull)
-        {
-            Discard.AddCard(newCard);
-        }
+            DiscardCard(newCard);
     }
 
     public void PlayFromHand(Card playedCard)
@@ -226,6 +204,11 @@ public class Player
     public void DiscardFromHand(Card discardCard)
     {
         Hand.RemoveCard(discardCard);
+        DiscardCard(discardCard);
+    }
+
+    public void DiscardCard(Card discardCard)
+    {
         Discard.AddCard(discardCard);
     }
 

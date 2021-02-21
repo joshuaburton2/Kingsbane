@@ -91,13 +91,13 @@ public class CardListsUI : MonoBehaviour
                 RefreshCardList(deckList);
                 break;
             case TabTypes.Graveyard:
-                RefreshCardList(player.Graveyard.cardList);
+                RefreshCardList(player.Graveyard.cardList.OrderByDescending(x => x.TotalResource).ToList());
                 break;
             case TabTypes.Discard:
-                RefreshCardList(player.Discard.cardList);
+                RefreshCardList(player.Discard.cardList.OrderByDescending(x => x.TotalResource).ToList());
                 break;
             case TabTypes.Upgrades:
-                foreach (var upgrade in player.Upgrades)
+                foreach (var upgrade in player.Upgrades.OrderBy(x => x.Name))
                 {
                     var upgradeListObject = Instantiate(upgradeListPrefab, listParent.transform);
                     upgradeListObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgrade);

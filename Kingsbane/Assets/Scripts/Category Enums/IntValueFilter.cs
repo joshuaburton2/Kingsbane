@@ -23,6 +23,13 @@ namespace CategoryEnums
 
     public static class IntValueFilterer
     {
+        /// <summary>
+        /// 
+        /// Determines whether a number compared to another number meets a certain condition
+        /// 
+        /// </summary>
+        /// <param name="intValue">The value to compare to</param>
+        /// <param name="intFilter">The description of the comparison. The key is the type of comparison. the int is the value to compare with</param>
         public static bool CheckIntValueFilter(int intValue, KeyValuePair<IntValueFilter, int?> intFilter)
         {
             if (intFilter.Key == IntValueFilter.HigherThan)
@@ -35,10 +42,25 @@ namespace CategoryEnums
                 return intValue <= intFilter.Value;
 
             else if (intFilter.Key == IntValueFilter.Highest)
-                return true;
+            {
+                //Note that the value for is highest is the current highest value.
+                //If null value, returns true
+                if (intFilter.Value.HasValue)
+                    return intValue >= intFilter.Value;
+                else
+                    return true;
+            }
 
             else if (intFilter.Key == IntValueFilter.Lowest)
-                return true;
+            {
+                //Note that the value for is lowest is the current lowest value.
+                //If null value, returns true
+                if (intFilter.Value.HasValue)
+                    return intValue <= intFilter.Value;
+                else
+                    return true;
+            }
+            
 
             else
                 throw new Exception("Not a valid filter type");

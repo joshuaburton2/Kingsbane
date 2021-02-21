@@ -10,6 +10,8 @@ public class TutorDrawUI : MonoBehaviour
 {
     [Header("Generic Fields")]
     [SerializeField]
+    public TextMeshProUGUI titleText;
+    [SerializeField]
     public TMP_InputField nameInput;
     [SerializeField]
     public TMP_Dropdown rarityDropdown;
@@ -75,13 +77,19 @@ public class TutorDrawUI : MonoBehaviour
 
     private bool isCreatedOn = false;
 
+    /// <summary>
+    /// 
+    /// Initialises the tutor draw UI
+    /// 
+    /// </summary>
     public void InitTutorDraw(CardFunctionUI _cardFunctionUI)
     {
         cardFunctionUI = _cardFunctionUI;
 
-        dropdownFields = new List<TMP_Dropdown> 
-        { 
-            rarityDropdown, 
+        //Sets the list of dropdown fields and input fields
+        dropdownFields = new List<TMP_Dropdown>
+        {
+            rarityDropdown,
             classDropdown,
             tagDropdown,
             resourceDropdown,
@@ -106,6 +114,7 @@ public class TutorDrawUI : MonoBehaviour
             durabilityInput,
         };
 
+        //Initialises the dropdowns on the UI
         GeneralUIExtensions.InitDropdownOfType(rarityDropdown, new List<Rarity> { Rarity.Default, Rarity.Deleted, Rarity.Hero, Rarity.NPCHero }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(classDropdown, new List<Classes.ClassList> { Classes.ClassList.Default }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, DEFAULT_DROPDOWN_STRING, true);
@@ -122,14 +131,18 @@ public class TutorDrawUI : MonoBehaviour
         GeneralUIExtensions.InitDropdownOfType(durabilityFilterDropdown, removedIntValueFilter, DEFAULT_DROPDOWN_STRING);
     }
 
+    /// <summary>
+    /// 
+    /// Initialises the tutor draw area when it is opened
+    /// 
+    /// </summary>
     public void OpenTutorDrawArea()
     {
         tutorDrawFilter = new CardListFilter();
 
-        unitFieldArea.SetActive(true);
-        spellFieldArea.SetActive(true);
-        itemFieldArea.SetActive(true);
+        titleText.text = "Tutor Draw";
 
+        //Sets area to default values
         dropdownFields.ForEach(x => x.value = 0);
         inputFields.ForEach(x => x.text = "");
         isCreatedToggle.isOn = false;
@@ -138,12 +151,18 @@ public class TutorDrawUI : MonoBehaviour
         OnCardTypeChange();
     }
 
+    /// <summary>
+    /// 
+    /// Detect if the card type has changed. Called when area is opened and on value changed for the type dropdown
+    /// 
+    /// </summary>
     public void OnCardTypeChange()
     {
         unitFieldArea.SetActive(false);
         spellFieldArea.SetActive(false);
         itemFieldArea.SetActive(false);
 
+        //If not the default value, then activates the valid type field area
         if (typeDropdown.captionText.text != DEFAULT_DROPDOWN_STRING)
         {
             var selectedType = (CardTypes)Enum.Parse(typeof(CardTypes), typeDropdown.captionText.text);
@@ -163,16 +182,23 @@ public class TutorDrawUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for confirming the given filter and attempting to draw a card
+    /// 
+    /// </summary>
     public void ConfirmDraw()
     {
+        //Sets the name filter to the name input
         tutorDrawFilter.Name = nameInput.text;
 
+        //Determines if the is created filter is turned on. If not sets the value to null
         if (isCreatedOn)
             tutorDrawFilter.ScenarioCreated = isCreatedToggle.isOn;
         else
             tutorDrawFilter.ScenarioCreated = null;
-        
 
+        //Applies the dropdown filter to each of the relevant dropdowns
         ApplyDropdownFilter<Rarity>(rarityDropdown, tutorDrawFilter);
         ApplyDropdownFilter<Classes.ClassList>(classDropdown, tutorDrawFilter);
         ApplyDropdownFilter<Tags>(tagDropdown, tutorDrawFilter);
@@ -187,7 +213,9 @@ public class TutorDrawUI : MonoBehaviour
         ApplyDropdownFilter<IntValueFilter>(spellRangeFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.SpellRange);
         ApplyDropdownFilter<IntValueFilter>(durabilityFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Durability);
 
-        cardFunctionUI.TutorDraw(tutorDrawFilter);
+        //Attempt the draw using the constructed filter. If failed to draw with the given filter adds the clarifier to the title
+        if (!cardFunctionUI.TutorDraw(tutorDrawFilter))
+            titleText.text = $"{titleText.text} (Failed)";
     }
 
     /// <summary>
@@ -225,8 +253,9 @@ public class TutorDrawUI : MonoBehaviour
                 case Type _ when type == typeof(IntValueFilter):
                     var intValueFilter = (IntValueFilter)(object)selectedField;
 
-                    string inputText = "";
+                    string inputText;
 
+                    //Determines which type of filter type is required to check and stores the text
                     switch (intFilterType)
                     {
                         case CardListFilter.IntFilterTypes.Cost:
@@ -254,10 +283,17 @@ public class TutorDrawUI : MonoBehaviour
                             throw new Exception("Not a valid int filter type");
                     }
 
-                    if (int.TryParse(inputText, out int result))
-                    {
+                    int? result;
+
+                    //Tries to parse the text result to an int 
+                    if (int.TryParse(inputText, out int parseResult))
+                        //Clamps the result to keep it positive
+                        result = Mathf.Max(0, parseResult);
+                    else
+                        //If not a valid input, converts it to 0
                         result = 0;
-                    }
+
+                    //Adds the int filter to the filter
                     activeFilter.AddIntFilter(intFilterType, intValueFilter, result);
 
                     break;
@@ -267,7 +303,12 @@ public class TutorDrawUI : MonoBehaviour
         return activeFilter;
     }
 
-    public void isCreatedButton()
+    /// <summary>
+    /// 
+    /// Button click event for the is created button, turning on or off the toggle
+    /// 
+    /// </summary>
+    public void IsCreatedButton()
     {
         isCreatedOn = !isCreatedOn;
         isCreatedToggle.interactable = isCreatedOn;

@@ -56,9 +56,11 @@ public class CardFunctionUI : MonoBehaviour
         }
     }
 
-    public void TutorDraw(CardListFilter cardFilter)
+    public bool TutorDraw(CardListFilter cardFilter)
     {
-        Player.Draw(cardFilter);
-        PlayerUIBar.RefreshPlayerBar();
+        var filterSuccess = Player.Draw(cardFilter);
+        if (filterSuccess)
+            PlayerUIBar.RefreshPlayerBar();
+        return filterSuccess;
     }
 }
