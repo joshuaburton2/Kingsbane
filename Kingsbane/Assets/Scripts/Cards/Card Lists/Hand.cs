@@ -6,8 +6,6 @@ public class Hand : CardList
 {
     private const int maxHandSize = 10;
 
-    public int HandCount { get { return cardList.Count; } }
-
     /// <summary>
     /// 
     /// Adds a card to the hand
@@ -18,7 +16,7 @@ public class Hand : CardList
     public bool AddToHand(Card card, string createdBy)
     {
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
-        if (HandCount < maxHandSize)
+        if (ListCount < maxHandSize)
         {
             cardList.Add(card);
             card.CreatedByName = createdBy;
@@ -46,7 +44,7 @@ public class Hand : CardList
             //Checks if the hand is to full to take another card. If not adds, the card and removes it from the list of failed cards
             //If the hand grows larger than its max hand size at any point, then it breaks from the loop and returns the cards which were
             //not added
-            if (HandCount < maxHandSize)
+            if (ListCount < maxHandSize)
             {
                 cardList.Add(cardToAdd);
                 cardToAdd.CreatedByName = createdBy;

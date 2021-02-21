@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Deck : CardList
 {
-    public int DeckCount { get { return cardList.Count; } }
+
 
     public Deck(List<CardData> _cardList, Player player)
     {
@@ -28,7 +28,7 @@ public class Deck : CardList
     /// <returns>Returns the card drawn. If there is no card in the deck, returns an empty card object</returns>
     public Card Draw()
     {
-        int currentCount = DeckCount;
+        int currentCount = ListCount;
         //Tests if there are cards in the deck to draw
         if(currentCount != 0)
         {
@@ -61,7 +61,7 @@ public class Deck : CardList
 
         for (int count = 0; count < numToDraw; count++)
         {
-            int currentCount = DeckCount;
+            int currentCount = ListCount;
             //Tests if there are cards in the deck to draw
             if (currentCount != 0)
             {
@@ -82,7 +82,7 @@ public class Deck : CardList
 
     public Card Draw(CardListFilter filter, out bool failedFilter)
     {
-        int currentCount = DeckCount;
+        int currentCount = ListCount;
         failedFilter = false;
 
         if (currentCount != 0)
@@ -117,7 +117,7 @@ public class Deck : CardList
 
         for (int count = 0; count < numToDraw; count++)
         {
-            int currentCount = DeckCount;
+            int currentCount = ListCount;
 
             if (currentCount != 0)
             {
@@ -154,7 +154,7 @@ public class Deck : CardList
     public void ShuffleIntoDeck(Card card, string createdBy)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
-        int randPos = Random.Range(0, DeckCount + 1);
+        int randPos = Random.Range(0, ListCount + 1);
 
         AddToDeck(card, randPos, createdBy);
     }
@@ -182,7 +182,7 @@ public class Deck : CardList
         if (!string.IsNullOrWhiteSpace(createdBy))
             card.CreatedByName = createdBy;
         
-        int currentCount = DeckCount;
+        int currentCount = ListCount;
 
         //Clamps the position to ensure it isn't outside the bounds of the deck
         position = Mathf.Clamp(position, 0, currentCount);
@@ -219,7 +219,7 @@ public class Deck : CardList
     /// </summary>
     public void Shuffle()
     {
-        int currentCount = DeckCount;
+        int currentCount = ListCount;
 
         //Loops through all positions in the deck to ensure they all move at least once
         for (int currentPos = 0; currentPos < currentCount; currentPos++)

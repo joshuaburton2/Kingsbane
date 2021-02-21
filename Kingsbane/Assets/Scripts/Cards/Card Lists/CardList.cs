@@ -7,6 +7,7 @@ using UnityEngine;
 public class CardList
 {
     public List<Card> cardList;
+    public int ListCount { get { return cardList.Count; } }
 
     public CardList()
     {

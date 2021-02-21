@@ -212,6 +212,26 @@ public class Player
         Discard.AddCard(discardCard);
     }
 
+    public void ReturnFromDiscard(Card returningCard = null)
+    {
+        if (Discard.ListCount == 0)
+            Debug.Log("Discard Pool is Empty");
+        else
+        {
+            if (returningCard == null)
+            {
+                var randomPos = UnityEngine.Random.Range(0, Discard.ListCount);
+                returningCard = Discard.cardList[randomPos];
+            }
+
+            if (!Discard.cardList.Contains(returningCard))
+                throw new Exception("Card does not exist in Discard Pool");
+
+            Discard.RemoveCard(returningCard);
+            AddToHand(returningCard);
+        }
+    }
+
     public void AddToGraveyard(Card deadCard)
     {
         Graveyard.AddCard(deadCard);

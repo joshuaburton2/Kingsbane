@@ -63,4 +63,10 @@ public class CardFunctionUI : MonoBehaviour
             PlayerUIBar.RefreshPlayerBar();
         return filterSuccess;
     }
+
+    public void ReturnFromDiscard()
+    {
+        Player.ReturnFromDiscard();
+        PlayerUIBar.RefreshPlayerBar();
+    }
 }
