@@ -70,6 +70,7 @@ public class HandUI : MonoBehaviour
                 default:
                     throw new Exception("Not a valid list type");
             }
+
             //Sets the properties of the object
             handContainerObject.name = $"Container- {objectName}";
             handContainer.InitHandContainer(this, _gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward);

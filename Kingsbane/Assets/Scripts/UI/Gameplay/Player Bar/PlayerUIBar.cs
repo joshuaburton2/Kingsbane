@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static EffectManager;
 
@@ -31,7 +32,7 @@ public class PlayerUIBar : MonoBehaviour
     {
         Id = _id;
 
-        handUI.DisplayHandList(gameplayUI, Player.Upgrades, true, Id);
+        handUI.DisplayHandList(gameplayUI, Player.Upgrades.Where(x => !x.IsRepeatable).ToList(), true, Id);
         cardListsUI.InitCardLists(Player);
         resourceUI.InitResourceUI(Player.Resources, this);
         heroUI.InitHeroUI(Player.Hero);
