@@ -115,9 +115,9 @@ public class CardFunctionUI : MonoBehaviour
         }
     }
 
-    public bool ConfirmCardGeneration(GenerateCardFilter filter, DeckPositions deckPositions = DeckPositions.Random)
+    public bool ConfirmCardGeneration(GenerateCardFilter filter, string createdBy, DeckPositions deckPositions = DeckPositions.Random)
     {
-        var filterSuccess = Player.GenerateCards(filter, selectedCardGeneration, deckPositions);
+        var filterSuccess = Player.GenerateCards(filter, selectedCardGeneration, createdBy, deckPositions);
         if (filterSuccess)
             PlayerUIBar.RefreshPlayerBar();
         return filterSuccess;

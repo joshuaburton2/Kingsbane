@@ -27,6 +27,8 @@ public class GenerateCardUI : MonoBehaviour
     [SerializeField]
     private TMP_InputField numToGenerateInput;
     [SerializeField]
+    private TMP_InputField createdByInput;
+    [SerializeField]
     private GameObject positionFieldArea;
     [SerializeField]
     private TMP_Dropdown positionDropdown;
@@ -64,6 +66,7 @@ public class GenerateCardUI : MonoBehaviour
         {
             nameInput,
             numToGenerateInput,
+            createdByInput,
         };
 
         //Initialises the dropdowns on the UI
@@ -98,34 +101,40 @@ public class GenerateCardUI : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Button click event for confirming the given filter and attempting to draw a card
+    /// Button click event for confirming the given filter and attempting to generate a card
     /// 
     /// </summary>
     public void ConfirmGeneration()
     {
-        //Sets the name filter to the name input
-        GenerationFilter.Name = nameInput.text;
-        GenerationFilter.IncludeUncollectables = includeUncollectablesToggle.isOn;
-
-        //Applies the dropdown filter to each of the relevant dropdowns
-        ApplyDropdownFilter<Classes.ClassList>(classDropdown, GenerationFilter);
-        ApplyDropdownFilter<Tags>(tagDropdown, GenerationFilter);
-        ApplyDropdownFilter<CardResources>(resourceDropdown, GenerationFilter);
-        ApplyDropdownFilter<CardTypes>(typeDropdown, GenerationFilter);
-
-        //Attempts the generation of cards. For deck generation, includes the position to place the generated card
-        bool successfulGeneration;
-        if (CardGenerationType == CardGenerationTypes.Deck)
+        if (!string.IsNullOrWhiteSpace(createdByInput.text))
         {
-            var position = (DeckPositions)Enum.Parse(typeof(DeckPositions), positionDropdown.captionText.text);
-            successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, position);
-        }
-        else
-            successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter);
+            //Sets the name filter to the name input
+            GenerationFilter.Name = nameInput.text;
+            GenerationFilter.IncludeUncollectables = includeUncollectablesToggle.isOn;
+            if (!string.IsNullOrWhiteSpace(numToGenerateInput.text))
+                GenerationFilter.NumToGenerate = int.Parse(numToGenerateInput.text);
 
-        //If failed the generation, displays this in the title
-        if (!successfulGeneration)
-            titleText.text = $"{titleText.text} (Failed)";
+            //Applies the dropdown filter to each of the relevant dropdowns
+            ApplyDropdownFilter<Classes.ClassList>(classDropdown, GenerationFilter);
+            ApplyDropdownFilter<Tags>(tagDropdown, GenerationFilter);
+            ApplyDropdownFilter<CardResources>(resourceDropdown, GenerationFilter);
+            ApplyDropdownFilter<CardTypes>(typeDropdown, GenerationFilter);
+
+            //Attempts the generation of cards. For deck generation, includes the position to place the generated card
+            bool successfulGeneration;
+            if (CardGenerationType == CardGenerationTypes.Deck)
+            {
+                var position = (DeckPositions)Enum.Parse(typeof(DeckPositions), positionDropdown.captionText.text);
+                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, createdByInput.text, position);
+            }
+            else
+                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, createdByInput.text);
+
+            //If failed the generation, displays this in the title
+            if (!successfulGeneration)
+                titleText.text = $"{titleText.text} (Failed)";
+        }
+        
     }
 
     /// <summary>

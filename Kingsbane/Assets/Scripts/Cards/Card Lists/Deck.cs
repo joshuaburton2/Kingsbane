@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -154,9 +155,29 @@ public class Deck : CardList
     public void ShuffleIntoDeck(Card card, string createdBy)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
-        int randPos = Random.Range(0, ListCount + 1);
+        int randPos = UnityEngine.Random.Range(0, ListCount + 1);
 
         AddToDeck(card, randPos, createdBy);
+    }
+
+    public void ShuffleIntoDeck(Card card, string createdBy, DeckPositions deckPosition)
+    {
+        switch (deckPosition)
+        {
+            case DeckPositions.Random:
+                ShuffleIntoDeck(card, createdBy);
+                break;
+            case DeckPositions.First:
+                int firstPos = ListCount;
+                AddToDeck(card, firstPos, createdBy);
+                break;
+            case DeckPositions.Last:
+                int lastPos = 0;
+                AddToDeck(card, lastPos, createdBy);
+                break;
+            default:
+                throw new Exception("Not a valid deck position");
+        }
     }
 
     /// <summary>
@@ -224,7 +245,7 @@ public class Deck : CardList
         //Loops through all positions in the deck to ensure they all move at least once
         for (int currentPos = 0; currentPos < currentCount; currentPos++)
         {
-            int randPos = Random.Range(0, currentCount);
+            int randPos = UnityEngine.Random.Range(0, currentCount);
 
             //Swaps the cards in each position
             var randCard = cardList[randPos];

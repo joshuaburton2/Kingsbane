@@ -598,7 +598,7 @@ public class LibraryManager : MonoBehaviour
         //Generates the filter to look through the playable list
         var cardFilter = new CardFilter();
         if (generateCardFilter.CardType != CardTypes.Default)
-            cardFilter.CardTypeFilter.Add(generateCardFilter.CardType);
+            cardFilter.CardTypeFilter = new List<CardTypes>() { generateCardFilter.CardType };
         cardFilter.SetFilter = generateCardFilter.SetFilter;
         //Adds uncollectable cards if generated filter requires it
         if (generateCardFilter.IncludeUncollectables)
@@ -608,12 +608,11 @@ public class LibraryManager : MonoBehaviour
         var classResource = new ClassResources(generateCardFilter.ClassPlayable);
         var generatedList = GetDictionaryList(classResource, cardFilter);
 
-
         //Checks the filters not covered by the normal filtered card list
         if (!string.IsNullOrWhiteSpace(generateCardFilter.Name))
             generatedList = generatedList.Where(x => x.Name == generateCardFilter.Name).ToList();
         if (generateCardFilter.Resource != CardResources.Neutral)
-            generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Resource)).ToList();
+            generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Resource)).Where(x => x.GetResources.Count == 1).ToList();
         if (generateCardFilter.Class != Classes.ClassList.Default)
             generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Class)).ToList();
         if (generateCardFilter.Tag != Tags.Default)

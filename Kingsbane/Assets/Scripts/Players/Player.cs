@@ -186,7 +186,7 @@ public class Player
             Debug.Log("Given filter cannot draw any cards from the deck");
     }
 
-    public void AddToHand(Card newCard, string createdBy = "")
+    public bool AddToHand(Card newCard, string createdBy = "")
     {
         if (string.IsNullOrWhiteSpace(createdBy))
             createdBy = newCard.CreatedByName;
@@ -194,20 +194,34 @@ public class Player
         var handFull = !Hand.AddToHand(newCard, createdBy);
         if (handFull)
             DiscardCard(newCard);
+
+        return handFull;
     }
 
-    public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, DeckPositions deckPositions = DeckPositions.Random)
+    public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, string createdBy, DeckPositions deckPosition = DeckPositions.Random)
     {
-        switch (generationType)
+        var generatedCardDatas = GameManager.instance.libraryManager.GenerateGameplayCards(filter);
+
+        if (generatedCardDatas.Count == 0)
+            return false;
+
+        foreach (var cardData in generatedCardDatas)
         {
-            case CardGenerationTypes.Hand:
-                break;
-            case CardGenerationTypes.Deck:
-                break;
-            case CardGenerationTypes.Graveyard:
-                break;
-            default:
-                throw new Exception("Not a valid Generation Type");
+            var generatedCard = GameManager.instance.libraryManager.CreateCard(cardData, this);
+            switch (generationType)
+            {
+                case CardGenerationTypes.Hand:
+                    AddToHand(generatedCard, createdBy);
+                    break;
+                case CardGenerationTypes.Deck:
+                    Deck.ShuffleIntoDeck(generatedCard, createdBy, deckPosition);
+                    break;
+                case CardGenerationTypes.Graveyard:
+                    AddToGraveyard(generatedCard, createdBy);
+                    break;
+                default:
+                    throw new Exception("Not a valid Generation Type");
+            }
         }
 
         return true;
@@ -249,8 +263,11 @@ public class Player
         }
     }
 
-    public void AddToGraveyard(Card deadCard)
+    public void AddToGraveyard(Card deadCard, string createdBy = "")
     {
+        if (!string.IsNullOrWhiteSpace(createdBy))
+            deadCard.CreatedByName = createdBy;
+
         Graveyard.AddCard(deadCard);
     }
 }
