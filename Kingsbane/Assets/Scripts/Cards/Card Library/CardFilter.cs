@@ -15,9 +15,7 @@ public class CardFilter
     public List<CardTypes> CardTypeFilter { get; set; }
     public List<Rarity> RaritiyFilter { get; set; }
     public List<Sets> SetFilter { get; set; }
-    public Classes.ClassList Class { get; set; }
     public Classes.ClassList ClassPlayableFilter { get; set; }
-    public List<Tags> Tags { get; set; }
 
     /// <summary>
     /// 

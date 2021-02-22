@@ -82,10 +82,13 @@ public class PlayerKnowledge : PlayerResource
     /// <param name="cardClass">The class of the card triggering the study effect. Used to identify which inspiration card to shuffle</param>
     public void TriggerStudy(int studyVal, Classes.ClassList cardClass)
     {
-        var inspirationCards = GameManager.instance.libraryManager.GetDictionaryList(Tags.Inspiration, new CardFilter(false));
-        var classCards = GameManager.instance.libraryManager.GetDictionaryList(cardClass, new CardFilter(false));
-        //Finds the required inpiration card
-        var inspirationCardData = inspirationCards.Intersect(classCards).FirstOrDefault();
+        //Finds the required inspiration card
+        var inspirationCardData = GameManager.instance.libraryManager.GenerateGameplayCards(new GenerateCardFilter(cardClass)
+        {
+            IncludeUncollectables = true,
+            Class = cardClass,
+            Tag = Tags.Inspiration,
+        }).Single();
 
         //Shuffles the required number of inspiration cards into the deck. ALso subtracts the Ignorance value from the number of cards shuffled
         for (int i = 0; i < studyVal - Ignorance; i++)

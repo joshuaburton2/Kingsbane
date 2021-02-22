@@ -11,10 +11,11 @@ public static class GeneralUIExtensions
     /// Initialise a given dropdowns options using an enum of type T. Removes a given set of values from the enum as options
     /// 
     /// </summary>
-    public static void InitDropdownOfType<T>(TMP_Dropdown dropdown, List<T> removedList, string defaultString, bool orderAlphabetical = false) where T : Enum
+    public static void InitDropdownOfType<T>(TMP_Dropdown dropdown, List<T> removedList, string defaultString = "", bool orderAlphabetical = false) where T : Enum
     {
         dropdown.ClearOptions();
-        dropdown.AddOptions(new List<string> { defaultString });
+        if (!string.IsNullOrWhiteSpace(defaultString))
+            dropdown.AddOptions(new List<string> { defaultString });
 
         //Get the string values of the enum
         var dropDownNames = Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.GetEnumDescription()).ToList();

@@ -199,7 +199,7 @@ public class LibraryManager : MonoBehaviour
     /// Tries to get the card list for a given dictionary key. Generic so that the key can be suited for any of the constructed dictionaries
     /// 
     /// </summary>
-    public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter)
+    public List<CardData> GetDictionaryList<T>(T key, CardFilter listFilter = null)
     {
         var dictionaryList = new List<CardData>();
         var type = typeof(T);
@@ -235,7 +235,12 @@ public class LibraryManager : MonoBehaviour
         }
 
         if (dictionaryList != null)
-            return FilterCardList(OrderCardList(dictionaryList), listFilter);
+        {
+            if (listFilter != null)
+                return FilterCardList(dictionaryList.OrderCardList(), listFilter);
+            else
+                return dictionaryList.OrderCardList();
+        }  
         else
             return new List<CardData>();
     }
@@ -294,18 +299,7 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public List<CardData> GetAllCards(CardFilter listFilter)
     {
-        return FilterCardList(OrderCardList(CardLibrary.CardList), listFilter);
-    }
-
-    /// <summary>
-    /// 
-    /// Orders the card list with the default ordering
-    /// 
-    /// </summary>
-    public static List<CardData> OrderCardList(List<CardData> cardList)
-    {
-        //Note that the resource ordering is descending since the values are negative
-        return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
+        return FilterCardList(CardLibrary.CardList.OrderCardList(), listFilter);
     }
 
     /// <summary>
@@ -592,6 +586,52 @@ public class LibraryManager : MonoBehaviour
             || abilityMet;
     }
 
+    /// <summary>
+    /// 
+    /// Gets a selection of cards which are generated during a gameplay scenario
+    /// 
+    /// </summary>
+    /// <param name="generateCardFilter">The filter to select cards by</param>
+    /// <param name="numToGenerate">The number of cards to generate</param>
+    public List<CardData> GenerateGameplayCards(GenerateCardFilter generateCardFilter)
+    {
+        //Generates the filter to look through the playable list
+        var cardFilter = new CardFilter();
+        if (generateCardFilter.CardType != CardTypes.Default)
+            cardFilter.CardTypeFilter.Add(generateCardFilter.CardType);
+        cardFilter.SetFilter = generateCardFilter.SetFilter;
+        //Adds uncollectable cards if generated filter requires it
+        if (generateCardFilter.IncludeUncollectables)
+            cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+
+        //Gets the class playable list using the generated filter in order to ensure cards which cannot be generated outside of the players class
+        var classResource = new ClassResources(generateCardFilter.ClassPlayable);
+        var generatedList = GetDictionaryList(classResource, cardFilter);
+
+
+        //Checks the filters not covered by the normal filtered card list
+        if (!string.IsNullOrWhiteSpace(generateCardFilter.Name))
+            generatedList = generatedList.Where(x => x.Name == generateCardFilter.Name).ToList();
+        if (generateCardFilter.Resource != CardResources.Neutral)
+            generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Resource)).ToList();
+        if (generateCardFilter.Class != Classes.ClassList.Default)
+            generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Class)).ToList();
+        if (generateCardFilter.Tag != Tags.Default)
+            generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Tag)).ToList();
+
+        //Selects the number of cards required to be generated randomly from the filtered list and returns the selection
+        var selectedCards = new List<CardData>();
+        if (generatedList.Count > 0)
+        {
+            for (int index = 0; index < generateCardFilter.NumToGenerate; index++)
+            {
+                var randomVal = UnityEngine.Random.Range(0, generatedList.Count);
+                selectedCards.Add(generatedList[randomVal]);
+            }
+        }
+        return selectedCards;
+    }
+
     public class LootCard
     {
         public CardData CardData { get; set; }
@@ -703,5 +743,19 @@ public class LibraryManager : MonoBehaviour
         }
 
         return lootSelection;
+    }
+}
+
+public static class CardListExtensions
+{
+    /// <summary>
+    /// 
+    /// Orders the card list with the default ordering
+    /// 
+    /// </summary>
+    public static List<CardData> OrderCardList(this List<CardData> cardList)
+    {
+        //Note that the resource ordering is descending since the values are negative
+        return cardList.OrderByDescending(x => x.HighestResource).ThenBy(x => x.Name).ThenBy(x => x.CardType).ToList();
     }
 }

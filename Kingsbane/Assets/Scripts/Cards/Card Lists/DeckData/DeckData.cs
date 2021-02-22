@@ -214,7 +214,7 @@ public class DeckData : DeckSaveData
         {
             CardList.Add(GameManager.instance.libraryManager.GetCard(cardId));
         }
-        CardList = LibraryManager.OrderCardList(CardList);
+        CardList = CardList.OrderCardList();
 
         UpgradeList = new List<UpgradeData>();
         foreach (var upgradeId in UpgradeIdList)
@@ -253,7 +253,7 @@ public class DeckData : DeckSaveData
     {
         CardList.Add(cardData);
         CardIdList.Add(cardData.Id.Value);
-        CardList = LibraryManager.OrderCardList(CardList);
+        CardList = CardList.OrderCardList();
     }
 
     /// <summary>

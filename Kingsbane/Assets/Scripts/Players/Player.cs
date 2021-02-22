@@ -196,6 +196,23 @@ public class Player
             DiscardCard(newCard);
     }
 
+    public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, DeckPositions deckPositions = DeckPositions.Random)
+    {
+        switch (generationType)
+        {
+            case CardGenerationTypes.Hand:
+                break;
+            case CardGenerationTypes.Deck:
+                break;
+            case CardGenerationTypes.Graveyard:
+                break;
+            default:
+                throw new Exception("Not a valid Generation Type");
+        }
+
+        return true;
+    }
+
     public void PlayFromHand(Card playedCard)
     {
         Hand.RemoveCard(playedCard);

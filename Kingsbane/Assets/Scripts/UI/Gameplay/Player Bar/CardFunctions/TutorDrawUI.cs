@@ -10,67 +10,66 @@ public class TutorDrawUI : MonoBehaviour
 {
     [Header("Generic Fields")]
     [SerializeField]
-    public TextMeshProUGUI titleText;
+    private TextMeshProUGUI titleText;
     [SerializeField]
-    public TMP_InputField nameInput;
+    private TMP_InputField nameInput;
     [SerializeField]
-    public TMP_Dropdown rarityDropdown;
+    private TMP_Dropdown rarityDropdown;
     [SerializeField]
-    public TMP_Dropdown classDropdown;
+    private TMP_Dropdown classDropdown;
     [SerializeField]
-    public TMP_Dropdown tagDropdown;
+    private TMP_Dropdown tagDropdown;
     [SerializeField]
-    public TMP_Dropdown resourceDropdown;
+    private TMP_Dropdown resourceDropdown;
     [SerializeField]
-    public Toggle isCreatedToggle;
+    private Toggle isCreatedToggle;
     [SerializeField]
-    public TMP_Dropdown costFilterDropdown;
+    private TMP_Dropdown costFilterDropdown;
     [SerializeField]
-    public TMP_InputField costInput;
+    private TMP_InputField costInput;
     [SerializeField]
-    public TMP_Dropdown typeDropdown;
+    private TMP_Dropdown typeDropdown;
 
     [Header("Unit Fields")]
     [SerializeField]
-    public GameObject unitFieldArea;
+    private GameObject unitFieldArea;
     [SerializeField]
-    public TMP_Dropdown attackFilterDropdown;
+    private TMP_Dropdown attackFilterDropdown;
     [SerializeField]
-    public TMP_InputField attackInput;
+    private TMP_InputField attackInput;
     [SerializeField]
-    public TMP_Dropdown healthFilterDropdown;
+    private TMP_Dropdown healthFilterDropdown;
     [SerializeField]
-    public TMP_InputField healthInput;
+    private TMP_InputField healthInput;
     [SerializeField]
-    public TMP_Dropdown rangeFilterDropdown;
+    private TMP_Dropdown rangeFilterDropdown;
     [SerializeField]
-    public TMP_InputField rangeInput;
+    private TMP_InputField rangeInput;
     [SerializeField]
-    public TMP_Dropdown speedFilterDropdown;
+    private TMP_Dropdown speedFilterDropdown;
     [SerializeField]
-    public TMP_InputField speedInput;
+    private TMP_InputField speedInput;
 
     [Header("Spell Fields")]
     [SerializeField]
-    public GameObject spellFieldArea;
+    private GameObject spellFieldArea;
     [SerializeField]
-    public TMP_Dropdown spellRangeFilterDropdown;
+    private TMP_Dropdown spellRangeFilterDropdown;
     [SerializeField]
-    public TMP_InputField spellRangeInput;
+    private TMP_InputField spellRangeInput;
 
     [Header("Item Fields")]
     [SerializeField]
-    public GameObject itemFieldArea;
+    private GameObject itemFieldArea;
     [SerializeField]
-    public TMP_Dropdown durabilityFilterDropdown;
+    private TMP_Dropdown durabilityFilterDropdown;
     [SerializeField]
-    public TMP_InputField durabilityInput;
+    private TMP_InputField durabilityInput;
 
     private const string DEFAULT_DROPDOWN_STRING = "Any";
 
-    private CardFunctionUI cardFunctionUI;
-
-    private CardListFilter tutorDrawFilter;
+    private CardFunctionUI CardFunctionUI { get; set; }
+    private CardListFilter TutorDrawFilter { get; set; }
 
     private List<TMP_Dropdown> dropdownFields;
     private List<TMP_InputField> inputFields;
@@ -84,7 +83,7 @@ public class TutorDrawUI : MonoBehaviour
     /// </summary>
     public void InitTutorDraw(CardFunctionUI _cardFunctionUI)
     {
-        cardFunctionUI = _cardFunctionUI;
+        CardFunctionUI = _cardFunctionUI;
 
         //Sets the list of dropdown fields and input fields
         dropdownFields = new List<TMP_Dropdown>
@@ -138,7 +137,7 @@ public class TutorDrawUI : MonoBehaviour
     /// </summary>
     public void OpenTutorDrawArea()
     {
-        tutorDrawFilter = new CardListFilter();
+        TutorDrawFilter = new CardListFilter();
 
         titleText.text = "Tutor Draw";
 
@@ -190,31 +189,31 @@ public class TutorDrawUI : MonoBehaviour
     public void ConfirmDraw()
     {
         //Sets the name filter to the name input
-        tutorDrawFilter.Name = nameInput.text;
+        TutorDrawFilter.Name = nameInput.text;
 
         //Determines if the is created filter is turned on. If not sets the value to null
         if (isCreatedOn)
-            tutorDrawFilter.ScenarioCreated = isCreatedToggle.isOn;
+            TutorDrawFilter.ScenarioCreated = isCreatedToggle.isOn;
         else
-            tutorDrawFilter.ScenarioCreated = null;
+            TutorDrawFilter.ScenarioCreated = null;
 
         //Applies the dropdown filter to each of the relevant dropdowns
-        ApplyDropdownFilter<Rarity>(rarityDropdown, tutorDrawFilter);
-        ApplyDropdownFilter<Classes.ClassList>(classDropdown, tutorDrawFilter);
-        ApplyDropdownFilter<Tags>(tagDropdown, tutorDrawFilter);
-        ApplyDropdownFilter<CardResources>(resourceDropdown, tutorDrawFilter);
-        ApplyDropdownFilter<CardTypes>(typeDropdown, tutorDrawFilter);
+        ApplyDropdownFilter<Rarity>(rarityDropdown, TutorDrawFilter);
+        ApplyDropdownFilter<Classes.ClassList>(classDropdown, TutorDrawFilter);
+        ApplyDropdownFilter<Tags>(tagDropdown, TutorDrawFilter);
+        ApplyDropdownFilter<CardResources>(resourceDropdown, TutorDrawFilter);
+        ApplyDropdownFilter<CardTypes>(typeDropdown, TutorDrawFilter);
 
-        ApplyDropdownFilter<IntValueFilter>(costFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Cost);
-        ApplyDropdownFilter<IntValueFilter>(attackFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Attack);
-        ApplyDropdownFilter<IntValueFilter>(healthFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Health);
-        ApplyDropdownFilter<IntValueFilter>(rangeFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Range);
-        ApplyDropdownFilter<IntValueFilter>(speedFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Speed);
-        ApplyDropdownFilter<IntValueFilter>(spellRangeFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.SpellRange);
-        ApplyDropdownFilter<IntValueFilter>(durabilityFilterDropdown, tutorDrawFilter, CardListFilter.IntFilterTypes.Durability);
+        ApplyDropdownFilter<IntValueFilter>(costFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Cost);
+        ApplyDropdownFilter<IntValueFilter>(attackFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Attack);
+        ApplyDropdownFilter<IntValueFilter>(healthFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Health);
+        ApplyDropdownFilter<IntValueFilter>(rangeFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Range);
+        ApplyDropdownFilter<IntValueFilter>(speedFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Speed);
+        ApplyDropdownFilter<IntValueFilter>(spellRangeFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.SpellRange);
+        ApplyDropdownFilter<IntValueFilter>(durabilityFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Durability);
 
         //Attempt the draw using the constructed filter. If failed to draw with the given filter adds the clarifier to the title
-        if (!cardFunctionUI.TutorDraw(tutorDrawFilter))
+        if (!CardFunctionUI.TutorDraw(TutorDrawFilter))
             titleText.text = $"{titleText.text} (Failed)";
     }
 
