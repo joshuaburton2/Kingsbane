@@ -152,7 +152,7 @@ public class Deck : CardList
     /// Shuffle a card into a random position in the deck
     /// 
     /// </summary>
-    public void ShuffleIntoDeck(Card card, string createdBy)
+    public void ShuffleIntoDeck(Card card, string createdBy = "")
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = UnityEngine.Random.Range(0, ListCount + 1);

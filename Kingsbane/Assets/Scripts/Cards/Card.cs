@@ -164,4 +164,9 @@ public class Card
     {
         Owner.DiscardFromHand(this);
     }
+
+    public void Shuffle()
+    {
+        Owner.ShuffleFromHand(this);
+    }
 }

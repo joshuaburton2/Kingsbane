@@ -243,6 +243,12 @@ public class Player
         Discard.AddCard(discardCard);
     }
 
+    public void ShuffleFromHand(Card card)
+    {
+        Hand.RemoveCard(card);
+        Deck.ShuffleIntoDeck(card);
+    }
+
     public void ReturnFromDiscard(Card returningCard = null)
     {
         if (Discard.ListCount == 0)

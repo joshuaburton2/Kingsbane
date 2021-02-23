@@ -234,4 +234,15 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         Card.Discard();
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
+
+    /// <summary>
+    /// 
+    /// Button click event for shuffling the card into the players deck
+    /// 
+    /// </summary>
+    public void ShuffleButton()
+    {
+        Card.Shuffle();
+        GameplayUI.RefreshPlayerBar(PlayerIndex);
+    }
 }
