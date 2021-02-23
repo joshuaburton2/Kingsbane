@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class CardFunctionUI : MonoBehaviour
 {
-
-
     private Player Player { get; set; }
     public PlayerUIBar PlayerUIBar { get; set; }
-
 
     [SerializeField]
     private CanvasGroup buttonGroup;
@@ -30,6 +27,11 @@ public class CardFunctionUI : MonoBehaviour
             buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
     }
 
+    /// <summary>
+    /// 
+    /// Initialisses the card function area
+    /// 
+    /// </summary>
     public void InitCardFunctionUI(Player player, PlayerUIBar playerUIBar)
     {
         Player = player;
@@ -44,6 +46,11 @@ public class CardFunctionUI : MonoBehaviour
         generateCardArea.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the UI Component
+    /// 
+    /// </summary>
     public void RefreshCardFunctionUI()
     {
         tutorDrawArea.gameObject.SetActive(false);
@@ -53,12 +60,22 @@ public class CardFunctionUI : MonoBehaviour
         generateCardArea.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for drawing a card
+    /// 
+    /// </summary>
     public void Draw()
     {
         Player.Draw();
         PlayerUIBar.RefreshPlayerBar();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for opening the tutor draw area
+    /// 
+    /// </summary>
     public void OpenTutorDrawArea()
     {
         generateCardArea.gameObject.SetActive(false);
@@ -68,6 +85,11 @@ public class CardFunctionUI : MonoBehaviour
             tutorDrawArea.OpenTutorDrawArea();
     }
 
+    /// <summary>
+    /// 
+    /// Function call from tutor draw area to confirm tutor draw
+    /// 
+    /// </summary>
     public bool TutorDraw(CardListFilter cardFilter)
     {
         var filterSuccess = Player.Draw(cardFilter);
@@ -76,24 +98,44 @@ public class CardFunctionUI : MonoBehaviour
         return filterSuccess;
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for adding to hand
+    /// 
+    /// </summary>
     public void OpenAddToHandArea()
     {
         selectedCardGeneration = CardGenerationTypes.Hand;
         OpenCardGenerationArea();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for adding to deck
+    /// 
+    /// </summary>
     public void OpenAddToDeckArea()
     {
         selectedCardGeneration = CardGenerationTypes.Deck;
         OpenCardGenerationArea();
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for adding to graveyard
+    /// 
+    /// </summary>
     public void OpenAddToGraveyardArea()
     {
         selectedCardGeneration = CardGenerationTypes.Graveyard;
         OpenCardGenerationArea();
     }
 
+    /// <summary>
+    /// 
+    /// General case for opening card generation area
+    /// 
+    /// </summary>
     private void OpenCardGenerationArea()
     {
         tutorDrawArea.gameObject.SetActive(false);
@@ -115,6 +157,11 @@ public class CardFunctionUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Function call for generate card area to confirm card generation
+    /// 
+    /// </summary>
     public bool ConfirmCardGeneration(GenerateCardFilter filter, string createdBy, DeckPositions deckPositions = DeckPositions.Random)
     {
         var filterSuccess = Player.GenerateCards(filter, selectedCardGeneration, createdBy, deckPositions);
@@ -123,6 +170,11 @@ public class CardFunctionUI : MonoBehaviour
         return filterSuccess;
     }
 
+    /// <summary>
+    /// 
+    /// Button click event for returning from discard pool
+    /// 
+    /// </summary>
     public void ReturnFromDiscard()
     {
         Player.ReturnFromDiscard();

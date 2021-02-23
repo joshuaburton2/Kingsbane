@@ -34,6 +34,7 @@ public class GenerateCardUI : MonoBehaviour
     private TMP_Dropdown positionDropdown;
 
     private const string DEFAULT_DROPDOWN_STRING = "Any";
+    private string defaultTitleText;
 
     private CardFunctionUI CardFunctionUI { get; set; }
     private Classes.ClassList PlayerClass { get; set; }
@@ -89,6 +90,8 @@ public class GenerateCardUI : MonoBehaviour
         GenerationFilter = new GenerateCardFilter(PlayerClass);
 
         titleText.text = $"Add to {CardGenerationType}";
+        defaultTitleText = titleText.text;
+        createdByInput.placeholder.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
         //Sets area to default values
         dropdownFields.ForEach(x => x.value = 0);
@@ -106,6 +109,7 @@ public class GenerateCardUI : MonoBehaviour
     /// </summary>
     public void ConfirmGeneration()
     {
+        //In order to submit, needs to have a created by string. Doesn't confirm if there is no text, and displays error to player
         if (!string.IsNullOrWhiteSpace(createdByInput.text))
         {
             //Sets the name filter to the name input
@@ -132,9 +136,13 @@ public class GenerateCardUI : MonoBehaviour
 
             //If failed the generation, displays this in the title
             if (!successfulGeneration)
-                titleText.text = $"{titleText.text} (Failed)";
+                titleText.text = $"{defaultTitleText} (Failed)";
         }
-        
+        else
+        {
+            createdByInput.placeholder.color = new Color(0.8f, 0.0f, 0.0f, 0.5f);
+            titleText.text = $"{defaultTitleText} (Input Created By)";
+        }
     }
 
     /// <summary>
