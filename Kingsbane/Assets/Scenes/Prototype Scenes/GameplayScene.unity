@@ -4987,7 +4987,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
@@ -11396,7 +11396,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11954,6 +11954,14 @@ MonoBehaviour:
   - effectType: 2
     activeGamePhase: 3
     effectPrefab: {fileID: 7954373625630920079, guid: dde1c0bfc4aa5de44bd0bfdbd543532d,
+      type: 3}
+  - effectType: 3
+    activeGamePhase: 4
+    effectPrefab: {fileID: 826759519470782786, guid: 365a87986fe21c84e8409cf357d96260,
+      type: 3}
+  - effectType: 4
+    activeGamePhase: 4
+    effectPrefab: {fileID: 6071046432368836760, guid: 5687fe0a57525264b93942bef7932a3a,
       type: 3}
   gameplayUI: {fileID: 1873261933}
 --- !u!1 &1715897741
@@ -15723,7 +15731,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00012207031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856601062971, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}

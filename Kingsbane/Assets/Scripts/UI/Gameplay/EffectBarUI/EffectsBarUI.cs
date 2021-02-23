@@ -14,6 +14,10 @@ public class EffectsBarUI : MonoBehaviour
         PlayHero,
         [Description("Mulligan Hand")]
         MulliganHand,
+        [Description("Deal Damage")]
+        DealDamage,
+        [Description("Heal Unit")]
+        HealUnit,
     }
 
     [Serializable]

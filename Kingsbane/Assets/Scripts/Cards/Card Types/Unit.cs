@@ -154,9 +154,14 @@ public class Unit : Card
         Health -= damageValue;
 
         if (Health <= 0)
-        {
             DestroyUnit();
-        }
+        UnitCounter.RefreshUnitCounter();
+    }
+
+    public void HealUnit(int healValue)
+    {
+        Health = Mathf.Min(BaseHealth, Health + healValue);
+        UnitCounter.RefreshUnitCounter();
     }
 
     public void DestroyUnit()

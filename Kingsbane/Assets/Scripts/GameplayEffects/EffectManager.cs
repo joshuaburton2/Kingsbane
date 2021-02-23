@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class EffectManager : MonoBehaviour
         UnitMove,
         UnitAttack,
         UnitAbility,
+        DealDamage,
+        HealUnit,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -27,11 +30,13 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.Deployment,
         ActiveEffectTypes.UnitMove,
         ActiveEffectTypes.UnitUseSpeed,
+        ActiveEffectTypes.DealDamage,
     };
 
     private Card SelectedCard { get; set; }
     private Unit SelectedUnit { get; set; }
     private AbilityData SelectedAbility { get; set; }
+    private int? SelectedValue { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -58,6 +63,9 @@ public class EffectManager : MonoBehaviour
         if (fullReset)
             ActiveEffect = ActiveEffectTypes.None;
 
+        SelectedAbility = null;
+        SelectedValue = null;
+
         switch (ActiveEffect)
         {
             default:
@@ -65,7 +73,6 @@ public class EffectManager : MonoBehaviour
 
                 SelectedCard = null;
                 SelectedUnit = null;
-
                 break;
             case ActiveEffectTypes.UnitForceMove:
             case ActiveEffectTypes.UnitAttack:
@@ -284,6 +291,34 @@ public class EffectManager : MonoBehaviour
             SelectedUnit = _selectedUnit;
         }
         ActiveEffect = ActiveEffectTypes.UnitCommand;
+    }
+
+    public void SetDealDamageMode(int damageValue)
+    {
+        SelectedValue = damageValue;
+        ActiveEffect = ActiveEffectTypes.DealDamage;
+    }
+
+    public void DealDamage(Unit unit)
+    {
+        if (SelectedValue.HasValue)
+            unit.DamageUnit(SelectedValue.Value);
+        else
+            throw new Exception("Damage value not set");
+    }
+
+    public void SetHealMode(int healValue)
+    {
+        SelectedValue = healValue;
+        ActiveEffect = ActiveEffectTypes.HealUnit;
+    }
+
+    public void HealUnit(Unit unit)
+    {
+        if (SelectedValue.HasValue)
+            unit.HealUnit(SelectedValue.Value);
+        else
+            throw new Exception("Damage value not set");
     }
 
     public void DestroyUnit(Unit unit)
