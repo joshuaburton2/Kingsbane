@@ -22,15 +22,10 @@ public class EffectUI : MonoBehaviour
 
         if (!GameManager.instance.effectManager.IsUILocked && !effectComplete)
         {
-            if (!GameManager.instance.effectManager.CancelEffect)
-            {
-                CompleteEffect();
-            }
+            if (GameManager.instance.effectManager.CancelEffect)
+                CancelEffect();
             else
-            {
-                GameManager.instance.effectManager.CancelEffect = false;
-                effectComplete = true;
-            }
+                CompleteEffect();
         }
     }
 
@@ -45,6 +40,12 @@ public class EffectUI : MonoBehaviour
 
     public virtual void CompleteEffect()
     {
+        effectComplete = true;
+    }
+
+    public virtual void CancelEffect()
+    {
+        GameManager.instance.effectManager.CancelEffect = false;
         effectComplete = true;
     }
 }

@@ -76,6 +76,10 @@ public class Cell : MonoBehaviour
                                 if (occupantCounter != null)
                                     GameManager.instance.effectManager.HealUnit(occupantCounter.Unit);
                                 break;
+                            case EffectManager.ActiveEffectTypes.Protected:
+                                if (occupantCounter != null)
+                                    GameManager.instance.effectManager.ProtectUnit(occupantCounter.Unit);
+                                break;
                             case EffectManager.ActiveEffectTypes.None:
                                 SelectCommandUnit();
                                 break;

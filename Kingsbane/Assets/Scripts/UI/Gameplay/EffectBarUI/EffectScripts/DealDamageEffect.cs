@@ -55,12 +55,12 @@ class DealDamageEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Complete the deal damage effect
+    /// Cancel the deal damage effect
     /// 
     /// </summary>
-    public override void CompleteEffect()
+    public override void CancelEffect()
     {
-        base.CompleteEffect();
+        base.CancelEffect();
 
         damageValueInput.text = "";
     }

@@ -19,6 +19,7 @@ public class EffectManager : MonoBehaviour
         UnitAbility,
         DealDamage,
         HealUnit,
+        Protected,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -31,12 +32,15 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.UnitMove,
         ActiveEffectTypes.UnitUseSpeed,
         ActiveEffectTypes.DealDamage,
+        ActiveEffectTypes.HealUnit,
+        ActiveEffectTypes.Protected,
     };
 
     private Card SelectedCard { get; set; }
     private Unit SelectedUnit { get; set; }
     private AbilityData SelectedAbility { get; set; }
     private int? SelectedValue { get; set; }
+    private bool? SelectedBoolean { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -65,6 +69,7 @@ public class EffectManager : MonoBehaviour
 
         SelectedAbility = null;
         SelectedValue = null;
+        SelectedBoolean = null;
 
         switch (ActiveEffect)
         {
@@ -307,7 +312,7 @@ public class EffectManager : MonoBehaviour
             throw new Exception("Damage value not set");
     }
 
-    public void SetHealMode(int healValue)
+    public void SetHealMode(int? healValue = null)
     {
         SelectedValue = healValue;
         ActiveEffect = ActiveEffectTypes.HealUnit;
@@ -315,10 +320,19 @@ public class EffectManager : MonoBehaviour
 
     public void HealUnit(Unit unit)
     {
-        if (SelectedValue.HasValue)
-            unit.HealUnit(SelectedValue.Value);
-        else
-            throw new Exception("Damage value not set");
+        unit.HealUnit(SelectedValue);
+    }
+
+    public void SetProtectedMode(int? protectedValue, bool isTemporary)
+    {
+        SelectedValue = protectedValue;
+        SelectedBoolean = isTemporary;
+        ActiveEffect = ActiveEffectTypes.Protected;
+    }
+
+    public void ProtectUnit(Unit unit)
+    {
+        unit.AddProtected(SelectedValue, SelectedBoolean.Value);
     }
 
     public void DestroyUnit(Unit unit)

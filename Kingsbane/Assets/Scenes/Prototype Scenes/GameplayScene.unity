@@ -621,7 +621,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 85
+  orthographic size: 82
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4987,7 +4987,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
@@ -11963,6 +11963,10 @@ MonoBehaviour:
     activeGamePhase: 4
     effectPrefab: {fileID: 6071046432368836760, guid: 5687fe0a57525264b93942bef7932a3a,
       type: 3}
+  - effectType: 5
+    activeGamePhase: 4
+    effectPrefab: {fileID: 4865772621628074389, guid: 28c6942b9511dfe4bb9a9b6b26505e6a,
+      type: 3}
   gameplayUI: {fileID: 1873261933}
 --- !u!1 &1715897741
 GameObject:
@@ -15731,7 +15735,7 @@ PrefabInstance:
     - target: {fileID: 3703786856601062964, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 3703786856601062971, guid: 5679a79d32e902946afb97572d5baab0,
         type: 3}

@@ -20,6 +20,7 @@ public class Unit : Card
 
     public int DefaultAttack { get { return UnitData.Attack; } }
     public int DefaultHealth { get { return UnitData.Health; } }
+    public int DefaultProtected { get { return UnitData.Protected; } }
     public int DefaultRange { get { return UnitData.Range; } }
     public int DefaultSpeed { get { return UnitData.Speed; } }
 
@@ -30,9 +31,24 @@ public class Unit : Card
 
     public int Attack { get; set; }
     public int Health { get; set; }
+    public int? Protected { get; set; }
+    public int? TemporaryProtected { get; set; }
+    public int? TotalProtected
+    {
+        get
+        {
+            if (Protected.HasValue && TemporaryProtected.HasValue)
+            {
+                return Protected + TemporaryProtected;
+            }
+            else
+            {
+                return null;
+            }
+        }
+    }
     public int Range { get; set; }
     public int Speed { get; set; }
-
 
     public StatModTypes HasBuffedAttack { get { return Attack > BaseAttack ? StatModTypes.Buffed : StatModTypes.None; } }
     public StatModTypes UnitIsDamaged { get { return Health < BaseHealth ? StatModTypes.Damaged : StatModTypes.None; } }
@@ -63,6 +79,8 @@ public class Unit : Card
 
         Attack = DefaultAttack;
         Health = DefaultHealth;
+        Protected = DefaultProtected;
+        TemporaryProtected = 0;
         Range = DefaultRange;
         Speed = DefaultSpeed;
 
@@ -87,6 +105,7 @@ public class Unit : Card
                 RemainingSpeed = 0;
                 ActionsLeft = 0;
                 AbilityUsesLeft = 0;
+                TemporaryProtected = 0;
             }
             else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
@@ -102,6 +121,8 @@ public class Unit : Card
                 {
                     Status = UnitStatuses.Preparing;
                 }
+
+                TemporaryProtected = 0;
             }
         }
         else
@@ -131,7 +152,7 @@ public class Unit : Card
         ActionsLeft += value;
         if (ActionsLeft == 0)
             Status = UnitStatuses.Finished;
-        else if(value <= 0)
+        else if (value <= 0)
             Status = UnitStatuses.Middle;
 
         UnitCounter.RefreshUnitCounter();
@@ -151,16 +172,60 @@ public class Unit : Card
 
     public void DamageUnit(int damageValue)
     {
-        Health -= damageValue;
+        if (TotalProtected.HasValue)
+        {
+            TemporaryProtected -= damageValue;
+            if (TemporaryProtected < 0)
+            {
+                Protected += TemporaryProtected.Value;
+                TemporaryProtected = 0;
+                if (Protected < 0)
+                {
+                    Health += Protected.Value;
+                    Protected = 0;
+                }
+            }
 
-        if (Health <= 0)
-            DestroyUnit();
+            if (Health <= 0)
+                DestroyUnit();
+        }
         UnitCounter.RefreshUnitCounter();
     }
 
-    public void HealUnit(int healValue)
+    public void HealUnit(int? healValue)
     {
-        Health = Mathf.Min(BaseHealth, Health + healValue);
+        if (healValue.HasValue)
+            Health = Mathf.Min(BaseHealth, Health + healValue.Value);
+        else
+            Health = BaseHealth;
+
+        UnitCounter.RefreshUnitCounter();
+    }
+
+    public void AddProtected(int? value, bool isTemporary)
+    {
+        if (isTemporary)
+        {
+            if (value.HasValue)
+            {
+                if (TemporaryProtected.HasValue)
+                    TemporaryProtected += value;
+            }
+            else
+                TemporaryProtected = null;
+        }
+        else
+        {
+            if (value.HasValue)
+            {
+                if (Protected.HasValue)
+                    Protected += value;
+            }
+            else
+            {
+                Protected = null;
+            }
+        }
         UnitCounter.RefreshUnitCounter();
     }
 

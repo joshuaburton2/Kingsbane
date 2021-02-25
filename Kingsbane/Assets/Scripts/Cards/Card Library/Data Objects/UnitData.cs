@@ -14,6 +14,7 @@ public class UnitData : CardData
 
     public int Attack { get; set; }
     public int Health { get; set; }
+    public int Protected { get; set; }
     public int Range { get; set; }
     public int Speed { get; set; }
 

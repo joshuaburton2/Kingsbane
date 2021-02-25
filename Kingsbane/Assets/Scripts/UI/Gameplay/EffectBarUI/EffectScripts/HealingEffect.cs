@@ -34,7 +34,7 @@ class HealingEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Button click event for setting to deal damage mode
+    /// Button click event for setting to healing mode
     /// 
     /// </summary>
     public void HealButton()
@@ -55,12 +55,24 @@ class HealingEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Complete the deal damage effect
+    /// Button click event for setting to regenerate mode
     /// 
     /// </summary>
-    public override void CompleteEffect()
+    public void RegenerateButton()
     {
-        base.CompleteEffect();
+        effectComplete = false;
+
+        GameManager.instance.effectManager.SetHealMode();
+    }
+
+    /// <summary>
+    /// 
+    /// Cancel the healing effect
+    /// 
+    /// </summary>
+    public override void CancelEffect()
+    {
+        base.CancelEffect();
 
         healValueInput.text = "";
     }
