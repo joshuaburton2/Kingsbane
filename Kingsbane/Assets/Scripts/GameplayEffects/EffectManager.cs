@@ -20,6 +20,8 @@ public class EffectManager : MonoBehaviour
         DealDamage,
         HealUnit,
         Protected,
+        DestroyUnit,
+        RemoveUnit,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -34,6 +36,8 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.DealDamage,
         ActiveEffectTypes.HealUnit,
         ActiveEffectTypes.Protected,
+        ActiveEffectTypes.DestroyUnit,
+        ActiveEffectTypes.RemoveUnit,
     };
 
     private Card SelectedCard { get; set; }
@@ -335,8 +339,23 @@ public class EffectManager : MonoBehaviour
         unit.AddProtected(SelectedValue, SelectedBoolean.Value);
     }
 
+    public void SetDestroyUnitMode()
+    {
+        ActiveEffect = ActiveEffectTypes.DestroyUnit;
+    }
+
     public void DestroyUnit(Unit unit)
     {
         unit.DestroyUnit();
+    }
+
+    public void SetRemoveUnitMode()
+    {
+        ActiveEffect = ActiveEffectTypes.RemoveUnit;
+    }
+
+    public void RemoveUnit(Unit unit)
+    {
+        unit.RemoveUnit();
     }
 }

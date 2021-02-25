@@ -237,6 +237,13 @@ public class Unit : Card
         UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
     }
 
+    public void RemoveUnit()
+    {
+        GameManager.instance.effectManager.RemoveUnit(UnitCounter);
+
+        UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
+    }
+
     public bool CanUseAbility(AbilityData ability)
     {
         var canSpendResources = Resource.CanSpendResources(Owner, ability.Resources);

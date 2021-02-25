@@ -80,6 +80,14 @@ public class Cell : MonoBehaviour
                                 if (occupantCounter != null)
                                     GameManager.instance.effectManager.ProtectUnit(occupantCounter.Unit);
                                 break;
+                            case EffectManager.ActiveEffectTypes.DestroyUnit:
+                                if (occupantCounter != null)
+                                    GameManager.instance.effectManager.DestroyUnit(occupantCounter.Unit);
+                                break;
+                            case EffectManager.ActiveEffectTypes.RemoveUnit:
+                                if (occupantCounter != null)
+                                    GameManager.instance.effectManager.RemoveUnit(occupantCounter.Unit);
+                                break;
                             case EffectManager.ActiveEffectTypes.None:
                                 SelectCommandUnit();
                                 break;

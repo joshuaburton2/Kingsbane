@@ -20,6 +20,8 @@ public class EffectsBarUI : MonoBehaviour
         HealUnit,
         [Description("Protected")]
         Protected,
+        [Description("Destroy Unit")]
+        DestroyUnit,
     }
 
     [Serializable]
