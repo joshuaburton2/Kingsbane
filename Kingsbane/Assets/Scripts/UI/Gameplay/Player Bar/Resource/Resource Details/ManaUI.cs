@@ -10,6 +10,18 @@ public class ManaUI : ResourceDetailUI
 
     [SerializeField]
     private TMP_InputField manaInput;
+    [SerializeField]
+    private TextMeshProUGUI empoweredText;
+    [SerializeField]
+    private TextMeshProUGUI summonText;
+
+    [Header("Extra Properties Area")]
+    [SerializeField]
+    private GameObject extraPropertyArea;
+    [SerializeField]
+    private TextMeshProUGUI extraEmpoweredText;
+    [SerializeField]
+    private TextMeshProUGUI extraSummonText;
 
     /// <summary>
     /// 
@@ -22,6 +34,9 @@ public class ManaUI : ResourceDetailUI
 
         propertyText.text = $"Overload: {ResourceMana.TotalOverload}";
         manaInput.text = "";
+
+        UpdateExtraPropertyText();
+        extraPropertyArea.SetActive(false);
     }
 
     /// <summary>
@@ -35,5 +50,51 @@ public class ManaUI : ResourceDetailUI
             ResourceMana.ModifyValue(manaVal);
 
         RefreshResourceDetailUI();
+    }
+
+    private void UpdateExtraPropertyText()
+    {
+        var empoweredString = $"Empowered: +{ResourceMana.CurrentEmpowered}";
+        empoweredText.text = empoweredString;
+        extraEmpoweredText.text = empoweredString;
+
+        var summonString = $"Summon: {ResourceMana.CurrentSummons}/{ResourceMana.SummonCapcity}";
+        summonText.text = summonString;
+        extraSummonText.text = summonString;
+    }
+
+    public void OpenExtraPropertyArea()
+    {
+        extraPropertyArea.SetActive(!extraPropertyArea.activeSelf);
+    }
+
+    public void IncreaseEmpowered()
+    {
+        ResourceMana.ModifyEmpowered(1);
+        UpdateExtraPropertyText();
+    }
+
+    public void DecreaseEmpowered()
+    {
+        ResourceMana.ModifyEmpowered(-1);
+        UpdateExtraPropertyText();
+    }
+
+    public void IncreaseSummons()
+    {
+        ResourceMana.ModifyCurrentSummons(1);
+        UpdateExtraPropertyText();
+    }
+
+    public void DecreaseSummons()
+    {
+        ResourceMana.ModifyCurrentSummons(-1);
+        UpdateExtraPropertyText();
+    }
+
+    public void IncreaseSummonCapacity()
+    {
+        ResourceMana.ModifySummonCapacity(1);
+        UpdateExtraPropertyText();
     }
 }
