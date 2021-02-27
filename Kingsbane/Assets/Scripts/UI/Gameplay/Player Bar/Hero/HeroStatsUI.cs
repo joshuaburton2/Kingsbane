@@ -30,10 +30,10 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
-        if (GameManager.instance.uiManager.RefreshHeroStats == true)
+        if (GameManager.instance.uiManager.RefreshHeroStats != 0)
         {
             RefreshHeroStats();
-            GameManager.instance.uiManager.RefreshHeroStats = false;
+            GameManager.instance.uiManager.RefreshHeroStats--;
         }
     }
 

@@ -81,7 +81,7 @@ public class UnitCounter : MonoBehaviour
 
         if (Unit.Rarity == Rarity.Hero || Unit.Rarity == Rarity.NPCHero)
         {
-            GameManager.instance.uiManager.RefreshHeroStats = true;
+            GameManager.instance.uiManager.RefreshHeroStats = GameManager.instance.NumPlayers;
         }
     }
 

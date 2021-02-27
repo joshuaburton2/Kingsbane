@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     [Header("Other Properties")]
     public ActiveMainPanels activeMainPanel;
 
-    public bool RefreshHeroStats { get; set; }
+    public int RefreshHeroStats { get; set; }
 
     /// <summary>
     /// 
@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
         lobbyPage.SetActive(false);
         cardLibrary.SetActive(false);
 
-        RefreshHeroStats = false;
+        RefreshHeroStats = 0;
     }
 
     /// <summary>
