@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Gameplay Pages")]
     [SerializeField]
-    public GameObject gameplayUI;
+    private GameObject gameplayUI;
 
     [Header("Detail Displays")]
     [SerializeField]

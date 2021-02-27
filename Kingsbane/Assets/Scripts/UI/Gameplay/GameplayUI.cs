@@ -173,6 +173,8 @@ public class GameplayUI : MonoBehaviour
             {
                 playerBar.RefreshPlayerBar();
             }
+
+            ShowCardDisplay();
         }
         else
         {
