@@ -78,6 +78,11 @@ public class UnitCounter : MonoBehaviour
         protectedArea.SetActive(!Unit.TotalProtected.HasValue || Unit.TotalProtected.Value > 0);
 
         statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(Unit.Status);
+
+        if (Unit.Rarity == Rarity.Hero || Unit.Rarity == Rarity.NPCHero)
+        {
+            GameManager.instance.uiManager.RefreshHeroStats = true;
+        }
     }
 
     public void ShowCardDetail()

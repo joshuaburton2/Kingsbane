@@ -44,6 +44,8 @@ public class UIManager : MonoBehaviour
     [Header("Other Properties")]
     public ActiveMainPanels activeMainPanel;
 
+    public bool RefreshHeroStats { get; set; }
+
     /// <summary>
     /// 
     /// Find the required pages for the main menu
@@ -65,6 +67,8 @@ public class UIManager : MonoBehaviour
         upgradeDetailDisplay.SetActive(false);
         lobbyPage.SetActive(false);
         cardLibrary.SetActive(false);
+
+        RefreshHeroStats = false;
     }
 
     /// <summary>

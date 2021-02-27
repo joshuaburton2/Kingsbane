@@ -276,7 +276,10 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
-        if (unitCounter.Unit == SelectedUnit && ActiveEffect != ActiveEffectTypes.UnitMove && ActiveEffect != ActiveEffectTypes.UnitForceMove)
+        if (unitCounter.Unit == SelectedUnit && 
+            ActiveEffect != ActiveEffectTypes.UnitMove && 
+            ActiveEffect != ActiveEffectTypes.UnitForceMove && 
+            ActiveEffect != ActiveEffectTypes.UnitUseSpeed)
         {
             SelectedUnit = null;
             GameManager.instance.uiManager.RefreshUI();

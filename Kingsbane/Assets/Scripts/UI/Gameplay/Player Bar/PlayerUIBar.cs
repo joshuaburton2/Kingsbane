@@ -62,13 +62,13 @@ public class PlayerUIBar : MonoBehaviour
     {
         if (IsActivePlayerBar)
         {
-            if (GameManager.instance.effectManager.ActiveEffect != ActiveEffectTypes.UnitCommand)
+            if (GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitCommand)
             {
-                unitCommandUI.gameObject.SetActive(false);
+                unitCommandUI.RefreshCommandBar();
             }
             else
             {
-                unitCommandUI.RefreshCommandBar();
+                unitCommandUI.gameObject.SetActive(false);
             }
         }
         else

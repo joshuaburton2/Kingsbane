@@ -20,9 +20,22 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private TextMeshProUGUI healthText;
     [SerializeField]
+    private GameObject protectedArea;
+    [SerializeField]
+    private TextMeshProUGUI protectedText;
+    [SerializeField]
     private TextMeshProUGUI rangeText;
     [SerializeField]
     private TextMeshProUGUI speedText;
+
+    private void Update()
+    {
+        if (GameManager.instance.uiManager.RefreshHeroStats == true)
+        {
+            RefreshHeroStats();
+            GameManager.instance.uiManager.RefreshHeroStats = false;
+        }
+    }
 
     /// <summary>
     /// 
@@ -61,6 +74,9 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
 
         rangeText.text = hero.Range.ToString();
         rangeText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedRange);
+
+        protectedText.text = hero.TotalProtected.HasValue ? hero.TotalProtected.ToString() : "Inf";
+        protectedArea.SetActive(!hero.TotalProtected.HasValue || hero.TotalProtected.Value > 0);
 
         speedText.text = $"{hero.RemainingSpeed}/{hero.Speed}";
         speedText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedSpeed);
