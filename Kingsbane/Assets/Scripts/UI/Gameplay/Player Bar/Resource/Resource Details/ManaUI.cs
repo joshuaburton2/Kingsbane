@@ -23,6 +23,15 @@ public class ManaUI : ResourceDetailUI
     [SerializeField]
     private TextMeshProUGUI extraSummonText;
 
+    private new void Update()
+    {
+        base.Update();
+
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            if (GameManager.instance.effectManager.IsUILocked && extraPropertyArea.activeSelf)
+                extraPropertyArea.SetActive(false);
+    }
+
     /// <summary>
     /// 
     /// Refreshes the resource details

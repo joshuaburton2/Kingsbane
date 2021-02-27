@@ -7,13 +7,18 @@ using System.Linq;
 
 public class Unit : Card
 {
-    public enum UnitStatuses //The possible statuses of the unit
+    public enum UnitStatuses //The possible action statuses of the unit
     {
         Start, //Status for start of turn
         Preparing, //Status for just played
         Middle, //Status for still actions, movement or abilities to use
         Finished, //Status for all actions spent
         Enemy, //Status for enemy cards
+    }
+
+    public enum StatusEffects
+    {
+
     }
 
     public UnitData UnitData { get { return cardData as UnitData; } }
@@ -38,13 +43,9 @@ public class Unit : Card
         get
         {
             if (Protected.HasValue && TemporaryProtected.HasValue)
-            {
                 return Protected + TemporaryProtected;
-            }
             else
-            {
                 return null;
-            }
         }
     }
     public int Range { get; set; }

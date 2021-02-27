@@ -20,7 +20,7 @@ public class ResourceDetailUI : MonoBehaviour
     [SerializeField]
     protected TextMeshProUGUI propertyText;
 
-    private void Update()
+    protected void Update()
     {
         //Checks whether the game is UI locked and disables the buttons if so
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
