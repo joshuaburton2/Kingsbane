@@ -82,6 +82,7 @@ public class PlayerMana : PlayerResource
         CurrentOverload = 0;
 
         CurrentEmpowered = PassiveEmpowered;
+        CurrentSummons = 0;
         SummonCapcity = BaseSummonCapactiy;
     }
 
