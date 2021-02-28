@@ -69,6 +69,13 @@
             this.lblType = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
             this.grpUnit = new System.Windows.Forms.GroupBox();
+            this.txtEmpowered = new System.Windows.Forms.TextBox();
+            this.lblEmpowered = new System.Windows.Forms.Label();
+            this.btnAddKeyword = new System.Windows.Forms.Button();
+            this.lstKeywords = new System.Windows.Forms.ListBox();
+            this.lblKeywords = new System.Windows.Forms.Label();
+            this.txtProtected = new System.Windows.Forms.TextBox();
+            this.lblProtected = new System.Windows.Forms.Label();
             this.btnAddAbility = new System.Windows.Forms.Button();
             this.lstAbilities = new System.Windows.Forms.ListBox();
             this.lblAbilities = new System.Windows.Forms.Label();
@@ -130,7 +137,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(430, 984);
+            this.buttonSave.Location = new System.Drawing.Point(1064, 677);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -141,7 +148,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(518, 984);
+            this.buttonCancel.Location = new System.Drawing.Point(1152, 677);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -152,7 +159,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(606, 984);
+            this.buttonDelete.Location = new System.Drawing.Point(1240, 677);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -453,7 +460,7 @@
             // 
             this.lblType.AutoSize = true;
             this.lblType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblType.Location = new System.Drawing.Point(12, 680);
+            this.lblType.Location = new System.Drawing.Point(671, 88);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(46, 21);
             this.lblType.TabIndex = 20;
@@ -463,7 +470,7 @@
             // 
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(75, 682);
+            this.cmbType.Location = new System.Drawing.Point(734, 90);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(120, 23);
             this.cmbType.TabIndex = 21;
@@ -471,6 +478,13 @@
             // 
             // grpUnit
             // 
+            this.grpUnit.Controls.Add(this.txtEmpowered);
+            this.grpUnit.Controls.Add(this.lblEmpowered);
+            this.grpUnit.Controls.Add(this.btnAddKeyword);
+            this.grpUnit.Controls.Add(this.lstKeywords);
+            this.grpUnit.Controls.Add(this.lblKeywords);
+            this.grpUnit.Controls.Add(this.txtProtected);
+            this.grpUnit.Controls.Add(this.lblProtected);
             this.grpUnit.Controls.Add(this.btnAddAbility);
             this.grpUnit.Controls.Add(this.lstAbilities);
             this.grpUnit.Controls.Add(this.lblAbilities);
@@ -485,16 +499,77 @@
             this.grpUnit.Controls.Add(this.txtUnitTag);
             this.grpUnit.Controls.Add(this.lblUnitTag);
             this.grpUnit.Enabled = false;
-            this.grpUnit.Location = new System.Drawing.Point(12, 711);
+            this.grpUnit.Location = new System.Drawing.Point(671, 119);
             this.grpUnit.Name = "grpUnit";
-            this.grpUnit.Size = new System.Drawing.Size(651, 125);
+            this.grpUnit.Size = new System.Drawing.Size(651, 216);
             this.grpUnit.TabIndex = 22;
             this.grpUnit.TabStop = false;
             this.grpUnit.Text = "Unit Fields";
             // 
+            // txtEmpowered
+            // 
+            this.txtEmpowered.Location = new System.Drawing.Point(492, 52);
+            this.txtEmpowered.Name = "txtEmpowered";
+            this.txtEmpowered.Size = new System.Drawing.Size(44, 23);
+            this.txtEmpowered.TabIndex = 13;
+            // 
+            // lblEmpowered
+            // 
+            this.lblEmpowered.AutoSize = true;
+            this.lblEmpowered.Location = new System.Drawing.Point(416, 55);
+            this.lblEmpowered.Name = "lblEmpowered";
+            this.lblEmpowered.Size = new System.Drawing.Size(70, 15);
+            this.lblEmpowered.TabIndex = 12;
+            this.lblEmpowered.Text = "Empowered";
+            // 
+            // btnAddKeyword
+            // 
+            this.btnAddKeyword.Location = new System.Drawing.Point(323, 152);
+            this.btnAddKeyword.Name = "btnAddKeyword";
+            this.btnAddKeyword.Size = new System.Drawing.Size(32, 23);
+            this.btnAddKeyword.TabIndex = 11;
+            this.btnAddKeyword.Text = "+";
+            this.btnAddKeyword.UseVisualStyleBackColor = true;
+            this.btnAddKeyword.Click += new System.EventHandler(this.btnAddKeyword_Click);
+            // 
+            // lstKeywords
+            // 
+            this.lstKeywords.FormattingEnabled = true;
+            this.lstKeywords.ItemHeight = 15;
+            this.lstKeywords.Location = new System.Drawing.Point(88, 152);
+            this.lstKeywords.Name = "lstKeywords";
+            this.lstKeywords.Size = new System.Drawing.Size(229, 49);
+            this.lstKeywords.TabIndex = 10;
+            this.lstKeywords.DoubleClick += new System.EventHandler(this.ClickListRecord);
+            // 
+            // lblKeywords
+            // 
+            this.lblKeywords.AutoSize = true;
+            this.lblKeywords.Location = new System.Drawing.Point(11, 152);
+            this.lblKeywords.Name = "lblKeywords";
+            this.lblKeywords.Size = new System.Drawing.Size(58, 15);
+            this.lblKeywords.TabIndex = 9;
+            this.lblKeywords.Text = "Keywords";
+            // 
+            // txtProtected
+            // 
+            this.txtProtected.Location = new System.Drawing.Point(366, 52);
+            this.txtProtected.Name = "txtProtected";
+            this.txtProtected.Size = new System.Drawing.Size(44, 23);
+            this.txtProtected.TabIndex = 8;
+            // 
+            // lblProtected
+            // 
+            this.lblProtected.AutoSize = true;
+            this.lblProtected.Location = new System.Drawing.Point(302, 55);
+            this.lblProtected.Name = "lblProtected";
+            this.lblProtected.Size = new System.Drawing.Size(58, 15);
+            this.lblProtected.TabIndex = 7;
+            this.lblProtected.Text = "Protected";
+            // 
             // btnAddAbility
             // 
-            this.btnAddAbility.Location = new System.Drawing.Point(318, 64);
+            this.btnAddAbility.Location = new System.Drawing.Point(323, 85);
             this.btnAddAbility.Name = "btnAddAbility";
             this.btnAddAbility.Size = new System.Drawing.Size(32, 23);
             this.btnAddAbility.TabIndex = 6;
@@ -506,7 +581,7 @@
             // 
             this.lstAbilities.FormattingEnabled = true;
             this.lstAbilities.ItemHeight = 15;
-            this.lstAbilities.Location = new System.Drawing.Point(83, 64);
+            this.lstAbilities.Location = new System.Drawing.Point(88, 85);
             this.lstAbilities.Name = "lstAbilities";
             this.lstAbilities.Size = new System.Drawing.Size(229, 49);
             this.lstAbilities.TabIndex = 5;
@@ -515,7 +590,7 @@
             // lblAbilities
             // 
             this.lblAbilities.AutoSize = true;
-            this.lblAbilities.Location = new System.Drawing.Point(6, 64);
+            this.lblAbilities.Location = new System.Drawing.Point(11, 85);
             this.lblAbilities.Name = "lblAbilities";
             this.lblAbilities.Size = new System.Drawing.Size(49, 15);
             this.lblAbilities.TabIndex = 4;
@@ -607,7 +682,7 @@
             this.grpItem.Controls.Add(this.lblDurability);
             this.grpItem.Controls.Add(this.txtItemTag);
             this.grpItem.Controls.Add(this.lblItemTag);
-            this.grpItem.Location = new System.Drawing.Point(10, 909);
+            this.grpItem.Location = new System.Drawing.Point(669, 408);
             this.grpItem.Name = "grpItem";
             this.grpItem.Size = new System.Drawing.Size(651, 61);
             this.grpItem.TabIndex = 22;
@@ -652,7 +727,7 @@
             this.grpSpell.Controls.Add(this.lblSpellRange);
             this.grpSpell.Controls.Add(this.txtSpellType);
             this.grpSpell.Controls.Add(this.lblSpellType);
-            this.grpSpell.Location = new System.Drawing.Point(12, 842);
+            this.grpSpell.Location = new System.Drawing.Point(671, 341);
             this.grpSpell.Name = "grpSpell";
             this.grpSpell.Size = new System.Drawing.Size(651, 61);
             this.grpSpell.TabIndex = 22;
@@ -810,7 +885,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 1011);
+            this.ClientSize = new System.Drawing.Size(1333, 710);
             this.Controls.Add(this.btnAddRelatedCard);
             this.Controls.Add(this.lstRelatedCards);
             this.Controls.Add(this.lblRelatedCards);
@@ -959,5 +1034,12 @@
         private System.Windows.Forms.ListBox lstAbilities;
         private System.Windows.Forms.Label lblAbilities;
         private System.Windows.Forms.Button btnAddAbility;
+        private System.Windows.Forms.TextBox txtProtected;
+        private System.Windows.Forms.Label lblProtected;
+        private System.Windows.Forms.Button btnAddKeyword;
+        private System.Windows.Forms.ListBox lstKeywords;
+        private System.Windows.Forms.Label lblKeywords;
+        private System.Windows.Forms.TextBox txtEmpowered;
+        private System.Windows.Forms.Label lblEmpowered;
     }
 }

@@ -10,6 +10,7 @@ namespace Kingsbane.Database.Models
         public CardUnit()
         {
             Abilities = new HashSet<Ability>();
+            UnitKeywords = new HashSet<UnitKeyword>();
         }
 
         [Key]
@@ -23,8 +24,10 @@ namespace Kingsbane.Database.Models
 
         public int Attack { get; set; }
         public int Health { get; set; }
+        public int Protected { get; set; }
         public int Range { get; set; }
         public int Speed { get; set; }
+        public int Empowered { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
@@ -34,5 +37,6 @@ namespace Kingsbane.Database.Models
         public virtual Card Card { get; set; }              // Primary Client
 
         public virtual ICollection<Ability> Abilities { get; set; }
+        public virtual ICollection<UnitKeyword> UnitKeywords { get; set; }
     }
 }

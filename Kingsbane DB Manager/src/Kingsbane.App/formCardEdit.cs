@@ -38,6 +38,7 @@ namespace Kingsbane.App
                 this.Text = $"Edit Card: {Id}";
                 card = _context.Cards
                     .Include(x => x.Units).ThenInclude(x => x.Abilities)
+                    .Include(x => x.Units).ThenInclude(x => x.UnitKeywords).ThenInclude(x => x.Keyword)
                     .Include(x => x.Spells)
                     .Include(x => x.Items)
                     .Include(x => x.Tags).ThenInclude(x => x.Tag)
@@ -160,6 +161,8 @@ namespace Kingsbane.App
                     txtHealth.Text = cardUnit.Health.ToString();
                     txtRange.Text = cardUnit.Range.ToString();
                     txtSpeed.Text = cardUnit.Speed.ToString();
+                    txtProtected.Text = cardUnit.Protected.ToString();
+                    txtEmpowered.Text = cardUnit.Empowered.ToString();
                     break;
                 case CardTypes.Spell:
                     var cardSpell = card.Spells.FirstOrDefault();
@@ -247,9 +250,13 @@ namespace Kingsbane.App
             lstRelatedCards.Items.AddRange(relatedCards);
 
             lstAbilities.Items.Clear();
+            lstKeywords.Items.Clear();
             if (card.CardTypeId == CardTypes.Unit)
             {
                 RefreshAbilityList();
+
+                var keywords = card.Units.FirstOrDefault().UnitKeywords.Select(x => new SelectListItem { Id = (int)x.KeywordId, Name = x.Keyword.Name }).ToArray();
+                lstKeywords.Items.AddRange(keywords);
             }
         }
 
@@ -388,6 +395,8 @@ namespace Kingsbane.App
                     cardUnit.Health = GetStat(txtHealth);
                     cardUnit.Range = GetStat(txtRange);
                     cardUnit.Speed = GetStat(txtSpeed);
+                    cardUnit.Protected = GetStat(txtProtected);
+                    cardUnit.Empowered = GetStat(txtEmpowered);
                     cardUnit.UnitTag = txtUnitTag.Text;
 
                     var abilityIds = lstAbilities.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
@@ -396,6 +405,20 @@ namespace Kingsbane.App
                         var ability = _context.Abilities.FirstOrDefault(x => x.Id == abilityId);
                         ability.Card = cardUnit;
                         cardUnit.Abilities.Add(ability);
+                    }
+
+                    var keywordIds = lstKeywords.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+                    foreach (var keywordId in keywordIds)
+                    {
+                        var unitKeyword = Id.HasValue ? cardUnit.UnitKeywords.SingleOrDefault(x => x.KeywordId == (Keywords)keywordId) : null;
+                        if (unitKeyword == null)
+                            _context.UnitKeywords.Add(new UnitKeyword { CardUnit = cardUnit, KeywordId = (Keywords)keywordId });
+                    }
+                    if (Id.HasValue)
+                    {
+                        //var cardTags = _context.CardTags.Where(x => x.CardId == Id.Value && !cardTagIDs.Contains(x.TagId));
+                        var unitKeywords = cardUnit.UnitKeywords.Where(x => !keywordIds.Contains((int)x.KeywordId));
+                        _context.UnitKeywords.RemoveRange(unitKeywords);
                     }
 
                     break;
@@ -518,7 +541,6 @@ namespace Kingsbane.App
                         {
                             MessageBox.Show("Card already has that tag");
                         }
-
                         break;
                     case SelectionType.Synergy:
                         if (!lstSynergies.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
@@ -529,7 +551,6 @@ namespace Kingsbane.App
                         {
                             MessageBox.Show("Card already has that synergy");
                         }
-
                         break;
                     case SelectionType.Cards:
                         if (!lstRelatedCards.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
@@ -540,8 +561,16 @@ namespace Kingsbane.App
                         {
                             MessageBox.Show("Card already has that related card");
                         }
-
-
+                        break;
+                    case SelectionType.Keywords:
+                        if (!lstKeywords.Items.Cast<SelectListItem>().Any(x => x.Id == formSelectionList.selectionItem.Id))
+                        {
+                            lstKeywords.Items.Add(formSelectionList.selectionItem);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Card already has that keyword");
+                        }
                         break;
                 }
             }
@@ -612,6 +641,9 @@ namespace Kingsbane.App
             }
         }
 
-
+        private void btnAddKeyword_Click(object sender, EventArgs e)
+        {
+            SelectionForm(SelectionType.Keywords);
+        }
     }
 }

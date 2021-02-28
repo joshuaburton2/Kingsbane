@@ -1,0 +1,19 @@
+﻿public enum BaseUnitKeywords
+{
+    Conduit,
+    Deadly,
+    Ethereal,
+    Flying,
+    Lifebond,
+    Overwhelm,
+    Prepared,
+    Routing,
+    Spellshield,
+    Stalker,
+    Stealth,
+    Summon,
+    Swiftstrike,
+    Unleash,
+    Vanguard,
+    Warden,
+}

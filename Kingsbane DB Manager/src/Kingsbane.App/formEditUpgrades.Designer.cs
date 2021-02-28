@@ -51,6 +51,8 @@
             this.chkIsRepeatable = new System.Windows.Forms.CheckBox();
             this.chkIsTierUpgrade = new System.Windows.Forms.CheckBox();
             this.txtTierLevel = new System.Windows.Forms.TextBox();
+            this.cmbSet = new System.Windows.Forms.ComboBox();
+            this.lblSet = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblName
@@ -275,11 +277,31 @@
             this.txtTierLevel.Size = new System.Drawing.Size(100, 23);
             this.txtTierLevel.TabIndex = 29;
             // 
+            // cmbSet
+            // 
+            this.cmbSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSet.FormattingEnabled = true;
+            this.cmbSet.Location = new System.Drawing.Point(216, 85);
+            this.cmbSet.Name = "cmbSet";
+            this.cmbSet.Size = new System.Drawing.Size(121, 23);
+            this.cmbSet.TabIndex = 30;
+            // 
+            // lblSet
+            // 
+            this.lblSet.AutoSize = true;
+            this.lblSet.Location = new System.Drawing.Point(187, 89);
+            this.lblSet.Name = "lblSet";
+            this.lblSet.Size = new System.Drawing.Size(23, 15);
+            this.lblSet.TabIndex = 31;
+            this.lblSet.Text = "Set";
+            // 
             // formEditUpgrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 602);
+            this.Controls.Add(this.lblSet);
+            this.Controls.Add(this.cmbSet);
             this.Controls.Add(this.txtTierLevel);
             this.Controls.Add(this.chkIsTierUpgrade);
             this.Controls.Add(this.chkIsRepeatable);
@@ -336,5 +358,7 @@
         private System.Windows.Forms.CheckBox chkIsRepeatable;
         private System.Windows.Forms.CheckBox chkIsTierUpgrade;
         private System.Windows.Forms.TextBox txtTierLevel;
+        private System.Windows.Forms.ComboBox cmbSet;
+        private System.Windows.Forms.Label lblSet;
     }
 }

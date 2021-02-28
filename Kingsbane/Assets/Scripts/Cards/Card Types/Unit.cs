@@ -18,7 +18,12 @@ public class Unit : Card
 
     public enum StatusEffects
     {
-
+        Flying,
+        Rooted,
+        Spellbound,
+        Stealted,
+        Stunned,
+        Transformed,
     }
 
     public UnitData UnitData { get { return cardData as UnitData; } }
@@ -28,6 +33,7 @@ public class Unit : Card
     public int DefaultProtected { get { return UnitData.Protected; } }
     public int DefaultRange { get { return UnitData.Range; } }
     public int DefaultSpeed { get { return UnitData.Speed; } }
+    public int DefaultEmpowered { get { return UnitData.Empowered; } }
 
     public int BaseAttack { get; set; }
     public int BaseHealth { get; set; }
@@ -50,6 +56,7 @@ public class Unit : Card
     }
     public int Range { get; set; }
     public int Speed { get; set; }
+    public int Empowered { get; set; }
 
     public StatModTypes HasBuffedAttack { get { return Attack > BaseAttack ? StatModTypes.Buffed : StatModTypes.None; } }
     public StatModTypes UnitIsDamaged { get { return Health < BaseHealth ? StatModTypes.Damaged : StatModTypes.None; } }
@@ -63,7 +70,11 @@ public class Unit : Card
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
     public bool CanAction { get { return ActionsLeft > 0; } }
 
-    public string UnitTag { get { return UnitData.UnitTag; } }
+    public List<BaseUnitKeywords> DefaultKeywords { get { return UnitData.Keywords; } }
+    public List<BaseUnitKeywords> TempKeywords { get; set; }
+
+    public List<UnitTags> UnitTags { get { return UnitData.UnitTag; } }
+    public string UnitTag { get { return string.Join(" ", UnitTags.Select(x => x.ToString())); } }
 
     public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
@@ -84,6 +95,7 @@ public class Unit : Card
         TemporaryProtected = 0;
         Range = DefaultRange;
         Speed = DefaultSpeed;
+        Empowered = DefaultEmpowered;
 
         Status = UnitStatuses.Preparing;
     }

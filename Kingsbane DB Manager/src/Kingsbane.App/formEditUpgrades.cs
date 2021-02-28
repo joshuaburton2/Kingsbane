@@ -57,6 +57,10 @@ namespace Kingsbane.App
             var resources = Enum.GetValues(typeof(Resources)).Cast<Resources>().Select(x => new SelectListItem { Id = (int)x, Name = x.ToString() }).ToArray();
             cmbResourceSelector.Items.AddRange(resources);
             cmbResourceSelector.SelectedIndex = 0;
+
+            var sets = _context.Set.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+            cmbSet.Items.AddRange(sets);
+            cmbSet.SelectedIndex = 0;
         }
 
         private void LoadUpgradeData()
@@ -67,6 +71,7 @@ namespace Kingsbane.App
             chkIsTierUpgrade.Checked = upgrade.IsTierUpgrade;
             txtText.Text = upgrade.Text;
             txtTierLevel.Text = upgrade.TierLevel.ToString();
+            cmbSet.SelectedItem = cmbSet.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == upgrade.SetId);
 
             var classPrerequisites = upgrade.ClassPrerequisites.Select(x => new SelectListItem { Id = (int)x.CardClassId, Name = x.CardClassId.ToString() }).ToArray();
             lstClassPrerequisites.Items.Clear();
@@ -101,6 +106,7 @@ namespace Kingsbane.App
                 upgrade.TierLevel = tierLevel;
             }
             upgrade.Text = txtText.Text;
+            upgrade.SetId = ((SelectListItem)cmbSet.SelectedItem).Id;
 
             var classPrerequisiteIds = lstClassPrerequisites.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
             foreach (var classPrerequisiteId in classPrerequisiteIds)

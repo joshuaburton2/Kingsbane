@@ -10,15 +10,18 @@ using CategoryEnums;
 /// </summary>
 public class UnitData : CardData
 {
-    public string UnitTag { get; set; }
+    public List<UnitTags> UnitTag { get; set; }
 
     public int Attack { get; set; }
     public int Health { get; set; }
     public int Protected { get; set; }
     public int Range { get; set; }
     public int Speed { get; set; }
+    public int Empowered { get; set; }
 
     public List<AbilityData> Abilities { get; set; }
+
+    public List<BaseUnitKeywords> Keywords { get; set; }
 
     /// <summary>
     /// 

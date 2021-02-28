@@ -36,6 +36,9 @@ namespace Kingsbane.Database.Models
 
         // Related Entities
 
+        public int SetId { get; set; }
+        public virtual Set Set { get; set; }
+
         public virtual ICollection<ResourcePrerequisite> ResourcePrerequisites { get; set; }
         public virtual ICollection<ClassPrerequisite> ClassPrerequisites { get; set; }
 

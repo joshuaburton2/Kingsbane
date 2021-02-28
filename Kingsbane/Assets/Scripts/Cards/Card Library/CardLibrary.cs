@@ -219,7 +219,7 @@ public class CardLibrary
         {
             Id = 24,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Sword"" item",
+            Text = @"Equip a ""Battle Gear"" item",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -231,7 +231,7 @@ public class CardLibrary
         {
             Id = 25,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +1",
+            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and Protected value gained on the Gear by +1",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -243,9 +243,9 @@ public class CardLibrary
         {
             Id = 26,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Sword"" item. If you already have one equipped, increase the Attack and Protected value gained on the sword by +2",
+            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and Protected value gained on the Gear by +2",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
             CostsAction = false,
         };
@@ -1251,7 +1251,7 @@ public class CardLibrary
         {
             Id = 1114,
             Name = "Starcall",
-            Text = @"This units next attack this turnalso deals 2 damage to all adjacent units",
+            Text = @"This units next attack this turn also deals 2 damage to all adjacent units",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1434,13 +1434,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Runeblade",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Runeblade,
+            },
             Attack = 4,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability5 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card2);
 
@@ -1511,13 +1519,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Blademaster, Tags.Human, Tags.Ability, Tags.Swiftstrike, Tags.Stun },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Enchantment, Synergies.Melee, Synergies.Stun, Synergies.Mobility },
-            UnitTag = "Human Blademaster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Blademaster,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability6 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Swiftstrike },
         };
         CardList.Add(card6);
 
@@ -1564,13 +1580,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Blademaster, Tags.Human, Tags.Stun },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Melee, Synergies.Stun },
-            UnitTag = "Human Blademaster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Blademaster,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card8);
 
@@ -1593,13 +1617,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Arcanist, Tags.Empowered },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.Melee },
-            UnitTag = "Dwarven Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Arcanist,
+            },
             Attack = 3,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 1,
 
             Abilities = new List<AbilityData>() { ability7 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card9);
 
@@ -1718,13 +1750,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Runeblade, Tags.Ability, Tags.Empowered, Tags.Elven, Tags.Conduit },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Empowered, Synergies.Melee },
-            UnitTag = "Elven Runeblade",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Runeblade,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability8 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card14);
 
@@ -1747,13 +1787,21 @@ public class CardLibrary
 
             Tags = new List<Tags> { Tags.Empowered, Tags.Conduit, Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Antimagic, Synergies.Summon, Synergies.Midrange, Synergies.Ethereal },
-            UnitTag = "Arcane Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Arcane,
+                UnitTags.Summon,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 2,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Ethereal, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon },
         };
         CardList.Add(card15);
 
@@ -1777,13 +1825,21 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane, Tags.Warden },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal, Synergies.Defensive },
-            UnitTag = "Arcane Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Arcane,
+                UnitTags.Summon,
+            },
             Attack = 0,
             Health = 12,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card16);
 
@@ -1807,13 +1863,21 @@ This units attack is increased by your <b>Empowered</b> value",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane, Tags.Prepared },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Empowered, Synergies.Melee, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal },
-            UnitTag = "Arcane Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Arcane,
+                UnitTags.Summon,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Prepared, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon },
         };
         CardList.Add(card17);
 
@@ -1860,13 +1924,21 @@ This units attack is increased by your <b>Empowered</b> value",
 
             Tags = new List<Tags> { Tags.Blademaster, Tags.Human, Tags.Ability, Tags.Deployment },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions },
-            UnitTag = "Human Blademaster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Blademaster,
+            },
             Attack = 5,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability9 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card19);
 
@@ -1890,13 +1962,21 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
 
             Tags = new List<Tags> { Tags.Runeblade, Tags.Elven, Tags.Conduit, Tags.ManaGain },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mana, Synergies.BigMinions },
-            UnitTag = "Elven Runeblade",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Runeblade,
+            },
             Attack = 5,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card20);
 
@@ -1952,7 +2032,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
         {
             Id = 25,
             Name = "Atarias, Blade of the Kalyan",
-            ImageTag = CardImageTags.Atarias,
+            ImageTag = CardImageTags.Atarias_Blade_of_the_Kalyan,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 9), },
 
@@ -1969,13 +2049,21 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
 
             Tags = new List<Tags> { Tags.Blademaster, Tags.Human, Tags.Ability, Tags.Swiftstrike },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.Stun, Synergies.Draw },
-            UnitTag = "Human Blademaster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Blademaster,
+            },
             Attack = 7,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability10 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Swiftstrike },
         };
         CardList.Add(card25);
 
@@ -1983,7 +2071,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
         {
             Id = 26,
             Name = "Nadalya, Sword of Stars",
-            ImageTag = CardImageTags.Nadalya,
+            ImageTag = CardImageTags.Nadalya_Sword_of_Stars,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Mana, 8), },
 
@@ -2047,13 +2135,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Runeblade",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Runeblade,
+            },
             Attack = 7,
             Health = 16,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability11 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card28);
 
@@ -2076,13 +2172,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Runeblade, Tags.Ability, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Runeblade",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Runeblade,
+            },
             Attack = 9,
             Health = 27,
+            Protected = 0,
             Range = 0,
             Speed = 5,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability12 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card29);
 
@@ -2105,13 +2209,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability13 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card30);
 
@@ -2134,13 +2246,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 6,
             Health = 11,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability14 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card31);
 
@@ -2163,13 +2283,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Arcanist, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 7,
             Health = 20,
+            Protected = 0,
             Range = 4,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability15 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card32);
 
@@ -2216,13 +2344,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Arcanist, Tags.Empowered, Tags.Conduit },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Summon, Synergies.SplitDamage },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 2,
 
             Abilities = new List<AbilityData>() { ability64 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card34);
 
@@ -2232,7 +2368,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
             Name = "Kelari Librarian",
             ImageTag = CardImageTags.Kelari_Librarian,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Deployment:</b> Use <b>Studious Research.</b> This use doesn't increase your <b>Stagnation</b>",
             LoreText = @"",
@@ -2245,13 +2381,21 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Deployment, Tags.StudyGain, Tags.Scholar },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Elven Scholar",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Scholar,
+            },
             Attack = 1,
-            Health = 3,
+            Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability65 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card35);
 
@@ -2349,13 +2493,21 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Arcane, Tags.Warden },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.Summon, Synergies.Defensive },
-            UnitTag = "Arcane Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Arcane,
+                UnitTags.Summon,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card39);
 
@@ -2450,13 +2602,21 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Arcanist, Tags.Elven, Tags.Deployment, Tags.Divinate },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Prediction, Synergies.LongRange },
-            UnitTag = "Elven Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Arcanist,
+            },
             Attack = 2,
             Health = 6,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability66 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card43);
 
@@ -2503,13 +2663,21 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Tags = new List<Tags> { Tags.Transformed, Tags.Beast },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card45);
 
@@ -2533,13 +2701,21 @@ The Mana cost of your spells is reduced by (2)",
 
             Tags = new List<Tags> { Tags.Conduit, Tags.Summon, Tags.Arcane },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.Summon, Synergies.Midrange },
-            UnitTag = "Arcane Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Arcane,
+                UnitTags.Summon,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Summon },
         };
         CardList.Add(card46);
 
@@ -2563,13 +2739,21 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.StudyGain, Tags.Scholar },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Value, Synergies.Study },
-            UnitTag = "Human Scholar",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Scholar,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card47);
 
@@ -2592,13 +2776,21 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Tags = new List<Tags> { Tags.Human, Tags.Arcanist },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.Vanguard, Synergies.Prepared },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 2,
             Health = 5,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card48);
 
@@ -2610,7 +2802,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
-            Text = @"Deal 3 damage to an enemy unit. If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
+            Text = @"Deal 2 damage to an enemy unit. If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
             LoreText = @"",
             Notes = @"",
 
@@ -2670,13 +2862,21 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
 
             Tags = new List<Tags> { Tags.Arcanist, Tags.Elven, Tags.Warden, Tags.Deployment, Tags.LastRites },
             Synergies = new List<Synergies> { Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.Study, Synergies.ShortRange, Synergies.LastRites },
-            UnitTag = "Elven Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Arcanist,
+            },
             Attack = 3,
             Health = 7,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card51);
 
@@ -2725,13 +2925,21 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
 
             Tags = new List<Tags> { Tags.Human, Tags.Arcanist, Tags.Conduit, Tags.Divinate },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.Summon, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.Prediction },
-            UnitTag = "Human Arcanist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Arcanist,
+            },
             Attack = 3,
             Health = 8,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card53);
 
@@ -2903,13 +3111,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 3,
             Health = 7,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability16 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card60);
 
@@ -2932,13 +3148,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 4,
             Health = 15,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability17 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card61);
 
@@ -2961,13 +3185,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Abyssal, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 5,
             Health = 26,
+            Protected = 0,
             Range = 3,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability18 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card62);
 
@@ -2990,13 +3222,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Void },
             Synergies = new List<Synergies> { },
-            UnitTag = "Void Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Summon,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card63);
 
@@ -3020,13 +3260,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Deployment, Tags.LastRites, Tags.Void, Tags.Abomination, Tags.Discard },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Swarm, Synergies.LastRites, Synergies.Discard, Synergies.Void, Synergies.Sacrifice },
-            UnitTag = "Void Abomination",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Abomination,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card64);
 
@@ -3049,13 +3297,21 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Abyssal, Tags.PrayerGain },
             Synergies = new List<Synergies> { Synergies.Summon, Synergies.Midrange, Synergies.Prayer },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 2,
             Health = 1,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability99 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card65);
 
@@ -3116,8 +3372,7 @@ Deal 4 damage to a unit",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
-            Text = @"<b>Ethereal</b>
-Has +1 Attack, +1 Health for every other friendly Void unit within Range 2",
+            Text = @"<b>Ethereal</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3128,13 +3383,21 @@ Has +1 Attack, +1 Health for every other friendly Void unit within Range 2",
 
             Tags = new List<Tags> { Tags.Ethereal, Tags.Void, Tags.Spirit },
             Synergies = new List<Synergies> { },
-            UnitTag = "Void Spirit",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Spirit,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal },
         };
         CardList.Add(card68);
 
@@ -3183,13 +3446,21 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Tags = new List<Tags> { Tags.Empowered, Tags.Conduit },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Midrange, Synergies.Swarm, Synergies.Death, Synergies.Discard, Synergies.Sacrifice },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 1,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card70);
 
@@ -3262,13 +3533,21 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Tags = new List<Tags> { Tags.PrayerGain, Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
-            UnitTag = "Vampire Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Vampire,
+                UnitTags.Noble,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card73);
 
@@ -3291,13 +3570,21 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Lifebond, Tags.Vampire, Tags.Noble },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Durable, Synergies.SingleDamage, Synergies.Restoration },
-            UnitTag = "Vampire Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Vampire,
+                UnitTags.Noble,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability67 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card74);
 
@@ -3321,13 +3608,21 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Void, Tags.Abomination },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Discard, Synergies.Void },
-            UnitTag = "Void Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Summon,
+            },
             Attack = 5,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card75);
 
@@ -3350,13 +3645,21 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Deployment, Synergies.ShortRange, Synergies.Restoration, Synergies.SelfDamage },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card76);
 
@@ -3369,7 +3672,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>
-Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
+Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Give it +1 Attack, +1 Health for every other Void unit you control",
             LoreText = @"",
             Notes = @"",
 
@@ -3380,13 +3683,21 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Void, Tags.Abomination, Tags.Flying },
             Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Ethereal, Synergies.Mana, Synergies.Swarm, Synergies.Void, Synergies.Sacrifice, Synergies.Flying },
-            UnitTag = "Void Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Summon,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Summon },
         };
         CardList.Add(card77);
 
@@ -3409,13 +3720,21 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Summon, Tags.Warden, Tags.Void, Tags.Discard },
             Synergies = new List<Synergies> { Synergies.Summon, Synergies.Mana, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.ShortRange, Synergies.Discard, Synergies.Void, Synergies.Sacrifice },
-            UnitTag = "Void Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Summon,
+            },
             Attack = 3,
             Health = 9,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability68 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card78);
 
@@ -3438,13 +3757,21 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Abyssal },
             Synergies = new List<Synergies> { Synergies.Mana, Synergies.Deployment, Synergies.Value, Synergies.LongRange, Synergies.Void },
-            UnitTag = "Human Abyssal",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Abyssal,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability69 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card79);
 
@@ -3467,13 +3794,21 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Tags = new List<Tags> { Tags.Ability, Tags.ManaGain, Tags.Void, Tags.Abomination, Tags.Discard },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Mana, Synergies.BigMinions, Synergies.Death, Synergies.Discard, Synergies.Void },
-            UnitTag = "Void Abomination",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Abomination,
+            },
             Attack = 4,
             Health = 12,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability70 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card80);
 
@@ -3520,13 +3855,21 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Void, Tags.Discard, Tags.Noble },
             Synergies = new List<Synergies> { Synergies.Mana, Synergies.Swarm, Synergies.BigMinions, Synergies.Discard, Synergies.Void, Synergies.Prayer },
-            UnitTag = "Void Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Noble,
+            },
             Attack = 8,
             Health = 11,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability71 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card82);
 
@@ -3574,13 +3917,21 @@ Deal damage to your hero equal to half their remaining health",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Elementalist,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability27 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card84);
 
@@ -3603,13 +3954,21 @@ Deal damage to your hero equal to half their remaining health",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Elementalist,
+            },
             Attack = 7,
             Health = 11,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability28 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card85);
 
@@ -3632,13 +3991,21 @@ Deal damage to your hero equal to half their remaining health",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Elementalist, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Elementalist,
+            },
             Attack = 9,
             Health = 20,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability29 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card86);
 
@@ -3659,7 +4026,7 @@ Deal damage to your hero equal to half their remaining health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire },
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Fire, Tags.BasicElemental },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage, Synergies.Fire },
             SpellType = "Damage",
             Range = 4,
@@ -3685,13 +4052,21 @@ Deal damage to your hero equal to half their remaining health",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Empowered, Tags.Elementalist, Tags.Fire, Tags.Goblin },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Midrange, Synergies.Goblin, Synergies.Fire },
-            UnitTag = "Goblin Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Goblin,
+                UnitTags.Elementalist,
+            },
             Attack = 1,
             Health = 2,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 1,
 
             Abilities = new List<AbilityData>() { ability77 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card88);
 
@@ -3712,7 +4087,7 @@ Deal damage to your hero equal to half their remaining health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Stun, Tags.SingleDamage, Tags.Water },
+            Tags = new List<Tags> { Tags.Stun, Tags.SingleDamage, Tags.Water, Tags.BasicElemental },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Stun, Synergies.SingleDamage, Synergies.Water },
             SpellType = "Damage",
             Range = 3,
@@ -3736,7 +4111,7 @@ Deal damage to your hero equal to half their remaining health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air },
+            Tags = new List<Tags> { Tags.AreaDamage, Tags.Air, Tags.BasicElemental },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.AreaDamage, Synergies.Air },
             SpellType = "Damage",
             Range = 0,
@@ -3786,13 +4161,21 @@ Deal damage to your hero equal to half their remaining health",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Elementalist, Tags.Water, Tags.ForceMove },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.ForceMove, Synergies.Water },
-            UnitTag = "Elven Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Elementalist,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability80 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash },
         };
         CardList.Add(card92);
 
@@ -3816,13 +4199,21 @@ Whenever this unit takes damage from an Air spell or unit, it heals for the dama
 
             Tags = new List<Tags> { Tags.Summon, Tags.Flying, Tags.Air, Tags.Elemental },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Flying, Synergies.Air },
-            UnitTag = "Elemental Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Summon,
+            },
             Attack = 7,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Summon },
         };
         CardList.Add(card93);
 
@@ -3846,13 +4237,21 @@ Whenever this unit takes damage from an Earth spell or unit, it heals for the da
 
             Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Elemental, Tags.Earth },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Earth },
-            UnitTag = "Elemental Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Summon,
+            },
             Attack = 4,
             Health = 12,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
         };
         CardList.Add(card94);
 
@@ -3876,13 +4275,21 @@ Whenever this unit takes damage from a Fire spell or unit, it heals for the dama
 
             Tags = new List<Tags> { Tags.Summon, Tags.Prepared, Tags.Fire, Tags.Elemental },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Prepared, Synergies.Fire },
-            UnitTag = "Elemental Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Summon,
+            },
             Attack = 8,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Summon },
         };
         CardList.Add(card95);
 
@@ -3932,13 +4339,21 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Tags = new List<Tags> { Tags.Stun, Tags.Summon, Tags.Water, Tags.Elemental },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Stun, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Water },
-            UnitTag = "Elemental Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Summon,
+            },
             Attack = 5,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon },
         };
         CardList.Add(card97);
 
@@ -3961,13 +4376,21 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Empowered, Tags.Elementalist, Tags.Earth, Tags.Root },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Root, Synergies.Earth },
-            UnitTag = "Dwarven Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Elementalist,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 1,
 
             Abilities = new List<AbilityData>() { ability78 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card98);
 
@@ -4014,13 +4437,21 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Deployment, Tags.Elementalist, Tags.Air, Tags.CycleMinus },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Mobility, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.ShortRange, Synergies.Wild, Synergies.Air },
-            UnitTag = "Human Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Elementalist,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 1,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability79 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card100);
 
@@ -4041,7 +4472,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SingleDamage, Tags.ForceMove, Tags.Earth },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.ForceMove, Tags.Earth, Tags.BasicElemental },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.SingleDamage, Synergies.ForceMove, Synergies.Earth },
             SpellType = "Damage",
             Range = 3,
@@ -4141,13 +4572,21 @@ Reduce the cost of all spells generated by this unit to 0.
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Elementalist, Tags.Fire, Tags.Water, Tags.Air, Tags.Earth, Tags.CycleMinus },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Mana, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.ShortRange, Synergies.Cycle, Synergies.Wild, Synergies.Fire, Synergies.Water, Synergies.Air, Synergies.Earth },
-            UnitTag = "Human Elementalist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Elementalist,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability81 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card105);
 
@@ -4195,13 +4634,21 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Grovewatcher,
+            },
             Attack = 2,
             Health = 11,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability30 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card107);
 
@@ -4224,13 +4671,21 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Grovewatcher,
+            },
             Attack = 3,
             Health = 19,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability31 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card108);
 
@@ -4253,13 +4708,21 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Root, Tags.Grovewatcher, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Grovewatcher,
+            },
             Attack = 4,
             Health = 30,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability32 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card109);
 
@@ -4330,13 +4793,21 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.PrayerGain, Tags.Root, Tags.Grovewatcher },
             Synergies = new List<Synergies> { Synergies.Midrange, Synergies.Prayer, Synergies.Root },
-            UnitTag = "Elven Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Grovewatcher,
+            },
             Attack = 1,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability82 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card112);
 
@@ -4384,13 +4855,21 @@ At the end of each of your turns, draw a card",
 
             Tags = new List<Tags> { Tags.Draw, Tags.Elven, Tags.Deployment, Tags.Grovewatcher },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Value, Synergies.Restoration },
-            UnitTag = "Elven Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Grovewatcher,
+            },
             Attack = 3,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card114);
 
@@ -4413,13 +4892,21 @@ At the end of each of your turns, draw a card",
 
             Tags = new List<Tags> { Tags.Spellshield, Tags.Lifebond, Tags.Faerie, Tags.Soldier },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Antimagic, Synergies.Swarm, Synergies.Restoration, Synergies.Faerie },
-            UnitTag = "Faerie Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Faerie,
+                UnitTags.Soldier,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
         };
         CardList.Add(card115);
 
@@ -4431,7 +4918,7 @@ At the end of each of your turns, draw a card",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
-            Text = @"<b>Deployment: Cycle -3</b>
+            Text = @"<b>Cycle -3</b>
 At the start of each of your turns, gain 2 Wild",
             LoreText = @"",
             Notes = @"",
@@ -4443,13 +4930,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Grovewatcher, Tags.WildGain, Tags.Treant },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Wild, Synergies.Treant },
-            UnitTag = "Treant Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Treant,
+                UnitTags.Grovewatcher,
+            },
             Attack = 0,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 1,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card116);
 
@@ -4544,13 +5039,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Elven, Tags.PrayerGain, Tags.Grovewatcher },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Swarm, Synergies.BigMinions, Synergies.Death, Synergies.Prayer },
-            UnitTag = "Elven Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Grovewatcher,
+            },
             Attack = 4,
             Health = 8,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card120);
 
@@ -4573,13 +5076,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 3,
             Health = 10,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability21 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card121);
 
@@ -4602,13 +5113,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 4,
             Health = 19,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability22 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card122);
 
@@ -4631,13 +5150,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Agent, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 6,
             Health = 25,
+            Protected = 0,
             Range = 1,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability23 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card123);
 
@@ -4660,13 +5187,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 5,
             Health = 10,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability24 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card124);
 
@@ -4713,13 +5248,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 5,
             Health = 20,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability25 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card126);
 
@@ -4742,13 +5285,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 7,
             Health = 31,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability26 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card127);
 
@@ -4771,13 +5322,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 1,
             Health = 12,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability33 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card128);
 
@@ -4800,13 +5359,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lorekeeper,
+            },
             Attack = 2,
             Health = 12,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability36 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card129);
 
@@ -4829,13 +5396,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Luminist, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Luminist,
+            },
             Attack = 2,
             Health = 9,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability39 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card130);
 
@@ -4858,13 +5433,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 5,
             Health = 8,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability51 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card131);
 
@@ -4887,13 +5470,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Oathknight,
+            },
             Attack = 3,
             Health = 12,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability52 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card132);
 
@@ -4916,13 +5507,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Trickster,
+            },
             Attack = 6,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability55 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card133);
 
@@ -4969,13 +5568,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Waystalker,
+            },
             Attack = 2,
             Health = 5,
+            Protected = 0,
             Range = 3,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability58 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card135);
 
@@ -4998,13 +5605,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Prepared, Tags.Beast, Tags.Trained },
             Synergies = new List<Synergies> { },
-            UnitTag = "Trained Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Trained,
+                UnitTags.Beast,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card136);
 
@@ -5027,13 +5642,21 @@ At the start of each of your turns, gain 2 Wild",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierZero },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 1,
             Health = 14,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability61 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card137);
 
@@ -5057,13 +5680,21 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
 
             Tags = new List<Tags> { Tags.Warden, Tags.CyclePlus, Tags.Soldier, Tags.Treant },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Cycle, Synergies.Treant },
-            UnitTag = "Treant Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Treant,
+                UnitTags.Soldier,
+            },
             Attack = 2,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card138);
 
@@ -5159,13 +5790,21 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
 
             Tags = new List<Tags> { Tags.Deployment, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.BigSpells, Synergies.BigMinions, Synergies.Cycle, Synergies.Wild, Synergies.Treant },
-            UnitTag = "Treant Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Treant,
+                UnitTags.Grovewatcher,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card142);
 
@@ -5189,13 +5828,21 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Tags = new List<Tags> { Tags.Spellshield, Tags.Deployment, Tags.Lifebond, Tags.Faerie, Tags.Soldier },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Value, Synergies.Prayer, Synergies.Restoration, Synergies.Faerie },
-            UnitTag = "Faerie Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Faerie,
+                UnitTags.Soldier,
+            },
             Attack = 6,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
         };
         CardList.Add(card143);
 
@@ -5231,8 +5878,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 9), },
 
-            Text = @"<b>Unleash, Warden
-Cycle -6</b>",
+            Text = @"<b>Unleash, Warden, Cycle -6</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -5243,13 +5889,21 @@ Cycle -6</b>",
 
             Tags = new List<Tags> { Tags.Warden, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant, Tags.Unleash },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Cycle, Synergies.Treant, Synergies.Unleash },
-            UnitTag = "Treant Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Treant,
+                UnitTags.Grovewatcher,
+            },
             Attack = 9,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card145);
 
@@ -5272,13 +5926,21 @@ Cycle -6</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Spellshield, Tags.Lifebond, Tags.Noble, Tags.Faerie },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration, Synergies.Wild, Synergies.Faerie },
-            UnitTag = "Faerie Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Faerie,
+                UnitTags.Noble,
+            },
             Attack = 7,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability83 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
         };
         CardList.Add(card146);
 
@@ -5302,13 +5964,21 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Tags = new List<Tags> { Tags.Warden, Tags.LastRites, Tags.CycleMinus, Tags.Grovewatcher, Tags.Treant, Tags.Unleash },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.LastRites, Synergies.Cycle, Synergies.Wild, Synergies.Treant, Synergies.Unleash },
-            UnitTag = "Treant Grovewatcher",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Treant,
+                UnitTags.Grovewatcher,
+            },
             Attack = 12,
             Health = 12,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card147);
 
@@ -5331,13 +6001,21 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 2,
             Health = 20,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability34 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card148);
 
@@ -5360,13 +6038,21 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lifebringer, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 3,
             Health = 32,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability35 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card149);
 
@@ -5606,13 +6292,21 @@ Give the caster +3 Health",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.PrayerGain, Tags.Lifebond, Tags.Lifebringer },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Restoration },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability84 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card159);
 
@@ -5635,13 +6329,21 @@ Give the caster +3 Health",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Lifebringer },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Restoration },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability85 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card160);
 
@@ -5664,13 +6366,21 @@ Give the caster +3 Health",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Noble, Tags.GoldGain, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Gold, Synergies.Routing },
-            UnitTag = "Human Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Noble,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability86 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card161);
 
@@ -5695,13 +6405,21 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Regenerate, Tags.Soldier, Tags.GoldenHost },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.Swarm, Synergies.Defensive, Synergies.Resurrection, Synergies.GoldenHost },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 3,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card162);
 
@@ -5713,7 +6431,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Regenerate</b> a minion",
+            Text = @"<b>Regenerate</b> a friendly minion",
             LoreText = @"",
             Notes = @"",
 
@@ -5749,13 +6467,21 @@ Deployment:</b> Use <b>Potion Sale</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Stun, Tags.Deployment, Tags.Stealth, Tags.Merchant, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Potions, Synergies.Routing },
-            UnitTag = "Human Merchant",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Merchant,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability87 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card164);
 
@@ -5803,13 +6529,21 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.PrayerGain, Tags.Lifebond, Tags.Lifebringer },
             Synergies = new List<Synergies> { Synergies.Control, Synergies.Durable, Synergies.Midrange, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 2,
             Health = 5,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card166);
 
@@ -5881,13 +6615,21 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Lifebringer, Tags.Resurrection },
             Synergies = new List<Synergies> { Synergies.Deployment, Synergies.BigMinions, Synergies.ShortRange, Synergies.Resurrection, Synergies.GoldenHost },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card169);
 
@@ -5935,13 +6677,21 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Lifebond, Tags.Lifebringer },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Control, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution },
-            UnitTag = "Human Lifebringer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lifebringer,
+            },
             Attack = 2,
             Health = 10,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Warden },
         };
         CardList.Add(card171);
 
@@ -5965,13 +6715,21 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
 
             Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.Soldier, Tags.GoldenHost },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Prayer, Synergies.Resurrection, Synergies.GoldenHost },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability88 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card172);
 
@@ -6044,13 +6802,21 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Regenerate, Tags.GoldenHost },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Prayer, Synergies.Gold, Synergies.Resurrection, Synergies.GoldenHost },
-            UnitTag = "Human Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Noble,
+            },
             Attack = 8,
             Health = 8,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card175);
 
@@ -6073,13 +6839,21 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lorekeeper,
+            },
             Attack = 3,
             Health = 20,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability37 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card176);
 
@@ -6102,13 +6876,21 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Lorekeeper, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lorekeeper,
+            },
             Attack = 4,
             Health = 32,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability38 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card177);
 
@@ -6205,13 +6987,21 @@ Deal damage to a unit equal to its attack",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.PrayerGain, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Pacify },
-            UnitTag = "Human Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lorekeeper,
+            },
             Attack = 1,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability89 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card181);
 
@@ -6282,13 +7072,21 @@ Deal damage to a unit equal to its attack",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Deployment, Tags.StudyGain, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Dwarven Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Lorekeeper,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability90 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card184);
 
@@ -6361,13 +7159,21 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
 
             Tags = new List<Tags> { Tags.Human, Tags.Spellshield, Tags.PrayerGain, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.BigSpells, Synergies.Antimagic, Synergies.ShortRange, Synergies.Prayer, Synergies.Pacify },
-            UnitTag = "Human Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Lorekeeper,
+            },
             Attack = 1,
             Health = 4,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Spellshield },
         };
         CardList.Add(card187);
 
@@ -6414,13 +7220,21 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Deployment, Tags.StudyGain, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Dwarven Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Lorekeeper,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability91 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card189);
 
@@ -6433,7 +7247,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"<b>Deployment: Divinate (2)</b>
-Whenever you cast a spell, shuffle a copy of it into your deck",
+After you cast a spell, shuffle a copy of it into your deck",
             LoreText = @"",
             Notes = @"",
 
@@ -6469,13 +7283,21 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Divinate, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Antimagic, Synergies.Deployment, Synergies.Prediction, Synergies.Prayer, Synergies.Restoration, Synergies.Equalize, Synergies.Pacify },
-            UnitTag = "Dragonkin Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dragonkin,
+                UnitTags.Lorekeeper,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1119 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card191);
 
@@ -6524,13 +7346,21 @@ After you cast a spell, draw a spell of the same total cost from your deck",
 
             Tags = new List<Tags> { Tags.Draw, Tags.Dwarven, Tags.Conduit, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.ShortRange, Synergies.Preservation },
-            UnitTag = "Dwarven Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Lorekeeper,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 1,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card193);
 
@@ -6626,13 +7456,21 @@ After you cast a spell, draw a spell of the same total cost from your deck",
 
             Tags = new List<Tags> { Tags.Ability, Tags.LastRites, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Study, Synergies.Removal, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution, Synergies.Equalize },
-            UnitTag = "Dragonkin Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dragonkin,
+                UnitTags.Lorekeeper,
+            },
             Attack = 5,
             Health = 8,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability92 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card197);
 
@@ -6657,13 +7495,21 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Conduit, Tags.Deployment, Tags.Lorekeeper },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Draw, Synergies.BigSpells, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.Preservation, Synergies.Exchanges },
-            UnitTag = "Dwarven Lorekeeper",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Dwarven,
+                UnitTags.Lorekeeper,
+            },
             Attack = 7,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability93 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card198);
 
@@ -6686,13 +7532,21 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Oathknight,
+            },
             Attack = 4,
             Health = 21,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability53 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card199);
 
@@ -6715,13 +7569,21 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Oathknight, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Oathknight,
+            },
             Attack = 5,
             Health = 35,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability54 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card200);
 
@@ -6768,13 +7630,21 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Tags = new List<Tags> { Tags.Warden, Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
             Synergies = new List<Synergies> { },
-            UnitTag = "Angel Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Angel,
+                UnitTags.Oathknight,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond, BaseUnitKeywords.Warden },
         };
         CardList.Add(card202);
 
@@ -6797,13 +7667,21 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Tags = new List<Tags> { Tags.Ability, Tags.PrayerGain, Tags.Flying, Tags.Oathknight, Tags.Angel },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Prayer, Synergies.Flying, Synergies.Angels },
-            UnitTag = "Angel Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Angel,
+                UnitTags.Oathknight,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability94 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying },
         };
         CardList.Add(card203);
 
@@ -6875,13 +7753,21 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Enchantment, Tags.Draw, Tags.Prepared, Tags.Knight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Draw, Synergies.Durable, Synergies.Swarm, Synergies.Prepared },
-            UnitTag = "Human Knight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Knight,
+            },
             Attack = 1,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability95 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card206);
 
@@ -6929,13 +7815,21 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
 
             Tags = new List<Tags> { Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
-            UnitTag = "Angel Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Angel,
+                UnitTags.Oathknight,
+            },
             Attack = 3,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond },
         };
         CardList.Add(card208);
 
@@ -6982,13 +7876,21 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
 
             Tags = new List<Tags> { Tags.Draw, Tags.Elven, Tags.Oathknight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Draw, Synergies.Value, Synergies.Oaths },
-            UnitTag = "Elven Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Oathknight,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card210);
 
@@ -7012,13 +7914,21 @@ At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
 
             Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Warden, Tags.PrayerGain, Tags.Knight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Protected, Synergies.Defensive, Synergies.Prayer },
-            UnitTag = "Human Knight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Knight,
+            },
             Attack = 2,
             Health = 4,
+            Protected = 2,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card211);
 
@@ -7042,13 +7952,21 @@ Gain +1 Attack for each tile moved this turn until the end of your turn",
 
             Tags = new List<Tags> { Tags.Enchantment, Tags.Prepared, Tags.Beast, Tags.Steed },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Prepared, Synergies.Mounted },
-            UnitTag = "Beast Steed",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Beast,
+                UnitTags.Steed,
+            },
             Attack = 1,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card212);
 
@@ -7072,13 +7990,21 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Flying, Tags.Oathknight, Tags.Angel, Tags.Vanguard },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Deployment, Synergies.Vanguard, Synergies.Prayer, Synergies.Flying, Synergies.Retribution, Synergies.Angels },
-            UnitTag = "Angel Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Angel,
+                UnitTags.Oathknight,
+            },
             Attack = 5,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card213);
 
@@ -7150,13 +8076,21 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
 
             Tags = new List<Tags> { Tags.Enchantment, Tags.Prepared, Tags.Overwhelm, Tags.Flying, Tags.Steed, Tags.Mythic },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Flying, Synergies.Mounted },
-            UnitTag = "Mythic Steed",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Mythic,
+                UnitTags.Steed,
+            },
             Attack = 1,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 5,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Prepared },
         };
         CardList.Add(card216);
 
@@ -7325,13 +8259,21 @@ Costs (1) Devotion less for every Angel in your Graveyard.
 
             Tags = new List<Tags> { Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel, Tags.Vanguard },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Vanguard, Synergies.ShortRange, Synergies.Flying, Synergies.Retribution, Synergies.Angels },
-            UnitTag = "Angel Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Angel,
+                UnitTags.Oathknight,
+            },
             Attack = 6,
             Health = 8,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond, BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card223);
 
@@ -7355,13 +8297,21 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Oathknight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Durable, Synergies.Protected, Synergies.BigMinions, Synergies.Prayer, Synergies.Oaths },
-            UnitTag = "Human Oathknight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Oathknight,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 6,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card224);
 
@@ -7384,13 +8334,21 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Trickster,
+            },
             Attack = 8,
             Health = 15,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability56 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card225);
 
@@ -7413,13 +8371,21 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Trickster, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Trickster,
+            },
             Attack = 8,
             Health = 21,
+            Protected = 0,
             Range = 1,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability57 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card226);
 
@@ -7443,13 +8409,21 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.GoldGain, Tags.Vanguard, Tags.Rogue, Tags.Stalker, Tags.Bounty, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Removal, Synergies.Vanguard, Synergies.Death, Synergies.Gold, Synergies.Routing },
-            UnitTag = "Human Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Rogue,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker, BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card227);
 
@@ -7473,13 +8447,21 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Tags = new List<Tags> { Tags.Empowered, Tags.Deployment, Tags.SingleDamage, Tags.Trickster, Tags.Vanguard, Tags.Shadowborn },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Deployment, Synergies.Vanguard },
-            UnitTag = "Shadowborn Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadowborn,
+                UnitTags.Trickster,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 2,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card228);
 
@@ -7526,13 +8508,21 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Rogue, Tags.Recruit },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit },
-            UnitTag = "Human Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Rogue,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability96 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card230);
 
@@ -7580,13 +8570,21 @@ Deployment:</b> Add 2 Shivs to your hand",
 
             Tags = new List<Tags> { Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue, Tags.Ratfolk, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs, Synergies.Routing },
-            UnitTag = "Ratfolk Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Ratfolk,
+                UnitTags.Rogue,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Routing },
         };
         CardList.Add(card232);
 
@@ -7610,13 +8608,21 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Trickster, Tags.GoldGain, Tags.Stalker, Tags.Bounty, Tags.Shadowborn, Tags.Deadly },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Removal, Synergies.Gold, Synergies.Shadows },
-            UnitTag = "Shadowborn Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadowborn,
+                UnitTags.Trickster,
+            },
             Attack = 2,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Deadly, BaseUnitKeywords.Stalker, BaseUnitKeywords.Stealth },
         };
         CardList.Add(card233);
 
@@ -7711,13 +8717,21 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Draw, Tags.Rogue, Tags.Stalker, Tags.Ratfolk, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw, Synergies.Routing },
-            UnitTag = "Ratfolk Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Ratfolk,
+                UnitTags.Rogue,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability97 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker },
         };
         CardList.Add(card237);
 
@@ -7725,7 +8739,7 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
         {
             Id = 238,
             Name = "Blade Flurry",
-            ImageTag = CardImageTags.Blade_Flury,
+            ImageTag = CardImageTags.Blade_Flurry,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -7789,13 +8803,21 @@ Whenever this attacks a unit, if the target has no adjacent allies, it takes dou
 
             Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Shadow },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
-            UnitTag = "Shadow Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadow,
+                UnitTags.Summon,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon },
         };
         CardList.Add(card240);
 
@@ -7807,7 +8829,7 @@ Whenever this attacks a unit, if the target has no adjacent allies, it takes dou
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"<b>Routing, 
+            Text = @"<b>Routing
 Deployment:</b> Use <b>Smuggle</b>",
             LoreText = @"",
             Notes = @"",
@@ -7819,13 +8841,21 @@ Deployment:</b> Use <b>Smuggle</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Rogue, Tags.Ratfolk, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Escape, Synergies.Routing },
-            UnitTag = "Ratfolk Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Ratfolk,
+                UnitTags.Rogue,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability98 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card241);
 
@@ -7849,13 +8879,21 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
 
             Tags = new List<Tags> { Tags.Warden, Tags.Recruit, Tags.Ogre, Tags.Brigand },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Defensive, Synergies.Value, Synergies.Removal, Synergies.Recruit },
-            UnitTag = "Ogre Brigand",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Ogre,
+                UnitTags.Brigand,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card242);
 
@@ -7879,13 +8917,21 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
 
             Tags = new List<Tags> { Tags.Conduit, Tags.Ethereal, Tags.Trickster, Tags.Stealth, Tags.Shadowborn },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.BigMinions, Synergies.Value, Synergies.Vanguard, Synergies.Gold, Synergies.Shadows },
-            UnitTag = "Shadowborn Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadowborn,
+                UnitTags.Trickster,
+            },
             Attack = 6,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card243);
 
@@ -7908,13 +8954,21 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
 
             Tags = new List<Tags> { Tags.Ethereal, Tags.Abomination, Tags.Stealth, Tags.Shadow },
             Synergies = new List<Synergies> { },
-            UnitTag = "Shadow Abomination",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadow,
+                UnitTags.Abomination,
+            },
             Attack = 4,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth },
         };
         CardList.Add(card244);
 
@@ -7938,13 +8992,21 @@ After this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
 
             Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Regenerate, Tags.Stealth, Tags.Shadow },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Durable, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
-            UnitTag = "Shadow Summon",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadow,
+                UnitTags.Summon,
+            },
             Attack = 8,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon },
         };
         CardList.Add(card245);
 
@@ -7968,13 +9030,21 @@ Whenever you <b>Recruit</b> a card, reduce its cost by 3 Gold, but not less than
 
             Tags = new List<Tags> { Tags.Rogue, Tags.Recruit, Tags.Ratfolk },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Removal, Synergies.Gold, Synergies.Recruit, Synergies.Routing },
-            UnitTag = "Ratfolk Rogue",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Ratfolk,
+                UnitTags.Rogue,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card246);
 
@@ -7998,13 +9068,21 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
 
             Tags = new List<Tags> { Tags.Conduit, Tags.LastRites, Tags.Vanguard, Tags.Stalker },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.Value, Synergies.Removal, Synergies.Vanguard, Synergies.Retribution },
-            UnitTag = "Shadowborn Trickster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadowborn,
+                UnitTags.Trickster,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker, BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card247);
 
@@ -8052,13 +9130,21 @@ Increase your base Knowledge rate by 1",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Scout },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Human Scout",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Scout,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability72 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card249);
 
@@ -8105,13 +9191,21 @@ Increase your base Knowledge rate by 1",
 
             Tags = new List<Tags> { Tags.Human, Tags.Overwhelm, Tags.Soldier },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm },
         };
         CardList.Add(card251);
 
@@ -8134,13 +9228,21 @@ Increase your base Knowledge rate by 1",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Soldier, Tags.Vanguard, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Vanguard, Synergies.Restoration, Synergies.Choices },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 1,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability73 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card252);
 
@@ -8164,13 +9266,21 @@ Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
 
             Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Deployment, Tags.Overwhelm, Tags.Knight, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Prepared, Synergies.Overwhelm, Synergies.Choices },
-            UnitTag = "Human Knight",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Knight,
+            },
             Attack = 3,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card253);
 
@@ -8194,13 +9304,21 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Deployment, Tags.Soldier, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Swarm, Synergies.Defensive, Synergies.Choices },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card254);
 
@@ -8345,13 +9463,21 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
 
             Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Captain },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Draw, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card260);
 
@@ -8425,13 +9551,21 @@ Can target <b>Stealth</b> units
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Divinate, Tags.Stalker, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.Prediction, Synergies.Choices },
-            UnitTag = "Human Scout",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Scout,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1118 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
         };
         CardList.Add(card263);
 
@@ -8551,13 +9685,21 @@ This unit can target through obstacle terrain",
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Choice, Tags.Siege, Tags.Construct },
             Synergies = new List<Synergies> { Synergies.AreaDamage, Synergies.Deployment, Synergies.BigMinions, Synergies.Study, Synergies.LongRange },
-            UnitTag = "Siege Construct",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Siege,
+                UnitTags.Construct,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 4,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card268);
 
@@ -8582,13 +9724,21 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Captain, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Removal },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 5,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability74, ability75 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card269);
 
@@ -8600,7 +9750,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
-            Text = @"Choose an area of Radius 2. Draw a card for each enemy unit in the area. Your units ignore difficult terrain and <b>Warden</b> effects in the area. Remove <b>Stealth</b> from enemy units in the area",
+            Text = @"Choose an area of Radius 2. Draw a card for each enemy unit in the area. Your units ignore difficult terrain and <b>Warden</b> effects in the area until the start of your next turn. Remove <b>Stealth</b> from enemy units in the area",
             LoreText = @"",
             Notes = @"",
 
@@ -8636,13 +9786,21 @@ Deployment:</b> Use <b>Call to Arms</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Vanguard, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Overwhelm, Synergies.Choices },
-            UnitTag = "Human Noble",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Noble,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability76 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card271);
 
@@ -8665,13 +9823,21 @@ Deployment:</b> Use <b>Call to Arms</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Soldier },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Soldier",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Soldier,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card272);
 
@@ -8695,13 +9861,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Conduit, Tags.Warden, Tags.Prepared, Tags.Captain, Tags.Choice },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Protected, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Prepared, Synergies.Choices },
-            UnitTag = "Human Captain",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Prepared, BaseUnitKeywords.Warden },
         };
         CardList.Add(card273);
 
@@ -8724,13 +9898,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Divinate, Tags.Luminist, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Luminist,
+            },
             Attack = 3,
             Health = 17,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability40 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card274);
 
@@ -8753,13 +9935,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Divinate, Tags.Luminist, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Luminist,
+            },
             Attack = 4,
             Health = 28,
+            Protected = 0,
             Range = 3,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability41 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card275);
 
@@ -8782,13 +9972,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 6,
             Health = 17,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability43 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card276);
 
@@ -8811,13 +10009,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Mercenary, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 8,
             Health = 28,
+            Protected = 0,
             Range = 0,
             Speed = 5,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability44 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card277);
 
@@ -8840,13 +10046,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Waystalker,
+            },
             Attack = 4,
             Health = 11,
+            Protected = 0,
             Range = 3,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability59 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card279);
 
@@ -8869,13 +10083,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Waystalker, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Waystalker,
+            },
             Attack = 5,
             Health = 20,
+            Protected = 0,
             Range = 4,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability60 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card280);
 
@@ -8898,13 +10120,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierOne },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 2,
             Health = 23,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability62 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card281);
 
@@ -8927,13 +10157,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Wildkin, Tags.HeroTierTwo },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 3,
             Health = 35,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability63 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card282);
 
@@ -8956,13 +10194,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Human, Tags.Warden, Tags.Mercenary, Tags.Hireling },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card285);
 
@@ -8985,13 +10231,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.GoldGain, Tags.Hireling },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card286);
 
@@ -9014,13 +10268,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.Stealth, Tags.Hireling },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth },
         };
         CardList.Add(card287);
 
@@ -9043,13 +10305,21 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Mercenary, Tags.Hireling },
             Synergies = new List<Synergies> { },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card288);
 
@@ -9222,13 +10492,21 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
 
             Tags = new List<Tags> { Tags.Human, Tags.CyclePlus, Tags.Wildkin, Tags.Stalker },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Cycle },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 2,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
         };
         CardList.Add(card295);
 
@@ -9251,13 +10529,21 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
 
             Tags = new List<Tags> { Tags.Swiftstrike, Tags.Overwhelm, Tags.Orc, Tags.Barbarian },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Melee, Synergies.Swarm },
-            UnitTag = "Orc Barbarian",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Barbarian,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm, BaseUnitKeywords.Swiftstrike },
         };
         CardList.Add(card296);
 
@@ -9281,13 +10567,21 @@ Whenever this unit takes damage, gain +2 Attack",
 
             Tags = new List<Tags> { Tags.Overwhelm, Tags.Orc, Tags.Barbarian },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.BigMinions, Synergies.Restoration, Synergies.SelfDamage },
-            UnitTag = "Orc Barbarian",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Barbarian,
+            },
             Attack = 3,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm },
         };
         CardList.Add(card297);
 
@@ -9383,13 +10677,21 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Regenerate, Tags.CycleMinus, Tags.Wildkin },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Restoration, Synergies.SelfDamage, Synergies.Cycle, Synergies.Wild },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 4,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability100 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card301);
 
@@ -9460,13 +10762,21 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.CycleMinus, Tags.Wildkin, Tags.Transform },
             Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Durable, Synergies.Cycle, Synergies.Brawler, Synergies.Shapeshifters },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability101 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card304);
 
@@ -9490,13 +10800,21 @@ Last Rites: Transform</b> this unit back to its original form",
 
             Tags = new List<Tags> { Tags.Warden, Tags.Transformed, Tags.Beast, Tags.LastRites, Tags.Transform },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 6,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
         };
         CardList.Add(card305);
 
@@ -9521,13 +10839,21 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
 
             Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Stun, Tags.Warden, Tags.Transformed, Tags.Beast, Tags.LastRites, Tags.Regenerate, Tags.Transform },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 4,
             Health = 10,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability102 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Warden },
         };
         CardList.Add(card306);
 
@@ -9576,13 +10902,21 @@ Whenever this unit takes damage, gain +2 Attack.
 
             Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Transformed, Tags.Beast, Tags.LastRites, Tags.Flying },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 5,
             Health = 8,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability103 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Flying },
         };
         CardList.Add(card308);
 
@@ -9618,7 +10952,7 @@ Whenever this unit takes damage, gain +2 Attack.
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Overwhelm</b>
+            Text = @"<b>Overwhelm, Hero</b>
 Whenever this attacks and kills a unit, draw a card.
 <b>Last Rites: Transform</b> this unit back into your hero.",
             LoreText = @"",
@@ -9631,13 +10965,21 @@ Whenever this attacks and kills a unit, draw a card.
 
             Tags = new List<Tags> { Tags.Ability, Tags.Draw, Tags.Overwhelm, Tags.Transformed, Tags.Beast, Tags.LastRites },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 9,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability104 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Overwhelm },
         };
         CardList.Add(card310);
 
@@ -9673,7 +11015,7 @@ Whenever this attacks and kills a unit, draw a card.
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Stalker</b>
+            Text = @"<b>Stalker, Hero</b>
 Other friendly units within Range 2 have extra attack equal to attack gained from <b>Unleash.
 Last Rites: Transform</b> this unit back into your hero.",
             LoreText = @"",
@@ -9686,13 +11028,21 @@ Last Rites: Transform</b> this unit back into your hero.",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Transformed, Tags.Beast, Tags.LastRites, Tags.Unleash, Tags.Stalker },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 6,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability105 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker },
         };
         CardList.Add(card312);
 
@@ -9740,13 +11090,21 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
 
             Tags = new List<Tags> { Tags.Transformed, Tags.Beast, Tags.LastRites, Tags.Unleash, Tags.Transform },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Beast,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash },
         };
         CardList.Add(card314);
 
@@ -9818,13 +11176,21 @@ Last Rites:</b> Restore this unit to one health and refresh its actions. It cann
 
             Tags = new List<Tags> { Tags.Swiftstrike, Tags.Prepared, Tags.LastRites, Tags.Orc, Tags.Barbarian },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Prepared, Synergies.Brawler },
-            UnitTag = "Orc Barbarian",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Barbarian,
+            },
             Attack = 6,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Swiftstrike },
         };
         CardList.Add(card317);
 
@@ -9848,13 +11214,21 @@ Last Rites: Transform</b> back into its original form. Any enchantments gained f
 
             Tags = new List<Tags> { Tags.Ethereal, Tags.Transformed, Tags.LastRites, Tags.Spirit, Tags.Unleash, Tags.Transform },
             Synergies = new List<Synergies> { },
-            UnitTag = "Transformed Spirit",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Transformed,
+                UnitTags.Spirit,
+            },
             Attack = 8,
             Health = 8,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Unleash },
         };
         CardList.Add(card318);
 
@@ -9878,13 +11252,21 @@ Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> in
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.LastRites, Tags.Regenerate, Tags.CycleMinus, Tags.Wildkin, Tags.Unleash, Tags.Transform },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.Durable, Synergies.Ethereal, Synergies.BigMinions, Synergies.Cycle, Synergies.Wild, Synergies.Brawler, Synergies.Shapeshifters },
-            UnitTag = "Human Wildkin",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wildkin,
+            },
             Attack = 5,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability106 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Unleash },
         };
         CardList.Add(card319);
 
@@ -9908,13 +11290,21 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Swiftstrike, Tags.Conduit, Tags.Warden, Tags.Orc, Tags.Barbarian },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Melee, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.SelfDamage, Synergies.Brawler },
-            UnitTag = "Orc Barbarian",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Barbarian,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability107 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Swiftstrike, BaseUnitKeywords.Warden },
         };
         CardList.Add(card320);
 
@@ -9926,7 +11316,7 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Discard</b> a card to deal damage to a unit equal to the card's total cost. If this spell kills a unit, add a random card in your <b>Discard</b> pool to your hand",
+            Text = @"<b>Discard</b> a card to deal damage to a unit equal to the card's total cost. If this spell kills a unit, return a random card in your <b>Discard</b> pool to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -9962,13 +11352,21 @@ Deployment:</b> Use <b>Feast</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.Restoration, Synergies.Routing },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 2,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability108 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card322);
 
@@ -10000,7 +11398,7 @@ Deployment:</b> Use <b>Feast</b>",
         {
             Id = 324,
             Name = "Goblin Looter",
-            ImageTag = CardImageTags.Goblin_Raider,
+            ImageTag = CardImageTags.Goblin_Looter,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -10016,13 +11414,21 @@ Whenever this attacks a unit, draw a card",
 
             Tags = new List<Tags> { Tags.Draw, Tags.Goblin, Tags.Brigand, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Draw, Synergies.Swarm, Synergies.Goblin, Synergies.Routing },
-            UnitTag = "Goblin Brigand",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Goblin,
+                UnitTags.Brigand,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card324);
 
@@ -10045,13 +11451,21 @@ Whenever this attacks a unit, draw a card",
 
             Tags = new List<Tags> { Tags.Human, Tags.Mercenary, Tags.Vanguard, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Swarm, Synergies.Vanguard, Synergies.Routing },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card325);
 
@@ -10123,13 +11537,21 @@ Deployment:</b> Use <b>Seduce</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Mercenary, Tags.Recruit, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Deployment, Synergies.Removal, Synergies.Restoration, Synergies.Recruit, Synergies.Routing },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability109 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card328);
 
@@ -10201,13 +11623,21 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Prepared, Tags.GoldGain, Tags.Brigand, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Draw, Synergies.BigMinions, Synergies.Prepared, Synergies.Gold, Synergies.Routing },
-            UnitTag = "Human Brigand",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Brigand,
+            },
             Attack = 6,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Routing },
         };
         CardList.Add(card331);
 
@@ -10230,13 +11660,21 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Tags = new List<Tags> { Tags.Goblin, Tags.Brigand },
             Synergies = new List<Synergies> { },
-            UnitTag = "Goblin Brigand",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Goblin,
+                UnitTags.Brigand,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card332);
 
@@ -10272,7 +11710,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 5), },
 
-            Text = @"Whenever a friendly unit <b>Routs</b>, gain 3 Gold and draw a card",
+            Text = @"After a friendly unit <b>Routs</b>, gain 3 Gold and draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -10283,13 +11721,21 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Mercenary, Tags.GoldGain },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigMinions, Synergies.Value, Synergies.Gold, Synergies.Routing },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 3,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card334);
 
@@ -10312,13 +11758,21 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Mercenary },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.SmallSpells, Synergies.BigSpells, Synergies.Deployment, Synergies.BigMinions, Synergies.Value },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 5,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability110 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card335);
 
@@ -10415,13 +11869,21 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
 
             Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.Defensive, Synergies.Goblin, Synergies.Routing },
-            UnitTag = "Goblin Warlord",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Goblin,
+                UnitTags.Warlord,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability111 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card339);
 
@@ -10471,13 +11933,21 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to M
 
             Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Defensive, Synergies.Prepared, Synergies.Goblin, Synergies.Routing },
-            UnitTag = "Goblin Warlord",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Goblin,
+                UnitTags.Warlord,
+            },
             Attack = 5,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1108 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1322);
 
@@ -10502,13 +11972,21 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Mercenary },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Value, Synergies.Vanguard, Synergies.Hireling },
-            UnitTag = "Human Mercenary",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Mercenary,
+            },
             Attack = 5,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1109 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card1323);
 
@@ -10531,13 +12009,20 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
 
             Tags = new List<Tags> { },
             Synergies = new List<Synergies> { },
-            UnitTag = "Test",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Test,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 1,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1326);
 
@@ -10585,13 +12070,21 @@ Increase your base Knowledge rate by 1",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Luminist },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Prediction },
-            UnitTag = "Human Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Luminist,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1110 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1328);
 
@@ -10664,13 +12157,21 @@ Deployment:</b> Use <b>Trade Tales</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Protected, Tags.Deployment, Tags.Divinate, Tags.Vanguard, Tags.Wanderer },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Protected, Synergies.Deployment, Synergies.Prediction, Synergies.Vanguard },
-            UnitTag = "Human Wanderer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wanderer,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1111 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
         };
         CardList.Add(card1331);
 
@@ -10718,13 +12219,21 @@ Divinate (2)</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Wanderer },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Draw, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Human Wanderer",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Wanderer,
+            },
             Attack = 1,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1112 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1333);
 
@@ -10749,13 +12258,21 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
 
             Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Luminist },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Midrange, Synergies.Deployment, Synergies.Study },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 1,
             Health = 4,
+            Protected = 0,
             Range = 2,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card1334);
 
@@ -10803,13 +12320,21 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Elven, Tags.Conduit, Tags.Luminist },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Durable, Synergies.AreaDamage, Synergies.Summon, Synergies.BigMinions, Synergies.Study, Synergies.LongRange },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1114 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card1337);
 
@@ -10881,13 +12406,21 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Tags = new List<Tags> { Tags.Ethereal, Tags.Mirrored, Tags.Entity },
             Synergies = new List<Synergies> { },
-            UnitTag = "Mirrored Entity",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Mirrored,
+                UnitTags.Entity,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1340);
 
@@ -10960,13 +12493,21 @@ Add a copy of all spells in your hand to your hand",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Deployment, Tags.Spellbind, Tags.Luminist },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.Melee, Synergies.Durable, Synergies.Antimagic, Synergies.Deployment },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1115 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1343);
 
@@ -10991,13 +12532,21 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
 
             Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Warden, Tags.Luminist, Tags.Unleash },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 6,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card1344);
 
@@ -11021,13 +12570,21 @@ Deployment:</b> Use <b>Prophecy</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.Luminist },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.BigSpells, Synergies.Summon, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.LongRange },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 3,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1116 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card1345);
 
@@ -11197,13 +12754,21 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.Cycle, Synergies.Wild },
-            UnitTag = "Elven Luminist",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Luminist,
+            },
             Attack = 5,
             Health = 7,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1117 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card1352);
 
@@ -11370,13 +12935,21 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Tags = new List<Tags> { Tags.Warden, Tags.Beast, Tags.Trained, Tags.Unleash },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Defensive, Synergies.Beasts },
-            UnitTag = "Trained Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Trained,
+                UnitTags.Beast,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
         };
         CardList.Add(card1359);
 
@@ -11472,13 +13045,21 @@ Whenever this attacks and kills a unit, draw a card and <b>Cycle +3</b>",
 
             Tags = new List<Tags> { Tags.Draw, Tags.Beast, Tags.Flying, Tags.CyclePlus, Tags.Trained },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Flying, Synergies.Cycle, Synergies.Beasts },
-            UnitTag = "Trained Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Trained,
+                UnitTags.Beast,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying },
         };
         CardList.Add(card1363);
 
@@ -11502,13 +13083,21 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
 
             Tags = new List<Tags> { Tags.Prepared, Tags.Deployment, Tags.Beast, Tags.Trained },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Swarm, Synergies.Prepared, Synergies.Beasts },
-            UnitTag = "Trained Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Trained,
+                UnitTags.Beast,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
         };
         CardList.Add(card1364);
 
@@ -11604,13 +13193,21 @@ Friendly beasts in range 2 have +1 Attack. Whenever a beast in range kills an en
 
             Tags = new List<Tags> { Tags.Beast, Tags.Stalker, Tags.Feral },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Swarm, Synergies.Death, Synergies.Beasts },
-            UnitTag = "Feral Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Feral,
+                UnitTags.Beast,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
         };
         CardList.Add(card1368);
 
@@ -11658,13 +13255,21 @@ Whenever a beast dies within Range 2, draw a card.",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Draw, Tags.Deployment, Tags.Beastmaster },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Deployment, Synergies.Swarm, Synergies.ShortRange, Synergies.Beasts },
-            UnitTag = "Human Beastmaster",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Beastmaster,
+            },
             Attack = 3,
             Health = 4,
+            Protected = 0,
             Range = 1,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1120 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1370);
 
@@ -11688,13 +13293,21 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
 
             Tags = new List<Tags> { Tags.Deployment, Tags.Beast, Tags.LastRites, Tags.Unleash, Tags.Stealth, Tags.Feral },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Deployment, Synergies.Swarm, Synergies.LastRites, Synergies.Wild, Synergies.Shadows, Synergies.Beasts },
-            UnitTag = "Feral Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Feral,
+                UnitTags.Beast,
+            },
             Attack = 2,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth, BaseUnitKeywords.Unleash },
         };
         CardList.Add(card1371);
 
@@ -11717,13 +13330,21 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
 
             Tags = new List<Tags> { Tags.Beast, Tags.Stealth, Tags.Feral },
             Synergies = new List<Synergies> { },
-            UnitTag = "Feral Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Feral,
+                UnitTags.Beast,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1372);
 
@@ -11747,13 +13368,21 @@ Deployment:</b> Use <b>Craft Arrows</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Stun, Tags.AreaDamage, Tags.Elven, Tags.Deployment, Tags.Spellbind, Tags.Routing, Tags.Craftsman },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.Defensive, Synergies.Value, Synergies.Routing, Synergies.Archery },
-            UnitTag = "Elven Craftsman",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Craftsman,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1121 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1373);
 
@@ -11777,13 +13406,21 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
 
             Tags = new List<Tags> { Tags.Human, Tags.Waystalker, Tags.Stalker, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Swarm, Synergies.Routing },
-            UnitTag = "Human Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Waystalker,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker },
         };
         CardList.Add(card1374);
 
@@ -11806,13 +13443,21 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
 
             Tags = new List<Tags> { Tags.Ability, Tags.Beast, Tags.CycleMinus, Tags.Unleash, Tags.Stalker, Tags.Feral },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.BigMinions, Synergies.Cycle, Synergies.Wild, Synergies.Beasts },
-            UnitTag = "Feral Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Feral,
+                UnitTags.Beast,
+            },
             Attack = 6,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1122 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker, BaseUnitKeywords.Unleash },
         };
         CardList.Add(card1375);
 
@@ -11836,13 +13481,21 @@ Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an e
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Waystalker, Tags.GoldGain, Tags.Stalker, Tags.Passive },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Midrange, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold },
-            UnitTag = "Human Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Waystalker,
+            },
             Attack = 4,
             Health = 3,
+            Protected = 0,
             Range = 2,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
         };
         CardList.Add(card1376);
 
@@ -11866,13 +13519,21 @@ Whenever you cast a shot spell, it affects this unit's next attack as well as yo
 
             Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Waystalker, Tags.Stalker },
             Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Control, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild, Synergies.Archery },
-            UnitTag = "Elven Waystalker",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elven,
+                UnitTags.Waystalker,
+            },
             Attack = 3,
             Health = 5,
+            Protected = 0,
             Range = 3,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker },
         };
         CardList.Add(card1377);
 
@@ -11896,13 +13557,21 @@ Whenever a beast dies within Range 2, <b>Regenerate.</b>",
 
             Tags = new List<Tags> { Tags.Ability, Tags.Regenerate, Tags.CycleMinus, Tags.Unleash, Tags.Stalker },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Durable, Synergies.Swarm, Synergies.BigMinions, Synergies.Removal, Synergies.Cycle, Synergies.Beasts },
-            UnitTag = "Feral Beast",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Feral,
+                UnitTags.Beast,
+            },
             Attack = 4,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1123 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker, BaseUnitKeywords.Unleash },
         };
         CardList.Add(card1378);
 
@@ -11978,13 +13647,21 @@ Deployment:</b> Gain 3 Gold
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.LastRites, Tags.GoldGain, Tags.Merchant, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.LastRites, Synergies.Gold, Synergies.Routing },
-            UnitTag = "Human Merchant",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Merchant,
+            },
             Attack = 4,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1381);
 
@@ -12008,13 +13685,21 @@ The first spell this unit casts each turn does not break <b>Stealth</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Agent, Tags.Stealth },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Shadows },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth },
         };
         CardList.Add(card1382);
 
@@ -12048,7 +13733,7 @@ The first spell this unit casts each turn does not break <b>Stealth</b>",
             Name = "Medlar Spy",
             ImageTag = CardImageTags.Medlar_Spy,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
             Text = @"<b>Deployment:</b> Use <b>Infiltration</b>
 Whenever you draw this card, reduce your <b>Stagnation</b> by 1",
@@ -12062,13 +13747,21 @@ Whenever you draw this card, reduce your <b>Stagnation</b> by 1",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.StudyGain, Tags.Agent },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Exchanges },
-            UnitTag = "Human Agent",
-            Attack = 2,
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
+            Attack = 3,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1124 },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1384);
 
@@ -12092,13 +13785,21 @@ Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your oppone
 
             Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Stealth, Tags.Recruit },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Recruit, Synergies.Shadows, Synergies.Spies },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 2,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth },
         };
         CardList.Add(card1385);
 
@@ -12121,13 +13822,21 @@ Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your oppone
 
             Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Stealth, Tags.Deadly },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Removal, Synergies.Shadows },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 1,
             Health = 1,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Deadly, BaseUnitKeywords.Stealth },
         };
         CardList.Add(card1386);
 
@@ -12151,13 +13860,21 @@ After you draw an <b>Inspiration</b> card, shuffle another back into your deck",
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.StudyGain, Tags.Agent },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Exchanges },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 2,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1387);
 
@@ -12325,13 +14042,21 @@ After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Agent, Tags.Stealth, Tags.Recruit },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Recruit, Synergies.Shadows, Synergies.Spies },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 2,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1125 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth },
         };
         CardList.Add(card1394);
 
@@ -12343,7 +14068,7 @@ After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
-            Text = @"<b>Deployment:</b>Increase the cost of a random card in your opponents hand by (2)
+            Text = @"<b>Deployment:</b> Increase the cost of a random card in your opponents hand by (2)
 Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
             LoreText = @"",
             Notes = @"",
@@ -12355,13 +14080,21 @@ Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
 
             Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Divinate, Tags.Agent },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Deployment, Synergies.Study, Synergies.Prediction, Synergies.Spies, Synergies.Exchanges },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 5,
             Health = 4,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1395);
 
@@ -12385,13 +14118,21 @@ Deployment:</b> Use <b>Make Arrangements</b>",
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Agent, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold, Synergies.Routing, Synergies.Exchanges },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 5,
             Health = 9,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1126 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1396);
 
@@ -12415,13 +14156,21 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Agent, Tags.Recruit, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Recruit, Synergies.Spies },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 4,
             Health = 5,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1397);
 
@@ -12444,13 +14193,21 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
 
             Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Ethereal, Tags.Agent, Tags.Stealth, Tags.Deadly },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.BigMinions, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 3,
             Health = 3,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { },
         };
         CardList.Add(card1398);
 
@@ -12475,13 +14232,21 @@ If this unit <b>Routs</b> shuffle a new copy of it back into your deck",
 
             Tags = new List<Tags> { Tags.Human, Tags.Agent, Tags.Routing },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Value, Synergies.Routing, Synergies.Exchanges },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 2,
             Health = 2,
+            Protected = 0,
             Range = 0,
             Speed = 4,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
         };
         CardList.Add(card1399);
 
@@ -12505,13 +14270,21 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Agent, Tags.Recruit },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.BigMinions, Synergies.Gold, Synergies.Recruit, Synergies.Spies },
-            UnitTag = "Human Agent",
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Agent,
+            },
             Attack = 6,
             Health = 6,
+            Protected = 0,
             Range = 0,
             Speed = 3,
+            Empowered = 0,
 
             Abilities = new List<AbilityData>() { ability1127 },
+
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
         };
         CardList.Add(card1400);
 
@@ -12599,6 +14372,7 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
         card1352.RelatedCards = new List<CardData> { card1340 };
         card1365.RelatedCards = new List<CardData> { card1353, card1354, card1355, card1356, card1357, card1358 };
         card1371.RelatedCards = new List<CardData> { card1372 };
+        card1373.RelatedCards = new List<CardData> { card1353, card1354, card1355, card1356, card1357, card1358 };
         card1384.RelatedCards = new List<CardData> { card1380 };
         card1387.RelatedCards = new List<CardData> { card1380 };
     }
@@ -12608,7 +14382,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental
     }
 
     public enum Synergies
@@ -12623,6 +14397,11 @@ namespace CategoryEnums
 
     public enum CardImageTags
     {
-        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flury, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Raider, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Mazgix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Fence, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warband, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recorded_Inspiration, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
+        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias_Blade_of_the_Kalyan, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flurry, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Mazgix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Fence, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya_Sword_of_Stars, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warband, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recorded_Inspiration, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
+    }
+
+    public enum UnitTags
+    {
+        Default, Human, Runeblade, Blademaster, Dwarven, Arcanist, Elven, Arcane, Summon, Scholar, Transformed, Beast, Abyssal, Void, Abomination, Spirit, Vampire, Noble, Elementalist, Goblin, Elemental, Grovewatcher, Faerie, Soldier, Treant, Agent, Captain, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, Merchant, Dragonkin, Angel, Knight, Steed, Mythic, Rogue, Shadowborn, Ratfolk, Shadow, Ogre, Brigand, Scout, Siege, Construct, Orc, Barbarian, Warlord, Test, Wanderer, Mirrored, Entity, Feral, Beastmaster, Craftsman
     }
 }

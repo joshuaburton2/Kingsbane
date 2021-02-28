@@ -17,6 +17,7 @@ namespace Kingsbane.App
         Cards,
         Upgrades,
         NPCHero,
+        Keywords,
     }
 
     public partial class formSelectionList : Form
@@ -46,6 +47,7 @@ namespace Kingsbane.App
                 case SelectionType.NPCHero:
                 case SelectionType.Cards:
                 case SelectionType.Upgrades:
+                case SelectionType.Keywords:
                     btnAdd.Enabled = false;
                     txtAdd.Enabled = false;
                     break;
@@ -86,6 +88,9 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.NPCHero:
                     newQuery = _context.Cards.Where(x => x.RarityId == CardRarities.NPCHero).Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CardTypeId.ToString() });
+                    break;
+                case SelectionType.Keywords:
+                    newQuery = _context.Keywords.Select(x => new SelectionItem { Id = (int)x.Id, Name = x.Name, Identifier = "" });
                     break;
                 case SelectionType.Cards:
                 default:

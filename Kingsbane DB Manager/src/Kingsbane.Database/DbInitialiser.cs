@@ -8,6 +8,9 @@ namespace Kingsbane.Database
 {
     public static class DbInitialiser
     {
+        //If moving Database to new computer, in order to edit properly, use the following query
+        //alter authorization on database::Kingsbane to [username]
+
         public static async Task Initialize(KingsbaneContext context)
         {
             await context.Database.EnsureCreatedAsync();
@@ -39,6 +42,11 @@ namespace Kingsbane.Database
             foreach (var value in Enum.GetValues(typeof(CardTypes)).Cast<CardTypes>())
             {
                 await context.CardTypes.AddAsync(new CardType { Id = value, Name = value.ToString() });
+            }
+
+            foreach (var value in Enum.GetValues(typeof(Keywords)).Cast<Keywords>())
+            {
+                await context.Keywords.AddAsync(new Keyword { Id = value, Name = value.ToString() });
             }
 
             await context.SaveChangesAsync();

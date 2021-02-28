@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using Kingsbane.Database.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Kingsbane.Database.Models
 {
-    public class Set 
+    public class Keyword
     {
-        public Set()
+        public Keyword()
         {
-            Cards = new HashSet<Card>();
+            UnitKeywords = new HashSet<UnitKeyword>();
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Keywords Id { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [MaxLength(100)]
@@ -25,7 +26,6 @@ namespace Kingsbane.Database.Models
 
         // Related Entities
 
-        public virtual ICollection<Card> Cards { get; set; }
-        public virtual ICollection<Upgrade> Upgrades { get; set; }
+        public virtual ICollection<UnitKeyword> UnitKeywords { get; set; }
     }
 }

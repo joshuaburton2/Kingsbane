@@ -21,7 +21,5 @@ namespace Kingsbane.Database.Models
         public int Blue { get; set; }
 
         //Related Entities
-        public int ScenarioId { get; set; }
-        public virtual Scenario Scenario { get; set; }
     }
 }

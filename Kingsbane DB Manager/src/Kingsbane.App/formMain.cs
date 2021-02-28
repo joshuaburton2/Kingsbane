@@ -91,11 +91,12 @@ namespace Kingsbane.App
                 .Include(x => x.Synergies).ThenInclude(x => x.Synergy)
                 .Include(x => x.RelatedCards).ThenInclude(x => x.RelatedCard)
                 .Include(x => x.Set)
-                .Include(x => x.Units)
+                .Include(x => x.Units).ThenInclude(x => x.UnitKeywords).ThenInclude(x => x.Keyword)
                 .Include(x => x.Spells)
                 .Include(x => x.Items);
 
             var imageTagList = new List<string>();
+            var unitTagList = new List<string>();
 
             foreach (var item in query)
             {
@@ -138,18 +139,34 @@ namespace Kingsbane.App
                     case CardTypes.Unit:
                         var unit = item.Units.FirstOrDefault();
 
+                        var unitTags = unit.UnitTag.Split(" ");
                         var unitAbilities = string.Join(",", unit.Abilities.Select(x => $"ability{x.Id}"));
+                        var keywords = string.Join(",", unit.UnitKeywords.Select(x => $"BaseUnitKeywords.{x.Keyword.Name}"));
 
                         sb.AppendLine($"        var card{item.Id} = new UnitData()");
                         sb.AppendLine("        {");
                         sb.AppendLine(commonCard);
-                        sb.AppendLine($"            UnitTag = \"{unit?.UnitTag}\",");
+                        sb.AppendLine($"            UnitTag = new List<UnitTags>()");
+                        sb.AppendLine($"            {{");
+                        foreach (var unitTag in unitTags)
+                        {
+                            sb.AppendLine($"                UnitTags.{unitTag},");
+                            if (!unitTagList.Contains(unitTag))
+                            {
+                                unitTagList.Add(unitTag);
+                            }
+                        }
+                        sb.AppendLine($"            }},");
                         sb.AppendLine($"            Attack = {unit?.Attack ?? 0},");
                         sb.AppendLine($"            Health = {unit?.Health ?? 0},");
+                        sb.AppendLine($"            Protected = {unit?.Protected ?? 0},");
                         sb.AppendLine($"            Range = {unit?.Range ?? 0},");
                         sb.AppendLine($"            Speed = {unit?.Speed ?? 0},");
+                        sb.AppendLine($"            Empowered = {unit?.Empowered ?? 0},");
                         sb.AppendLine($"");
                         sb.AppendLine($"            Abilities = new List<AbilityData>() {{{unitAbilities}}},");
+                        sb.AppendLine($"");
+                        sb.AppendLine($"            Keywords = new List<BaseUnitKeywords>() {{{keywords}}},");
                         sb.AppendLine("        };");
                         break;
                     case CardTypes.Spell:
@@ -218,6 +235,11 @@ namespace Kingsbane.App
             sb.AppendLine("    public enum CardImageTags");
             sb.AppendLine("    {");
             sb.AppendLine($"         Default, {string.Join(",", imageTagList)}");
+            sb.AppendLine("    }");
+            sb.AppendLine("");
+            sb.AppendLine("    public enum UnitTags");
+            sb.AppendLine("    {");
+            sb.AppendLine($"         Default, {string.Join(",", unitTagList)}");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

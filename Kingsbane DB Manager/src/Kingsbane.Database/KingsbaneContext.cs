@@ -21,6 +21,8 @@ namespace Kingsbane.Database
         public DbSet<Card> Cards { get; set; }
         public DbSet<CardUnit> CardUnits { get; set; }
         public DbSet<Ability> Abilities { get; set; }
+        public DbSet<UnitKeyword> UnitKeywords { get; set; }
+        public DbSet<Keyword> Keywords { get; set; }
         public DbSet<CardItem> CardItems { get; set; }
         public DbSet<CardSpell> CardSpells { get; set; }
         public DbSet<Synergy> Synergies { get; set; }
@@ -69,6 +71,8 @@ namespace Kingsbane.Database
                 .HasKey(x => new { x.DeckId, x.CardId });
             modelBuilder.Entity<RelatedCards>()
                 .HasKey(x => new { x.CardId, x.RelatedCardId });
+            modelBuilder.Entity<UnitKeyword>()
+                .HasKey(x => new { x.CardUnitId, x.KeywordId });
 
             modelBuilder.Entity<ResourcePrerequisite>()
                 .HasKey(x => new { x.UpgradeId, x.ResourceId });
