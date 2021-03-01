@@ -51,7 +51,7 @@ public class Player
             resource.StartOfGameUpdate(Id);
     }
 
-    public void StarOfTurn(bool isActive)
+    public void StartOfTurn(bool isActive)
     {
         if (isActive)
         {

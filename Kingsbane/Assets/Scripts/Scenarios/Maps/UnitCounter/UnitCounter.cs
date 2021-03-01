@@ -37,6 +37,12 @@ public class UnitCounter : MonoBehaviour
     [SerializeField]
     private Image statusIcon;
 
+    [Header("Status Effects")]
+    [SerializeField]
+    private GameObject statusEffectParent;
+    [SerializeField]
+    private GameObject statusEffectPrefab;
+
     public Player Owner { get { return Unit.Owner; } }
 
     public void InitUnitCounter(Unit _unit, Cell _cell)
@@ -62,22 +68,29 @@ public class UnitCounter : MonoBehaviour
 
     public void RefreshUnitCounter()
     {
-        attackText.text = Unit.Attack.ToString();
+        attackText.text = Unit.GetStat(Unit.StatTypes.Attack).ToString();
         attackText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedAttack);
 
-        healthText.text = Unit.Health.ToString();
+        healthText.text = Unit.CurrentHealth.ToString();
         healthText.color = GameManager.instance.colourManager.GetStatModColour(Unit.UnitIsDamaged);
 
-        rangeText.text = Unit.Range.ToString();
+        rangeText.text = Unit.GetStat(Unit.StatTypes.Range).ToString();
         rangeText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedAttack);
 
-        speedText.text = $"{Unit.RemainingSpeed}/{Unit.Speed}";
+        speedText.text = $"{Unit.RemainingSpeed}/{Unit.GetStat(Unit.StatTypes.Speed)}";
         speedText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedSpeed);
 
         protectedText.text = Unit.TotalProtected.HasValue ? Unit.TotalProtected.ToString() : "Inf";
         protectedArea.SetActive(!Unit.TotalProtected.HasValue || Unit.TotalProtected.Value > 0);
 
         statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(Unit.Status);
+
+        GameManager.DestroyAllChildren(statusEffectParent);
+        foreach (var statusEffect in Unit.CurrentStatusEffects)
+        {
+            var indicator = Instantiate(statusEffectPrefab, statusEffectParent.transform);
+            indicator.GetComponent<StatusEffectIndicator>().InitIndicator(statusEffect);
+        }
 
         if (Unit.Rarity == Rarity.Hero || Unit.Rarity == Rarity.NPCHero)
         {

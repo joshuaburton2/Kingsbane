@@ -1024,6 +1024,21 @@ MonoBehaviour:
     statusColour: {r: 0.8588236, g: 0.27058825, b: 0.019607844, a: 1}
   - unitStatus: 4
     statusColour: {r: 0.7725491, g: 0.03137255, b: 0.011764707, a: 1}
+  statusEffectColours:
+  - statusEffect: 0
+    effectColour: {r: 1, g: 1, b: 1, a: 1}
+  - statusEffect: 1
+    effectColour: {r: 0.9433962, g: 0.8720786, b: 0.40494838, a: 1}
+  - statusEffect: 2
+    effectColour: {r: 0.17646444, g: 0.6320754, b: 0.16398184, a: 1}
+  - statusEffect: 3
+    effectColour: {r: 0.39337844, g: 0.8825157, b: 0.9811321, a: 1}
+  - statusEffect: 4
+    effectColour: {r: 0.3726415, g: 0.3933237, b: 1, a: 1}
+  - statusEffect: 5
+    effectColour: {r: 0.66443723, g: 0.07186719, b: 0.8018868, a: 1}
+  - statusEffect: 6
+    effectColour: {r: 0.6132076, g: 0.33176675, b: 0.08966714, a: 1}
   statModColours:
   - statMod: 0
     statColour: {r: 1, g: 1, b: 1, a: 1}

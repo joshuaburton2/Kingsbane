@@ -88,6 +88,18 @@ public class UnitStatusColours
     public Color statusColour;
 }
 
+/// <summary>
+/// 
+/// Object for storing the colour of a status effects for units
+/// 
+/// </summary>
+[Serializable]
+public class StatusEffectColours
+{
+    public Unit.StatusEffects statusEffect;
+    public Color effectColour;
+}
+
 public class ColourManager : MonoBehaviour
 {
     [Header("Border Colours")]
@@ -109,6 +121,8 @@ public class ColourManager : MonoBehaviour
     private List<PlayerColour> playerColours;
     [SerializeField]
     private List<UnitStatusColours> unitStatusColours;
+    [SerializeField]
+    private List<StatusEffectColours> statusEffectColours;
 
     [Header("Other Colours")]
     [SerializeField]
@@ -232,5 +246,21 @@ public class ColourManager : MonoBehaviour
             unitStatusColour = new Color();
         }
         return unitStatusColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular status effect colour
+    /// 
+    /// </summary>
+    public Color GetStatusEffectColour(Unit.StatusEffects statusEffect)
+    {
+        var statusEffectColour = new Color();
+        statusEffectColour = statusEffectColours.FirstOrDefault(x => x.statusEffect == statusEffect).effectColour;
+        if (statusEffectColour == null)
+        {
+            statusEffectColour = new Color();
+        }
+        return statusEffectColour;
     }
 }

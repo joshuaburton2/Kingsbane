@@ -196,10 +196,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
             case CardTypes.Unit:
                 var unitCard = card as Unit;
 
-                attackText.text = $"Attack: {unitCard.Attack}";
-                healthText.text = $"Health: {unitCard.Health}";
-                unitRangeText.text = $"Range: {unitCard.Range}";
-                speedText.text = $"Speed: {unitCard.Speed}";
+                attackText.text = $"Attack: {unitCard.GetStat(Unit.StatTypes.Attack)}";
+                healthText.text = $"Health: {unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
+                unitRangeText.text = $"Range: {unitCard.GetStat(Unit.StatTypes.Range)}";
+                speedText.text = $"Speed: {unitCard.GetStat(Unit.StatTypes.Speed)}";
 
                 //Add the abilities to the card text
                 List<AbilityData> abilities = unitCard.Abilities;

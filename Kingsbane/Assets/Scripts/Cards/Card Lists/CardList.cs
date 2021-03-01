@@ -117,19 +117,19 @@ public class CardList
                             break;
                         case CardListFilter.IntFilterTypes.Attack:
                             if (card.Type == CardTypes.Unit)
-                                value = ((Unit)card).Attack;
+                                value = ((Unit)card).GetStat(Unit.StatTypes.Attack);
                             break;
                         case CardListFilter.IntFilterTypes.Health:
                             if (card.Type == CardTypes.Unit)
-                                value = ((Unit)card).Health;
+                                value = ((Unit)card).GetStat(Unit.StatTypes.MaxHealth);
                             break;
                         case CardListFilter.IntFilterTypes.Range:
                             if (card.Type == CardTypes.Unit)
-                                value = ((Unit)card).Range;
+                                value = ((Unit)card).GetStat(Unit.StatTypes.Range);
                             break;
                         case CardListFilter.IntFilterTypes.Speed:
                             if (card.Type == CardTypes.Unit)
-                                value = ((Unit)card).Speed;
+                                value = ((Unit)card).GetStat(Unit.StatTypes.Speed);
                             break;
                         case CardListFilter.IntFilterTypes.SpellRange:
                             if (card.Type == CardTypes.Unit)
@@ -186,16 +186,16 @@ public class CardList
                                             filteredCardList.RemoveAll(x => x.TotalResource == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.Attack:
-                                            filteredCardList.RemoveAll(x => ((Unit)x).Attack == value);
+                                            filteredCardList.RemoveAll(x => ((Unit)x).GetStat(Unit.StatTypes.Attack) == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.Health:
-                                            filteredCardList.RemoveAll(x => ((Unit)x).Health == value);
+                                            filteredCardList.RemoveAll(x => ((Unit)x).GetStat(Unit.StatTypes.MaxHealth) == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.Range:
-                                            filteredCardList.RemoveAll(x => ((Unit)x).Range == value);
+                                            filteredCardList.RemoveAll(x => ((Unit)x).GetStat(Unit.StatTypes.Range) == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.Speed:
-                                            filteredCardList.RemoveAll(x => ((Unit)x).Speed == value);
+                                            filteredCardList.RemoveAll(x => ((Unit)x).GetStat(Unit.StatTypes.Speed) == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.SpellRange:
                                             filteredCardList.RemoveAll(x => ((Spell)x).SpellRange == value);

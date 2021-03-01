@@ -18,60 +18,65 @@ public class Unit : Card
 
     public enum StatusEffects
     {
+        None,
         Flying,
         Rooted,
         Spellbound,
-        Stealted,
+        Stealthed,
         Stunned,
         Transformed,
     }
 
+    public enum StatTypes
+    {
+        Default,
+        Attack,
+        MaxHealth,
+        Range,
+        Speed,
+        Empowered,
+        Protected,
+        TempProtected,
+    }
+
+    public class Stat
+    {
+        public StatTypes Type { get; set; }
+        public int? Value { get; set; }
+    }
+
     public UnitData UnitData { get { return cardData as UnitData; } }
 
-    public int DefaultAttack { get { return UnitData.Attack; } }
-    public int DefaultHealth { get { return UnitData.Health; } }
-    public int DefaultProtected { get { return UnitData.Protected; } }
-    public int DefaultRange { get { return UnitData.Range; } }
-    public int DefaultSpeed { get { return UnitData.Speed; } }
-    public int DefaultEmpowered { get { return UnitData.Empowered; } }
+    public List<Stat> Stats { get; set; }
 
-    public int BaseAttack { get; set; }
-    public int BaseHealth { get; set; }
-    public int BaseRange { get; set; }
-    public int BaseSpeed { get; set; }
-
-    public int Attack { get; set; }
-    public int Health { get; set; }
-    public int? Protected { get; set; }
-    public int? TemporaryProtected { get; set; }
     public int? TotalProtected
     {
         get
         {
-            if (Protected.HasValue && TemporaryProtected.HasValue)
-                return Protected + TemporaryProtected;
+            if (GetStat(StatTypes.Protected).HasValue && GetStat(StatTypes.TempProtected).HasValue)
+                return GetStat(StatTypes.Protected) + GetStat(StatTypes.TempProtected);
             else
                 return null;
         }
     }
-    public int Range { get; set; }
-    public int Speed { get; set; }
-    public int Empowered { get; set; }
 
-    public StatModTypes HasBuffedAttack { get { return Attack > BaseAttack ? StatModTypes.Buffed : StatModTypes.None; } }
-    public StatModTypes UnitIsDamaged { get { return Health < BaseHealth ? StatModTypes.Damaged : StatModTypes.None; } }
-    public StatModTypes HasBuffedRange { get { return Range > BaseRange ? StatModTypes.Buffed : StatModTypes.None; } }
-    public StatModTypes HasBuffedSpeed { get { return Speed > BaseSpeed ? StatModTypes.Buffed : StatModTypes.None; } }
+    public StatModTypes HasBuffedAttack { get { return GetStat(StatTypes.Attack) > UnitData.Attack ? StatModTypes.Buffed : StatModTypes.None; } }
+    public StatModTypes UnitIsDamaged { get { return CurrentHealth < UnitData.Health ? StatModTypes.Damaged : StatModTypes.None; } }
+    public StatModTypes HasBuffedRange { get { return GetStat(StatTypes.Range) > UnitData.Range ? StatModTypes.Buffed : StatModTypes.None; } }
+    public StatModTypes HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatModTypes.Buffed : StatModTypes.None; } }
 
     public UnitStatuses Status { get; set; }
+    public int CurrentHealth { get; set; }
     public int RemainingSpeed { get; set; }
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
     public bool CanAction { get { return ActionsLeft > 0; } }
 
-    public List<BaseUnitKeywords> DefaultKeywords { get { return UnitData.Keywords; } }
-    public List<BaseUnitKeywords> TempKeywords { get; set; }
+    public List<UnitEnchantment> Enchantments { get; set; }
+    public List<StatusEffects> CurrentStatusEffects { get; set; }
+    public List<BaseUnitKeywords> BaseKeywords { get { return UnitData.Keywords; } }
+    public List<BaseUnitKeywords> CurrentKeywords { get; set; }
 
     public List<UnitTags> UnitTags { get { return UnitData.UnitTag; } }
     public string UnitTag { get { return string.Join(" ", UnitTags.Select(x => x.ToString())); } }
@@ -84,20 +89,53 @@ public class Unit : Card
     {
         base.InitCard(_cardData, owner);
 
-        BaseAttack = DefaultAttack;
-        BaseHealth = DefaultHealth;
-        BaseRange = DefaultRange;
-        BaseSpeed = DefaultSpeed;
+        var maxStats = 8;
+        Stats = new List<Stat>(maxStats)
+        {
+            new Stat(){ Type = StatTypes.Attack, Value = UnitData.Attack },
+            new Stat(){ Type = StatTypes.MaxHealth, Value = UnitData.Health },
+            new Stat(){ Type = StatTypes.Protected, Value = UnitData.Protected },
+            new Stat(){ Type = StatTypes.TempProtected, Value = 0 },
+            new Stat(){ Type = StatTypes.Range, Value = UnitData.Range },
+            new Stat(){ Type = StatTypes.Speed, Value = UnitData.Speed },
+            new Stat(){ Type = StatTypes.Empowered, Value = UnitData.Empowered },
+        };
 
-        Attack = DefaultAttack;
-        Health = DefaultHealth;
-        Protected = DefaultProtected;
-        TemporaryProtected = 0;
-        Range = DefaultRange;
-        Speed = DefaultSpeed;
-        Empowered = DefaultEmpowered;
+        Enchantments = new List<UnitEnchantment>();
+        CurrentStatusEffects = new List<StatusEffects>();
+        CurrentKeywords = new List<BaseUnitKeywords>();
 
         Status = UnitStatuses.Preparing;
+        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+
+        var keywordEnchantment = new UnitEnchantment()
+        {
+            Source = "Default",
+            Status = UnitEnchantment.EnchantmentStatus.Default,
+        };
+        keywordEnchantment.Keywords = BaseKeywords.ToList();
+        AddEnchantment(keywordEnchantment);
+    }
+
+    public int? GetStat(StatTypes statType)
+    {
+        return Stats.Single(x => x.Type == statType).Value;
+    }
+
+    public void ModifyStat(StatModifierType modifierType, StatTypes statType, int? value)
+    {
+        switch (modifierType)
+        {
+            case StatModifierType.Modify:
+                var currentValue = Stats.Single(x => x.Type == statType).Value;
+                ModifyStat(StatModifierType.Set, statType, currentValue.Value + value);
+                break;
+            case StatModifierType.Set:
+                Stats.Single(x => x.Type == statType).Value = value;
+                break;
+            default:
+                throw new Exception("Not a valid modifier type");
+        }
     }
 
     public override void Play()
@@ -114,11 +152,6 @@ public class Unit : Card
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Mulligan)
             {
                 Status = UnitStatuses.Preparing;
-
-                RemainingSpeed = 0;
-                ActionsLeft = 0;
-                AbilityUsesLeft = 0;
-                TemporaryProtected = 0;
             }
             else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
@@ -126,7 +159,7 @@ public class Unit : Card
                 {
                     Status = UnitStatuses.Start;
 
-                    RemainingSpeed = Speed;
+                    RemainingSpeed = GetStat(StatTypes.Speed).Value;
                     ActionsLeft = 1;
                     AbilityUsesLeft = 1;
                 }
@@ -135,7 +168,7 @@ public class Unit : Card
                     Status = UnitStatuses.Preparing;
                 }
 
-                TemporaryProtected = 0;
+                ModifyStat(StatModifierType.Set, StatTypes.TempProtected, 0);
             }
         }
         else
@@ -175,9 +208,9 @@ public class Unit : Card
     {
         ModifyActions(-1);
 
-        targetUnit.DamageUnit(Attack);
-        if (Range == 0)
-            DamageUnit(targetUnit.Attack);
+        targetUnit.DamageUnit(GetStat(StatTypes.Attack).Value);
+        if (GetStat(StatTypes.Range).Value == 0)
+            DamageUnit(targetUnit.GetStat(StatTypes.Attack).Value);
 
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
@@ -187,19 +220,19 @@ public class Unit : Card
     {
         if (TotalProtected.HasValue)
         {
-            TemporaryProtected -= damageValue;
-            if (TemporaryProtected < 0)
+            ModifyStat(StatModifierType.Modify, StatTypes.TempProtected, -damageValue);
+            if (GetStat(StatTypes.TempProtected) < 0)
             {
-                Protected += TemporaryProtected.Value;
-                TemporaryProtected = 0;
-                if (Protected < 0)
+                ModifyStat(StatModifierType.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
+                ModifyStat(StatModifierType.Set, StatTypes.TempProtected, 0);
+                if (GetStat(StatTypes.Protected) < 0)
                 {
-                    Health += Protected.Value;
-                    Protected = 0;
+                    CurrentHealth += GetStat(StatTypes.Protected).Value;
+                    ModifyStat(StatModifierType.Set, StatTypes.Protected, 0);
                 }
             }
 
-            if (Health <= 0)
+            if (CurrentHealth <= 0)
                 DestroyUnit();
         }
         UnitCounter.RefreshUnitCounter();
@@ -208,9 +241,9 @@ public class Unit : Card
     public void HealUnit(int? healValue)
     {
         if (healValue.HasValue)
-            Health = Mathf.Min(BaseHealth, Health + healValue.Value);
+            CurrentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth).Value, CurrentHealth + healValue.Value);
         else
-            Health = BaseHealth;
+            CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
 
         UnitCounter.RefreshUnitCounter();
     }
@@ -221,22 +254,22 @@ public class Unit : Card
         {
             if (value.HasValue)
             {
-                if (TemporaryProtected.HasValue)
-                    TemporaryProtected += value;
+                if (GetStat(StatTypes.TempProtected).HasValue)
+                    ModifyStat(StatModifierType.Modify, StatTypes.TempProtected, value.Value);
             }
             else
-                TemporaryProtected = null;
+                ModifyStat(StatModifierType.Set, StatTypes.TempProtected, null);
         }
         else
         {
             if (value.HasValue)
             {
-                if (Protected.HasValue)
-                    Protected += value;
+                if (GetStat(StatTypes.Protected).HasValue)
+                    ModifyStat(StatModifierType.Modify, StatTypes.Protected, value.Value);
             }
             else
             {
-                Protected = null;
+                ModifyStat(StatModifierType.Set, StatTypes.Protected, null);
             }
         }
         UnitCounter.RefreshUnitCounter();
@@ -279,5 +312,62 @@ public class Unit : Card
         ModifyActions(ability.CostsAction ? -1 : 0);
 
         UnitCounter.RefreshUnitCounter();
+    }
+
+    public void AddEnchantment(UnitEnchantment enchantment)
+    {
+        Enchantments.Add(enchantment);
+        UpdateEnchantments();
+
+        if (CurrentKeywords.Contains(BaseUnitKeywords.Flying))
+            CurrentStatusEffects.Add(StatusEffects.Flying);
+        if (CurrentKeywords.Contains(BaseUnitKeywords.Stealth))
+            CurrentStatusEffects.Add(StatusEffects.Stealthed);
+    }
+
+    public void RemoveEnchantment(UnitEnchantment enchantment)
+    {
+        if (Enchantments.Contains(enchantment))
+        {
+            Enchantments.Remove(enchantment);
+            UpdateEnchantments();
+        }
+    }
+
+    private void UpdateEnchantments()
+    {
+        CurrentKeywords.Clear();
+        CurrentStatusEffects.Clear();
+
+        foreach (var enchantment in Enchantments)
+        {
+            if (enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
+            {
+                if (enchantment.IsActive)
+                {
+                    foreach (var statModifier in enchantment.StatModifiers)
+                        ModifyStat(statModifier.ModType, statModifier.StatType, statModifier.Value);
+
+                    foreach (var keyword in enchantment.Keywords)
+                    {
+                        if (!CurrentKeywords.Contains(keyword))
+                            CurrentKeywords.Add(keyword);
+                    }
+
+                    foreach (var statusEffect in enchantment.StatusEffects)
+                    {
+                        if (!CurrentStatusEffects.Contains(statusEffect))
+                            CurrentStatusEffects.Add(statusEffect);
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("Not a valid enchantment");
+            }
+        }
+
+        if (UnitCounter != null)
+            UnitCounter.RefreshUnitCounter();
     }
 }

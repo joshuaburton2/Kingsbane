@@ -66,19 +66,19 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void RefreshHeroStats()
     {
-        attackText.text = hero.Attack.ToString();
+        attackText.text = hero.GetStat(Unit.StatTypes.Attack).ToString();
         attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedAttack);
 
-        healthText.text = hero.Health.ToString();
+        healthText.text = hero.CurrentHealth.ToString();
         healthText.color = GameManager.instance.colourManager.GetStatModColour(hero.UnitIsDamaged);
 
-        rangeText.text = hero.Range.ToString();
+        rangeText.text = hero.GetStat(Unit.StatTypes.Range).ToString();
         rangeText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedRange);
 
         protectedText.text = hero.TotalProtected.HasValue ? hero.TotalProtected.ToString() : "Inf";
         protectedArea.SetActive(!hero.TotalProtected.HasValue || hero.TotalProtected.Value > 0);
 
-        speedText.text = $"{hero.RemainingSpeed}/{hero.Speed}";
+        speedText.text = $"{hero.RemainingSpeed}/{hero.GetStat(Unit.StatTypes.Speed)}";
         speedText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedSpeed);
     }
 

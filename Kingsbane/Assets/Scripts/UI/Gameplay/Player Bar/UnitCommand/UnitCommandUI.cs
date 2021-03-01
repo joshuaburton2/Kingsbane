@@ -55,6 +55,12 @@ public class UnitCommandUI : MonoBehaviour
     [SerializeField]
     private Button minusButton;
 
+    [Header("Enchantment Area")]
+    [SerializeField]
+    private GameObject enchantmentObjectParent;
+    [SerializeField]
+    private GameObject enchantmentObjectPrefab;
+
     private int SetSpeed { get; set; }
     private bool ModifyingSpeed { get; set; }
     private const int LOWEST_SPEED = 1;
@@ -110,7 +116,7 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     public void RefreshCommandBar()
     {
-        speedText.text = $"Speed: {unit.RemainingSpeed}/{unit.Speed}";
+        speedText.text = $"Speed: {unit.RemainingSpeed}/{unit.GetStat(Unit.StatTypes.Speed)}";
         actionText.text = $"Action: {unit.ActionsLeft}";
         abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
         RefreshAbilities();
@@ -118,6 +124,16 @@ public class UnitCommandUI : MonoBehaviour
         moveButton.interactable = unit.CanMove;
         attackButton.interactable = unit.CanAction;
         speedArea.SetActive(false);
+
+        GameManager.DestroyAllChildren(enchantmentObjectParent);
+        foreach (var enchantment in unit.Enchantments)
+        {
+            if (enchantment.Status != UnitEnchantment.EnchantmentStatus.Default)
+            {
+                var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
+                enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment);
+            }
+        }
     }
 
     /// <summary>
