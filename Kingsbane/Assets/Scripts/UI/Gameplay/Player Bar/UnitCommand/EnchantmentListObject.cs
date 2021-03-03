@@ -12,7 +12,8 @@ public class EnchantmentListObject : MonoBehaviour
 
     public void InitEnchantmentObject(UnitEnchantment _enchantment)
     {
-        sourceText.text = _enchantment.Source;
+        var activeText = !_enchantment.IsActive ? "- Spellbound" : "";
+        sourceText.text = $"{_enchantment.Source}{activeText}";
         descriptionText.text = _enchantment.DescriptionText();
     }
 }

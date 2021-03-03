@@ -22,6 +22,7 @@ public class EffectManager : MonoBehaviour
         Protected,
         DestroyUnit,
         RemoveUnit,
+        EnchantUnit,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -38,11 +39,13 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.Protected,
         ActiveEffectTypes.DestroyUnit,
         ActiveEffectTypes.RemoveUnit,
+        ActiveEffectTypes.EnchantUnit,
     };
 
     private Card SelectedCard { get; set; }
     private Unit SelectedUnit { get; set; }
     private AbilityData SelectedAbility { get; set; }
+    private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
     private bool? SelectedBoolean { get; set; }
 
@@ -71,6 +74,7 @@ public class EffectManager : MonoBehaviour
         if (fullReset)
             ActiveEffect = ActiveEffectTypes.None;
 
+        SelectedEnchantment = null;
         SelectedAbility = null;
         SelectedValue = null;
         SelectedBoolean = null;
@@ -361,5 +365,16 @@ public class EffectManager : MonoBehaviour
     public void RemoveUnit(Unit unit)
     {
         unit.RemoveUnit();
+    }
+
+    public void SetEnchantUnitMode(UnitEnchantment unitEnchantment)
+    {
+        SelectedEnchantment = unitEnchantment;
+        ActiveEffect = ActiveEffectTypes.EnchantUnit;
+    }
+
+    public void EnchantUnit(Unit unit)
+    {
+        unit.AddEnchantment(SelectedEnchantment);
     }
 }

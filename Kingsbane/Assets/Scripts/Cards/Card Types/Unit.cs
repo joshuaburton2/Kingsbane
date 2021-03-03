@@ -108,13 +108,19 @@ public class Unit : Card
         Status = UnitStatuses.Preparing;
         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
 
-        var keywordEnchantment = new UnitEnchantment()
+        if (BaseKeywords.Count > 0 || GetStat(StatTypes.Empowered) > 0)
         {
-            Source = "Default",
-            Status = UnitEnchantment.EnchantmentStatus.Default,
-        };
-        keywordEnchantment.Keywords = BaseKeywords.ToList();
-        AddEnchantment(keywordEnchantment);
+            var keywordEnchantment = new UnitEnchantment()
+            {
+                Source = "Base Keywords",
+                Status = UnitEnchantment.EnchantmentStatus.Base,
+            };
+            keywordEnchantment.Keywords = BaseKeywords.ToList();
+            if (GetStat(StatTypes.Empowered) > 0)
+                keywordEnchantment.AddStatModifier(StatTypes.Empowered, StatModifierType.Modify, GetStat(StatTypes.Empowered).Value);
+            
+            AddEnchantment(keywordEnchantment);
+        }
     }
 
     public int? GetStat(StatTypes statType)

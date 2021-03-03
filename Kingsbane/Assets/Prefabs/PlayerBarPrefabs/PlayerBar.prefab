@@ -43572,6 +43572,7 @@ MonoBehaviour:
   speedInput: {fileID: 3472200223691422360}
   plusButton: {fileID: 1848494376485088568}
   minusButton: {fileID: 2745789669062074685}
+  enchantmentArea: {fileID: 5076972114184224989}
   enchantmentObjectParent: {fileID: 1718850517835405420}
   enchantmentObjectPrefab: {fileID: 7423703078730189131, guid: 4556c862f1c7caf4291d11531a065441,
     type: 3}

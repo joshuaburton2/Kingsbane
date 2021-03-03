@@ -68,6 +68,8 @@ public class GameplayUI : MonoBehaviour
         }
 
         actionButtonText.text = "Start Game";
+
+        effectBarUI.RefreshEffectList();
     }
 
     public void ActionButton()

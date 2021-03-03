@@ -88,6 +88,10 @@ public class Cell : MonoBehaviour
                                 if (occupantCounter != null)
                                     GameManager.instance.effectManager.RemoveUnit(occupantCounter.Unit);
                                 break;
+                            case EffectManager.ActiveEffectTypes.EnchantUnit:
+                                if (occupantCounter != null)
+                                    GameManager.instance.effectManager.EnchantUnit(occupantCounter.Unit);
+                                break;
                             case EffectManager.ActiveEffectTypes.None:
                                 SelectCommandUnit();
                                 break;

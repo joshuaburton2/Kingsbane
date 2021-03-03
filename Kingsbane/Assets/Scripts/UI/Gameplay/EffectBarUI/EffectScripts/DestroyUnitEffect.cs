@@ -14,9 +14,9 @@ public class DestroyUnitEffect : EffectUI
     /// Inisitalise the effect UI
     /// 
     /// </summary>
-    public override void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI)
+    public override void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI, EffectsBarUI _effectBarUI)
     {
-        base.InitialiseEffectUI(_effectType, _gameplayUI);
+        base.InitialiseEffectUI(_effectType, _gameplayUI, _effectBarUI);
 
         ResetState();
 

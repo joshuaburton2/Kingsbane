@@ -10,6 +10,7 @@ public class EffectUI : MonoBehaviour
     public bool effectComplete;
 
     protected GameplayUI gameplayUI;
+    protected EffectsBarUI effectBarUI;
 
     [SerializeField]
     private TextMeshProUGUI effectTitle;
@@ -29,12 +30,13 @@ public class EffectUI : MonoBehaviour
         }
     }
 
-    public virtual void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI)
+    public virtual void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI, EffectsBarUI _effectBarUI)
     {
         effectComplete = true;
         effectType = _effectType;
         effectTitle.text = _effectType.GetEnumDescription();
         gameplayUI = _gameplayUI;
+        effectBarUI = _effectBarUI;
         buttonGroup.interactable = true;
     }
 

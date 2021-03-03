@@ -58,7 +58,7 @@ public class CardList
         {
             if (filter.Name.Length > 0)
             {
-                if (!filter.Name.Contains(card.Name))
+                if (!filter.Name.ToLower().Contains(card.Name.ToLower()))
                     continue;
             }
 

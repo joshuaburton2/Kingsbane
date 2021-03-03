@@ -57,6 +57,8 @@ public class UnitCommandUI : MonoBehaviour
 
     [Header("Enchantment Area")]
     [SerializeField]
+    private GameObject enchantmentArea;
+    [SerializeField]
     private GameObject enchantmentObjectParent;
     [SerializeField]
     private GameObject enchantmentObjectPrefab;
@@ -125,14 +127,12 @@ public class UnitCommandUI : MonoBehaviour
         attackButton.interactable = unit.CanAction;
         speedArea.SetActive(false);
 
+        enchantmentArea.SetActive(unit.Enchantments.Count > 0);
         GameManager.DestroyAllChildren(enchantmentObjectParent);
         foreach (var enchantment in unit.Enchantments)
         {
-            if (enchantment.Status != UnitEnchantment.EnchantmentStatus.Default)
-            {
-                var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
-                enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment);
-            }
+            var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
+            enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment);
         }
     }
 
