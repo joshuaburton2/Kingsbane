@@ -23,8 +23,8 @@ public class EffectsBarUI : MonoBehaviour
         Protected,
         [Description("Destroy Unit")]
         DestroyUnit,
-        [Description("Enchantment")]
-        Enchantment,
+        [Description("Unit Enchantment")]
+        UnitEnchantment,
     }
 
     [Serializable]
@@ -51,6 +51,14 @@ public class EffectsBarUI : MonoBehaviour
     [SerializeField]
     private GameplayUI gameplayUI;
 
+    private bool effectExtensionsShown;
+
+    private void Update()
+    {
+        if (effectExtensionsShown && GameManager.instance.effectManager.IsUILocked)
+            HideEffectExtensions();
+    }
+
     /// <summary>
     /// 
     /// Refresh the Effect List
@@ -73,12 +81,18 @@ public class EffectsBarUI : MonoBehaviour
 
     public void HideEffectExtensions()
     {
+        effectExtensionsShown = false;
+
         foreach (var effectExtension in effectExtensions)
             effectExtension.effectArea.SetActive(false);
     }
 
     public void ShowEffectExtension(EffectTypes effectType)
     {
+        HideEffectExtensions();
+
+        effectExtensionsShown = true;
+
         var effectExtension = effectExtensions.SingleOrDefault(x => x.effectType == effectType);
         if (effectExtension == null)
             throw new Exception("Effect type does not have an extension");

@@ -21,6 +21,7 @@ public class EffectUI : MonoBehaviour
     {
         buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
 
+        //If not in the basic game effects and the effec
         if (!GameManager.instance.effectManager.IsUILocked && !effectComplete)
         {
             if (GameManager.instance.effectManager.CancelEffect)
@@ -30,6 +31,11 @@ public class EffectUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Initialises the effect UI
+    /// 
+    /// </summary>
     public virtual void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI, EffectsBarUI _effectBarUI)
     {
         effectComplete = true;
@@ -40,14 +46,26 @@ public class EffectUI : MonoBehaviour
         buttonGroup.interactable = true;
     }
 
+    /// <summary>
+    /// 
+    /// Virtual function for completing the effect
+    /// 
+    /// </summary>
     public virtual void CompleteEffect()
     {
         effectComplete = true;
     }
 
+    /// <summary>
+    /// 
+    /// Virtual function for cancelling the effect
+    /// 
+    /// </summary>
     public virtual void CancelEffect()
     {
         GameManager.instance.effectManager.CancelEffect = false;
         effectComplete = true;
+
+        effectBarUI.HideEffectExtensions();
     }
 }

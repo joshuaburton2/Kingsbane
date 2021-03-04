@@ -6,6 +6,6 @@ public class EffectExtensionUI : MonoBehaviour
 {
     public virtual void RefreshEffectExtension()
     {
-
+        
     }
 }

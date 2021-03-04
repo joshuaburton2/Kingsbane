@@ -610,7 +610,7 @@ public class LibraryManager : MonoBehaviour
 
         //Checks the filters not covered by the normal filtered card list
         if (!string.IsNullOrWhiteSpace(generateCardFilter.Name))
-            generatedList = generatedList.Where(x => x.Name == generateCardFilter.Name).ToList();
+            generatedList = generatedList.Where(x => x.Name.ToLower() == generateCardFilter.Name.ToLower()).ToList();
         if (generateCardFilter.Resource != CardResources.Neutral)
             generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Resource)).Where(x => x.GetResources.Count == 1).ToList();
         if (generateCardFilter.Class != Classes.ClassList.Default)
