@@ -56,7 +56,9 @@ public class EffectsBarUI : MonoBehaviour
     private void Update()
     {
         if (effectExtensionsShown && GameManager.instance.effectManager.IsUILocked)
+        {
             HideEffectExtensions();
+        }
     }
 
     /// <summary>

@@ -75,7 +75,7 @@ public class UnitCounter : MonoBehaviour
         healthText.color = GameManager.instance.colourManager.GetStatModColour(Unit.UnitIsDamaged);
 
         rangeText.text = Unit.GetStat(Unit.StatTypes.Range).ToString();
-        rangeText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedAttack);
+        rangeText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedRange);
 
         speedText.text = $"{Unit.RemainingSpeed}/{Unit.GetStat(Unit.StatTypes.Speed)}";
         speedText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedSpeed);

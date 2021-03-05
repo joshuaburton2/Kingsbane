@@ -22,7 +22,7 @@ public class UnitEnchantment
     public class StatModifier
     {
         public Unit.StatTypes StatType { get; set; }
-        public StatModifierType ModType { get; set; }
+        public StatModifierTypes ModType { get; set; }
         public int Value { get; set; }
     }
 
@@ -35,6 +35,8 @@ public class UnitEnchantment
     public bool IsActive { get; set; }
     public string Source { get; set; }
 
+    public bool ValidEnchantment { get { return StatModifiers.Count > 0 || Keywords.Count > 0 || StatusEffects.Count > 0; } }
+
     public UnitEnchantment()
     {
         IsActive = true;
@@ -45,9 +47,9 @@ public class UnitEnchantment
         StatusEffects = new List<Unit.StatusEffects>();
     }
 
-    public void AddStatModifier(Unit.StatTypes statType, StatModifierType modType, int value)
+    public void AddStatModifier(Unit.StatTypes statType, StatModifierTypes modType, int value)
     {
-        if (statType == Unit.StatTypes.Default || modType == StatModifierType.None)
+        if (statType == Unit.StatTypes.Default || modType == StatModifierTypes.None)
             throw new Exception("Not valid stat modifier inputs");
 
         StatModifiers.Add(new StatModifier() { StatType = statType, ModType = modType, Value = value });
@@ -62,11 +64,11 @@ public class UnitEnchantment
             string statText;
             switch (statModifier.ModType)
             {
-                case StatModifierType.Modify:
+                case StatModifierTypes.Modify:
                     var valueSign = statModifier.Value >= 0 ? "+" : "-";
                     statText = $"{valueSign}{Mathf.Abs(statModifier.Value)} {statModifier.StatType}, ";
                     break;
-                case StatModifierType.Set:
+                case StatModifierTypes.Set:
                     statText = $"Set {statModifier.StatType} to {statModifier.Value}, ";
                     break;
                 default:

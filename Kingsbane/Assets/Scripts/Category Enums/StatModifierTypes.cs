@@ -1,6 +1,6 @@
 ﻿namespace CategoryEnums
 {
-    public enum StatModifierType
+    public enum StatModifierTypes
     {
         None,
         Modify,

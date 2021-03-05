@@ -55,7 +55,7 @@ public class Player
     {
         if (isActive)
         {
-            GameManager.instance.effectManager.RefreshEffectManager();
+            GameManager.instance.effectManager.RefreshEffectManager(true);
 
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {

@@ -1,6 +1,6 @@
 ﻿namespace CategoryEnums
 {
-    public enum StatModTypes
+    public enum StatisticStatuses
     {
         None,
         Buffed,

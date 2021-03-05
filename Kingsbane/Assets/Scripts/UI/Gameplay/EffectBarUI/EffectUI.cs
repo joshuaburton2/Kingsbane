@@ -65,7 +65,5 @@ public class EffectUI : MonoBehaviour
     {
         GameManager.instance.effectManager.CancelEffect = false;
         effectComplete = true;
-
-        effectBarUI.HideEffectExtensions();
     }
 }

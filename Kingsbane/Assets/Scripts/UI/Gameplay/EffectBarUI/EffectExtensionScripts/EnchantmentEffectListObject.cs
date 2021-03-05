@@ -8,6 +8,8 @@ public class EnchantmentEffectListObject : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI enchantmentText;
 
+    public string Value { get { return enchantmentText.text; } set { enchantmentText.text = value; } }
+
     private EnchantmentExtensionEffect enchantmentExtensionEffect;
     private EnchantmentExtensionEffect.EnchantmentType listType;
 
@@ -21,7 +23,7 @@ public class EnchantmentEffectListObject : MonoBehaviour
         enchantmentExtensionEffect = _enchantmentExtensionEffect;
         listType = _listType;
 
-        enchantmentText.text = objectValue;
+        Value = objectValue;
     }
 
     /// <summary>
@@ -31,6 +33,6 @@ public class EnchantmentEffectListObject : MonoBehaviour
     /// </summary>
     public void RemoveButton()
     {
-        enchantmentExtensionEffect.RemoveListObject(enchantmentText.text, listType);
+        enchantmentExtensionEffect.RemoveListObject(this, listType);
     }
 }

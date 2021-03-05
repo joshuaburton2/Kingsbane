@@ -72,7 +72,7 @@ public class PlayerColour
 [Serializable]
 public class StatModColours
 {
-    public StatModTypes statMod;
+    public StatisticStatuses statMod;
     public Color statColour;
 }
 
@@ -221,7 +221,7 @@ public class ColourManager : MonoBehaviour
     /// Obtain a particular unit stat colour 
     /// 
     /// </summary>
-    public Color GetStatModColour(StatModTypes statModType)
+    public Color GetStatModColour(StatisticStatuses statModType)
     {
         var statModColour = new Color();
         statModColour = statModColours.FirstOrDefault(x => x.statMod == statModType).statColour;
