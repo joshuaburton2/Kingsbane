@@ -233,33 +233,43 @@ public class Unit : Card
     {
         ModifyActions(-1);
 
-        targetUnit.DamageUnit(GetStat(StatTypes.Attack).Value);
+        targetUnit.DamageUnit(GetStat(StatTypes.Attack).Value, CurrentKeywords.Contains(BaseUnitKeywords.Piercing));
         if (GetStat(StatTypes.Range).Value == 0)
-            DamageUnit(targetUnit.GetStat(StatTypes.Attack).Value);
+            DamageUnit(targetUnit.GetStat(StatTypes.Attack).Value, CurrentKeywords.Contains(BaseUnitKeywords.Piercing));
 
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
-    public void DamageUnit(int damageValue)
+    public void DamageUnit(int damageValue, bool isPiercing)
     {
-        if (TotalProtected.HasValue)
+        if (isPiercing)
         {
-            ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
-            if (GetStat(StatTypes.TempProtected) < 0)
-            {
-                ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
-                ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
-                if (GetStat(StatTypes.Protected) < 0)
-                {
-                    CurrentHealth += GetStat(StatTypes.Protected).Value;
-                    ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
-                }
-            }
-
+            CurrentHealth -= damageValue;
             if (CurrentHealth <= 0)
                 DestroyUnit();
         }
+        else
+        {
+            if (TotalProtected.HasValue)
+            {
+                ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
+                if (GetStat(StatTypes.TempProtected) < 0)
+                {
+                    ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
+                    ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
+                    if (GetStat(StatTypes.Protected) < 0)
+                    {
+                        CurrentHealth += GetStat(StatTypes.Protected).Value;
+                        ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
+                    }
+                }
+
+                if (CurrentHealth <= 0)
+                    DestroyUnit();
+            }
+        }
+        
         UnitCounter.RefreshUnitCounter();
     }
 
@@ -348,6 +358,9 @@ public class Unit : Card
             CurrentStatusEffects.Add(StatusEffects.Flying);
         if (CurrentKeywords.Contains(BaseUnitKeywords.Stealth))
             CurrentStatusEffects.Add(StatusEffects.Stealthed);
+
+        if (UnitCounter != null)
+            UnitCounter.RefreshUnitCounter();
     }
 
     public void RemoveEnchantment(UnitEnchantment enchantment)

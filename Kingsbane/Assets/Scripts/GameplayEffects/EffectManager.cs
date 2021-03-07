@@ -310,16 +310,17 @@ public class EffectManager : MonoBehaviour
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }
 
-    public void SetDealDamageMode(int damageValue)
+    public void SetDealDamageMode(int damageValue, bool isPiercing)
     {
         SelectedValue = damageValue;
+        SelectedBoolean = isPiercing;
         ActiveEffect = ActiveEffectTypes.DealDamage;
     }
 
     public void DealDamage(Unit unit)
     {
         if (SelectedValue.HasValue)
-            unit.DamageUnit(SelectedValue.Value);
+            unit.DamageUnit(SelectedValue.Value, SelectedBoolean.Value);
         else
             throw new Exception("Damage value not set");
     }

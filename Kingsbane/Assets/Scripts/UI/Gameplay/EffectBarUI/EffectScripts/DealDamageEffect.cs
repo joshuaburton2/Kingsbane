@@ -8,6 +8,8 @@ class DealDamageEffect : EffectUI
     private Button damageButton;
     [SerializeField]
     private TMP_InputField damageValueInput;
+    [SerializeField]
+    private Toggle piercingToggle;
 
     /// <summary>
     /// 
@@ -30,6 +32,7 @@ class DealDamageEffect : EffectUI
     private void ResetState()
     {
         damageButton.interactable = true;
+        piercingToggle.isOn = false;
     }
 
     /// <summary>
@@ -50,7 +53,7 @@ class DealDamageEffect : EffectUI
             damageValueInput.text = "1";
             damageValue = 1;
         }
-        GameManager.instance.effectManager.SetDealDamageMode(damageValue);
+        GameManager.instance.effectManager.SetDealDamageMode(damageValue, piercingToggle.isOn);
     }
 
     /// <summary>
