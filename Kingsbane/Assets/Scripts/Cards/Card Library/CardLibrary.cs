@@ -951,7 +951,7 @@ public class CardLibrary
         {
             Id = 92,
             Name = "Deep Exposure",
-            Text = @"Deal damage to a unit within Range 3 equal to its attack.",
+            Text = @"Deal <b>Piercing</b> damage to a unit within Range 3 equal to its attack.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
@@ -1606,7 +1606,7 @@ public class CardLibrary
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Empowered +1</b>",
+            Text = @"<b>Empowered +1, Protected (3)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1615,16 +1615,16 @@ public class CardLibrary
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Arcanist, Tags.Empowered },
-            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.Melee },
+            Tags = new List<Tags> { Tags.Ability, Tags.Dwarven, Tags.Arcanist, Tags.Empowered, Tags.Protected },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Empowered, Synergies.Melee, Synergies.Protected },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Dwarven,
                 UnitTags.Arcanist,
             },
             Attack = 3,
-            Health = 4,
-            Protected = 0,
+            Health = 2,
+            Protected = 3,
             Range = 0,
             Speed = 2,
             Empowered = 1,
@@ -1739,7 +1739,7 @@ public class CardLibrary
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Mana, 2), },
 
-            Text = @"<b>Conduit, Empowered +1</b>",
+            Text = @"<b>Conduit, Empowered +1, Protected (4)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -1748,16 +1748,16 @@ public class CardLibrary
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Runeblade, Tags.Ability, Tags.Empowered, Tags.Elven, Tags.Conduit },
-            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Empowered, Synergies.Melee },
+            Tags = new List<Tags> { Tags.Runeblade, Tags.Ability, Tags.Empowered, Tags.Protected, Tags.Elven, Tags.Conduit },
+            Synergies = new List<Synergies> { Synergies.Blademaster, Synergies.Empowered, Synergies.Melee, Synergies.Protected },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Runeblade,
             },
             Attack = 3,
-            Health = 3,
-            Protected = 0,
+            Health = 1,
+            Protected = 4,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -1823,16 +1823,16 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane, Tags.Warden },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal, Synergies.Defensive },
+            Tags = new List<Tags> { Tags.Protected, Tags.Summon, Tags.Spellshield, Tags.Ethereal, Tags.Arcane, Tags.Warden },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Durable, Synergies.Protected, Synergies.Antimagic, Synergies.Summon, Synergies.Ethereal, Synergies.Defensive },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Arcane,
                 UnitTags.Summon,
             },
             Attack = 0,
-            Health = 12,
-            Protected = 0,
+            Health = 6,
+            Protected = 9,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -1960,16 +1960,16 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Runeblade, Tags.Elven, Tags.Conduit, Tags.ManaGain },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mana, Synergies.BigMinions },
+            Tags = new List<Tags> { Tags.Runeblade, Tags.Protected, Tags.Elven, Tags.Conduit, Tags.ManaGain },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Protected, Synergies.Mana, Synergies.BigMinions },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Runeblade,
             },
             Attack = 5,
-            Health = 7,
-            Protected = 0,
+            Health = 3,
+            Protected = 7,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -2802,7 +2802,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
-            Text = @"Deal 2 damage to an enemy unit. If the spell kills it, deal 3 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
+            Text = @"Deal 2 damage to an enemy unit. If the spell kills it, deal 2 damage to another random enemy within range 2. Repeat until a unit doesn't die or there isn't another enemy unit to target",
             LoreText = @"",
             Notes = @"",
 
@@ -3323,7 +3323,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Mana, 1), },
 
-            Text = @"<b>Lifebond</b>
+            Text = @"<b>Lifebond, Piercing</b>
 Deal 4 damage to a unit",
             LoreText = @"",
             Notes = @"",
@@ -3333,8 +3333,8 @@ Deal 4 damage to a unit",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SingleDamage, Tags.Lifebond },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.SingleDamage, Synergies.Restoration },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Lifebond, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.SingleDamage, Synergies.Restoration, Synergies.Piercing },
             SpellType = "Damage",
             Range = 1,
         };
@@ -3410,7 +3410,7 @@ Deal 4 damage to a unit",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
             Text = @"Give a friendly unit with <b>Summon</b> +4 Attack, +4 Health. Gain additional Attack and Health points equal to your <b>Empowered</b> value.
-Deal damage to the caster equal to the additional points gained.",
+Deal <b>Piercing</b> damage to the caster equal to the additional points gained.",
             LoreText = @"",
             Notes = @"",
 
@@ -3419,7 +3419,7 @@ Deal damage to the caster equal to the additional points gained.",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Piercing },
             Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Summon, Synergies.Restoration, Synergies.SelfDamage },
             SpellType = "Enchantment",
             Range = 1,
@@ -3496,7 +3496,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
-            Text = @"Deal 4 damage to a unit. Deal an equal amount of damage to the caster",
+            Text = @"Deal 4 damage to a unit. Deal an equal amount of <b>Piercing</b> damage to the caster",
             LoreText = @"",
             Notes = @"",
 
@@ -3505,7 +3505,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SingleDamage, Tags.SelfDamage },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.SelfDamage, Tags.Piercing },
             Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.SingleDamage, Synergies.SelfDamage },
             SpellType = "Damage",
             Range = 3,
@@ -3520,7 +3520,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
-            Text = @"<b>Lifebond</b>
+            Text = @"<b>Lifebond, Piercing</b>
 At the start of your turn, <b>Regenerate</b>
 Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             LoreText = @"",
@@ -3531,8 +3531,8 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.PrayerGain, Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration },
+            Tags = new List<Tags> { Tags.PrayerGain, Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Regenerate, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Control, Synergies.Draw, Synergies.Durable, Synergies.BigMinions, Synergies.Prayer, Synergies.Restoration, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Vampire,
@@ -3547,7 +3547,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Piercing },
         };
         CardList.Add(card73);
 
@@ -3559,7 +3559,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), },
 
-            Text = @"<b>Lifebond</b>",
+            Text = @"<b>Lifebond, Piercing</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -3568,8 +3568,8 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Lifebond, Tags.Vampire, Tags.Noble },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Durable, Synergies.SingleDamage, Synergies.Restoration },
+            Tags = new List<Tags> { Tags.Ability, Tags.Lifebond, Tags.Vampire, Tags.Noble, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Durable, Synergies.SingleDamage, Synergies.Restoration, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Vampire,
@@ -3584,7 +3584,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Abilities = new List<AbilityData>() { ability67 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Piercing },
         };
         CardList.Add(card74);
 
@@ -3596,7 +3596,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"<b>Summon, Warden</b>
+            Text = @"<b>Summon, Warden, Protected (4)</b>
 Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total cost",
             LoreText = @"",
             Notes = @"",
@@ -3606,16 +3606,16 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Summon, Tags.Warden, Tags.Void, Tags.Abomination },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Discard, Synergies.Void },
+            Tags = new List<Tags> { Tags.Protected, Tags.Summon, Tags.Warden, Tags.Void, Tags.Abomination },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Durable, Synergies.Protected, Synergies.Summon, Synergies.Mana, Synergies.BigMinions, Synergies.Defensive, Synergies.Discard, Synergies.Void },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Void,
                 UnitTags.Summon,
             },
             Attack = 5,
-            Health = 7,
-            Protected = 0,
+            Health = 5,
+            Protected = 4,
             Range = 0,
             Speed = 2,
             Empowered = 0,
@@ -3634,7 +3634,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario."" Deal 3 damage to your hero",
+            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario."" Deal 3 <b>Piercing</b> damage to your hero",
             LoreText = @"",
             Notes = @"",
 
@@ -3643,7 +3643,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive },
+            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive, Tags.Piercing },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Deployment, Synergies.ShortRange, Synergies.Restoration, Synergies.SelfDamage },
             UnitTag = new List<UnitTags>()
             {
@@ -3882,7 +3882,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"Gain the <b>Passive:</b> ""You can <b>Summon</b> three additional units and your <b>Summon</b> units cost (2) less for the rest of the scenario.""
-Deal damage to your hero equal to half their remaining health",
+Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
             LoreText = @"",
             Notes = @"",
 
@@ -3891,7 +3891,7 @@ Deal damage to your hero equal to half their remaining health",
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SelfDamage, Tags.Passive },
+            Tags = new List<Tags> { Tags.SelfDamage, Tags.Passive, Tags.Piercing },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.BigSpells, Synergies.Summon, Synergies.Mana, Synergies.Restoration, Synergies.SelfDamage },
             SpellType = "Other",
             Range = 0,
@@ -5533,7 +5533,8 @@ At the start of each of your turns, gain 2 Wild",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 0), },
 
-            Text = @"Deal 2 damage to a unit",
+            Text = @"<b>Piercing</b>
+Deal 1 damage to a unit",
             LoreText = @"",
             Notes = @"",
 
@@ -5542,8 +5543,8 @@ At the start of each of your turns, gain 2 Wild",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SingleDamage },
-            Synergies = new List<Synergies> { },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Piercing },
             SpellType = "Damage",
             Range = 1,
         };
@@ -5728,9 +5729,10 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Name = "Spined Carapace",
             ImageTag = CardImageTags.Spined_Carapace,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
-            Text = @"Whenever an enemy is rooted or melee attacks your hero, deal 2 damage to it",
+            Text = @"<b>Deployment:</b> Give your hero <b>Protected (6)</b>
+Whenever an enemy is rooted or melee attacks your hero, deal 3 damage to it",
             LoreText = @"",
             Notes = @"",
 
@@ -5739,10 +5741,10 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Equip, Tags.Natural, Tags.Armour },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Defensive, Synergies.Equip, Synergies.Root },
+            Tags = new List<Tags> { Tags.Protected, Tags.Equip, Tags.Natural, Tags.Armour },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Protected, Synergies.Defensive, Synergies.Equip, Synergies.Root },
             ItemTag = "Natural Armour",
-            Durability = 6,
+            Durability = 4,
         };
         CardList.Add(card140);
 
@@ -6951,7 +6953,7 @@ Increase your base Knowledge rate by 1",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
-            Text = @"<b>Lifebond</b>
+            Text = @"<b>Lifebond, Piercing</b>
 Deal damage to a unit equal to its attack",
             LoreText = @"",
             Notes = @"",
@@ -6961,8 +6963,8 @@ Deal damage to a unit equal to its attack",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.Removal, Synergies.Restoration, Synergies.Equalize, Synergies.Madness },
+            Tags = new List<Tags> { Tags.Lifebond, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Control, Synergies.Removal, Synergies.Restoration, Synergies.Equalize, Synergies.Madness, Synergies.Piercing },
             SpellType = "Damage",
             Range = 3,
         };
@@ -7454,8 +7456,8 @@ After you cast a spell, draw a spell of the same total cost from your deck",
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.LastRites, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Study, Synergies.Removal, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution, Synergies.Equalize },
+            Tags = new List<Tags> { Tags.Ability, Tags.LastRites, Tags.Lifebond, Tags.Lorekeeper, Tags.Dragonkin, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Control, Synergies.Study, Synergies.Removal, Synergies.Prayer, Synergies.Restoration, Synergies.Retribution, Synergies.Equalize, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Dragonkin,
@@ -7595,7 +7597,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 6), },
 
-            Text = @"Deploy two ""Angel of Protection"" units beside the caster",
+            Text = @"Deploy two ""Angel of Protection"" units beside the caster. Give the caster <b>Protected (4)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7604,8 +7606,8 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Warden, Tags.Lifebond, Tags.Flying },
-            Synergies = new List<Synergies> { Synergies.Control, Synergies.BigSpells, Synergies.Swarm, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
+            Tags = new List<Tags> { Tags.Protected, Tags.Warden, Tags.Lifebond, Tags.Flying },
+            Synergies = new List<Synergies> { Synergies.Control, Synergies.Protected, Synergies.BigSpells, Synergies.Swarm, Synergies.Defensive, Synergies.Prayer, Synergies.Restoration, Synergies.Flying, Synergies.Angels },
             SpellType = "Deployment",
             Range = 0,
         };
@@ -7619,7 +7621,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
-            Text = @"<b>Warden, Flying, Lifebond</b>",
+            Text = @"<b>Warden, Flying, Lifebond, Protected (2)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -7628,7 +7630,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Warden, Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
+            Tags = new List<Tags> { Tags.Protected, Tags.Warden, Tags.Lifebond, Tags.Flying, Tags.Oathknight, Tags.Angel },
             Synergies = new List<Synergies> { },
             UnitTag = new List<UnitTags>()
             {
@@ -7636,8 +7638,8 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
                 UnitTags.Oathknight,
             },
             Attack = 2,
-            Health = 3,
-            Protected = 0,
+            Health = 2,
+            Protected = 2,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -8435,7 +8437,7 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Mana, 2), },
 
-            Text = @"<b>Vanguard, Empowered +2
+            Text = @"<b>Vanguard, Empowered +2, Piercing
 Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> value",
             LoreText = @"",
             Notes = @"",
@@ -8445,8 +8447,8 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Deployment, Tags.SingleDamage, Tags.Trickster, Tags.Vanguard, Tags.Shadowborn },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Deployment, Synergies.Vanguard },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Deployment, Tags.SingleDamage, Tags.Trickster, Tags.Vanguard, Tags.Shadowborn, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.Deployment, Synergies.Vanguard, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Shadowborn,
@@ -8461,7 +8463,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard, BaseUnitKeywords.Piercing },
         };
         CardList.Add(card228);
 
@@ -8543,8 +8545,8 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.SingleDamage, Tags.GoldGain },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Value, Synergies.Gold, Synergies.Shivs },
+            Tags = new List<Tags> { Tags.SingleDamage, Tags.GoldGain, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.SmallSpells, Synergies.Value, Synergies.Gold, Synergies.Shivs, Synergies.Piercing },
             SpellType = "Resource",
             Range = 0,
         };
@@ -8568,8 +8570,8 @@ Deployment:</b> Add 2 Shivs to your hand",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue, Tags.Ratfolk, Tags.Routing },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs, Synergies.Routing },
+            Tags = new List<Tags> { Tags.Conduit, Tags.Deployment, Tags.SingleDamage, Tags.Rogue, Tags.Ratfolk, Tags.Routing, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Deployment, Synergies.Value, Synergies.Shivs, Synergies.Routing, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Ratfolk,
@@ -8682,7 +8684,8 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Spellbind</b> and deal 4 damage to a unit. If this kills it, draw a card",
+            Text = @"<b>Piercing
+Spellbind</b> and deal 4 damage to a unit. If this kills it, draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -8767,7 +8770,7 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Mana, 2), },
 
-            Text = @"Whenever your hero attacks, give them <b>Deadly</b> for that attack",
+            Text = @"Whenever your hero attacks, give them <b>Deadly</b> and <b>Piercing</b> for that attack",
             LoreText = @"",
             Notes = @"",
 
@@ -8776,8 +8779,8 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
             Rarity = Rarity.Rare,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Equip, Tags.Magic, Tags.Deadly, Tags.Dagger },
-            Synergies = new List<Synergies> { Synergies.Equip, Synergies.Removal },
+            Tags = new List<Tags> { Tags.Equip, Tags.Magic, Tags.Deadly, Tags.Dagger, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Equip, Synergies.Removal, Synergies.Piercing },
             ItemTag = "Magic Dagger",
             Durability = 4,
         };
@@ -8791,7 +8794,7 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 5), },
 
-            Text = @"<b>Summon, Stealth, Ethereal</b>
+            Text = @"<b>Summon, Stealth, Ethereal, Piercing</b>
 Whenever this attacks a unit, if the target has no adjacent allies, it takes double damage",
             LoreText = @"",
             Notes = @"",
@@ -8801,8 +8804,8 @@ Whenever this attacks a unit, if the target has no adjacent allies, it takes dou
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Shadow },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
+            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Stealth, Tags.Shadow, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Shadow,
@@ -8817,7 +8820,7 @@ Whenever this attacks a unit, if the target has no adjacent allies, it takes dou
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon },
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon, BaseUnitKeywords.Piercing },
         };
         CardList.Add(card240);
 
@@ -8915,8 +8918,8 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Conduit, Tags.Ethereal, Tags.Trickster, Tags.Stealth, Tags.Shadowborn },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.BigMinions, Synergies.Value, Synergies.Vanguard, Synergies.Gold, Synergies.Shadows },
+            Tags = new List<Tags> { Tags.Conduit, Tags.Ethereal, Tags.Trickster, Tags.Stealth, Tags.Shadowborn, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Ethereal, Synergies.BigMinions, Synergies.Value, Synergies.Vanguard, Synergies.Gold, Synergies.Shadows, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Shadowborn,
@@ -8980,7 +8983,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
-            Text = @"<b>Ethereal, Summon, Stealth</b>
+            Text = @"<b>Ethereal, Summon, Stealth, Piercing</b>
 After this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
             LoreText = @"",
             Notes = @"",
@@ -8990,8 +8993,8 @@ After this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Regenerate, Tags.Stealth, Tags.Shadow },
-            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Durable, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows },
+            Tags = new List<Tags> { Tags.Summon, Tags.Ethereal, Tags.Regenerate, Tags.Stealth, Tags.Shadow, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Mobility, Synergies.Durable, Synergies.Summon, Synergies.Ethereal, Synergies.Mana, Synergies.BigMinions, Synergies.Shadows, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Shadow,
@@ -9255,7 +9258,7 @@ Increase your base Knowledge rate by 1",
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"<b>Prepared
-Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
+Deployment:</b> Gain either <b>Overwhelm</b> or <b>Protected (3)</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -9264,8 +9267,8 @@ Deployment:</b> Gain either <b>Overwhelm</b> or +2 Health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Prepared, Tags.Deployment, Tags.Overwhelm, Tags.Knight, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Prepared, Synergies.Overwhelm, Synergies.Choices },
+            Tags = new List<Tags> { Tags.Human, Tags.Protected, Tags.Prepared, Tags.Deployment, Tags.Overwhelm, Tags.Knight, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Mobility, Synergies.Protected, Synergies.Swarm, Synergies.Prepared, Synergies.Overwhelm, Synergies.Choices },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
@@ -9722,16 +9725,16 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Captain, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Removal },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Protected, Tags.Warden, Tags.Deployment, Tags.Captain, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Control, Synergies.Protected, Synergies.Deployment, Synergies.BigMinions, Synergies.Defensive, Synergies.Removal },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
                 UnitTags.Captain,
             },
             Attack = 5,
-            Health = 6,
-            Protected = 0,
+            Health = 4,
+            Protected = 4,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -9774,7 +9777,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 8), },
 
-            Text = @"<b>Vanguard
+            Text = @"<b>Vanguard, Protected (3)
 Deployment:</b> Use <b>Call to Arms</b>",
             LoreText = @"",
             Notes = @"",
@@ -9784,16 +9787,16 @@ Deployment:</b> Use <b>Call to Arms</b>",
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Vanguard, Tags.Choice },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Mobility, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Overwhelm, Synergies.Choices },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Protected, Tags.Warden, Tags.Deployment, Tags.Noble, Tags.Vanguard, Tags.Choice },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Melee, Synergies.Mobility, Synergies.Protected, Synergies.Deployment, Synergies.Swarm, Synergies.BigMinions, Synergies.Defensive, Synergies.Vanguard, Synergies.Overwhelm, Synergies.Choices },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
                 UnitTags.Noble,
             },
-            Attack = 4,
-            Health = 4,
-            Protected = 0,
+            Attack = 5,
+            Health = 5,
+            Protected = 3,
             Range = 0,
             Speed = 4,
             Empowered = 0,
@@ -9849,7 +9852,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 3), },
 
-            Text = @"<b>Conduit, Prepared, Warden</b>
+            Text = @"<b>Conduit, Prepared, Warden, Protected (5)</b>
 Tiles adjacent to this unit are part of your deployment zone. The first time each turn you play a unit in these tiles, grant it either <b>Prepared</b> or <b>Protected (4)</b>",
             LoreText = @"",
             Notes = @"",
@@ -9867,8 +9870,8 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Captain,
             },
             Attack = 4,
-            Health = 6,
-            Protected = 0,
+            Health = 4,
+            Protected = 5,
             Range = 0,
             Speed = 3,
             Empowered = 0,
@@ -10727,7 +10730,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Whenever your hero attacks and damages a unit, prevent it from being healed until the start of your next turn. Your hero has <b>Swiftstrike</b>",
+            Text = @"Whenever your hero attacks and damages a unit, prevent it from being healed until the start of your next turn. Your hero has <b>Swiftstrike</b> and <b>Piercing</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -11140,7 +11143,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
 
-            Text = @"<b>Stun</b> all adjacnet enemy units. Give the caster <b>Unleash</b> until the end of your turn. If the caster attacks and kills one of the <b>Stunned</b> units, refresh its action",
+            Text = @"<b>Stun</b> all adjacent enemy units. Give the caster <b>Unleash</b> until the end of your turn. If the caster attacks and kills one of the <b>Stunned</b> units, refresh its action",
             LoreText = @"",
             Notes = @"",
 
@@ -11858,7 +11861,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Text = @"<b>Routing
 Deployment:</b> Deploy two Goblin Hordes beside this unit.
-Whenever this unit is attacked, if there are friendly goblin units adjacent to the Boss, the attacker attacks a random adjacent goblin instead.",
+Whenever this unit is attacked, gain Protected equal to the number of adjacent friendly Goblins.",
             LoreText = @"",
             Notes = @"",
 
@@ -11867,8 +11870,8 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Swarm, Synergies.Defensive, Synergies.Goblin, Synergies.Routing },
+            Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Protected, Synergies.Deployment, Synergies.Swarm, Synergies.Defensive, Synergies.Goblin, Synergies.Routing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Goblin,
@@ -11922,7 +11925,7 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to t
             Text = @"<b>Routing
 Deployment:</b> Use <b>Rally the Horde</b>
 Your other goblins within Range 3 have <b>Prepared</b> and +2 Attack.
-Whenever this unit is attacked, if there are friendly goblin units adjacent to Mazgix, the attacker attacks a random adjacent goblin instead.",
+Whenever this unit is attacked, gain Protected equal to the number of adjacent friendly Goblins.",
             LoreText = @"",
             Notes = @"",
 
@@ -11931,8 +11934,8 @@ Whenever this unit is attacked, if there are friendly goblin units adjacent to M
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Swarm, Synergies.Defensive, Synergies.Prepared, Synergies.Goblin, Synergies.Routing },
+            Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Deployment, Tags.Goblin, Tags.Routing, Tags.Warlord },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Protected, Synergies.Swarm, Synergies.Defensive, Synergies.Prepared, Synergies.Goblin, Synergies.Routing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Goblin,
@@ -12245,7 +12248,7 @@ Divinate (2)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
-            Text = @"<b>Conduit
+            Text = @"<b>Conduit, Protected (2)
 Deployment: Study (4)</b>
 Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration card",
             LoreText = @"",
@@ -12256,16 +12259,16 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Luminist },
-            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Midrange, Synergies.Deployment, Synergies.Study },
+            Tags = new List<Tags> { Tags.Protected, Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.StudyGain, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.Draw, Synergies.Protected, Synergies.Summon, Synergies.Midrange, Synergies.Deployment, Synergies.Study },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Luminist,
             },
             Attack = 1,
-            Health = 4,
-            Protected = 0,
+            Health = 3,
+            Protected = 2,
             Range = 2,
             Speed = 2,
             Empowered = 0,
@@ -12308,7 +12311,7 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 6), new Resource(CardResources.Wild, 3), },
 
-            Text = @"<b>Conduit</b>
+            Text = @"<b>Conduit, Protected (3)</b>
 Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess damage dealt.",
             LoreText = @"",
             Notes = @"",
@@ -12326,8 +12329,8 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
                 UnitTags.Luminist,
             },
             Attack = 4,
-            Health = 4,
-            Protected = 0,
+            Health = 2,
+            Protected = 3,
             Range = 3,
             Speed = 2,
             Empowered = 0,
@@ -12519,7 +12522,7 @@ Add a copy of all spells in your hand to your hand",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
-            Text = @"<b>Conduit, Warden, Unleash</b>
+            Text = @"<b>Conduit, Warden, Unleash, Protected (4)</b>
 This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
 ",
             LoreText = @"",
@@ -12530,16 +12533,16 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Elven, Tags.Conduit, Tags.Warden, Tags.Luminist, Tags.Unleash },
-            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild },
+            Tags = new List<Tags> { Tags.Protected, Tags.Elven, Tags.Conduit, Tags.Warden, Tags.Luminist, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Empowered, Synergies.Melee, Synergies.SmallSpells, Synergies.Durable, Synergies.Protected, Synergies.BigSpells, Synergies.Summon, Synergies.BigMinions, Synergies.Defensive, Synergies.Wild },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Luminist,
             },
             Attack = 6,
-            Health = 9,
-            Protected = 0,
+            Health = 7,
+            Protected = 4,
             Range = 0,
             Speed = 2,
             Empowered = 0,
@@ -12558,7 +12561,7 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 8), },
 
-            Text = @"<b>Conduit
+            Text = @"<b>Conduit, Protected (5)
 Deployment:</b> Use <b>Prophecy</b>",
             LoreText = @"",
             Notes = @"",
@@ -12568,16 +12571,16 @@ Deployment:</b> Use <b>Prophecy</b>",
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.Luminist },
-            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.BigSpells, Synergies.Summon, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.LongRange },
+            Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Elven, Tags.Conduit, Tags.Deployment, Tags.Luminist },
+            Synergies = new List<Synergies> { Synergies.SmallSpells, Synergies.Control, Synergies.Protected, Synergies.BigSpells, Synergies.Summon, Synergies.Deployment, Synergies.BigMinions, Synergies.Value, Synergies.Study, Synergies.LongRange },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Luminist,
             },
             Attack = 4,
-            Health = 5,
-            Protected = 0,
+            Health = 3,
+            Protected = 5,
             Range = 3,
             Speed = 2,
             Empowered = 0,
@@ -12742,7 +12745,7 @@ Deal 3 damage to all enemy units. Until the start of your next turn gain ""<b>Pa
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Warden, Unleash</b>
+            Text = @"<b>Warden, Unleash, Protected (4)</b>
 Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activated on this unit whenever a ""Mirror Aspect"" created by this unit attacks and kills a unit.",
             LoreText = @"",
             Notes = @"",
@@ -12752,16 +12755,16 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Ability, Tags.Elven, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
-            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.Cycle, Synergies.Wild },
+            Tags = new List<Tags> { Tags.Ability, Tags.Protected, Tags.Elven, Tags.Warden, Tags.CycleMinus, Tags.Luminist, Tags.Unleash },
+            Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Melee, Synergies.Durable, Synergies.Protected, Synergies.BigMinions, Synergies.Defensive, Synergies.Value, Synergies.Cycle, Synergies.Wild },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Elven,
                 UnitTags.Luminist,
             },
             Attack = 5,
-            Health = 7,
-            Protected = 0,
+            Health = 5,
+            Protected = 4,
             Range = 0,
             Speed = 2,
             Empowered = 0,
@@ -12900,7 +12903,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), new Resource(CardResources.Wild, 1), },
 
-            Text = @"Your hero's next attck this turn deals +3 damage and prevents the target from being healed until the start of your next turn",
+            Text = @"Your hero's next attck this turn is <b>Piercing,</b> deals +3 damage and prevents the target from being healed until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -12909,7 +12912,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Piercing },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -13009,7 +13012,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Wild, 0), },
 
-            Text = @"Gain 2 Wild and give the caster +2 range until the end of your turn",
+            Text = @"Gain 2 Wild and <b>Cycle +2.</b> Give the caster +2 range until the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -13673,7 +13676,7 @@ Deployment:</b> Gain 3 Gold
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), new Resource(CardResources.Knowledge, 1), },
 
-            Text = @"<b>Conduit, Stealth</b>
+            Text = @"<b>Conduit, Stealth, Piercing</b>
 The first spell this unit casts each turn does not break <b>Stealth</b>",
             LoreText = @"",
             Notes = @"",
@@ -13683,8 +13686,8 @@ The first spell this unit casts each turn does not break <b>Stealth</b>",
             Rarity = Rarity.Common,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Agent, Tags.Stealth },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Shadows },
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Agent, Tags.Stealth, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.SmallSpells, Synergies.Mobility, Synergies.BigSpells, Synergies.Shadows, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
@@ -13699,7 +13702,7 @@ The first spell this unit casts each turn does not break <b>Stealth</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth },
+            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth, BaseUnitKeywords.Piercing },
         };
         CardList.Add(card1382);
 
@@ -14182,7 +14185,7 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Knowledge, 2), },
 
-            Text = @"Whenever you draw this, it gains a new one of the following keywords at random for the rest of the scenario: <b>Conduit, Deadly, Ethereal, Stealth</b>",
+            Text = @"Whenever you draw this, it gains a new one of the following keywords at random for the rest of the scenario: <b>Conduit, Deadly, Ethereal, Piercing, Stealth</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -14191,8 +14194,8 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
             Rarity = Rarity.Epic,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Ethereal, Tags.Agent, Tags.Stealth, Tags.Deadly },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.BigMinions, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges },
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Ethereal, Tags.Agent, Tags.Stealth, Tags.Deadly, Tags.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.BigMinions, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
@@ -14382,12 +14385,12 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing
     }
 
     public enum Synergies
     {
-        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery, Spies, Exchanges, Fire, Water, Air, Earth
+        Default, Energy, Blademaster, Enchantment, Empowered, Melee, SmallSpells, Stun, Mobility, Control, Draw, Durable, Protected, BigSpells, AreaDamage, Antimagic, Summon, Midrange, Ethereal, Warden, Mana, Deployment, Swarm, BigMinions, Defensive, Value, Equip, SplitDamage, SingleDamage, Study, Prediction, LongRange, Removal, Vanguard, Prepared, Death, ShortRange, LastRites, Discard, Void, Sacrifice, Prayer, Restoration, SelfDamage, Flying, Goblin, ForceMove, Cycle, Root, Wild, Faerie, Treant, Unleash, Potions, Gold, Golden, Resurrection, GoldenHost, Retribution, Shuffle, Preservation, Equalize, Madness, Pacify, Angels, Overwhelm, Oaths, Mounted, Escape, Recruit, Shivs, Shadows, Choices, Swordsman, Brawler, Shapeshifters, Aspects, Routing, Hireling, Beasts, Archery, Spies, Exchanges, Fire, Water, Air, Earth, Piercing
     }
 
     public enum Sets

@@ -6,6 +6,7 @@
     Flying,
     Lifebond,
     Overwhelm,
+    Piercing,
     Prepared,
     Routing,
     Spellshield,

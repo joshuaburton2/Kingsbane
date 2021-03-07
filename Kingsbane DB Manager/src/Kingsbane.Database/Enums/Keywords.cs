@@ -18,5 +18,6 @@
         Unleash,
         Vanguard,
         Warden,
+        Piercing,
     }
 }
