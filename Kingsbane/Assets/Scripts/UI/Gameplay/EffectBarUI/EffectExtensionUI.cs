@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EffectExtensionUI : MonoBehaviour
 {
-    public virtual void RefreshEffectExtension()
+    public EffectUI effectUI { get; set; }
+
+    public virtual void RefreshEffectExtension(EffectUI _effectUI)
     {
-        
+        effectUI = _effectUI;
     }
 }

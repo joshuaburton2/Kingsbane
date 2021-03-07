@@ -37,8 +37,6 @@ public class EnchantmentEffect : EffectUI
     /// </summary>
     public void EnchantmentButton()
     {
-        effectComplete = false;
-
-        effectBarUI.ShowEffectExtension(effectType);
+        effectBarUI.ShowEffectExtension(effectType, this);
     }
 }

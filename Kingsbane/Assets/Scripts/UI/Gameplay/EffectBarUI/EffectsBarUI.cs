@@ -59,6 +59,11 @@ public class EffectsBarUI : MonoBehaviour
         {
             HideEffectExtensions();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            HideEffectExtensions();
+        }
     }
 
     /// <summary>
@@ -89,7 +94,7 @@ public class EffectsBarUI : MonoBehaviour
             effectExtension.effectArea.SetActive(false);
     }
 
-    public void ShowEffectExtension(EffectTypes effectType)
+    public void ShowEffectExtension(EffectTypes effectType, EffectUI currentEffect)
     {
         HideEffectExtensions();
 
@@ -100,6 +105,6 @@ public class EffectsBarUI : MonoBehaviour
             throw new Exception("Effect type does not have an extension");
 
         effectExtension.effectArea.SetActive(true);
-        effectExtension.effectArea.GetComponent<EffectExtensionUI>().RefreshEffectExtension();
+        effectExtension.effectArea.GetComponent<EffectExtensionUI>().RefreshEffectExtension(currentEffect);
     }
 }

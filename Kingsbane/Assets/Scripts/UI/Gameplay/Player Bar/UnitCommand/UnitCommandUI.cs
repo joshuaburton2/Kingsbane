@@ -83,7 +83,7 @@ public class UnitCommandUI : MonoBehaviour
                 SetSpeed = LOWEST_SPEED;
                 CheckSpeedButtons();
             }
-            else if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitUseSpeed)
+            else if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitUseSpeed && speedArea.activeSelf)
             {
                 ModifyingSpeed = false;
                 speedArea.SetActive(false);

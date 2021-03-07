@@ -70,9 +70,9 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
         StatusEffects,
     }
 
-    public override void RefreshEffectExtension()
+    public override void RefreshEffectExtension(EffectUI _effectUI)
     {
-        base.RefreshEffectExtension();
+        base.RefreshEffectExtension(_effectUI);
 
         ClearFields();
     }
@@ -231,6 +231,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
 
         if (enchantment.ValidEnchantment)
         {
+            effectUI.effectComplete = false;
             GameManager.instance.effectManager.SetEnchantUnitMode(enchantment);
         }
     }
