@@ -58,7 +58,7 @@ public class ManaUI : ResourceDetailUI
         if (int.TryParse(manaInput.text, out int manaVal))
             ResourceMana.ModifyValue(manaVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     private void UpdateExtraPropertyText()

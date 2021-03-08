@@ -48,6 +48,7 @@ public class Unit : Card
     public UnitData UnitData { get { return cardData as UnitData; } }
 
     public List<Stat> Stats { get; set; }
+    public List<Stat> GetStats { get { return Stats.Select(x => new Stat() { Type = x.Type, Value = x.Value }).ToList(); } }
 
     public int? TotalProtected
     {
@@ -77,8 +78,8 @@ public class Unit : Card
 
     public List<UnitEnchantment> Enchantments { get; set; }
     public List<StatusEffects> CurrentStatusEffects { get; set; }
-    public List<BaseUnitKeywords> BaseKeywords { get { return UnitData.Keywords; } }
-    public List<BaseUnitKeywords> CurrentKeywords { get; set; }
+    public List<Keywords> BaseKeywords { get { return UnitData.Keywords; } }
+    public List<Keywords> CurrentKeywords { get; set; }
 
     public List<UnitTags> UnitTags { get { return UnitData.UnitTag; } }
     public string UnitTag { get { return string.Join(" ", UnitTags.Select(x => x.ToString())); } }
@@ -86,6 +87,11 @@ public class Unit : Card
     public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
     public UnitCounter UnitCounter { get; set; }
+
+    public bool HasKeyword(Keywords keyword)
+    {
+        return CurrentKeywords.Contains(keyword);
+    }
 
     public override void InitCard(CardData _cardData, Player owner)
     {
@@ -95,7 +101,7 @@ public class Unit : Card
 
         Enchantments = new List<UnitEnchantment>();
         CurrentStatusEffects = new List<StatusEffects>();
-        CurrentKeywords = new List<BaseUnitKeywords>();
+        CurrentKeywords = new List<Keywords>();
 
         Status = UnitStatuses.Preparing;
         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
@@ -176,13 +182,27 @@ public class Unit : Card
             }
             else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
-                if (GameManager.instance.CurrentRound != 1)
+                if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
                 {
                     Status = UnitStatuses.Start;
 
                     RemainingSpeed = GetStat(StatTypes.Speed).Value;
-                    ActionsLeft = 1;
-                    AbilityUsesLeft = 1;
+
+                    if (HasKeyword(Keywords.Swiftstrike))
+                    {
+                        ActionsLeft = 2;
+                        AbilityUsesLeft = 1;
+                    }
+                    else if (HasKeyword(Keywords.SpecialSwiftstrike))
+                    {
+                        ActionsLeft = 3;
+                        AbilityUsesLeft = 3;
+                    }
+                    else
+                    {
+                        ActionsLeft = 1;
+                        AbilityUsesLeft = 1;
+                    }
                 }
                 else
                 {
@@ -249,19 +269,68 @@ public class Unit : Card
     {
         ModifyActions(-1);
 
-        targetUnit.DamageUnit(GetStat(StatTypes.Attack).Value, CurrentKeywords.Contains(BaseUnitKeywords.Piercing));
-        if (GetStat(StatTypes.Range).Value == 0)
-            DamageUnit(targetUnit.GetStat(StatTypes.Attack).Value, CurrentKeywords.Contains(BaseUnitKeywords.Piercing));
+        var targetRouted = targetUnit.CheckRouting();
 
-        RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+        if (!targetRouted)
+        {
+            var targetHealth = targetUnit.CurrentHealth;
+            bool unitDead = false;
+            var targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
+            if (GetStat(StatTypes.Range).Value == 0)
+            {
+                if (!targetDead && HasKeyword(Keywords.Overwhelm))
+                {
+                    unitDead = DamageUnit(targetUnit.Owner, targetUnit.GetStat(StatTypes.Attack).Value, targetUnit.CurrentKeywords);
+                }
+            }
+
+            if (targetDead && !unitDead)
+            {
+                CheckUnleash(targetUnit.GetStat(StatTypes.Attack).Value, targetHealth);
+            }
+
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+        }
+        else
+        {
+            targetUnit.RemoveUnit();
+        }
 
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
-    public void DamageUnit(int damageValue, bool isPiercing)
+    public bool CheckRouting()
     {
-        if (isPiercing)
+        if (HasKeyword(Keywords.Routing))
+        {
+            var missingHealth = GetStat(StatTypes.MaxHealth) - CurrentHealth;
+            var randomValue = UnityEngine.Random.Range(0, GetStat(StatTypes.MaxHealth).Value);
+            return randomValue < missingHealth;
+        }
+
+        return false;
+    }
+
+    public void CheckUnleash(int targetAttack, int targetHealth)
+    {
+        if (HasKeyword(Keywords.Unleash))
+        {
+            var unleashEnchantment = new UnitEnchantment()
+            {
+                Source = "Unleash",
+                Status = UnitEnchantment.EnchantmentStatus.Permanent,
+            };
+            unleashEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, targetAttack);
+            unleashEnchantment.AddStatModifier(StatTypes.MaxHealth, StatModifierTypes.Modify, targetHealth);
+
+            AddEnchantment(unleashEnchantment);
+        }
+    }
+
+    public bool DamageUnit(Player sourcePlayer, int damageValue, List<Keywords> keywords)
+    {
+        if (keywords.Contains(Keywords.Piercing))
         {
             CurrentHealth -= damageValue;
             if (CurrentHealth <= 0)
@@ -279,16 +348,22 @@ public class Unit : Card
                     if (GetStat(StatTypes.Protected) < 0)
                     {
                         CurrentHealth += GetStat(StatTypes.Protected).Value;
+
+                        if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
+                            DestroyUnit();
+                        if (keywords.Contains(Keywords.Lifebond))
+                            sourcePlayer.Hero.HealUnit(GetStat(StatTypes.Protected));
+
                         ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
                     }
                 }
 
-                if (CurrentHealth <= 0)
-                    DestroyUnit();
+
             }
         }
 
         UnitCounter.RefreshUnitCounter();
+        return CurrentHealth <= 0;
     }
 
     public void HealUnit(int? healValue)
@@ -372,9 +447,9 @@ public class Unit : Card
         Enchantments.Add(enchantment);
         UpdateEnchantments();
 
-        if (CurrentKeywords.Contains(BaseUnitKeywords.Flying))
+        if (HasKeyword(Keywords.Flying))
             CurrentStatusEffects.Add(StatusEffects.Flying);
-        if (CurrentKeywords.Contains(BaseUnitKeywords.Stealth))
+        if (HasKeyword(Keywords.Stealth))
             CurrentStatusEffects.Add(StatusEffects.Stealthed);
 
         if (UnitCounter != null)
@@ -409,7 +484,7 @@ public class Unit : Card
 
                     foreach (var keyword in enchantment.Keywords)
                     {
-                        if (!CurrentKeywords.Contains(keyword))
+                        if (!HasKeyword(keyword))
                             CurrentKeywords.Add(keyword);
                     }
 
@@ -425,6 +500,10 @@ public class Unit : Card
                 throw new Exception("Not a valid enchantment");
             }
         }
+
+        //Resets the health and speed to cap them out at their max
+        CurrentHealth = currentHealth;
+        RemainingSpeed = remainingSpeed;
 
         if (UnitCounter != null)
             UnitCounter.RefreshUnitCounter();

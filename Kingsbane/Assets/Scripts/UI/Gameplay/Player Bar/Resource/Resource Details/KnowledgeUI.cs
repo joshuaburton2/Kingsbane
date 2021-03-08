@@ -71,7 +71,7 @@ public class KnowledgeUI : ResourceDetailUI
     public void IncreaseButton()
     {
         ResourceKnowledge.UpdateBaseGain(1);
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class KnowledgeUI : ResourceDetailUI
     public void RefreshButton()
     {
         ResourceKnowledge.RefreshValue();
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -95,6 +95,6 @@ public class KnowledgeUI : ResourceDetailUI
         if (int.TryParse(stagnationInput.text, out int stagnationVal))
             ResourceKnowledge.ModifyStagnation(stagnationVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 }

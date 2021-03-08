@@ -48,6 +48,7 @@ public class EffectManager : MonoBehaviour
     private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
     private bool? SelectedBoolean { get; set; }
+    private List<Keywords> SelectedKeywords { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -78,6 +79,7 @@ public class EffectManager : MonoBehaviour
         SelectedAbility = null;
         SelectedValue = null;
         SelectedBoolean = null;
+        SelectedKeywords = new List<Keywords>();
 
         switch (ActiveEffect)
         {
@@ -310,17 +312,17 @@ public class EffectManager : MonoBehaviour
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }
 
-    public void SetDealDamageMode(int damageValue, bool isPiercing)
+    public void SetDealDamageMode(int damageValue, List<Keywords> keywords)
     {
         SelectedValue = damageValue;
-        SelectedBoolean = isPiercing;
+        SelectedKeywords = keywords;
         ActiveEffect = ActiveEffectTypes.DealDamage;
     }
 
     public void DealDamage(Unit unit)
     {
         if (SelectedValue.HasValue)
-            unit.DamageUnit(SelectedValue.Value, SelectedBoolean.Value);
+            unit.DamageUnit(GameManager.instance.GetActivePlayer(), SelectedValue.Value, SelectedKeywords);
         else
             throw new Exception("Damage value not set");
     }

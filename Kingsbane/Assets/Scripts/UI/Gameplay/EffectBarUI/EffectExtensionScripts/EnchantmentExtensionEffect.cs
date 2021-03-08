@@ -93,7 +93,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
         GeneralUIExtensions.InitDropdownOfType(empoweredModTypeDropdown, new List<StatModifierTypes>());
 
-        GeneralUIExtensions.InitDropdownOfType(keywordDropdown, new List<BaseUnitKeywords>());
+        GeneralUIExtensions.InitDropdownOfType(keywordDropdown, new List<Keywords>());
         GeneralUIExtensions.InitDropdownOfType(statusEffectDropdown, new List<Unit.StatusEffects>() { Unit.StatusEffects.None });
 
         GameManager.DestroyAllChildren(keywordListParent);
@@ -216,7 +216,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
 
         foreach (var keywordObject in keywordList)
         {
-            var keyword = (BaseUnitKeywords)Enum.Parse(typeof(BaseUnitKeywords), keywordObject.Value);
+            var keyword = (Keywords)Enum.Parse(typeof(Keywords), keywordObject.Value);
             enchantment.Keywords.Add(keyword);
         }
 

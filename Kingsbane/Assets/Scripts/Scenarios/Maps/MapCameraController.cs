@@ -34,35 +34,37 @@ public class MapCameraController : MonoBehaviour
     {
         if (GameManager.instance.uiManager.OverGameplayArea)
         {
+            EventSystem.current.SetSelectedGameObject(gameObject);
+
             camera.orthographicSize -= Input.GetAxis("Mouse ScrollWheel") * scrollScaling;
             camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
             currentScaling = camera.orthographicSize / maxCameraSize;
-        }
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            camera.transform.position += Vector3.up * panScaling;
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                camera.transform.position += Vector3.up * panScaling;
 
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            camera.transform.position += Vector3.left * panScaling;
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            camera.transform.position += Vector3.down * panScaling;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            camera.transform.position += Vector3.right * panScaling;
-        }
+            }
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                camera.transform.position += Vector3.left * panScaling;
+            }
+            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            {
+                camera.transform.position += Vector3.down * panScaling;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                camera.transform.position += Vector3.right * panScaling;
+            }
 
-        var currentMaxPanDistance = maxPanDistance * (1 - currentScaling);
-        camera.transform.position = new Vector3
-        (
-            Mathf.Clamp(camera.transform.position.x, -currentMaxPanDistance, currentMaxPanDistance),
-            Mathf.Clamp(camera.transform.position.y, -currentMaxPanDistance, currentMaxPanDistance),
-            camera.transform.position.z
-        );
+            var currentMaxPanDistance = maxPanDistance * (1 - currentScaling);
+            camera.transform.position = new Vector3
+            (
+                Mathf.Clamp(camera.transform.position.x, -currentMaxPanDistance, currentMaxPanDistance),
+                Mathf.Clamp(camera.transform.position.y, -currentMaxPanDistance, currentMaxPanDistance),
+                camera.transform.position.z
+            );
+        }
     }
 }

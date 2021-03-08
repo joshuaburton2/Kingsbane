@@ -29,7 +29,7 @@ public class UnitEnchantment
     public EnchantmentStatus Status { get; set; }
 
     public List<StatModifier> StatModifiers { get; set; }
-    public List<BaseUnitKeywords> Keywords { get; set; }
+    public List<Keywords> Keywords { get; set; }
     public List<Unit.StatusEffects> StatusEffects { get; set; }
 
     public bool IsActive { get; set; }
@@ -43,7 +43,7 @@ public class UnitEnchantment
         Status = EnchantmentStatus.None;
 
         StatModifiers = new List<StatModifier>();
-        Keywords = new List<BaseUnitKeywords>();
+        Keywords = new List<Keywords>();
         StatusEffects = new List<Unit.StatusEffects>();
     }
 

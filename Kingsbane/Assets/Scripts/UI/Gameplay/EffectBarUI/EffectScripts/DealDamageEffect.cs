@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,10 @@ class DealDamageEffect : EffectUI
     private Button damageButton;
     [SerializeField]
     private TMP_InputField damageValueInput;
+    [SerializeField]
+    private Toggle deadlyToggle;
+    [SerializeField]
+    private Toggle lifebondToggle;
     [SerializeField]
     private Toggle piercingToggle;
 
@@ -32,6 +37,8 @@ class DealDamageEffect : EffectUI
     private void ResetState()
     {
         damageButton.interactable = true;
+        deadlyToggle.isOn = false;
+        lifebondToggle.isOn = false;
         piercingToggle.isOn = false;
     }
 
@@ -53,7 +60,16 @@ class DealDamageEffect : EffectUI
             damageValueInput.text = "1";
             damageValue = 1;
         }
-        GameManager.instance.effectManager.SetDealDamageMode(damageValue, piercingToggle.isOn);
+
+        var keywordList = new List<Keywords>();
+        if (deadlyToggle.isOn)
+            keywordList.Add(Keywords.Deadly);
+        if (lifebondToggle.isOn)
+            keywordList.Add(Keywords.Lifebond);
+        if (piercingToggle.isOn)
+            keywordList.Add(Keywords.Piercing);
+
+        GameManager.instance.effectManager.SetDealDamageMode(damageValue, keywordList);
     }
 
     /// <summary>

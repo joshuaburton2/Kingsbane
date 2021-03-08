@@ -38,7 +38,7 @@ public class GoldUI : ResourceDetailUI
     public void GoldButton()
     {
         ResourceGold.ModifyValue(int.Parse(goldInput.text));
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -56,6 +56,6 @@ public class GoldUI : ResourceDetailUI
 
         ResourceGold.TriggerBounty(increaseVal, multiplierVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 }

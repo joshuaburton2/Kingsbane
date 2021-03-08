@@ -37,7 +37,7 @@ public class WildUI : ResourceDetailUI
         if (int.TryParse(wildInput.text, out int wildVal))
             ResourceWild.ModifyValue(wildVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -50,6 +50,6 @@ public class WildUI : ResourceDetailUI
         if (int.TryParse(cycleInput.text, out int cycleVal))
             ResourceWild.CycleWild(cycleVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 }

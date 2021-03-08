@@ -1448,7 +1448,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability5 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card2);
 
@@ -1533,7 +1533,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability6 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Swiftstrike },
+            Keywords = new List<Keywords>() { Keywords.Swiftstrike },
         };
         CardList.Add(card6);
 
@@ -1594,7 +1594,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card8);
 
@@ -1631,7 +1631,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability7 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card9);
 
@@ -1764,7 +1764,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability8 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card14);
 
@@ -1801,7 +1801,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Ethereal, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Ethereal, Keywords.Spellshield, Keywords.Summon },
         };
         CardList.Add(card15);
 
@@ -1839,7 +1839,7 @@ Whenever an adjacent ally takes damage, this unit takes it instead",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Spellshield, Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card16);
 
@@ -1877,7 +1877,7 @@ This units attack is increased by your <b>Empowered</b> value",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Prepared, BaseUnitKeywords.Spellshield, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Prepared, Keywords.Spellshield, Keywords.Summon },
         };
         CardList.Add(card17);
 
@@ -1938,7 +1938,7 @@ This units attack is increased by your <b>Empowered</b> value",
 
             Abilities = new List<AbilityData>() { ability9 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card19);
 
@@ -1976,7 +1976,7 @@ Whenever this unit kills an enemy unit, gain 3 Mana",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card20);
 
@@ -2063,7 +2063,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
 
             Abilities = new List<AbilityData>() { ability10 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Swiftstrike },
+            Keywords = new List<Keywords>() { Keywords.Swiftstrike },
         };
         CardList.Add(card25);
 
@@ -2149,7 +2149,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability11 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card28);
 
@@ -2186,7 +2186,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability12 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card29);
 
@@ -2223,7 +2223,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability13 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card30);
 
@@ -2260,7 +2260,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability14 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card31);
 
@@ -2297,7 +2297,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability15 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card32);
 
@@ -2358,7 +2358,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability64 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card34);
 
@@ -2395,7 +2395,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability65 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card35);
 
@@ -2507,7 +2507,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card39);
 
@@ -2616,7 +2616,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Abilities = new List<AbilityData>() { ability66 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card43);
 
@@ -2677,7 +2677,7 @@ After you cast a spell, gain +1 Attack, +1 Health",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card45);
 
@@ -2715,7 +2715,7 @@ The Mana cost of your spells is reduced by (2)",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Summon },
         };
         CardList.Add(card46);
 
@@ -2753,7 +2753,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card47);
 
@@ -2790,7 +2790,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card48);
 
@@ -2876,7 +2876,7 @@ Deployment</b> and <b>Last Rites:</b> Add a random playable spell to your hand",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card51);
 
@@ -2939,7 +2939,7 @@ After you cast a spell, add a random playable spell to your hand and reduce its 
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card53);
 
@@ -3125,7 +3125,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability16 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card60);
 
@@ -3162,7 +3162,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability17 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card61);
 
@@ -3199,7 +3199,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability18 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card62);
 
@@ -3236,7 +3236,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card63);
 
@@ -3274,7 +3274,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card64);
 
@@ -3311,7 +3311,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability99 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card65);
 
@@ -3397,7 +3397,7 @@ Deal 4 damage to a unit",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal },
+            Keywords = new List<Keywords>() { Keywords.Ethereal },
         };
         CardList.Add(card68);
 
@@ -3460,7 +3460,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card70);
 
@@ -3547,7 +3547,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Piercing },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Piercing },
         };
         CardList.Add(card73);
 
@@ -3584,7 +3584,7 @@ Whenever this unit takes damage, <b>Prayer +2</b> and draw a card",
 
             Abilities = new List<AbilityData>() { ability67 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Piercing },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Piercing },
         };
         CardList.Add(card74);
 
@@ -3622,7 +3622,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card75);
 
@@ -3659,7 +3659,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card76);
 
@@ -3697,7 +3697,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Summon },
         };
         CardList.Add(card77);
 
@@ -3734,7 +3734,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Abilities = new List<AbilityData>() { ability68 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card78);
 
@@ -3771,7 +3771,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Abilities = new List<AbilityData>() { ability69 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card79);
 
@@ -3808,7 +3808,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Abilities = new List<AbilityData>() { ability70 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card80);
 
@@ -3869,7 +3869,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Abilities = new List<AbilityData>() { ability71 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card82);
 
@@ -3931,7 +3931,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability27 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card84);
 
@@ -3968,7 +3968,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability28 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card85);
 
@@ -4005,7 +4005,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability29 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card86);
 
@@ -4066,7 +4066,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability77 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card88);
 
@@ -4175,7 +4175,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability80 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Unleash },
         };
         CardList.Add(card92);
 
@@ -4213,7 +4213,7 @@ Whenever this unit takes damage from an Air spell or unit, it heals for the dama
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Summon },
         };
         CardList.Add(card93);
 
@@ -4251,7 +4251,7 @@ Whenever this unit takes damage from an Earth spell or unit, it heals for the da
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Summon, Keywords.Warden },
         };
         CardList.Add(card94);
 
@@ -4289,7 +4289,7 @@ Whenever this unit takes damage from a Fire spell or unit, it heals for the dama
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Prepared, Keywords.Summon },
         };
         CardList.Add(card95);
 
@@ -4353,7 +4353,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Summon },
         };
         CardList.Add(card97);
 
@@ -4390,7 +4390,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Abilities = new List<AbilityData>() { ability78 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card98);
 
@@ -4451,7 +4451,7 @@ Whenever this unit takes damage from a Water spell or unit, it heals for the dam
 
             Abilities = new List<AbilityData>() { ability79 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card100);
 
@@ -4586,7 +4586,7 @@ Reduce the cost of all spells generated by this unit to 0.
 
             Abilities = new List<AbilityData>() { ability81 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card105);
 
@@ -4648,7 +4648,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability30 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card107);
 
@@ -4685,7 +4685,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability31 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card108);
 
@@ -4722,7 +4722,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability32 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card109);
 
@@ -4807,7 +4807,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability82 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card112);
 
@@ -4869,7 +4869,7 @@ At the end of each of your turns, draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card114);
 
@@ -4906,7 +4906,7 @@ At the end of each of your turns, draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Spellshield },
         };
         CardList.Add(card115);
 
@@ -4944,7 +4944,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card116);
 
@@ -5053,7 +5053,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card120);
 
@@ -5090,7 +5090,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability21 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card121);
 
@@ -5127,7 +5127,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability22 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card122);
 
@@ -5164,7 +5164,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability23 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card123);
 
@@ -5201,7 +5201,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability24 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card124);
 
@@ -5262,7 +5262,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability25 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card126);
 
@@ -5299,7 +5299,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability26 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card127);
 
@@ -5336,7 +5336,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability33 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card128);
 
@@ -5373,7 +5373,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability36 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card129);
 
@@ -5410,7 +5410,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability39 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card130);
 
@@ -5447,7 +5447,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability51 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card131);
 
@@ -5484,7 +5484,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability52 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card132);
 
@@ -5521,7 +5521,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability55 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card133);
 
@@ -5583,7 +5583,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability58 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card135);
 
@@ -5620,7 +5620,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card136);
 
@@ -5657,7 +5657,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability61 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card137);
 
@@ -5695,7 +5695,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card138);
 
@@ -5806,7 +5806,7 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card142);
 
@@ -5844,7 +5844,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Spellshield },
         };
         CardList.Add(card143);
 
@@ -5905,7 +5905,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card145);
 
@@ -5942,7 +5942,7 @@ Deployment:</b> Shuffle 3 ""Woodland Sprites"" into your deck. Give them +2 Atta
 
             Abilities = new List<AbilityData>() { ability83 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Spellshield },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Spellshield },
         };
         CardList.Add(card146);
 
@@ -5980,7 +5980,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card147);
 
@@ -6017,7 +6017,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability34 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card148);
 
@@ -6054,7 +6054,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability35 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card149);
 
@@ -6308,7 +6308,7 @@ Give the caster +3 Health",
 
             Abilities = new List<AbilityData>() { ability84 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
+            Keywords = new List<Keywords>() { Keywords.Lifebond },
         };
         CardList.Add(card159);
 
@@ -6345,7 +6345,7 @@ Give the caster +3 Health",
 
             Abilities = new List<AbilityData>() { ability85 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card160);
 
@@ -6382,7 +6382,7 @@ Give the caster +3 Health",
 
             Abilities = new List<AbilityData>() { ability86 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card161);
 
@@ -6421,7 +6421,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card162);
 
@@ -6483,7 +6483,7 @@ Deployment:</b> Use <b>Potion Sale</b>",
 
             Abilities = new List<AbilityData>() { ability87 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card164);
 
@@ -6545,7 +6545,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Lifebond },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Lifebond },
         };
         CardList.Add(card166);
 
@@ -6631,7 +6631,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card169);
 
@@ -6693,7 +6693,7 @@ Deal 2 damage to any enemy unit which damages friendly units within Range 2",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Lifebond, Keywords.Warden },
         };
         CardList.Add(card171);
 
@@ -6731,7 +6731,7 @@ Deployment:</b> Deploy 2 Golden Hosts beside this unit.",
 
             Abilities = new List<AbilityData>() { ability88 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card172);
 
@@ -6818,7 +6818,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card175);
 
@@ -6855,7 +6855,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability37 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card176);
 
@@ -6892,7 +6892,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability38 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card177);
 
@@ -7003,7 +7003,7 @@ Deal damage to a unit equal to its attack",
 
             Abilities = new List<AbilityData>() { ability89 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card181);
 
@@ -7088,7 +7088,7 @@ Deal damage to a unit equal to its attack",
 
             Abilities = new List<AbilityData>() { ability90 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card184);
 
@@ -7175,7 +7175,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Spellshield },
+            Keywords = new List<Keywords>() { Keywords.Spellshield },
         };
         CardList.Add(card187);
 
@@ -7236,7 +7236,7 @@ Whenever this attacks a unit, reduce its attack by 3 until the start of your nex
 
             Abilities = new List<AbilityData>() { ability91 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card189);
 
@@ -7299,7 +7299,7 @@ Deployment:</b> Choose an enemy minion. Swap this units attack and Health with i
 
             Abilities = new List<AbilityData>() { ability1119 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
+            Keywords = new List<Keywords>() { Keywords.Lifebond },
         };
         CardList.Add(card191);
 
@@ -7362,7 +7362,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card193);
 
@@ -7472,7 +7472,7 @@ After you cast a spell, draw a spell of the same total cost from your deck",
 
             Abilities = new List<AbilityData>() { ability92 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Lifebond },
+            Keywords = new List<Keywords>() { Keywords.Lifebond },
         };
         CardList.Add(card197);
 
@@ -7511,7 +7511,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability93 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card198);
 
@@ -7548,7 +7548,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability53 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card199);
 
@@ -7585,7 +7585,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability54 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card200);
 
@@ -7646,7 +7646,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Lifebond, Keywords.Warden },
         };
         CardList.Add(card202);
 
@@ -7683,7 +7683,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability94 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying },
+            Keywords = new List<Keywords>() { Keywords.Flying },
         };
         CardList.Add(card203);
 
@@ -7769,7 +7769,7 @@ At the start of each turn, if this unit is adjacent to your hero, gain +1 Attack
 
             Abilities = new List<AbilityData>() { ability95 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card206);
 
@@ -7831,7 +7831,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Lifebond },
         };
         CardList.Add(card208);
 
@@ -7892,7 +7892,7 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card210);
 
@@ -7930,7 +7930,7 @@ At the end of your turn, <b>Prayer +2</b> for each adjacent enemy unit",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card211);
 
@@ -7968,7 +7968,7 @@ Gain +1 Attack for each tile moved this turn until the end of your turn",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card212);
 
@@ -8006,7 +8006,7 @@ Deployment:</b> Choose an adjacent unit. Deal damage to it equal to the number o
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Vanguard },
         };
         CardList.Add(card213);
 
@@ -8092,7 +8092,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Prepared },
         };
         CardList.Add(card216);
 
@@ -8275,7 +8275,7 @@ Costs (1) Devotion less for every Angel in your Graveyard.
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying, BaseUnitKeywords.Lifebond, BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Flying, Keywords.Lifebond, Keywords.Vanguard },
         };
         CardList.Add(card223);
 
@@ -8313,7 +8313,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card224);
 
@@ -8350,7 +8350,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability56 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card225);
 
@@ -8387,7 +8387,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability57 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card226);
 
@@ -8425,7 +8425,7 @@ Whenever an enemy unit dies within Range 2, double their <b>Bounty</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker, BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Routing, Keywords.Stalker, Keywords.Vanguard },
         };
         CardList.Add(card227);
 
@@ -8463,7 +8463,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard, BaseUnitKeywords.Piercing },
+            Keywords = new List<Keywords>() { Keywords.Vanguard, Keywords.Piercing },
         };
         CardList.Add(card228);
 
@@ -8524,7 +8524,7 @@ Deployment:</b> Deal damage to an adjacent unit equal to your <b>Empowered</b> v
 
             Abilities = new List<AbilityData>() { ability96 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card230);
 
@@ -8586,7 +8586,7 @@ Deployment:</b> Add 2 Shivs to your hand",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Routing },
         };
         CardList.Add(card232);
 
@@ -8624,7 +8624,7 @@ Deployment:</b> Give an enemy unit an additional <b>Bounty</b> of 3 Gold",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Deadly, BaseUnitKeywords.Stalker, BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Deadly, Keywords.Stalker, Keywords.Stealth },
         };
         CardList.Add(card233);
 
@@ -8734,7 +8734,7 @@ Spellbind</b> and deal 4 damage to a unit. If this kills it, draw a card",
 
             Abilities = new List<AbilityData>() { ability97 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Routing, Keywords.Stalker },
         };
         CardList.Add(card237);
 
@@ -8820,7 +8820,7 @@ Whenever this attacks a unit, if the target has no adjacent allies, it takes dou
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon, BaseUnitKeywords.Piercing },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Stealth, Keywords.Summon, Keywords.Piercing },
         };
         CardList.Add(card240);
 
@@ -8858,7 +8858,7 @@ Deployment:</b> Use <b>Smuggle</b>",
 
             Abilities = new List<AbilityData>() { ability98 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card241);
 
@@ -8896,7 +8896,7 @@ Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card242);
 
@@ -8934,7 +8934,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card243);
 
@@ -8971,7 +8971,7 @@ Whenever this unit kills an enemy, deploy a ""Cursed Shade"" in its place",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Stealth },
         };
         CardList.Add(card244);
 
@@ -9009,7 +9009,7 @@ After this attacks and kills a unit, <b>Regenerate</b> and gain <b>Stealth</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Stealth, BaseUnitKeywords.Summon },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Stealth, Keywords.Summon },
         };
         CardList.Add(card245);
 
@@ -9047,7 +9047,7 @@ Whenever you <b>Recruit</b> a card, reduce its cost by 3 Gold, but not less than
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card246);
 
@@ -9085,7 +9085,7 @@ Last Rites:</b> If killed by a minion, destroy it and return this unit to your h
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker, BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Stalker, Keywords.Vanguard },
         };
         CardList.Add(card247);
 
@@ -9147,7 +9147,7 @@ Increase your base Knowledge rate by 1",
 
             Abilities = new List<AbilityData>() { ability72 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card249);
 
@@ -9208,7 +9208,7 @@ Increase your base Knowledge rate by 1",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm },
+            Keywords = new List<Keywords>() { Keywords.Overwhelm },
         };
         CardList.Add(card251);
 
@@ -9245,7 +9245,7 @@ Increase your base Knowledge rate by 1",
 
             Abilities = new List<AbilityData>() { ability73 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card252);
 
@@ -9283,7 +9283,7 @@ Deployment:</b> Gain either <b>Overwhelm</b> or <b>Protected (3)</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card253);
 
@@ -9321,7 +9321,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card254);
 
@@ -9480,7 +9480,7 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card260);
 
@@ -9568,7 +9568,7 @@ Can target <b>Stealth</b> units
 
             Abilities = new List<AbilityData>() { ability1118 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Stalker },
         };
         CardList.Add(card263);
 
@@ -9702,7 +9702,7 @@ This unit can target through obstacle terrain",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card268);
 
@@ -9741,7 +9741,7 @@ Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 
             Abilities = new List<AbilityData>() { ability74, ability75 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card269);
 
@@ -9803,7 +9803,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
 
             Abilities = new List<AbilityData>() { ability76 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Vanguard },
         };
         CardList.Add(card271);
 
@@ -9840,7 +9840,7 @@ Deployment:</b> Use <b>Call to Arms</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card272);
 
@@ -9878,7 +9878,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Prepared, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Prepared, Keywords.Warden },
         };
         CardList.Add(card273);
 
@@ -9915,7 +9915,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability40 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card274);
 
@@ -9952,7 +9952,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability41 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card275);
 
@@ -9989,7 +9989,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability43 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card276);
 
@@ -10026,7 +10026,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability44 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card277);
 
@@ -10063,7 +10063,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability59 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card279);
 
@@ -10100,7 +10100,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability60 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card280);
 
@@ -10137,7 +10137,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability62 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card281);
 
@@ -10174,7 +10174,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability63 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card282);
 
@@ -10211,7 +10211,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card285);
 
@@ -10248,7 +10248,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card286);
 
@@ -10285,7 +10285,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Stealth },
         };
         CardList.Add(card287);
 
@@ -10322,7 +10322,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card288);
 
@@ -10509,7 +10509,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Stalker },
         };
         CardList.Add(card295);
 
@@ -10546,7 +10546,7 @@ Whenever this unit takes damage, <b>Cycle</b> for the same amount",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm, BaseUnitKeywords.Swiftstrike },
+            Keywords = new List<Keywords>() { Keywords.Overwhelm, Keywords.Swiftstrike },
         };
         CardList.Add(card296);
 
@@ -10584,7 +10584,7 @@ Whenever this unit takes damage, gain +2 Attack",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Overwhelm },
+            Keywords = new List<Keywords>() { Keywords.Overwhelm },
         };
         CardList.Add(card297);
 
@@ -10694,7 +10694,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Abilities = new List<AbilityData>() { ability100 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card301);
 
@@ -10779,7 +10779,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Abilities = new List<AbilityData>() { ability101 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card304);
 
@@ -10817,7 +10817,7 @@ Last Rites: Transform</b> this unit back to its original form",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card305);
 
@@ -10856,7 +10856,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
 
             Abilities = new List<AbilityData>() { ability102 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Warden },
         };
         CardList.Add(card306);
 
@@ -10919,7 +10919,7 @@ Whenever this unit takes damage, gain +2 Attack.
 
             Abilities = new List<AbilityData>() { ability103 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Flying },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Flying },
         };
         CardList.Add(card308);
 
@@ -10982,7 +10982,7 @@ Whenever this attacks and kills a unit, draw a card.
 
             Abilities = new List<AbilityData>() { ability104 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Overwhelm },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Overwhelm },
         };
         CardList.Add(card310);
 
@@ -11045,7 +11045,7 @@ Last Rites: Transform</b> this unit back into your hero.",
 
             Abilities = new List<AbilityData>() { ability105 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Stalker },
         };
         CardList.Add(card312);
 
@@ -11107,7 +11107,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Unleash },
         };
         CardList.Add(card314);
 
@@ -11193,7 +11193,7 @@ Last Rites:</b> Restore this unit to one health and refresh its actions. It cann
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Swiftstrike },
+            Keywords = new List<Keywords>() { Keywords.Prepared, Keywords.Swiftstrike },
         };
         CardList.Add(card317);
 
@@ -11231,7 +11231,7 @@ Last Rites: Transform</b> back into its original form. Any enchantments gained f
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Ethereal, BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Ethereal, Keywords.Unleash },
         };
         CardList.Add(card318);
 
@@ -11269,7 +11269,7 @@ Last Rites:</b> If this unit has attacked and killed a unit, <b>Transform</b> in
 
             Abilities = new List<AbilityData>() { ability106 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Unleash },
         };
         CardList.Add(card319);
 
@@ -11307,7 +11307,7 @@ Whenever a friendly unit within Range 2 takes damage, gain +2 Attack.",
 
             Abilities = new List<AbilityData>() { ability107 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Swiftstrike, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Swiftstrike, Keywords.Warden },
         };
         CardList.Add(card320);
 
@@ -11369,7 +11369,7 @@ Deployment:</b> Use <b>Feast</b>",
 
             Abilities = new List<AbilityData>() { ability108 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card322);
 
@@ -11431,7 +11431,7 @@ Whenever this attacks a unit, draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card324);
 
@@ -11468,7 +11468,7 @@ Whenever this attacks a unit, draw a card",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Routing, Keywords.Vanguard },
         };
         CardList.Add(card325);
 
@@ -11554,7 +11554,7 @@ Deployment:</b> Use <b>Seduce</b>",
 
             Abilities = new List<AbilityData>() { ability109 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card328);
 
@@ -11640,7 +11640,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared, BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Prepared, Keywords.Routing },
         };
         CardList.Add(card331);
 
@@ -11677,7 +11677,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card332);
 
@@ -11738,7 +11738,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card334);
 
@@ -11775,7 +11775,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Abilities = new List<AbilityData>() { ability110 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card335);
 
@@ -11886,7 +11886,7 @@ Whenever this unit is attacked, gain Protected equal to the number of adjacent f
 
             Abilities = new List<AbilityData>() { ability111 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card339);
 
@@ -11950,7 +11950,7 @@ Whenever this unit is attacked, gain Protected equal to the number of adjacent f
 
             Abilities = new List<AbilityData>() { ability1108 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1322);
 
@@ -11989,7 +11989,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
 
             Abilities = new List<AbilityData>() { ability1109 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card1323);
 
@@ -12025,7 +12025,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1326);
 
@@ -12087,7 +12087,7 @@ Increase your base Knowledge rate by 1",
 
             Abilities = new List<AbilityData>() { ability1110 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1328);
 
@@ -12174,7 +12174,7 @@ Deployment:</b> Use <b>Trade Tales</b>",
 
             Abilities = new List<AbilityData>() { ability1111 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Vanguard },
+            Keywords = new List<Keywords>() { Keywords.Vanguard },
         };
         CardList.Add(card1331);
 
@@ -12236,7 +12236,7 @@ Divinate (2)</b>",
 
             Abilities = new List<AbilityData>() { ability1112 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1333);
 
@@ -12275,7 +12275,7 @@ Whenever you activate a <b>Study</b> effect, shuffle an additional Inspiration c
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card1334);
 
@@ -12337,7 +12337,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Abilities = new List<AbilityData>() { ability1114 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card1337);
 
@@ -12423,7 +12423,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1340);
 
@@ -12510,7 +12510,7 @@ Add a copy of all spells in your hand to your hand",
 
             Abilities = new List<AbilityData>() { ability1115 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1343);
 
@@ -12549,7 +12549,7 @@ This unit's <b>Unleash</b> is activated whenever this kills a unit with a spell
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card1344);
 
@@ -12587,7 +12587,7 @@ Deployment:</b> Use <b>Prophecy</b>",
 
             Abilities = new List<AbilityData>() { ability1116 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card1345);
 
@@ -12771,7 +12771,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Abilities = new List<AbilityData>() { ability1117 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card1352);
 
@@ -12952,7 +12952,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Unleash, BaseUnitKeywords.Warden },
+            Keywords = new List<Keywords>() { Keywords.Unleash, Keywords.Warden },
         };
         CardList.Add(card1359);
 
@@ -13062,7 +13062,7 @@ Whenever this attacks and kills a unit, draw a card and <b>Cycle +3</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Flying },
+            Keywords = new List<Keywords>() { Keywords.Flying },
         };
         CardList.Add(card1363);
 
@@ -13100,7 +13100,7 @@ Deployment:</b> Deploy a copy of this unit adjacent to it",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared },
         };
         CardList.Add(card1364);
 
@@ -13210,7 +13210,7 @@ Friendly beasts in range 2 have +1 Attack. Whenever a beast in range kills an en
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Stalker },
         };
         CardList.Add(card1368);
 
@@ -13272,7 +13272,7 @@ Whenever a beast dies within Range 2, draw a card.",
 
             Abilities = new List<AbilityData>() { ability1120 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1370);
 
@@ -13310,7 +13310,7 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth, BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Stealth, Keywords.Unleash },
         };
         CardList.Add(card1371);
 
@@ -13347,7 +13347,7 @@ Deployment</b> and <b>Last Rites:</b> Deploy two ""Spiderlings"" with attack and
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1372);
 
@@ -13385,7 +13385,7 @@ Deployment:</b> Use <b>Craft Arrows</b>",
 
             Abilities = new List<AbilityData>() { ability1121 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1373);
 
@@ -13423,7 +13423,7 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing, BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Routing, Keywords.Stalker },
         };
         CardList.Add(card1374);
 
@@ -13460,7 +13460,7 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
 
             Abilities = new List<AbilityData>() { ability1122 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker, BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Stalker, Keywords.Unleash },
         };
         CardList.Add(card1375);
 
@@ -13498,7 +13498,7 @@ Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an e
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Stalker },
         };
         CardList.Add(card1376);
 
@@ -13536,7 +13536,7 @@ Whenever you cast a shot spell, it affects this unit's next attack as well as yo
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stalker },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Stalker },
         };
         CardList.Add(card1377);
 
@@ -13574,7 +13574,7 @@ Whenever a beast dies within Range 2, <b>Regenerate.</b>",
 
             Abilities = new List<AbilityData>() { ability1123 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stalker, BaseUnitKeywords.Unleash },
+            Keywords = new List<Keywords>() { Keywords.Stalker, Keywords.Unleash },
         };
         CardList.Add(card1378);
 
@@ -13664,7 +13664,7 @@ Deployment:</b> Gain 3 Gold
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1381);
 
@@ -13702,7 +13702,7 @@ The first spell this unit casts each turn does not break <b>Stealth</b>",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth, BaseUnitKeywords.Piercing },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Stealth, Keywords.Piercing },
         };
         CardList.Add(card1382);
 
@@ -13764,7 +13764,7 @@ Whenever you draw this card, reduce your <b>Stagnation</b> by 1",
 
             Abilities = new List<AbilityData>() { ability1124 },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1384);
 
@@ -13802,7 +13802,7 @@ Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your oppone
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Stealth },
         };
         CardList.Add(card1385);
 
@@ -13839,7 +13839,7 @@ Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your oppone
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Deadly, BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Deadly, Keywords.Stealth },
         };
         CardList.Add(card1386);
 
@@ -13877,7 +13877,7 @@ After you draw an <b>Inspiration</b> card, shuffle another back into your deck",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1387);
 
@@ -14059,7 +14059,7 @@ After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
 
             Abilities = new List<AbilityData>() { ability1125 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit, BaseUnitKeywords.Stealth },
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Stealth },
         };
         CardList.Add(card1394);
 
@@ -14097,7 +14097,7 @@ Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1395);
 
@@ -14135,7 +14135,7 @@ Deployment:</b> Use <b>Make Arrangements</b>",
 
             Abilities = new List<AbilityData>() { ability1126 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1396);
 
@@ -14173,7 +14173,7 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1397);
 
@@ -14210,7 +14210,7 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1398);
 
@@ -14249,7 +14249,7 @@ If this unit <b>Routs</b> shuffle a new copy of it back into your deck",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Routing },
+            Keywords = new List<Keywords>() { Keywords.Routing },
         };
         CardList.Add(card1399);
 
@@ -14287,7 +14287,7 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
 
             Abilities = new List<AbilityData>() { ability1127 },
 
-            Keywords = new List<BaseUnitKeywords>() { BaseUnitKeywords.Conduit },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card1400);
 

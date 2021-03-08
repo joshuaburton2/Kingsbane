@@ -21,7 +21,7 @@ public class UnitData : CardData
 
     public List<AbilityData> Abilities { get; set; }
 
-    public List<BaseUnitKeywords> Keywords { get; set; }
+    public List<Keywords> Keywords { get; set; }
 
     /// <summary>
     /// 

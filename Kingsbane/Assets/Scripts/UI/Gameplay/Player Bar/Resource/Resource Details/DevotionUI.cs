@@ -40,7 +40,7 @@ public class DevotionUI : ResourceDetailUI
         if(int.TryParse(prayerInput.text, out int prayerVal))
             ResourceDevotion.TriggerPrayer(prayerVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -53,6 +53,6 @@ public class DevotionUI : ResourceDetailUI
         if (int.TryParse(lastingPrayerInput.text, out int lastingPrayerVal))
             ResourceDevotion.SetLastingPrayer(lastingPrayerVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 }

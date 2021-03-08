@@ -38,7 +38,7 @@ public class EnergyUI : ResourceDetailUI
         if (int.TryParse(energyInput.text, out int energyVal))
             ResourceEnergy.ModifyValue(energyVal);
 
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 
     /// <summary>
@@ -49,6 +49,6 @@ public class EnergyUI : ResourceDetailUI
     public void SurgeButton()
     {
         ResourceEnergy.UseSurge();
-        RefreshResourceDetailUI();
+        playerBar.RefreshPlayerBar();
     }
 }

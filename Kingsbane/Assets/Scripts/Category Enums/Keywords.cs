@@ -1,4 +1,4 @@
-﻿public enum BaseUnitKeywords
+﻿public enum Keywords
 {
     Conduit,
     Deadly,
@@ -14,6 +14,7 @@
     Stealth,
     Summon,
     Swiftstrike,
+    SpecialSwiftstrike,
     Unleash,
     Vanguard,
     Warden,

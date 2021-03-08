@@ -43,65 +43,69 @@ public class Cell : MonoBehaviour
             {
                 if (hit.transform.name == transform.name)
                 {
-                    if (Input.GetMouseButtonDown(0))
+                    if (GameManager.instance.uiManager.OverGameplayArea)
                     {
-                        switch (GameManager.instance.effectManager.ActiveEffect)
+                        if (Input.GetMouseButtonDown(0))
                         {
-                            case EffectManager.ActiveEffectTypes.Deployment:
-                                cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(this);
-                                break;
-                            case EffectManager.ActiveEffectTypes.Spell:
-                                GameManager.instance.effectManager.CastSpell(this);
-                                break;
-                            case EffectManager.ActiveEffectTypes.UnitCommand:
-                                SelectCommandUnit();
-                                break;
-                            case EffectManager.ActiveEffectTypes.UnitMove:
-                                GameManager.instance.effectManager.MoveSelectedUnit(this);
-                                break;
-                            case EffectManager.ActiveEffectTypes.UnitForceMove:
-                                GameManager.instance.effectManager.MoveSelectedUnit(this);
-                                break;
-                            case EffectManager.ActiveEffectTypes.UnitAttack:
-                                GameManager.instance.effectManager.UseAttack(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.UnitAbility:
-                                GameManager.instance.effectManager.UseAbility();
-                                break;
-                            case EffectManager.ActiveEffectTypes.DealDamage:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.DealDamage(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.HealUnit:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.HealUnit(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.Protected:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.ProtectUnit(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.DestroyUnit:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.DestroyUnit(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.RemoveUnit:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.RemoveUnit(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.EnchantUnit:
-                                if (occupantCounter != null)
-                                    GameManager.instance.effectManager.EnchantUnit(occupantCounter.Unit);
-                                break;
-                            case EffectManager.ActiveEffectTypes.None:
-                                SelectCommandUnit();
-                                break;
+                            switch (GameManager.instance.effectManager.ActiveEffect)
+                            {
+                                case EffectManager.ActiveEffectTypes.Deployment:
+                                    cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(this);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.Spell:
+                                    GameManager.instance.effectManager.CastSpell(this);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.UnitCommand:
+                                    SelectCommandUnit();
+                                    break;
+                                case EffectManager.ActiveEffectTypes.UnitMove:
+                                    GameManager.instance.effectManager.MoveSelectedUnit(this);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.UnitForceMove:
+                                    GameManager.instance.effectManager.MoveSelectedUnit(this);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.UnitAttack:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.UseAttack(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.UnitAbility:
+                                    GameManager.instance.effectManager.UseAbility();
+                                    break;
+                                case EffectManager.ActiveEffectTypes.DealDamage:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.DealDamage(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.HealUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.HealUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.Protected:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.ProtectUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.DestroyUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.DestroyUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.RemoveUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.RemoveUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.EnchantUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.EnchantUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.None:
+                                    SelectCommandUnit();
+                                    break;
+                            }
                         }
-                    }
-                    else if (Input.GetMouseButtonDown(1))
-                    {
-                        if (occupantCounter != null)
+                        else if (Input.GetMouseButtonDown(1))
                         {
-                            occupantCounter.ShowCardDetail();
+                            if (occupantCounter != null)
+                            {
+                                occupantCounter.ShowCardDetail();
+                            }
                         }
                     }
                 }
