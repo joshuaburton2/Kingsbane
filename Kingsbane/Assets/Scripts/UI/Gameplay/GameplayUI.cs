@@ -74,6 +74,11 @@ public class GameplayUI : MonoBehaviour
 
     public void ActionButton()
     {
+        EndTurn();
+    }
+
+    public void EndTurn()
+    {
         var isNewRound = false;
 
         switch (GameManager.instance.CurrentGamePhase)

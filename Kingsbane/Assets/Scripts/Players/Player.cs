@@ -73,12 +73,19 @@ public class Player
 
     }
 
+    public void EndOfTurn(bool isActive)
+    {
+        foreach (var unit in DeployedUnits)
+        {
+            unit.Unit.EndOfTurn(isActive);
+        }
+    }
+
     private void UnitStartOfTurn(bool isActive)
     {
         foreach (var unit in DeployedUnits)
         {
             unit.Unit.StartOfTurn(isActive);
-            unit.RefreshUnitCounter();
         }
     }
 

@@ -66,8 +66,10 @@ public class Unit : Card
     public StatisticStatuses HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
 
     public UnitStatuses Status { get; set; }
-    public int CurrentHealth { get; set; }
-    public int RemainingSpeed { get; set; }
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth).Value, value); } }
+    private int currentHealth;
+    public int RemainingSpeed { get { return remainingSpeed; } set { remainingSpeed = Mathf.Min(GetStat(StatTypes.Speed).Value, value); } }
+    private int remainingSpeed;
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
@@ -133,30 +135,24 @@ public class Unit : Card
         return Stats.Single(x => x.Type == statType).Value;
     }
 
-    public void ModifyStat(StatModifierTypes modifierType, StatTypes statType, int? value, bool isInternal = false)
+    public void ModifyStat(StatModifierTypes modifierType, StatTypes statType, int? value)
     {
         switch (modifierType)
         {
             case StatModifierTypes.Modify:
                 var currentValue = Stats.Single(x => x.Type == statType).Value;
-                ModifyStat(StatModifierTypes.Set, statType, currentValue.Value + value, true);
-                if (isInternal)
-                {
-                    if (statType == StatTypes.MaxHealth)
-                        CurrentHealth += value.Value;
-                    if (statType == StatTypes.Speed)
-                        RemainingSpeed += value.Value;
-                }
+                ModifyStat(StatModifierTypes.Set, statType, currentValue.Value + value);
+                if (statType == StatTypes.MaxHealth)
+                    CurrentHealth += value.Value;
+                if (statType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                    RemainingSpeed += value.Value;
                 break;
             case StatModifierTypes.Set:
                 Stats.Single(x => x.Type == statType).Value = value;
-                if (isInternal)
-                {
-                    if (statType == StatTypes.MaxHealth)
-                        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
-                    if (statType == StatTypes.Speed)
-                        RemainingSpeed = GetStat(StatTypes.Speed).Value;
-                }
+                if (statType == StatTypes.MaxHealth)
+                    CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+                if (statType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                    RemainingSpeed = GetStat(StatTypes.Speed).Value;
                 break;
             default:
                 throw new Exception("Not a valid modifier type");
@@ -194,12 +190,32 @@ public class Unit : Card
                 }
 
                 ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
+                RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn);
             }
         }
         else
         {
             Status = UnitStatuses.Enemy;
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.StartOfOpponentTurn);
         }
+
+        UnitCounter.RefreshUnitCounter();
+    }
+
+    public void EndOfTurn(bool isActive)
+    {
+        if (isActive)
+        {
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn);
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+        }
+        else
+        {
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOpponentTurn);
+            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+        }
+
+        UnitCounter.RefreshUnitCounter();
     }
 
     public void UseSpeed(int usedSpeed)
@@ -237,6 +253,8 @@ public class Unit : Card
         if (GetStat(StatTypes.Range).Value == 0)
             DamageUnit(targetUnit.GetStat(StatTypes.Attack).Value, CurrentKeywords.Contains(BaseUnitKeywords.Piercing));
 
+        RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
     }
@@ -269,7 +287,7 @@ public class Unit : Card
                     DestroyUnit();
             }
         }
-        
+
         UnitCounter.RefreshUnitCounter();
     }
 
@@ -363,13 +381,13 @@ public class Unit : Card
             UnitCounter.RefreshUnitCounter();
     }
 
-    public void RemoveEnchantment(UnitEnchantment enchantment)
+    public void RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus enchantmentStatus)
     {
-        if (Enchantments.Contains(enchantment))
-        {
-            Enchantments.Remove(enchantment);
-            UpdateEnchantments();
-        }
+        var removeEnchantments = Enchantments.Where(x => x.Status == enchantmentStatus);
+
+        Enchantments.RemoveAll(x => removeEnchantments.Contains(x));
+
+        UpdateEnchantments();
     }
 
     private void UpdateEnchantments()
@@ -387,8 +405,8 @@ public class Unit : Card
                     foreach (var statModifier in enchantment.StatModifiers)
                     {
                         ModifyStat(statModifier.ModType, statModifier.StatType, statModifier.Value);
-                    } 
- 
+                    }
+
                     foreach (var keyword in enchantment.Keywords)
                     {
                         if (!CurrentKeywords.Contains(keyword))

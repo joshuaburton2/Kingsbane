@@ -196,11 +196,13 @@ public class GameManager : MonoBehaviour
             player.InitialisePlayer(index);
             index++;
         }
-            
+
     }
 
     public bool NextPlayerTurn()
     {
+        PlayerEndOfTurn();
+
         ActivePlayerId++;
 
         if (ActivePlayerId == NumPlayers)
@@ -216,27 +218,36 @@ public class GameManager : MonoBehaviour
             {
                 CurrentRound++;
             }
-            
+
             PlayerStartOfTurn();
 
             return true;
         }
 
         PlayerStartOfTurn();
-        
+
         return false;
     }
 
-    public void PlayerStartOfTurn()
+    private void PlayerStartOfTurn()
     {
-        //if (CurrentGamePhase == GamePhases.Gameplay)
-        //{
-            var activePlayer = GetActivePlayer();
+        var activePlayer = GetActivePlayer();
 
+        foreach (var player in LoadedPlayers)
+        {
+            player.StartOfTurn(player == activePlayer);
+        }
+    }
+
+    public void PlayerEndOfTurn()
+    {
+        if (CurrentGamePhase == GamePhases.Gameplay)
+        {
+            var activePlayer = GetActivePlayer();
             foreach (var player in LoadedPlayers)
             {
-                player.StartOfTurn(player == activePlayer);
+                player.EndOfTurn(player == activePlayer);
             }
-        //}
+        }
     }
 }
