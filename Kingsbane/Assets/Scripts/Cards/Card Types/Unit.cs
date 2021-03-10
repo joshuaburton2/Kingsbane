@@ -97,7 +97,7 @@ public class Unit : Card
     {
         base.InitCard(_cardData, owner);
 
-        ResetStats();
+        ResetStats(true);
 
         Enchantments = new List<UnitEnchantment>();
         CurrentStatusEffects = new List<StatusEffects>();
@@ -121,18 +121,27 @@ public class Unit : Card
         }
     }
 
-    private void ResetStats()
+    private void ResetStats(bool fullReset = false)
     {
+        int? currentTempProtected = 0;
+        int? currentProtected = UnitData.Protected;
+
+        if (!fullReset)
+        {
+            currentTempProtected = GetStat(StatTypes.TempProtected);
+            currentProtected = GetStat(StatTypes.Protected);
+        }
+
         var maxStats = 8;
         Stats = new List<Stat>(maxStats)
         {
-            new Stat(){ Type = StatTypes.Attack, Value = UnitData.Attack },
-            new Stat(){ Type = StatTypes.MaxHealth, Value = UnitData.Health },
-            new Stat(){ Type = StatTypes.Protected, Value = UnitData.Protected },
-            new Stat(){ Type = StatTypes.TempProtected, Value = 0 },
-            new Stat(){ Type = StatTypes.Range, Value = UnitData.Range },
-            new Stat(){ Type = StatTypes.Speed, Value = UnitData.Speed },
-            new Stat(){ Type = StatTypes.Empowered, Value = UnitData.Empowered },
+            new Stat() { Type = StatTypes.Attack, Value = UnitData.Attack },
+            new Stat() { Type = StatTypes.MaxHealth, Value = UnitData.Health },
+            new Stat() { Type = StatTypes.TempProtected, Value = currentTempProtected },
+            new Stat() { Type = StatTypes.Protected, Value = currentProtected },
+            new Stat() { Type = StatTypes.Range, Value = UnitData.Range },
+            new Stat() { Type = StatTypes.Speed, Value = UnitData.Speed },
+            new Stat() { Type = StatTypes.Empowered, Value = UnitData.Empowered },
         };
     }
 
@@ -352,7 +361,7 @@ public class Unit : Card
                         if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
                             DestroyUnit();
                         if (keywords.Contains(Keywords.Lifebond))
-                            sourcePlayer.Hero.HealUnit(GetStat(StatTypes.Protected));
+                            sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
                         ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
                     }
