@@ -32,14 +32,12 @@ public class UnitEnchantment
     public List<Keywords> Keywords { get; set; }
     public List<Unit.StatusEffects> StatusEffects { get; set; }
 
-    public bool IsActive { get; set; }
     public string Source { get; set; }
 
     public bool ValidEnchantment { get { return StatModifiers.Count > 0 || Keywords.Count > 0 || StatusEffects.Count > 0; } }
 
     public UnitEnchantment()
     {
-        IsActive = true;
         Status = EnchantmentStatus.None;
 
         StatModifiers = new List<StatModifier>();

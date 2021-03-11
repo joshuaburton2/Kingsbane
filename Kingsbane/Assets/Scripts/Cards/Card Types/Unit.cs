@@ -76,7 +76,7 @@ public class Unit : Card
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
     public bool CanAction { get { return ActionsLeft > 0; } }
 
-    public List<UnitEnchantment> Enchantments { get; set; }
+    public List<AppliedEnchantment> Enchantments { get; set; }
     public List<StatusEffects> CurrentStatusEffects { get; set; }
     public List<Keywords> BaseKeywords { get { return UnitData.Keywords; } }
     public List<Keywords> CurrentKeywords { get; set; }
@@ -99,7 +99,7 @@ public class Unit : Card
 
         ResetStats(true);
 
-        Enchantments = new List<UnitEnchantment>();
+        Enchantments = new List<AppliedEnchantment>();
         CurrentStatusEffects = new List<StatusEffects>();
         CurrentKeywords = new List<Keywords>();
 
@@ -157,17 +157,9 @@ public class Unit : Card
             case StatModifierTypes.Modify:
                 var currentValue = Stats.Single(x => x.Type == statType).Value;
                 ModifyStat(StatModifierTypes.Set, statType, currentValue.Value + value);
-                if (statType == StatTypes.MaxHealth)
-                    CurrentHealth += value.Value;
-                if (statType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
-                    RemainingSpeed += value.Value;
                 break;
             case StatModifierTypes.Set:
                 Stats.Single(x => x.Type == statType).Value = value;
-                if (statType == StatTypes.MaxHealth)
-                    CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
-                if (statType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
-                    RemainingSpeed = GetStat(StatTypes.Speed).Value;
                 break;
             default:
                 throw new Exception("Not a valid modifier type");
@@ -270,6 +262,9 @@ public class Unit : Card
             Status = UnitStatuses.Finished;
         else if (value <= 0)
             Status = UnitStatuses.Middle;
+        else if (value > 0)
+            if (Status == UnitStatuses.Finished)
+                Status = UnitStatuses.Middle;
 
         UnitCounter.RefreshUnitCounter();
     }
@@ -342,8 +337,10 @@ public class Unit : Card
         if (keywords.Contains(Keywords.Piercing))
         {
             CurrentHealth -= damageValue;
-            if (CurrentHealth <= 0)
+            if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
                 DestroyUnit();
+            if (keywords.Contains(Keywords.Lifebond))
+                sourcePlayer.Hero.HealUnit(damageValue);
         }
         else
         {
@@ -357,7 +354,6 @@ public class Unit : Card
                     if (GetStat(StatTypes.Protected) < 0)
                     {
                         CurrentHealth += GetStat(StatTypes.Protected).Value;
-
                         if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
                             DestroyUnit();
                         if (keywords.Contains(Keywords.Lifebond))
@@ -453,7 +449,7 @@ public class Unit : Card
 
     public void AddEnchantment(UnitEnchantment enchantment)
     {
-        Enchantments.Add(enchantment);
+        Enchantments.Add(new AppliedEnchantment() { Enchantment = enchantment });
         UpdateEnchantments();
 
         if (HasKeyword(Keywords.Flying))
@@ -467,7 +463,7 @@ public class Unit : Card
 
     public void RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus enchantmentStatus)
     {
-        var removeEnchantments = Enchantments.Where(x => x.Status == enchantmentStatus);
+        var removeEnchantments = Enchantments.Where(x => x.Enchantment.Status == enchantmentStatus);
 
         Enchantments.RemoveAll(x => removeEnchantments.Contains(x));
 
@@ -482,26 +478,49 @@ public class Unit : Card
 
         foreach (var enchantment in Enchantments)
         {
-            if (enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
+            if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
             {
                 if (enchantment.IsActive)
                 {
-                    foreach (var statModifier in enchantment.StatModifiers)
+                    foreach (var statModifier in enchantment.Enchantment.StatModifiers)
                     {
                         ModifyStat(statModifier.ModType, statModifier.StatType, statModifier.Value);
+
+                        if (!enchantment.IsApplied)
+                        {
+                            switch (statModifier.ModType)
+                            {
+                                case StatModifierTypes.Modify:
+                                    if (statModifier.StatType == StatTypes.MaxHealth)
+                                        CurrentHealth += statModifier.Value;
+                                    if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                                        RemainingSpeed += statModifier.Value;
+                                    break;
+                                case StatModifierTypes.Set:
+                                    if (statModifier.StatType == StatTypes.MaxHealth)
+                                        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+                                    if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                                        RemainingSpeed = GetStat(StatTypes.Speed).Value;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
                     }
 
-                    foreach (var keyword in enchantment.Keywords)
+                    foreach (var keyword in enchantment.Enchantment.Keywords)
                     {
                         if (!HasKeyword(keyword))
                             CurrentKeywords.Add(keyword);
                     }
 
-                    foreach (var statusEffect in enchantment.StatusEffects)
+                    foreach (var statusEffect in enchantment.Enchantment.StatusEffects)
                     {
                         if (!CurrentStatusEffects.Contains(statusEffect))
                             CurrentStatusEffects.Add(statusEffect);
                     }
+
+                    enchantment.IsApplied = true;
                 }
             }
             else

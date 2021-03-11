@@ -32,6 +32,14 @@ public class HandUI : MonoBehaviour
 
     private GameplayUI gameplayUI;
 
+    private bool handMinimised;
+
+    private void Update()
+    {
+        if (GameManager.instance.effectManager.IsUILocked && !handMinimised)
+            MinimiseAllCards();
+    }
+
     /// <summary>
     /// 
     /// Displays the hand list. Can input either a Card or UpgradeData list
@@ -40,6 +48,8 @@ public class HandUI : MonoBehaviour
     public void DisplayHandList<T>(GameplayUI _gameplayUI, List<T> handList, bool showHand, int playerIndex) where T : class
     {
         gameplayUI = _gameplayUI;
+
+        handMinimised = true;
 
         containerList = new List<HandContainer>();
         GameManager.DestroyAllChildren(this.handList);
@@ -94,6 +104,8 @@ public class HandUI : MonoBehaviour
             container.MinimiseDisplay();
 
         UpdateHandObjects(false);
+
+        handMinimised = true;
     }
 
     /// <summary>
@@ -108,6 +120,8 @@ public class HandUI : MonoBehaviour
                 container.MinimiseDisplay();
 
         gameplayUI.CancelEffects();
+
+        handMinimised = false;
     }
 
     /// <summary>

@@ -10,10 +10,10 @@ public class EnchantmentListObject : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI descriptionText;
 
-    public void InitEnchantmentObject(UnitEnchantment _enchantment)
+    public void InitEnchantmentObject(AppliedEnchantment _enchantment)
     {
         var activeText = !_enchantment.IsActive ? "- Spellbound" : "";
-        sourceText.text = $"{_enchantment.Source}{activeText}";
-        descriptionText.text = _enchantment.DescriptionText();
+        sourceText.text = $"{_enchantment.Enchantment.Source}{activeText}";
+        descriptionText.text = _enchantment.Enchantment.DescriptionText();
     }
 }

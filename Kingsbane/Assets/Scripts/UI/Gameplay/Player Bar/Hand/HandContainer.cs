@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CategoryEnums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -180,9 +181,24 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         }
 
         //Left click selects the card in hand. Can't click cards if UI locked
-        if (eventData.button == PointerEventData.InputButton.Left && !GameManager.instance.effectManager.IsUILocked && !isHidden)
+        if (eventData.button == PointerEventData.InputButton.Left && !isHidden)
         {
-            SelectDisplay();
+            switch (GameManager.instance.effectManager.ActiveEffect)
+            {
+                case EffectManager.ActiveEffectTypes.EnchantUnit:
+                    if (Card.Type == CardTypes.Unit)
+                    {
+                        GameManager.instance.effectManager.EnchantUnit((Unit)Card);
+                        CardDisplay.UpdateProperties();
+                    }
+                    break;
+                default:
+                    if (!GameManager.instance.effectManager.IsUILocked)
+                    {
+                        SelectDisplay();
+                    }
+                    break;
+            }
         }
     }
 

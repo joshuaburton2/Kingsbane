@@ -82,7 +82,6 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
 
         cardName.text = card.Name;
         classText.text = card.CardClass.ToString();
-        cardText.text = card.Text;
         cardImage.sprite = card.CardArt;
 
         UpdateCardType();
@@ -186,6 +185,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [ContextMenu("Update Properties")]
     public void UpdateProperties()
     {
+        cardText.text = card.Text;
         resourceText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
 
         createdByText.text = $"Created By: {card.CreatedByName}";
@@ -202,7 +202,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 speedText.text = $"Speed: {unitCard.GetStat(Unit.StatTypes.Speed)}";
 
                 //Add the abilities to the card text
-                List<AbilityData> abilities = unitCard.Abilities;
+                var abilities = unitCard.Abilities;
                 if (abilities != null)
                 {
                     foreach (var ability in abilities)
