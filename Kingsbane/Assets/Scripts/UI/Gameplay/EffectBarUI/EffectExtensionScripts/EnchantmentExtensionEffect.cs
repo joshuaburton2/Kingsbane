@@ -79,7 +79,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
 
     private void ClearFields()
     {
-        GeneralUIExtensions.InitDropdownOfType(typeDropdown, new List<EnchantmentType>());
+        GeneralUIExtensions.InitDropdownOfType(typeDropdown, new List<EnchantmentType>() { EnchantmentType.StatusEffects });
         GeneralUIExtensions.InitDropdownOfType(statusDropdown, new List<UnitEnchantment.EnchantmentStatus>()
         {
             UnitEnchantment.EnchantmentStatus.None,
@@ -94,7 +94,11 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(empoweredModTypeDropdown, new List<StatModifierTypes>());
 
         GeneralUIExtensions.InitDropdownOfType(keywordDropdown, new List<Keywords>());
-        GeneralUIExtensions.InitDropdownOfType(statusEffectDropdown, new List<Unit.StatusEffects>() { Unit.StatusEffects.None });
+        GeneralUIExtensions.InitDropdownOfType(statusEffectDropdown,
+            new List<Unit.StatusEffects>() 
+            { 
+                Unit.StatusEffects.None, Unit.StatusEffects.Spellbound, Unit.StatusEffects.Rooted , Unit.StatusEffects.Stunned, Unit.StatusEffects.Transformed,
+            });
 
         GameManager.DestroyAllChildren(keywordListParent);
         GameManager.DestroyAllChildren(statusEffectListParent);

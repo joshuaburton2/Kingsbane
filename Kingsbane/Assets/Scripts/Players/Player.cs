@@ -215,6 +215,11 @@ public class Player
         foreach (var cardData in generatedCardDatas)
         {
             var generatedCard = GameManager.instance.libraryManager.CreateCard(cardData, this);
+            if (generatedCard.Type == CardTypes.Unit)
+            {
+                ((Unit)generatedCard).AddEnchantment(filter.Enchantment);
+            }
+
             switch (generationType)
             {
                 case CardGenerationTypes.Hand:

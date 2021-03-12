@@ -20,6 +20,8 @@ public class GenerateCardFilter
     public Tags Tag { get; set; }
     public List<Sets> SetFilter { get; set; }
 
+    public UnitEnchantment Enchantment { get; set; }
+
     public GenerateCardFilter(Classes.ClassList playerClass, int numToGenerate = 1)
     {
         //Ensures the card at least has a playable class
@@ -39,5 +41,7 @@ public class GenerateCardFilter
         Class = Classes.ClassList.Default;
         Tag = Tags.Default;
         SetFilter = new List<Sets>() { Sets.Standard };
+
+        Enchantment = new UnitEnchantment();
     }
 }

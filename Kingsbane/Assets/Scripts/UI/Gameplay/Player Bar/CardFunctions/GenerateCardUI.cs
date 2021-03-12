@@ -33,6 +33,30 @@ public class GenerateCardUI : MonoBehaviour
     [SerializeField]
     private TMP_Dropdown positionDropdown;
 
+    [Header("Unit Enchantment Area")]
+    [SerializeField]
+    private GameObject unitEnchantmentArea;
+    [SerializeField]
+    private TMP_Dropdown attackModTypeDropdown;
+    [SerializeField]
+    private TMP_InputField attackValueInput;
+    [SerializeField]
+    private TMP_Dropdown healthModTypeDropdown;
+    [SerializeField]
+    private TMP_InputField healthValueInput;
+    [SerializeField]
+    private TMP_Dropdown rangeModTypeDropdown;
+    [SerializeField]
+    private TMP_InputField rangeValueInput;
+    [SerializeField]
+    private TMP_Dropdown speedModTypeDropdown;
+    [SerializeField]
+    private TMP_InputField speedValueInput;
+    [SerializeField]
+    private TMP_Dropdown empoweredModTypeDropdown;
+    [SerializeField]
+    private TMP_InputField empoweredValueInput;
+
     private const string DEFAULT_DROPDOWN_STRING = "Any";
     private string defaultTitleText;
 
@@ -53,6 +77,9 @@ public class GenerateCardUI : MonoBehaviour
     {
         CardFunctionUI = _cardFunctionUI;
         PlayerClass = playerClass;
+
+        ClearEnchantmentFields();
+        unitEnchantmentArea.SetActive(false);
 
         //Sets the list of dropdown fields and input fields
         dropdownFields = new List<TMP_Dropdown>
@@ -124,6 +151,21 @@ public class GenerateCardUI : MonoBehaviour
             ApplyDropdownFilter<CardResources>(resourceDropdown, GenerationFilter);
             ApplyDropdownFilter<CardTypes>(typeDropdown, GenerationFilter);
 
+            //If the card type is a unit, constructs the enchantment and adds it to the filter for generation
+            if (GenerationFilter.CardType == CardTypes.Unit)
+            {
+                var enchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Permanent };
+                GetStatModifier(enchantment, Unit.StatTypes.Attack, attackModTypeDropdown, attackValueInput);
+                GetStatModifier(enchantment, Unit.StatTypes.MaxHealth, healthModTypeDropdown, healthValueInput);
+                GetStatModifier(enchantment, Unit.StatTypes.Range, rangeModTypeDropdown, rangeValueInput);
+                GetStatModifier(enchantment, Unit.StatTypes.Speed, speedModTypeDropdown, speedValueInput);
+                GetStatModifier(enchantment, Unit.StatTypes.Empowered, empoweredModTypeDropdown, empoweredValueInput);
+
+                GenerationFilter.Enchantment = enchantment;
+            }
+
+            ClearEnchantmentFields();
+
             //Attempts the generation of cards. For deck generation, includes the position to place the generated card
             bool successfulGeneration;
             if (CardGenerationType == CardGenerationTypes.Deck)
@@ -178,5 +220,73 @@ public class GenerateCardUI : MonoBehaviour
         }
 
         return activeFilter;
+    }
+
+    /// <summary>
+    /// 
+    /// Opens the unit enchantment area if the card type is a unit. Closes otherwise
+    /// 
+    /// </summary>
+    public void CardTypeChange()
+    {
+        switch ((CardTypes)Enum.Parse(typeof(CardTypes), typeDropdown.captionText.text.Replace(" ", "")))
+        {
+            case CardTypes.Unit:
+                unitEnchantmentArea.SetActive(true);
+                ClearEnchantmentFields();
+                break;
+            default:
+                unitEnchantmentArea.SetActive(false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Clears the enchantment fields back to their default state
+    /// 
+    /// </summary>
+    private void ClearEnchantmentFields()
+    {
+        GeneralUIExtensions.InitDropdownOfType(attackModTypeDropdown, new List<StatModifierTypes>());
+        GeneralUIExtensions.InitDropdownOfType(healthModTypeDropdown, new List<StatModifierTypes>());
+        GeneralUIExtensions.InitDropdownOfType(rangeModTypeDropdown, new List<StatModifierTypes>());
+        GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
+        GeneralUIExtensions.InitDropdownOfType(empoweredModTypeDropdown, new List<StatModifierTypes>());
+
+        attackValueInput.text = "";
+        healthValueInput.text = "";
+        rangeValueInput.text = "";
+        speedValueInput.text = "";
+        empoweredValueInput.text = "";
+    }
+
+    /// <summary>
+    /// 
+    /// Adds the stat modifier to the enchantment for a particular stat type dropdown and an input
+    /// 
+    /// </summary>
+    private void GetStatModifier(UnitEnchantment enchantment, Unit.StatTypes statType, TMP_Dropdown statModTypeDropdown, TMP_InputField statValueInput)
+    {
+        var statModType = (StatModifierTypes)Enum.Parse(typeof(StatModifierTypes), statModTypeDropdown.captionText.text);
+
+        if (statModType != StatModifierTypes.None)
+        {
+            if (string.IsNullOrWhiteSpace(statValueInput.text))
+                statValueInput.text = "0";
+            var statValue = int.Parse(statValueInput.text);
+
+            enchantment.AddStatModifier(statType, statModType, statValue);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for reseting the filter
+    /// 
+    /// </summary>
+    public void ResetButton()
+    {
+        ClearEnchantmentFields();
     }
 }
