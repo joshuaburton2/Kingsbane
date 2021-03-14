@@ -95,6 +95,14 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.EnchantUnit(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.RootUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.RootUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.StunUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.StunUnit(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

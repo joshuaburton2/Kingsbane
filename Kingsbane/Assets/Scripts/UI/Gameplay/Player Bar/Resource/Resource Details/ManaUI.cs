@@ -91,7 +91,7 @@ public class ManaUI : ResourceDetailUI
 
     public void IncreaseSummons()
     {
-        ResourceMana.ModifyCurrentSummons(1);
+        ResourceMana.ModifyCurrentSummons();
         UpdateExtraPropertyText();
     }
 
@@ -103,7 +103,7 @@ public class ManaUI : ResourceDetailUI
 
     public void IncreaseSummonCapacity()
     {
-        ResourceMana.ModifySummonCapacity(1);
+        ResourceMana.ModifySummonCapacity();
         UpdateExtraPropertyText();
     }
 }

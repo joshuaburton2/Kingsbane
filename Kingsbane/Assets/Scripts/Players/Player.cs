@@ -21,6 +21,7 @@ public class Player
     public List<UpgradeData> Upgrades { get; set; }
     public Hero Hero { get; set; }
     public List<UnitCounter> DeployedUnits { get; set; }
+    public List<UnitCounter> DeployedSummonUnits { get; set; }
     public int ItemCapacity { get { return DeckData.ItemCapacity; } }
 
     public List<PlayerResource> Resources { get; set; }
@@ -37,6 +38,7 @@ public class Player
         Upgrades = DeckData.UpgradeList;
         Hero = (Hero)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
+        DeployedSummonUnits = new List<UnitCounter>();
 
         Resources = DeckData.PlayerResources;
     }
@@ -215,7 +217,7 @@ public class Player
         foreach (var cardData in generatedCardDatas)
         {
             var generatedCard = GameManager.instance.libraryManager.CreateCard(cardData, this);
-            if (generatedCard.Type == CardTypes.Unit)
+            if (generatedCard.Type == CardTypes.Unit && filter.Enchantment != null)
             {
                 ((Unit)generatedCard).AddEnchantment(filter.Enchantment);
             }
@@ -287,5 +289,86 @@ public class Player
             deadCard.CreatedByName = createdBy;
 
         Graveyard.AddCard(deadCard);
+    }
+
+    public void ModifyEmpowered(int value)
+    {
+        if (UsedResources.Contains(CardResources.Mana))
+        {
+            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
+            manaResource.ModifyEmpowered(value);
+        }
+        else
+        {
+            throw new Exception("Cannot add Empowered to a non Mana class");
+        }
+    }
+
+    public void AddSummon(UnitCounter summonCounter)
+    {
+        if (UsedResources.Contains(CardResources.Mana))
+        {
+            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
+            var exceedCapacity = manaResource.ModifyCurrentSummons();
+            DeployedSummonUnits.Add(summonCounter);
+
+            if (exceedCapacity)
+            {
+                GameManager.instance.effectManager.DestroyUnit(DeployedSummonUnits.FirstOrDefault().Unit);
+            }
+        }
+        else
+        {
+            throw new Exception("Cannot add Summon to a non Mana class");
+        }
+    }
+
+    public void RemoveSummon(UnitCounter summonCounter)
+    {
+        if (UsedResources.Contains(CardResources.Mana))
+        {
+            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
+            DeployedSummonUnits.Remove(summonCounter);
+            manaResource.ModifyCurrentSummons(-1);
+        }
+        else
+        {
+            throw new Exception("Cannot remove Summon from a non Mana class");
+        }
+    }
+
+    public void AddSummonCapacity()
+    {
+        if (UsedResources.Contains(CardResources.Mana))
+        {
+            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
+            manaResource.ModifySummonCapacity();
+        }
+        else
+        {
+            throw new Exception("Cannot add Summon Capacity to a non Mana class");
+        }
+    }
+
+    public void CheckWarden()
+    {
+        foreach (var unit in DeployedUnits)
+        {
+            if (unit.Unit.CurrentStatusEffects.Contains(Unit.StatusEffects.Warded))
+                unit.Unit.CurrentStatusEffects.Remove(Unit.StatusEffects.Warded);
+
+            foreach (var adjCell in unit.Cell.adjCell)
+            {
+                if (adjCell.occupantCounter != null)
+                {
+                    if (adjCell.occupantCounter.Unit.HasKeyword(Keywords.Warden))
+                    {
+                        unit.Unit.CurrentStatusEffects.Add(Unit.StatusEffects.Warded);
+                        unit.RefreshUnitCounter();
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ public class Unit : Card
 {
     public enum UnitStatuses //The possible action statuses of the unit
     {
+        None, //Status for when the card is not in play
         Start, //Status for start of turn
         Preparing, //Status for just played
         Middle, //Status for still actions, movement or abilities to use
@@ -25,6 +26,7 @@ public class Unit : Card
         Stealthed,
         Stunned,
         Transformed,
+        Warded,
     }
 
     public enum StatTypes
@@ -87,10 +89,16 @@ public class Unit : Card
     public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
 
     public UnitCounter UnitCounter { get; set; }
+    public bool IsDeployed { get { return UnitCounter != null; } }
 
     public bool HasKeyword(Keywords keyword)
     {
         return CurrentKeywords.Contains(keyword);
+    }
+
+    public bool HasStatusEffect(StatusEffects statusEffect)
+    {
+        return CurrentStatusEffects.Contains(statusEffect);
     }
 
     public override void InitCard(CardData _cardData, Player owner)
@@ -99,25 +107,28 @@ public class Unit : Card
 
         ResetStats(true);
 
-        Enchantments = new List<AppliedEnchantment>();
-        CurrentStatusEffects = new List<StatusEffects>();
-        CurrentKeywords = new List<Keywords>();
-
-        Status = UnitStatuses.Preparing;
-        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
-
-        if (BaseKeywords.Count > 0 || GetStat(StatTypes.Empowered) > 0)
+        if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
-            var keywordEnchantment = new UnitEnchantment()
-            {
-                Source = "Base Keywords",
-                Status = UnitEnchantment.EnchantmentStatus.Base,
-            };
-            keywordEnchantment.Keywords = BaseKeywords.ToList();
-            if (GetStat(StatTypes.Empowered) > 0)
-                keywordEnchantment.AddStatModifier(StatTypes.Empowered, StatModifierTypes.Modify, GetStat(StatTypes.Empowered).Value);
+            Enchantments = new List<AppliedEnchantment>();
+            CurrentStatusEffects = new List<StatusEffects>();
+            CurrentKeywords = new List<Keywords>();
 
-            AddEnchantment(keywordEnchantment);
+            Status = UnitStatuses.None;
+            CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+
+            if (BaseKeywords.Count > 0 || UnitData.Empowered > 0)
+            {
+                var keywordEnchantment = new UnitEnchantment()
+                {
+                    Source = "Base Keywords",
+                    Status = UnitEnchantment.EnchantmentStatus.Base,
+                };
+                keywordEnchantment.Keywords = BaseKeywords.ToList();
+                if (UnitData.Empowered > 0)
+                    keywordEnchantment.AddStatModifier(StatTypes.Empowered, StatModifierTypes.Modify, UnitData.Empowered);
+
+                AddEnchantment(keywordEnchantment);
+            }
         }
     }
 
@@ -141,7 +152,7 @@ public class Unit : Card
             new Stat() { Type = StatTypes.Protected, Value = currentProtected },
             new Stat() { Type = StatTypes.Range, Value = UnitData.Range },
             new Stat() { Type = StatTypes.Speed, Value = UnitData.Speed },
-            new Stat() { Type = StatTypes.Empowered, Value = UnitData.Empowered },
+            new Stat() { Type = StatTypes.Empowered, Value = 0 },
         };
     }
 
@@ -170,7 +181,18 @@ public class Unit : Card
     {
         base.Play();
 
-        Status = UnitStatuses.Preparing;
+        Create();
+    }
+
+    public void Create()
+    {
+        if (Status == UnitStatuses.None)
+            Status = UnitStatuses.Preparing;
+
+        if (GetStat(StatTypes.Empowered).Value > 0)
+            Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
+        if (HasKeyword(Keywords.Summon))
+            Owner.AddSummon(UnitCounter);
     }
 
     public void StartOfTurn(bool isActive)
@@ -185,25 +207,7 @@ public class Unit : Card
             {
                 if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
                 {
-                    Status = UnitStatuses.Start;
-
-                    RemainingSpeed = GetStat(StatTypes.Speed).Value;
-
-                    if (HasKeyword(Keywords.Swiftstrike))
-                    {
-                        ActionsLeft = 2;
-                        AbilityUsesLeft = 1;
-                    }
-                    else if (HasKeyword(Keywords.SpecialSwiftstrike))
-                    {
-                        ActionsLeft = 3;
-                        AbilityUsesLeft = 3;
-                    }
-                    else
-                    {
-                        ActionsLeft = 1;
-                        AbilityUsesLeft = 1;
-                    }
+                    RefreshActions();
                 }
                 else
                 {
@@ -221,6 +225,29 @@ public class Unit : Card
         }
 
         UnitCounter.RefreshUnitCounter();
+    }
+
+    private void RefreshActions()
+    {
+        Status = UnitStatuses.Start;
+
+        RemainingSpeed = GetStat(StatTypes.Speed).Value;
+
+        if (HasKeyword(Keywords.Swiftstrike))
+        {
+            ActionsLeft = 2;
+            AbilityUsesLeft = 1;
+        }
+        else if (HasKeyword(Keywords.SpecialSwiftstrike))
+        {
+            ActionsLeft = 3;
+            AbilityUsesLeft = 3;
+        }
+        else
+        {
+            ActionsLeft = 1;
+            AbilityUsesLeft = 1;
+        }
     }
 
     public void EndOfTurn(bool isActive)
@@ -282,7 +309,8 @@ public class Unit : Card
             var targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
             if (GetStat(StatTypes.Range).Value == 0)
             {
-                if (!targetDead && HasKeyword(Keywords.Overwhelm))
+                bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
+                if (!targetDead && hasOverwhelm || !hasOverwhelm)
                 {
                     unitDead = DamageUnit(targetUnit.Owner, targetUnit.GetStat(StatTypes.Attack).Value, targetUnit.CurrentKeywords);
                 }
@@ -292,13 +320,16 @@ public class Unit : Card
             {
                 CheckUnleash(targetUnit.GetStat(StatTypes.Attack).Value, targetHealth);
             }
-
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
         }
         else
         {
             targetUnit.RemoveUnit();
         }
+
+        RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+
+        if (HasStatusEffect(StatusEffects.Stealthed))
+            CurrentStatusEffects.Remove(StatusEffects.Stealthed);
 
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
@@ -413,6 +444,11 @@ public class Unit : Card
         GameManager.instance.effectManager.RemoveUnit(UnitCounter);
         Owner.AddToGraveyard(this);
 
+        if (GetStat(StatTypes.Empowered).Value > 0)
+            Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
+        if (HasKeyword(Keywords.Summon))
+            Owner.RemoveSummon(UnitCounter);
+
         UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
     }
 
@@ -449,13 +485,17 @@ public class Unit : Card
 
     public void AddEnchantment(UnitEnchantment enchantment)
     {
-        Enchantments.Add(new AppliedEnchantment() { Enchantment = enchantment });
+        var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
+        if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
+            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Flying);
+        if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
+            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
+
+        Enchantments.Add(newEnchantment);
         UpdateEnchantments();
 
-        if (HasKeyword(Keywords.Flying))
-            CurrentStatusEffects.Add(StatusEffects.Flying);
-        if (HasKeyword(Keywords.Stealth))
-            CurrentStatusEffects.Add(StatusEffects.Stealthed);
+        if (HasKeyword(Keywords.Prepared) && (Status == UnitStatuses.Preparing || Status == UnitStatuses.None))
+            RefreshActions();
 
         if (UnitCounter != null)
             UnitCounter.RefreshUnitCounter();
@@ -465,16 +505,23 @@ public class Unit : Card
     {
         var removeEnchantments = Enchantments.Where(x => x.Enchantment.Status == enchantmentStatus);
 
+        foreach (var statusEffectList in removeEnchantments.Select(x => x.Enchantment.StatusEffects))
+        {
+            CurrentStatusEffects.RemoveAll(x => statusEffectList.Contains(x));
+        }
+
         Enchantments.RemoveAll(x => removeEnchantments.Contains(x));
 
         UpdateEnchantments();
+
+        if (UnitCounter != null)
+            UnitCounter.RefreshUnitCounter();
     }
 
     private void UpdateEnchantments()
     {
         ResetStats();
         CurrentKeywords.Clear();
-        CurrentStatusEffects.Clear();
 
         foreach (var enchantment in Enchantments)
         {
@@ -505,6 +552,9 @@ public class Unit : Card
                                 default:
                                     break;
                             }
+
+                            if (statModifier.StatType == StatTypes.Empowered && IsDeployed)
+                                Owner.ModifyEmpowered(statModifier.Value);
                         }
                     }
 
@@ -535,5 +585,27 @@ public class Unit : Card
 
         if (UnitCounter != null)
             UnitCounter.RefreshUnitCounter();
+    }
+
+    public void RootUnit()
+    {
+        var enchantment = new UnitEnchantment()
+        {
+            Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
+            Source = "Root",
+            StatusEffects = new List<StatusEffects>() { StatusEffects.Rooted }
+        };
+        AddEnchantment(enchantment);
+    }
+
+    public void StunUnit()
+    {
+        var enchantment = new UnitEnchantment()
+        {
+            Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
+            Source = "Stun",
+            StatusEffects = new List<StatusEffects>() { StatusEffects.Stunned }
+        };
+        AddEnchantment(enchantment);
     }
 }

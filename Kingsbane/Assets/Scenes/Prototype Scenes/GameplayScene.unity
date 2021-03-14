@@ -22256,6 +22256,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.data[7].statusEffect
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.data[7].effectColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.data[7].effectColour.b
+      value: 0.07770373
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.data[7].effectColour.g
+      value: 0.03769135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statusEffectColours.Array.data[7].effectColour.r
+      value: 0.7264151
+      objectReference: {fileID: 0}
     - target: {fileID: 8891978395099848710, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
       propertyPath: m_Name
@@ -25440,8 +25470,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.98857135
+  m_Value: 0.000030517578
+  m_Size: 0.9885714
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -27888,6 +27918,10 @@ MonoBehaviour:
   - effectType: 7
     activeGamePhase: 4
     effectPrefab: {fileID: 9139182066568407459, guid: af8a819ec866ffd40b55060b08eb4189,
+      type: 3}
+  - effectType: 8
+    activeGamePhase: 4
+    effectPrefab: {fileID: 2020754673699382649, guid: 6e676ff35949a3b4883a4a048f579864,
       type: 3}
   effectExtensions:
   - effectType: 7

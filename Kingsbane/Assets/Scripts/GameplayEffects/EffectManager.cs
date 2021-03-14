@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EffectManager : MonoBehaviour
@@ -23,6 +24,8 @@ public class EffectManager : MonoBehaviour
         DestroyUnit,
         RemoveUnit,
         EnchantUnit,
+        RootUnit,
+        StunUnit,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -146,7 +149,7 @@ public class EffectManager : MonoBehaviour
         return CreateUnitCounter(SelectedUnit, cell);
     }
 
-    public GameObject CreateUnitCounter(Unit unit, Cell cell)
+    public GameObject CreateUnitCounter(Unit unit, Cell cell, bool isNew = true)
     {
         if (cell.occupantCounter == null)
         {
@@ -159,11 +162,22 @@ public class EffectManager : MonoBehaviour
                 unit.Owner.DeployedUnits.Add(unitCounterScript);
             cell.occupantCounter = createdCounter.GetComponent<UnitCounter>();
 
-            if (SelectedCard != null)
+            if (isNew)
             {
-                SelectedCard.Play();
+                if (SelectedCard != null)
+                {
+                    SelectedCard.Play();
+                }
+                else
+                {
+                    unit.Create();
+                }
                 GameManager.instance.uiManager.RefreshUI();
             }
+
+            var opponents = GameManager.instance.LoadedPlayers.Where(x => x.Id != GameManager.instance.ActivePlayerId);
+            foreach (var opponent in opponents)
+                opponent.CheckWarden();
 
             unitCounterScript.RefreshUnitCounter();
             RefreshEffectManager();
@@ -200,7 +214,7 @@ public class EffectManager : MonoBehaviour
             if (newCell.occupantCounter == null)
             {
                 RemoveUnit(SelectedUnit.UnitCounter);
-                CreateUnitCounter(SelectedUnit, newCell);
+                CreateUnitCounter(SelectedUnit, newCell, false);
             }
         }
     }
@@ -282,9 +296,9 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
-        if (unitCounter.Unit == SelectedUnit && 
-            ActiveEffect != ActiveEffectTypes.UnitMove && 
-            ActiveEffect != ActiveEffectTypes.UnitForceMove && 
+        if (unitCounter.Unit == SelectedUnit &&
+            ActiveEffect != ActiveEffectTypes.UnitMove &&
+            ActiveEffect != ActiveEffectTypes.UnitForceMove &&
             ActiveEffect != ActiveEffectTypes.UnitUseSpeed)
         {
             SelectedUnit = null;
@@ -379,5 +393,28 @@ public class EffectManager : MonoBehaviour
     public void EnchantUnit(Unit unit)
     {
         unit.AddEnchantment(SelectedEnchantment);
+
+        if (SelectedEnchantment.StatModifiers.Any(x => x.StatType == Unit.StatTypes.Empowered))
+            GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetRootMode()
+    {
+        ActiveEffect = ActiveEffectTypes.RootUnit;
+    }
+
+    public void RootUnit(Unit unit)
+    {
+        unit.RootUnit();
+    }
+
+    public void SetStunMode()
+    {
+        ActiveEffect = ActiveEffectTypes.StunUnit;
+    }
+
+    public void StunUnit(Unit unit)
+    {
+        unit.StunUnit();
     }
 }

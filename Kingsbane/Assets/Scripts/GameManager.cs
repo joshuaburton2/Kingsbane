@@ -1,4 +1,5 @@
 ﻿using CategoryEnums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,7 +128,8 @@ public class GameManager : MonoBehaviour
             var defaultDecks = new DeckData[]
             {
                 deckManager.NPCDeckList.FirstOrDefault(),
-                deckManager.NPCDeckList.FirstOrDefault(),
+                //deckManager.NPCDeckList.FirstOrDefault(),
+                deckManager.NPCDeckList.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
             var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
@@ -144,6 +146,10 @@ public class GameManager : MonoBehaviour
     private void LoadGameplayData(DeckData[] decks, Map map, int scenarioId)
     {
         CurrentGamePhase = GamePhases.Setup;
+
+        //Ensures that there are no duplicate decks loaded
+        if (decks.GroupBy(x => x).Any(x => x.Count() > 1))
+            throw new Exception("Cannot load the same deck for different players");
 
         LoadedPlayers = decks.Select(x => new Player(x)).ToList();
         LoadedMap = map;

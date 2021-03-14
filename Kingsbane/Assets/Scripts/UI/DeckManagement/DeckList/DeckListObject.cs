@@ -131,8 +131,10 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
                 //If not, sets the lobby deck list UI into selected mode and opens the card list panel on this object
                 else
                 {
-                    lobbyDeckListUI.SelectDeck(deckId, deckData);
-                    deckDetailsArea.gameObject.SetActive(true);
+                    if (lobbyDeckListUI.SelectDeck(deckId, deckData))
+                    {
+                        deckDetailsArea.gameObject.SetActive(true);
+                    }
                 }
             }
             else

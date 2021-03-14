@@ -42,6 +42,6 @@ public class GenerateCardFilter
         Tag = Tags.Default;
         SetFilter = new List<Sets>() { Sets.Standard };
 
-        Enchantment = new UnitEnchantment();
+        Enchantment = null;
     }
 }

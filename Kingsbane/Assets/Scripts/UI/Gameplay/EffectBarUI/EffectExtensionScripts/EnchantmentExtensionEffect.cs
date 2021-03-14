@@ -93,7 +93,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
         GeneralUIExtensions.InitDropdownOfType(empoweredModTypeDropdown, new List<StatModifierTypes>());
 
-        GeneralUIExtensions.InitDropdownOfType(keywordDropdown, new List<Keywords>());
+        GeneralUIExtensions.InitDropdownOfType(keywordDropdown, new List<Keywords>() { Keywords.Summon });
         GeneralUIExtensions.InitDropdownOfType(statusEffectDropdown,
             new List<Unit.StatusEffects>() 
             { 

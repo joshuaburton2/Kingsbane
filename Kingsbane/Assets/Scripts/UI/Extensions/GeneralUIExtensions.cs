@@ -21,7 +21,7 @@ public static class GeneralUIExtensions
         var dropDownNames = Enum.GetValues(typeof(T)).Cast<T>().Select(x => x.GetEnumDescription()).ToList();
 
         if (orderAlphabetical)
-            dropDownNames = dropDownNames.OrderBy(x => x.FirstOrDefault()).ToList();
+            dropDownNames = dropDownNames.OrderBy(x => x).ToList();
 
         //Removes the necessary values from the list
         foreach (var removeItem in removedList)

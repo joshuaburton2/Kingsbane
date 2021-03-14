@@ -1146,16 +1146,18 @@ MonoBehaviour:
   - playerIndex: 1
     playerColour: {r: 0.8000001, g: 0.14117648, b: 0.14117648, a: 1}
   unitStatusColours:
-  - unitStatus: 0
-    statusColour: {r: 0.35624984, g: 0.764151, b: 0.09732112, a: 1}
   - unitStatus: 1
-    statusColour: {r: 0.08187969, g: 0.27157784, b: 0.754717, a: 1}
+    statusColour: {r: 0.35624984, g: 0.764151, b: 0.09732112, a: 1}
   - unitStatus: 2
-    statusColour: {r: 0.8207547, g: 0.68229085, b: 0.15873085, a: 1}
+    statusColour: {r: 0.08187969, g: 0.27157784, b: 0.754717, a: 1}
   - unitStatus: 3
-    statusColour: {r: 0.8588236, g: 0.27058825, b: 0.019607844, a: 1}
+    statusColour: {r: 0.8207547, g: 0.68229085, b: 0.15873085, a: 1}
   - unitStatus: 4
+    statusColour: {r: 0.8588236, g: 0.27058825, b: 0.019607844, a: 1}
+  - unitStatus: 5
     statusColour: {r: 0.7725491, g: 0.03137255, b: 0.011764707, a: 1}
+  - unitStatus: 0
+    statusColour: {r: 0, g: 0, b: 0, a: 1}
   statusEffectColours:
   - statusEffect: 0
     effectColour: {r: 1, g: 1, b: 1, a: 1}
@@ -1171,6 +1173,8 @@ MonoBehaviour:
     effectColour: {r: 0.66443723, g: 0.07186719, b: 0.8018868, a: 1}
   - statusEffect: 6
     effectColour: {r: 0.6132076, g: 0.33176675, b: 0.08966714, a: 1}
+  - statusEffect: 7
+    effectColour: {r: 0.7264151, g: 0.03769135, b: 0.07770373, a: 1}
   statModColours:
   - statMod: 0
     statColour: {r: 1, g: 1, b: 1, a: 1}

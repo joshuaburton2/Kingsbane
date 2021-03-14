@@ -25,6 +25,8 @@ public class EffectsBarUI : MonoBehaviour
         DestroyUnit,
         [Description("Unit Enchantment")]
         UnitEnchantment,
+        [Description("Crowd Control")]
+        CrowdControl,
     }
 
     [Serializable]

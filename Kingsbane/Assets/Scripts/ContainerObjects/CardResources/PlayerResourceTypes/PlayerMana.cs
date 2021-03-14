@@ -147,7 +147,7 @@ public class PlayerMana : PlayerResource
     /// Modify the current summon capacity
     /// 
     /// </summary>
-    public void ModifySummonCapacity(int value)
+    public void ModifySummonCapacity(int value = 1)
     {
         SummonCapcity += value;
         SummonCapcity = Mathf.Max(1, SummonCapcity);
@@ -155,12 +155,14 @@ public class PlayerMana : PlayerResource
 
     /// <summary>
     /// 
-    /// Modify the current summon amount
+    /// Modify the current summon amount. Returns true or false if the increase goes above the players Summon Capacity
     /// 
     /// </summary>
-    public void ModifyCurrentSummons(int value)
+    public bool ModifyCurrentSummons(int value = 1)
     {
         CurrentSummons += value;
+        bool exceedCapacity = CurrentSummons > SummonCapcity;
         CurrentSummons = Mathf.Clamp(CurrentSummons, 0, SummonCapcity);
+        return exceedCapacity;
     }
 }

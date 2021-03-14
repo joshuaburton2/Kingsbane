@@ -32,7 +32,7 @@ public class PlayerUIBar : MonoBehaviour
     {
         Id = _id;
 
-        handUI.DisplayHandList(gameplayUI, Player.Upgrades.Where(x => !x.IsRepeatable).ToList(), true, Id);
+        ShowUpgradesInHand();
         cardListsUI.InitCardLists(Player);
         resourceUI.InitResourceUI(Player.Resources, this);
         heroUI.InitHeroUI(Player.Hero);
@@ -49,13 +49,28 @@ public class PlayerUIBar : MonoBehaviour
     {
         UpdateTurnIndicator();
 
-        handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
+        switch (GameManager.instance.CurrentGamePhase)
+        {
+            case GameManager.GamePhases.Setup:
+            case GameManager.GamePhases.HeroDeploy:
+                ShowUpgradesInHand();
+                break;
+            default:
+                handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
+                break;
+        }
+
         cardListsUI.RefreshCurrentList();
         resourceUI.RefreshResourceUI();
         heroUI.RefreshHeroUI();
         cardFunctionUI.RefreshCardFunctionUI();
 
         cardListsUI.gameObject.SetActive(false);
+    }
+
+    private void ShowUpgradesInHand()
+    {
+        handUI.DisplayHandList(gameplayUI, Player.Upgrades.Where(x => !x.IsRepeatable).ToList(), true, Id);
     }
 
     public void UpdateTurnIndicator()
