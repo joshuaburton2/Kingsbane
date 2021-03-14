@@ -87,24 +87,31 @@ public class LobbyDeckListUI : MonoBehaviour
     /// Function call for selecing a deck for the player to play
     /// 
     /// </summary>
-    public void SelectDeck(int deckId, DeckData deckData)
+    public bool SelectDeck(int deckId, DeckData deckData)
     {
-        //Sets the properties of the deck currently being edited
-        SelectedDeckId = deckId;
-
-        //Locks the deck scrolling
-        listScrollArea.vertical = false;
-
-        //Hides all deck objects in the deck list except the one being edited
-        for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
-        {
-            if (deckListObjects[deckIndex].GetComponent<DeckListObject>().deckData.Id != deckId)
-            {
-                deckListObjects[deckIndex].SetActive(false);
-            }
-        }
-
         //Return the selected deck to the lobby UI
-        lobbyUI.SelectDeck(playerId, deckData);
+        if (lobbyUI.SelectDeck(playerId, deckData))
+        {
+            //Sets the properties of the deck currently being edited
+            SelectedDeckId = deckId;
+
+            //Locks the deck scrolling
+            listScrollArea.vertical = false;
+
+            //Hides all deck objects in the deck list except the one being edited
+            for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
+            {
+                if (deckListObjects[deckIndex].GetComponent<DeckListObject>().deckData.Id != deckId)
+                {
+                    deckListObjects[deckIndex].SetActive(false);
+                }
+            }
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

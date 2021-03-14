@@ -199,20 +199,29 @@ public class LobbyUI : MonoBehaviour
     /// Function call for the deck lists when a deck is selected from the list
     /// 
     /// </summary>
-    public void SelectDeck(int playerId, DeckData deck)
+    public bool SelectDeck(int playerId, DeckData deck)
     {
-        //Assigned the deck to the required player deck
-        playerDecks[playerId] = deck;
-
-        //If all required decks are selected (i.e. not null), then can begin playing the game (there is no way for a map to not be selected)
-        playButton.interactable = true;
-        foreach (var deckCheck in playerDecks)
+        if (!playerDecks.Contains(deck))
         {
-            if (deckCheck == null)
+            //Assigned the deck to the required player deck
+            playerDecks[playerId] = deck;
+
+            //If all required decks are selected (i.e. not null), then can begin playing the game (there is no way for a map to not be selected)
+            playButton.interactable = true;
+            foreach (var deckCheck in playerDecks)
             {
-                playButton.interactable = false;
-                break;
+                if (deckCheck == null)
+                {
+                    playButton.interactable = false;
+                    break;
+                }
             }
+
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
