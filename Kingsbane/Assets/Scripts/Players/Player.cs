@@ -73,14 +73,8 @@ public class Player
             UnitStartOfTurn(isActive);
         }
 
-    }
+        CheckWarden();
 
-    public void EndOfTurn(bool isActive)
-    {
-        foreach (var unit in DeployedUnits)
-        {
-            unit.Unit.EndOfTurn(isActive);
-        }
     }
 
     private void UnitStartOfTurn(bool isActive)
@@ -88,6 +82,14 @@ public class Player
         foreach (var unit in DeployedUnits)
         {
             unit.Unit.StartOfTurn(isActive);
+        }
+    }
+
+    public void EndOfTurn(bool isActive)
+    {
+        foreach (var unit in DeployedUnits)
+        {
+            unit.Unit.EndOfTurn(isActive);
         }
     }
 
@@ -354,21 +356,7 @@ public class Player
     {
         foreach (var unit in DeployedUnits)
         {
-            if (unit.Unit.CurrentStatusEffects.Contains(Unit.StatusEffects.Warded))
-                unit.Unit.CurrentStatusEffects.Remove(Unit.StatusEffects.Warded);
-
-            foreach (var adjCell in unit.Cell.adjCell)
-            {
-                if (adjCell.occupantCounter != null)
-                {
-                    if (adjCell.occupantCounter.Unit.HasKeyword(Keywords.Warden))
-                    {
-                        unit.Unit.CurrentStatusEffects.Add(Unit.StatusEffects.Warded);
-                        unit.RefreshUnitCounter();
-                        break;
-                    }
-                }
-            }
+            unit.Unit.CheckWarden();
         }
     }
 }

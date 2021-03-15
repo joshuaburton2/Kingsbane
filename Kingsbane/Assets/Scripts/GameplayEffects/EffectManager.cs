@@ -16,6 +16,8 @@ public class EffectManager : MonoBehaviour
         UnitForceMove,
         UnitUseSpeed,
         UnitMove,
+        UnitUseDisengageSpeed,
+        UnitDisengage,
         UnitAttack,
         UnitAbility,
         DealDamage,
@@ -36,6 +38,7 @@ public class EffectManager : MonoBehaviour
     {
         ActiveEffectTypes.Deployment,
         ActiveEffectTypes.UnitMove,
+        ActiveEffectTypes.UnitDisengage,
         ActiveEffectTypes.UnitUseSpeed,
         ActiveEffectTypes.DealDamage,
         ActiveEffectTypes.HealUnit,
@@ -103,10 +106,16 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
 
                 break;
+            case ActiveEffectTypes.UnitDisengage:
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseDisengageSpeed;
+                CancelEffect = false;
+
+                break;
             case ActiveEffectTypes.UnitUseSpeed:
+            case ActiveEffectTypes.UnitUseDisengageSpeed:
                 if (CancelEffect)
                 {
-                    MoveSelectedUnit(PreviousCell, true);
+                    MoveSelectedUnit(PreviousCell);
                     CancelEffect = false;
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
@@ -175,9 +184,7 @@ public class EffectManager : MonoBehaviour
                 GameManager.instance.uiManager.RefreshUI();
             }
 
-            var opponents = GameManager.instance.LoadedPlayers.Where(x => x.Id != GameManager.instance.ActivePlayerId);
-            foreach (var opponent in opponents)
-                opponent.CheckWarden();
+            GameManager.instance.CheckWarden();
 
             unitCounterScript.RefreshUnitCounter();
             RefreshEffectManager();
@@ -199,6 +206,15 @@ public class EffectManager : MonoBehaviour
         }
     }
 
+    public void SetDisengageUnitMode(Cell currentCell)
+    {
+        if (ActiveEffect == ActiveEffectTypes.UnitCommand)
+        {
+            ActiveEffect = ActiveEffectTypes.UnitDisengage;
+            PreviousCell = currentCell;
+        }
+    }
+
     public void SetForceMoveUnitMode()
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
@@ -207,14 +223,19 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveSelectedUnit(Cell newCell, bool isCancel = false)
+    public void MoveSelectedUnit(Cell newCell)
     {
-        if (ActiveEffect == ActiveEffectTypes.UnitMove || ActiveEffect == ActiveEffectTypes.UnitForceMove || ActiveEffect == ActiveEffectTypes.UnitUseSpeed)
+        if (ActiveEffect == ActiveEffectTypes.UnitMove || 
+            ActiveEffect == ActiveEffectTypes.UnitDisengage || 
+            ActiveEffect == ActiveEffectTypes.UnitForceMove || 
+            ActiveEffect == ActiveEffectTypes.UnitUseSpeed ||
+            ActiveEffect == ActiveEffectTypes.UnitUseDisengageSpeed)
         {
             if (newCell.occupantCounter == null)
             {
                 RemoveUnit(SelectedUnit.UnitCounter);
                 CreateUnitCounter(SelectedUnit, newCell, false);
+                GameManager.instance.uiManager.RefreshUI();
             }
         }
     }
@@ -299,7 +320,9 @@ public class EffectManager : MonoBehaviour
         if (unitCounter.Unit == SelectedUnit &&
             ActiveEffect != ActiveEffectTypes.UnitMove &&
             ActiveEffect != ActiveEffectTypes.UnitForceMove &&
-            ActiveEffect != ActiveEffectTypes.UnitUseSpeed)
+            ActiveEffect != ActiveEffectTypes.UnitUseSpeed &&
+            ActiveEffect != ActiveEffectTypes.UnitDisengage &&
+            ActiveEffect != ActiveEffectTypes.UnitUseDisengageSpeed)
         {
             SelectedUnit = null;
             GameManager.instance.uiManager.RefreshUI();

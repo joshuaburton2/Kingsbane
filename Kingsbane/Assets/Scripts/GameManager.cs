@@ -256,4 +256,13 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public void CheckWarden()
+    {
+        if (CurrentGamePhase == GamePhases.Gameplay)
+        {
+            foreach (var player in GameManager.instance.LoadedPlayers)
+                player.CheckWarden();
+        }
+    }
 }

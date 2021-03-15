@@ -20,7 +20,7 @@ public class Unit : Card
     public enum StatusEffects
     {
         None,
-        Flying,
+        Airborne,
         Rooted,
         Spellbound,
         Stealthed,
@@ -77,6 +77,7 @@ public class Unit : Card
     public int AbilityUsesLeft { get; set; }
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
     public bool CanAction { get { return ActionsLeft > 0; } }
+    public bool CanFlyOrLand { get; set; }
 
     public List<AppliedEnchantment> Enchantments { get; set; }
     public List<StatusEffects> CurrentStatusEffects { get; set; }
@@ -230,6 +231,8 @@ public class Unit : Card
     private void RefreshActions()
     {
         Status = UnitStatuses.Start;
+        if (HasKeyword(Keywords.Flying))
+            CanFlyOrLand = true;
 
         RemainingSpeed = GetStat(StatTypes.Speed).Value;
 
@@ -276,6 +279,22 @@ public class Unit : Card
         {
             RemainingSpeed -= usedSpeed;
             Status = UnitStatuses.Middle;
+
+            UnitCounter.RefreshUnitCounter();
+            GameManager.instance.effectManager.RefreshEffectManager();
+        }
+    }
+
+    public void UseDisengageSpeed(int usedSpeed)
+    {
+        if (usedSpeed == 0)
+        {
+            throw new Exception("Cannot Use 0 Speed");
+        }
+        else
+        {
+            RemainingSpeed -= usedSpeed;
+            ModifyActions(-1);
 
             UnitCounter.RefreshUnitCounter();
             GameManager.instance.effectManager.RefreshEffectManager();
@@ -487,7 +506,10 @@ public class Unit : Card
     {
         var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
         if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
-            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Flying);
+        {
+            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
+            CanFlyOrLand = true;
+        }
         if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
             newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
 
@@ -566,8 +588,11 @@ public class Unit : Card
 
                     foreach (var statusEffect in enchantment.Enchantment.StatusEffects)
                     {
-                        if (!CurrentStatusEffects.Contains(statusEffect))
-                            CurrentStatusEffects.Add(statusEffect);
+                        if (!enchantment.IsApplied)
+                        {
+                            if (!CurrentStatusEffects.Contains(statusEffect))
+                                CurrentStatusEffects.Add(statusEffect);
+                        }
                     }
 
                     enchantment.IsApplied = true;
@@ -582,6 +607,8 @@ public class Unit : Card
         //Resets the health and speed to cap them out at their max
         CurrentHealth = currentHealth;
         RemainingSpeed = remainingSpeed;
+
+        GameManager.instance.CheckWarden();
 
         if (UnitCounter != null)
             UnitCounter.RefreshUnitCounter();
@@ -607,5 +634,62 @@ public class Unit : Card
             StatusEffects = new List<StatusEffects>() { StatusEffects.Stunned }
         };
         AddEnchantment(enchantment);
+    }
+
+    public bool CheckWarden()
+    {
+        if (!HasKeyword(Keywords.Stalker))
+        {
+            if (CurrentStatusEffects.Contains(StatusEffects.Warded))
+            {
+                CurrentStatusEffects.Remove(StatusEffects.Warded);
+                UnitCounter.RefreshUnitCounter();
+            }
+
+            foreach (var adjCell in UnitCounter.Cell.adjCell)
+            {
+
+                if (adjCell.occupantCounter != null)
+                {
+                    var adjUnit = adjCell.occupantCounter.Unit;
+                    if (adjUnit.Owner.Id != Owner.Id)
+                    {
+                        if (adjUnit.HasKeyword(Keywords.Warden))
+                        {
+                            if (!adjUnit.HasStatusEffect(StatusEffects.Stunned))
+                            {
+                                Debug.Log(Name);
+                                Debug.Log($"Ethereal: {HasKeyword(Keywords.Ethereal)}");
+                                Debug.Log($"Adjacent Ethereal: {adjUnit.HasKeyword(Keywords.Ethereal)}");
+                                if (CheckWardenMatchingKeywords(adjUnit, Keywords.Ethereal) && CheckWardenMatchingKeywords(adjUnit, Keywords.Flying))
+                                {
+                                    CurrentStatusEffects.Add(StatusEffects.Warded);
+                                    UnitCounter.RefreshUnitCounter();
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool CheckWardenMatchingKeywords(Unit adjUnit, Keywords keyword)
+    {
+        return !HasKeyword(keyword) || HasKeyword(keyword) && adjUnit.HasKeyword(keyword);
+    }
+
+    public void FlyOrLand()
+    {
+        CanFlyOrLand = false;
+        if (HasStatusEffect(StatusEffects.Airborne))
+            CurrentStatusEffects.Remove(StatusEffects.Airborne);
+        else
+            CurrentStatusEffects.Add(StatusEffects.Airborne);
+
+        UnitCounter.RefreshUnitCounter();
     }
 }

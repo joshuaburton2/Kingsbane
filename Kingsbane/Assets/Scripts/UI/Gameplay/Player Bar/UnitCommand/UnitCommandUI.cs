@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -55,6 +56,16 @@ public class UnitCommandUI : MonoBehaviour
     [SerializeField]
     private Button minusButton;
 
+    [Header("Special Action Area")]
+    [SerializeField]
+    private GameObject specialActionArea;
+    [SerializeField]
+    private Button disengageButton;
+    [SerializeField]
+    private Button flyingButton;
+    [SerializeField]
+    private TextMeshProUGUI flyingButtonText;
+
     [Header("Enchantment Area")]
     [SerializeField]
     private GameObject enchantmentArea;
@@ -64,7 +75,6 @@ public class UnitCommandUI : MonoBehaviour
     private GameObject enchantmentObjectPrefab;
 
     private int SetSpeed { get; set; }
-    private bool ModifyingSpeed { get; set; }
     private const int LOWEST_SPEED = 1;
 
     private void Update()
@@ -73,24 +83,12 @@ public class UnitCommandUI : MonoBehaviour
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
         {
             buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
-
-            //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it
-            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed && !ModifyingSpeed)
-            {
-                ModifyingSpeed = true;
-                speedArea.SetActive(true);
-                unit.RemainingSpeed.ToString();
-                SetSpeed = LOWEST_SPEED;
-                CheckSpeedButtons();
-            }
-            else if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitUseSpeed && speedArea.activeSelf)
-            {
-                ModifyingSpeed = false;
-                speedArea.SetActive(false);
-            }
         }
-        else
-            buttonGroup.interactable = false;
+    }
+
+    private void Start()
+    {
+        buttonGroup.interactable = false;
     }
 
     /// <summary>
@@ -123,9 +121,23 @@ public class UnitCommandUI : MonoBehaviour
         abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
         RefreshAbilities();
 
-        moveButton.interactable = unit.CanMove;
+        moveButton.interactable = unit.CanMove && !unit.HasStatusEffect(Unit.StatusEffects.Warded);
         attackButton.interactable = unit.CanAction;
         speedArea.SetActive(false);
+
+        //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it
+        if ((GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed ||
+            GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed) &&
+            !speedArea.activeSelf)
+        {
+            speedArea.SetActive(true);
+            SetSpeed = LOWEST_SPEED;
+            CheckSpeedButtons();
+        }
+        else 
+        {
+            speedArea.SetActive(false);
+        }
 
         enchantmentArea.SetActive(unit.Enchantments.Count > 0);
         GameManager.DestroyAllChildren(enchantmentObjectParent);
@@ -134,6 +146,16 @@ public class UnitCommandUI : MonoBehaviour
             var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
             enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment);
         }
+
+        //Shows or hides the special action area if the unit requires it
+        specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying)));
+        //Set Disengage Button Properties
+        disengageButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Warded));
+        disengageButton.interactable = unit.CanAction;
+        //Set Flying Button Properties
+        flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
+        flyingButton.interactable = unit.CanFlyOrLand;
+        flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
     }
 
     /// <summary>
@@ -224,8 +246,13 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     public void ConfirmSpeedUse()
     {
-        ModifyingSpeed = false;
-        unit.UseSpeed(SetSpeed);
+        if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed)
+            unit.UseSpeed(SetSpeed);
+        else if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed)
+            unit.UseDisengageSpeed(SetSpeed);
+        else
+            throw new Exception("Not a valid effect mode to use speed");
+
         RefreshCommandBar();
     }
 
@@ -258,6 +285,27 @@ public class UnitCommandUI : MonoBehaviour
     public void IncreaseAbilities()
     {
         unit.ModifyAbilities(1);
+        RefreshCommandBar();
+    }
+
+    /// <summary>
+    /// 
+    /// Sets the game into unit disengage move mode
+    /// 
+    /// </summary>
+    public void DisengageButton()
+    {
+        GameManager.instance.effectManager.SetDisengageUnitMode(unit.UnitCounter.Cell);
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for switching the unit between airborne and landed
+    /// 
+    /// </summary>
+    public void FlyingButton()
+    {
+        unit.FlyOrLand();
         RefreshCommandBar();
     }
 }
