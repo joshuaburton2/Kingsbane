@@ -116,8 +116,10 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     public void RefreshCommandBar()
     {
-        speedText.text = $"Speed: {unit.RemainingSpeed}/{unit.GetStat(Unit.StatTypes.Speed)}";
-        actionText.text = $"Action: {unit.ActionsLeft}";
+        var speedString = unit.HasStatusEffect(Unit.StatusEffects.Rooted) || unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.RemainingSpeed.ToString();
+        speedText.text = $"Speed: {speedString}/{unit.GetStat(Unit.StatTypes.Speed)}";
+        var actionStrng = unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.ActionsLeft.ToString();
+        actionText.text = $"Action: {actionStrng}";
         abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
         RefreshAbilities();
 

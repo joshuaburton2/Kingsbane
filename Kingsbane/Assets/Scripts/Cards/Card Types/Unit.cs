@@ -75,8 +75,8 @@ public class Unit : Card
     private int remainingSpeed;
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
-    public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0; } }
-    public bool CanAction { get { return ActionsLeft > 0; } }
+    public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0 && !HasStatusEffect(StatusEffects.Rooted) && !HasStatusEffect(StatusEffects.Stunned); } }
+    public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned); } }
     public bool CanFlyOrLand { get; set; }
 
     public List<AppliedEnchantment> Enchantments { get; set; }
