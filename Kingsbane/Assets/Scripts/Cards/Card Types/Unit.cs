@@ -658,9 +658,6 @@ public class Unit : Card
                         {
                             if (!adjUnit.HasStatusEffect(StatusEffects.Stunned))
                             {
-                                Debug.Log(Name);
-                                Debug.Log($"Ethereal: {HasKeyword(Keywords.Ethereal)}");
-                                Debug.Log($"Adjacent Ethereal: {adjUnit.HasKeyword(Keywords.Ethereal)}");
                                 if (CheckWardenMatchingKeywords(adjUnit, Keywords.Ethereal) && CheckWardenMatchingKeywords(adjUnit, Keywords.Flying))
                                 {
                                     CurrentStatusEffects.Add(StatusEffects.Warded);
