@@ -27,6 +27,8 @@ public class EffectsBarUI : MonoBehaviour
         UnitEnchantment,
         [Description("Crowd Control")]
         CrowdControl,
+        [Description("Deploy Unit")]
+        DeployUnit,
     }
 
     [Serializable]

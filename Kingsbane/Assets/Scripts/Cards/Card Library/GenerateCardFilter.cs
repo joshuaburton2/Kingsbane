@@ -13,6 +13,7 @@ public class GenerateCardFilter
     public int NumToGenerate { get; set; }
     public string Name { get; set; }
     public bool IncludeUncollectables { get; set; }
+    public bool IsUnique { get; set; }
     public CardTypes CardType { get; set; }
     public CardResources Resource { get; set; }
     public Classes.ClassList Class { get; set; }
@@ -36,6 +37,7 @@ public class GenerateCardFilter
 
         Name = "";
         IncludeUncollectables = false;
+        IsUnique = false;
         CardType = CardTypes.Default;
         Resource = CardResources.Neutral;
         Class = Classes.ClassList.Default;

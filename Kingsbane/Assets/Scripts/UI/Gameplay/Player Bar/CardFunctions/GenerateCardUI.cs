@@ -25,6 +25,8 @@ public class GenerateCardUI : MonoBehaviour
     [SerializeField]
     private Toggle includeUncollectablesToggle;
     [SerializeField]
+    private Toggle isUnique;
+    [SerializeField]
     private TMP_InputField numToGenerateInput;
     [SerializeField]
     private TMP_InputField createdByInput;
@@ -124,6 +126,7 @@ public class GenerateCardUI : MonoBehaviour
         dropdownFields.ForEach(x => x.value = 0);
         inputFields.ForEach(x => x.text = "");
         includeUncollectablesToggle.isOn = false;
+        isUnique.isOn = false;
 
         //Hides the position field 
         positionFieldArea.SetActive(CardGenerationType == CardGenerationTypes.Deck);
@@ -142,6 +145,7 @@ public class GenerateCardUI : MonoBehaviour
             //Sets the name filter to the name input
             GenerationFilter.Name = nameInput.text;
             GenerationFilter.IncludeUncollectables = includeUncollectablesToggle.isOn;
+            GenerationFilter.IsUnique = isUnique.isOn;
             if (!string.IsNullOrWhiteSpace(numToGenerateInput.text))
                 GenerationFilter.NumToGenerate = int.Parse(numToGenerateInput.text);
 

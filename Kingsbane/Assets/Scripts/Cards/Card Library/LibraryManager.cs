@@ -618,16 +618,26 @@ public class LibraryManager : MonoBehaviour
         if (generateCardFilter.Tag != Tags.Default)
             generatedList = generatedList.Intersect(GetDictionaryList(generateCardFilter.Tag)).ToList();
 
-        //Selects the number of cards required to be generated randomly from the filtered list and returns the selection
         var selectedCards = new List<CardData>();
-        if (generatedList.Count > 0)
+        //If the generated cards are required to be unique and there are not enough cards in the selection to be unique, does not continue with the selection
+        if (!generateCardFilter.IsUnique || generateCardFilter.IsUnique && generateCardFilter.NumToGenerate <= generatedList.Count)
         {
-            for (int index = 0; index < generateCardFilter.NumToGenerate; index++)
+            //Selects the number of cards required to be generated randomly from the filtered list and returns the selection
+            if (generatedList.Count > 0)
             {
-                var randomVal = UnityEngine.Random.Range(0, generatedList.Count);
-                selectedCards.Add(generatedList[randomVal]);
+                for (int index = 0; index < generateCardFilter.NumToGenerate; index++)
+                {
+                    CardData selectedCard;
+                    do
+                    {
+                        var randomVal = UnityEngine.Random.Range(0, generatedList.Count);
+                        selectedCard = generatedList[randomVal];
+                    } while (selectedCards.Select(x => x.Id).Contains(selectedCard.Id));
+                    selectedCards.Add(selectedCard);
+                }
             }
         }
+
         return selectedCards;
     }
 

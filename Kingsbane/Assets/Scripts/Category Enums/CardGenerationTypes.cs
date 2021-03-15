@@ -3,5 +3,6 @@
     None,
     Hand,
     Deck,
-    Graveyard
+    Graveyard,
+    Deploy,
 }
