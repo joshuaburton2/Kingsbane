@@ -216,6 +216,9 @@ public class Player
         if (generatedCardDatas.Count == 0)
             return false;
 
+        if (generationType == CardGenerationTypes.Deploy && generatedCardDatas.Count > 1)
+            return false;
+
         foreach (var cardData in generatedCardDatas)
         {
             var generatedCard = GameManager.instance.libraryManager.CreateCard(cardData, this);
@@ -234,6 +237,9 @@ public class Player
                     break;
                 case CardGenerationTypes.Graveyard:
                     AddToGraveyard(generatedCard, createdBy);
+                    break;
+                case CardGenerationTypes.Deploy:
+                    CreateDeployUnits(cardData, filter.Enchantment, filter.UnitsToCreate, createdBy);
                     break;
                 default:
                     throw new Exception("Not a valid Generation Type");
@@ -291,6 +297,29 @@ public class Player
             deadCard.CreatedByName = createdBy;
 
         Graveyard.AddCard(deadCard);
+    }
+
+    public void CreateDeployUnits(CardData cardData, UnitEnchantment enchantment, int numToCreate, string createdBy)
+    {
+        if (cardData.CardType == CardTypes.Unit)
+        {
+            var unitList = new List<Unit>();
+
+            for (int cardIndex = 0; cardIndex < numToCreate; cardIndex++)
+            {
+                var unit = (Unit)GameManager.instance.libraryManager.CreateCard(cardData, this);
+                unit.CreatedByName = createdBy;
+                if (enchantment != null)
+                    unit.AddEnchantment(enchantment);
+                unitList.Add(unit);
+            }
+
+            GameManager.instance.effectManager.SetDeployUnit(unitList);
+        }
+        else
+        {
+            throw new Exception("Cannot deploy a non unit card");
+        }
     }
 
     public void ModifyEmpowered(int value)

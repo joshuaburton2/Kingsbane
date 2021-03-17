@@ -46,7 +46,7 @@ public class GameplayUI : MonoBehaviour
     public void CancelEffects()
     {
         GameManager.instance.effectManager.CancelEffectManager();
-        
+
         if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitCommand)
         {
             SetSelectedCommandUnit();
@@ -191,15 +191,7 @@ public class GameplayUI : MonoBehaviour
 
     public void SetSelectedCommandUnit(Unit unit = null)
     {
-        if (unit != null)
-        {
-            playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit(unit);
-            ShowCardDisplay(unit);
-        }
-        else
-        {
-            playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit();
-            ShowCardDisplay();
-        }
+        playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit(unit);
+        ShowCardDisplay(unit);
     }
 }

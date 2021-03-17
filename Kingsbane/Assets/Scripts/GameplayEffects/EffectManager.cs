@@ -49,7 +49,8 @@ public class EffectManager : MonoBehaviour
     };
 
     private Card SelectedCard { get; set; }
-    private Unit SelectedUnit { get; set; }
+    private Unit CommandUnit { get; set; }
+    private List<Unit> DeployUnits { get; set; }
     private AbilityData SelectedAbility { get; set; }
     private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
@@ -93,7 +94,15 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.None;
 
                 SelectedCard = null;
-                SelectedUnit = null;
+                CommandUnit = null;
+                DeployUnits = new List<Unit>();
+                break;
+            case ActiveEffectTypes.Deployment:
+                SelectedCard = null;
+                CommandUnit = null;
+
+                if (DeployUnits.Count == 0 || CancelEffect)
+                    ActiveEffect = ActiveEffectTypes.None;
                 break;
             case ActiveEffectTypes.UnitForceMove:
             case ActiveEffectTypes.UnitAttack:
@@ -115,7 +124,7 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.UnitUseDisengageSpeed:
                 if (CancelEffect)
                 {
-                    MoveSelectedUnit(PreviousCell);
+                    MoveCommandUnit(PreviousCell);
                     CancelEffect = false;
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
@@ -132,8 +141,7 @@ public class EffectManager : MonoBehaviour
         switch (card.Type)
         {
             case CategoryEnums.CardTypes.Unit:
-                SelectedUnit = (Unit)card;
-                ActiveEffect = ActiveEffectTypes.Deployment;
+                SetDeployUnit((Unit)card);
                 break;
             case CategoryEnums.CardTypes.Spell:
                 ActiveEffect = ActiveEffectTypes.Spell;
@@ -147,15 +155,21 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void SetSelectedUnitDeploy(Unit _selectedUnit)
+    public void SetDeployUnit(Unit _selectedUnit)
     {
-        SelectedUnit = _selectedUnit;
+        DeployUnits = new List<Unit>() { _selectedUnit };
         ActiveEffect = ActiveEffectTypes.Deployment;
     }
 
-    public GameObject DeploySelectedUnit(Cell cell)
+    public void SetDeployUnit(List<Unit> _selectedUnits)
     {
-        return CreateUnitCounter(SelectedUnit, cell);
+        DeployUnits = _selectedUnits;
+        ActiveEffect = ActiveEffectTypes.Deployment;
+    }
+
+    public GameObject DeployUnit(Cell cell)
+    {
+        return CreateUnitCounter(DeployUnits.FirstOrDefault(), cell);
     }
 
     public GameObject CreateUnitCounter(Unit unit, Cell cell, bool isNew = true)
@@ -184,10 +198,13 @@ public class EffectManager : MonoBehaviour
                 GameManager.instance.uiManager.RefreshUI();
             }
 
+            DeployUnits.Remove(unit);
+
             GameManager.instance.CheckWarden();
 
             unitCounterScript.RefreshUnitCounter();
             RefreshEffectManager();
+
 
             return createdCounter;
         }
@@ -223,7 +240,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveSelectedUnit(Cell newCell)
+    public void MoveCommandUnit(Cell newCell)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitMove || 
             ActiveEffect == ActiveEffectTypes.UnitDisengage || 
@@ -233,8 +250,8 @@ public class EffectManager : MonoBehaviour
         {
             if (newCell.occupantCounter == null)
             {
-                RemoveUnit(SelectedUnit.UnitCounter);
-                CreateUnitCounter(SelectedUnit, newCell, false);
+                RemoveUnit(CommandUnit.UnitCounter);
+                CreateUnitCounter(CommandUnit, newCell, false);
                 GameManager.instance.uiManager.RefreshUI();
             }
         }
@@ -252,9 +269,9 @@ public class EffectManager : MonoBehaviour
     {
         if (targetUnit != null)
         {
-            if (SelectedUnit.Owner.Id != targetUnit.Owner.Id)
+            if (CommandUnit.Owner.Id != targetUnit.Owner.Id)
             {
-                SelectedUnit.TriggerAttack(targetUnit);
+                CommandUnit.TriggerAttack(targetUnit);
                 RefreshEffectManager();
                 GameManager.instance.uiManager.RefreshUI();
             }
@@ -272,7 +289,7 @@ public class EffectManager : MonoBehaviour
 
     public void UseAbility()
     {
-        SelectedUnit.UseAbility(SelectedAbility);
+        CommandUnit.UseAbility(SelectedAbility);
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
     }
@@ -317,14 +334,14 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
-        if (unitCounter.Unit == SelectedUnit &&
+        if (unitCounter.Unit == CommandUnit &&
             ActiveEffect != ActiveEffectTypes.UnitMove &&
             ActiveEffect != ActiveEffectTypes.UnitForceMove &&
             ActiveEffect != ActiveEffectTypes.UnitUseSpeed &&
             ActiveEffect != ActiveEffectTypes.UnitDisengage &&
             ActiveEffect != ActiveEffectTypes.UnitUseDisengageSpeed)
         {
-            SelectedUnit = null;
+            CommandUnit = null;
             GameManager.instance.uiManager.RefreshUI();
         }
     }
@@ -340,11 +357,11 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.GetActivePlayer().DrawMulligan();
     }
 
-    public void SetSelectedUnitCommand(Unit _selectedUnit)
+    public void SetCommandUnit(Unit _selectedUnit)
     {
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
         {
-            SelectedUnit = _selectedUnit;
+            CommandUnit = _selectedUnit;
         }
         ActiveEffect = ActiveEffectTypes.UnitCommand;
     }

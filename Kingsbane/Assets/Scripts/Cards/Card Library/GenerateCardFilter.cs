@@ -11,6 +11,8 @@ public class GenerateCardFilter
 {
     //The number of cards to generate
     public int NumToGenerate { get; set; }
+    //Used when deploying created units. Is the number of units required to create
+    public int UnitsToCreate { get; set; }
     public string Name { get; set; }
     public bool IncludeUncollectables { get; set; }
     public bool IsUnique { get; set; }
@@ -20,6 +22,7 @@ public class GenerateCardFilter
     public Classes.ClassList ClassPlayable { get; set; }
     public Tags Tag { get; set; }
     public List<Sets> SetFilter { get; set; }
+    public int PlayerId { get; set; }
 
     public UnitEnchantment Enchantment { get; set; }
 

@@ -188,7 +188,13 @@ public class Unit : Card
     public void Create()
     {
         if (Status == UnitStatuses.None)
-            Status = UnitStatuses.Preparing;
+        {
+            if (Owner.Id == GameManager.instance.ActivePlayerId)
+                Status = UnitStatuses.Preparing;
+            else if (Owner.Id == GameManager.instance.InactivePlayerId)
+                Status = UnitStatuses.Enemy;
+        }
+
 
         if (GetStat(StatTypes.Empowered).Value > 0)
             Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
@@ -504,23 +510,30 @@ public class Unit : Card
 
     public void AddEnchantment(UnitEnchantment enchantment)
     {
-        var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
-        if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
+        if (enchantment.ValidEnchantment)
         {
-            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
-            CanFlyOrLand = true;
+            var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
+            if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
+            {
+                newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
+                CanFlyOrLand = true;
+            }
+            if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
+                newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
+
+            Enchantments.Add(newEnchantment);
+            UpdateEnchantments();
+
+            if (HasKeyword(Keywords.Prepared) && (Status == UnitStatuses.Preparing || Status == UnitStatuses.None))
+                RefreshActions();
+
+            if (UnitCounter != null)
+                UnitCounter.RefreshUnitCounter();
         }
-        if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
-            newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
-
-        Enchantments.Add(newEnchantment);
-        UpdateEnchantments();
-
-        if (HasKeyword(Keywords.Prepared) && (Status == UnitStatuses.Preparing || Status == UnitStatuses.None))
-            RefreshActions();
-
-        if (UnitCounter != null)
-            UnitCounter.RefreshUnitCounter();
+        else
+        {
+            throw new Exception("Enchantment is not valid to add to unit");
+        }
     }
 
     public void RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus enchantmentStatus)

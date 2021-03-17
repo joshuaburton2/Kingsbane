@@ -84,7 +84,6 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
         {
             UnitEnchantment.EnchantmentStatus.None,
             UnitEnchantment.EnchantmentStatus.Base,
-            UnitEnchantment.EnchantmentStatus.NewBase,
         });
 
         GeneralUIExtensions.InitDropdownOfType(attackModTypeDropdown, new List<StatModifierTypes>());
@@ -235,7 +234,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
 
         if (enchantment.ValidEnchantment)
         {
-            effectUI.effectComplete = false;
+            StartEffect();
             GameManager.instance.effectManager.SetEnchantUnitMode(enchantment);
         }
     }

@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public int NumPlayers { get { return LoadedPlayers.Count; } }
 
     public int? ActivePlayerId { get; set; }
+    public int? InactivePlayerId { get { return LoadedPlayers.Select(x => x.Id).FirstOrDefault(x => x != ActivePlayerId); } }
     public GamePhases CurrentGamePhase { get; set; }
     public int CurrentRound { get; set; }
 

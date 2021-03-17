@@ -10,13 +10,13 @@ public class UnitEnchantment
     {
         None, //Default case for the status. Should not be used
         Base,
-        NewBase,
         Permanent,
         StartOfOwnersTurn,
         EndOfOwnersTurn,
         StartOfOpponentTurn,
         EndOfOpponentTurn,
         AfterAttack,
+        Passive,
     }
 
     public class StatModifier
@@ -100,7 +100,6 @@ public class UnitEnchantment
                 text.Add("until after the unit attacks.");
                 break;
             case EnchantmentStatus.Base:
-            case EnchantmentStatus.NewBase:
             case EnchantmentStatus.Permanent:
                 noStatusText = true;
                 break;

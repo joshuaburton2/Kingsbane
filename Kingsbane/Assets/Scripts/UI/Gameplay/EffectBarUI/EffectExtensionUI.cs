@@ -10,4 +10,15 @@ public class EffectExtensionUI : MonoBehaviour
     {
         effectUI = _effectUI;
     }
+
+    /// <summary>
+    /// 
+    /// Set the effect extension into confirmation mode
+    /// Need to add this to the confirm button of the extension being clicked
+    /// 
+    /// </summary>
+    protected void StartEffect()
+    {
+        effectUI.effectComplete = false;
+    }
 }

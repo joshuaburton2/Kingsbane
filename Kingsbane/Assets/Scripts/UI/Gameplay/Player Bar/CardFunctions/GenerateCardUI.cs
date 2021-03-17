@@ -158,14 +158,15 @@ public class GenerateCardUI : MonoBehaviour
             //If the card type is a unit, constructs the enchantment and adds it to the filter for generation
             if (GenerationFilter.CardType == CardTypes.Unit)
             {
-                var enchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Permanent };
+                var enchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Permanent, Source = createdByInput.text };
                 GetStatModifier(enchantment, Unit.StatTypes.Attack, attackModTypeDropdown, attackValueInput);
                 GetStatModifier(enchantment, Unit.StatTypes.MaxHealth, healthModTypeDropdown, healthValueInput);
                 GetStatModifier(enchantment, Unit.StatTypes.Range, rangeModTypeDropdown, rangeValueInput);
                 GetStatModifier(enchantment, Unit.StatTypes.Speed, speedModTypeDropdown, speedValueInput);
                 GetStatModifier(enchantment, Unit.StatTypes.Empowered, empoweredModTypeDropdown, empoweredValueInput);
 
-                GenerationFilter.Enchantment = enchantment;
+                if(enchantment.ValidEnchantment)
+                    GenerationFilter.Enchantment = enchantment;
             }
 
             ClearEnchantmentFields();

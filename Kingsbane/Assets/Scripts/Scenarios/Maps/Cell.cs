@@ -50,7 +50,7 @@ public class Cell : MonoBehaviour
                             switch (GameManager.instance.effectManager.ActiveEffect)
                             {
                                 case EffectManager.ActiveEffectTypes.Deployment:
-                                    cellOccupant = GameManager.instance.effectManager.DeploySelectedUnit(this);
+                                    cellOccupant = GameManager.instance.effectManager.DeployUnit(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.Spell:
                                     GameManager.instance.effectManager.CastSpell(this);
@@ -61,7 +61,7 @@ public class Cell : MonoBehaviour
                                 case EffectManager.ActiveEffectTypes.UnitMove:
                                 case EffectManager.ActiveEffectTypes.UnitDisengage:
                                 case EffectManager.ActiveEffectTypes.UnitForceMove:
-                                    GameManager.instance.effectManager.MoveSelectedUnit(this);
+                                    GameManager.instance.effectManager.MoveCommandUnit(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.UnitAttack:
                                     if (occupantCounter != null)
@@ -124,7 +124,7 @@ public class Cell : MonoBehaviour
     {
         if (occupantCounter != null)
         {
-            GameManager.instance.effectManager.SetSelectedUnitCommand(occupantCounter.Unit);
+            GameManager.instance.effectManager.SetCommandUnit(occupantCounter.Unit);
             gameplayUI.SetSelectedCommandUnit(occupantCounter.Unit);
         }
     }
