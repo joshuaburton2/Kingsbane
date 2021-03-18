@@ -53,9 +53,11 @@ public class Resource
     /// Modify the value of the resource
     /// 
     /// </summary>
-    public virtual void ModifyValue(int valueChange)
+    public virtual void ModifyValue(int valueChange, bool clamp = false)
     {
         Value = CalcNewValue(valueChange);
+        if (clamp)
+            Value = Math.Min(0, Value);
     }
 
     public static string GetResoourceDescription(CardResources cardResource)

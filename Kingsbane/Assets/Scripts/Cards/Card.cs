@@ -113,7 +113,7 @@ public class Card
         }
     }
 
-    public virtual void InitCard (CardData _cardData, Player owner)
+    public virtual void InitCard(CardData _cardData, Player owner)
     {
         cardData = _cardData;
         Owner = owner;
@@ -168,5 +168,57 @@ public class Card
     public void Shuffle()
     {
         Owner.ShuffleFromHand(this);
+    }
+
+    public bool ModifyCost(int value, CardResources? resource)
+    {
+        if (resource.HasValue)
+        {
+            if (!Resources.Contains(resource.Value))
+                return false;
+
+            ResourceCost.Single(x => x.ResourceType == resource).ModifyValue(-value, true);
+        }
+        else
+        {
+            if (Resources.Count == 1)
+            {
+                ResourceCost.FirstOrDefault().ModifyValue(-value, true);
+            }
+            else
+            {
+                bool isOdd = false;
+                if (value % 2 == 1)
+                {
+                    value -= 1;
+                    isOdd = true;
+                }
+                else if (value % 2 == -1)
+                {
+                    value += 1;
+                    isOdd = true;
+                }
+
+                value /= Resources.Count;
+                ResourceCost.ForEach(x => x.ModifyValue(-value, true));
+
+                if (isOdd)
+                {
+                    var highestResources = ResourceCost.Where(x => x.Value == ResourceCost.Min(y => y.Value)).ToList();
+                    var valueModifier = value > 0 ? -1 : 1;
+                    if (highestResources.Count() == 1)
+                    {
+                        highestResources.FirstOrDefault().ModifyValue(valueModifier, true);
+                    }
+                    else
+                    {
+                        var randomResource = UnityEngine.Random.Range(0, highestResources.Count());
+                        highestResources[randomResource].ModifyValue(valueModifier, true);
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 }

@@ -10545,7 +10545,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.8
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -34189,8 +34189,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 0.000030517578
-  m_Size: 0.9885714
+  m_Value: 0
+  m_Size: 0.98857135
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38309,6 +38309,10 @@ MonoBehaviour:
   - effectType: 9
     activeGamePhase: 4
     effectPrefab: {fileID: 2232746055424923027, guid: 4e8725497fe18f741a96770130c3da1c,
+      type: 3}
+  - effectType: 10
+    activeGamePhase: 4
+    effectPrefab: {fileID: 6501527456500983825, guid: cb055ecd6f34a714e8fa65e87a78c98d,
       type: 3}
   effectExtensions:
   - effectType: 7
@@ -43002,7 +43006,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.8
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -45696,7 +45700,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 26.8
+  m_fontSize: 26.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

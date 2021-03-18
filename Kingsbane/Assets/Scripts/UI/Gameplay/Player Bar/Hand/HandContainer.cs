@@ -192,6 +192,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
                         CardDisplay.UpdateProperties();
                     }
                     break;
+                case EffectManager.ActiveEffectTypes.ModifyCost:
+                    GameManager.instance.effectManager.ModifyCost(Card);
+                    CardDisplay.UpdateProperties();
+                    break;
                 default:
                     if (!GameManager.instance.effectManager.IsUILocked)
                     {

@@ -76,9 +76,9 @@ public class PlayerWild : PlayerResource
     /// Modifying the value of Wild requires a check to ensure it does not go above the maximum
     /// 
     /// </summary>
-    public override void ModifyValue(int valueChange)
+    public override void ModifyValue(int valueChange, bool clamp = false)
     {
-        base.ModifyValue(valueChange);
+        base.ModifyValue(valueChange, clamp);
 
         Value = Mathf.Min(Value, MaxWild);
     }

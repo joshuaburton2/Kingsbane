@@ -91,9 +91,9 @@ public class PlayerMana : PlayerResource
     /// Modifying the resource value for mana requires a check to update Overload value as well
     /// 
     /// </summary>
-    public override void ModifyValue(int valueChange)
+    public override void ModifyValue(int valueChange, bool clamp = false)
     {
-        base.ModifyValue(valueChange);
+        base.ModifyValue(valueChange, clamp);
 
         //If the value is less than 0, it means there is an Overload value
         CurrentOverload = Value < 0 ? -Value : 0;

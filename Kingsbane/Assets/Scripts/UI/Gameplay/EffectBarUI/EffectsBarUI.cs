@@ -29,6 +29,8 @@ public class EffectsBarUI : MonoBehaviour
         CrowdControl,
         [Description("Deploy Unit")]
         DeployUnit,
+        [Description("Modify Cost")]
+        ModifyCost,
     }
 
     [Serializable]

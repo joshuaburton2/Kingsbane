@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CategoryEnums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ public class EffectManager : MonoBehaviour
         EnchantUnit,
         RootUnit,
         StunUnit,
+        ModifyCost,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -46,6 +48,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.DestroyUnit,
         ActiveEffectTypes.RemoveUnit,
         ActiveEffectTypes.EnchantUnit,
+        ActiveEffectTypes.ModifyCost,
     };
 
     private Card SelectedCard { get; set; }
@@ -56,6 +59,7 @@ public class EffectManager : MonoBehaviour
     private int? SelectedValue { get; set; }
     private bool? SelectedBoolean { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
+    private CardResources? SelectedResource { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -87,6 +91,7 @@ public class EffectManager : MonoBehaviour
         SelectedValue = null;
         SelectedBoolean = null;
         SelectedKeywords = new List<Keywords>();
+        SelectedResource = null;
 
         switch (ActiveEffect)
         {
@@ -456,5 +461,33 @@ public class EffectManager : MonoBehaviour
     public void StunUnit(Unit unit)
     {
         unit.StunUnit();
+    }
+
+    public void SetModifyCostMode(int value, CardResources? resource)
+    {
+        ActiveEffect = ActiveEffectTypes.ModifyCost;
+
+        SelectedValue = value;
+        SelectedResource = resource;
+    }
+
+    public void ModifyCost(Card card)
+    {
+        var canModify = card.ModifyCost(SelectedValue.Value, SelectedResource);
+        if (!canModify)
+            Debug.Log("Cannot modify cost of card");
+    }
+
+    public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource)
+    {
+        var player = GameManager.instance.GetActivePlayer();
+
+        foreach (var card in player.Hand.cardList.Where(x => x.Type == cardType))
+            card.ModifyCost(value, resource);
+
+        foreach (var card in player.Deck.cardList.Where(x => x.Type == cardType))
+            card.ModifyCost(value, resource);
+
+        GameManager.instance.uiManager.RefreshUI();
     }
 }
