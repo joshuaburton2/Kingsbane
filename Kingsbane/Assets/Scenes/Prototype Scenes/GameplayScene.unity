@@ -38284,6 +38284,10 @@ MonoBehaviour:
     activeGamePhase: 4
     effectPrefab: {fileID: 6501527456500983825, guid: cb055ecd6f34a714e8fa65e87a78c98d,
       type: 3}
+  - effectType: 11
+    activeGamePhase: 4
+    effectPrefab: {fileID: 7598128533085992388, guid: e88841ae679f8b84582183cd3995dad4,
+      type: 3}
   effectExtensions:
   - effectType: 7
     effectArea: {fileID: 1693730675}

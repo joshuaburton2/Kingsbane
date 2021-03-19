@@ -102,6 +102,14 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.StunUnit(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.Spellbind:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.SpellbindUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.RestoreEnchantment:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.RestoreUnitEnchantments(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

@@ -99,6 +99,9 @@ public class UnitEnchantment
             case EnchantmentStatus.AfterAttack:
                 text.Add("until after the unit attacks.");
                 break;
+            case EnchantmentStatus.Passive:
+                text.Add("passively.");
+                break;
             case EnchantmentStatus.Base:
             case EnchantmentStatus.Permanent:
                 noStatusText = true;

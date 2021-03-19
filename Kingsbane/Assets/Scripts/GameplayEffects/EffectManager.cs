@@ -30,6 +30,8 @@ public class EffectManager : MonoBehaviour
         RootUnit,
         StunUnit,
         ModifyCost,
+        Spellbind,
+        RestoreEnchantment,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -49,6 +51,8 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.RemoveUnit,
         ActiveEffectTypes.EnchantUnit,
         ActiveEffectTypes.ModifyCost,
+        ActiveEffectTypes.Spellbind,
+        ActiveEffectTypes.RestoreEnchantment,
     };
 
     private Card SelectedCard { get; set; }
@@ -489,5 +493,25 @@ public class EffectManager : MonoBehaviour
             card.ModifyCost(value, resource);
 
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetSpellbindMode()
+    {
+        ActiveEffect = ActiveEffectTypes.Spellbind;
+    }
+
+    public void SpellbindUnit(Unit unit)
+    {
+        unit.Spellbind();
+    }
+
+    public void SetRestoreEnchantmentMode()
+    {
+        ActiveEffect = ActiveEffectTypes.RestoreEnchantment;
+    }
+
+    public void RestoreUnitEnchantments(Unit unit)
+    {
+        unit.RestoreEnchantments();
     }
 }

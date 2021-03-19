@@ -70,7 +70,7 @@ public class Unit : Card
         {
             if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health)
                 return StatisticStatuses.Buffed;
-            return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None; 
+            return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
         }
     }
     public StatisticStatuses HasBuffedRange { get { return GetStat(StatTypes.Range) > UnitData.Range ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
@@ -566,7 +566,7 @@ public class Unit : Card
         ResetStats();
         CurrentKeywords.Clear();
 
-        foreach (var enchantment in Enchantments)
+        foreach (var enchantment in Enchantments.OrderByDescending(x => x.Enchantment.Status))
         {
             if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
             {
@@ -709,5 +709,37 @@ public class Unit : Card
             CurrentStatusEffects.Add(StatusEffects.Airborne);
 
         UnitCounter.RefreshUnitCounter();
+    }
+
+    public void Spellbind()
+    {
+        foreach (var enchantment in Enchantments)
+            if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
+                enchantment.IsActive = false;
+
+        CurrentStatusEffects.Clear();
+        CurrentStatusEffects.Add(StatusEffects.Spellbound);
+        UpdateEnchantments();
+    }
+
+    public void RestoreEnchantments()
+    {
+        if (CurrentStatusEffects.Contains(StatusEffects.Spellbound))
+        {
+            var damageValue = GetStat(StatTypes.MaxHealth).Value - CurrentHealth;
+            var missingSpeed = GetStat(StatTypes.Speed).Value - RemainingSpeed;
+
+            foreach (var enchantment in Enchantments)
+            {
+                if (!enchantment.IsActive)
+                {
+                    enchantment.IsActive = true;
+                    enchantment.IsApplied = false;
+                }
+            }
+
+            CurrentStatusEffects.Remove(StatusEffects.Spellbound);
+            UpdateEnchantments();
+        }
     }
 }

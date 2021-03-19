@@ -31,6 +31,8 @@ public class EffectsBarUI : MonoBehaviour
         DeployUnit,
         [Description("Modify Cost")]
         ModifyCost,
+        [Description("Spellbind")]
+        Spellbind,
     }
 
     [Serializable]
