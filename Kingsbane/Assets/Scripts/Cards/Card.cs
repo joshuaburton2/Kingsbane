@@ -138,6 +138,37 @@ public class Card
         }
     }
 
+    public List<string> GetResourceColours()
+    {
+        var colourList = new List<string>();
+
+        foreach (var resource in Resources)
+        {
+            var status = GetResourceStatus(resource);
+            colourList.Add(GameManager.instance.colourManager.GetStatModColour(status, true).ConvertToHexadecimal());
+        }
+        return colourList;
+    }
+
+    /// <summary>
+    /// 
+    /// Gets the status of a particular resource- i.e. whether it is increase, decreased or not changed 
+    /// 
+    /// </summary>
+    private StatisticStatuses GetResourceStatus(CardResources resource)
+    {
+        var currentCost = ResourceCost.Single(x => x.ResourceType == resource).Value;
+        var defaultCost = DefaultCost.Single(x => x.ResourceType == resource).Value;
+
+        //Note that the signs are flipped as cost is always negative
+        if (currentCost > defaultCost)
+            return StatisticStatuses.Buffed;
+        else if (currentCost < defaultCost)
+            return StatisticStatuses.Debuffed;
+        else
+            return StatisticStatuses.None;
+    }
+
     /// <summary>
     /// 
     /// Tests if a card is playable based on the player's current resources

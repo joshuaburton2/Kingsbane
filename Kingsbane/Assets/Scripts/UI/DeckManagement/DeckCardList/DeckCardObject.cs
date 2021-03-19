@@ -70,7 +70,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 
         rarityBorder.color = GameManager.instance.colourManager.GetRarityColour(card.Rarity, card.CardClass);
 
-        totalCostText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
+        totalCostText.text = StringHelpers.GenerateResourceText(card.ResourceCost, card.GetResourceColours());
     }
 
     /// <summary>

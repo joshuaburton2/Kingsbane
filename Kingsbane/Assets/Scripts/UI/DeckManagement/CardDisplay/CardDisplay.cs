@@ -186,7 +186,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     public void UpdateProperties()
     {
         cardText.text = card.Text;
-        resourceText.text = StringHelpers.GenerateResourceText(card.ResourceCost);
+        resourceText.text = StringHelpers.GenerateResourceText(card.ResourceCost, card.GetResourceColours());
 
         createdByText.text = $"Created By: {card.CreatedByName}";
         createdByArea.SetActive(!string.IsNullOrWhiteSpace(card.CreatedByName));
@@ -196,10 +196,15 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
             case CardTypes.Unit:
                 var unitCard = card as Unit;
 
-                attackText.text = $"Attack: {unitCard.GetStat(Unit.StatTypes.Attack)}";
-                healthText.text = $"Health: {unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
-                unitRangeText.text = $"Range: {unitCard.GetStat(Unit.StatTypes.Range)}";
-                speedText.text = $"Speed: {unitCard.GetStat(Unit.StatTypes.Speed)}";
+                var attackColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedAttack, true).ConvertToHexadecimal();
+                var healthColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HealthStatus, true).ConvertToHexadecimal();
+                var rangeColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedRange, true).ConvertToHexadecimal();
+                var speedColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedSpeed, true).ConvertToHexadecimal();
+
+                attackText.text = $"Attack: {attackColour}{unitCard.GetStat(Unit.StatTypes.Attack)}";
+                healthText.text = $"Health: {healthColour}{unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
+                unitRangeText.text = $"Range:{rangeColour}{unitCard.GetStat(Unit.StatTypes.Range)}";
+                speedText.text = $"Speed: {speedColour}{unitCard.GetStat(Unit.StatTypes.Speed)}";
 
                 //Add the abilities to the card text
                 var abilities = unitCard.Abilities;

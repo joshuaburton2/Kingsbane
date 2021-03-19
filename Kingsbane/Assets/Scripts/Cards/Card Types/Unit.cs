@@ -64,7 +64,15 @@ public class Unit : Card
     }
 
     public StatisticStatuses HasBuffedAttack { get { return GetStat(StatTypes.Attack) > UnitData.Attack ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
-    public StatisticStatuses UnitIsDamaged { get { return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Damaged : StatisticStatuses.None; } }
+    public StatisticStatuses HealthStatus
+    {
+        get
+        {
+            if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health)
+                return StatisticStatuses.Buffed;
+            return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None; 
+        }
+    }
     public StatisticStatuses HasBuffedRange { get { return GetStat(StatTypes.Range) > UnitData.Range ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
     public StatisticStatuses HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
 
@@ -108,14 +116,14 @@ public class Unit : Card
 
         ResetStats(true);
 
+        Status = UnitStatuses.None;
+        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
             Enchantments = new List<AppliedEnchantment>();
             CurrentStatusEffects = new List<StatusEffects>();
             CurrentKeywords = new List<Keywords>();
-
-            Status = UnitStatuses.None;
-            CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
 
             if (BaseKeywords.Count > 0 || UnitData.Empowered > 0)
             {

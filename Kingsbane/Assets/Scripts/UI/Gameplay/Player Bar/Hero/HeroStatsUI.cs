@@ -70,7 +70,7 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
         attackText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedAttack);
 
         healthText.text = hero.CurrentHealth.ToString();
-        healthText.color = GameManager.instance.colourManager.GetStatModColour(hero.UnitIsDamaged);
+        healthText.color = GameManager.instance.colourManager.GetStatModColour(hero.HealthStatus);
 
         rangeText.text = hero.GetStat(Unit.StatTypes.Range).ToString();
         rangeText.color = GameManager.instance.colourManager.GetStatModColour(hero.HasBuffedRange);

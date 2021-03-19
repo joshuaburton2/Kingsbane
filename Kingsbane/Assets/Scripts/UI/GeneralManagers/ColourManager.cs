@@ -74,6 +74,7 @@ public class StatModColours
 {
     public StatisticStatuses statMod;
     public Color statColour;
+    public bool isDark;
 }
 
 /// <summary>
@@ -98,6 +99,19 @@ public class StatusEffectColours
 {
     public Unit.StatusEffects statusEffect;
     public Color effectColour;
+}
+
+public static class ColourExtensions
+{
+    /// <summary>
+    /// 
+    /// Converts a colour to a Hexadecimal string
+    /// 
+    /// </summary>
+    public static string ConvertToHexadecimal(this Color color)
+    {
+        return $@"<color=#{ColorUtility.ToHtmlStringRGB(color)}>";
+    }
 }
 
 public class ColourManager : MonoBehaviour
@@ -127,6 +141,8 @@ public class ColourManager : MonoBehaviour
     [Header("Other Colours")]
     [SerializeField]
     private List<StatModColours> statModColours;
+
+
 
     /// <summary>
     /// 
@@ -221,10 +237,10 @@ public class ColourManager : MonoBehaviour
     /// Obtain a particular unit stat colour 
     /// 
     /// </summary>
-    public Color GetStatModColour(StatisticStatuses statModType)
+    public Color GetStatModColour(StatisticStatuses statModType, bool isDark = false)
     {
         var statModColour = new Color();
-        statModColour = statModColours.FirstOrDefault(x => x.statMod == statModType).statColour;
+        statModColour = statModColours.FirstOrDefault(x => x.statMod == statModType && x.isDark == isDark).statColour;
         if (statModColour == null)
         {
             statModColour = new Color();

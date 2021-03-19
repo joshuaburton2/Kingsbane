@@ -4,6 +4,6 @@
     {
         None,
         Buffed,
-        Damaged,
+        Debuffed,
     }
 }
