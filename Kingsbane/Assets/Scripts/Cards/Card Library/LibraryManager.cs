@@ -632,7 +632,7 @@ public class LibraryManager : MonoBehaviour
                     {
                         var randomVal = UnityEngine.Random.Range(0, generatedList.Count);
                         selectedCard = generatedList[randomVal];
-                    } while (selectedCards.Select(x => x.Id).Contains(selectedCard.Id));
+                    } while (generateCardFilter.IsUnique && selectedCards.Select(x => x.Id).Contains(selectedCard.Id));
                     selectedCards.Add(selectedCard);
                 }
             }

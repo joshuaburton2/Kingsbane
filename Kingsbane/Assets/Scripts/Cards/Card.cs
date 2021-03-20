@@ -40,6 +40,8 @@ public class Card
 
     public string CreatedByName { get; set; }
 
+    public int NumShuffles { get; set; }
+
     /// <summary>
     /// 
     /// The total resource cost of the card
@@ -119,6 +121,7 @@ public class Card
         Owner = owner;
         CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
         CreatedByName = "";
+        NumShuffles = 0;
         ResourceInit();
     }
 

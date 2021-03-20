@@ -37,6 +37,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     private GameObject createdByArea;
     [SerializeField]
     private TextMeshProUGUI createdByText;
+    [SerializeField]
+    private GameObject trackShuffleArea;
+    [SerializeField]
+    private TextMeshProUGUI trackShuffleText;
 
     [Header("Unit Card Objects")]
     [SerializeField]
@@ -190,6 +194,9 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
 
         createdByText.text = $"Created By: {card.CreatedByName}";
         createdByArea.SetActive(!string.IsNullOrWhiteSpace(card.CreatedByName));
+
+        trackShuffleArea.SetActive(card.NumShuffles > 0);
+        trackShuffleText.text = card.NumShuffles.ToString();
 
         switch (card.Type)
         {

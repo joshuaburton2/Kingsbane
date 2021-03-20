@@ -127,7 +127,7 @@ public class Player
         var cardsToMulligan = Hand.cardList.ToList();
         Hand.EmptyList();
         Draw(DeckData.InitialHandSize);
-        Deck.ShuffleIntoDeck(cardsToMulligan);
+        Deck.ShuffleIntoDeck(cardsToMulligan, trackShuffle: false);
     }
 
     public void Draw()

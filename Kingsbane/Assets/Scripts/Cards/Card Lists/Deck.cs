@@ -152,20 +152,22 @@ public class Deck : CardList
     /// Shuffle a card into a random position in the deck
     /// 
     /// </summary>
-    public void ShuffleIntoDeck(Card card, string createdBy = "")
+    public void ShuffleIntoDeck(Card card, string createdBy = "", bool trackShuffle = true)
     {
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = UnityEngine.Random.Range(0, ListCount + 1);
 
         AddToDeck(card, randPos, createdBy);
+        if (trackShuffle)
+            card.NumShuffles++;
     }
 
-    public void ShuffleIntoDeck(Card card, string createdBy, DeckPositions deckPosition)
+    public void ShuffleIntoDeck(Card card, string createdBy, DeckPositions deckPosition, bool trackShuffle = true)
     {
         switch (deckPosition)
         {
             case DeckPositions.Random:
-                ShuffleIntoDeck(card, createdBy);
+                ShuffleIntoDeck(card, createdBy, trackShuffle);
                 break;
             case DeckPositions.First:
                 int firstPos = ListCount;
@@ -185,10 +187,10 @@ public class Deck : CardList
     /// Shuffle a list of cards into random posistions in the deck
     /// 
     /// </summary>
-    public void ShuffleIntoDeck(List<Card> cards, string createdBy = "")
+    public void ShuffleIntoDeck(List<Card> cards, string createdBy = "", bool trackShuffle = true)
     {
         foreach (var card in cards)
-            ShuffleIntoDeck(card, createdBy);
+            ShuffleIntoDeck(card, createdBy, trackShuffle);
     }
 
     /// <summary>
