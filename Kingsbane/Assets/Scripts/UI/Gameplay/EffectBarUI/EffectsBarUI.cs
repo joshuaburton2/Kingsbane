@@ -33,6 +33,8 @@ public class EffectsBarUI : MonoBehaviour
         ModifyCost,
         [Description("Spellbind")]
         Spellbind,
+        [Description("Graveyard")]
+        Graveyard,
     }
 
     [Serializable]

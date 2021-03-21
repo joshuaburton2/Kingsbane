@@ -293,6 +293,8 @@ public class Player
 
     public void AddToGraveyard(Card deadCard, string createdBy = "")
     {
+        deadCard.InitCard(deadCard.cardData, this);
+
         if (!string.IsNullOrWhiteSpace(createdBy))
             deadCard.CreatedByName = createdBy;
 
