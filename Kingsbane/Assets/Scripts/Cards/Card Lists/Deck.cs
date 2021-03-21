@@ -109,6 +109,19 @@ public class Deck : CardList
         }
     }
 
+    public Card Draw(Card card)
+    {
+        if (cardList.Contains(card))
+        {
+            cardList.Remove(card);
+            return card;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public List<Card> Draw(int numToDraw, CardListFilter filter, out int failedDraws, out bool failedFilter)
     {
         var drawnCards = new List<Card>();

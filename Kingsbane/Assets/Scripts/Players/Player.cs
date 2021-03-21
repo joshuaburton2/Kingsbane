@@ -176,6 +176,17 @@ public class Player
         }
     }
 
+
+    public void Draw(Card card)
+    {
+        var drawnCard = Deck.Draw(card);
+
+        if (drawnCard != null)
+            AddToHand(drawnCard);
+        else
+            Debug.Log($"Deck does not contain card: {card.Name}");
+    }
+
     public void Draw(int numToDraw, CardListFilter filter)
     {
         var drawnCards = Deck.Draw(numToDraw, filter, out int failedDraws, out bool failedFilter);

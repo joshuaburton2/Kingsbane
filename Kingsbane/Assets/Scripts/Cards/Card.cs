@@ -204,6 +204,12 @@ public class Card
         Owner.ShuffleFromHand(this);
     }
 
+    public void ShuffleThenDraw()
+    {
+        Owner.ShuffleFromHand(this);
+        Owner.Draw(this);
+    }
+
     public bool ModifyCost(int value, CardResources? resource)
     {
         if (resource.HasValue)

@@ -265,4 +265,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         Card.Shuffle();
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
+
+    public void ShuffleThenDrawButton()
+    {
+        Card.ShuffleThenDraw();
+        GameplayUI.RefreshPlayerBar(PlayerIndex);
+    }
 }
