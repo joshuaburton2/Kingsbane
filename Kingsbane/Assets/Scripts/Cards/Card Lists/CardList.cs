@@ -30,6 +30,11 @@ public class CardList
         cardList.Remove(card);
     }
 
+    public void RemoveCard(List<Card> cards)
+    {
+        cardList.RemoveAll(x => cards.Contains(x));
+    }
+
     public void RemoveCard(int pos = 0)
     {
         var card = cardList[pos];

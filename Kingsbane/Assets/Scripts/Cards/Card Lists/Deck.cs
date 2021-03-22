@@ -16,7 +16,7 @@ public class Deck : CardList
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData, player);
             card.CreatedByName = "";
-            AddToDeck(card);
+            AddToDeck(card, trackShuffle: false);
         }
     }
 
@@ -170,9 +170,7 @@ public class Deck : CardList
         //Randomises the position to shuffle to. Adds 1 to maximum since this will be adding a new card to the deck
         int randPos = UnityEngine.Random.Range(0, ListCount + 1);
 
-        AddToDeck(card, randPos, createdBy);
-        if (trackShuffle)
-            card.NumShuffles++;
+        AddToDeck(card, randPos, createdBy, trackShuffle);
     }
 
     public void ShuffleIntoDeck(Card card, string createdBy, DeckPositions deckPosition, bool trackShuffle = true)
@@ -184,11 +182,11 @@ public class Deck : CardList
                 break;
             case DeckPositions.First:
                 int firstPos = ListCount;
-                AddToDeck(card, firstPos, createdBy);
+                AddToDeck(card, firstPos, createdBy, trackShuffle);
                 break;
             case DeckPositions.Last:
                 int lastPos = 0;
-                AddToDeck(card, lastPos, createdBy);
+                AddToDeck(card, lastPos, createdBy, trackShuffle);
                 break;
             default:
                 throw new Exception("Not a valid deck position");
@@ -213,7 +211,7 @@ public class Deck : CardList
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <param name="position">The position in the deck to add it to. Note that cards are drawn from the end of the list</param>
-    public void AddToDeck(Card card, int position = 0, string createdBy = "")
+    public void AddToDeck(Card card, int position = 0, string createdBy = "", bool trackShuffle = true)
     {
         if (!string.IsNullOrWhiteSpace(createdBy))
             card.CreatedByName = createdBy;
@@ -243,7 +241,10 @@ public class Deck : CardList
         {
             //If the new card is in the last position of the list, adds it
             cardList.Add(card);
-        }   
+        }
+
+        if (trackShuffle)
+            card.NumShuffles++;
     }
 
     #endregion

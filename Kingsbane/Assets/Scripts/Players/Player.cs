@@ -312,6 +312,50 @@ public class Player
         Graveyard.AddCard(deadCard);
     }
 
+    public bool ReturnFromGraveyard(CardListFilter filter, int numToCreate, bool isDeploy, bool isCopy, string createdBy, bool isChoice)
+    {
+        var filteredCardList = Graveyard.FilterCardList(filter);
+
+        if (filteredCardList.ListCount == 0)
+            return false;
+
+        if (numToCreate > filteredCardList.ListCount)
+            numToCreate = filteredCardList.ListCount;
+        var cardList = new List<Card>();
+        for (int i = 0; i < numToCreate; i++)
+        {
+            Card selectedCard;
+            do
+            {
+                var randPos = UnityEngine.Random.Range(0, filteredCardList.ListCount);
+                selectedCard = filteredCardList.cardList[randPos];
+            } while (cardList.Contains(selectedCard));
+            cardList.Add(selectedCard);
+        }
+
+        if (isDeploy)
+        {
+            var unitList = cardList.Cast<Unit>().ToList();
+            GameManager.instance.effectManager.SetDeployUnit(unitList);
+        }
+        else
+        {
+            if (isCopy)
+            {
+                cardList = cardList.Select(x => GameManager.instance.libraryManager.CreateCard(x.cardData, this)).ToList();
+                cardList.ForEach(x => x.CreatedByName = createdBy);
+            }
+
+            foreach (var card in cardList)
+                AddToHand(card);
+        }
+
+        if (!isCopy)
+            Graveyard.RemoveCard(cardList);
+
+        return true;
+    }
+
     public void CreateDeployUnits(CardData cardData, UnitEnchantment enchantment, int numToCreate, string createdBy)
     {
         if (cardData.CardType == CardTypes.Unit)

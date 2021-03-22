@@ -65,6 +65,8 @@ public class UnitCommandUI : MonoBehaviour
     private Button flyingButton;
     [SerializeField]
     private TextMeshProUGUI flyingButtonText;
+    [SerializeField]
+    private Button unstealthButton;
 
     [Header("Enchantment Area")]
     [SerializeField]
@@ -150,7 +152,7 @@ public class UnitCommandUI : MonoBehaviour
         }
 
         //Shows or hides the special action area if the unit requires it
-        specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying)));
+        specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying) || unit.HasStatusEffect(Unit.StatusEffects.Stealthed)));
         //Set Disengage Button Properties
         disengageButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Warded));
         disengageButton.interactable = unit.CanAction;
@@ -158,6 +160,8 @@ public class UnitCommandUI : MonoBehaviour
         flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
         flyingButton.interactable = unit.CanFlyOrLand;
         flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
+        //Set Unstealth Button Properties
+        unstealthButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Stealthed));
     }
 
     /// <summary>
@@ -308,6 +312,17 @@ public class UnitCommandUI : MonoBehaviour
     public void FlyingButton()
     {
         unit.FlyOrLand();
+        RefreshCommandBar();
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for unstealthing the unit
+    /// 
+    /// </summary>
+    public void UnstealthButton()
+    {
+        unit.Unstealth();
         RefreshCommandBar();
     }
 }

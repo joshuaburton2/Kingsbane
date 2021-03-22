@@ -711,6 +711,14 @@ public class Unit : Card
         UnitCounter.RefreshUnitCounter();
     }
 
+    public void Unstealth()
+    {
+        if (HasStatusEffect(StatusEffects.Stealthed))
+            CurrentStatusEffects.Remove(StatusEffects.Stealthed);
+
+        UnitCounter.RefreshUnitCounter();
+    }
+
     public void Spellbind()
     {
         foreach (var enchantment in Enchantments)

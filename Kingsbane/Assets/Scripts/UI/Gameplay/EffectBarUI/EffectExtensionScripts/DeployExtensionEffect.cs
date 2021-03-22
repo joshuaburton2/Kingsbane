@@ -47,6 +47,8 @@ class DeployExtensionEffect : EffectExtensionUI
     {
         base.RefreshEffectExtension(_effectUI);
 
+        defaultTitleText = "Deployment";
+
         ClearFields();
     }
 
@@ -67,7 +69,7 @@ class DeployExtensionEffect : EffectExtensionUI
         createdByInput.text = "";
         numToCreateInput.text = "";
 
-        defaultTitleText = titleText.text;
+        titleText.text = defaultTitleText;
 
         activeOwnerToggle.isOn = true;
     }
