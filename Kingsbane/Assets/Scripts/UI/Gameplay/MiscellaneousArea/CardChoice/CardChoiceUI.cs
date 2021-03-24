@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class CardChoiceUI : MonoBehaviour
 {
-    //Need to create a card container for the card choice UI
+    
 }
