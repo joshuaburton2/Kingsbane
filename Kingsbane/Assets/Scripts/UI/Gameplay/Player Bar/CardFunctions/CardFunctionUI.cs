@@ -162,9 +162,9 @@ public class CardFunctionUI : MonoBehaviour
     /// Function call for generate card area to confirm card generation
     /// 
     /// </summary>
-    public bool ConfirmCardGeneration(GenerateCardFilter filter, string createdBy, DeckPositions deckPositions = DeckPositions.Random)
+    public bool ConfirmCardGeneration(GenerateCardFilter filter, bool isChoice, string createdBy, DeckPositions deckPositions = DeckPositions.Random)
     {
-        var filterSuccess = Player.GenerateCards(filter, selectedCardGeneration, createdBy, deckPositions);
+        var filterSuccess = Player.GenerateCards(filter, selectedCardGeneration, isChoice, createdBy, deckPositions);
         if (filterSuccess)
             PlayerUIBar.RefreshPlayerBar();
         return filterSuccess;

@@ -27,6 +27,8 @@ public class GenerateCardUI : MonoBehaviour
     [SerializeField]
     private Toggle isUnique;
     [SerializeField]
+    private Toggle isChoice;
+    [SerializeField]
     private TMP_InputField numToGenerateInput;
     [SerializeField]
     private TMP_InputField createdByInput;
@@ -127,6 +129,7 @@ public class GenerateCardUI : MonoBehaviour
         inputFields.ForEach(x => x.text = "");
         includeUncollectablesToggle.isOn = false;
         isUnique.isOn = false;
+        isChoice.isOn = false;
 
         //Hides the position field 
         positionFieldArea.SetActive(CardGenerationType == CardGenerationTypes.Deck);
@@ -146,8 +149,10 @@ public class GenerateCardUI : MonoBehaviour
             GenerationFilter.Name = nameInput.text;
             GenerationFilter.IncludeUncollectables = includeUncollectablesToggle.isOn;
             GenerationFilter.IsUnique = isUnique.isOn;
-            if (!string.IsNullOrWhiteSpace(numToGenerateInput.text))
+            if (!string.IsNullOrWhiteSpace(numToGenerateInput.text) || numToGenerateInput.text != "0")
                 GenerationFilter.NumToGenerate = int.Parse(numToGenerateInput.text);
+            else
+                GenerationFilter.NumToGenerate = 1;
 
             //Applies the dropdown filter to each of the relevant dropdowns
             ApplyDropdownFilter<Classes.ClassList>(classDropdown, GenerationFilter);
@@ -176,10 +181,10 @@ public class GenerateCardUI : MonoBehaviour
             if (CardGenerationType == CardGenerationTypes.Deck)
             {
                 var position = (DeckPositions)Enum.Parse(typeof(DeckPositions), positionDropdown.captionText.text);
-                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, createdByInput.text, position);
+                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, isChoice.isOn, createdByInput.text, position);
             }
             else
-                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, createdByInput.text);
+                successfulGeneration = CardFunctionUI.ConfirmCardGeneration(GenerationFilter, isChoice.isOn, createdByInput.text);
 
             //If failed the generation, displays this in the title
             if (!successfulGeneration)

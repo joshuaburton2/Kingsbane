@@ -21,6 +21,8 @@ class DeployExtensionEffect : EffectExtensionUI
     private Toggle activeOwnerToggle;
     [SerializeField]
     private TMP_InputField numToCreateInput;
+    [SerializeField]
+    private Toggle isChoiceToggle;
 
     [Header("Stat Area")]
     [SerializeField]
@@ -99,12 +101,12 @@ class DeployExtensionEffect : EffectExtensionUI
             if (enchantment.ValidEnchantment)
                 generationFilter.Enchantment = enchantment;
 
-            if (int.TryParse(numToCreateInput.text, out int result))
+            if (int.TryParse(numToCreateInput.text, out int result) || numToCreateInput.text != "0")
                 generationFilter.UnitsToCreate = result;
             else
                 generationFilter.UnitsToCreate = 1;
 
-            if (player.GenerateCards(generationFilter, CardGenerationTypes.Deploy, createdByInput.text))
+            if (player.GenerateCards(generationFilter, CardGenerationTypes.Deploy, isChoiceToggle.isOn, createdByInput.text))
                 StartEffect();
             else
                 titleText.text = $"{defaultTitleText} (Failed)";

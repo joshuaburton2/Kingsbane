@@ -81,7 +81,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
                 filter.CardType = (CardTypes)Enum.Parse(typeof(CardTypes), typeDropdown.captionText.text.Replace(" ", ""));
 
             int numberToCreate = 1;
-            if (int.TryParse(numToCreateInput.text, out int result))
+            if (int.TryParse(numToCreateInput.text, out int result) || numToCreateInput.text != "0")
                 numberToCreate = result;
 
             if (player.ReturnFromGraveyard(filter, numberToCreate, isDeployToggle.isOn, isCopyToggle.isOn, createdByInput.text, isChoiceToggle.isOn))

@@ -220,7 +220,7 @@ public class Player
         return handFull;
     }
 
-    public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, string createdBy, DeckPositions deckPosition = DeckPositions.Random)
+    public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, bool isChoice, string createdBy, DeckPositions deckPosition = DeckPositions.Random)
     {
         var generatedCardDatas = GameManager.instance.libraryManager.GenerateGameplayCards(filter);
 
@@ -230,6 +230,7 @@ public class Player
         if (generationType == CardGenerationTypes.Deploy && generatedCardDatas.Count > 1)
             return false;
 
+        var generatedCards = new List<Card>();
         foreach (var cardData in generatedCardDatas)
         {
             var generatedCard = GameManager.instance.libraryManager.CreateCard(cardData, this);
@@ -238,19 +239,47 @@ public class Player
                 ((Unit)generatedCard).AddEnchantment(filter.Enchantment);
             }
 
+            if (isChoice)
+            {
+                generatedCards.Add(generatedCard);
+            }
+            else
+            {
+                switch (generationType)
+                {
+                    case CardGenerationTypes.Hand:
+                        AddToHand(generatedCard, createdBy);
+                        break;
+                    case CardGenerationTypes.Deck:
+                        Deck.ShuffleIntoDeck(generatedCard, createdBy, deckPosition);
+                        break;
+                    case CardGenerationTypes.Graveyard:
+                        AddToGraveyard(generatedCard, createdBy);
+                        break;
+                    case CardGenerationTypes.Deploy:
+                        CreateDeployUnits(cardData, filter.Enchantment, filter.UnitsToCreate, createdBy);
+                        break;
+                    default:
+                        throw new Exception("Not a valid Generation Type");
+                }
+            }
+        }
+
+        if (isChoice)
+        {
             switch (generationType)
             {
                 case CardGenerationTypes.Hand:
-                    AddToHand(generatedCard, createdBy);
+                    GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Deck:
-                    Deck.ShuffleIntoDeck(generatedCard, createdBy, deckPosition);
+                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Graveyard:
-                    AddToGraveyard(generatedCard, createdBy);
+                    GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Deploy:
-                    CreateDeployUnits(cardData, filter.Enchantment, filter.UnitsToCreate, createdBy);
+                    GameManager.instance.effectManager.SetDeployChoiceMode(generatedCards, createdBy);
                     break;
                 default:
                     throw new Exception("Not a valid Generation Type");

@@ -35,6 +35,10 @@ public class EffectManager : MonoBehaviour
         RestoreEnchantment,
         GraveyardToHandChoice,
         GraveyardToDeployChoice,
+        AddToHandChoice,
+        AddToDeckChoice,
+        AddToGraveyardChoice,
+        DeployChoice,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -48,6 +52,10 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.ForceDeployment,
         ActiveEffectTypes.GraveyardToDeployChoice,
         ActiveEffectTypes.GraveyardToHandChoice,
+        ActiveEffectTypes.AddToHandChoice,
+        ActiveEffectTypes.AddToDeckChoice,
+        ActiveEffectTypes.AddToGraveyardChoice,
+        ActiveEffectTypes.DeployChoice,
     };
 
     private Card SelectedCard { get; set; }
@@ -519,12 +527,41 @@ public class EffectManager : MonoBehaviour
         ActiveEffect = ActiveEffectTypes.GraveyardToHandChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedBoolean = isCopy;
+        SelectedString = createdBy;
     }
 
     public void SetGraveyardToDeployChoiceMode(List<Card> cards)
     {
         ActiveEffect = ActiveEffectTypes.GraveyardToDeployChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+    }
+
+    public void SetAddToHandChoiceMode(List<Card> cards, string createdBy)
+    {
+        ActiveEffect = ActiveEffectTypes.AddToHandChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedString = createdBy;
+    }
+
+    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy)
+    {
+        ActiveEffect = ActiveEffectTypes.AddToDeckChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedString = createdBy;
+    }
+
+    public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy)
+    {
+        ActiveEffect = ActiveEffectTypes.AddToGraveyardChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedString = createdBy;
+    }
+
+    public void SetDeployChoiceMode(List<Card> cards, string createdBy)
+    {
+        ActiveEffect = ActiveEffectTypes.DeployChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedString = createdBy;
     }
 
     public void ChooseEffect(Card card)
@@ -551,6 +588,14 @@ public class EffectManager : MonoBehaviour
                 var unit = (Unit)card;
                 SetDeployUnit(unit, true);
                 GameManager.instance.GetActivePlayer().Graveyard.RemoveCard(card);
+                break;
+            case ActiveEffectTypes.AddToHandChoice:
+                break;
+            case ActiveEffectTypes.AddToDeckChoice:
+                break;
+            case ActiveEffectTypes.AddToGraveyardChoice:
+                break;
+            case ActiveEffectTypes.DeployChoice:
                 break;
             default:
                 throw new Exception("Not a valid phase to choose a card with.");
