@@ -590,7 +590,7 @@ public class EffectManager : MonoBehaviour
                 player.Graveyard.RemoveCard(card);
                 break;
             case ActiveEffectTypes.AddToHandChoice:
-
+                player.AddToHand()
                 break;
             case ActiveEffectTypes.AddToDeckChoice:
                 break;
