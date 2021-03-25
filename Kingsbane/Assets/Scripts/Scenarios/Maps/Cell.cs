@@ -50,6 +50,7 @@ public class Cell : MonoBehaviour
                             switch (GameManager.instance.effectManager.ActiveEffect)
                             {
                                 case EffectManager.ActiveEffectTypes.Deployment:
+                                case EffectManager.ActiveEffectTypes.ForceDeployment:
                                     cellOccupant = GameManager.instance.effectManager.DeployUnit(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.Spell:

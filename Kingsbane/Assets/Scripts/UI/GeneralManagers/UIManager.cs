@@ -20,6 +20,13 @@ public enum ActiveMainPanels
 /// </summary>
 public class UIManager : MonoBehaviour
 {
+    public enum CardDisplayTypes
+    {
+        CardChoice,
+        Divinate,
+        AlterFate,
+    }
+
     [SerializeField]
     GameObject currentSceneController;
 
@@ -27,19 +34,19 @@ public class UIManager : MonoBehaviour
 
     [Header("Main Menu Pages")]
     [SerializeField]
-    GameObject lobbyPage;
+    LobbyUI lobbyPage;
     [SerializeField]
-    GameObject cardLibrary;
+    CardLibraryParent cardLibrary;
 
     [Header("Gameplay Pages")]
     [SerializeField]
-    private GameObject gameplayUI;
+    private GameplayUI gameplayUI;
 
     [Header("Detail Displays")]
     [SerializeField]
-    private GameObject cardDetailDisplay;
+    private CardDetailUI cardDetailDisplay;
     [SerializeField]
-    private GameObject upgradeDetailDisplay;
+    private UpgradeDetailUI upgradeDetailDisplay;
 
     [Header("Other Properties")]
     public ActiveMainPanels activeMainPanel;
@@ -58,15 +65,15 @@ public class UIManager : MonoBehaviour
         currentSceneController = GameObject.FindGameObjectWithTag("MainMenuUIController");
         var mainMenuUIReferences = currentSceneController.GetComponent<MainMenuUIReferences>();
 
-        cardDetailDisplay = mainMenuUIReferences.cardDetailDisplay;
-        upgradeDetailDisplay = mainMenuUIReferences.upgradeDetailDisplay;
-        lobbyPage = mainMenuUIReferences.lobbyUI;
-        cardLibrary = mainMenuUIReferences.libraryUI;
+        cardDetailDisplay = mainMenuUIReferences.cardDetailDisplay.GetComponent<CardDetailUI>();
+        upgradeDetailDisplay = mainMenuUIReferences.upgradeDetailDisplay.GetComponent<UpgradeDetailUI>();
+        lobbyPage = mainMenuUIReferences.lobbyUI.GetComponent<LobbyUI>();
+        cardLibrary = mainMenuUIReferences.libraryUI.GetComponent<CardLibraryParent>();
 
-        cardDetailDisplay.SetActive(false);
-        upgradeDetailDisplay.SetActive(false);
-        lobbyPage.SetActive(false);
-        cardLibrary.SetActive(false);
+        cardDetailDisplay.gameObject.SetActive(false);
+        upgradeDetailDisplay.gameObject.SetActive(false);
+        lobbyPage.gameObject.SetActive(false);
+        cardLibrary.gameObject.SetActive(false);
 
         RefreshHeroStats = 0;
     }
@@ -83,15 +90,15 @@ public class UIManager : MonoBehaviour
         currentSceneController = GameObject.FindGameObjectWithTag("GameplayUIController");
         var gameplayUIReferences = currentSceneController.GetComponent<GameplayUIReferences>();
 
-        cardDetailDisplay = gameplayUIReferences.cardDetailDisplay;
-        upgradeDetailDisplay = gameplayUIReferences.upgradeDetailDisplay;
-        gameplayUI = gameplayUIReferences.gameplayUI;
+        cardDetailDisplay = gameplayUIReferences.cardDetailDisplay.GetComponent<CardDetailUI>();
+        upgradeDetailDisplay = gameplayUIReferences.upgradeDetailDisplay.GetComponent<UpgradeDetailUI>();
+        gameplayUI = gameplayUIReferences.gameplayUI.GetComponent<GameplayUI>();
 
-        gameplayUI.SetActive(true);
-        cardDetailDisplay.SetActive(false);
-        upgradeDetailDisplay.SetActive(false);
+        gameplayUI.gameObject.SetActive(true);
+        cardDetailDisplay.gameObject.SetActive(false);
+        upgradeDetailDisplay.gameObject.SetActive(false);
 
-        gameplayUI.GetComponent<GameplayUI>().InitialiseUI();
+        gameplayUI.InitialiseUI();
     }
 
     /// <summary>
@@ -101,9 +108,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ActivateCardDetail(CardData cardData)
     {
-        upgradeDetailDisplay.SetActive(false);
-        cardDetailDisplay.SetActive(true);
-        cardDetailDisplay.GetComponent<CardDetailUI>().ShowCardDetails(cardData);
+        upgradeDetailDisplay.gameObject.SetActive(false);
+        cardDetailDisplay.gameObject.SetActive(true);
+        cardDetailDisplay.ShowCardDetails(cardData);
     }
 
     /// <summary>
@@ -113,9 +120,9 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void ActivateUpgradeDetail(UpgradeData upgradeData, DeckData currentDeck = null)
     {
-        cardDetailDisplay.SetActive(false);
-        upgradeDetailDisplay.SetActive(true);
-        upgradeDetailDisplay.GetComponent<UpgradeDetailUI>().ShowUpgradeDetails(upgradeData, currentDeck);
+        cardDetailDisplay.gameObject.SetActive(false);
+        upgradeDetailDisplay.gameObject.SetActive(true);
+        upgradeDetailDisplay.ShowUpgradeDetails(upgradeData, currentDeck);
     }
 
     /// <summary>
@@ -130,11 +137,19 @@ public class UIManager : MonoBehaviour
             case SceneList.MainMenuScene:
                 throw new Exception("Not a valid scene to refresh");
             case SceneList.GameplayScene:
-                gameplayUI.GetComponent<GameplayUI>().RefreshPlayerBar();
+                gameplayUI.RefreshPlayerBar();
                 break;
             default:
                 throw new Exception("Not a valid scene to refresh");
         }
+    }
+
+    public void ShowCardChoiceDisplay(List<Card> cards)
+    {
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
+            gameplayUI.ShowCardChoice(cards);
+        else
+            throw new Exception("Not a valid scene to show card choice display");
     }
 
     /// <summary>

@@ -55,6 +55,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
         createdByInput.text = "";
 
         titleText.text = defaultTitleText;
+        createdByInput.placeholder.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
         isDeployToggle.isOn = false;
         isCopyToggle.isOn = false;
@@ -65,7 +66,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
 
     public void ConfirmButton()
     {
-        if (isCopyToggle.isOn && !string.IsNullOrWhiteSpace(createdByInput.text))
+        if (isDeployToggle.isOn || !isCopyToggle.isOn || isCopyToggle.isOn && !string.IsNullOrWhiteSpace(createdByInput.text))
         {
             var player = GameManager.instance.GetActivePlayer();
 

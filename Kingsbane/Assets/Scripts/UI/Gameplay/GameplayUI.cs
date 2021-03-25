@@ -47,12 +47,12 @@ public class GameplayUI : MonoBehaviour
 
     public void CancelEffects()
     {
-        GameManager.instance.effectManager.CancelEffectManager();
-
-        if (GameManager.instance.effectManager.ActiveEffect != EffectManager.ActiveEffectTypes.UnitCommand)
+        if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
         {
             SetSelectedCommandUnit();
         }
+
+        GameManager.instance.effectManager.CancelEffectManager();
     }
 
     public void InitialiseUI()
@@ -196,5 +196,11 @@ public class GameplayUI : MonoBehaviour
     {
         playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit(unit);
         ShowCardDisplay(unit);
+    }
+
+    public void ShowCardChoice(List<Card> cards)
+    {
+        cardChoiceUI.gameObject.SetActive(true);
+        cardChoiceUI.DisplayCardChoice(cards);
     }
 }

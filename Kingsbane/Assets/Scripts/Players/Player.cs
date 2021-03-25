@@ -333,25 +333,37 @@ public class Player
             cardList.Add(selectedCard);
         }
 
-        if (isDeploy)
+        if (!isChoice)
         {
-            var unitList = cardList.Cast<Unit>().ToList();
-            GameManager.instance.effectManager.SetDeployUnit(unitList);
+            Debug.Log("Test");
+            if (isDeploy)
+            {
+                var unitList = cardList.Cast<Unit>().ToList();
+                GameManager.instance.effectManager.SetDeployUnits(unitList);
+            }
+            else
+            {
+                if (isCopy)
+                {
+                    cardList = cardList.Select(x => GameManager.instance.libraryManager.CreateCard(x.cardData, this)).ToList();
+                    cardList.ForEach(x => x.CreatedByName = createdBy);
+                }
+
+                foreach (var card in cardList)
+                    AddToHand(card);
+            }
+
+
+            if (!isCopy)
+                Graveyard.RemoveCard(cardList);
         }
         else
         {
-            if (isCopy)
-            {
-                cardList = cardList.Select(x => GameManager.instance.libraryManager.CreateCard(x.cardData, this)).ToList();
-                cardList.ForEach(x => x.CreatedByName = createdBy);
-            }
-
-            foreach (var card in cardList)
-                AddToHand(card);
+            if (isDeploy)
+                GameManager.instance.effectManager.SetGraveyardToDeployChoiceMode(cardList);
+            else
+                GameManager.instance.effectManager.SetGraveyardToHandChoiceMode(cardList, isCopy, createdBy);
         }
-
-        if (!isCopy)
-            Graveyard.RemoveCard(cardList);
 
         return true;
     }
@@ -371,7 +383,7 @@ public class Player
                 unitList.Add(unit);
             }
 
-            GameManager.instance.effectManager.SetDeployUnit(unitList);
+            GameManager.instance.effectManager.SetDeployUnits(unitList);
         }
         else
         {
