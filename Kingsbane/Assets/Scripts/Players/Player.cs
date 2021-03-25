@@ -227,7 +227,7 @@ public class Player
         if (generatedCardDatas.Count == 0)
             return false;
 
-        if (generationType == CardGenerationTypes.Deploy && generatedCardDatas.Count > 1)
+        if (!isChoice && generationType == CardGenerationTypes.Deploy && generatedCardDatas.Count > 1)
             return false;
 
         var generatedCards = new List<Card>();
@@ -364,7 +364,6 @@ public class Player
 
         if (!isChoice)
         {
-            Debug.Log("Test");
             if (isDeploy)
             {
                 var unitList = cardList.Cast<Unit>().ToList();

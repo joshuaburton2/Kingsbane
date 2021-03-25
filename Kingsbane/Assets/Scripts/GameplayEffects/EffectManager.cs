@@ -566,11 +566,11 @@ public class EffectManager : MonoBehaviour
 
     public void ChooseEffect(Card card)
     {
+        var player = GameManager.instance.GetActivePlayer();
+
         switch (ActiveEffect)
         {
             case ActiveEffectTypes.GraveyardToHandChoice:
-                var player = GameManager.instance.GetActivePlayer();
-
                 if (SelectedBoolean.Value)
                 {
                     card = GameManager.instance.libraryManager.CreateCard(card.cardData, player);
@@ -587,9 +587,10 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.GraveyardToDeployChoice:
                 var unit = (Unit)card;
                 SetDeployUnit(unit, true);
-                GameManager.instance.GetActivePlayer().Graveyard.RemoveCard(card);
+                player.Graveyard.RemoveCard(card);
                 break;
             case ActiveEffectTypes.AddToHandChoice:
+
                 break;
             case ActiveEffectTypes.AddToDeckChoice:
                 break;

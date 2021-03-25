@@ -74,6 +74,7 @@ class DeployExtensionEffect : EffectExtensionUI
         titleText.text = defaultTitleText;
 
         activeOwnerToggle.isOn = true;
+        isChoiceToggle.isOn = false;
     }
 
     public void ConfirmButton()
@@ -94,6 +95,7 @@ class DeployExtensionEffect : EffectExtensionUI
                 CardType = CardTypes.Unit,
                 IncludeUncollectables = true,
             };
+            generationFilter.IsUnique = isChoiceToggle.isOn;
 
             if (tagDropdown.captionText.text != DEFAULT_DROPDOWN_STRING)
                 generationFilter.Tag = (Tags)Enum.Parse(typeof(Tags), tagDropdown.captionText.text.Replace(" ", ""));
@@ -105,6 +107,12 @@ class DeployExtensionEffect : EffectExtensionUI
                 generationFilter.UnitsToCreate = result;
             else
                 generationFilter.UnitsToCreate = 1;
+
+            if (isChoiceToggle.isOn)
+            {
+                generationFilter.NumToGenerate = generationFilter.UnitsToCreate;
+                generationFilter.IncludeUncollectables = false;
+            }
 
             if (player.GenerateCards(generationFilter, CardGenerationTypes.Deploy, isChoiceToggle.isOn, createdByInput.text))
                 StartEffect();
