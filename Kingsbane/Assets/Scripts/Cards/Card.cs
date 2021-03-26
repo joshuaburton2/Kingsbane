@@ -261,4 +261,13 @@ public class Card
 
         return true;
     }
+
+    public virtual void CopyCardStats(Card copyFrom)
+    {
+        foreach (var resource in ResourceCost)
+        {
+            var copyResource = copyFrom.ResourceCost.Single(x => x.ResourceType == resource.ResourceType);
+            resource.Value = copyResource.Value;
+        }
+    }
 }

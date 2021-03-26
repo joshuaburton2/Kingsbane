@@ -156,16 +156,19 @@ public class Player
             Debug.Log("Deck is empty");
     }
 
-    public bool Draw(CardListFilter filter)
+    public bool Draw(CardListFilter filter, int? numToChoose = null)
     {
-        var drawnCard = Deck.Draw(filter, out bool failedFilter);
+        var drawnCard = Deck.Draw(filter, out bool failedFilter, numToChoose);
 
         if (!failedFilter)
         {
-            if (drawnCard != null)
-                AddToHand(drawnCard);
-            else
-                Debug.Log("Deck is empty");
+            if (numToChoose == null)
+            {
+                if (drawnCard != null)
+                    AddToHand(drawnCard);
+                else
+                    Debug.Log("Deck is empty");
+            }
 
             return true;
         }
@@ -218,6 +221,15 @@ public class Player
             DiscardCard(newCard);
 
         return handFull;
+    }
+
+    public bool CopyHandCard(Card copyCard, string createdBy = "")
+    {
+        var newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.cardData, this);
+        newCopy.CreatedByName = createdBy;
+        newCopy.CopyCardStats(copyCard);
+
+        return AddToHand(newCopy);
     }
 
     public bool GenerateCards(GenerateCardFilter filter, CardGenerationTypes generationType, bool isChoice, string createdBy, DeckPositions deckPosition = DeckPositions.Random)
@@ -273,7 +285,7 @@ public class Player
                     GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Deck:
-                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy);
+                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy, deckPosition);
                     break;
                 case CardGenerationTypes.Graveyard:
                     GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy);

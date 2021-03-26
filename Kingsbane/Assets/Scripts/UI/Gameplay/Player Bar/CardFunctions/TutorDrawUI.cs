@@ -24,6 +24,10 @@ public class TutorDrawUI : MonoBehaviour
     [SerializeField]
     private Toggle isCreatedToggle;
     [SerializeField]
+    private Toggle isChoiceToggle;
+    [SerializeField]
+    private TMP_InputField isChoiceNumberInput;
+    [SerializeField]
     private TMP_Dropdown costFilterDropdown;
     [SerializeField]
     private TMP_InputField costInput;
@@ -146,6 +150,8 @@ public class TutorDrawUI : MonoBehaviour
         inputFields.ForEach(x => x.text = "");
         isCreatedToggle.isOn = false;
         isCreatedToggle.interactable = false;
+        isChoiceToggle.isOn = false;
+        IsChoiceToggleChange();
 
         OnCardTypeChange();
     }
@@ -212,8 +218,12 @@ public class TutorDrawUI : MonoBehaviour
         ApplyDropdownFilter<IntValueFilter>(spellRangeFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.SpellRange);
         ApplyDropdownFilter<IntValueFilter>(durabilityFilterDropdown, TutorDrawFilter, CardListFilter.IntFilterTypes.Durability);
 
+        int? choiceValue = 1;
+        if (int.TryParse(isChoiceNumberInput.text, out int result) || isChoiceNumberInput.text != "0")
+            choiceValue = result;
+        choiceValue = isChoiceToggle ? choiceValue : null;
         //Attempt the draw using the constructed filter. If failed to draw with the given filter adds the clarifier to the title
-        if (!CardFunctionUI.TutorDraw(TutorDrawFilter))
+        if (!CardFunctionUI.TutorDraw(TutorDrawFilter, choiceValue))
             titleText.text = $"{titleText.text} (Failed)";
     }
 
@@ -312,5 +322,19 @@ public class TutorDrawUI : MonoBehaviour
         isCreatedOn = !isCreatedOn;
         isCreatedToggle.interactable = isCreatedOn;
         isCreatedToggle.isOn = false;
+    }
+
+    public void IsChoiceToggleChange()
+    {
+        if (isChoiceToggle.isOn)
+        {
+            isChoiceNumberInput.interactable = true;
+            isChoiceNumberInput.text = "3";
+        }
+        else
+        {
+            isChoiceNumberInput.interactable = false;
+            isChoiceNumberInput.text = "";
+        }
     }
 }

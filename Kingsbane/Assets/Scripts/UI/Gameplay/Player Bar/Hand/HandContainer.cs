@@ -271,4 +271,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         Card.ShuffleThenDraw();
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
+
+    public void CopyButton()
+    {
+        Card.Owner.CopyHandCard(Card, "Duplicate");
+        GameplayUI.RefreshPlayerBar(PlayerIndex);
+    }
 }

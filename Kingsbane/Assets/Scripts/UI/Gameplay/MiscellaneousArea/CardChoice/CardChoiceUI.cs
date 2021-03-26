@@ -10,10 +10,13 @@ public class CardChoiceUI : MonoBehaviour
     private GameObject choiceContainerPrefab;
     [SerializeField]
     private GameObject hideArea;
+    [SerializeField]
+    private GameObject backgroundFade;
 
     public void DisplayCardChoice(List<Card> cardList)
     {
         GameManager.DestroyAllChildren(choiceParent);
+        backgroundFade.SetActive(true);
 
         foreach (var card in cardList)
         {
@@ -32,5 +35,6 @@ public class CardChoiceUI : MonoBehaviour
     public void HideButton()
     {
         hideArea.SetActive(!hideArea.activeSelf);
+        backgroundFade.SetActive(!backgroundFade.activeSelf);
     }
 }

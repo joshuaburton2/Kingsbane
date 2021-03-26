@@ -90,9 +90,9 @@ public class CardFunctionUI : MonoBehaviour
     /// Function call from tutor draw area to confirm tutor draw
     /// 
     /// </summary>
-    public bool TutorDraw(CardListFilter cardFilter)
+    public bool TutorDraw(CardListFilter cardFilter, int? numToChoose = null)
     {
-        var filterSuccess = Player.Draw(cardFilter);
+        var filterSuccess = Player.Draw(cardFilter, numToChoose);
         if (filterSuccess)
             PlayerUIBar.RefreshPlayerBar();
         return filterSuccess;

@@ -190,10 +190,10 @@ public class Unit : Card
     {
         base.Play();
 
-        Create();
+        Deploy();
     }
 
-    public void Create()
+    public void Deploy()
     {
         if (Status == UnitStatuses.None)
         {
@@ -208,6 +208,16 @@ public class Unit : Card
             Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
         if (HasKeyword(Keywords.Summon))
             Owner.AddSummon(UnitCounter);
+    }
+
+    public override void CopyCardStats(Card copyFrom)
+    {
+        base.CopyCardStats(copyFrom);
+
+        var copyUnit = (Unit)copyFrom;
+
+        foreach (var enchantment in copyUnit.Enchantments)
+            AddEnchantment(enchantment.Enchantment);
     }
 
     public void StartOfTurn(bool isActive)

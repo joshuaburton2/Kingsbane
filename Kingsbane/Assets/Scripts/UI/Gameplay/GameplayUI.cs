@@ -14,6 +14,8 @@ public class GameplayUI : MonoBehaviour
     private GameObject menuPopup;
     [SerializeField]
     private CardChoiceUI cardChoiceUI;
+    [SerializeField]
+    private GameObject backgroundFade;
 
     [Header("Miscellaneous Area")]
     [SerializeField]
@@ -60,6 +62,7 @@ public class GameplayUI : MonoBehaviour
         cardDisplayArea.SetActive(false);
         menuPopup.SetActive(false);
         cardChoiceUI.gameObject.SetActive(false);
+        backgroundFade.SetActive(false);
 
         GameManager.instance.StartGame();
 
@@ -177,6 +180,7 @@ public class GameplayUI : MonoBehaviour
 
     public void RefreshPlayerBar(int? id = null)
     {
+        backgroundFade.SetActive(false);
         if (id == null)
         {
             foreach (var playerBar in playerUIBars)

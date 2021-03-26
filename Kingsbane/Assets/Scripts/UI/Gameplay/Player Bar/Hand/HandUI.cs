@@ -38,6 +38,14 @@ public class HandUI : MonoBehaviour
     {
         if (GameManager.instance.effectManager.IsUILocked && !handMinimised)
             MinimiseAllCards();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (GameManager.instance.uiManager.OverGameplayArea)
+            {
+                MinimiseAllCards();
+            }
+        }
     }
 
     /// <summary>

@@ -39,6 +39,7 @@ public class EffectManager : MonoBehaviour
         AddToDeckChoice,
         AddToGraveyardChoice,
         DeployChoice,
+        DrawChoice,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -56,6 +57,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.AddToDeckChoice,
         ActiveEffectTypes.AddToGraveyardChoice,
         ActiveEffectTypes.DeployChoice,
+        ActiveEffectTypes.DrawChoice,
     };
 
     private Card SelectedCard { get; set; }
@@ -66,6 +68,7 @@ public class EffectManager : MonoBehaviour
     private int? SelectedValue { get; set; }
     private bool? SelectedBoolean { get; set; }
     private string SelectedString { get; set; }
+    private DeckPositions? SelectedDeckPosition { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
     private CardResources? SelectedResource { get; set; }
 
@@ -99,6 +102,7 @@ public class EffectManager : MonoBehaviour
         SelectedValue = null;
         SelectedBoolean = null;
         SelectedString = null;
+        SelectedDeckPosition = null;
         SelectedKeywords = new List<Keywords>();
         SelectedResource = null;
 
@@ -209,7 +213,7 @@ public class EffectManager : MonoBehaviour
                 }
                 else
                 {
-                    unit.Create();
+                    unit.Deploy();
                 }
                 GameManager.instance.uiManager.RefreshUI();
             }
@@ -543,11 +547,12 @@ public class EffectManager : MonoBehaviour
         SelectedString = createdBy;
     }
 
-    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy)
+    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy, DeckPositions deckPosition)
     {
         ActiveEffect = ActiveEffectTypes.AddToDeckChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
+        SelectedDeckPosition = deckPosition;
     }
 
     public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy)
@@ -564,9 +569,16 @@ public class EffectManager : MonoBehaviour
         SelectedString = createdBy;
     }
 
+    public void SetDrawChoiceMode(List<Card> cards)
+    {
+        ActiveEffect = ActiveEffectTypes.DrawChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+    }
+
     public void ChooseEffect(Card card)
     {
         var player = GameManager.instance.GetActivePlayer();
+        Unit unit;
 
         switch (ActiveEffect)
         {
@@ -585,18 +597,25 @@ public class EffectManager : MonoBehaviour
                 
                 break;
             case ActiveEffectTypes.GraveyardToDeployChoice:
-                var unit = (Unit)card;
+                unit = (Unit)card;
                 SetDeployUnit(unit, true);
                 player.Graveyard.RemoveCard(card);
                 break;
             case ActiveEffectTypes.AddToHandChoice:
-                player.AddToHand()
+                player.AddToHand(card, SelectedString);
                 break;
             case ActiveEffectTypes.AddToDeckChoice:
+                player.Deck.ShuffleIntoDeck(card, SelectedString, SelectedDeckPosition.Value);
                 break;
             case ActiveEffectTypes.AddToGraveyardChoice:
+                player.AddToGraveyard(card, SelectedString);
                 break;
             case ActiveEffectTypes.DeployChoice:
+                unit = (Unit)card;
+                SetDeployUnit(unit, true);
+                break;
+            case ActiveEffectTypes.DrawChoice:
+                player.Draw(card);
                 break;
             default:
                 throw new Exception("Not a valid phase to choose a card with.");

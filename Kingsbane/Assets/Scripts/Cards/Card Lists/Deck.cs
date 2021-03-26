@@ -81,7 +81,7 @@ public class Deck : CardList
         return drawnCards;
     }
 
-    public Card Draw(CardListFilter filter, out bool failedFilter)
+    public Card Draw(CardListFilter filter, out bool failedFilter, int? numToChoose = null)
     {
         int currentCount = ListCount;
         failedFilter = false;
@@ -92,10 +92,46 @@ public class Deck : CardList
 
             if (filteredDeck.cardList.Count != 0)
             {
-                var drawnCard = filteredDeck.cardList.LastOrDefault();
-                cardList.Remove(drawnCard);
+                if (numToChoose == null)
+                {
+                    var drawnCard = filteredDeck.cardList.LastOrDefault();
+                    cardList.Remove(drawnCard);
 
-                return drawnCard;
+                    return drawnCard;
+                }
+                else
+                {
+                    if (numToChoose.Value > filteredDeck.ListCount)
+                        numToChoose = filteredDeck.ListCount;
+
+                    var cardChoiceList = new List<Card>();
+                    var completedList = false;
+                    for (int choiceIndex = 0; choiceIndex < numToChoose; choiceIndex++)
+                    {
+                        for (int cardIndex = 0; cardIndex < filteredDeck.ListCount; cardIndex++)
+                        {
+                            var card = filteredDeck.cardList[filteredDeck.ListCount - 1 - cardIndex];
+                            if (cardChoiceList.Select(x => x.Name).Contains(card.Name))
+                            {
+                                if (cardIndex == filteredDeck.ListCount - 1)
+                                {
+                                    completedList = true;
+                                    break;
+                                }
+                                continue;
+                            }
+                            cardChoiceList.Add(card);
+                            break;
+                        }
+
+                        if (completedList)
+                            break;
+                    }
+
+                    GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList);
+
+                    return null;
+                }
             }
             else
             {
