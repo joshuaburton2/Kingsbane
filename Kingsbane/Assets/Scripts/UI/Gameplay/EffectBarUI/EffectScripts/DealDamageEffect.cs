@@ -82,5 +82,8 @@ class DealDamageEffect : EffectUI
         base.CancelEffect();
 
         damageValueInput.text = "";
+        deadlyToggle.isOn = false;
+        lifebondToggle.isOn = false;
+        piercingToggle.isOn = false;
     }
 }

@@ -12,10 +12,6 @@ public class GameplayUI : MonoBehaviour
     private List<PlayerUIBar> playerUIBars;
     [SerializeField]
     private GameObject menuPopup;
-    [SerializeField]
-    private CardChoiceUI cardChoiceUI;
-    [SerializeField]
-    private GameObject backgroundFade;
 
     [Header("Miscellaneous Area")]
     [SerializeField]
@@ -28,6 +24,14 @@ public class GameplayUI : MonoBehaviour
     private Button actionButton;
     [SerializeField]
     private TextMeshProUGUI actionButtonText;
+
+    [Header("Player Choice Displays")]
+    [SerializeField]
+    private GameObject backgroundFade;
+    [SerializeField]
+    private CardChoiceUI cardChoiceUI;
+    [SerializeField]
+    private DivinateUI divinateUI;
 
     public void Update()
     {
@@ -62,6 +66,7 @@ public class GameplayUI : MonoBehaviour
         cardDisplayArea.SetActive(false);
         menuPopup.SetActive(false);
         cardChoiceUI.gameObject.SetActive(false);
+        divinateUI.gameObject.SetActive(false);
         backgroundFade.SetActive(false);
 
         GameManager.instance.StartGame();
@@ -206,5 +211,11 @@ public class GameplayUI : MonoBehaviour
     {
         cardChoiceUI.gameObject.SetActive(true);
         cardChoiceUI.DisplayCardChoice(cards);
+    }
+
+    public void ShowDivinate(List<Card> cards)
+    {
+        divinateUI.gameObject.SetActive(true);
+        divinateUI.DisplayDivinate(cards);
     }
 }

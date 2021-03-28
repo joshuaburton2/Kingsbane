@@ -182,6 +182,16 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// 
+    /// Gets either the active player or the inactive player
+    /// 
+    /// </summary>
+    public Player GetPlayer(bool isActive)
+    {
+        return GetPlayer(isActive ? ActivePlayerId.Value : InactivePlayerId.Value);
+    }
+
+    /// <summary>
+    /// 
     /// Initialise the gameplay scene with all required data
     /// 
     /// </summary>

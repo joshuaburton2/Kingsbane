@@ -11,11 +11,13 @@ public class CardChoiceContainer : MonoBehaviour, IPointerClickHandler
     private CardChoiceUI cardChoiceUI;
     private CardDisplay cardDisplay;
 
+    private const float defaultCardScaling = 0.3f;
+
     public void InitCardContainer(CardChoiceUI _cardChoiceUI, Card card)
     {
         cardChoiceUI = _cardChoiceUI;
 
-        var newCardObject = GameManager.instance.libraryManager.CreateCardObject(card, cardParent.transform);
+        var newCardObject = GameManager.instance.libraryManager.CreateCardObject(card, cardParent.transform, defaultCardScaling);
         newCardObject.name = card.Name;
         gameObject.name = $"Container- {card.Name}";
 

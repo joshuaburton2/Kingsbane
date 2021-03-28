@@ -6,11 +6,12 @@ using UnityEngine;
 
 public class Deck : CardList
 {
+    private Player player { get; set; }
 
-
-    public Deck(List<CardData> _cardList, Player player)
+    public Deck(List<CardData> _cardList, Player _player)
     {
         cardList = new List<Card>();
+        player = _player;
 
         foreach (var cardData in _cardList)
         {
@@ -128,7 +129,7 @@ public class Deck : CardList
                             break;
                     }
 
-                    GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList);
+                    GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList, player.Id);
 
                     return null;
                 }
@@ -257,27 +258,8 @@ public class Deck : CardList
         //Clamps the position to ensure it isn't outside the bounds of the deck
         position = Mathf.Clamp(position, 0, currentCount);
 
-        //Tests if the new card is in the last position or not
-        if(position != currentCount)
-        {
-            //Add a new card to the deck as a duplicate of the card already in the last position
-            cardList.Add(cardList[currentCount - 1]);
-
-            //Loops down through the upper part of the list, shifting all cards one position up to account for the new card addition.
-            //This will essentially duplicate each card one position up, and then overwrite the original with each iteration of the loop
-            for (int i = currentCount - 1; i > position; i--)
-            {
-                cardList[i] = cardList[i - 1];
-            }
-
-            //Add the new card at the desired position
-            cardList[position] = card;
-        }
-        else
-        {
-            //If the new card is in the last position of the list, adds it
-            cardList.Add(card);
-        }
+        //Inserts the card at the required position
+        cardList.Insert(position, card);
 
         if (trackShuffle)
             card.NumShuffles++;

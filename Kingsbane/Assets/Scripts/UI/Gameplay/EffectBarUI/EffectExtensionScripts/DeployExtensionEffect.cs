@@ -81,7 +81,7 @@ class DeployExtensionEffect : EffectExtensionUI
     {
         if (!string.IsNullOrWhiteSpace(createdByInput.text))
         {
-            var player = GameManager.instance.GetPlayer(activeOwnerToggle.isOn ? GameManager.instance.ActivePlayerId.Value : GameManager.instance.InactivePlayerId.Value);
+            var player = GameManager.instance.GetPlayer(activeOwnerToggle.isOn);
 
             var enchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Permanent, Source = createdByInput.text };
             GetStatModifier(enchantment, Unit.StatTypes.Attack, attackModTypeDropdown, attackValueInput);
@@ -104,7 +104,7 @@ class DeployExtensionEffect : EffectExtensionUI
                 generationFilter.Enchantment = enchantment;
 
             if (int.TryParse(numToCreateInput.text, out int result) || numToCreateInput.text != "0")
-                generationFilter.UnitsToCreate = result;
+                generationFilter.UnitsToCreate = Mathf.Max(1, result);
             else
                 generationFilter.UnitsToCreate = 1;
 

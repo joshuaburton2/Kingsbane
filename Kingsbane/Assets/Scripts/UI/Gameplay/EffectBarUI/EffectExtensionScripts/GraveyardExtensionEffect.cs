@@ -19,6 +19,8 @@ public class GraveyardExtensionEffect : EffectExtensionUI
     private TMP_Dropdown typeDropdown;
     [SerializeField]
     private Toggle isDeployToggle;
+    [SerializeField]
+    private Toggle activeOwnerToggle;
 
     [Header("Required Fields")]
     [SerializeField]
@@ -57,6 +59,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
         titleText.text = defaultTitleText;
         createdByInput.placeholder.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
+        activeOwnerToggle.isOn = true;
         isDeployToggle.isOn = false;
         isCopyToggle.isOn = false;
         isChoiceToggle.isOn = false;
@@ -68,7 +71,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
     {
         if (isDeployToggle.isOn || !isCopyToggle.isOn || isCopyToggle.isOn && !string.IsNullOrWhiteSpace(createdByInput.text))
         {
-            var player = GameManager.instance.GetActivePlayer();
+            var player = GameManager.instance.GetPlayer(activeOwnerToggle.isOn);
 
             var filter = new CardListFilter()
             {
@@ -82,7 +85,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
 
             int numberToCreate = 1;
             if (int.TryParse(numToCreateInput.text, out int result) || numToCreateInput.text != "0")
-                numberToCreate = result;
+                numberToCreate = Mathf.Max(1, result);
 
             if (player.ReturnFromGraveyard(filter, numberToCreate, isDeployToggle.isOn, isCopyToggle.isOn, createdByInput.text, isChoiceToggle.isOn))
             {

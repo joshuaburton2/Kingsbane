@@ -40,6 +40,7 @@ public class EffectManager : MonoBehaviour
         AddToGraveyardChoice,
         DeployChoice,
         DrawChoice,
+        Divinate,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -58,6 +59,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.AddToGraveyardChoice,
         ActiveEffectTypes.DeployChoice,
         ActiveEffectTypes.DrawChoice,
+        ActiveEffectTypes.Divinate,
     };
 
     private Card SelectedCard { get; set; }
@@ -526,58 +528,65 @@ public class EffectManager : MonoBehaviour
         unit.RestoreEnchantments();
     }
 
-    public void SetGraveyardToHandChoiceMode(List<Card> cards, bool isCopy, string createdBy)
+    public void SetGraveyardToHandChoiceMode(List<Card> cards, bool isCopy, string createdBy, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.GraveyardToHandChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedBoolean = isCopy;
         SelectedString = createdBy;
+        SelectedValue = playerId;
     }
 
-    public void SetGraveyardToDeployChoiceMode(List<Card> cards)
+    public void SetGraveyardToDeployChoiceMode(List<Card> cards, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.GraveyardToDeployChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedValue = playerId;
     }
 
-    public void SetAddToHandChoiceMode(List<Card> cards, string createdBy)
+    public void SetAddToHandChoiceMode(List<Card> cards, string createdBy, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.AddToHandChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
+        SelectedValue = playerId;
     }
 
-    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy, DeckPositions deckPosition)
+    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy, DeckPositions deckPosition, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.AddToDeckChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
         SelectedDeckPosition = deckPosition;
+        SelectedValue = playerId;
     }
 
-    public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy)
+    public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.AddToGraveyardChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
+        SelectedValue = playerId;
     }
 
-    public void SetDeployChoiceMode(List<Card> cards, string createdBy)
+    public void SetDeployChoiceMode(List<Card> cards, string createdBy, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.DeployChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
+        SelectedValue = playerId;
     }
 
-    public void SetDrawChoiceMode(List<Card> cards)
+    public void SetDrawChoiceMode(List<Card> cards, int playerId)
     {
         ActiveEffect = ActiveEffectTypes.DrawChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedValue = playerId;
     }
 
     public void ChooseEffect(Card card)
     {
-        var player = GameManager.instance.GetActivePlayer();
+        var player = GameManager.instance.GetPlayer(SelectedValue.Value);
         Unit unit;
 
         switch (ActiveEffect)
@@ -621,6 +630,23 @@ public class EffectManager : MonoBehaviour
                 throw new Exception("Not a valid phase to choose a card with.");
         }
 
+        RefreshEffectManager();
+        GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetDivinateMode(List<Card> cards, int playerId)
+    {
+        ActiveEffect = ActiveEffectTypes.Divinate;
+        GameManager.instance.uiManager.ShowDivinateDisplay(cards);
+        SelectedValue = playerId;
+    }
+
+    public void Divinate(List<Card> topCards, List<Card> bottomCards)
+    {
+        var player = GameManager.instance.GetPlayer(SelectedValue.Value);
+        player.Divinate(topCards, bottomCards);
+
+        CancelEffect = true;
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
     }

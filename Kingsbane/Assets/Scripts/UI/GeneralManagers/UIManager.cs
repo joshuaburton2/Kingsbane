@@ -152,6 +152,14 @@ public class UIManager : MonoBehaviour
             throw new Exception("Not a valid scene to show card choice display");
     }
 
+    public void ShowDivinateDisplay(List<Card> cards)
+    {
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
+            gameplayUI.ShowDivinate(cards);
+        else
+            throw new Exception("Not a valid scene to show divinate display");
+    }
+
     /// <summary>
     /// 
     /// General function for closing a panel

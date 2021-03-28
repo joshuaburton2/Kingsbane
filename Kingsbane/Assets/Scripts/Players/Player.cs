@@ -211,6 +211,32 @@ public class Player
             Debug.Log("Given filter cannot draw any cards from the deck");
     }
 
+    public bool InitDivinate(int numToDivinate)
+    {
+        if (Deck.ListCount == 0)
+        {
+            Debug.Log("Deck is empty");
+            return false;
+        }
+        var topDeckCards = Deck.cardList.Skip(Mathf.Max(0, Deck.ListCount - numToDivinate)).ToList();
+
+        GameManager.instance.effectManager.SetDivinateMode(topDeckCards, Id);
+
+        return true;
+    }
+
+    public void Divinate(List<Card> topCards, List<Card> bottomCards)
+    {
+        Deck.cardList.RemoveAll(x => topCards.Contains(x) || bottomCards.Contains(x));
+
+        topCards.Reverse();
+        foreach (var card in topCards)
+            Deck.AddToDeck(card, Deck.ListCount);
+
+        foreach (var card in bottomCards)
+            Deck.AddToDeck(card, 0);
+    }
+
     public bool AddToHand(Card newCard, string createdBy = "")
     {
         if (string.IsNullOrWhiteSpace(createdBy))
@@ -282,16 +308,16 @@ public class Player
             switch (generationType)
             {
                 case CardGenerationTypes.Hand:
-                    GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy);
+                    GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy, Id);
                     break;
                 case CardGenerationTypes.Deck:
-                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy, deckPosition);
+                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy, deckPosition, Id);
                     break;
                 case CardGenerationTypes.Graveyard:
-                    GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy);
+                    GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy, Id);
                     break;
                 case CardGenerationTypes.Deploy:
-                    GameManager.instance.effectManager.SetDeployChoiceMode(generatedCards, createdBy);
+                    GameManager.instance.effectManager.SetDeployChoiceMode(generatedCards, createdBy, Id);
                     break;
                 default:
                     throw new Exception("Not a valid Generation Type");
@@ -400,9 +426,9 @@ public class Player
         else
         {
             if (isDeploy)
-                GameManager.instance.effectManager.SetGraveyardToDeployChoiceMode(cardList);
+                GameManager.instance.effectManager.SetGraveyardToDeployChoiceMode(cardList, Id);
             else
-                GameManager.instance.effectManager.SetGraveyardToHandChoiceMode(cardList, isCopy, createdBy);
+                GameManager.instance.effectManager.SetGraveyardToHandChoiceMode(cardList, isCopy, createdBy, Id);
         }
 
         return true;

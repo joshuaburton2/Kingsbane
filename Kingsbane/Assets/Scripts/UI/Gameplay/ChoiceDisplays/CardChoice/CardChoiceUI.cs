@@ -21,8 +21,8 @@ public class CardChoiceUI : MonoBehaviour
         foreach (var card in cardList)
         {
             var choiceContainerObject = Instantiate(choiceContainerPrefab, choiceParent.transform);
-            var handContainer = choiceContainerObject.GetComponentInChildren<CardChoiceContainer>();
-            handContainer.InitCardContainer(this, card);
+            var choiceContainer = choiceContainerObject.GetComponentInChildren<CardChoiceContainer>();
+            choiceContainer.InitCardContainer(this, card);
         }
     }
 

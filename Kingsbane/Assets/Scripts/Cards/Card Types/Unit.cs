@@ -203,7 +203,6 @@ public class Unit : Card
                 Status = UnitStatuses.Enemy;
         }
 
-
         if (GetStat(StatTypes.Empowered).Value > 0)
             Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
         if (HasKeyword(Keywords.Summon))

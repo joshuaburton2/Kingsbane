@@ -130,7 +130,7 @@ public class Card
     /// Initialises the Resource Data on the card. To be called when the card is created
     /// 
     /// </summary>
-    private void ResourceInit()
+    protected void ResourceInit()
     {
         ResourceCost = new List<Resource>();
         Resources = new List<CardResources>();
@@ -189,6 +189,7 @@ public class Card
     {
         Owner.ModifyResources(ResourceCost);
 
+        ResourceInit();
         Owner.PlayFromHand(this);
 
         //ToDo: Might need to pass out an on play parameter. This will determine the effect of spells as well as deployment effects for units and items

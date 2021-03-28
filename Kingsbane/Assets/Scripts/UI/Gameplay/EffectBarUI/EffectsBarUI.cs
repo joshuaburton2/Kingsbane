@@ -35,6 +35,8 @@ public class EffectsBarUI : MonoBehaviour
         Spellbind,
         [Description("Graveyard")]
         Graveyard,
+        [Description("Divinate")]
+        Divinate,
     }
 
     [Serializable]
