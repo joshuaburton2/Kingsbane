@@ -25,6 +25,7 @@ public class GenerateCardFilter
     public int PlayerId { get; set; }
 
     public UnitEnchantment Enchantment { get; set; }
+    public KeyValuePair<StatModifierTypes, int>? DurabilityChange { get; set; }
 
     public GenerateCardFilter(Classes.ClassList playerClass, int numToGenerate = 1)
     {
@@ -48,5 +49,6 @@ public class GenerateCardFilter
         SetFilter = new List<Sets>() { Sets.Standard };
 
         Enchantment = null;
+        DurabilityChange = null;
     }
 }

@@ -276,6 +276,10 @@ public class Player
             {
                 ((Unit)generatedCard).AddEnchantment(filter.Enchantment);
             }
+            if (generatedCard.Type == CardTypes.Item && filter.DurabilityChange != null)
+            {
+                ((Item)generatedCard).EditDurability(filter.DurabilityChange.Value);
+            }
 
             if (isChoice)
             {
@@ -297,6 +301,9 @@ public class Player
                     case CardGenerationTypes.Deploy:
                         CreateDeployUnits(cardData, filter.Enchantment, filter.UnitsToCreate, createdBy);
                         break;
+                    case CardGenerationTypes.Equip:
+                        GameManager.instance.effectManager.SetItemEquip((Item)generatedCard);
+                        break;
                     default:
                         throw new Exception("Not a valid Generation Type");
                 }
@@ -308,16 +315,19 @@ public class Player
             switch (generationType)
             {
                 case CardGenerationTypes.Hand:
-                    GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy, Id);
+                    GameManager.instance.effectManager.SetAddToHandChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Deck:
-                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy, deckPosition, Id);
+                    GameManager.instance.effectManager.SetAddToDeckChoiceMode(generatedCards, createdBy, deckPosition);
                     break;
                 case CardGenerationTypes.Graveyard:
-                    GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy, Id);
+                    GameManager.instance.effectManager.SetAddToGraveyardChoiceMode(generatedCards, createdBy);
                     break;
                 case CardGenerationTypes.Deploy:
-                    GameManager.instance.effectManager.SetDeployChoiceMode(generatedCards, createdBy, Id);
+                    GameManager.instance.effectManager.SetDeployChoiceMode(generatedCards, createdBy);
+                    break;
+                case CardGenerationTypes.Equip:
+                    GameManager.instance.effectManager.SetItemChoiceMode(generatedCards, createdBy);
                     break;
                 default:
                     throw new Exception("Not a valid Generation Type");
@@ -426,9 +436,9 @@ public class Player
         else
         {
             if (isDeploy)
-                GameManager.instance.effectManager.SetGraveyardToDeployChoiceMode(cardList, Id);
+                GameManager.instance.effectManager.SetGraveyardToDeployChoiceMode(cardList);
             else
-                GameManager.instance.effectManager.SetGraveyardToHandChoiceMode(cardList, isCopy, createdBy, Id);
+                GameManager.instance.effectManager.SetGraveyardToHandChoiceMode(cardList, isCopy, createdBy);
         }
 
         return true;

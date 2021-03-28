@@ -221,7 +221,7 @@ public class TutorDrawUI : MonoBehaviour
         int? choiceValue = 1;
         if (int.TryParse(isChoiceNumberInput.text, out int result) || isChoiceNumberInput.text != "0")
             choiceValue = Mathf.Max(1, result);
-        choiceValue = isChoiceToggle ? choiceValue : null;
+        choiceValue = isChoiceToggle.isOn ? choiceValue : null;
         //Attempt the draw using the constructed filter. If failed to draw with the given filter adds the clarifier to the title
         if (!CardFunctionUI.TutorDraw(TutorDrawFilter, choiceValue))
             titleText.text = $"{titleText.text} (Failed)";

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +23,11 @@ public class Item : Card
     {
         base.Play();
 
+        Equip();
+    }
+
+    public void Equip()
+    {
         Owner.Hero.EquipItem(this);
     }
 
@@ -35,6 +42,29 @@ public class Item : Card
         }
 
         return false;
+    }
+
+    public void EditDurability(KeyValuePair<StatModifierTypes, int> durabilityChange)
+    {
+        var durabilityValue = durabilityChange.Value;
+
+        switch (durabilityChange.Key)
+        {
+            case StatModifierTypes.Modify:
+
+                if (CurrentDurability + durabilityValue <= 0)
+                    CurrentDurability = 1;
+                else
+                    ModifyDurability(durabilityValue);
+                break;
+            case StatModifierTypes.Set:
+                if (durabilityValue <= 0)
+                    durabilityValue = 1;
+                CurrentDurability = durabilityValue;
+                break;
+            default:
+                throw new Exception("Not a valid stat modifier type");
+        }
     }
 
     public void DestroyItem()

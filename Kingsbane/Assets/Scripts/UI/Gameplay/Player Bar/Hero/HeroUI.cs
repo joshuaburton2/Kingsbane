@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HeroUI : MonoBehaviour
 {
-    private Hero Hero { get; set; }
+    public Hero Hero { get; private set; }
 
     [SerializeField]
     private HeroStatsUI heroStatUI;

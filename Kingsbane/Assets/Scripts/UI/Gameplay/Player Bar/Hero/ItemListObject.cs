@@ -112,9 +112,10 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
         }
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.Equip)
+            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.Equip ||
+                GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.ForceEquip)
             {
-                GameManager.instance.effectManager.EquipItem(Item);
+                GameManager.instance.effectManager.EquipItem(Item, HeroUI.Hero.Owner.Id);
             }
         }
     }

@@ -37,6 +37,8 @@ public class EffectsBarUI : MonoBehaviour
         Graveyard,
         [Description("Divinate")]
         Divinate,
+        [Description("Equip")]
+        Equip,
     }
 
     [Serializable]
@@ -87,7 +89,7 @@ public class EffectsBarUI : MonoBehaviour
     {
         GameManager.DestroyAllChildren(effectListParent);
 
-        var phaseEffectList = effectObjects.Where(x => x.activeGamePhase == GameManager.instance.CurrentGamePhase).ToList();
+        var phaseEffectList = effectObjects.Where(x => x.activeGamePhase == GameManager.instance.CurrentGamePhase).OrderBy(x => x.effectType.GetEnumDescription());
 
         foreach (var effect in phaseEffectList)
         {

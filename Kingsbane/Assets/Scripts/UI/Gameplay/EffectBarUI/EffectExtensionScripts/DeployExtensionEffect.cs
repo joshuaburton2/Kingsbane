@@ -23,6 +23,8 @@ class DeployExtensionEffect : EffectExtensionUI
     private TMP_InputField numToCreateInput;
     [SerializeField]
     private Toggle isChoiceToggle;
+    [SerializeField]
+    private Toggle includeUncollectablesToggle;
 
     [Header("Stat Area")]
     [SerializeField]
@@ -61,7 +63,7 @@ class DeployExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(rangeModTypeDropdown, new List<StatModifierTypes>());
         GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
 
-        GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, "Any", true);
+        GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, DEFAULT_DROPDOWN_STRING, true);
 
         nameInput.text = "";
         attackValueInput.text = "";
@@ -72,9 +74,11 @@ class DeployExtensionEffect : EffectExtensionUI
         numToCreateInput.text = "";
 
         titleText.text = defaultTitleText;
+        createdByInput.placeholder.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
         activeOwnerToggle.isOn = true;
         isChoiceToggle.isOn = false;
+        includeUncollectablesToggle.isOn = true;
     }
 
     public void ConfirmButton()
@@ -93,7 +97,7 @@ class DeployExtensionEffect : EffectExtensionUI
             {
                 Name = nameInput.text,
                 CardType = CardTypes.Unit,
-                IncludeUncollectables = true,
+                IncludeUncollectables = includeUncollectablesToggle.isOn,
             };
             generationFilter.IsUnique = isChoiceToggle.isOn;
 
@@ -109,10 +113,7 @@ class DeployExtensionEffect : EffectExtensionUI
                 generationFilter.UnitsToCreate = 1;
 
             if (isChoiceToggle.isOn)
-            {
                 generationFilter.NumToGenerate = generationFilter.UnitsToCreate;
-                generationFilter.IncludeUncollectables = false;
-            }
 
             if (player.GenerateCards(generationFilter, CardGenerationTypes.Deploy, isChoiceToggle.isOn, createdByInput.text))
                 StartEffect();

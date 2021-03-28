@@ -14,6 +14,7 @@ public class EffectManager : MonoBehaviour
         ForceDeployment,
         Spell,
         Equip,
+        ForceEquip,
         UnitCommand,
         UnitForceMove,
         UnitUseSpeed,
@@ -41,6 +42,7 @@ public class EffectManager : MonoBehaviour
         DeployChoice,
         DrawChoice,
         Divinate,
+        ItemEquipChoice,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -52,6 +54,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.None,
         ActiveEffectTypes.UnitCommand,
         ActiveEffectTypes.ForceDeployment,
+        ActiveEffectTypes.ForceEquip,
         ActiveEffectTypes.GraveyardToDeployChoice,
         ActiveEffectTypes.GraveyardToHandChoice,
         ActiveEffectTypes.AddToHandChoice,
@@ -59,12 +62,14 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.AddToGraveyardChoice,
         ActiveEffectTypes.DeployChoice,
         ActiveEffectTypes.DrawChoice,
+        ActiveEffectTypes.ItemEquipChoice,
         ActiveEffectTypes.Divinate,
     };
 
     private Card SelectedCard { get; set; }
     private Unit CommandUnit { get; set; }
     private List<Unit> DeployUnits { get; set; }
+    private Item SelectedItem { get; set; }
     private AbilityData SelectedAbility { get; set; }
     private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
@@ -116,6 +121,7 @@ public class EffectManager : MonoBehaviour
                 SelectedCard = null;
                 CommandUnit = null;
                 DeployUnits = new List<Unit>();
+                SelectedItem = null;
                 break;
             case ActiveEffectTypes.Deployment:
             case ActiveEffectTypes.ForceDeployment:
@@ -123,6 +129,14 @@ public class EffectManager : MonoBehaviour
                 CommandUnit = null;
 
                 if (DeployUnits.Count == 0 || CancelEffect)
+                    ActiveEffect = ActiveEffectTypes.None;
+                break;
+            case ActiveEffectTypes.Equip:
+            case ActiveEffectTypes.ForceEquip:
+                SelectedCard = null;
+                CommandUnit = null;
+
+                if (SelectedItem == null || CancelEffect)
                     ActiveEffect = ActiveEffectTypes.None;
                 break;
             case ActiveEffectTypes.UnitForceMove:
@@ -162,16 +176,17 @@ public class EffectManager : MonoBehaviour
 
         switch (card.Type)
         {
-            case CategoryEnums.CardTypes.Unit:
+            case CardTypes.Unit:
                 SetDeployUnit((Unit)card);
                 break;
-            case CategoryEnums.CardTypes.Spell:
+            case CardTypes.Spell:
                 ActiveEffect = ActiveEffectTypes.Spell;
                 break;
-            case CategoryEnums.CardTypes.Item:
+            case CardTypes.Item:
                 ActiveEffect = ActiveEffectTypes.Equip;
+                SelectedItem = (Item)card;
                 break;
-            case CategoryEnums.CardTypes.Default:
+            case CardTypes.Default:
             default:
                 break;
         }
@@ -181,6 +196,12 @@ public class EffectManager : MonoBehaviour
     {
         DeployUnits = new List<Unit>() { _selectedUnit };
         ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
+    }
+
+    public void SetItemEquip(Item _selectedItem, bool isForced = false)
+    {
+        SelectedItem = _selectedItem;
+        ActiveEffect = isForced ? ActiveEffectTypes.ForceEquip : ActiveEffectTypes.Equip;
     }
 
     public void SetDeployUnits(List<Unit> _selectedUnits, bool isForced = false)
@@ -326,18 +347,30 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void EquipItem(Item itemToReplace)
+    public void EquipItem(Item itemToReplace, int itemAreaPlayerId)
     {
-        if (SelectedCard != null)
+        if (SelectedItem != null)
         {
-            if (itemToReplace != null)
+            if (SelectedItem.Owner.Id == itemAreaPlayerId)
             {
-                itemToReplace.DestroyItem();
-            }
+                if (itemToReplace != null)
+                {
+                    itemToReplace.DestroyItem();
+                }
 
-            SelectedCard.Play();
-            GameManager.instance.uiManager.RefreshUI();
-            RefreshEffectManager();
+                if (SelectedCard != null)
+                {
+                    SelectedCard.Play();
+                }
+                else
+                {
+                    SelectedItem.Equip();
+                }
+
+                SelectedItem = null;
+                GameManager.instance.uiManager.RefreshUI();
+                RefreshEffectManager();
+            }
         }
     }
 
@@ -528,65 +561,66 @@ public class EffectManager : MonoBehaviour
         unit.RestoreEnchantments();
     }
 
-    public void SetGraveyardToHandChoiceMode(List<Card> cards, bool isCopy, string createdBy, int playerId)
+    public void SetGraveyardToHandChoiceMode(List<Card> cards, bool isCopy, string createdBy)
     {
         ActiveEffect = ActiveEffectTypes.GraveyardToHandChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedBoolean = isCopy;
         SelectedString = createdBy;
-        SelectedValue = playerId;
     }
 
-    public void SetGraveyardToDeployChoiceMode(List<Card> cards, int playerId)
+    public void SetGraveyardToDeployChoiceMode(List<Card> cards)
     {
         ActiveEffect = ActiveEffectTypes.GraveyardToDeployChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
-        SelectedValue = playerId;
     }
 
-    public void SetAddToHandChoiceMode(List<Card> cards, string createdBy, int playerId)
+    public void SetAddToHandChoiceMode(List<Card> cards, string createdBy)
     {
         ActiveEffect = ActiveEffectTypes.AddToHandChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
-        SelectedValue = playerId;
     }
 
-    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy, DeckPositions deckPosition, int playerId)
+    public void SetAddToDeckChoiceMode(List<Card> cards, string createdBy, DeckPositions deckPosition)
     {
         ActiveEffect = ActiveEffectTypes.AddToDeckChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
         SelectedDeckPosition = deckPosition;
-        SelectedValue = playerId;
     }
 
-    public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy, int playerId)
+    public void SetAddToGraveyardChoiceMode(List<Card> cards, string createdBy)
     {
         ActiveEffect = ActiveEffectTypes.AddToGraveyardChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
-        SelectedValue = playerId;
     }
 
-    public void SetDeployChoiceMode(List<Card> cards, string createdBy, int playerId)
+    public void SetDeployChoiceMode(List<Card> cards, string createdBy)
     {
         ActiveEffect = ActiveEffectTypes.DeployChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
         SelectedString = createdBy;
-        SelectedValue = playerId;
     }
 
-    public void SetDrawChoiceMode(List<Card> cards, int playerId)
+    public void SetItemChoiceMode(List<Card> cards, string createdBy)
+    {
+        ActiveEffect = ActiveEffectTypes.ItemEquipChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+        SelectedString = createdBy;
+    }
+
+    public void SetDrawChoiceMode(List<Card> cards)
     {
         ActiveEffect = ActiveEffectTypes.DrawChoice;
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
-        SelectedValue = playerId;
     }
 
     public void ChooseEffect(Card card)
     {
-        var player = GameManager.instance.GetPlayer(SelectedValue.Value);
+        var player = card.Owner;
+
         Unit unit;
 
         switch (ActiveEffect)
@@ -603,7 +637,7 @@ public class EffectManager : MonoBehaviour
                 }
 
                 player.AddToHand(card);
-                
+
                 break;
             case ActiveEffectTypes.GraveyardToDeployChoice:
                 unit = (Unit)card;
@@ -625,6 +659,9 @@ public class EffectManager : MonoBehaviour
                 break;
             case ActiveEffectTypes.DrawChoice:
                 player.Draw(card);
+                break;
+            case ActiveEffectTypes.ItemEquipChoice:
+                SetItemEquip((Item)card, true);
                 break;
             default:
                 throw new Exception("Not a valid phase to choose a card with.");

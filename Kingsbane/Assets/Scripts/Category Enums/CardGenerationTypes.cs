@@ -5,4 +5,5 @@
     Deck,
     Graveyard,
     Deploy,
+    Equip,
 }

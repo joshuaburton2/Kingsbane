@@ -129,7 +129,7 @@ public class Deck : CardList
                             break;
                     }
 
-                    GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList, player.Id);
+                    GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList);
 
                     return null;
                 }
