@@ -215,7 +215,6 @@ public class Unit : Card
         var eteherealInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Chasm };
         var inAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Obstacle, TerrainTypes.Impassable, TerrainTypes.TallObstacle, TerrainTypes.Chasm };
 
-        var terrainType = newCell.terrainType;
         var canOccupy = false;
 
         if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
@@ -315,6 +314,17 @@ public class Unit : Card
         }
 
         UnitCounter.RefreshUnitCounter();
+    }
+
+    public bool CheckEtherealEndOfTurn()
+    {
+        if (HasKeyword(Keywords.Ethereal))
+        {
+            var etherealDestroyTerrains = new List<TerrainTypes> { TerrainTypes.Impassable, TerrainTypes.Obstacle, TerrainTypes.TallObstacle };
+            return etherealDestroyTerrains.Contains(UnitCounter.Cell.terrainType);
+        }
+
+        return false;
     }
 
     public void UseSpeed(int usedSpeed)
@@ -509,6 +519,7 @@ public class Unit : Card
     public void DestroyUnit()
     {
         GameManager.instance.effectManager.RemoveUnit(UnitCounter);
+        ResetStats();
         Owner.AddToGraveyard(this);
 
         if (GetStat(StatTypes.Empowered).Value > 0)

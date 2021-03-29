@@ -87,9 +87,21 @@ public class Player
 
     public void EndOfTurn(bool isActive)
     {
+        var destroyUnits = new List<UnitCounter>();
+
         foreach (var unit in DeployedUnits)
         {
             unit.Unit.EndOfTurn(isActive);
+
+            if (unit.Unit.CheckEtherealEndOfTurn())
+            {
+                destroyUnits.Add(unit);
+            }
+        }
+
+        foreach (var destroyUnit in destroyUnits)
+        {
+            destroyUnit.Unit.DestroyUnit();
         }
     }
 
