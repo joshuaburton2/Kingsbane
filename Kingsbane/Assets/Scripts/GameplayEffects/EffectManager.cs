@@ -122,6 +122,7 @@ public class EffectManager : MonoBehaviour
                 CommandUnit = null;
                 DeployUnits = new List<Unit>();
                 SelectedItem = null;
+
                 break;
             case ActiveEffectTypes.Deployment:
             case ActiveEffectTypes.ForceDeployment:
@@ -129,7 +130,10 @@ public class EffectManager : MonoBehaviour
                 CommandUnit = null;
 
                 if (DeployUnits.Count == 0 || CancelEffect)
+                {
                     ActiveEffect = ActiveEffectTypes.None;
+                    GameManager.instance.uiManager.ShowMapKeyOfType();
+                }
                 break;
             case ActiveEffectTypes.Equip:
             case ActiveEffectTypes.ForceEquip:
@@ -142,6 +146,8 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.UnitForceMove:
             case ActiveEffectTypes.UnitAttack:
             case ActiveEffectTypes.UnitAbility:
+                if (ActiveEffect == ActiveEffectTypes.UnitForceMove)
+                    GameManager.instance.uiManager.ShowMapKeyOfType();
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
 
                 CancelEffect = false;
@@ -165,6 +171,8 @@ public class EffectManager : MonoBehaviour
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
                 PreviousCell = null;
+
+                GameManager.instance.uiManager.ShowMapKeyOfType();
 
                 break;
         }
@@ -194,7 +202,15 @@ public class EffectManager : MonoBehaviour
 
     public void SetDeployUnit(Unit _selectedUnit, bool isForced = false)
     {
+        GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Deployment);
         DeployUnits = new List<Unit>() { _selectedUnit };
+        ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
+    }
+
+    public void SetDeployUnits(List<Unit> _selectedUnits, bool isForced = false)
+    {
+        GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Deployment);
+        DeployUnits = _selectedUnits;
         ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
     }
 
@@ -204,15 +220,12 @@ public class EffectManager : MonoBehaviour
         ActiveEffect = isForced ? ActiveEffectTypes.ForceEquip : ActiveEffectTypes.Equip;
     }
 
-    public void SetDeployUnits(List<Unit> _selectedUnits, bool isForced = false)
-    {
-        DeployUnits = _selectedUnits;
-        ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
-    }
-
     public GameObject DeployUnit(Cell cell)
     {
-        return CreateUnitCounter(DeployUnits.FirstOrDefault(), cell);
+        if (DeployUnits.FirstOrDefault().CheckOccupancy(cell))
+            return CreateUnitCounter(DeployUnits.FirstOrDefault(), cell);
+        else
+            return null;
     }
 
     public GameObject CreateUnitCounter(Unit unit, Cell cell, bool isNew = true)
@@ -263,6 +276,7 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
             PreviousCell = currentCell;
+            GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
         }
     }
 
@@ -272,6 +286,7 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitDisengage;
             PreviousCell = currentCell;
+            GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
         }
     }
 
@@ -280,6 +295,7 @@ public class EffectManager : MonoBehaviour
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
             ActiveEffect = ActiveEffectTypes.UnitForceMove;
+            GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
         }
     }
 
@@ -293,9 +309,12 @@ public class EffectManager : MonoBehaviour
         {
             if (newCell.occupantCounter == null)
             {
-                RemoveUnit(CommandUnit.UnitCounter);
-                CreateUnitCounter(CommandUnit, newCell, false);
-                GameManager.instance.uiManager.RefreshUI();
+                if (CommandUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
+                {
+                    RemoveUnit(CommandUnit.UnitCounter);
+                    CreateUnitCounter(CommandUnit, newCell, false);
+                    GameManager.instance.uiManager.RefreshUI();
+                }
             }
         }
     }

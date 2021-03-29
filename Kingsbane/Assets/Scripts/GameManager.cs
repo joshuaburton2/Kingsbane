@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        ResetGameState();
+        ResetGameState(true);
 
         //Singleton setup
         if (instance == null)
@@ -95,13 +95,14 @@ public class GameManager : MonoBehaviour
     /// Resets the game state to default. Should be called when exiting gameplay scene
     /// 
     /// </summary>
-    public void ResetGameState()
+    public void ResetGameState(bool isInit = false)
     {
         LoadedPlayers = null;
         LoadedMap = null;
         ActivePlayerId = null;
         CurrentGamePhase = GamePhases.Menu;
-        effectManager.RefreshEffectManager(true);
+        if (!isInit)
+            effectManager.RefreshEffectManager(true);
     }
 
     /// <summary>
@@ -188,6 +189,17 @@ public class GameManager : MonoBehaviour
     public Player GetPlayer(bool isActive)
     {
         return GetPlayer(isActive ? ActivePlayerId.Value : InactivePlayerId.Value);
+    }
+
+    /// <summary>
+    /// 
+    /// Initialise the menu scene with all required data
+    /// 
+    /// </summary>
+    public void InitialiseMenuScene()
+    {
+        var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
+        mapGrid = mapGridObject.GetComponent<MapGrid>();
     }
 
     /// <summary>

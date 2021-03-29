@@ -160,6 +160,14 @@ public class UIManager : MonoBehaviour
             throw new Exception("Not a valid scene to show divinate display");
     }
 
+    public void ShowMapKeyOfType(MapGrid.MapFilters mapFilter = MapGrid.MapFilters.Colour)
+    {
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
+            gameplayUI.ShowKeyOfFilter(mapFilter);
+        else
+            throw new Exception("Not a valid scene to show map key");
+    }
+
     /// <summary>
     /// 
     /// General function for closing a panel

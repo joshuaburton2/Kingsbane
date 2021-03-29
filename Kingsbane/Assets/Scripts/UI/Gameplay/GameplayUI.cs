@@ -24,6 +24,10 @@ public class GameplayUI : MonoBehaviour
     private Button actionButton;
     [SerializeField]
     private TextMeshProUGUI actionButtonText;
+    [SerializeField]
+    private GameObject keyDisplay;
+    [SerializeField]
+    private MapKeyUI mapKey;
 
     [Header("Player Choice Displays")]
     [SerializeField]
@@ -32,6 +36,8 @@ public class GameplayUI : MonoBehaviour
     private CardChoiceUI cardChoiceUI;
     [SerializeField]
     private DivinateUI divinateUI;
+
+    private MapGrid.MapFilters CurrentMapFilter { get; set; }
 
     public void Update()
     {
@@ -42,6 +48,7 @@ public class GameplayUI : MonoBehaviour
             if (GameManager.instance.uiManager.OverGameplayArea)
             {
                 CancelEffects();
+                ShowKeyOfFilter();
             }
         }
 
@@ -68,6 +75,9 @@ public class GameplayUI : MonoBehaviour
         cardChoiceUI.gameObject.SetActive(false);
         divinateUI.gameObject.SetActive(false);
         backgroundFade.SetActive(false);
+        keyDisplay.SetActive(false);
+
+        CurrentMapFilter = MapGrid.MapFilters.Terrain;
 
         GameManager.instance.StartGame();
 
@@ -217,5 +227,35 @@ public class GameplayUI : MonoBehaviour
     {
         divinateUI.gameObject.SetActive(true);
         divinateUI.DisplayDivinate(cards);
+    }
+
+    public void ShowKeyOfFilter(MapGrid.MapFilters mapFilter = MapGrid.MapFilters.Colour)
+    {
+        if (mapFilter == MapGrid.MapFilters.Colour)
+        {
+            keyDisplay.SetActive(false);
+            GameManager.instance.mapGrid.SwitchMapFilter(mapFilter);
+        }
+        else
+        {
+            keyDisplay.SetActive(true);
+            mapKey.ChangeMapFilter((int)mapFilter);
+        }
+
+    }
+
+    public void ShowMapKey()
+    {
+        keyDisplay.SetActive(!keyDisplay.activeSelf);
+
+        if (keyDisplay.activeSelf)
+        {
+            mapKey.ChangeMapFilter((int)CurrentMapFilter);
+        }
+        else
+        {
+            CurrentMapFilter = mapKey.CurrentFilter;
+            GameManager.instance.mapGrid.SwitchMapFilter(MapGrid.MapFilters.Colour);
+        }
     }
 }

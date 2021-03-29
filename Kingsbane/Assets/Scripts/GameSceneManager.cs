@@ -93,6 +93,7 @@ public class GameSceneManager : MonoBehaviour
             if (scene.name == SceneList.MainMenuScene.ToString())
             {
                 GameManager.instance.uiManager.SyncMenuPages();
+                GameManager.instance.InitialiseMenuScene();
             }
             else if (scene.name == SceneList.GameplayScene.ToString())
             {

@@ -48,8 +48,6 @@ public class LobbyUI : MonoBehaviour
     [SerializeField]
     private GameObject rulesParent;
     [SerializeField]
-    private MapGrid mapGrid;
-    [SerializeField]
     private MapKeyUI mapKey;
 
     [Header("Scenario UI Objects")]
@@ -111,7 +109,7 @@ public class LobbyUI : MonoBehaviour
         RefreshScenarioList();
 
         //Refreshes the map grid with the new map details
-        mapGrid.RefreshGrid(selectedMap, selectedScenarioId);
+        GameManager.instance.mapGrid.RefreshGrid(selectedMap, selectedScenarioId);
     }
 
     /// <summary>
@@ -223,18 +221,6 @@ public class LobbyUI : MonoBehaviour
         {
             return false;
         }
-    }
-
-    /// <summary>
-    /// 
-    /// Button click event for changing the map filter on the displayed grid
-    /// 
-    /// </summary>
-    public void ChangeMapFilter(int mapFilterId)
-    {
-        var mapFilter = (MapGrid.MapFilters)mapFilterId;
-        mapGrid.SwitchMapFilter(mapFilter);
-        mapKey.RefreshKey(mapFilter, NUM_PLAYERS);
     }
 
     /// <summary>

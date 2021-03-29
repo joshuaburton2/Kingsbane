@@ -92,7 +92,8 @@ public class GraveyardExtensionEffect : EffectExtensionUI
                 if (isDeployToggle.isOn)
                     StartEffect();
 
-                GameManager.instance.uiManager.RefreshUI();
+                if (!isChoiceToggle.isOn)
+                    GameManager.instance.uiManager.RefreshUI();
             }
             else
                 titleText.text = $"{defaultTitleText} (Failed)";
@@ -113,6 +114,8 @@ public class GraveyardExtensionEffect : EffectExtensionUI
 
             isCopyArea.SetActive(false);
             createdByArea.SetActive(false);
+            createdByInput.text = "";
+            isCopyToggle.isOn = false;
         }
         else
         {
@@ -120,6 +123,21 @@ public class GraveyardExtensionEffect : EffectExtensionUI
             isCopyArea.SetActive(true);
             isCopyToggle.isOn = false;
             createdByArea.SetActive(true);
+            createdByInput.text = "";
+        }
+
+        IsCopyToggleState();
+    }
+
+    public void IsCopyToggleState()
+    {
+        if (isCopyToggle.isOn)
+        {
+            createdByInput.interactable = true;
+        }
+        else
+        {
+            createdByInput.interactable = false;
             createdByInput.text = "";
         }
     }

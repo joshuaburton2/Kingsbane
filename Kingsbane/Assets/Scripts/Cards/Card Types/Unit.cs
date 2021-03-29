@@ -209,6 +209,31 @@ public class Unit : Card
             Owner.AddSummon(UnitCounter);
     }
 
+    public bool CheckOccupancy(Cell newCell, bool isLanding = false)
+    {
+        var flyingInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.TallObstacle };
+        var eteherealInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Chasm };
+        var inAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Obstacle, TerrainTypes.Impassable, TerrainTypes.TallObstacle, TerrainTypes.Chasm };
+
+        var terrainType = newCell.terrainType;
+        var canOccupy = false;
+
+        if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
+        {
+            canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+        }
+        if (HasKeyword(Keywords.Ethereal))
+        {
+            canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
+        }
+        if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
+        {
+            canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+        }
+
+        return canOccupy;
+    }
+
     public override void CopyCardStats(Card copyFrom)
     {
         base.CopyCardStats(copyFrom);
@@ -711,11 +736,20 @@ public class Unit : Card
 
     public void FlyOrLand()
     {
-        CanFlyOrLand = false;
         if (HasStatusEffect(StatusEffects.Airborne))
-            CurrentStatusEffects.Remove(StatusEffects.Airborne);
+        {
+            if (CheckOccupancy(UnitCounter.Cell, true))
+            {
+                Debug.Log(UnitCounter.Cell.terrainType);
+                CanFlyOrLand = false;
+                CurrentStatusEffects.Remove(StatusEffects.Airborne);
+            }
+        }
         else
+        {
+            CanFlyOrLand = false;
             CurrentStatusEffects.Add(StatusEffects.Airborne);
+        }
 
         UnitCounter.RefreshUnitCounter();
     }

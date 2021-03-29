@@ -12,6 +12,7 @@ using System.Linq;
 /// </summary>
 public class MapKeyUI : MonoBehaviour
 {
+    private const int NUM_PLAYERS = 2;
     private class KeyDetails
     {
         public Color KeyColour { get; set; }
@@ -25,16 +26,19 @@ public class MapKeyUI : MonoBehaviour
     [SerializeField]
     private GameObject noKeyText;
 
+    public MapGrid.MapFilters CurrentFilter { get; set; }
+
     /// <summary>
     /// 
     /// Refresh the key to display the correct elements
     /// 
     /// </summary>
     /// <param name="objectiveList">Only required if the key elements are for an objective map</param>
-    public void RefreshKey(MapGrid.MapFilters keyType, int numPlayers, List<Objective> objectiveList = null)
+    public void RefreshKey(MapGrid.MapFilters keyType, List<Objective> objectiveList = null)
     {
         noKeyText.SetActive(false);
         GameManager.DestroyAllChildren(keyColourParent);
+        CurrentFilter = keyType;
 
         //Constructs the key detail list based on the type of filter utilised. Key Detail requires a name and colour
         var keyDetailList = new List<KeyDetails>();
@@ -51,7 +55,7 @@ public class MapKeyUI : MonoBehaviour
                 }
                 break;
             case MapGrid.MapFilters.Deployment:
-                for (int i = 0; i < numPlayers; i++)
+                for (int i = 0; i < NUM_PLAYERS; i++)
                 {
                     keyDetailList.Add(new KeyDetails()
                     {
@@ -83,5 +87,17 @@ public class MapKeyUI : MonoBehaviour
             var keyObject = Instantiate(keyColourPrefab, keyColourParent.transform);
             keyObject.GetComponent<KeyColourObject>().RefreshKeyElement(key.KeyColour, key.KeyText);
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for changing the map filter on the displayed grid
+    /// 
+    /// </summary>
+    public void ChangeMapFilter(int mapFilterId)
+    {
+        var mapFilter = (MapGrid.MapFilters)mapFilterId;
+        GameManager.instance.mapGrid.SwitchMapFilter(mapFilter);
+        RefreshKey(mapFilter);
     }
 }
