@@ -43,6 +43,7 @@ public class EffectManager : MonoBehaviour
         DrawChoice,
         Divinate,
         ItemEquipChoice,
+        UnitCopyMode,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -212,6 +213,24 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Deployment);
         DeployUnits = _selectedUnits;
         ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
+    }
+
+    public void SetCopyMode(int numCopies = 1)
+    {
+        ActiveEffect = ActiveEffectTypes.UnitCopyMode;
+        SelectedValue = numCopies;
+    }
+
+    public void SelectCopyUnit(Unit unit)
+    {
+        var copyUnits = new List<Unit>();
+        for (int unitIndex = 0; unitIndex < SelectedValue; unitIndex++)
+        {
+            var unitCopy = (Unit)GameManager.instance.libraryManager.CreateCard(unit.cardData, unit.Owner);
+            unitCopy.CopyCardStats(unit);
+            copyUnits.Add(unitCopy);
+        }
+        SetDeployUnits(copyUnits);
     }
 
     public void SetItemEquip(Item _selectedItem, bool isForced = false)

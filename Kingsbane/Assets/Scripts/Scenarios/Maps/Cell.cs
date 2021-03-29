@@ -53,6 +53,10 @@ public class Cell : MonoBehaviour
                                 case EffectManager.ActiveEffectTypes.ForceDeployment:
                                     cellOccupant = GameManager.instance.effectManager.DeployUnit(this);
                                     break;
+                                case EffectManager.ActiveEffectTypes.UnitCopyMode:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.SelectCopyUnit(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.Spell:
                                     GameManager.instance.effectManager.CastSpell(this);
                                     break;
