@@ -53,9 +53,9 @@ public class Player
             resource.StartOfGameUpdate(Id);
     }
 
-    public void StartOfTurn(bool isActive)
+    public void StartOfTurn()
     {
-        if (isActive)
+        if (IsActivePlayer)
         {
             GameManager.instance.effectManager.RefreshEffectManager(true);
 
@@ -66,22 +66,22 @@ public class Player
                     resource.StartOfTurnUpdate();
             }
 
-            UnitStartOfTurn(isActive);
+            UnitStartOfTurn();
         }
         else
         {
-            UnitStartOfTurn(isActive);
+            UnitStartOfTurn();
         }
 
         CheckWarden();
 
     }
 
-    private void UnitStartOfTurn(bool isActive)
+    private void UnitStartOfTurn()
     {
         foreach (var unit in DeployedUnits)
         {
-            unit.Unit.StartOfTurn(isActive);
+            unit.Unit.StartOfTurn();
         }
     }
 

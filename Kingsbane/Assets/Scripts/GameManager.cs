@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var player in LoadedPlayers)
         {
-            player.StartOfTurn(player == activePlayer);
+            player.StartOfTurn();
         }
     }
 

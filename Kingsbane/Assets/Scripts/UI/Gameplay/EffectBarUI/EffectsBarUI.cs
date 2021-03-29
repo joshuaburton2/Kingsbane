@@ -39,6 +39,8 @@ public class EffectsBarUI : MonoBehaviour
         Divinate,
         [Description("Equip")]
         Equip,
+        [Description("Mind Control")]
+        MindControl,
     }
 
     [Serializable]

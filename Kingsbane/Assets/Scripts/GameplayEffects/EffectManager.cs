@@ -44,6 +44,7 @@ public class EffectManager : MonoBehaviour
         Divinate,
         ItemEquipChoice,
         UnitCopyMode,
+        MindControl,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -724,5 +725,22 @@ public class EffectManager : MonoBehaviour
         CancelEffect = true;
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetMindControlMode(bool isActivePlayer, bool isTemporary)
+    {
+        ActiveEffect = ActiveEffectTypes.MindControl;
+        SelectedBoolean = true;
+        SelectedValue = GameManager.instance.GetPlayer(isActivePlayer).Id;
+    }
+
+    public void MindControlUnit(Unit unit)
+    {
+        var newOwner = GameManager.instance.GetPlayer(SelectedValue.Value);
+
+        if (unit.Owner != newOwner)
+        {
+            unit.SwitchOwner(newOwner, SelectedBoolean.Value);
+        }
     }
 }

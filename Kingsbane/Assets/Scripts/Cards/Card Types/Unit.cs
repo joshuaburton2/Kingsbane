@@ -86,6 +86,7 @@ public class Unit : Card
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0 && !HasStatusEffect(StatusEffects.Rooted) && !HasStatusEffect(StatusEffects.Stunned); } }
     public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned); } }
     public bool CanFlyOrLand { get; set; }
+    public bool TemporaryMindControlled { get; set; }
 
     public List<AppliedEnchantment> Enchantments { get; set; }
     public List<StatusEffects> CurrentStatusEffects { get; set; }
@@ -243,9 +244,9 @@ public class Unit : Card
             AddEnchantment(enchantment.Enchantment);
     }
 
-    public void StartOfTurn(bool isActive)
+    public void StartOfTurn()
     {
-        if (isActive)
+        if (Owner.IsActivePlayer)
         {
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Mulligan)
             {
@@ -802,5 +803,24 @@ public class Unit : Card
             CurrentStatusEffects.Remove(StatusEffects.Spellbound);
             UpdateEnchantments();
         }
+    }
+
+    public void SwitchOwner(Player newOwner, bool isTemporary)
+    {
+        TemporaryMindControlled = isTemporary;
+        Owner.DeployedUnits.Remove(UnitCounter);
+        Owner = newOwner;
+        Owner.DeployedUnits.Add(UnitCounter);
+
+        if (isTemporary || HasKeyword(Keywords.Prepared))
+        {
+            RefreshActions();
+        }
+        else
+        {
+            Status = UnitStatuses.Preparing;
+        }
+
+        UnitCounter.RefreshUnitCounter();
     }
 }

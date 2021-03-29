@@ -115,6 +115,10 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.RestoreUnitEnchantments(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.MindControl:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.MindControlUnit(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;
