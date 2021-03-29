@@ -519,7 +519,6 @@ public class Unit : Card
     public void DestroyUnit()
     {
         GameManager.instance.effectManager.RemoveUnit(UnitCounter);
-        ResetStats();
         Owner.AddToGraveyard(this);
 
         if (GetStat(StatTypes.Empowered).Value > 0)
