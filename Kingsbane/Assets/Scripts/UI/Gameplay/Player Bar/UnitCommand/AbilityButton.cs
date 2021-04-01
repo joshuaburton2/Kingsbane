@@ -11,7 +11,7 @@ using UnityEngine.UI;
 /// </summary>
 public class AbilityButton : MonoBehaviour
 {
-    private AbilityData ability;
+    private Ability ability;
 
     [SerializeField]
     private GameObject abilityTextArea;
@@ -29,7 +29,7 @@ public class AbilityButton : MonoBehaviour
     /// </summary>
     /// <param name="abilityTextAbove">If the text area needs to appear above the button or below</param>
     /// <param name="canUseAbility">Whether the player can use this particular ability or not</param>
-    public void InitAbilityButton(AbilityData _ability, bool abilityTextAbove, bool canUseAbility)
+    public void InitAbilityButton(Ability _ability, bool abilityTextAbove, bool canUseAbility)
     {
         ability = _ability;
 

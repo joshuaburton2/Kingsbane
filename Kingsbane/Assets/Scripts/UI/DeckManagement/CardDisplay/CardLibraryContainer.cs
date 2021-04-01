@@ -70,7 +70,7 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
             //If the loot generator UI is null, this means the card is in the library display, and as such, the card just needs to be added to the deck
             if (lootGeneratorUI == null)
             {
-                var updatedDeck = GameManager.instance.deckManager.AddCardToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.cardData);
+                var updatedDeck = GameManager.instance.deckManager.AddCardToPlayerDeck(deckListUI.DeckEditId.Value, cardDisplay.card.CardData);
                 deckListUI.RefreshActiveDeckDetails(updatedDeck);
             }
             //If there is a loot generator, this means the card is being selected on the loot generator panel
@@ -82,14 +82,14 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
                     //Cannot select more than the maximum number of cards in the loot generator
                     if (!lootGeneratorUI.FullCardsSelected)
                     {
-                        lootGeneratorUI.SelectLootCard(cardDisplay.card.cardData);
+                        lootGeneratorUI.SelectLootCard(cardDisplay.card.CardData);
                         isSelected = true;
                         cardSelectionBorder.SetActive(true);
                     }
                 }
                 else
                 {
-                    lootGeneratorUI.RemoveLootCard(cardDisplay.card.cardData);
+                    lootGeneratorUI.RemoveLootCard(cardDisplay.card.CardData);
                     isSelected = false;
                     cardSelectionBorder.SetActive(false);
                 }

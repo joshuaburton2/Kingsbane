@@ -59,7 +59,7 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     public void InitCardObject(Card _card)
     {
         card = _card;
-        cardData = card.cardData;
+        cardData = card.CardData;
 
         deckListUI = null;
 

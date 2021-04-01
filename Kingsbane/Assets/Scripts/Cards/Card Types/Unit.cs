@@ -47,7 +47,7 @@ public class Unit : Card
         public int? Value { get; set; }
     }
 
-    public UnitData UnitData { get { return cardData as UnitData; } }
+    public UnitData UnitData { get { return CardData as UnitData; } }
 
     public List<Stat> Stats { get; set; }
     public List<Stat> GetStats { get { return Stats.Select(x => new Stat() { Type = x.Type, Value = x.Value }).ToList(); } }
@@ -96,7 +96,8 @@ public class Unit : Card
     public List<UnitTags> UnitTags { get { return UnitData.UnitTag; } }
     public string UnitTag { get { return string.Join(" ", UnitTags.Select(x => x.ToString())); } }
 
-    public List<AbilityData> Abilities { get { return UnitData.Abilities; } }
+    public List<AbilityData> DefaultAbilities { get { return UnitData.Abilities; } }
+    public List<Ability> Abilities { get; set; }
 
     public UnitCounter UnitCounter { get; set; }
     public bool IsDeployed { get { return UnitCounter != null; } }
@@ -116,9 +117,11 @@ public class Unit : Card
         base.InitCard(_cardData, owner);
 
         ResetStats(true);
+        AbilityInit();
 
         Status = UnitStatuses.None;
         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+        TemporaryMindControlled = false;
 
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
@@ -140,6 +143,29 @@ public class Unit : Card
                 AddEnchantment(keywordEnchantment);
             }
         }
+    }
+
+    /// <summary>
+    /// 
+    /// Initialises the abilities on the unit. To be called when the card is created
+    /// 
+    /// </summary>
+    protected void AbilityInit()
+    {
+        Abilities = new List<Ability>();
+        foreach (var abilityData in DefaultAbilities)
+        {
+            var ability = new Ability(abilityData, this);
+            Abilities.Add(ability);
+        }
+    }
+
+    protected override void ResourceConvert(CardResources newResource)
+    {
+        base.ResourceConvert(newResource);
+
+        foreach (var ability in Abilities)
+            ability.ConvertResource(newResource);
     }
 
     private void ResetStats(bool fullReset = false)
@@ -301,8 +327,11 @@ public class Unit : Card
         }
     }
 
-    public void EndOfTurn(bool isActive)
+    public bool EndOfTurn(bool isActive)
     {
+        if (CheckEtherealEndOfTurn())
+            return true;
+
         if (isActive)
         {
             RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn);
@@ -314,7 +343,14 @@ public class Unit : Card
             RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
         }
 
+        if (true)
+        {
+
+        }
+
         UnitCounter.RefreshUnitCounter();
+
+        return false;
     }
 
     public bool CheckEtherealEndOfTurn()
@@ -447,7 +483,7 @@ public class Unit : Card
         {
             CurrentHealth -= damageValue;
             if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
-                DestroyUnit();
+                RemoveUnit(true);
             if (keywords.Contains(Keywords.Lifebond))
                 sourcePlayer.Hero.HealUnit(damageValue);
         }
@@ -464,7 +500,7 @@ public class Unit : Card
                     {
                         CurrentHealth += GetStat(StatTypes.Protected).Value;
                         if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
-                            DestroyUnit();
+                            RemoveUnit(true);
                         if (keywords.Contains(Keywords.Lifebond))
                             sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
@@ -517,29 +553,26 @@ public class Unit : Card
         UnitCounter.RefreshUnitCounter();
     }
 
-    public void DestroyUnit()
-    {
-        GameManager.instance.effectManager.RemoveUnit(UnitCounter);
-        Owner.AddToGraveyard(this);
-
-        if (GetStat(StatTypes.Empowered).Value > 0)
-            Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
-        if (HasKeyword(Keywords.Summon))
-            Owner.RemoveSummon(UnitCounter);
-
-        UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
-    }
-
-    public void RemoveUnit()
+    public void RemoveUnit(bool isDestroy = false)
     {
         GameManager.instance.effectManager.RemoveUnit(UnitCounter);
 
-        UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
+        if (isDestroy)
+        {
+            Owner.AddToGraveyard(this);
+
+            if (GetStat(StatTypes.Empowered).Value > 0)
+                Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
+            if (HasKeyword(Keywords.Summon))
+                Owner.RemoveSummon(UnitCounter);
+
+            UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
+        }
     }
 
-    public bool CanUseAbility(AbilityData ability)
+    public bool CanUseAbility(Ability ability)
     {
-        var canSpendResources = Resource.CanSpendResources(Owner, ability.Resources);
+        var canSpendResources = Resource.CanSpendResources(Owner, ability.ResourceCost);
         var canSpendAction = ability.CostsAction ? CanAction : true;
         var canUseability = AbilityUsesLeft > 0;
 
@@ -551,9 +584,9 @@ public class Unit : Card
         AbilityUsesLeft += value;
     }
 
-    public void UseAbility(AbilityData ability)
+    public void UseAbility(Ability ability)
     {
-        Owner.ModifyResources(ability.Resources.Select(x => new Resource(x.ResourceType, x.Value * -1)).ToList());
+        Owner.ModifyResources(ability.ResourceCost);
 
         ModifyAbilities(-1);
         ModifyActions(ability.CostsAction ? -1 : 0);
@@ -812,13 +845,22 @@ public class Unit : Card
         Owner = newOwner;
         Owner.DeployedUnits.Add(UnitCounter);
 
-        if (isTemporary || HasKeyword(Keywords.Prepared))
+        ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
+
+        if (newOwner.IsActivePlayer)
         {
-            RefreshActions();
+            if (isTemporary || HasKeyword(Keywords.Prepared))
+            {
+                RefreshActions();
+            }
+            else
+            {
+                Status = UnitStatuses.Preparing;
+            }
         }
         else
         {
-            Status = UnitStatuses.Preparing;
+            Status = UnitStatuses.Enemy;
         }
 
         UnitCounter.RefreshUnitCounter();

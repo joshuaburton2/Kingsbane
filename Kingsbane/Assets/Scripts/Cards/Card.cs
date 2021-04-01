@@ -8,35 +8,37 @@ using UnityEngine;
 
 public class Card
 {
-    public CardData cardData;
+    public CardData CardData { get; set; }
 
-    public int Id { get { return cardData.Id.Value; } }
-    public string Name { get { return cardData.Name; } }
+    public int Id { get { return CardData.Id.Value; } }
+    public string Name { get { return CardData.Name; } }
 
-    public Rarity Rarity { get { return cardData.Rarity; } }
-    public CardTypes Type { get { return cardData.CardType; } }
-    public Classes.ClassList CardClass { get { return cardData.Class; } }
-    public Sets Set { get { return cardData.Set; } }
+    public Rarity Rarity { get { return CardData.Rarity; } }
+    public CardTypes Type { get { return CardData.CardType; } }
+    public Classes.ClassList CardClass { get { return CardData.Class; } }
+    public Sets Set { get { return CardData.Set; } }
 
     public Sprite CardArt { get; set; }
-    public CardImageTags ImageTag { get { return cardData.ImageTag; } }
+    public CardImageTags ImageTag { get { return CardData.ImageTag; } }
 
-    public List<Tags> Tags { get { return cardData.Tags; } }
-    public List<Synergies> Syngergies { get { return cardData.Synergies; } }
-    public List<CardData> RelatedCards { get { return cardData.RelatedCards; } }
+    public List<Tags> Tags { get { return CardData.Tags; } }
+    public List<Synergies> Syngergies { get { return CardData.Synergies; } }
+    public List<CardData> RelatedCards { get { return CardData.RelatedCards; } }
 
     public Player Owner { get; set; }
 
     //The resource cost of the card. Default cost is the base cost without modifications based on the cards played in a game.
     //The resource cost is the cost of the card with modifications which may arise during a game.
     //The resource cost should always be set to the default cost at the start of each game.
-    public List<Resource> DefaultCost { get { return cardData.GetResources; } }
+    public List<Resource> DefaultCost { get { return CardData.GetResources; } }
     public List<Resource> ResourceCost { get; private set; }
     public List<CardResources> Resources { get; private set; }
+    public bool ResourcesConverted { get; set; }
 
-    public string Text { get { return cardData.Text; } }
-    public string LoreText { get { return cardData.LoreText; } }
-    public string Notes { get { return cardData.Notes; } }
+
+    public string Text { get { return CardData.Text; } }
+    public string LoreText { get { return CardData.LoreText; } }
+    public string Notes { get { return CardData.Notes; } }
 
     public string CreatedByName { get; set; }
 
@@ -62,7 +64,7 @@ public class Card
                 if (Rarity == Rarity.Hero)
                 {
                     //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
-                    totalResource = 3 - (int)((UnitData)cardData).GetHeroTier();
+                    totalResource = 3 - (int)((UnitData)CardData).GetHeroTier();
                 }
                 else if (Rarity == Rarity.NPCHero)
                 {
@@ -99,7 +101,7 @@ public class Card
                 if (Rarity == Rarity.Hero)
                 {
                     //Only hero cards should have no cost. Subtrats from 3 since this means that the highest tier level is ordered last
-                    highestResource = 3 - (int)((UnitData)cardData).GetHeroTier();
+                    highestResource = 3 - (int)((UnitData)CardData).GetHeroTier();
                 }
                 else if (Rarity == Rarity.NPCHero)
                 {
@@ -117,11 +119,12 @@ public class Card
 
     public virtual void InitCard(CardData _cardData, Player owner)
     {
-        cardData = _cardData;
+        CardData = _cardData;
         Owner = owner;
         CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
         CreatedByName = "";
         NumShuffles = 0;
+        ResourcesConverted = false;
         ResourceInit();
     }
 
@@ -132,12 +135,30 @@ public class Card
     /// </summary>
     protected void ResourceInit()
     {
-        ResourceCost = new List<Resource>();
-        Resources = new List<CardResources>();
-        foreach (var resource in DefaultCost)
+        if (!ResourcesConverted || ResourceCost.Count == 0)
         {
-            ResourceCost.Add(new Resource(resource));
-            Resources.Add(resource.ResourceType);
+            ResourceCost = new List<Resource>();
+            Resources = new List<CardResources>();
+            foreach (var resource in DefaultCost)
+            {
+                ResourceCost.Add(new Resource(resource));
+                Resources.Add(resource.ResourceType);
+            }
+        }
+        else
+        {
+            var convertedResource = Resources.FirstOrDefault();
+            ResourceConvert(convertedResource);
+        }
+    }
+
+    protected virtual void ResourceConvert(CardResources newResource)
+    {
+        if (ResourceCost.Count != 0)
+        {
+            ResourceCost = new List<Resource>() { new Resource(newResource, TotalResource) };
+            Resources = new List<CardResources> { newResource };
+            ResourcesConverted = true;
         }
     }
 
@@ -160,6 +181,9 @@ public class Card
     /// </summary>
     private StatisticStatuses GetResourceStatus(CardResources resource)
     {
+        if (ResourcesConverted)
+            return StatisticStatuses.Converted;
+
         var currentCost = ResourceCost.Single(x => x.ResourceType == resource).Value;
         var defaultCost = DefaultCost.Single(x => x.ResourceType == resource).Value;
 

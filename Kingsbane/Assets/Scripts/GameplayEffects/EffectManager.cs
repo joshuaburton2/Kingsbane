@@ -72,7 +72,7 @@ public class EffectManager : MonoBehaviour
     private Unit CommandUnit { get; set; }
     private List<Unit> DeployUnits { get; set; }
     private Item SelectedItem { get; set; }
-    private AbilityData SelectedAbility { get; set; }
+    private Ability SelectedAbility { get; set; }
     private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
     private bool? SelectedBoolean { get; set; }
@@ -227,7 +227,7 @@ public class EffectManager : MonoBehaviour
         var copyUnits = new List<Unit>();
         for (int unitIndex = 0; unitIndex < SelectedValue; unitIndex++)
         {
-            var unitCopy = (Unit)GameManager.instance.libraryManager.CreateCard(unit.cardData, unit.Owner);
+            var unitCopy = (Unit)GameManager.instance.libraryManager.CreateCard(unit.CardData, unit.Owner);
             unitCopy.CopyCardStats(unit);
             copyUnits.Add(unitCopy);
         }
@@ -360,12 +360,12 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void SetUnitAbilityMode(AbilityData abilityData)
+    public void SetUnitAbilityMode(Ability ability)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
             ActiveEffect = ActiveEffectTypes.UnitAbility;
-            SelectedAbility = abilityData;
+            SelectedAbility = ability;
         }
     }
 
@@ -505,7 +505,7 @@ public class EffectManager : MonoBehaviour
 
     public void DestroyUnit(Unit unit)
     {
-        unit.DestroyUnit();
+        unit.RemoveUnit(true);
     }
 
     public void SetRemoveUnitMode()
@@ -667,7 +667,7 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.GraveyardToHandChoice:
                 if (SelectedBoolean.Value)
                 {
-                    card = GameManager.instance.libraryManager.CreateCard(card.cardData, player);
+                    card = GameManager.instance.libraryManager.CreateCard(card.CardData, player);
                     card.CreatedByName = SelectedString;
                 }
                 else
@@ -730,7 +730,7 @@ public class EffectManager : MonoBehaviour
     public void SetMindControlMode(bool isActivePlayer, bool isTemporary)
     {
         ActiveEffect = ActiveEffectTypes.MindControl;
-        SelectedBoolean = true;
+        SelectedBoolean = isTemporary;
         SelectedValue = GameManager.instance.GetPlayer(isActivePlayer).Id;
     }
 
@@ -738,7 +738,7 @@ public class EffectManager : MonoBehaviour
     {
         var newOwner = GameManager.instance.GetPlayer(SelectedValue.Value);
 
-        if (unit.Owner != newOwner)
+        if (unit.Owner != newOwner && unit.Rarity != Rarity.Hero && unit.Rarity != Rarity.NPCHero)
         {
             unit.SwitchOwner(newOwner, SelectedBoolean.Value);
         }

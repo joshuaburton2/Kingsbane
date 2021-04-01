@@ -88,21 +88,24 @@ public class Player
     public void EndOfTurn(bool isActive)
     {
         var destroyUnits = new List<UnitCounter>();
+        var tempMindControlUnits = new List<UnitCounter>();
 
         foreach (var unit in DeployedUnits)
         {
-            unit.Unit.EndOfTurn(isActive);
+            var toDestroy = unit.Unit.EndOfTurn(isActive);
 
-            if (unit.Unit.CheckEtherealEndOfTurn())
-            {
+            if (toDestroy)
                 destroyUnits.Add(unit);
-            }
+
+            if (unit.Unit.TemporaryMindControlled && !toDestroy)
+                tempMindControlUnits.Add(unit);
         }
 
         foreach (var destroyUnit in destroyUnits)
-        {
-            destroyUnit.Unit.DestroyUnit();
-        }
+            destroyUnit.Unit.RemoveUnit(true);
+
+        foreach (var mindControlUnit in tempMindControlUnits)
+            mindControlUnit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!isActive), false);
     }
 
     /// <summary>
@@ -263,7 +266,7 @@ public class Player
 
     public bool CopyHandCard(Card copyCard, string createdBy = "")
     {
-        var newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.cardData, this);
+        var newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
         newCopy.CreatedByName = createdBy;
         newCopy.CopyCardStats(copyCard);
 
@@ -393,7 +396,7 @@ public class Player
 
     public void AddToGraveyard(Card deadCard, string createdBy = "")
     {
-        deadCard.InitCard(deadCard.cardData, this);
+        deadCard.InitCard(deadCard.CardData, this);
 
         if (!string.IsNullOrWhiteSpace(createdBy))
             deadCard.CreatedByName = createdBy;
@@ -433,7 +436,7 @@ public class Player
             {
                 if (isCopy)
                 {
-                    cardList = cardList.Select(x => GameManager.instance.libraryManager.CreateCard(x.cardData, this)).ToList();
+                    cardList = cardList.Select(x => GameManager.instance.libraryManager.CreateCard(x.CardData, this)).ToList();
                     cardList.ForEach(x => x.CreatedByName = createdBy);
                 }
 

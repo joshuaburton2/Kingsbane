@@ -42864,6 +42864,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[6].statColour.b
+      value: 0.06666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[6].statColour.g
+      value: 0.3896238
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[6].statColour.r
+      value: 0.8773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[7].statColour.b
+      value: 0.06003024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[7].statColour.g
+      value: 0.2678594
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: statModColours.Array.data[7].statColour.r
+      value: 0.6698113
+      objectReference: {fileID: 0}
     - target: {fileID: 8891978395099848710, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
       propertyPath: m_Name
@@ -49768,7 +49798,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 0.0000038146973
+  m_Value: -0.000015258789
   m_Size: 0.9885714
   m_NumberOfSteps: 0
   m_OnValueChanged:

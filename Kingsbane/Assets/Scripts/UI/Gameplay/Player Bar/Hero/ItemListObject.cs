@@ -107,7 +107,7 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
         {
             if (Item != null)
             {
-                GameManager.instance.uiManager.ActivateCardDetail(Item.cardData);
+                GameManager.instance.uiManager.ActivateCardDetail(Item.CardData);
             }
         }
         if (eventData.button == PointerEventData.InputButton.Left)

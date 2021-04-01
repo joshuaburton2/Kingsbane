@@ -91,7 +91,7 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            GameManager.instance.uiManager.ActivateCardDetail(hero.cardData);
+            GameManager.instance.uiManager.ActivateCardDetail(hero.CardData);
         }
     }
 }

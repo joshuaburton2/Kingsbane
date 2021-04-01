@@ -1194,6 +1194,12 @@ MonoBehaviour:
   - statMod: 2
     statColour: {r: 0.5660378, g: 0.106376626, b: 0.06140977, a: 1}
     isDark: 1
+  - statMod: 3
+    statColour: {r: 0.8207547, g: 0.67084956, b: 0.13550194, a: 1}
+    isDark: 0
+  - statMod: 3
+    statColour: {r: 0.5377358, g: 0.4646286, b: 0, a: 1}
+    isDark: 1
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0

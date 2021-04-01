@@ -261,7 +261,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void DisplayCardDetail()
     {
-        GameManager.instance.uiManager.ActivateCardDetail(card.cardData);
+        GameManager.instance.uiManager.ActivateCardDetail(card.CardData);
     }
 }
 

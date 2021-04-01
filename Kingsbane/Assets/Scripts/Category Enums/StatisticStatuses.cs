@@ -5,5 +5,6 @@
         None,
         Buffed,
         Debuffed,
+        Converted,
     }
 }

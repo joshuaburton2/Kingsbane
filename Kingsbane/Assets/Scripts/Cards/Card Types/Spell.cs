@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spell : Card
 {
-    public SpellData SpellData { get { return cardData as SpellData; } }
+    public SpellData SpellData { get { return CardData as SpellData; } }
 
     public string SpellType { get { return SpellData.SpellType; } }
     public int SpellRange { get { return SpellData.Range; } }

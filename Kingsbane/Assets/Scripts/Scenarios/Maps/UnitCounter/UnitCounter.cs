@@ -100,6 +100,6 @@ public class UnitCounter : MonoBehaviour
 
     public void ShowCardDetail()
     {
-        GameManager.instance.uiManager.ActivateCardDetail(Unit.cardData);
+        GameManager.instance.uiManager.ActivateCardDetail(Unit.CardData);
     }
 }
