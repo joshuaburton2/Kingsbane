@@ -10,7 +10,6 @@ public class PlayerMana : PlayerResource
     private readonly int[] STARTING_MANA_VALUES = new int[] { 12, 16, 24 };
     private readonly int SET_OVERLOAD_MODIFIER = -1; //Value to modify Empowered, Attack and Health values by for each point Overloaded
     private readonly int OVERLOAD_REDUCTION = 6;
-    private readonly int DEFAULT_SUMMON_CAPACITY = 1;
 
     public int StartingMana { get; set; }
     public int PreviousOverload { get; set; }
@@ -18,18 +17,9 @@ public class PlayerMana : PlayerResource
     public int TotalOverload { get { return PreviousOverload + CurrentOverload; } }
     public int OverloadModifier { get { return TotalOverload * SET_OVERLOAD_MODIFIER; } }
 
-    public int PassiveEmpowered { get; set; }
-    public int CurrentEmpowered { get; set; }
-    public int BaseSummonCapactiy { get; set; }
-    public int SummonCapcity { get; set; }
-    public int CurrentSummons { get; set; }
-
-
     public PlayerMana()
     {
         InitPlayerResource(CardResources.Mana);
-        PassiveEmpowered = 0;
-        BaseSummonCapactiy = DEFAULT_SUMMON_CAPACITY;
         ResetValue();
     }
 
@@ -38,9 +28,6 @@ public class PlayerMana : PlayerResource
         ResourceType = CardResources.Mana;
         StartingMana = startingMana;
         CurrentOverload = overload;
-
-        PassiveEmpowered = 0;
-        BaseSummonCapactiy = DEFAULT_SUMMON_CAPACITY;
     }
 
     /// <summary>
@@ -54,8 +41,6 @@ public class PlayerMana : PlayerResource
         StartingMana = playerMana.StartingMana;
         PreviousOverload = playerMana.PreviousOverload;
         CurrentOverload = playerMana.CurrentOverload;
-        PassiveEmpowered = playerMana.PassiveEmpowered;
-        BaseSummonCapactiy = playerMana.BaseSummonCapactiy;
     }
 
     /// <summary>
@@ -80,10 +65,6 @@ public class PlayerMana : PlayerResource
         //Sets the Overload from the previous scenario and resets the new Overload value
         PreviousOverload = CurrentOverload;
         CurrentOverload = 0;
-
-        CurrentEmpowered = PassiveEmpowered;
-        CurrentSummons = 0;
-        SummonCapcity = BaseSummonCapactiy;
     }
 
     /// <summary>
@@ -129,40 +110,5 @@ public class PlayerMana : PlayerResource
         base.StartOfGameUpdate(playerId);
 
         ResetValue();
-    }
-
-    /// <summary>
-    /// 
-    /// Modify the current empowered value
-    /// 
-    /// </summary>
-    public void ModifyEmpowered(int value)
-    {
-        CurrentEmpowered += value;
-        CurrentEmpowered = Mathf.Max(0, CurrentEmpowered);
-    }
-
-    /// <summary>
-    /// 
-    /// Modify the current summon capacity
-    /// 
-    /// </summary>
-    public void ModifySummonCapacity(int value = 1)
-    {
-        SummonCapcity += value;
-        SummonCapcity = Mathf.Max(1, SummonCapcity);
-    }
-
-    /// <summary>
-    /// 
-    /// Modify the current summon amount. Returns true or false if the increase goes above the players Summon Capacity
-    /// 
-    /// </summary>
-    public bool ModifyCurrentSummons(int value = 1)
-    {
-        CurrentSummons += value;
-        bool exceedCapacity = CurrentSummons > SummonCapcity;
-        CurrentSummons = Mathf.Clamp(CurrentSummons, 0, SummonCapcity);
-        return exceedCapacity;
     }
 }

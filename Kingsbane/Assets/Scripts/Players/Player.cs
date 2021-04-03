@@ -27,6 +27,13 @@ public class Player
     public List<PlayerResource> Resources { get; set; }
     public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
 
+    public int PassiveEmpowered { get; set; }
+    public int CurrentEmpowered { get; set; }
+    public int BaseSummonCapactiy { get; set; }
+    public int SummonCapcity { get; set; }
+    public int CurrentSummons { get; set; }
+    private readonly int DEFAULT_SUMMON_CAPACITY = 1;
+
     public Player(DeckData _deckData)
     {
         DeckData = _deckData;
@@ -39,6 +46,12 @@ public class Player
         Hero = (Hero)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
         DeployedSummonUnits = new List<UnitCounter>();
+
+        PassiveEmpowered = DeckData.PassiveEmpowered;
+        BaseSummonCapactiy = DeckData.BaseSummonCapactiy;
+        CurrentEmpowered = PassiveEmpowered;
+        CurrentSummons = 0;
+        SummonCapcity = BaseSummonCapactiy;
 
         Resources = DeckData.PlayerResources;
     }
@@ -411,19 +424,7 @@ public class Player
         if (filteredCardList.ListCount == 0)
             return false;
 
-        if (numToCreate > filteredCardList.ListCount)
-            numToCreate = filteredCardList.ListCount;
-        var cardList = new List<Card>();
-        for (int i = 0; i < numToCreate; i++)
-        {
-            Card selectedCard;
-            do
-            {
-                var randPos = UnityEngine.Random.Range(0, filteredCardList.ListCount);
-                selectedCard = filteredCardList.cardList[randPos];
-            } while (cardList.Contains(selectedCard));
-            cardList.Add(selectedCard);
-        }
+        var cardList = filteredCardList.GetRandomCards(numToCreate);
 
         if (!isChoice)
         {
@@ -482,63 +483,56 @@ public class Player
         }
     }
 
+    /// <summary>
+    /// 
+    /// Modify the current empowered value
+    /// 
+    /// </summary>
     public void ModifyEmpowered(int value)
     {
-        if (UsedResources.Contains(CardResources.Mana))
-        {
-            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-            manaResource.ModifyEmpowered(value);
-        }
-        else
-        {
-            throw new Exception("Cannot add Empowered to a non Mana class");
-        }
+        CurrentEmpowered += value;
+        CurrentEmpowered = Mathf.Max(0, CurrentEmpowered);
+    }
+
+    /// <summary>
+    /// 
+    /// Modify the current summon capacity
+    /// 
+    /// </summary>
+    public void ModifySummonCapacity(int value = 1)
+    {
+        SummonCapcity += value;
+        SummonCapcity = Mathf.Max(1, SummonCapcity);
+    }
+
+    /// <summary>
+    /// 
+    /// Modify the current summon amount. Returns true or false if the increase goes above the players Summon Capacity
+    /// 
+    /// </summary>
+    public bool ModifyCurrentSummons(int value = 1)
+    {
+        CurrentSummons += value;
+        bool exceedCapacity = CurrentSummons > SummonCapcity;
+        CurrentSummons = Mathf.Clamp(CurrentSummons, 0, SummonCapcity);
+        return exceedCapacity;
     }
 
     public void AddSummon(UnitCounter summonCounter)
     {
-        if (UsedResources.Contains(CardResources.Mana))
-        {
-            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-            var exceedCapacity = manaResource.ModifyCurrentSummons();
-            DeployedSummonUnits.Add(summonCounter);
+        var exceedCapacity = ModifyCurrentSummons();
+        DeployedSummonUnits.Add(summonCounter);
 
-            if (exceedCapacity)
-            {
-                GameManager.instance.effectManager.DestroyUnit(DeployedSummonUnits.FirstOrDefault().Unit);
-            }
-        }
-        else
+        if (exceedCapacity)
         {
-            throw new Exception("Cannot add Summon to a non Mana class");
+            GameManager.instance.effectManager.DestroyUnit(DeployedSummonUnits.FirstOrDefault().Unit);
         }
     }
 
     public void RemoveSummon(UnitCounter summonCounter)
     {
-        if (UsedResources.Contains(CardResources.Mana))
-        {
-            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-            DeployedSummonUnits.Remove(summonCounter);
-            manaResource.ModifyCurrentSummons(-1);
-        }
-        else
-        {
-            throw new Exception("Cannot remove Summon from a non Mana class");
-        }
-    }
-
-    public void AddSummonCapacity()
-    {
-        if (UsedResources.Contains(CardResources.Mana))
-        {
-            var manaResource = (PlayerMana)Resources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-            manaResource.ModifySummonCapacity();
-        }
-        else
-        {
-            throw new Exception("Cannot add Summon Capacity to a non Mana class");
-        }
+        DeployedSummonUnits.Remove(summonCounter);
+        ModifyCurrentSummons(-1);
     }
 
     public void CheckWarden()
@@ -546,6 +540,23 @@ public class Player
         foreach (var unit in DeployedUnits)
         {
             unit.Unit.CheckWarden();
+        }
+    }
+
+    public void RecruitCard(Card card, bool isCopy = true)
+    {
+        if (UsedResources.Contains(CardResources.Gold))
+        {
+            var newCard = card;
+            if (isCopy)
+                newCard = GameManager.instance.libraryManager.CreateCard(card.CardData, this);
+            AddToHand(newCard, "Recruit");
+            newCard.ResourceConvert(CardResources.Gold);
+            newCard.Owner = this;
+        }
+        else
+        {
+            throw new Exception("Cannot recruit cards with a non gold class");
         }
     }
 }

@@ -160,7 +160,7 @@ public class Unit : Card
         }
     }
 
-    protected override void ResourceConvert(CardResources newResource)
+    public override void ResourceConvert(CardResources newResource)
     {
         base.ResourceConvert(newResource);
 
@@ -413,6 +413,7 @@ public class Unit : Card
     public void TriggerAttack(Unit targetUnit)
     {
         ModifyActions(-1);
+        Unstealth();
 
         var targetRouted = targetUnit.CheckRouting();
 
@@ -555,7 +556,7 @@ public class Unit : Card
 
     public void RemoveUnit(bool isDestroy = false)
     {
-        GameManager.instance.effectManager.RemoveUnit(UnitCounter);
+        GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
 
         if (isDestroy)
         {
@@ -590,6 +591,7 @@ public class Unit : Card
 
         ModifyAbilities(-1);
         ModifyActions(ability.CostsAction ? -1 : 0);
+        Unstealth();
 
         UnitCounter.RefreshUnitCounter();
     }

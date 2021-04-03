@@ -92,7 +92,7 @@ public class EquipExtensionEffect : EffectExtensionUI
 
             if (isChoiceToggle.isOn)
             {
-                if (int.TryParse(numToChooseInput.text, out int result) || numToChooseInput.text != "0")
+                if (int.TryParse(numToChooseInput.text, out int result) && numToChooseInput.text != "0")
                     generationFilter.NumToGenerate = Mathf.Max(1, result);
                 else
                     generationFilter.NumToGenerate = 1;

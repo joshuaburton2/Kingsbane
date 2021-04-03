@@ -160,19 +160,6 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Gets the active player
-    /// 
-    /// </summary>
-    public Player GetActivePlayer()
-    {
-        if (ActivePlayerId.HasValue)
-            return GetPlayer(ActivePlayerId.Value);
-        else
-            return null;
-    }
-
-    /// <summary>
-    /// 
     /// Gets a player of a particular Id
     /// 
     /// </summary>
@@ -186,9 +173,12 @@ public class GameManager : MonoBehaviour
     /// Gets either the active player or the inactive player
     /// 
     /// </summary>
-    public Player GetPlayer(bool isActive)
+    public Player GetPlayer(bool isActive = true)
     {
-        return GetPlayer(isActive ? ActivePlayerId.Value : InactivePlayerId.Value);
+        if (ActivePlayerId.HasValue)
+            return GetPlayer(isActive ? ActivePlayerId.Value : InactivePlayerId.Value);
+        else
+            return null;
     }
 
     /// <summary>
@@ -260,7 +250,7 @@ public class GameManager : MonoBehaviour
 
     private void PlayerStartOfTurn()
     {
-        var activePlayer = GetActivePlayer();
+        var activePlayer = GetPlayer();
 
         foreach (var player in LoadedPlayers)
         {
@@ -272,7 +262,7 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentGamePhase == GamePhases.Gameplay)
         {
-            var activePlayer = GetActivePlayer();
+            var activePlayer = GetPlayer();
             foreach (var player in LoadedPlayers)
             {
                 player.EndOfTurn(player == activePlayer);

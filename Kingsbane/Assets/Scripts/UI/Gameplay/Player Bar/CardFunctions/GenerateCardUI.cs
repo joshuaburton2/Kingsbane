@@ -149,7 +149,7 @@ public class GenerateCardUI : MonoBehaviour
             GenerationFilter.Name = nameInput.text;
             GenerationFilter.IncludeUncollectables = includeUncollectablesToggle.isOn;
             GenerationFilter.IsUnique = isUnique.isOn;
-            if (!string.IsNullOrWhiteSpace(numToGenerateInput.text) || numToGenerateInput.text != "0")
+            if (!string.IsNullOrWhiteSpace(numToGenerateInput.text) && numToGenerateInput.text != "0")
                 GenerationFilter.NumToGenerate = Mathf.Max(1, int.Parse(numToGenerateInput.text));
             else
                 GenerationFilter.NumToGenerate = 1;

@@ -29,6 +29,8 @@ public class DeckSaveData
     public Classes.ClassList DeckClass { get; set; }
     public bool IsNPCDeck { get; set; }
     public List<CardResources> DeckResources { get { return Classes.GetClassData(DeckClass).GetClassResources(); } }
+    public int PassiveEmpowered { get; set; }
+    public int BaseSummonCapactiy { get; set; }
 
     public DeckSaveData()
     {
@@ -37,6 +39,8 @@ public class DeckSaveData
         AbilityTier = TierLevel.Default;
         InitialHandSize = DEFAULT_HAND_SIZE;
         ItemCapacity = DEFAULT_ITEM_CAPACITY;
+        PassiveEmpowered = 0;
+        BaseSummonCapactiy = 1;
     }
 
     /// <summary>
@@ -57,6 +61,8 @@ public class DeckSaveData
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
+        PassiveEmpowered = deckData.PassiveEmpowered;
+        BaseSummonCapactiy = deckData.BaseSummonCapactiy;
 
         PlayerResources = deckData.CopyPlayerResources();
     }
@@ -162,6 +168,8 @@ public class DeckData : DeckSaveData
         UpgradeIdList = deckData.UpgradeIdList.ToList();
         DeckClass = deckData.DeckClass;
         IsNPCDeck = deckData.IsNPCDeck;
+        PassiveEmpowered = deckData.PassiveEmpowered;
+        BaseSummonCapactiy = deckData.BaseSummonCapactiy;
 
         PlayerResources = deckData.CopyPlayerResources();
 
@@ -188,6 +196,8 @@ public class DeckData : DeckSaveData
         UpgradeIdList = deckSaveData.UpgradeIdList.ToList();
         DeckClass = deckSaveData.DeckClass;
         IsNPCDeck = deckSaveData.IsNPCDeck;
+        PassiveEmpowered = deckSaveData.PassiveEmpowered;
+        BaseSummonCapactiy = deckSaveData.BaseSummonCapactiy;
 
         //Only need to create the deck resources if the deck is newly created, not loaded from file
         if (isNewDeck)

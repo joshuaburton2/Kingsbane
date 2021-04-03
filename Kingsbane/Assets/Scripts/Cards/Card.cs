@@ -152,7 +152,7 @@ public class Card
         }
     }
 
-    protected virtual void ResourceConvert(CardResources newResource)
+    public virtual void ResourceConvert(CardResources newResource)
     {
         if (ResourceCost.Count != 0)
         {

@@ -161,7 +161,7 @@ public class GameplayUI : MonoBehaviour
     {
         foreach (var playerBar in playerUIBars)
             playerBar.UpdateTurnIndicator();
-        ShowCardDisplay(GameManager.instance.GetActivePlayer().Hero);
+        ShowCardDisplay(GameManager.instance.GetPlayer().Hero);
     }
 
     private void SetPlayerTurnText()

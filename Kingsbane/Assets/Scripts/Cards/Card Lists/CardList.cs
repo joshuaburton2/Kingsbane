@@ -46,6 +46,26 @@ public class CardList
         cardList.Clear();
     }
 
+    public List<Card> GetRandomCards(int numToGet)
+    {
+        var selectedCardList = new List<Card>();
+        var numToChoose = Mathf.Min(ListCount, numToGet);
+
+        for (int spycraftIndex = 0; spycraftIndex < numToChoose; spycraftIndex++)
+        {
+            Card selectedCard = new Card();
+            do
+            {
+                var randomIndex = UnityEngine.Random.Range(0, ListCount);
+                selectedCard = cardList[randomIndex];
+            } while (selectedCardList.Contains(selectedCard));
+
+            selectedCardList.Add(selectedCard);
+        }
+
+        return selectedCardList;
+    }
+
     /// <summary>
     /// 
     /// Filters a card list using a given filter object

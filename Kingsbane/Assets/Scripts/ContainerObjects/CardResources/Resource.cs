@@ -104,7 +104,6 @@ public class Resource
 
         foreach (var resource in spendingResources)
         {
-
             //Tests if the current resource is not a neutral cost
             if (resource.ResourceType != CardResources.Neutral)
             {

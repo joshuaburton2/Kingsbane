@@ -45,6 +45,8 @@ public class EffectManager : MonoBehaviour
         ItemEquipChoice,
         UnitCopyMode,
         MindControl,
+        Recruit,
+        SpycraftChoice,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -66,6 +68,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.DrawChoice,
         ActiveEffectTypes.ItemEquipChoice,
         ActiveEffectTypes.Divinate,
+        ActiveEffectTypes.SpycraftChoice,
     };
 
     private Card SelectedCard { get; set; }
@@ -331,7 +334,7 @@ public class EffectManager : MonoBehaviour
             {
                 if (CommandUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
                 {
-                    RemoveUnit(CommandUnit.UnitCounter);
+                    RemoveUnitCounter(CommandUnit.UnitCounter);
                     CreateUnitCounter(CommandUnit, newCell, false);
                     GameManager.instance.uiManager.RefreshUI();
                 }
@@ -423,7 +426,7 @@ public class EffectManager : MonoBehaviour
         player.DeployedUnits.Clear();
     }
 
-    public void RemoveUnit(UnitCounter unitCounter)
+    public void RemoveUnitCounter(UnitCounter unitCounter)
     {
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
@@ -448,7 +451,7 @@ public class EffectManager : MonoBehaviour
 
     public void MulliganHand()
     {
-        GameManager.instance.GetActivePlayer().DrawMulligan();
+        GameManager.instance.GetPlayer().DrawMulligan();
     }
 
     public void SetCommandUnit(Unit _selectedUnit)
@@ -470,7 +473,7 @@ public class EffectManager : MonoBehaviour
     public void DealDamage(Unit unit)
     {
         if (SelectedValue.HasValue)
-            unit.DamageUnit(GameManager.instance.GetActivePlayer(), SelectedValue.Value, SelectedKeywords);
+            unit.DamageUnit(GameManager.instance.GetPlayer(), SelectedValue.Value, SelectedKeywords);
         else
             throw new Exception("Damage value not set");
     }
@@ -569,7 +572,7 @@ public class EffectManager : MonoBehaviour
 
     public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource)
     {
-        var player = GameManager.instance.GetActivePlayer();
+        var player = GameManager.instance.GetPlayer();
 
         foreach (var card in player.Hand.cardList.Where(x => x.Type == cardType))
             card.ModifyCost(value, resource);
@@ -656,6 +659,15 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
     }
 
+    public void SetSpycraftChoiceMode()
+    {
+        ActiveEffect = ActiveEffectTypes.SpycraftChoice;
+
+        var inactivePlayer = GameManager.instance.GetPlayer(false);
+        var spycraftCards = inactivePlayer.Hand.GetRandomCards(3);
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(spycraftCards);
+    }
+
     public void ChooseEffect(Card card)
     {
         var player = card.Owner;
@@ -702,6 +714,10 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.ItemEquipChoice:
                 SetItemEquip((Item)card, true);
                 break;
+            case ActiveEffectTypes.SpycraftChoice:
+                player = GameManager.instance.GetPlayer();
+                player.RecruitCard(card, true);
+                break;
             default:
                 throw new Exception("Not a valid phase to choose a card with.");
         }
@@ -742,5 +758,36 @@ public class EffectManager : MonoBehaviour
         {
             unit.SwitchOwner(newOwner, SelectedBoolean.Value);
         }
+    }
+
+    public void SetUnitRecruitMode()
+    {
+        ActiveEffect = ActiveEffectTypes.Recruit;
+    }
+
+    public void RecruitUnit(Unit unit)
+    {
+        var player = GameManager.instance.GetPlayer();
+
+        if (unit.Owner.Id != player.Id && unit.Rarity != Rarity.Hero && unit.Rarity != Rarity.NPCHero)
+        {
+            RemoveUnit(unit);
+            player.RecruitCard(unit, false);
+            GameManager.instance.uiManager.RefreshUI();
+        }
+    }
+
+    public void RecruitTopOfDeck()
+    {
+        var inactivePlayer = GameManager.instance.GetPlayer(false);
+
+        var topOfDeck = inactivePlayer.Deck.cardList.LastOrDefault();
+        GameManager.instance.GetPlayer().RecruitCard(topOfDeck);
+        GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SpymasterLurenEffect()
+    {
+
     }
 }

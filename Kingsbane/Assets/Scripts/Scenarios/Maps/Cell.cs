@@ -119,6 +119,10 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.MindControlUnit(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.Recruit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.RecruitUnit(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

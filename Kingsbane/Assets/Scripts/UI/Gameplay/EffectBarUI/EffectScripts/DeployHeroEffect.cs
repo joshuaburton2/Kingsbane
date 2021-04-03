@@ -43,7 +43,7 @@ public class DeployHeroEffect : EffectUI
     public void DeployButtonClick()
     {
         effectComplete = false;
-        var heroUnit = GameManager.instance.GetActivePlayer().Hero;
+        var heroUnit = GameManager.instance.GetPlayer().Hero;
         GameManager.instance.effectManager.SetDeployUnit(heroUnit);
     }
 
@@ -54,7 +54,7 @@ public class DeployHeroEffect : EffectUI
     /// </summary>
     public void CancelButtonClick()
     {
-        GameManager.instance.effectManager.RemoveAllPlayerUnits(GameManager.instance.GetActivePlayer());
+        GameManager.instance.effectManager.RemoveAllPlayerUnits(GameManager.instance.GetPlayer());
 
         ResetState();
     }

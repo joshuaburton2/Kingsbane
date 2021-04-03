@@ -107,7 +107,7 @@ class DeployExtensionEffect : EffectExtensionUI
             if (enchantment.ValidEnchantment)
                 generationFilter.Enchantment = enchantment;
 
-            if (int.TryParse(numToCreateInput.text, out int result) || numToCreateInput.text != "0")
+            if (int.TryParse(numToCreateInput.text, out int result) && numToCreateInput.text != "0")
                 generationFilter.UnitsToCreate = Mathf.Max(1, result);
             else
                 generationFilter.UnitsToCreate = 1;
