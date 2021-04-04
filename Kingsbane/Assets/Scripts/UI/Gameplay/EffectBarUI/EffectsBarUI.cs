@@ -43,6 +43,8 @@ public class EffectsBarUI : MonoBehaviour
         MindControl,
         [Description("Recruit")]
         Recruit,
+        [Description("Madness")]
+        Madness,
     }
 
     [Serializable]

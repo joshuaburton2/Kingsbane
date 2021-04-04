@@ -126,7 +126,7 @@ public class UnitCommandUI : MonoBehaviour
         RefreshAbilities();
 
         moveButton.interactable = unit.CanMove && !unit.HasStatusEffect(Unit.StatusEffects.Warded);
-        attackButton.interactable = unit.CanAction;
+        attackButton.interactable = unit.CanAttack;
         speedArea.SetActive(false);
 
         //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it

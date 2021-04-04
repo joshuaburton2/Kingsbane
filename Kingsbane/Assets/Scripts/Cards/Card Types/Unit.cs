@@ -85,6 +85,8 @@ public class Unit : Card
     public int AbilityUsesLeft { get; set; }
     public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0 && !HasStatusEffect(StatusEffects.Rooted) && !HasStatusEffect(StatusEffects.Stunned); } }
     public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned); } }
+    public bool LoseNextAction { get; set; }
+    public bool CanAttack { get { return CanAction && GetStat(StatTypes.Attack) > 0; } }
     public bool CanFlyOrLand { get; set; }
     public bool TemporaryMindControlled { get; set; }
 
@@ -122,6 +124,7 @@ public class Unit : Card
         Status = UnitStatuses.None;
         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
         TemporaryMindControlled = false;
+        LoseNextAction = false;
 
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
@@ -340,6 +343,12 @@ public class Unit : Card
             ActionsLeft = 1;
             AbilityUsesLeft = 1;
         }
+
+        if (!LoseNextAction)
+        {
+            ActionsLeft--;
+            LoseNextAction = false;
+        }
     }
 
     public bool EndOfTurn(bool isActive)
@@ -420,7 +429,7 @@ public class Unit : Card
         UnitCounter.RefreshUnitCounter();
     }
 
-    public void TriggerAttack(Unit targetUnit)
+    public void TriggerAttack(Unit targetUnit, bool useAction = true, bool forceMelee = false)
     {
         ModifyActions(-1);
         Unstealth();
@@ -432,7 +441,7 @@ public class Unit : Card
             var targetHealth = targetUnit.CurrentHealth;
             bool unitDead = false;
             var targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
-            if (GetStat(StatTypes.Range).Value == 0)
+            if (GetStat(StatTypes.Range).Value == 0 || forceMelee)
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
                 if (!targetDead && hasOverwhelm || !hasOverwhelm)
@@ -452,9 +461,6 @@ public class Unit : Card
         }
 
         RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
-
-        if (HasStatusEffect(StatusEffects.Stealthed))
-            CurrentStatusEffects.Remove(StatusEffects.Stealthed);
 
         UnitCounter.RefreshUnitCounter();
         targetUnit.UnitCounter.RefreshUnitCounter();
@@ -876,5 +882,17 @@ public class Unit : Card
 
         UnitCounter.RefreshUnitCounter();
         GameManager.instance.CheckWarden();
+    }
+
+    public void TriggerMadness()
+    {
+        var adjacentUnits = UnitCounter.Cell.adjCell.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
+
+        if (adjacentUnits.Count() != 0)
+        {
+            var randUnit = UnityEngine.Random.Range(0, adjacentUnits.Count());
+            TriggerAttack(adjacentUnits[randUnit], false, true);
+            LoseNextAction = true;
+        }
     }
 }

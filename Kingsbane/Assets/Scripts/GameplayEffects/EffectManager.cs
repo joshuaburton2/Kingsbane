@@ -47,6 +47,7 @@ public class EffectManager : MonoBehaviour
         MindControl,
         Recruit,
         SpycraftChoice,
+        Madness,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -822,5 +823,15 @@ public class EffectManager : MonoBehaviour
         }
 
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetMadnessMode()
+    {
+        ActiveEffect = ActiveEffectTypes.Madness;
+    }
+
+    public void TriggerMadness(Unit unit)
+    {
+        unit.TriggerMadness();
     }
 }
