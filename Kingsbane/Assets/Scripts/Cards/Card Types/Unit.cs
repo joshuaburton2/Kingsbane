@@ -344,9 +344,9 @@ public class Unit : Card
             AbilityUsesLeft = 1;
         }
 
-        if (!LoseNextAction)
+        if (LoseNextAction)
         {
-            ActionsLeft--;
+            ModifyActions(-1);
             LoseNextAction = false;
         }
     }
@@ -429,18 +429,39 @@ public class Unit : Card
         UnitCounter.RefreshUnitCounter();
     }
 
+    public bool CanAttackTarget(Unit targetUnit)
+    {
+        if (!CanAttack)
+            return false;
+
+        if (Owner.Id == targetUnit.Owner.Id)
+            return false;
+
+        if (targetUnit.HasStatusEffect(StatusEffects.Airborne) && GetStat(StatTypes.Range).Value == 0)
+            return false;
+
+        if (targetUnit.HasStatusEffect(StatusEffects.Stealthed))
+            return false;
+
+        return true;
+    }
+
     public void TriggerAttack(Unit targetUnit, bool useAction = true, bool forceMelee = false)
     {
-        ModifyActions(-1);
+        if (useAction)
+            ModifyActions(-1);
         Unstealth();
 
         var targetRouted = targetUnit.CheckRouting();
 
+        bool unitDead = false;
+        var targetDead = false;
+
         if (!targetRouted)
         {
             var targetHealth = targetUnit.CurrentHealth;
-            bool unitDead = false;
-            var targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
+
+            targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
             if (GetStat(StatTypes.Range).Value == 0 || forceMelee)
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
@@ -462,8 +483,10 @@ public class Unit : Card
 
         RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
 
-        UnitCounter.RefreshUnitCounter();
-        targetUnit.UnitCounter.RefreshUnitCounter();
+        if (!unitDead)
+            UnitCounter.RefreshUnitCounter();
+        if (!targetDead)
+            targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
     public bool CheckRouting()
@@ -801,7 +824,6 @@ public class Unit : Card
         {
             if (CheckOccupancy(UnitCounter.Cell, true))
             {
-                Debug.Log(UnitCounter.Cell.terrainType);
                 CanFlyOrLand = false;
                 CurrentStatusEffects.Remove(StatusEffects.Airborne);
             }
@@ -892,7 +914,14 @@ public class Unit : Card
         {
             var randUnit = UnityEngine.Random.Range(0, adjacentUnits.Count());
             TriggerAttack(adjacentUnits[randUnit], false, true);
-            LoseNextAction = true;
+            if (CanAction)
+            {
+                ModifyActions(-1);
+            }
+            else
+            {
+                LoseNextAction = true;
+            }
         }
     }
 }

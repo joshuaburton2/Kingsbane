@@ -355,7 +355,7 @@ public class EffectManager : MonoBehaviour
     {
         if (targetUnit != null)
         {
-            if (CommandUnit.Owner.Id != targetUnit.Owner.Id)
+            if (CommandUnit.CanAttackTarget(targetUnit))
             {
                 CommandUnit.TriggerAttack(targetUnit);
                 RefreshEffectManager();
