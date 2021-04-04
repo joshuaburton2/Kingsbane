@@ -659,12 +659,12 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
     }
 
-    public void SetSpycraftChoiceMode()
+    public void SetSpycraftChoiceMode(int numToChoose)
     {
         ActiveEffect = ActiveEffectTypes.SpycraftChoice;
 
         var inactivePlayer = GameManager.instance.GetPlayer(false);
-        var spycraftCards = inactivePlayer.Hand.GetRandomCards(3);
+        var spycraftCards = inactivePlayer.Hand.GetRandomCards(numToChoose);
         GameManager.instance.uiManager.ShowCardChoiceDisplay(spycraftCards);
     }
 
@@ -786,8 +786,41 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public void SpymasterLurenEffect()
+    public void SpymasterLurenEffect(int numToChoose)
     {
+        var activePlayer = GameManager.instance.GetPlayer();
+        var inActivePlayer = GameManager.instance.GetPlayer(false);
 
+        if (activePlayer.UsedResources.Contains(CardResources.Gold))
+        {
+            var numToRecruit = Mathf.Min(activePlayer.Hand.CardsToFull, numToChoose);
+
+            var recruitCards = inActivePlayer.Hand.GetRandomCards(numToRecruit);
+            foreach (var recruitCard in recruitCards)
+            {
+                inActivePlayer.Hand.RemoveCard(recruitCard);
+                activePlayer.RecruitCard(recruitCard, false);
+                recruitCard.IsSpymasterLuren = true;
+            }
+
+            GameManager.instance.uiManager.RefreshUI();
+        }
+    }
+
+    public void ReturnLurenCards()
+    {
+        var activePlayer = GameManager.instance.GetPlayer();
+        var inActivePlayer = GameManager.instance.GetPlayer(false);
+
+        var cardList = activePlayer.Hand.cardList.Where(x => x.IsSpymasterLuren).ToList();
+        foreach (var card in cardList)
+        {
+            activePlayer.Hand.RemoveCard(card);
+            inActivePlayer.AddToHand(card);
+            card.CreatedByName = "";
+            card.ResourceInit();
+        }
+
+        GameManager.instance.uiManager.RefreshUI();
     }
 }

@@ -100,25 +100,17 @@ public class Player
 
     public void EndOfTurn(bool isActive)
     {
-        var destroyUnits = new List<UnitCounter>();
-        var tempMindControlUnits = new List<UnitCounter>();
-
-        foreach (var unit in DeployedUnits)
+        var unitList = new List<UnitCounter>(DeployedUnits);
+        foreach (var unit in unitList)
         {
             var toDestroy = unit.Unit.EndOfTurn(isActive);
 
             if (toDestroy)
-                destroyUnits.Add(unit);
+                unit.Unit.RemoveUnit(true);
 
             if (unit.Unit.TemporaryMindControlled && !toDestroy)
-                tempMindControlUnits.Add(unit);
+                unit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!isActive), false);
         }
-
-        foreach (var destroyUnit in destroyUnits)
-            destroyUnit.Unit.RemoveUnit(true);
-
-        foreach (var mindControlUnit in tempMindControlUnits)
-            mindControlUnit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!isActive), false);
     }
 
     /// <summary>

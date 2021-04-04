@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentGamePhase == GamePhases.Gameplay)
         {
-            foreach (var player in GameManager.instance.LoadedPlayers)
+            foreach (var player in LoadedPlayers)
                 player.CheckWarden();
         }
     }

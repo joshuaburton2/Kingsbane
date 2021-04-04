@@ -230,10 +230,25 @@ public class Unit : Card
                 Status = UnitStatuses.Enemy;
         }
 
-        if (GetStat(StatTypes.Empowered).Value > 0)
-            Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
-        if (HasKeyword(Keywords.Summon))
-            Owner.AddSummon(UnitCounter);
+        UpdateOwnerStats();
+    }
+
+    public void UpdateOwnerStats(bool isAdded = true)
+    {
+        if (isAdded)
+        {
+            if (GetStat(StatTypes.Empowered).Value > 0)
+                Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
+            if (HasKeyword(Keywords.Summon))
+                Owner.AddSummon(UnitCounter);
+        }
+        else
+        {
+            if (GetStat(StatTypes.Empowered).Value > 0)
+                Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
+            if (HasKeyword(Keywords.Summon))
+                Owner.RemoveSummon(UnitCounter);
+        }
     }
 
     public bool CheckOccupancy(Cell newCell, bool isLanding = false)
@@ -341,11 +356,6 @@ public class Unit : Card
         {
             RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOpponentTurn);
             RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
-        }
-
-        if (true)
-        {
-
         }
 
         UnitCounter.RefreshUnitCounter();
@@ -562,13 +572,12 @@ public class Unit : Card
         {
             Owner.AddToGraveyard(this);
 
-            if (GetStat(StatTypes.Empowered).Value > 0)
-                Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
-            if (HasKeyword(Keywords.Summon))
-                Owner.RemoveSummon(UnitCounter);
+            UpdateOwnerStats(false);
 
             UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
         }
+
+        GameManager.instance.CheckWarden();
     }
 
     public bool CanUseAbility(Ability ability)
@@ -823,9 +832,6 @@ public class Unit : Card
     {
         if (CurrentStatusEffects.Contains(StatusEffects.Spellbound))
         {
-            var damageValue = GetStat(StatTypes.MaxHealth).Value - CurrentHealth;
-            var missingSpeed = GetStat(StatTypes.Speed).Value - RemainingSpeed;
-
             foreach (var enchantment in Enchantments)
             {
                 if (!enchantment.IsActive)
@@ -844,8 +850,11 @@ public class Unit : Card
     {
         TemporaryMindControlled = isTemporary;
         Owner.DeployedUnits.Remove(UnitCounter);
+        UpdateOwnerStats(false);
+
         Owner = newOwner;
         Owner.DeployedUnits.Add(UnitCounter);
+        UpdateOwnerStats();
 
         ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
 
@@ -866,5 +875,6 @@ public class Unit : Card
         }
 
         UnitCounter.RefreshUnitCounter();
+        GameManager.instance.CheckWarden();
     }
 }

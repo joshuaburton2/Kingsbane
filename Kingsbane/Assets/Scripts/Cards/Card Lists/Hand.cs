@@ -6,6 +6,8 @@ public class Hand : CardList
 {
     private const int maxHandSize = 10;
 
+    public int CardsToFull { get { return maxHandSize - ListCount; } }
+
     /// <summary>
     /// 
     /// Adds a card to the hand

@@ -35,6 +35,8 @@ public class Card
     public List<CardResources> Resources { get; private set; }
     public bool ResourcesConverted { get; set; }
 
+    public bool IsSpymasterLuren { get; set; }
+
 
     public string Text { get { return CardData.Text; } }
     public string LoreText { get { return CardData.LoreText; } }
@@ -125,6 +127,7 @@ public class Card
         CreatedByName = "";
         NumShuffles = 0;
         ResourcesConverted = false;
+        IsSpymasterLuren = false;
         ResourceInit();
     }
 
@@ -133,7 +136,7 @@ public class Card
     /// Initialises the Resource Data on the card. To be called when the card is created
     /// 
     /// </summary>
-    protected void ResourceInit()
+    public void ResourceInit()
     {
         if (!ResourcesConverted || ResourceCost.Count == 0)
         {
@@ -215,6 +218,12 @@ public class Card
 
         ResourceInit();
         Owner.PlayFromHand(this);
+
+        if (IsSpymasterLuren)
+        {
+            IsSpymasterLuren = false;
+            GameManager.instance.effectManager.ReturnLurenCards();
+        }
 
         //ToDo: Might need to pass out an on play parameter. This will determine the effect of spells as well as deployment effects for units and items
     }

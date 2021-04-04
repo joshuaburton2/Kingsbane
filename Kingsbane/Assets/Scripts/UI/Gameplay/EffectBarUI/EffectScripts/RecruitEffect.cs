@@ -63,10 +63,12 @@ public class RecruitEffect : EffectUI
                     break;
                 case RecruitTypes.Spycraft:
                     effectComplete = false;
-                    GameManager.instance.effectManager.SetSpycraftChoiceMode();
+                    var numToSpycraft = 3;
+                    GameManager.instance.effectManager.SetSpycraftChoiceMode(numToSpycraft);
                     break;
                 case RecruitTypes.SpymasterLuren:
-                    GameManager.instance.effectManager.SpymasterLurenEffect();
+                    var numToRecruit = 3;
+                    GameManager.instance.effectManager.SpymasterLurenEffect(numToRecruit);
                     break;
                 default:
                     throw new Exception("Not a valid recruit type.");
