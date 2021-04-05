@@ -45,6 +45,8 @@ public class EffectsBarUI : MonoBehaviour
         Recruit,
         [Description("Madness")]
         Madness,
+        [Description("Bounce")]
+        Bounce,
     }
 
     [Serializable]

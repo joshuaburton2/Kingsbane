@@ -53,7 +53,7 @@ public class HandUI : MonoBehaviour
     /// Displays the hand list. Can input either a Card or UpgradeData list
     /// 
     /// </summary>
-    public void DisplayHandList<T>(GameplayUI _gameplayUI, List<T> handList, bool showHand, int playerIndex) where T : class
+    public void DisplayHandList<T>(GameplayUI _gameplayUI, List<T> handList, bool showHand, int playerIndex, bool isRedeploy = false) where T : class
     {
         gameplayUI = _gameplayUI;
 
@@ -76,6 +76,7 @@ public class HandUI : MonoBehaviour
             switch (type)
             {
                 case Type _ when type == typeof(Card):
+                case Type _ when type == typeof(Unit):
                     var card = (Card)(object)handObject;
 
                     objectName = card.Name;
@@ -91,7 +92,7 @@ public class HandUI : MonoBehaviour
 
             //Sets the properties of the object
             handContainerObject.name = $"Container- {objectName}";
-            handContainer.InitHandContainer(this, _gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward);
+            handContainer.InitHandContainer(this, _gameplayUI, index, playerIndex, handObject, showHand, objectName, scalingFactor, cardMoveUpward, isRedeploy);
 
             index++;
         }

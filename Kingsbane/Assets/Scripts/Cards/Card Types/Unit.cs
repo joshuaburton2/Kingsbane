@@ -539,7 +539,14 @@ public class Unit : Card
                     if (GetStat(StatTypes.Protected) < 0)
                     {
                         CurrentHealth += GetStat(StatTypes.Protected).Value;
-                        if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
+                        if (keywords.Contains(Keywords.Deadly))
+                        {
+                            if (IsHero)
+                                Redeploy();
+                            else
+                                RemoveUnit(true);
+                        }
+                        else if (CurrentHealth <= 0)
                             RemoveUnit(true);
                         if (keywords.Contains(Keywords.Lifebond))
                             sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
@@ -923,5 +930,24 @@ public class Unit : Card
                 LoseNextAction = true;
             }
         }
+    }
+
+    public void ReturnToHand()
+    {
+        if (IsHero)
+        {
+            Redeploy();
+        }
+        else
+        {
+            RemoveUnit();
+            Owner.AddToHand(this);
+        }
+    }
+
+    public void Redeploy()
+    {
+        RemoveUnit();
+        Owner.AddToRedeploy(this);
     }
 }

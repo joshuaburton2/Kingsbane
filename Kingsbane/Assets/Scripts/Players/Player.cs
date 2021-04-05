@@ -21,6 +21,7 @@ public class Player
     public List<UpgradeData> Upgrades { get; set; }
     public Hero Hero { get; set; }
     public List<UnitCounter> DeployedUnits { get; set; }
+    public List<Unit> RedeployUnits { get; set; }
     public List<UnitCounter> DeployedSummonUnits { get; set; }
     public int ItemCapacity { get { return DeckData.ItemCapacity; } }
 
@@ -45,6 +46,7 @@ public class Player
         Upgrades = DeckData.UpgradeList;
         Hero = (Hero)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
+        RedeployUnits = new List<Unit>();
         DeployedSummonUnits = new List<UnitCounter>();
 
         PassiveEmpowered = DeckData.PassiveEmpowered;
@@ -267,6 +269,11 @@ public class Player
             DiscardCard(newCard);
 
         return handFull;
+    }
+
+    public void AddToRedeploy(Unit unit)
+    {
+        RedeployUnits.Add(unit);
     }
 
     public bool CopyHandCard(Card copyCard, string createdBy = "")

@@ -19,6 +19,10 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private CanvasGroup buttonGroup;
     [SerializeField]
+    private GameObject playButtons;
+    [SerializeField]
+    private GameObject redeployButtons;
+    [SerializeField]
     private GameObject cardParent;
     [SerializeField]
     private GameObject cardBack;
@@ -33,6 +37,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     private Card Card { get { return CardDisplay.card; } }
     private UpgradeDisplay UpgradeDisplay { get; set; }
     private bool CardMoveUpward { get; set; }
+    private bool IsRedeploy { get; set; }
 
     private HandUI HandUI { get; set; }
     private GameplayUI GameplayUI { get; set; }
@@ -60,7 +65,8 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         bool showCard,
         string containerName = "",
         float scalingFactor = defaultScalingFactor,
-        bool cardMoveUpward = true)
+        bool cardMoveUpward = true,
+        bool isRedeploy = false)
     {
         HandUI = _handUI;
         GameplayUI = gameplayUI;
@@ -68,6 +74,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         PlayerIndex = playerIndex;
         isSelected = false;
         CardMoveUpward = cardMoveUpward;
+        IsRedeploy = isRedeploy;
 
         //Direction Mod is used to determine which way to move the card when it is clicked- varies depending on if the bar is at the top or bottom of the screen
         var directionMod = CardMoveUpward ? 1 : -1;
@@ -80,14 +87,26 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
         switch (type)
         {
             case Type _ when type == typeof(Card):
-                var cardData = (Card)(object)objectData;
-                var newCardObj = GameManager.instance.libraryManager.CreateCardObject(cardData, cardParent.transform, scalingFactor);
+            case Type _ when type == typeof(Unit):
+                var card = (Card)(object)objectData;
+                var newCardObj = GameManager.instance.libraryManager.CreateCardObject(card, cardParent.transform, scalingFactor);
                 newCardObj.name = containerName;
 
                 //Sibling Index is set to 1 so that it is set in the correct order of the marker and the back
                 newCardObj.transform.SetSiblingIndex(1);
                 CardDisplay = newCardObj.GetComponent<CardDisplay>();
                 DisplayObject = newCardObj;
+
+                if (IsRedeploy)
+                {
+                    redeployButtons.SetActive(true);
+                    playButtons.SetActive(false);
+                }
+                else
+                {
+                    redeployButtons.SetActive(false);
+                    playButtons.SetActive(true);
+                }
                 break;
             case Type _ when type == typeof(UpgradeData):
                 var upgradeData = (UpgradeData)(object)objectData;
@@ -275,6 +294,12 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
     public void CopyButton()
     {
         Card.Owner.CopyHandCard(Card, "Duplicate");
+        GameplayUI.RefreshPlayerBar(PlayerIndex);
+    }
+
+    public void RedeployButton()
+    {
+        GameManager.instance.effectManager.SetDeployUnit((Unit)Card);
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
 }

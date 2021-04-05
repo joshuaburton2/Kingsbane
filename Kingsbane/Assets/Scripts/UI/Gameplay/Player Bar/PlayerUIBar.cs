@@ -56,7 +56,16 @@ public class PlayerUIBar : MonoBehaviour
                 ShowUpgradesInHand();
                 break;
             default:
-                handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
+                if (Player.RedeployUnits.Count == 0 || !IsActivePlayerBar)
+                {
+                    handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
+                    gameplayUI.SetActionButtonState(true);
+                }
+                else
+                {
+                    handUI.DisplayHandList(gameplayUI, Player.RedeployUnits, IsActivePlayerBar, Id, true);
+                    gameplayUI.SetActionButtonState(false);
+                }
                 break;
         }
 
@@ -77,8 +86,8 @@ public class PlayerUIBar : MonoBehaviour
     {
         if (IsActivePlayerBar)
         {
-            if (GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitCommand || 
-                GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseSpeed || 
+            if (GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitCommand ||
+                GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseSpeed ||
                 GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseDisengageSpeed)
             {
                 unitCommandUI.RefreshCommandBar();

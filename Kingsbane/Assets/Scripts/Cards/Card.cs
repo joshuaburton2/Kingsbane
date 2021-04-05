@@ -14,6 +14,7 @@ public class Card
     public string Name { get { return CardData.Name; } }
 
     public Rarity Rarity { get { return CardData.Rarity; } }
+    public bool IsHero { get { return CardData.IsHero; } }
     public CardTypes Type { get { return CardData.CardType; } }
     public Classes.ClassList CardClass { get { return CardData.Class; } }
     public Sets Set { get { return CardData.Set; } }

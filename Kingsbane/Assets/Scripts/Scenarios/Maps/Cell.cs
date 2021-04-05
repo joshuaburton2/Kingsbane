@@ -127,6 +127,14 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.TriggerMadness(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.ReturnToHand:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.ReturnToHand(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.Redeploy:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.Redeploy(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

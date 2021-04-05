@@ -48,6 +48,8 @@ public class EffectManager : MonoBehaviour
         Recruit,
         SpycraftChoice,
         Madness,
+        ReturnToHand,
+        Redeploy,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -275,6 +277,12 @@ public class EffectManager : MonoBehaviour
                 {
                     unit.Deploy();
                 }
+                GameManager.instance.uiManager.RefreshUI();
+            }
+
+            if (unit.Owner.RedeployUnits.Contains(unit))
+            {
+                unit.Owner.RedeployUnits.Remove(unit);
                 GameManager.instance.uiManager.RefreshUI();
             }
 
@@ -755,7 +763,7 @@ public class EffectManager : MonoBehaviour
     {
         var newOwner = GameManager.instance.GetPlayer(SelectedValue.Value);
 
-        if (unit.Owner != newOwner && unit.Rarity != Rarity.Hero && unit.Rarity != Rarity.NPCHero)
+        if (unit.Owner != newOwner && !unit.IsHero)
         {
             unit.SwitchOwner(newOwner, SelectedBoolean.Value);
         }
@@ -770,7 +778,7 @@ public class EffectManager : MonoBehaviour
     {
         var player = GameManager.instance.GetPlayer();
 
-        if (unit.Owner.Id != player.Id && unit.Rarity != Rarity.Hero && unit.Rarity != Rarity.NPCHero)
+        if (unit.Owner.Id != player.Id && !unit.IsHero)
         {
             RemoveUnit(unit);
             player.RecruitCard(unit, false);
@@ -833,5 +841,27 @@ public class EffectManager : MonoBehaviour
     public void TriggerMadness(Unit unit)
     {
         unit.TriggerMadness();
+    }
+
+    public void SetReturnToHandMode()
+    {
+        ActiveEffect = ActiveEffectTypes.ReturnToHand;
+    }
+
+    public void ReturnToHand(Unit unit)
+    {
+        unit.ReturnToHand();
+        GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetRedeployMode()
+    {
+        ActiveEffect = ActiveEffectTypes.Redeploy;
+    }
+
+    public void Redeploy(Unit unit)
+    {
+        unit.Redeploy();
+        GameManager.instance.uiManager.RefreshUI();
     }
 }
