@@ -19,5 +19,6 @@
         Vanguard,
         Warden,
         Piercing,
+        SpecialSwiftstrike,
     }
 }

@@ -231,7 +231,7 @@ public class CardLibrary
         {
             Id = 25,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and Protected value gained on the Gear by +1",
+            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and <b>Protected</b> value gained on the Gear by +1",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -243,7 +243,7 @@ public class CardLibrary
         {
             Id = 26,
             Name = "Lead from the Front",
-            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and Protected value gained on the Gear by +2",
+            Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and <b>Protected</b> value gained on the Gear by +2",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -843,7 +843,7 @@ public class CardLibrary
         {
             Id = 83,
             Name = "Faerie Charm",
-            Text = @"Gain control of an enemy minion within Range 2 until the start of your next turn",
+            Text = @"Gain control of an enemy minion within Range 2 until the end of your turn",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
@@ -1813,7 +1813,7 @@ public class CardLibrary
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
 
-            Text = @"<b>Summon, Spellshield, Ethereal, Warden</b>
+            Text = @"<b>Summon, Spellshield, Ethereal, Warden, Protected (9)</b>
 Whenever an adjacent ally takes damage, this unit takes it instead",
             LoreText = @"",
             Notes = @"",
@@ -1950,7 +1950,7 @@ This units attack is increased by your <b>Empowered</b> value",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
-            Text = @"<b>Conduit</b>
+            Text = @"<b>Conduit, Protected (7)</b>
 Whenever this unit kills an enemy unit, gain 3 Mana",
             LoreText = @"",
             Notes = @"",
@@ -2063,7 +2063,7 @@ Whenever this attacks a <b>Stunned</b> unit, draw a card",
 
             Abilities = new List<AbilityData>() { ability10 },
 
-            Keywords = new List<Keywords>() { Keywords.Swiftstrike },
+            Keywords = new List<Keywords>() { Keywords.SpecialSwiftstrike },
         };
         CardList.Add(card25);
 
@@ -2985,7 +2985,7 @@ The cost of spells which did not start in your deck is reduced by (3)",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip, Tags.MindItem },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -3010,7 +3010,7 @@ When you select this form, draw 3 cards",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Draw, Tags.Empowered, Tags.Equip },
+            Tags = new List<Tags> { Tags.Draw, Tags.Empowered, Tags.Equip, Tags.MindItem },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -3035,7 +3035,7 @@ Your hero's attack is increased by your <b>Empowered</b> value. Whenever your he
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip, Tags.MindItem },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -3060,7 +3060,7 @@ At the end of your turn, your hero gains <b>Protected (12).</b> Remove any <b>Pr
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Protected, Tags.Equip },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Protected, Tags.Equip, Tags.MindItem },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -3085,7 +3085,7 @@ After you cast the first spell on your turn, cast it again on the same target",
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Item,
 
-            Tags = new List<Tags> { Tags.Empowered, Tags.Equip },
+            Tags = new List<Tags> { Tags.Empowered, Tags.Equip, Tags.MindItem },
             Synergies = new List<Synergies> { },
             ItemTag = "Arcane Mind",
             Durability = 5,
@@ -5707,7 +5707,7 @@ Whenever this unit deals damage, <b>Cycle</b> for the same amount",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 2), },
 
-            Text = @"Gain control of an enemy minion until the start of your next turn",
+            Text = @"Gain control of an enemy minion until the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -6233,9 +6233,9 @@ Give the caster +3 Health",
             Name = "Lay on Hands",
             ImageTag = CardImageTags.Lay_on_Hands,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
-            Text = @"Restore 5 Health to a unit. If the unit has been <b>Spellbound</b>, restore any enchantments of text removed",
+            Text = @"Restore 5 Health to a unit",
             LoreText = @"",
             Notes = @"",
 
@@ -6606,7 +6606,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Deployment:</b> Choose one of three random units in your Graveyard to deploy adjacent to the caster",
+            Text = @"<b>Deployment:</b> Choose one of three different random units in your Graveyard to deploy adjacent to the caster",
             LoreText = @"",
             Notes = @"",
 
@@ -7374,7 +7374,8 @@ After you cast a spell, draw a spell of the same total cost from your deck",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Knowledge, 5), },
 
-            Text = @"Whenever an enemy within Range 3 of your hero attacks, it instead melee attacks a random adjacent unit and loses its next action",
+            Text = @"Your hero has +2 range.
+After your hero attacks a unit, the target melee attacks a random adjacent unit and loses it next action.",
             LoreText = @"",
             Notes = @"",
 
@@ -9321,7 +9322,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Warden },
         };
         CardList.Add(card254);
 
@@ -9714,7 +9715,7 @@ This unit can target through obstacle terrain",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 5), new Resource(CardResources.Knowledge, 4), },
 
-            Text = @"<b>Warden
+            Text = @"<b>Warden, Protected (4)
 Deployment:</b> Choose either to use <b>Confiscate</b> or <b>Imprison</b>
 <b>Last Rites:</b> Return all removed cards and redeploy all removed units",
             LoreText = @"",
@@ -11861,7 +11862,7 @@ Whenever this attacks and kills a unit, double their <b>Bounty</b> and draw a ca
 
             Text = @"<b>Routing
 Deployment:</b> Deploy two Goblin Hordes beside this unit.
-Whenever this unit is attacked, gain Protected equal to the number of adjacent friendly Goblins.",
+Whenever this unit is attacked, gain <b>Protected</b> equal to the number of adjacent friendly Goblins.",
             LoreText = @"",
             Notes = @"",
 
@@ -11925,7 +11926,7 @@ Whenever this unit is attacked, gain Protected equal to the number of adjacent f
             Text = @"<b>Routing
 Deployment:</b> Use <b>Rally the Horde</b>
 Your other goblins within Range 3 have <b>Prepared</b> and +2 Attack.
-Whenever this unit is attacked, gain Protected equal to the number of adjacent friendly Goblins.",
+Whenever this unit is attacked, gain <b>Protected</b> equal to the number of adjacent friendly Goblins.",
             LoreText = @"",
             Notes = @"",
 
@@ -13985,7 +13986,7 @@ After you draw an <b>Inspiration</b> card, shuffle another back into your deck",
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), new Resource(CardResources.Knowledge, 2), },
 
-            Text = @"Destory an enemy minion. Multiply its <b>Bounty</b> by 2. Whenever you shuffle this card into your deck, increase the multiplier by 1",
+            Text = @"Destroy an enemy minion. Multiply its <b>Bounty</b> by 2. Whenever you shuffle this card into your deck, increase the multiplier by 1",
             LoreText = @"",
             Notes = @"",
 
@@ -14071,7 +14072,7 @@ After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
-            Text = @"<b>Deployment:</b> Increase the cost of a random card in your opponents hand by (2)
+            Text = @"<b>Deployment:</b> Your opponent's cards cost (2) more on their next turn.
 Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
             LoreText = @"",
             Notes = @"",
@@ -14385,7 +14386,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem
     }
 
     public enum Synergies

@@ -14,7 +14,7 @@ public class UpgradeLibrary
             Id = 1,
             Name = "Hero Tier I",
             Text = @"Increase your hero’s tier to Tier One. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -33,7 +33,7 @@ public class UpgradeLibrary
             Id = 2,
             Name = "Hero Tier II",
             Text = @"Increase your hero’s tier to Tier Two. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -52,7 +52,7 @@ public class UpgradeLibrary
             Id = 3,
             Name = "Ability Tier I",
             Text = @"Increase your hero’s ability tier to Tier One. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -71,7 +71,7 @@ public class UpgradeLibrary
             Id = 4,
             Name = "Ability Tier II",
             Text = @"Increase your hero’s ability tier to Tier Two. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -90,7 +90,7 @@ public class UpgradeLibrary
             Id = 5,
             Name = "Devoted Followers Tier I",
             Text = @"Your <b>Prayer</b> effects gain an additional one Devotion. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade ",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -110,7 +110,7 @@ public class UpgradeLibrary
             Id = 6,
             Name = "Devoted Followers Tier II",
             Text = @"Your <b>Prayer</b> effects gain an additional two Devotion. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -150,7 +150,7 @@ public class UpgradeLibrary
             Id = 8,
             Name = "Strength of Arms Tier I",
             Text = @"Increase your base Energy gain to 5 per turn. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -170,7 +170,7 @@ public class UpgradeLibrary
             Id = 9,
             Name = "Strength of Arms Tier II",
             Text = @"Increase your base Energy gain to 7 per turn. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -210,7 +210,7 @@ public class UpgradeLibrary
             Id = 11,
             Name = "Claim Bounty Tier I",
             Text = @"Increase your <b>Bounty</b> value to 2 Gold. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -230,7 +230,7 @@ public class UpgradeLibrary
             Id = 12,
             Name = "Claim Bounty Tier II",
             Text = @"Increase your <b>Bounty</b> value to 3 Gold. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -270,7 +270,7 @@ public class UpgradeLibrary
             Id = 14,
             Name = "Well of Knowledge Tier I",
             Text = @"Increase your base Knowledge gain to 3. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -290,7 +290,7 @@ public class UpgradeLibrary
             Id = 15,
             Name = "Well of Knowledge Tier II",
             Text = @"Increase your base Knowledge gain to 4. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -330,7 +330,7 @@ public class UpgradeLibrary
             Id = 17,
             Name = "Mana Reserves Tier I",
             Text = @"Increase your starting Mana to 16. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -350,7 +350,7 @@ public class UpgradeLibrary
             Id = 18,
             Name = "Mana Reserves Tier II",
             Text = @"Increase your starting Mana to 24. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()
@@ -390,7 +390,7 @@ public class UpgradeLibrary
             Id = 20,
             Name = "Wild Growth Tier I",
             Text = @"Your Wild gain at the start of each turn is increased to 3. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier1,
             ResourcePrerequisites = new List<CardResources>()
@@ -410,7 +410,7 @@ public class UpgradeLibrary
             Id = 21,
             Name = "Wild Growth Tier II",
             Text = @"Your Wild gain at the start of each turn is increased to 4. Costs one less Honour Point per scenario won since purchasing a Hero, Ability or Resource Tier upgrade",
-            HonourPoints = 5,
+            HonourPoints = 4,
             IsRepeatable = false,
             TierLevel = TierLevel.Tier2,
             ResourcePrerequisites = new List<CardResources>()

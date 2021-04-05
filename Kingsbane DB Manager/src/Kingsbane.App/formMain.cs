@@ -141,7 +141,7 @@ namespace Kingsbane.App
 
                         var unitTags = unit.UnitTag.Split(" ");
                         var unitAbilities = string.Join(",", unit.Abilities.Select(x => $"ability{x.Id}"));
-                        var keywords = string.Join(",", unit.UnitKeywords.Select(x => $"BaseUnitKeywords.{x.Keyword.Name}"));
+                        var keywords = string.Join(",", unit.UnitKeywords.Select(x => $"Keywords.{x.Keyword.Name}"));
 
                         sb.AppendLine($"        var card{item.Id} = new UnitData()");
                         sb.AppendLine("        {");
@@ -166,7 +166,7 @@ namespace Kingsbane.App
                         sb.AppendLine($"");
                         sb.AppendLine($"            Abilities = new List<AbilityData>() {{{unitAbilities}}},");
                         sb.AppendLine($"");
-                        sb.AppendLine($"            Keywords = new List<BaseUnitKeywords>() {{{keywords}}},");
+                        sb.AppendLine($"            Keywords = new List<Keywords>() {{{keywords}}},");
                         sb.AppendLine("        };");
                         break;
                     case CardTypes.Spell:
