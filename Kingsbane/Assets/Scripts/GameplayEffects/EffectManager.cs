@@ -50,6 +50,7 @@ public class EffectManager : MonoBehaviour
         Madness,
         ReturnToHand,
         Redeploy,
+        AlterFateChoice,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -72,6 +73,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.ItemEquipChoice,
         ActiveEffectTypes.Divinate,
         ActiveEffectTypes.SpycraftChoice,
+        ActiveEffectTypes.AlterFateChoice,
     };
 
     private Card SelectedCard { get; set; }
@@ -750,6 +752,17 @@ public class EffectManager : MonoBehaviour
         CancelEffect = true;
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetAlterFateMode(List<Card> handCards, List<Card> deckCards)
+    {
+        ActiveEffect = ActiveEffectTypes.AlterFateChoice;
+        GameManager.instance.uiManager.ShowAlterFateDisplay(handCards, deckCards);
+    }
+
+    public void AlterFate(List<Card> handCards, List<Card> deckCards)
+    {
+
     }
 
     public void SetMindControlMode(bool isActivePlayer, bool isTemporary)

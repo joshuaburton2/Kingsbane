@@ -36,6 +36,8 @@ public class GameplayUI : MonoBehaviour
     private CardChoiceUI cardChoiceUI;
     [SerializeField]
     private DivinateUI divinateUI;
+    [SerializeField]
+    private AlterFateUI alterFateUI;
 
     private MapGrid.MapFilters CurrentMapFilter { get; set; }
 
@@ -74,6 +76,7 @@ public class GameplayUI : MonoBehaviour
         menuPopup.SetActive(false);
         cardChoiceUI.gameObject.SetActive(false);
         divinateUI.gameObject.SetActive(false);
+        alterFateUI.gameObject.SetActive(false);
         backgroundFade.SetActive(false);
         keyDisplay.SetActive(false);
 
@@ -227,6 +230,12 @@ public class GameplayUI : MonoBehaviour
     {
         divinateUI.gameObject.SetActive(true);
         divinateUI.DisplayDivinate(cards);
+    }
+
+    public void ShowAlterFate(List<Card> handCards, List<Card> deckCards)
+    {
+        alterFateUI.gameObject.SetActive(true);
+        alterFateUI.DisplayAlterFate(handCards, deckCards);
     }
 
     public void ShowKeyOfFilter(MapGrid.MapFilters mapFilter = MapGrid.MapFilters.Colour)

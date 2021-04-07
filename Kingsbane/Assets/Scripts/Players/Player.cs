@@ -240,7 +240,7 @@ public class Player
             Debug.Log("Deck is empty");
             return false;
         }
-        var topDeckCards = Deck.cardList.Skip(Mathf.Max(0, Deck.ListCount - numToDivinate)).ToList();
+        var topDeckCards = Deck.GetTopCards(numToDivinate);
 
         GameManager.instance.effectManager.SetDivinateMode(topDeckCards, Id);
 
@@ -257,6 +257,26 @@ public class Player
 
         foreach (var card in bottomCards)
             Deck.AddToDeck(card, 0);
+    }
+
+    public bool InitAlterFate()
+    {
+        var numToSelect = Mathf.Min(Hand.ListCount, Deck.ListCount);
+
+        if (numToSelect == 0)
+            return false;
+
+        var handCards = new List<Card>(Hand.cardList);
+        var deckCards = Deck.GetTopCards(numToSelect);
+
+        GameManager.instance.effectManager.SetAlterFateMode(handCards, deckCards);
+
+        return true;
+    }
+
+    public void AlterFate()
+    {
+
     }
 
     public bool AddToHand(Card newCard, string createdBy = "")

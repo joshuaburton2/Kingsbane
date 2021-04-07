@@ -288,5 +288,9 @@ public class Deck : CardList
         }
     }
 
+    public List<Card> GetTopCards(int numToGet)
+    {
+        return cardList.Skip(Mathf.Max(0, ListCount - numToGet)).ToList();
+    }
     
 }

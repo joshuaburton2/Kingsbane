@@ -47,6 +47,8 @@ public class EffectsBarUI : MonoBehaviour
         Madness,
         [Description("Bounce")]
         Bounce,
+        [Description("Alter Fate")]
+        AlterFate,
     }
 
     [Serializable]
