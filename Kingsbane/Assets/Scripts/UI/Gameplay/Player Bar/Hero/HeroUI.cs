@@ -76,7 +76,7 @@ public class HeroUI : MonoBehaviour
                 itemObject.GetComponent<ItemListObject>().RefreshItemObject(this);
         }
 
-        empoweredText.text = $"Empowered: +{Player.CurrentEmpowered}";
+        empoweredText.text = Player.CurrentEmpowered >= 0 ? $"Empowered: +{Player.CurrentEmpowered}" : $"Empowered: {Player.CurrentEmpowered}";
         summonText.text = $"Summon: {Player.CurrentSummons}/{Player.SummonCapcity}";
     }
 

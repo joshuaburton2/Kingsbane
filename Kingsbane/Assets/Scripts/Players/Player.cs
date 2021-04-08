@@ -526,7 +526,6 @@ public class Player
     public void ModifyEmpowered(int value)
     {
         CurrentEmpowered += value;
-        CurrentEmpowered = Mathf.Max(0, CurrentEmpowered); //Need to account for going negative here- related to overload modifying empowered
     }
 
     /// <summary>

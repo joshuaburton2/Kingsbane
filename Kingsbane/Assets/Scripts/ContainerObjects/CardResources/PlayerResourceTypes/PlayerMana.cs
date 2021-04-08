@@ -93,25 +93,37 @@ public class PlayerMana : PlayerResource
         return PreviousOverload -= OVERLOAD_REDUCTION;
     }
 
-    private void SetOverloadModifiers(int pastOverload = 0)
+    public void SetOverloadModifiers(int? pastOverload = null)
     {
-        var sourceString = "#OVERLOAD#";
+        var sourceString = "Overload Reduction";
 
         var player = GameManager.instance.GetPlayer(PlayerId);
 
-        player.ModifyEmpowered(pastOverload);
-        player.ModifyEmpowered(-TotalOverload);
+        if (pastOverload.HasValue)
+        {
+            player.ModifyEmpowered(pastOverload.Value);
+            player.ModifyEmpowered(-TotalOverload);
+        }
 
         foreach (var unit in player.DeployedUnits.Select(x => x.Unit))
         {
             var overloadEnchantment = unit.Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Source == sourceString);
-            if(overloadEnchantment == null)
+            var isNew = false;
+            if (overloadEnchantment == null)
             {
                 overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Passive, Source = sourceString };
+                isNew = true;
+
             }
 
-            var overLoadReduction = Mathf.Min(TotalOverload, unit.GetStat(Unit.StatTypes.Attack).Value);
+            var currentAttack = unit.HasBuffedAttack == StatisticStatuses.Buffed ? unit.GetStat(Unit.StatTypes.Attack).Value : unit.UnitData.Attack;
+            var overLoadReduction = Mathf.Min(TotalOverload, currentAttack - 1);
             overloadEnchantment.AddStatModifier(Unit.StatTypes.Attack, StatModifierTypes.Modify, -overLoadReduction);
+
+            if (isNew)
+                unit.AddEnchantment(overloadEnchantment);
+            else
+                unit.UpdateEnchantments();
         }
     }
 
@@ -125,6 +137,6 @@ public class PlayerMana : PlayerResource
         base.StartOfGameUpdate(playerId);
 
         ResetValue();
-        SetOverloadModifiers();
+        SetOverloadModifiers(0);
     }
 }

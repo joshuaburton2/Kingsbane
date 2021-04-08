@@ -98,40 +98,32 @@ public class UpgradeManager : MonoBehaviour
                 }
             }
 
-            //numMetConditions tracks how many active conditions the upgrade has met
-            var numMetConditions = 0;
-            //numActiveConditions tracks how many conditions are required to be checked on the upgrade
-            var numActiveConditions = 0;
-
             if (upgrade.ResourcePrerequisites.Count != 0)
             {
-                numActiveConditions++;
                 //If the deck utilises any of the required resources, then it meets the resource prerequisite (the deck is not required to meet all resource prerequisites)
-                if (upgrade.ResourcePrerequisites.Intersect(deck.DeckResources).Any())
+                if (!upgrade.ResourcePrerequisites.Intersect(deck.DeckResources).Any())
                 {
-                    numMetConditions++;
+                    continue;
                 }
             }
 
             if (upgrade.ClassPrerequisites.Count != 0)
             {
-                numActiveConditions++;
                 //If the deck's class is in the class prerequisite list for the upgrade, then it meets the class condition
-                if (upgrade.ClassPrerequisites.Contains(deck.DeckClass))
+                if (!upgrade.ClassPrerequisites.Contains(deck.DeckClass))
                 {
-                    numMetConditions++;
+                    continue;
                 }
             }
 
             if (upgrade.UpgradePrerequisites.Count != 0)
             {
-                numActiveConditions++;
                 //If the upgrades the deck already has are all in the upgrade prerequisites for the upgrade, then the count of the intersection will equal 
                 //the count of the upgrade prerequisite list. This is because any of the upgrades in the upgrade prerequisites will be removed in the intersection
                 //if they are not in the deck
-                if (upgrade.UpgradePrerequisites.Intersect(deck.UpgradeList).Count() == upgrade.UpgradePrerequisites.Count())
+                if (upgrade.UpgradePrerequisites.Intersect(deck.UpgradeList).Count() != upgrade.UpgradePrerequisites.Count())
                 {
-                    numMetConditions++;
+                    continue;
                 }
             }
 
@@ -140,11 +132,10 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (deck.PlayerResources.Select(x => x.ResourceType).Contains(CardResources.Knowledge))
                 {
-                    numActiveConditions++;
                     var playerKnowledge = (PlayerKnowledge)deck.PlayerResources.FirstOrDefault(x => x.ResourceType == CardResources.Knowledge);
-                    if (playerKnowledge.Stagnation != 0)
+                    if (playerKnowledge.Stagnation == 0)
                     {
-                        numMetConditions++;
+                        continue;
                     }
                 }
             }
@@ -152,20 +143,16 @@ public class UpgradeManager : MonoBehaviour
             {
                 if (deck.PlayerResources.Select(x => x.ResourceType).Contains(CardResources.Mana))
                 {
-                    numActiveConditions++;
                     var playerMana = (PlayerMana)deck.PlayerResources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-                    if (playerMana.CurrentOverload != 0)
+                    if (playerMana.CurrentOverload == 0)
                     {
-                        numMetConditions++;
+                        continue;
                     }
                 }
             }
 
-            //If all conditions are met by the upgrade
-            if (numMetConditions == numActiveConditions)
-            {
-                availableUpgrades.Add(upgrade);
-            }
+            //If all conditions are met add the upgrade
+            availableUpgrades.Add(upgrade);
         }
 
         return availableUpgrades;

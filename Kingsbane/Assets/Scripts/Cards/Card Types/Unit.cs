@@ -233,6 +233,12 @@ public class Unit : Card
                 Status = UnitStatuses.Enemy;
         }
 
+        if (Owner.UsedResources.Contains(CardResources.Mana))
+        {
+            var manaResource = (PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana);
+            manaResource.SetOverloadModifiers();
+        }
+
         UpdateOwnerStats();
     }
 
@@ -686,7 +692,7 @@ public class Unit : Card
             UnitCounter.RefreshUnitCounter();
     }
 
-    private void UpdateEnchantments()
+    public void UpdateEnchantments()
     {
         ResetStats();
         CurrentKeywords.Clear();
