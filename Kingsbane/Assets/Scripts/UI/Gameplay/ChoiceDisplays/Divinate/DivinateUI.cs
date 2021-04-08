@@ -24,8 +24,6 @@ public class DivinateUI : MonoBehaviour
         backgroundFade.SetActive(true);
 
         topCards = new List<Card>(cards);
-        //Since the top cards are being pulled from the bottom of the deck and need to order left to right, reverses the list
-        topCards.Reverse();
         bottomCards = new List<Card>();
         RefreshAllCards();
     }

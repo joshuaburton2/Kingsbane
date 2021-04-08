@@ -14,7 +14,7 @@ public class AlterFateContainer : MonoBehaviour
     private Card handCard;
     private Card deckCard;
 
-    private const float defaultCardScaling = 0.3f;
+    private const float defaultCardScaling = 0.24f;
 
     public void InitCardContainer(AlterFateUI _alterFateUI, Card _handCard, Card _deckCard)
     {

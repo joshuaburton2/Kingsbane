@@ -15,13 +15,37 @@ public class Hand : CardList
     /// </summary>
     /// <param name="card">The card to add</param>
     /// <returns>Whether the card could be added or not</returns>
-    public bool AddToHand(Card card, string createdBy)
+    public bool AddToHand(Card card, string createdBy = "")
     {
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (ListCount < maxHandSize)
         {
             cardList.Add(card);
-            card.CreatedByName = createdBy;
+            if(!string.IsNullOrWhiteSpace(createdBy))
+                card.CreatedByName = createdBy;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Adds a card to the hand at a specific index
+    /// 
+    /// </summary>
+    /// <param name="card">The card to add</param>
+    /// <returns>Whether the card could be added or not</returns>
+    public bool AddToHand(Card card, int index, string createdBy = "")
+    {
+        //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
+        if (ListCount < maxHandSize)
+        {
+            cardList.Insert(index, card);
+            if (!string.IsNullOrWhiteSpace(createdBy))
+                card.CreatedByName = createdBy;
             return true;
         }
         else
@@ -37,7 +61,7 @@ public class Hand : CardList
     /// </summary>
     /// <param name="cards">The list of cards to add</param>
     /// <returns>The list of cards which could not be added</returns>
-    public List<Card> AddToHand(List<Card> cards, string createdBy)
+    public List<Card> AddToHand(List<Card> cards, string createdBy = "")
     {
         var failedCards = cards;
 
@@ -49,7 +73,8 @@ public class Hand : CardList
             if (ListCount < maxHandSize)
             {
                 cardList.Add(cardToAdd);
-                cardToAdd.CreatedByName = createdBy;
+                if (!string.IsNullOrWhiteSpace(createdBy))
+                    cardToAdd.CreatedByName = createdBy;
                 failedCards.Remove(cardToAdd);
             }
             else

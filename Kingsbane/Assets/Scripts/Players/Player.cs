@@ -266,7 +266,7 @@ public class Player
         if (numToSelect == 0)
             return false;
 
-        var handCards = new List<Card>(Hand.cardList);
+        var handCards = numToSelect == Hand.ListCount ? new List<Card>(Hand.cardList) : Hand.cardList.GetRange(0, numToSelect);
         var deckCards = Deck.GetTopCards(numToSelect);
 
         GameManager.instance.effectManager.SetAlterFateMode(handCards, deckCards);
@@ -274,9 +274,25 @@ public class Player
         return true;
     }
 
-    public void AlterFate()
+    public void AlterFate(List<Card> handCards, List<Card> deckCards, List<bool> isSwapped)
     {
+        var cardCount = 0;
+        if (handCards.Count != deckCards.Count || handCards.Count != isSwapped.Count)
+            throw new Exception("Cannot Alter Fate lists of different sizes");
+        else
+            cardCount = handCards.Count;
 
+        for (int cardIndex = 0; cardIndex < cardCount; cardIndex++)
+        {
+            if (isSwapped[cardIndex])
+            {
+                var handIndex = Hand.cardList.IndexOf(deckCards[cardIndex]);
+                Hand.RemoveCard(deckCards[cardIndex]);
+                Hand.AddToHand(handCards[cardIndex], handIndex);
+                Deck.RemoveCard(handCards[cardIndex]);
+                Deck.ShuffleIntoDeck(deckCards[cardIndex]);
+            }
+        }
     }
 
     public bool AddToHand(Card newCard, string createdBy = "")

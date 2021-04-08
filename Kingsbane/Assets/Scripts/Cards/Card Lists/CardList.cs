@@ -41,6 +41,11 @@ public class CardList
         RemoveCard(card);
     }
 
+    public void Clear()
+    {
+        cardList.Clear();
+    }
+
     public void EmptyList()
     {
         cardList.Clear();

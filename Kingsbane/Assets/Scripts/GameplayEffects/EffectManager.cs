@@ -760,9 +760,14 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowAlterFateDisplay(handCards, deckCards);
     }
 
-    public void AlterFate(List<Card> handCards, List<Card> deckCards)
+    public void AlterFate(List<Card> handCards, List<Card> deckCards, List<bool> isSwapped)
     {
+        var player = GameManager.instance.GetPlayer();
+        player.AlterFate(handCards, deckCards, isSwapped);
 
+        CancelEffect = true;
+        RefreshEffectManager();
+        GameManager.instance.uiManager.RefreshUI();
     }
 
     public void SetMindControlMode(bool isActivePlayer, bool isTemporary)
