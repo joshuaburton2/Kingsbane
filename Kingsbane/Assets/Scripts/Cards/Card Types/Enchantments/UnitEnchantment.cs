@@ -50,6 +50,9 @@ public class UnitEnchantment
         if (statType == Unit.StatTypes.Default || modType == StatModifierTypes.None)
             throw new Exception("Not valid stat modifier inputs");
 
+        if (StatModifiers.Any(x => x.StatType == statType))
+            StatModifiers.RemoveAll(x => x.StatType == statType);
+
         StatModifiers.Add(new StatModifier() { StatType = statType, ModType = modType, Value = value });
     }
 

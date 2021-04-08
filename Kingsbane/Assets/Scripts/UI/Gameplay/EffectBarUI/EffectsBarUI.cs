@@ -49,6 +49,8 @@ public class EffectsBarUI : MonoBehaviour
         Bounce,
         [Description("Alter Fate")]
         AlterFate,
+        [Description("Tile Status")]
+        TileStatus,
     }
 
     [Serializable]

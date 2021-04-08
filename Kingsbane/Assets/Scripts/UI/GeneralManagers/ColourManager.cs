@@ -101,6 +101,18 @@ public class StatusEffectColours
     public Color effectColour;
 }
 
+/// <summary>
+/// 
+/// Object for storing the colour of a tile status
+/// 
+/// </summary>
+[Serializable]
+public class TileStatusColours
+{
+    public TileStatuses tileStatus;
+    public Color statusColour;
+}
+
 public static class ColourExtensions
 {
     /// <summary>
@@ -137,6 +149,8 @@ public class ColourManager : MonoBehaviour
     private List<UnitStatusColours> unitStatusColours;
     [SerializeField]
     private List<StatusEffectColours> statusEffectColours;
+    [SerializeField]
+    private List<TileStatusColours> tileStatusColours;
 
     [Header("Other Colours")]
     [SerializeField]
@@ -278,5 +292,21 @@ public class ColourManager : MonoBehaviour
             statusEffectColour = new Color();
         }
         return statusEffectColour;
+    }
+
+    /// <summary>
+    /// 
+    /// Obtain a particular tile status colour
+    /// 
+    /// </summary>
+    public Color GetTileStatusColour(TileStatuses tileStatus)
+    {
+        var tileStatusColour = new Color();
+        tileStatusColour = tileStatusColours.FirstOrDefault(x => x.tileStatus == tileStatus).statusColour;
+        if (tileStatusColour == null)
+        {
+            tileStatusColour = new Color();
+        }
+        return tileStatusColour;
     }
 }

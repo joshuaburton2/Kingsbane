@@ -43838,33 +43838,128 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[6].statColour.b
-      value: 0.06666667
+      propertyPath: tileStatusColours.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[6].statColour.g
-      value: 0.3896238
+      propertyPath: tileStatusColours.Array.data[1].tileStatus
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[6].statColour.r
-      value: 0.8773585
+      propertyPath: tileStatusColours.Array.data[2].tileStatus
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[7].statColour.b
-      value: 0.06003024
+      propertyPath: tileStatusColours.Array.data[3].tileStatus
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[7].statColour.g
-      value: 0.2678594
+      propertyPath: tileStatusColours.Array.data[4].tileStatus
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
-      propertyPath: statModColours.Array.data[7].statColour.r
-      value: 0.6698113
+      propertyPath: tileStatusColours.Array.data[0].statusColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[0].statusColour.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[0].statusColour.g
+      value: 0.836944
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[0].statusColour.r
+      value: 0.1745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[1].statusColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[1].statusColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[1].statusColour.g
+      value: 0.15494084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[1].statusColour.r
+      value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[2].statusColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[2].statusColour.b
+      value: 0.045033824
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[2].statusColour.g
+      value: 0.20094718
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[2].statusColour.r
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[3].statusColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[3].statusColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[3].statusColour.g
+      value: 0.6872892
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[3].statusColour.r
+      value: 0.8962264
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[4].statusColour.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[4].statusColour.b
+      value: 0.12517802
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[4].statusColour.g
+      value: 0.45387655
+      objectReference: {fileID: 0}
+    - target: {fileID: 8891978394799893639, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: tileStatusColours.Array.data[4].statusColour.r
+      value: 0.9150943
       objectReference: {fileID: 0}
     - target: {fileID: 8891978395099848710, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
@@ -58157,6 +58252,10 @@ MonoBehaviour:
   - effectType: 19
     activeGamePhase: 4
     effectPrefab: {fileID: 4474350282993960912, guid: b5a48f674a58a7b42b358228e2db8043,
+      type: 3}
+  - effectType: 20
+    activeGamePhase: 4
+    effectPrefab: {fileID: 6320534876454381952, guid: 7d5ccd3298b085a45af76ab36e19ed73,
       type: 3}
   effectExtensions:
   - effectType: 7

@@ -101,6 +101,9 @@ MonoBehaviour:
   backgroundImage: {fileID: 6801558084069231290}
   defaultAlpha: 0.4
   terrainType: 0
+  cellOccupant: {fileID: 0}
+  occupantCounter: {fileID: 0}
+  gameplayUI: {fileID: 0}
 --- !u!136 &2818482052509712665
 CapsuleCollider:
   m_ObjectHideFlags: 0

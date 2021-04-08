@@ -51,6 +51,7 @@ public class EffectManager : MonoBehaviour
         ReturnToHand,
         Redeploy,
         AlterFateChoice,
+        TileStatus,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -88,6 +89,7 @@ public class EffectManager : MonoBehaviour
     private DeckPositions? SelectedDeckPosition { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
     private CardResources? SelectedResource { get; set; }
+    private TileStatuses SelectedTileStatus { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -881,5 +883,16 @@ public class EffectManager : MonoBehaviour
     {
         unit.Redeploy();
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SetTileStatusMode(TileStatuses tileStatus)
+    {
+        ActiveEffect = ActiveEffectTypes.TileStatus;
+        SelectedTileStatus = tileStatus;
+    }
+
+    public void SetTileStatus(Cell cell)
+    {
+        cell.SetTileStatus(SelectedTileStatus);
     }
 }

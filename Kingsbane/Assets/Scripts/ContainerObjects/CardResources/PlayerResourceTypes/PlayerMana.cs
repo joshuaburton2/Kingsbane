@@ -76,8 +76,11 @@ public class PlayerMana : PlayerResource
     {
         base.ModifyValue(valueChange, clamp);
 
+        var pastOverload = TotalOverload;
         //If the value is less than 0, it means there is an Overload value
         CurrentOverload = Value < 0 ? -Value : 0;
+
+        SetOverloadModifiers(pastOverload);
     }
 
     /// <summary>
@@ -90,13 +93,25 @@ public class PlayerMana : PlayerResource
         return PreviousOverload -= OVERLOAD_REDUCTION;
     }
 
-    private void SetOverloadModifiers(Player player)
+    private void SetOverloadModifiers(int pastOverload = 0)
     {
-        //Need to add Empowered debuff in here when determined how this is going to work
+        var sourceString = "#OVERLOAD#";
+
+        var player = GameManager.instance.GetPlayer(PlayerId);
+
+        player.ModifyEmpowered(pastOverload);
+        player.ModifyEmpowered(-TotalOverload);
 
         foreach (var unit in player.DeployedUnits.Select(x => x.Unit))
         {
-            //unit.Attack = Mathf.Max(1, )
+            var overloadEnchantment = unit.Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Source == sourceString);
+            if(overloadEnchantment == null)
+            {
+                overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Passive, Source = sourceString };
+            }
+
+            var overLoadReduction = Mathf.Min(TotalOverload, unit.GetStat(Unit.StatTypes.Attack).Value);
+            overloadEnchantment.AddStatModifier(Unit.StatTypes.Attack, StatModifierTypes.Modify, -overLoadReduction);
         }
     }
 
@@ -110,5 +125,6 @@ public class PlayerMana : PlayerResource
         base.StartOfGameUpdate(playerId);
 
         ResetValue();
+        SetOverloadModifiers();
     }
 }

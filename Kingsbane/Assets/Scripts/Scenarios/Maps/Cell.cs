@@ -26,10 +26,13 @@ public class Cell : MonoBehaviour
 
     public GameplayUI gameplayUI;
 
+    private List<TileStatuses> currentTilesStatuses;
+
     private void Start()
     {
         cellOccupant = null;
         occupantCounter = null;
+        ClearTileStatuses();
     }
 
     private void Update()
@@ -135,6 +138,9 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.Redeploy(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.TileStatus:
+                                    GameManager.instance.effectManager.SetTileStatus(this);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;
@@ -171,5 +177,24 @@ public class Cell : MonoBehaviour
     public void HideBackground()
     {
         backgroundImage.color = new Color(0f, 0f, 0f, 0f);
+    }
+
+    public void ClearTileStatuses()
+    {
+        currentTilesStatuses = new List<TileStatuses>();
+
+        RefreshTileStatus();
+    }
+
+    public void SetTileStatus(TileStatuses tileStatus)
+    {
+        currentTilesStatuses.Add(tileStatus);
+
+        RefreshTileStatus();
+    }
+
+    private void RefreshTileStatus()
+    {
+
     }
 }

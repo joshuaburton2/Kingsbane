@@ -154,7 +154,7 @@ public class UpgradeManager : MonoBehaviour
                 {
                     numActiveConditions++;
                     var playerMana = (PlayerMana)deck.PlayerResources.FirstOrDefault(x => x.ResourceType == CardResources.Mana);
-                    if (playerMana.PreviousOverload != 0)
+                    if (playerMana.CurrentOverload != 0)
                     {
                         numMetConditions++;
                     }
