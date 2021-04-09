@@ -290,6 +290,8 @@ public class EffectManager : MonoBehaviour
                 GameManager.instance.uiManager.RefreshUI();
             }
 
+            cell.CheckTileStatusOnEntry(unit);
+
             DeployUnits.Remove(unit);
 
             GameManager.instance.CheckWarden();

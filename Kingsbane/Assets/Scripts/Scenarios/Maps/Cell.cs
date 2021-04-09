@@ -35,7 +35,7 @@ public class Cell : MonoBehaviour
 
     public GameplayUI gameplayUI;
 
-    private List<KeyValuePair<TileStatuses, int>> currentTilesStatuses;
+    private List<KeyValuePair<TileStatuses, int>> cellTileStatuses;
 
     private const int WALL_OF_FIRE_DAMAGE = 5;
     private const int CONSECREATE_DAMAGE = 2;
@@ -197,31 +197,37 @@ public class Cell : MonoBehaviour
 
     public void CellStartOfTurn(int activePlayerId)
     {
-        currentTilesStatuses.RemoveAll(x => x.Value == activePlayerId);
+        cellTileStatuses.RemoveAll(x => x.Value == activePlayerId);
 
         RefreshTileStatus();
     }
 
     public void ClearTileStatuses()
     {
-        currentTilesStatuses = new List<KeyValuePair<TileStatuses, int>>();
+        cellTileStatuses = new List<KeyValuePair<TileStatuses, int>>();
 
         RefreshTileStatus();
     }
 
     public void AddTileStatus(TileStatuses tileStatus, int sourcePlayerId)
     {
-        if (!currentTilesStatuses.Any(x => x.Key == tileStatus && x.Value == sourcePlayerId))
+        if (!cellTileStatuses.Any(x => x.Key == tileStatus && x.Value == sourcePlayerId))
         {
-            currentTilesStatuses.Add(new KeyValuePair<TileStatuses, int>(tileStatus, sourcePlayerId));
+            cellTileStatuses.Add(new KeyValuePair<TileStatuses, int>(tileStatus, sourcePlayerId));
 
             RefreshTileStatus();
 
             switch (tileStatus)
             {
+                case TileStatuses.Survey:
+                    if (occupantCounter != null)
+                        occupantCounter.Unit.Unstealth();
+                    GameManager.instance.CheckWarden();
+                    break;
                 case TileStatuses.Earthquake:
                     if (occupantCounter != null)
                         occupantCounter.Unit.DamageUnit(GameManager.instance.GetPlayer(sourcePlayerId), EARTHQUAKE_DAMAGE);
+                    //Need to add movement cost modifier in here
                     break;
                 case TileStatuses.WallOfFire:
                     if (occupantCounter != null)
@@ -244,11 +250,40 @@ public class Cell : MonoBehaviour
     private void RefreshTileStatus()
     {
         GameManager.DestroyAllChildren(tileStatusParent);
-        foreach (var tileStatus in currentTilesStatuses)
+        foreach (var tileStatus in cellTileStatuses)
         {
             var tileStatusObject = Instantiate(tileStatusPrefab, tileStatusParent.transform);
             var tileStatusScript = tileStatusObject.GetComponent<TileStatusIndicator>();
             tileStatusScript.InitIndicator(tileStatus.Key, tileStatus.Value);
         }
+    }
+
+
+    public void CheckTileStatusOnEntry(Unit unit)
+    {
+        //This will need to be applied when pathfinding is added- so that on entry is applied to all tiles passed through
+
+        foreach (var tileStatus in cellTileStatuses)
+        {
+            switch (tileStatus.Key)
+            {
+                case TileStatuses.WallOfFire:
+                    unit.DamageUnit(GameManager.instance.GetPlayer(tileStatus.Value), WALL_OF_FIRE_DAMAGE);
+                    break;
+                case TileStatuses.Sanctuary:
+                    if (unit.Owner.Id == tileStatus.Value)
+                        unit.HealUnit(SANCTUARY_HEAL);
+                    break;
+                case TileStatuses.Consecrate:
+                    if (unit.Owner.Id != tileStatus.Value)
+                        unit.DamageUnit(GameManager.instance.GetPlayer(tileStatus.Value), CONSECREATE_DAMAGE);
+                    break;
+            }
+        }
+    }
+
+    public bool IsSurveyed(int ownerId)
+    {
+        return cellTileStatuses.Any(x => x.Key == TileStatuses.Survey && x.Value == ownerId);
     }
 }

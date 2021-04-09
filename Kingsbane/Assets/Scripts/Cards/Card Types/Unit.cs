@@ -793,17 +793,16 @@ public class Unit : Card
 
     public bool CheckWarden()
     {
-        if (!HasKeyword(Keywords.Stalker))
+        if (CurrentStatusEffects.Contains(StatusEffects.Warded))
         {
-            if (CurrentStatusEffects.Contains(StatusEffects.Warded))
-            {
-                CurrentStatusEffects.Remove(StatusEffects.Warded);
-                UnitCounter.RefreshUnitCounter();
-            }
+            CurrentStatusEffects.Remove(StatusEffects.Warded);
+            UnitCounter.RefreshUnitCounter();
+        }
 
+        if (!HasKeyword(Keywords.Stalker) && !UnitCounter.Cell.IsSurveyed(Owner.Id))
+        {
             foreach (var adjCell in UnitCounter.Cell.adjCell)
             {
-
                 if (adjCell.occupantCounter != null)
                 {
                     var adjUnit = adjCell.occupantCounter.Unit;
