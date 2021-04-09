@@ -100,18 +100,18 @@ public class Player
         }
     }
 
-    public void EndOfTurn(bool isActive)
+    public void EndOfTurn()
     {
         var unitList = new List<UnitCounter>(DeployedUnits);
         foreach (var unit in unitList)
         {
-            var toDestroy = unit.Unit.EndOfTurn(isActive);
+            var toDestroy = unit.Unit.EndOfTurn(IsActivePlayer);
 
             if (toDestroy)
                 unit.Unit.RemoveUnit(true);
 
             if (unit.Unit.TemporaryMindControlled && !toDestroy)
-                unit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!isActive), false);
+                unit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!IsActivePlayer), false);
         }
     }
 

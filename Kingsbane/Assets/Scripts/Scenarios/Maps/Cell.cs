@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Cell : MonoBehaviour
 {
@@ -24,14 +25,29 @@ public class Cell : MonoBehaviour
     [SerializeField]
     public UnitCounter occupantCounter;
 
+    [Header("Tile Status Area")]
+    [SerializeField]
+    private Canvas tileStatusCanvas;
+    [SerializeField]
+    private GameObject tileStatusParent;
+    [SerializeField]
+    private GameObject tileStatusPrefab;
+
     public GameplayUI gameplayUI;
 
-    private List<TileStatuses> currentTilesStatuses;
+    private List<KeyValuePair<TileStatuses, int>> currentTilesStatuses;
+
+    private const int WALL_OF_FIRE_DAMAGE = 5;
+    private const int CONSECREATE_DAMAGE = 2;
+    private const int EARTHQUAKE_DAMAGE = 4;
+    private const int SANCTUARY_HEAL = 4;
 
     private void Start()
     {
         cellOccupant = null;
         occupantCounter = null;
+
+        tileStatusCanvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ClearTileStatuses();
     }
 
@@ -139,7 +155,7 @@ public class Cell : MonoBehaviour
                                         GameManager.instance.effectManager.Redeploy(occupantCounter.Unit);
                                     break;
                                 case EffectManager.ActiveEffectTypes.TileStatus:
-                                    GameManager.instance.effectManager.SetTileStatus(this);
+                                    GameManager.instance.effectManager.AddTileStatus(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
@@ -179,22 +195,60 @@ public class Cell : MonoBehaviour
         backgroundImage.color = new Color(0f, 0f, 0f, 0f);
     }
 
-    public void ClearTileStatuses()
+    public void CellStartOfTurn(int activePlayerId)
     {
-        currentTilesStatuses = new List<TileStatuses>();
+        currentTilesStatuses.RemoveAll(x => x.Value == activePlayerId);
 
         RefreshTileStatus();
     }
 
-    public void SetTileStatus(TileStatuses tileStatus)
+    public void ClearTileStatuses()
     {
-        currentTilesStatuses.Add(tileStatus);
+        currentTilesStatuses = new List<KeyValuePair<TileStatuses, int>>();
 
         RefreshTileStatus();
+    }
+
+    public void AddTileStatus(TileStatuses tileStatus, int sourcePlayerId)
+    {
+        if (!currentTilesStatuses.Any(x => x.Key == tileStatus && x.Value == sourcePlayerId))
+        {
+            currentTilesStatuses.Add(new KeyValuePair<TileStatuses, int>(tileStatus, sourcePlayerId));
+
+            RefreshTileStatus();
+
+            switch (tileStatus)
+            {
+                case TileStatuses.Earthquake:
+                    if (occupantCounter != null)
+                        occupantCounter.Unit.DamageUnit(GameManager.instance.GetPlayer(sourcePlayerId), EARTHQUAKE_DAMAGE);
+                    break;
+                case TileStatuses.WallOfFire:
+                    if (occupantCounter != null)
+                        occupantCounter.Unit.DamageUnit(GameManager.instance.GetPlayer(sourcePlayerId), WALL_OF_FIRE_DAMAGE);
+                    break;
+                case TileStatuses.Sanctuary:
+                    if (occupantCounter != null)
+                        if (occupantCounter.Unit.Owner.Id == sourcePlayerId)
+                            occupantCounter.Unit.HealUnit(SANCTUARY_HEAL);
+                    break;
+                case TileStatuses.Consecrate:
+                    if (occupantCounter != null)
+                        if (occupantCounter.Unit.Owner.Id != sourcePlayerId)
+                            occupantCounter.Unit.DamageUnit(GameManager.instance.GetPlayer(sourcePlayerId), CONSECREATE_DAMAGE);
+                    break;
+            }
+        }
     }
 
     private void RefreshTileStatus()
     {
-
+        GameManager.DestroyAllChildren(tileStatusParent);
+        foreach (var tileStatus in currentTilesStatuses)
+        {
+            var tileStatusObject = Instantiate(tileStatusPrefab, tileStatusParent.transform);
+            var tileStatusScript = tileStatusObject.GetComponent<TileStatusIndicator>();
+            tileStatusScript.InitIndicator(tileStatus.Key, tileStatus.Value);
+        }
     }
 }

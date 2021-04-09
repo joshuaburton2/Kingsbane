@@ -228,7 +228,7 @@ public class MapGrid : MonoBehaviour
         {
             for (int x = 0; x < numX; x++)
             {
-                Cell cell = GetCell(x, y).GetComponent<Cell>();
+                Cell cell = GetCell(x, y);
 
                 switch (filterType)
                 {
@@ -268,6 +268,19 @@ public class MapGrid : MonoBehaviour
                         cell.HideBackground();
                         break;
                 }
+            }
+        }
+    }
+
+    public void MapStartOfTurn(int activePlayerId)
+    {
+        for (int y = 0; y < numY; y++)
+        {
+            for (int x = 0; x < numX; x++)
+            {
+                var cell = GetCell(x, y).GetComponent<Cell>();
+
+                cell.CellStartOfTurn(activePlayerId);
             }
         }
     }

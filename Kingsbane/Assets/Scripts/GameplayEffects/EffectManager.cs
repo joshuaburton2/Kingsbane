@@ -891,8 +891,9 @@ public class EffectManager : MonoBehaviour
         SelectedTileStatus = tileStatus;
     }
 
-    public void SetTileStatus(Cell cell)
+    public void AddTileStatus(Cell cell)
     {
-        cell.SetTileStatus(SelectedTileStatus);
+        var activePlayer = GameManager.instance.GetPlayer();
+        cell.AddTileStatus(SelectedTileStatus, activePlayer.Id);
     }
 }

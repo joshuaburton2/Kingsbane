@@ -250,7 +250,7 @@ public class GameManager : MonoBehaviour
 
     private void PlayerStartOfTurn()
     {
-        var activePlayer = GetPlayer();
+        mapGrid.MapStartOfTurn(ActivePlayerId.Value);
 
         foreach (var player in LoadedPlayers)
         {
@@ -262,10 +262,9 @@ public class GameManager : MonoBehaviour
     {
         if (CurrentGamePhase == GamePhases.Gameplay)
         {
-            var activePlayer = GetPlayer();
             foreach (var player in LoadedPlayers)
             {
-                player.EndOfTurn(player == activePlayer);
+                player.EndOfTurn();
             }
         }
     }

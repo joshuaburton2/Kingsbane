@@ -523,8 +523,11 @@ public class Unit : Card
         }
     }
 
-    public bool DamageUnit(Player sourcePlayer, int damageValue, List<Keywords> keywords)
+    public bool DamageUnit(Player sourcePlayer, int damageValue, List<Keywords> keywords = null)
     {
+        if (keywords == null)
+            keywords = new List<Keywords>();
+
         if (keywords.Contains(Keywords.Piercing))
         {
             CurrentHealth -= damageValue;
