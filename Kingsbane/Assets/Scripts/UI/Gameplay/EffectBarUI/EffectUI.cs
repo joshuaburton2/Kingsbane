@@ -13,7 +13,7 @@ public class EffectUI : MonoBehaviour
     protected EffectsBarUI effectBarUI;
 
     [SerializeField]
-    private TextMeshProUGUI effectTitle;
+    protected TextMeshProUGUI effectTitle;
     [SerializeField]
     private CanvasGroup buttonGroup;
 

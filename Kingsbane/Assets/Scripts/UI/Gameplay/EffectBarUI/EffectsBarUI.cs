@@ -51,6 +51,8 @@ public class EffectsBarUI : MonoBehaviour
         AlterFate,
         [Description("Tile Status")]
         TileStatus,
+        [Description("Transform")]
+        Transform,
     }
 
     [Serializable]

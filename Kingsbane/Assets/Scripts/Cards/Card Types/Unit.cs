@@ -94,6 +94,7 @@ public class Unit : Card
     public List<StatusEffects> CurrentStatusEffects { get; set; }
     public List<Keywords> BaseKeywords { get { return UnitData.Keywords; } }
     public List<Keywords> CurrentKeywords { get; set; }
+    public Unit OriginalTransformForm { get; set; }
 
     public List<UnitTags> UnitTags { get { return UnitData.UnitTag; } }
     public string UnitTag { get { return string.Join(" ", UnitTags.Select(x => x.ToString())); } }
@@ -240,6 +241,21 @@ public class Unit : Card
         }
 
         UpdateOwnerStats();
+    }
+
+    public void Transform(Unit originalForm = null)
+    {
+        if (originalForm == null)
+        {
+            ResourceConvert(Classes.GetClassData(Owner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
+        }
+        else
+        {
+            OriginalTransformForm = originalForm;
+            CurrentStatusEffects.Add(StatusEffects.Transformed);
+        }
+
+        UnitCounter.RefreshUnitCounter();
     }
 
     public void UpdateOwnerStats(bool isAdded = true)

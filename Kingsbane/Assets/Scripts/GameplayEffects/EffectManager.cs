@@ -52,6 +52,7 @@ public class EffectManager : MonoBehaviour
         Redeploy,
         AlterFateChoice,
         TileStatus,
+        Transform,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -80,6 +81,7 @@ public class EffectManager : MonoBehaviour
     private Card SelectedCard { get; set; }
     private Unit CommandUnit { get; set; }
     private List<Unit> DeployUnits { get; set; }
+    private CardData SelectedCardData { get; set; }
     private Item SelectedItem { get; set; }
     private Ability SelectedAbility { get; set; }
     private UnitEnchantment SelectedEnchantment { get; set; }
@@ -116,6 +118,7 @@ public class EffectManager : MonoBehaviour
         if (fullReset)
             ActiveEffect = ActiveEffectTypes.None;
 
+        SelectedCardData = null;
         SelectedEnchantment = null;
         SelectedAbility = null;
         SelectedValue = null;
@@ -253,7 +256,11 @@ public class EffectManager : MonoBehaviour
     public GameObject DeployUnit(Cell cell)
     {
         if (DeployUnits.FirstOrDefault().CheckOccupancy(cell))
-            return CreateUnitCounter(DeployUnits.FirstOrDefault(), cell);
+        {
+            var unitObject = CreateUnitCounter(DeployUnits.FirstOrDefault(), cell);
+            RefreshEffectManager();
+            return unitObject;
+        }
         else
             return null;
     }
@@ -297,8 +304,6 @@ public class EffectManager : MonoBehaviour
             GameManager.instance.CheckWarden();
 
             unitCounterScript.RefreshUnitCounter();
-            RefreshEffectManager();
-
 
             return createdCounter;
         }
@@ -351,6 +356,7 @@ public class EffectManager : MonoBehaviour
                 {
                     RemoveUnitCounter(CommandUnit.UnitCounter);
                     CreateUnitCounter(CommandUnit, newCell, false);
+                    RefreshEffectManager();
                     GameManager.instance.uiManager.RefreshUI();
                 }
             }
@@ -446,6 +452,7 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
+
         if (unitCounter.Unit == CommandUnit &&
             ActiveEffect != ActiveEffectTypes.UnitMove &&
             ActiveEffect != ActiveEffectTypes.UnitForceMove &&
@@ -462,6 +469,7 @@ public class EffectManager : MonoBehaviour
     {
         Destroy(unitCounter.gameObject);
         unitCounter.Cell.occupantCounter = null;
+        unitCounter.Unit.UnitCounter = null;
     }
 
     public void MulliganHand()
@@ -897,5 +905,27 @@ public class EffectManager : MonoBehaviour
     {
         var activePlayer = GameManager.instance.GetPlayer();
         cell.AddTileStatus(SelectedTileStatus, activePlayer.Id);
+    }
+
+    public bool SetTransformMode(string unitName, bool isPermanent)
+    {
+        ActiveEffect = ActiveEffectTypes.Transform;
+
+        SelectedCardData = GameManager.instance.libraryManager.GetCard(unitName);
+        if (SelectedCardData == null)
+            return false;
+
+        SelectedBoolean = isPermanent;
+
+        return true;
+    }
+
+    public void TransformUnit(Cell currentCell, Unit unit)
+    {
+        unit.RemoveUnit();
+
+        var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
+        CreateUnitCounter(transformUnit, currentCell);
+        transformUnit.Transform(SelectedBoolean.Value ? null : unit);
     }
 }

@@ -289,7 +289,7 @@ public class LibraryManager : MonoBehaviour
     /// </summary>
     public CardData GetCard(string nameSearch)
     {
-        return CardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower().Contains(nameSearch.ToLower()));
+        return CardLibrary.CardList.FirstOrDefault(x => x.Name.ToLower() == nameSearch.ToLower());
     }
 
     /// <summary>

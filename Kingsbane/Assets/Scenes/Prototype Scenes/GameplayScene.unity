@@ -51254,7 +51254,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: -0.000015258789
+  m_Value: 0.000030517578
   m_Size: 0.9885714
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -58256,6 +58256,10 @@ MonoBehaviour:
   - effectType: 20
     activeGamePhase: 4
     effectPrefab: {fileID: 6320534876454381952, guid: 7d5ccd3298b085a45af76ab36e19ed73,
+      type: 3}
+  - effectType: 21
+    activeGamePhase: 4
+    effectPrefab: {fileID: 8122630956346064201, guid: 297b2bb14ba9a2745baf14420682b929,
       type: 3}
   effectExtensions:
   - effectType: 7

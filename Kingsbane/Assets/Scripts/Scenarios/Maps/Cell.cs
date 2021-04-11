@@ -157,6 +157,10 @@ public class Cell : MonoBehaviour
                                 case EffectManager.ActiveEffectTypes.TileStatus:
                                     GameManager.instance.effectManager.AddTileStatus(this);
                                     break;
+                                case EffectManager.ActiveEffectTypes.Transform:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.TransformUnit(this, occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;
