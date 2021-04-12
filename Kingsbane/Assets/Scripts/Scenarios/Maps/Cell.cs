@@ -21,8 +21,6 @@ public class Cell : MonoBehaviour
     [SerializeField]
     public Objective objective;
     [SerializeField]
-    private GameObject cellOccupant;
-    [SerializeField]
     public UnitCounter occupantCounter;
 
     [Header("Tile Status Area")]
@@ -44,7 +42,6 @@ public class Cell : MonoBehaviour
 
     private void Start()
     {
-        cellOccupant = null;
         occupantCounter = null;
 
         tileStatusCanvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -70,7 +67,7 @@ public class Cell : MonoBehaviour
                             {
                                 case EffectManager.ActiveEffectTypes.Deployment:
                                 case EffectManager.ActiveEffectTypes.ForceDeployment:
-                                    cellOccupant = GameManager.instance.effectManager.DeployUnit(this);
+                                    GameManager.instance.effectManager.DeployUnit(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.UnitCopyMode:
                                     if (occupantCounter != null)

@@ -93,8 +93,11 @@ public class UnitCounter : MonoBehaviour
         }
 
         if (Unit.Rarity == Rarity.Hero || Unit.Rarity == Rarity.NPCHero)
+            GameManager.instance.uiManager.RefreshHeroStats(Owner.Id);
+        else if (Unit.OriginalTransformForm != null)
         {
-            GameManager.instance.uiManager.RefreshHeroStats = GameManager.instance.NumPlayers;
+            if (Unit.OriginalTransformForm.Rarity == Rarity.Hero || Unit.OriginalTransformForm.Rarity == Rarity.NPCHero)
+                GameManager.instance.uiManager.RefreshHeroStats(Owner.Id);
         }
     }
 

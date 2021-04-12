@@ -214,6 +214,11 @@ public class GameplayUI : MonoBehaviour
         }
     }
 
+    public void RefreshHeroStats(int id, Unit overrideUnit)
+    {
+        playerUIBars[id].RefreshHeroStats(overrideUnit);
+    }
+
     public void SetSelectedCommandUnit(Unit unit = null)
     {
         playerUIBars[GameManager.instance.ActivePlayerId.Value].SetSelectedCommandUnit(unit);

@@ -243,7 +243,7 @@ public class Unit : Card
         UpdateOwnerStats();
     }
 
-    public void Transform(Unit originalForm = null)
+    public void Transform(bool canAction, Unit originalForm = null)
     {
         if (originalForm == null)
         {
@@ -255,7 +255,36 @@ public class Unit : Card
             CurrentStatusEffects.Add(StatusEffects.Transformed);
         }
 
+        if (originalForm != null && originalForm.IsHero)
+        {
+            GameManager.instance.uiManager.RefreshHeroStats(Owner.Id, this);
+        }
+
+        if (canAction)
+        {
+            RefreshActions();
+        }
+
+
         UnitCounter.RefreshUnitCounter();
+    }
+
+    public void ReturnToOriginalForm()
+    {
+        if (HasStatusEffect(StatusEffects.Transformed))
+        {
+            var currentCell = UnitCounter.Cell;
+            RemoveUnit();
+            GameManager.instance.effectManager.CreateUnitCounter(OriginalTransformForm, currentCell);
+
+
+            if (OriginalTransformForm.IsHero)
+            {
+                GameManager.instance.uiManager.RefreshHeroStats(Owner.Id, OriginalTransformForm);
+            }
+        }
+        else
+            throw new Exception("Cannot return a non-transformed unit to its original form.");
     }
 
     public void UpdateOwnerStats(bool isAdded = true)
@@ -405,7 +434,7 @@ public class Unit : Card
         return false;
     }
 
-    public void UseSpeed(int usedSpeed)
+    public void UseSpeed(int usedSpeed, bool isDisengage)
     {
         if (usedSpeed == 0)
         {
@@ -414,23 +443,10 @@ public class Unit : Card
         else
         {
             RemainingSpeed -= usedSpeed;
-            Status = UnitStatuses.Middle;
-
-            UnitCounter.RefreshUnitCounter();
-            GameManager.instance.effectManager.RefreshEffectManager();
-        }
-    }
-
-    public void UseDisengageSpeed(int usedSpeed)
-    {
-        if (usedSpeed == 0)
-        {
-            throw new Exception("Cannot Use 0 Speed");
-        }
-        else
-        {
-            RemainingSpeed -= usedSpeed;
-            ModifyActions(-1);
+            if (isDisengage)
+                ModifyActions(-1);
+            else
+                Status = UnitStatuses.Middle;
 
             UnitCounter.RefreshUnitCounter();
             GameManager.instance.effectManager.RefreshEffectManager();
@@ -584,7 +600,9 @@ public class Unit : Card
             }
         }
 
-        UnitCounter.RefreshUnitCounter();
+        if (UnitCounter != null)
+            UnitCounter.RefreshUnitCounter();
+
         return CurrentHealth <= 0;
     }
 
@@ -627,18 +645,20 @@ public class Unit : Card
 
     public void RemoveUnit(bool isDestroy = false)
     {
-        GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
-
-        if (isDestroy)
+        if (HasStatusEffect(StatusEffects.Transformed) && isDestroy)
         {
-            Owner.AddToGraveyard(this);
-
-            UpdateOwnerStats(false);
-
-            UnitCounter.Cell.gameplayUI.RefreshPlayerBar(Owner.Id);
+            ReturnToOriginalForm();
         }
+        else
+        {
+            if (isDestroy)
+                Owner.AddToGraveyard(this);
 
-        GameManager.instance.CheckWarden();
+            GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+            UpdateOwnerStats(false);
+            GameManager.instance.uiManager.RefreshUI();
+            GameManager.instance.CheckWarden();
+        }
     }
 
     public bool CanUseAbility(Ability ability)
@@ -716,12 +736,24 @@ public class Unit : Card
         ResetStats();
         CurrentKeywords.Clear();
 
-        foreach (var enchantment in Enchantments.OrderByDescending(x => x.Enchantment.Status))
+        foreach (var enchantment in Enchantments.OrderBy(x => x.Enchantment.Status))
         {
             if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
             {
                 if (enchantment.IsActive)
                 {
+                    if (enchantment.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive)
+                    {
+                        var totalOverload = enchantment.Enchantment.StatModifiers.Single(x => x.StatType == StatTypes.Attack).Value;
+                        Debug.Log(totalOverload);
+                        var currentAttack = GetStat(StatTypes.Attack);
+
+                        var attackModifier = Mathf.Min(totalOverload, currentAttack.Value - 1);
+                        Debug.Log(attackModifier);
+
+                        enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
+                    }
+
                     foreach (var statModifier in enchantment.Enchantment.StatModifiers)
                     {
                         ModifyStat(statModifier.ModType, statModifier.StatType, statModifier.Value);
@@ -878,15 +910,28 @@ public class Unit : Card
 
     public void Spellbind()
     {
-        foreach (var enchantment in Enchantments)
-            if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
-                enchantment.IsActive = false;
+        if (HasStatusEffect(StatusEffects.Transformed))
+        {
+            ReturnToOriginalForm();
+            OriginalTransformForm.Spellbind();
+        }
+        else
+        {
+            foreach (var enchantment in Enchantments)
+                if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
+                    enchantment.IsActive = false;
 
-        CurrentStatusEffects.Clear();
-        CurrentStatusEffects.Add(StatusEffects.Spellbound);
-        UpdateEnchantments();
+            CurrentStatusEffects.Clear();
+            CurrentStatusEffects.Add(StatusEffects.Spellbound);
+            UpdateEnchantments();
+        }
     }
 
+    /// <summary>
+    ///
+    /// DEPRICATED: DO NOT USE
+    ///
+    /// </summary>
     public void RestoreEnchantments()
     {
         if (CurrentStatusEffects.Contains(StatusEffects.Spellbound))
@@ -958,14 +1003,23 @@ public class Unit : Card
 
     public void ReturnToHand()
     {
-        if (IsHero)
+        if (HasStatusEffect(StatusEffects.Transformed))
         {
-            Redeploy();
+            ReturnToOriginalForm();
+            OriginalTransformForm.ReturnToHand();
         }
         else
         {
-            RemoveUnit();
-            Owner.AddToHand(this);
+            if (IsHero)
+            {
+                Redeploy();
+            }
+            else
+            {
+                RemoveUnit();
+                InitCard(CardData, Owner);
+                Owner.AddToHand(this);
+            }
         }
     }
 
@@ -973,5 +1027,35 @@ public class Unit : Card
     {
         RemoveUnit();
         Owner.AddToRedeploy(this);
+    }
+
+    public void ModifyOverloadEnchantment(PlayerMana manaResource = null)
+    {
+        string overloadSourceString = "Overload Reduction";
+
+        if (Owner.UsedResources.Contains(CardResources.Mana))
+        {
+            if (manaResource == null)
+                manaResource = (PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana);
+
+            var overloadEnchantment = Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Source == overloadSourceString);
+            var isNew = false;
+            if (overloadEnchantment == null)
+            {
+                overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.OverloadPassive, Source = overloadSourceString };
+                isNew = true;
+            }
+
+            overloadEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, manaResource.TotalOverload);
+
+            if (isNew)
+                AddEnchantment(overloadEnchantment);
+            else
+                UpdateEnchantments();
+        }
+        else
+        {
+            throw new Exception("Cannot modify overload enchantment for a non-mana class");
+        }
     }
 }

@@ -17,6 +17,7 @@ public class UnitEnchantment
         EndOfOpponentTurn,
         AfterAttack,
         Passive,
+        OverloadPassive,
     }
 
     public class StatModifier
@@ -103,6 +104,7 @@ public class UnitEnchantment
                 text.Add("until after the unit attacks.");
                 break;
             case EnchantmentStatus.Passive:
+            case EnchantmentStatus.OverloadPassive:
                 text.Add("passively.");
                 break;
             case EnchantmentStatus.Base:

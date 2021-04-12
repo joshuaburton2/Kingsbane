@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
 {
-    private Hero hero;
+    private Unit hero;
 
     [SerializeField]
     private Image heroImage;
@@ -28,21 +28,12 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private TextMeshProUGUI speedText;
 
-    private void Update()
-    {
-        if (GameManager.instance.uiManager.RefreshHeroStats != 0)
-        {
-            RefreshHeroStats();
-            GameManager.instance.uiManager.RefreshHeroStats--;
-        }
-    }
-
     /// <summary>
     /// 
     /// Initialises the hero stat area
     /// 
     /// </summary>
-    public void InitHeroStats(Hero _hero)
+    public void InitHeroStats(Unit _hero)
     {
         hero = _hero;
 

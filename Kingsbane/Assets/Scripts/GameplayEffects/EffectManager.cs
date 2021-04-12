@@ -922,10 +922,13 @@ public class EffectManager : MonoBehaviour
 
     public void TransformUnit(Cell currentCell, Unit unit)
     {
-        unit.RemoveUnit();
+        if (!unit.HasStatusEffect(Unit.StatusEffects.Transformed))
+        {
+            unit.RemoveUnit();
 
-        var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
-        CreateUnitCounter(transformUnit, currentCell);
-        transformUnit.Transform(SelectedBoolean.Value ? null : unit);
+            var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
+            CreateUnitCounter(transformUnit, currentCell);
+            transformUnit.Transform(unit.Status == Unit.UnitStatuses.Start, SelectedBoolean.Value ? null : unit);
+        }
     }
 }

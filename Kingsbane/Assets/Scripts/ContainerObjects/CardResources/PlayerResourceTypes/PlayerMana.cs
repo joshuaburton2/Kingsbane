@@ -95,8 +95,6 @@ public class PlayerMana : PlayerResource
 
     public void SetOverloadModifiers(int? pastOverload = null)
     {
-        var sourceString = "Overload Reduction";
-
         var player = GameManager.instance.GetPlayer(PlayerId);
 
         if (pastOverload.HasValue)
@@ -107,23 +105,7 @@ public class PlayerMana : PlayerResource
 
         foreach (var unit in player.DeployedUnits.Select(x => x.Unit))
         {
-            var overloadEnchantment = unit.Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Source == sourceString);
-            var isNew = false;
-            if (overloadEnchantment == null)
-            {
-                overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Passive, Source = sourceString };
-                isNew = true;
-
-            }
-
-            var currentAttack = unit.HasBuffedAttack == StatisticStatuses.Buffed ? unit.GetStat(Unit.StatTypes.Attack).Value : unit.UnitData.Attack;
-            var overLoadReduction = Mathf.Min(TotalOverload, currentAttack - 1);
-            overloadEnchantment.AddStatModifier(Unit.StatTypes.Attack, StatModifierTypes.Modify, -overLoadReduction);
-
-            if (isNew)
-                unit.AddEnchantment(overloadEnchantment);
-            else
-                unit.UpdateEnchantments();
+            unit.ModifyOverloadEnchantment(this);
         }
     }
 

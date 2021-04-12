@@ -51,8 +51,6 @@ public class UIManager : MonoBehaviour
     [Header("Other Properties")]
     public ActiveMainPanels activeMainPanel;
 
-    public int RefreshHeroStats { get; set; }
-
     /// <summary>
     /// 
     /// Find the required pages for the main menu
@@ -74,8 +72,6 @@ public class UIManager : MonoBehaviour
         upgradeDetailDisplay.gameObject.SetActive(false);
         lobbyPage.gameObject.SetActive(false);
         cardLibrary.gameObject.SetActive(false);
-
-        RefreshHeroStats = 0;
     }
 
     /// <summary>
@@ -134,10 +130,20 @@ public class UIManager : MonoBehaviour
     {
         switch (GameManager.instance.sceneManager.ActiveScene)
         {
-            case SceneList.MainMenuScene:
-                throw new Exception("Not a valid scene to refresh");
             case SceneList.GameplayScene:
                 gameplayUI.RefreshPlayerBar();
+                break;
+            default:
+                throw new Exception("Not a valid scene to refresh");
+        }
+    }
+
+    public void RefreshHeroStats(int playerId, Unit overrideUnit = null)
+    {
+        switch (GameManager.instance.sceneManager.ActiveScene)
+        {
+            case SceneList.GameplayScene:
+                gameplayUI.RefreshHeroStats(playerId, overrideUnit);
                 break;
             default:
                 throw new Exception("Not a valid scene to refresh");

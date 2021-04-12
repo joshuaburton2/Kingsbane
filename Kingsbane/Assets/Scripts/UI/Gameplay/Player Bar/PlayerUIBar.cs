@@ -77,6 +77,14 @@ public class PlayerUIBar : MonoBehaviour
         cardListsUI.gameObject.SetActive(false);
     }
 
+    public void RefreshHeroStats(Unit overrideUnit)
+    {
+        if (overrideUnit == null)
+            heroUI.RefreshHeroUI();
+        else
+            heroUI.OverrideHero(overrideUnit);
+    }
+
     private void ShowUpgradesInHand()
     {
         handUI.DisplayHandList(gameplayUI, Player.Upgrades.Where(x => !x.IsRepeatable).ToList(), true, Id);

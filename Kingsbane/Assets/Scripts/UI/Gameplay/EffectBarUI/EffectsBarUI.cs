@@ -23,8 +23,8 @@ public class EffectsBarUI : MonoBehaviour
         Protected,
         [Description("Destroy Unit")]
         DestroyUnit,
-        [Description("Unit Enchantment")]
-        UnitEnchantment,
+        [Description("Enchantment")]
+        Enchantment,
         [Description("Crowd Control")]
         CrowdControl,
         [Description("Deploy Unit")]

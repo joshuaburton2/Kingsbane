@@ -50,6 +50,13 @@ public class HeroUI : MonoBehaviour
         RefreshHeroUI();
     }
 
+    public void OverrideHero(Unit overrideUnit)
+    {
+        heroStatUI.InitHeroStats(overrideUnit);
+
+        heroStatUI.RefreshHeroStats();
+    }
+
     /// <summary>
     /// 
     /// Refreshes the Hero UI
