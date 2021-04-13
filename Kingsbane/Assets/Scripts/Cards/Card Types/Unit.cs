@@ -744,12 +744,13 @@ public class Unit : Card
                 {
                     if (enchantment.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive)
                     {
-                        var totalOverload = enchantment.Enchantment.StatModifiers.Single(x => x.StatType == StatTypes.Attack).Value;
-                        Debug.Log(totalOverload);
+                        var totalOverload = 0;
+                        if (Owner.UsedResources.Contains(CardResources.Mana))
+                            totalOverload = ((PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana)).TotalOverload;
+
                         var currentAttack = GetStat(StatTypes.Attack);
 
                         var attackModifier = Mathf.Min(totalOverload, currentAttack.Value - 1);
-                        Debug.Log(attackModifier);
 
                         enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
                     }

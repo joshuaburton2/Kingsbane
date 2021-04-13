@@ -100,6 +100,7 @@ public class GameSceneManager : MonoBehaviour
                 GameManager.instance.CheckGameLoad();
                 GameManager.instance.InitialiseGameplayScene();
 
+                GameManager.instance.StartGame();
                 GameManager.instance.uiManager.SyncGameplayPages();
             }
 

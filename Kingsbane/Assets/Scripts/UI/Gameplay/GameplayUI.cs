@@ -62,10 +62,10 @@ public class GameplayUI : MonoBehaviour
 
     public void CancelEffects()
     {
-        if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
-        {
+        //if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
+        //{
             SetSelectedCommandUnit();
-        }
+        //}
 
         GameManager.instance.effectManager.CancelEffectManager();
     }
@@ -81,8 +81,6 @@ public class GameplayUI : MonoBehaviour
         keyDisplay.SetActive(false);
 
         CurrentMapFilter = MapGrid.MapFilters.Terrain;
-
-        GameManager.instance.StartGame();
 
         var counter = 0;
         foreach (var playerBar in playerUIBars)
