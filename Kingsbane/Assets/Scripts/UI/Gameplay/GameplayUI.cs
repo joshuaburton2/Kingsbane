@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -151,7 +152,7 @@ public class GameplayUI : MonoBehaviour
             case GameManager.GamePhases.End:
                 break;
             default:
-                break;
+                throw new Exception("Not a valid game phase");
         }
 
         effectBarUI.RefreshEffectList();

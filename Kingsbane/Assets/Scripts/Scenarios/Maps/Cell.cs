@@ -73,6 +73,10 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.SelectCopyUnit(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.SelectCaster:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.SelectCaster(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.Spell:
                                     GameManager.instance.effectManager.CastSpell(this);
                                     break;
@@ -178,10 +182,13 @@ public class Cell : MonoBehaviour
 
     private void SelectCommandUnit()
     {
-        if (occupantCounter != null)
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
         {
-            GameManager.instance.effectManager.SetCommandUnit(occupantCounter.Unit);
-            gameplayUI.SetSelectedCommandUnit(occupantCounter.Unit);
+            if (occupantCounter != null)
+            {
+                GameManager.instance.effectManager.SetCommandUnit(occupantCounter.Unit);
+                gameplayUI.SetSelectedCommandUnit(occupantCounter.Unit);
+            }
         }
     }
 

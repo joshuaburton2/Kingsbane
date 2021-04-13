@@ -12,6 +12,7 @@ public class EffectManager : MonoBehaviour
         None,
         Deployment,
         ForceDeployment,
+        SelectCaster,
         Spell,
         Equip,
         ForceEquip,
@@ -62,7 +63,7 @@ public class EffectManager : MonoBehaviour
     private readonly List<ActiveEffectTypes> NonCancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.None,
-        ActiveEffectTypes.UnitCommand,
+        //ActiveEffectTypes.UnitCommand,
         ActiveEffectTypes.ForceDeployment,
         ActiveEffectTypes.ForceEquip,
         ActiveEffectTypes.GraveyardToDeployChoice,
@@ -79,7 +80,7 @@ public class EffectManager : MonoBehaviour
     };
 
     private Card SelectedCard { get; set; }
-    private Unit CommandUnit { get; set; }
+    private Unit SelectedUnit { get; set; }
     private List<Unit> DeployUnits { get; set; }
     private CardData SelectedCardData { get; set; }
     private Item SelectedItem { get; set; }
@@ -134,15 +135,25 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.None;
 
                 SelectedCard = null;
-                CommandUnit = null;
+                if (SelectedUnit != null)
+                    SelectedUnit.UnitCounter.ShowUnitSelector(false);
+                SelectedUnit = null;
                 DeployUnits = new List<Unit>();
                 SelectedItem = null;
 
                 break;
+            case ActiveEffectTypes.Spell:
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.SelectCaster : ActiveEffectTypes.None;
+                CancelEffect = false;
+
+                if (SelectedUnit != null)
+                    SelectedUnit.UnitCounter.ShowUnitSelector(false);
+                SelectedUnit = null;
+                break;
             case ActiveEffectTypes.Deployment:
             case ActiveEffectTypes.ForceDeployment:
                 SelectedCard = null;
-                CommandUnit = null;
+                SelectedUnit = null;
 
                 if (DeployUnits.Count == 0 || CancelEffect)
                 {
@@ -153,7 +164,7 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.Equip:
             case ActiveEffectTypes.ForceEquip:
                 SelectedCard = null;
-                CommandUnit = null;
+                SelectedItem = null;
 
                 if (SelectedItem == null || CancelEffect)
                     ActiveEffect = ActiveEffectTypes.None;
@@ -203,7 +214,7 @@ public class EffectManager : MonoBehaviour
                 SetDeployUnit((Unit)card);
                 break;
             case CardTypes.Spell:
-                ActiveEffect = ActiveEffectTypes.Spell;
+                ActiveEffect = ActiveEffectTypes.SelectCaster;
                 break;
             case CardTypes.Item:
                 ActiveEffect = ActiveEffectTypes.Equip;
@@ -352,10 +363,10 @@ public class EffectManager : MonoBehaviour
         {
             if (newCell.occupantCounter == null)
             {
-                if (CommandUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
+                if (SelectedUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
                 {
-                    RemoveUnitCounter(CommandUnit.UnitCounter);
-                    CreateUnitCounter(CommandUnit, newCell, false);
+                    RemoveUnitCounter(SelectedUnit.UnitCounter);
+                    CreateUnitCounter(SelectedUnit, newCell, false);
                     RefreshEffectManager();
                     GameManager.instance.uiManager.RefreshUI();
                 }
@@ -375,9 +386,9 @@ public class EffectManager : MonoBehaviour
     {
         if (targetUnit != null)
         {
-            if (CommandUnit.CanAttackTarget(targetUnit))
+            if (SelectedUnit.CanAttackTarget(targetUnit))
             {
-                CommandUnit.TriggerAttack(targetUnit);
+                SelectedUnit.TriggerAttack(targetUnit);
                 RefreshEffectManager();
                 GameManager.instance.uiManager.RefreshUI();
             }
@@ -395,15 +406,33 @@ public class EffectManager : MonoBehaviour
 
     public void UseAbility()
     {
-        CommandUnit.UseAbility(SelectedAbility);
+        SelectedUnit.UseAbility(SelectedAbility);
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
+    }
+
+    public void SelectCaster(Unit caster)
+    {
+        if (caster.CanCastSpell)
+        {
+            if (((Spell)SelectedCard).SpellRange == 0)
+            {
+                CastSpell(caster.UnitCounter.Cell);
+            }
+            else
+            {
+                SelectedUnit = caster;
+                ActiveEffect = ActiveEffectTypes.Spell;
+                SelectedUnit.UnitCounter.ShowUnitSelector(true);
+            }
+        }
     }
 
     public void CastSpell(Cell targetCell)
     {
         if (SelectedCard != null)
         {
+            //Need to account for caster (Selected Unit)
             SelectedCard.Play();
             GameManager.instance.uiManager.RefreshUI();
             RefreshEffectManager();
@@ -453,14 +482,14 @@ public class EffectManager : MonoBehaviour
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
 
-        if (unitCounter.Unit == CommandUnit &&
+        if (unitCounter.Unit == SelectedUnit &&
             ActiveEffect != ActiveEffectTypes.UnitMove &&
             ActiveEffect != ActiveEffectTypes.UnitForceMove &&
             ActiveEffect != ActiveEffectTypes.UnitUseSpeed &&
             ActiveEffect != ActiveEffectTypes.UnitDisengage &&
             ActiveEffect != ActiveEffectTypes.UnitUseDisengageSpeed)
         {
-            CommandUnit = null;
+            SelectedUnit = null;
             GameManager.instance.uiManager.RefreshUI();
         }
     }
@@ -479,11 +508,11 @@ public class EffectManager : MonoBehaviour
 
     public void SetCommandUnit(Unit _selectedUnit)
     {
-        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-        {
-            CommandUnit = _selectedUnit;
-        }
+        if (SelectedUnit != null)
+            SelectedUnit.UnitCounter.ShowUnitSelector(false);
+        SelectedUnit = _selectedUnit;
         ActiveEffect = ActiveEffectTypes.UnitCommand;
+        _selectedUnit.UnitCounter.ShowUnitSelector(true);
     }
 
     public void SetDealDamageMode(int damageValue, List<Keywords> keywords)

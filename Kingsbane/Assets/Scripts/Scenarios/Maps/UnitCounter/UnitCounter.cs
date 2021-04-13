@@ -20,6 +20,8 @@ public class UnitCounter : MonoBehaviour
     private TextMeshProUGUI nameText;
     [SerializeField]
     private Image unitImage;
+    [SerializeField]
+    private GameObject unitSelector;
 
     [Header("Unit Properties")]
     [SerializeField]
@@ -49,6 +51,8 @@ public class UnitCounter : MonoBehaviour
     {
         Unit = _unit;
         Cell = _cell;
+
+        unitSelector.SetActive(false);
 
         canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         if (GameManager.instance.imageManager.IsDefaultImage(Unit.CardArt))
@@ -104,5 +108,10 @@ public class UnitCounter : MonoBehaviour
     public void ShowCardDetail()
     {
         GameManager.instance.uiManager.ActivateCardDetail(Unit.CardData);
+    }
+
+    public void ShowUnitSelector(bool state)
+    {
+        unitSelector.SetActive(state);
     }
 }

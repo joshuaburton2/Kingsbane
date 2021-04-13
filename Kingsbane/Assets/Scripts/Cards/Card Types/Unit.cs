@@ -87,6 +87,16 @@ public class Unit : Card
     public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned); } }
     public bool LoseNextAction { get; set; }
     public bool CanAttack { get { return CanAction && GetStat(StatTypes.Attack) > 0; } }
+    public bool CanCastSpell 
+    { 
+        get 
+        { 
+            return (Status != UnitStatuses.Enemy &&
+                ((Status == UnitStatuses.Preparing && IsHero && GameManager.instance.CurrentRound == 1) || Status != UnitStatuses.Preparing))
+                && !HasStatusEffect(StatusEffects.Stunned) 
+                && (HasKeyword(Keywords.Conduit) || IsHero); 
+        } 
+    }
     public bool CanFlyOrLand { get; set; }
     public bool TemporaryMindControlled { get; set; }
 
