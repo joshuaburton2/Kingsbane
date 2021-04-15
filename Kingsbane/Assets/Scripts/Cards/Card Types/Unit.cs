@@ -83,19 +83,19 @@ public class Unit : Card
     private int remainingSpeed;
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
-    public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0 && !HasStatusEffect(StatusEffects.Rooted) && !HasStatusEffect(StatusEffects.Stunned); } }
-    public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned); } }
+    public bool CanMove { get { return ActionsLeft > 0 && RemainingSpeed > 0 && !HasStatusEffect(StatusEffects.Rooted) && !HasStatusEffect(StatusEffects.Stunned) && Status != UnitStatuses.Preparing; } }
+    public bool CanAction { get { return ActionsLeft > 0 && !HasStatusEffect(StatusEffects.Stunned) && Status != UnitStatuses.Preparing; } }
     public bool LoseNextAction { get; set; }
     public bool CanAttack { get { return CanAction && GetStat(StatTypes.Attack) > 0; } }
-    public bool CanCastSpell 
-    { 
-        get 
-        { 
+    public bool CanCastSpell
+    {
+        get
+        {
             return (Status != UnitStatuses.Enemy &&
                 ((Status == UnitStatuses.Preparing && IsHero && GameManager.instance.CurrentRound == 1) || Status != UnitStatuses.Preparing))
-                && !HasStatusEffect(StatusEffects.Stunned) 
-                && (HasKeyword(Keywords.Conduit) || IsHero); 
-        } 
+                && !HasStatusEffect(StatusEffects.Stunned)
+                && (HasKeyword(Keywords.Conduit) || IsHero);
+        }
     }
     public bool CanFlyOrLand { get; set; }
     public bool TemporaryMindControlled { get; set; }
@@ -777,13 +777,21 @@ public class Unit : Card
                                     if (statModifier.StatType == StatTypes.MaxHealth)
                                         CurrentHealth += statModifier.Value;
                                     if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                                    {
                                         RemainingSpeed += statModifier.Value;
+                                        if (CanMove && Status != UnitStatuses.Enemy && Status != UnitStatuses.Start)
+                                            Status = UnitStatuses.Middle;
+                                    }
                                     break;
                                 case StatModifierTypes.Set:
                                     if (statModifier.StatType == StatTypes.MaxHealth)
                                         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
                                     if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
+                                    {
                                         RemainingSpeed = GetStat(StatTypes.Speed).Value;
+                                        if (CanMove && Status != UnitStatuses.Enemy && Status != UnitStatuses.Start)
+                                            Status = UnitStatuses.Middle;
+                                    }
                                     break;
                                 default:
                                     break;

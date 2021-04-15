@@ -425,6 +425,8 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.Spell;
                 SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
+
+            caster.Unstealth();
         }
     }
 
