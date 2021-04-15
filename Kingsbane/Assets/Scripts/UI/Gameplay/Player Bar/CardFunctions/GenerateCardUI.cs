@@ -170,7 +170,7 @@ public class GenerateCardUI : MonoBehaviour
                 GetStatModifier(enchantment, Unit.StatTypes.Speed, speedModTypeDropdown, speedValueInput);
                 GetStatModifier(enchantment, Unit.StatTypes.Empowered, empoweredModTypeDropdown, empoweredValueInput);
 
-                if(enchantment.ValidEnchantment)
+                if (enchantment.ValidEnchantment)
                     GenerationFilter.Enchantment = enchantment;
             }
 
@@ -239,15 +239,22 @@ public class GenerateCardUI : MonoBehaviour
     /// </summary>
     public void CardTypeChange()
     {
-        switch ((CardTypes)Enum.Parse(typeof(CardTypes), typeDropdown.captionText.text.Replace(" ", "")))
+        if (typeDropdown.captionText.text == DEFAULT_DROPDOWN_STRING)
         {
-            case CardTypes.Unit:
-                unitEnchantmentArea.SetActive(true);
-                ClearEnchantmentFields();
-                break;
-            default:
-                unitEnchantmentArea.SetActive(false);
-                break;
+            unitEnchantmentArea.SetActive(false);
+        }
+        else
+        {
+            switch ((CardTypes)Enum.Parse(typeof(CardTypes), typeDropdown.captionText.text.Replace(" ", "")))
+            {
+                case CardTypes.Unit:
+                    unitEnchantmentArea.SetActive(true);
+                    ClearEnchantmentFields();
+                    break;
+                default:
+                    unitEnchantmentArea.SetActive(false);
+                    break;
+            }
         }
     }
 
