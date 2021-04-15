@@ -344,6 +344,9 @@ public class Player
                 ((Item)generatedCard).EditDurability(filter.DurabilityChange.Value);
             }
 
+            if (filter.CostModification != null)
+                generatedCard.ModifyCost(filter.CostModification.Value, filter.ResourceModification);
+
             if (isChoice)
             {
                 generatedCards.Add(generatedCard);

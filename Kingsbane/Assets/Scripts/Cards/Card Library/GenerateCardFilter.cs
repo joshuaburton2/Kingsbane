@@ -22,7 +22,9 @@ public class GenerateCardFilter
     public Classes.ClassList ClassPlayable { get; set; }
     public Tags Tag { get; set; }
     public List<Sets> SetFilter { get; set; }
-    public int PlayerId { get; set; }
+
+    public int? CostModification { get; set; }
+    public CardResources? ResourceModification { get; set; }
 
     public UnitEnchantment Enchantment { get; set; }
     public KeyValuePair<StatModifierTypes, int>? DurabilityChange { get; set; }

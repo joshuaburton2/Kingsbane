@@ -23,6 +23,10 @@ public class GenerateCardUI : MonoBehaviour
     [SerializeField]
     private TMP_Dropdown typeDropdown;
     [SerializeField]
+    private TMP_Dropdown modifyCostDropdown;
+    [SerializeField]
+    private TMP_InputField modifyCostInput;
+    [SerializeField]
     private Toggle includeUncollectablesToggle;
     [SerializeField]
     private Toggle isUnique;
@@ -62,6 +66,7 @@ public class GenerateCardUI : MonoBehaviour
     private TMP_InputField empoweredValueInput;
 
     private const string DEFAULT_DROPDOWN_STRING = "Any";
+    private const string MODIFY_COST_DEFAULT_DROPDOWN_STRING = "None";
     private string defaultTitleText;
 
     private CardFunctionUI CardFunctionUI { get; set; }
@@ -92,13 +97,15 @@ public class GenerateCardUI : MonoBehaviour
             tagDropdown,
             resourceDropdown,
             typeDropdown,
-            positionDropdown
+            positionDropdown,
+            modifyCostDropdown,
         };
         inputFields = new List<TMP_InputField>
         {
             nameInput,
             numToGenerateInput,
             createdByInput,
+            modifyCostInput,
         };
 
         //Initialises the dropdowns on the UI
@@ -107,6 +114,8 @@ public class GenerateCardUI : MonoBehaviour
         GeneralUIExtensions.InitDropdownOfType(resourceDropdown, new List<CardResources> { }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(typeDropdown, new List<CardTypes> { CardTypes.Default }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(positionDropdown, new List<DeckPositions>());
+
+        GeneralUIExtensions.InitDropdownOfType(modifyCostDropdown, new List<CardResources> { }, MODIFY_COST_DEFAULT_DROPDOWN_STRING);
     }
 
     /// <summary>
@@ -159,6 +168,22 @@ public class GenerateCardUI : MonoBehaviour
             ApplyDropdownFilter<Tags>(tagDropdown, GenerationFilter);
             ApplyDropdownFilter<CardResources>(resourceDropdown, GenerationFilter);
             ApplyDropdownFilter<CardTypes>(typeDropdown, GenerationFilter);
+
+
+
+            if (int.TryParse(modifyCostInput.text, out int result) && modifyCostInput.text != "0")
+            {
+                GenerationFilter.CostModification = result;
+                if (modifyCostDropdown.captionText.text == MODIFY_COST_DEFAULT_DROPDOWN_STRING)
+                    GenerationFilter.ResourceModification = null;
+                else
+                    GenerationFilter.ResourceModification = (CardResources)Enum.Parse(typeof(CardResources), modifyCostDropdown.captionText.text);
+            }
+            else
+            {
+                GenerationFilter.CostModification = null;
+                GenerationFilter.ResourceModification = null;
+            }
 
             //If the card type is a unit, constructs the enchantment and adds it to the filter for generation
             if (GenerationFilter.CardType == CardTypes.Unit)

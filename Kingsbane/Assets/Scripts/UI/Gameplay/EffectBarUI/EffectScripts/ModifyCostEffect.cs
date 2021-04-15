@@ -68,9 +68,6 @@ public class ModifyCostEffect : EffectUI
     /// </summary>
     public void ModifyButton()
     {
-        //Get the value change
-        if (costInput.text == "")
-            costInput.text = "-1";
 
         //Gets the card resource from the dropdown
         CardResources? cardResource;
@@ -79,7 +76,16 @@ public class ModifyCostEffect : EffectUI
         else
             cardResource = (CardResources)Enum.Parse(typeof(CardResources), resourceDropdown.captionText.text);
 
-        var value = int.Parse(costInput.text);
+        var value = -1;
+        if(int.TryParse(costInput.text, out int result) && costInput.text != "0")
+        {
+            value = result;
+        }
+        else
+        {
+            value = -1;
+            costInput.text = "-1";
+        }
 
         //Chooses the target for the cost modification
         if (targetDropdown.captionText.text == DEFAULT_TARGET_STRING)
