@@ -22,6 +22,7 @@ public class WildUI : ResourceDetailUI
     {
         base.RefreshResourceDetailUI();
 
+        valueText.text = $"{playerResource.ResourceType}: {playerResource.Value}, +{ResourceWild.WildGain}/turn";
         propertyText.text = $"Max Wild: {ResourceWild.MaxWild}";
         wildInput.text = "";
         cycleInput.text = "";

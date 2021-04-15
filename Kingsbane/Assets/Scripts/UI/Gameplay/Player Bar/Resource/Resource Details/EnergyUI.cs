@@ -23,6 +23,7 @@ public class EnergyUI : ResourceDetailUI
     {
         base.RefreshResourceDetailUI();
 
+        valueText.text = $"{playerResource.ResourceType}: {playerResource.Value}/{ResourceEnergy.BaseEnergyGain}";
         propertyText.text = $"Surges: {ResourceEnergy.Surges}";
         energyInput.text = "";
         surgeButton.interactable = !ResourceEnergy.UsedSurge;
