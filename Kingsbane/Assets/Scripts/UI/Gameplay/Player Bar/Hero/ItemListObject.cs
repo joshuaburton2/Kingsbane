@@ -21,10 +21,17 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
     private TextMeshProUGUI durabilityText;
     [SerializeField]
     private CanvasGroup buttonGroup;
+    [SerializeField]
+    private GameObject notesArea;
+    [SerializeField]
+    private TMP_InputField notesInput;
 
     private void Update()
     {
         buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked && !IsEmptySlot;
+
+        if (notesArea.activeSelf && GameManager.instance.effectManager.IsUILocked)
+            ShowNotesButton();
     }
 
     /// <summary>
@@ -37,6 +44,8 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
         HeroUI = heroUI;
         Item = _item;
 
+        notesArea.SetActive(false);
+
         //If item is null, displays the empty item object
         if (Item == null)
         {
@@ -45,6 +54,7 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
             itemImage.sprite = emptyItemSlotImage;
             itemNameText.text = "Empty Item Slot";
             durabilityText.text = "Durability: 0";
+            notesInput.text = "";
         }
         else
         {
@@ -53,6 +63,7 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
             itemImage.sprite = Item.CardArt;
             itemNameText.text = Item.Name;
             durabilityText.text = $"Durability: {Item.CurrentDurability}";
+            notesInput.text = Item.ItemNotes;
         }
     }
 
@@ -94,6 +105,19 @@ public class ItemListObject : MonoBehaviour, IPointerClickHandler
     {
         Item.DestroyItem();
         HeroUI.RefreshHeroUI();
+    }
+
+    public void ShowNotesButton()
+    {
+        if (notesArea.activeSelf)
+        {
+            Item.ItemNotes = notesInput.text;
+            notesArea.SetActive(false);
+        }
+        else
+        {
+            notesArea.SetActive(true);
+        }
     }
 
     /// <summary>

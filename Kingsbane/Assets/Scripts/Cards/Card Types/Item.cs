@@ -11,6 +11,7 @@ public class Item : Card
     public string ItemTag { get { return ItemData.ItemTag; } }
     public int Durability { get { return ItemData.Durability; } }
     public int CurrentDurability { get; set; }
+    public string ItemNotes { get; set; }
 
     public override void InitCard(CardData _cardData, Player owner)
     {
@@ -29,6 +30,8 @@ public class Item : Card
     public void Equip()
     {
         Owner.Hero.EquipItem(this);
+
+        ItemNotes = "";
     }
 
     public bool ModifyDurability(int modifier)
@@ -70,5 +73,6 @@ public class Item : Card
     public void DestroyItem()
     {
         Owner.Hero.DestroyItem(this);
+        ItemNotes = "";
     }
 }
