@@ -1175,6 +1175,10 @@ MonoBehaviour:
     effectColour: {r: 0.6132076, g: 0.33176675, b: 0.08966714, a: 1}
   - statusEffect: 7
     effectColour: {r: 0.7264151, g: 0.03769135, b: 0.07770373, a: 1}
+  - statusEffect: 8
+    effectColour: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  - statusEffect: 9
+    effectColour: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
   tileStatusColours:
   - tileStatus: 0
     statusColour: {r: 0.1745283, g: 0.836944, b: 1, a: 1}

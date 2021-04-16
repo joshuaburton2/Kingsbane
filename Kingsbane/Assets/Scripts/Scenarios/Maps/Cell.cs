@@ -162,6 +162,14 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.TransformUnit(this, occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.ImmuneUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.ImmuneUnit(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.IndestructibleUnit:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.IndestructibleUnit(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

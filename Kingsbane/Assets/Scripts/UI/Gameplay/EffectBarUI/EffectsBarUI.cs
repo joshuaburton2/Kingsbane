@@ -53,6 +53,8 @@ public class EffectsBarUI : MonoBehaviour
         TileStatus,
         [Description("Transform")]
         Transform,
+        [Description("Immune")]
+        Immune,
     }
 
     [Serializable]

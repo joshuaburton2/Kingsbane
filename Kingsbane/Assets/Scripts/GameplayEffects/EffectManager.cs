@@ -55,6 +55,8 @@ public class EffectManager : MonoBehaviour
         AlterFateChoice,
         TileStatus,
         Transform,
+        ImmuneUnit,
+        IndestructibleUnit,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -975,5 +977,25 @@ public class EffectManager : MonoBehaviour
             CreateUnitCounter(transformUnit, currentCell);
             transformUnit.Transform(unit.Status == Unit.UnitStatuses.Start, SelectedBoolean.Value ? null : unit);
         }
+    }
+
+    public void SetImmuneMode()
+    {
+        ActiveEffect = ActiveEffectTypes.ImmuneUnit;
+    }
+
+    public void ImmuneUnit(Unit unit)
+    {
+        unit.ImmuneUnit();
+    }
+
+    public void SetIndestructibleMode()
+    {
+        ActiveEffect = ActiveEffectTypes.IndestructibleUnit;
+    }
+
+    public void IndestructibleUnit(Unit unit)
+    {
+        unit.IndestructibleUnit();
     }
 }

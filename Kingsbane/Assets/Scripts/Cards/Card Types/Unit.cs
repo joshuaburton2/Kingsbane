@@ -27,6 +27,8 @@ public class Unit : Card
         Stunned,
         Transformed,
         Warded,
+        Immune,
+        Indestructible,
     }
 
     public enum StatTypes
@@ -567,51 +569,54 @@ public class Unit : Card
 
     public bool DamageUnit(Player sourcePlayer, int damageValue, List<Keywords> keywords = null)
     {
-        if (keywords == null)
-            keywords = new List<Keywords>();
+        if (!HasStatusEffect(StatusEffects.Immune) && !HasStatusEffect(StatusEffects.Indestructible))
+        {
+            if (keywords == null)
+                keywords = new List<Keywords>();
 
-        if (keywords.Contains(Keywords.Piercing))
-        {
-            CurrentHealth -= damageValue;
-            if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
-                RemoveUnit(true);
-            if (keywords.Contains(Keywords.Lifebond))
-                sourcePlayer.Hero.HealUnit(damageValue);
-        }
-        else
-        {
-            if (TotalProtected.HasValue)
+            if (keywords.Contains(Keywords.Piercing))
             {
-                ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
-                if (GetStat(StatTypes.TempProtected) < 0)
-                {
-                    ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
-                    ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
-                    if (GetStat(StatTypes.Protected) < 0)
-                    {
-                        CurrentHealth += GetStat(StatTypes.Protected).Value;
-                        if (keywords.Contains(Keywords.Deadly))
-                        {
-                            if (IsHero)
-                                Redeploy();
-                            else
-                                RemoveUnit(true);
-                        }
-                        else if (CurrentHealth <= 0)
-                            RemoveUnit(true);
-                        if (keywords.Contains(Keywords.Lifebond))
-                            sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
-
-                        ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
-                    }
-                }
-
-
+                CurrentHealth -= damageValue;
+                if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
+                    RemoveUnit(true);
+                if (keywords.Contains(Keywords.Lifebond))
+                    sourcePlayer.Hero.HealUnit(damageValue);
             }
-        }
+            else
+            {
+                if (TotalProtected.HasValue)
+                {
+                    ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
+                    if (GetStat(StatTypes.TempProtected) < 0)
+                    {
+                        ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
+                        ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
+                        if (GetStat(StatTypes.Protected) < 0)
+                        {
+                            CurrentHealth += GetStat(StatTypes.Protected).Value;
+                            if (keywords.Contains(Keywords.Deadly))
+                            {
+                                if (IsHero)
+                                    Redeploy();
+                                else
+                                    RemoveUnit(true);
+                            }
+                            else if (CurrentHealth <= 0)
+                                RemoveUnit(true);
+                            if (keywords.Contains(Keywords.Lifebond))
+                                sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
-        if (UnitCounter != null)
-            UnitCounter.RefreshUnitCounter();
+                            ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
+                        }
+                    }
+
+
+                }
+            }
+
+            if (UnitCounter != null)
+                UnitCounter.RefreshUnitCounter();
+        }
 
         return CurrentHealth <= 0;
     }
@@ -661,13 +666,16 @@ public class Unit : Card
         }
         else
         {
-            if (isDestroy)
-                Owner.AddToGraveyard(this);
+            if (!isDestroy || !HasStatusEffect(StatusEffects.Indestructible))
+            {
+                if (isDestroy)
+                    Owner.AddToGraveyard(this);
 
-            GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
-            UpdateOwnerStats(false);
-            GameManager.instance.uiManager.RefreshUI();
-            GameManager.instance.CheckWarden();
+                GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+                UpdateOwnerStats(false);
+                GameManager.instance.uiManager.RefreshUI();
+                GameManager.instance.CheckWarden();
+            }
         }
     }
 
@@ -861,6 +869,28 @@ public class Unit : Card
             Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
             Source = "Stun",
             StatusEffects = new List<StatusEffects>() { StatusEffects.Stunned }
+        };
+        AddEnchantment(enchantment);
+    }
+
+    public void ImmuneUnit()
+    {
+        var enchantment = new UnitEnchantment()
+        {
+            Status = UnitEnchantment.EnchantmentStatus.Permanent,
+            Source = "Immune",
+            StatusEffects = new List<StatusEffects>() { StatusEffects.Immune }
+        };
+        AddEnchantment(enchantment);
+    }
+
+    public void IndestructibleUnit()
+    {
+        var enchantment = new UnitEnchantment()
+        {
+            Status = UnitEnchantment.EnchantmentStatus.Permanent,
+            Source = "Indestructible",
+            StatusEffects = new List<StatusEffects>() { StatusEffects.Indestructible }
         };
         AddEnchantment(enchantment);
     }
