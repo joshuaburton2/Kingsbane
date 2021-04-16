@@ -117,6 +117,9 @@ public class Unit : Card
     public UnitCounter UnitCounter { get; set; }
     public bool IsDeployed { get { return UnitCounter != null; } }
 
+    public List<Card> ConfiscatedCards { get; set; }
+    public List<Unit> ImprisonedUnits { get; set; }
+
     public bool HasKeyword(Keywords keyword)
     {
         return CurrentKeywords.Contains(keyword);
@@ -138,6 +141,9 @@ public class Unit : Card
         CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
         TemporaryMindControlled = false;
         LoseNextAction = false;
+
+        ConfiscatedCards = new List<Card>();
+        ImprisonedUnits = new List<Unit>();
 
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
@@ -1113,5 +1119,34 @@ public class Unit : Card
         {
             throw new Exception("Cannot modify overload enchantment for a non-mana class");
         }
+    }
+
+    public void CaptureCard(Card confiscatedCard = null, Unit imprisonedUnit = null)
+    {
+        if (confiscatedCard == null && imprisonedUnit == null)
+            throw new Exception("Cannot capture no cards");
+
+        if (confiscatedCard != null)
+        {
+            ConfiscatedCards.Add(confiscatedCard);
+            confiscatedCard.Owner.Hand.RemoveCard(confiscatedCard);
+        }
+
+        if (imprisonedUnit != null)
+        {
+            ImprisonedUnits.Add(imprisonedUnit);
+            imprisonedUnit.RemoveUnit();
+        }
+    }
+
+    public void ReturnCaptureCards()
+    {
+        foreach (var card in ConfiscatedCards)
+            card.Owner.AddToHand(card);
+        foreach (var unit in ImprisonedUnits)
+            unit.Redeploy();
+
+        ConfiscatedCards.Clear();
+        ImprisonedUnits.Clear();
     }
 }

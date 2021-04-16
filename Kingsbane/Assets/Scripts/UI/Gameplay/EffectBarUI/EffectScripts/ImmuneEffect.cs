@@ -36,7 +36,7 @@ public class ImmuneEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Button click event for setting to root mode
+    /// Button click event for setting to immune mode
     /// 
     /// </summary>
     public void ImmuneButton()
@@ -48,7 +48,7 @@ public class ImmuneEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Button click event for setting to stun mode
+    /// Button click event for setting to indestructible mode
     /// 
     /// </summary>
     public void IndestructibleButton()

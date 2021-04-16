@@ -33,7 +33,6 @@ public class Player
     public int BaseSummonCapactiy { get; set; }
     public int SummonCapcity { get; set; }
     public int CurrentSummons { get; set; }
-    private readonly int DEFAULT_SUMMON_CAPACITY = 1;
 
     public Player(DeckData _deckData)
     {

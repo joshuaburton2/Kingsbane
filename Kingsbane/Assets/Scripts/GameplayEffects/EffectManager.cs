@@ -57,6 +57,9 @@ public class EffectManager : MonoBehaviour
         Transform,
         ImmuneUnit,
         IndestructibleUnit,
+        Confiscate,
+        ImprisonCaster,
+        Imprison,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -997,5 +1000,20 @@ public class EffectManager : MonoBehaviour
     public void IndestructibleUnit(Unit unit)
     {
         unit.IndestructibleUnit();
+    }
+
+    public void SetConfiscateMode()
+    {
+
+    }
+
+    public void Confiscate()
+    {
+
+    }
+
+    public void SetImprisonMode()
+    {
+
     }
 }

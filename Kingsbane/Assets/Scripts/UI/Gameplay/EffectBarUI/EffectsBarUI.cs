@@ -55,6 +55,8 @@ public class EffectsBarUI : MonoBehaviour
         Transform,
         [Description("Immune")]
         Immune,
+        [Description("Captain of the Guard")]
+        CaptainOfTheGuard,
     }
 
     [Serializable]
