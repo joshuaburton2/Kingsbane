@@ -15,6 +15,7 @@ public class RuleDisplayObject : MonoBehaviour, IPointerClickHandler
     [NonSerialized]
     public Rule rule;
     private LobbyUI lobbyUI;
+    private GameplayUI gameplayUI;
 
     [SerializeField]
     private TextMeshProUGUI nameText;
@@ -28,10 +29,11 @@ public class RuleDisplayObject : MonoBehaviour, IPointerClickHandler
     /// Refreshes the display of the rule
     /// 
     /// </summary>
-    public void RefreshRuleDisplay(Rule _rule, LobbyUI _lobbyUI)
+    public void RefreshRuleDisplay(Rule _rule, LobbyUI _lobbyUI = null, GameplayUI _gameplayUI = null)
     {
         rule = _rule;
         lobbyUI = _lobbyUI;
+        gameplayUI = _gameplayUI;
 
         nameText.text = rule.Name;
         descriptionText.text = rule.Description;
@@ -52,12 +54,23 @@ public class RuleDisplayObject : MonoBehaviour, IPointerClickHandler
             if (descriptionArea.activeSelf)
             {
                 descriptionArea.SetActive(false);
-                lobbyUI.RefreshRuleList();
+                if (lobbyUI != null)
+                    lobbyUI.RefreshRuleList();
+                else if (gameplayUI != null)
+                    gameplayUI.RefreshRuleList();
+                else
+                    throw new Exception("Object not initialised properly");
+
             }
             else
             {
                 descriptionArea.SetActive(true);
-                lobbyUI.RefreshRuleList(rule.Id);
+                if (lobbyUI != null)
+                    lobbyUI.RefreshRuleList(rule.Id);
+                else if (gameplayUI != null)
+                    gameplayUI.RefreshRuleList(rule.Id);
+                else
+                    throw new Exception("Object not initialised properly");
             }
         }
     }

@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     public Map LoadedMap { get; set; }
     public int LoadedScenarioId { get; set; }
+    public Scenario LoadedScenario { get { return LoadedMap.Scenarios.FirstOrDefault(x => x.Id == LoadedScenarioId); } }
     public List<Player> LoadedPlayers { get; set; }
     public int NumPlayers { get { return LoadedPlayers.Count; } }
 

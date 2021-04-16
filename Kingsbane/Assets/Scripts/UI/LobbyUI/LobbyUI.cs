@@ -163,7 +163,6 @@ public class LobbyUI : MonoBehaviour
     {
         foreach (var ruleObject in ruleObjectList)
         {
-
             if (id.HasValue)
                 if (ruleObject.GetComponent<RuleDisplayObject>().rule.Id != id)
                 {

@@ -50,6 +50,15 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI rollValueText;
 
+    [Header("Rule Display")]
+    [SerializeField]
+    private GameObject ruleDisplay;
+    [SerializeField]
+    private GameObject ruleListParent;
+    [SerializeField]
+    private GameObject ruleListPrefab;
+    private List<GameObject> ruleObjectList;
+
     private MapGrid.MapFilters CurrentMapFilter { get; set; }
 
     public void Update()
@@ -93,6 +102,7 @@ public class GameplayUI : MonoBehaviour
         backgroundFade.SetActive(false);
         keyDisplay.SetActive(false);
         rngDisplay.SetActive(false);
+        ruleDisplay.SetActive(false);
 
         CurrentMapFilter = MapGrid.MapFilters.Terrain;
 
@@ -296,7 +306,7 @@ public class GameplayUI : MonoBehaviour
         }
     }
 
-    public void rngRoll()
+    public void RngRoll()
     {
         if (int.TryParse(maxValueInput.text, out int maxValue))
         {
@@ -315,6 +325,44 @@ public class GameplayUI : MonoBehaviour
         {
             maxValueInput.text = "";
             rollValueText.text = "-";
+        }
+    }
+
+    public void ShowRuleList()
+    {
+        ruleDisplay.SetActive(!ruleDisplay.activeSelf);
+
+        if (ruleDisplay.activeSelf)
+        {
+            //Creates the list of rules for the scenario
+            GameManager.DestroyAllChildren(ruleListParent);
+            ruleObjectList = new List<GameObject>();
+            foreach (var rule in GameManager.instance.LoadedScenario.Rules)
+            {
+                var ruleObject = Instantiate(ruleListPrefab, ruleListParent.transform);
+                ruleObject.GetComponent<RuleDisplayObject>().RefreshRuleDisplay(rule, _gameplayUI: this);
+                ruleObjectList.Add(ruleObject);
+            }
+        }
+    }
+
+    public void RefreshRuleList(int? id = null)
+    {
+        foreach (var ruleObject in ruleObjectList)
+        {
+            if (id.HasValue)
+                if (ruleObject.GetComponent<RuleDisplayObject>().rule.Id != id)
+                {
+                    ruleObject.SetActive(false);
+                }
+                else
+                {
+                    ruleObject.SetActive(true);
+                }
+            else
+            {
+                ruleObject.SetActive(true);
+            }
         }
     }
 }
