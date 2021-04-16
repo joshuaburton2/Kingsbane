@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlterFateEffect : EffectUI
+public class ForetellingEffect : EffectUI
 {
+    [SerializeField]
+    private Button fortuneTellerButton;
     [SerializeField]
     private Button alterFateButton;
 
@@ -27,6 +29,18 @@ public class AlterFateEffect : EffectUI
         var player = GameManager.instance.GetPlayer();
 
         var canAlterFate = player.InitAlterFate();
+
+        if (!canAlterFate)
+            CancelEffect();
+    }
+
+    public void FortuneTellerButton()
+    {
+        effectComplete = false;
+
+        var player = GameManager.instance.GetPlayer();
+
+        var canAlterFate = player.InitFortuneTeller();
 
         if (!canAlterFate)
             CancelEffect();

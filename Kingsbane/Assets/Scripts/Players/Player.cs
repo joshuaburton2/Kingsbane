@@ -259,6 +259,28 @@ public class Player
             Deck.AddToDeck(card, 0);
     }
 
+    public bool InitFortuneTeller()
+    {
+        var baseNumToSelect = 3;
+
+        if (Deck.ListCount == 0)
+        {
+            Debug.Log("Deck is empty");
+            return false;
+        }
+        var topDeckCards = Deck.GetTopCards(baseNumToSelect);
+
+        GameManager.instance.effectManager.SetFortuneTellerChoiceMode(topDeckCards);
+
+        return true;
+    }
+
+    public void FortuneTeller(Card newTopCard)
+    {
+        Deck.cardList.Remove(newTopCard);
+        Deck.AddToDeck(newTopCard, Deck.ListCount, trackShuffle: false);
+    }
+
     public bool InitAlterFate()
     {
         var numToSelect = Mathf.Min(Hand.ListCount, Deck.ListCount);

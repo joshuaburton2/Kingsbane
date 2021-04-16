@@ -51,6 +51,7 @@ public class EffectManager : MonoBehaviour
         Madness,
         ReturnToHand,
         Redeploy,
+        FortuneTellerChoice,
         AlterFateChoice,
         TileStatus,
         Transform,
@@ -77,6 +78,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.Divinate,
         ActiveEffectTypes.SpycraftChoice,
         ActiveEffectTypes.AlterFateChoice,
+        ActiveEffectTypes.FortuneTellerChoice,
     };
 
     private Card SelectedCard { get; set; }
@@ -722,6 +724,12 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowCardChoiceDisplay(spycraftCards);
     }
 
+    public void SetFortuneTellerChoiceMode(List<Card> cards)
+    {
+        ActiveEffect = ActiveEffectTypes.FortuneTellerChoice;
+        GameManager.instance.uiManager.ShowCardChoiceDisplay(cards);
+    }
+
     public void ChooseEffect(Card card)
     {
         var player = card.Owner;
@@ -771,6 +779,10 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.SpycraftChoice:
                 player = GameManager.instance.GetPlayer();
                 player.RecruitCard(card, true);
+                break;
+            case ActiveEffectTypes.FortuneTellerChoice:
+                player = GameManager.instance.GetPlayer();
+                player.FortuneTeller(card);
                 break;
             default:
                 throw new Exception("Not a valid phase to choose a card with.");

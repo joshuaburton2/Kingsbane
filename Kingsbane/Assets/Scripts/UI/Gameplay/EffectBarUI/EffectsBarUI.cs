@@ -47,8 +47,8 @@ public class EffectsBarUI : MonoBehaviour
         Madness,
         [Description("Bounce")]
         Bounce,
-        [Description("Alter Fate")]
-        AlterFate,
+        [Description("Foretelling")]
+        Foretelling,
         [Description("Tile Status")]
         TileStatus,
         [Description("Transform")]
