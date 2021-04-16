@@ -26,6 +26,8 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI actionButtonText;
     [SerializeField]
+    private Button mapKeyButton;
+    [SerializeField]
     private GameObject keyDisplay;
     [SerializeField]
     private MapKeyUI mapKey;
@@ -40,11 +42,21 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private AlterFateUI alterFateUI;
 
+    [Header("RNG Display")]
+    [SerializeField]
+    private GameObject rngDisplay;
+    [SerializeField]
+    private TMP_InputField maxValueInput;
+    [SerializeField]
+    private TextMeshProUGUI rollValueText;
+
     private MapGrid.MapFilters CurrentMapFilter { get; set; }
 
     public void Update()
     {
-        miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
+        //miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
+        actionButton.interactable = !GameManager.instance.effectManager.IsUILocked;
+        mapKeyButton.interactable = !GameManager.instance.effectManager.IsUILocked;
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -80,6 +92,7 @@ public class GameplayUI : MonoBehaviour
         alterFateUI.gameObject.SetActive(false);
         backgroundFade.SetActive(false);
         keyDisplay.SetActive(false);
+        rngDisplay.SetActive(false);
 
         CurrentMapFilter = MapGrid.MapFilters.Terrain;
 
@@ -269,6 +282,39 @@ public class GameplayUI : MonoBehaviour
         {
             CurrentMapFilter = mapKey.CurrentFilter;
             GameManager.instance.mapGrid.SwitchMapFilter(MapGrid.MapFilters.Colour);
+        }
+    }
+
+    public void ShowRNGDisplay()
+    {
+        rngDisplay.SetActive(!rngDisplay.activeSelf);
+
+        if (rngDisplay.activeSelf)
+        {
+            maxValueInput.text = "";
+            rollValueText.text = "-";
+        }
+    }
+
+    public void rngRoll()
+    {
+        if (int.TryParse(maxValueInput.text, out int maxValue))
+        {
+            if (maxValue > 0)
+            {
+                var rollResult = UnityEngine.Random.Range(1, maxValue + 1);
+                rollValueText.text = rollResult.ToString();
+            }
+            else
+            {
+                maxValueInput.text = "";
+                rollValueText.text = "-";
+            }
+        }
+        else
+        {
+            maxValueInput.text = "";
+            rollValueText.text = "-";
         }
     }
 }
