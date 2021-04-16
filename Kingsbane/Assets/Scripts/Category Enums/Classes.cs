@@ -180,6 +180,7 @@ namespace CategoryEnums
                             },
                             HeroCardID = 1326,
                             InitialHandSize = 5,
+                            ItemCapacity = 2,
                             PlayerResources = new List<PlayerResource>()
                             {
                                 new PlayerMana(10, 2),

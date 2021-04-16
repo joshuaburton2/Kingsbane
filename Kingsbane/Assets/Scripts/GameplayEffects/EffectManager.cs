@@ -166,7 +166,6 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.Equip:
             case ActiveEffectTypes.ForceEquip:
                 SelectedCard = null;
-                SelectedItem = null;
 
                 if (SelectedItem == null || CancelEffect)
                     ActiveEffect = ActiveEffectTypes.None;
@@ -449,23 +448,26 @@ public class EffectManager : MonoBehaviour
         {
             if (SelectedItem.Owner.Id == itemAreaPlayerId)
             {
-                if (itemToReplace != null)
+                if (!SelectedItem.Owner.Hero.EquippedItems.Select(x => x.Id).Contains(SelectedItem.Id) || (itemToReplace != null && itemToReplace.Id == SelectedItem.Id))
                 {
-                    itemToReplace.DestroyItem();
-                }
+                    if (itemToReplace != null)
+                    {
+                        itemToReplace.DestroyItem();
+                    }
 
-                if (SelectedCard != null)
-                {
-                    SelectedCard.Play();
-                }
-                else
-                {
-                    SelectedItem.Equip();
-                }
+                    if (SelectedCard != null)
+                    {
+                        SelectedCard.Play();
+                    }
+                    else
+                    {
+                        SelectedItem.Equip();
+                    }
 
-                SelectedItem = null;
-                GameManager.instance.uiManager.RefreshUI();
-                RefreshEffectManager();
+                    SelectedItem = null;
+                    GameManager.instance.uiManager.RefreshUI();
+                    RefreshEffectManager();
+                }
             }
         }
     }
