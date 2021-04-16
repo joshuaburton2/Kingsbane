@@ -148,7 +148,7 @@ public class UnitCommandUI : MonoBehaviour
         foreach (var enchantment in unit.Enchantments)
         {
             var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
-            enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment);
+            enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment, unit, this);
         }
 
         //Shows or hides the special action area if the unit requires it

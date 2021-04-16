@@ -836,6 +836,13 @@ public class Unit : Card
             UnitCounter.RefreshUnitCounter();
     }
 
+    public void DeleteEnchantment(AppliedEnchantment enchantment)
+    {
+        Enchantments.Remove(enchantment);
+        CurrentStatusEffects.RemoveAll(x => enchantment.Enchantment.StatusEffects.Contains(x));
+        UpdateEnchantments();
+    }
+
     public void RootUnit()
     {
         var enchantment = new UnitEnchantment()
