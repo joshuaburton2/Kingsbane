@@ -675,7 +675,10 @@ public class Unit : Card
             if (!isDestroy || !HasStatusEffect(StatusEffects.Indestructible))
             {
                 if (isDestroy)
+                {
+                    ReturnCaptureCards();
                     Owner.AddToGraveyard(this);
+                }
 
                 GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
                 UpdateOwnerStats(false);
@@ -983,6 +986,8 @@ public class Unit : Card
                 if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
                     enchantment.IsActive = false;
 
+            ConfiscatedCards.Clear();
+            ImprisonedUnits.Clear();
             CurrentStatusEffects.Clear();
             CurrentStatusEffects.Add(StatusEffects.Spellbound);
             UpdateEnchantments();
@@ -1144,7 +1149,7 @@ public class Unit : Card
         foreach (var card in ConfiscatedCards)
             card.Owner.AddToHand(card);
         foreach (var unit in ImprisonedUnits)
-            unit.Redeploy();
+            unit.Owner.AddToRedeploy(unit);
 
         ConfiscatedCards.Clear();
         ImprisonedUnits.Clear();

@@ -51,24 +51,37 @@ public class CardList
         cardList.Clear();
     }
 
+    public Card GetRandomCard()
+    {
+        var randomCards = GetRandomCards(1);
+        return randomCards.FirstOrDefault();
+    }
+
     public List<Card> GetRandomCards(int numToGet)
     {
-        var selectedCardList = new List<Card>();
-        var numToChoose = Mathf.Min(ListCount, numToGet);
-
-        for (int spycraftIndex = 0; spycraftIndex < numToChoose; spycraftIndex++)
+        if (numToGet > 0)
         {
-            Card selectedCard = new Card();
-            do
+            var selectedCardList = new List<Card>();
+            var numToChoose = Mathf.Min(ListCount, numToGet);
+
+            for (int spycraftIndex = 0; spycraftIndex < numToChoose; spycraftIndex++)
             {
-                var randomIndex = UnityEngine.Random.Range(0, ListCount);
-                selectedCard = cardList[randomIndex];
-            } while (selectedCardList.Contains(selectedCard));
+                Card selectedCard = new Card();
+                do
+                {
+                    var randomIndex = UnityEngine.Random.Range(0, ListCount);
+                    selectedCard = cardList[randomIndex];
+                } while (selectedCardList.Contains(selectedCard));
 
-            selectedCardList.Add(selectedCard);
+                selectedCardList.Add(selectedCard);
+            }
+
+            return selectedCardList;
         }
-
-        return selectedCardList;
+        else
+        {
+            throw new Exception("Cannot randomly get to less than 0 cards");
+        }
     }
 
     /// <summary>

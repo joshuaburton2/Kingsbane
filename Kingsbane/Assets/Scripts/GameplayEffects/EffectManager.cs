@@ -58,7 +58,7 @@ public class EffectManager : MonoBehaviour
         ImmuneUnit,
         IndestructibleUnit,
         Confiscate,
-        ImprisonCaster,
+        SelectImprisonCaster,
         Imprison,
     }
 
@@ -1004,16 +1004,50 @@ public class EffectManager : MonoBehaviour
 
     public void SetConfiscateMode()
     {
-
+        ActiveEffect = ActiveEffectTypes.Confiscate;
     }
 
-    public void Confiscate()
+    public void Confiscate(Unit unit)
     {
+        if (unit.Owner.IsActivePlayer)
+        {
+            var inactivePlayer = GameManager.instance.GetPlayer(false);
+            var confiscateCard = inactivePlayer.Hand.GetRandomCard();
 
+            unit.CaptureCard(confiscateCard);
+
+            RefreshEffectManager();
+            GameManager.instance.uiManager.RefreshUI();
+        }
     }
 
     public void SetImprisonMode()
     {
+        ActiveEffect = ActiveEffectTypes.SelectImprisonCaster;
+    }
 
+    public void SetImprisonCaster(Unit unit)
+    {
+        if (unit.Owner.IsActivePlayer)
+        {
+            ActiveEffect = ActiveEffectTypes.Imprison;
+
+            SelectedUnit = unit;
+            SelectedUnit.UnitCounter.ShowUnitSelector(true);
+        }
+    }
+
+    public void Imprison(Unit unit)
+    {
+        if (!unit.Owner.IsActivePlayer)
+        {
+            if (!unit.IsHero)
+            {
+                SelectedUnit.CaptureCard(imprisonedUnit: unit);
+
+                RefreshEffectManager();
+                GameManager.instance.uiManager.RefreshUI();
+            }
+        }
     }
 }

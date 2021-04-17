@@ -170,6 +170,18 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.IndestructibleUnit(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.Confiscate:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.Confiscate(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.SelectImprisonCaster:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.SetImprisonCaster(occupantCounter.Unit);
+                                    break;
+                                case EffectManager.ActiveEffectTypes.Imprison:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.Imprison(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

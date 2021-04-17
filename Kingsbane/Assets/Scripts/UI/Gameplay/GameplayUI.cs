@@ -26,8 +26,6 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI actionButtonText;
     [SerializeField]
-    private Button mapKeyButton;
-    [SerializeField]
     private GameObject keyDisplay;
     [SerializeField]
     private MapKeyUI mapKey;
@@ -63,9 +61,7 @@ public class GameplayUI : MonoBehaviour
 
     public void Update()
     {
-        //miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
-        actionButton.interactable = !GameManager.instance.effectManager.IsUILocked;
-        mapKeyButton.interactable = !GameManager.instance.effectManager.IsUILocked;
+        miscCanvasGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
 
         if (Input.GetMouseButtonDown(1))
         {
