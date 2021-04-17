@@ -496,7 +496,7 @@ public class Unit : Card
         if (targetUnit.HasStatusEffect(StatusEffects.Airborne) && GetStat(StatTypes.Range).Value == 0)
             return false;
 
-        if (targetUnit.HasStatusEffect(StatusEffects.Stealthed))
+        if (targetUnit.HasStatusEffect(StatusEffects.Stealthed) && Name != "Scout Regiment") //Hardcoded to account for scout regiment being able to target stealth units. FIX
             return false;
 
         return true;
