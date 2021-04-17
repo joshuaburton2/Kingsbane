@@ -1079,6 +1079,8 @@ MonoBehaviour:
     rarityColour: {r: 0.909804, g: 0.5882353, b: 0.078431375, a: 1}
   - Rarity: 6
     rarityColour: {r: 0.9803922, g: 1, b: 0.89019614, a: 1}
+  - Rarity: 9
+    rarityColour: {r: 0, g: 0, b: 0, a: 1}
   resourceColours:
   - Resource: 0
     resourceColour: {r: 1, g: 1, b: 1, a: 1}

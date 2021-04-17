@@ -483,7 +483,7 @@ public class CardLibrary
         {
             Id = 53,
             Name = "Holy Shield",
-            Text = @"Give all friendly units within Range 1 of the hero <b>Protected (3)</b>",
+            Text = @"Give all friendly units within Range 1 of the hero <b>Protected (2)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -1643,7 +1643,7 @@ public class CardLibrary
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 7), },
 
-            Text = @"The caster gains <b>Swiftstrike</b> and <b>Protected (Infinite)</b> until the start of your next turn",
+            Text = @"The caster gains <b>Swiftstrike</b> and <b>Immune</b> until the start of your next turn",
             LoreText = @"",
             Notes = @"",
 
@@ -1652,8 +1652,8 @@ public class CardLibrary
             Rarity = Rarity.Epic,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Swiftstrike, Tags.Protected },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Durable, Synergies.Protected, Synergies.BigSpells },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Swiftstrike, Tags.Immune },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Durable, Synergies.BigSpells, Synergies.Defensive },
             SpellType = "Enchantment",
             Range = 0,
         };
@@ -8225,7 +8225,7 @@ Whenever this unit moves from Airborne to Landed, gain +4 Attack and <b>Overwhel
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Energy, 6), },
 
-            Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of angels in your Graveyard. Whenever this unit kills an enemy, draw a card",
+            Text = @"When this is equipped and at the start of each turn your hero gains the following enchantments which end at the start of your next turn: <b>Overwhelm</b> and <b>Swiftstrike.</b> Whenever this unit attacks an enemy, temporarily increase their attack by the number of angels in your Graveyard. Whenever this unit attacks and kills an enemy, draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -9430,7 +9430,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If you have a ""Battle Gear"" item already equipped, add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
+            Text = @"Choose a form of ""Battle Stance"" to equip. Destroy any other ""Battle Stance"" item you have equipped. If this replaces a ""Battle Gear"" item you add its effect to the ""Battle Stance"" item and increase the Durability of the stance by 1",
             LoreText = @"",
             Notes = @"",
 
@@ -10360,7 +10360,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Choose an enemy unit in range. Move it in a line to a tile adjacent to the the caster, then attack it.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
+If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -10385,7 +10385,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Jump to an empty tile in range. Deal 2 damage to all adjacent units and the caster.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
+If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -10410,7 +10410,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 3 damage to a unit and move it up to 3 tiles away from the caster. If it impacts an obstacle, deal an additional 3 damage.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
+If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -10441,7 +10441,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Wildkin,
-            Rarity = Rarity.Uncollectable,
+            Rarity = Rarity.Deleted,
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.Discard, Tags.Brawl },
@@ -10460,7 +10460,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
             Text = @"Deal 2 damage to all units adjacent to your hero. Heal the caster for the amount of damage dealt.
-If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
+If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
 
@@ -10597,7 +10597,7 @@ Whenever this unit takes damage, gain +2 Attack",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
-            Text = @"Whenever your hero takes damage on your turn, restore 4 health to them",
+            Text = @"After your hero takes damage on your turn, restore 4 health to them",
             LoreText = @"",
             Notes = @"",
 
@@ -10645,7 +10645,7 @@ Whenever this unit takes damage, gain +2 Attack",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Choose a friendly unit. While both the target and the caster are alive, whenever the target takes damage, the caster takes it instead. If both units are alive, you also have 1 additional Energy gain at the start of each turn. If the caster casts this spell again, remove any previous Blood Bond effects they have cast",
+            Text = @"Choose a friendly unit. Deal 1 damage to it and the caster. While both the target and the caster are alive, they both have +5 Attack and you gain 1 additional Energy at the start of each turn. If the caster casts this spell again, remove any previous Blood Bond effects they have cast",
             LoreText = @"",
             Notes = @"",
 
@@ -10655,7 +10655,7 @@ Whenever this unit takes damage, gain +2 Attack",
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.EnergyGain },
-            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Control, Synergies.Durable, Synergies.SelfDamage },
+            Synergies = new List<Synergies> { Synergies.Energy, Synergies.Enchantment, Synergies.Control, Synergies.Durable, Synergies.SelfDamage },
             SpellType = "Other",
             Range = 2,
         };
@@ -10755,7 +10755,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
-            Text = @"Whenever this unit takes damage, reduce the cost and <b>Cycle</b> amount of <b>Shapechange</b> by 1.",
+            Text = @"Reduce the <b>Cycle</b> and Wild cost of ""Shapechange"" by this units missing health.",
             LoreText = @"",
             Notes = @"",
 
@@ -10869,7 +10869,7 @@ Whenever this attacks and kills a unit, <b>Regenerate.</b> Any healing applied t
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Transform</b> your hero into a ""Bear Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
+            Text = @"<b>Transform</b> your hero into a ""Bear Aspect"" if they are not already <b>Transformed</b>. This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -10932,7 +10932,7 @@ Whenever this unit takes damage, gain +2 Attack.
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Transform</b> your hero into an ""Eagle Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
+            Text = @"<b>Transform</b> your hero into an ""Eagle Aspect"" if they are not already <b>Transformed</b>. This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -10995,7 +10995,7 @@ Whenever this attacks and kills a unit, draw a card.
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Transform</b> your hero into a ""Sabretooth Aspect"". This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
+            Text = @"<b>Transform</b> your hero into a ""Sabretooth Aspect"" if they are not already <b>Transformed</b>. This unit is considered your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -11058,7 +11058,7 @@ Last Rites: Transform</b> this unit back into your hero.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), new Resource(CardResources.Wild, 6), },
 
-            Text = @"<b>Transform</b> your hero into a ""Wolf Aspect"". This unit is considred your hero until it returns to its original form. <b>Cycle -4</b>",
+            Text = @"<b>Transform</b> your hero into a ""Wolf Aspect"" if they are not already <b>Transformed</b>. This unit is considred your hero until it returns to its original form. <b>Cycle -4</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -11120,7 +11120,7 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), new Resource(CardResources.Wild, 3), },
 
-            Text = @"<b>Transform</b> a friendly minion into a ""Raging Beast""",
+            Text = @"<b>Transform</b> a friendly minion that is not already <b>Transformed</b> into a ""Raging Beast""",
             LoreText = @"",
             Notes = @"",
 
@@ -11142,9 +11142,9 @@ Last Rites: Transform</b> back into this unit's original form. Any enchantments 
             Name = "Cold Fury",
             ImageTag = CardImageTags.Cold_Fury,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 8), },
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 7), },
 
-            Text = @"<b>Stun</b> all adjacent enemy units. Give the caster <b>Unleash</b> until the end of your turn. If the caster attacks and kills one of the <b>Stunned</b> units, refresh its action",
+            Text = @"<b>Stun</b> all adjacent enemy units. Give the caster <b>Unleash</b> until the end of your turn. If the caster attacks and kills one of the <b>Stunned</b> units, deal damage to all other <b>Stunned</b> units equal to the excess damage",
             LoreText = @"",
             Notes = @"",
 
@@ -11963,8 +11963,7 @@ Whenever this unit is attacked, gain <b>Protected</b> equal to the number of adj
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), new Resource(CardResources.Gold, 4), },
 
-            Text = @"<b>Conduit
-Deployment:</b> Add one of each type of Hireling to your hand.
+            Text = @"<b>Deployment:</b> Add one of each type of Hireling to your hand.
 You can deploy Hirelings adjacent to this unit, including from abilities or spells.",
             LoreText = @"",
             Notes = @"",
@@ -11974,7 +11973,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
             Rarity = Rarity.Legendary,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Conduit, Tags.Deployment, Tags.Mercenary },
+            Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Mercenary },
             Synergies = new List<Synergies> { Synergies.Melee, Synergies.Deployment, Synergies.Value, Synergies.Vanguard, Synergies.Hireling },
             UnitTag = new List<UnitTags>()
             {
@@ -11990,7 +11989,7 @@ You can deploy Hirelings adjacent to this unit, including from abilities or spel
 
             Abilities = new List<AbilityData>() { ability1109 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card1323);
 
@@ -12673,7 +12672,8 @@ Deployment:</b> Use <b>Prophecy</b>",
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Cycle -4</b>
-Give all friendly units <b>Protected (3).</b> Until the start of your next turn gain, ""<b>Passive:</b> Whenever a friendly unit with <b>Protected</b> takes damage, they take 1 damage instead""",
+Until the start of your next turn gain, ""<b>Passive:</b> Whenever a friendly unit with <b>Protected</b> takes damage, they take 1 damage instead"". 
+Give all friendly units <b>Protected (3).</b>",
             LoreText = @"",
             Notes = @"",
 
@@ -12698,7 +12698,8 @@ Give all friendly units <b>Protected (3).</b> Until the start of your next turn 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Cycle -4</b>
-Deal 3 damage to all enemy units. Until the start of your next turn gain ""<b>Passive:</b> All your spells and abilities deal double double damage""",
+Until the start of your next turn gain ""<b>Passive:</b> All your spells and abilities deal double double damage"".
+Deal 3 damage to all enemy units",
             LoreText = @"",
             Notes = @"",
 
@@ -13474,7 +13475,7 @@ Difficult terrain tiles in range 2 do not require additional movement for friend
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 6), },
 
             Text = @"<b>Stalker
-Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an enemy minion dies which shares any minion tags with the target, double their bounty""",
+Deployment:</b> Choose an enemy minion. Gain the <b>Passive:</b> ""Whenever an enemy minion dies which shares any unit tags with the target, double their bounty""",
             LoreText = @"",
             Notes = @"",
 
@@ -13778,7 +13779,7 @@ Whenever you draw this card, reduce your <b>Stagnation</b> by 1",
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Stealth</b>
-Whenever this attacks the enemy hero, <b>Recruit</b> the top card of your opponent's deck",
+Whenever this attacks an enemy unit, <b>Recruit</b> a copy of the top card of your opponent's deck",
             LoreText = @"",
             Notes = @"",
 
@@ -14072,7 +14073,7 @@ After you <b>Recruit</b> a card, gain +1 Attack, +1 Health.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
-            Text = @"<b>Deployment:</b> Your opponent's cards cost (2) more on their next turn.
+            Text = @"<b>Deployment:</b> Your opponent's spells cost (3) more on their next turn.
 Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
             LoreText = @"",
             Notes = @"",
@@ -14090,7 +14091,7 @@ Whenever you draw this card, <b>Divinate (1)</b> the enemy deck",
                 UnitTags.Agent,
             },
             Attack = 5,
-            Health = 4,
+            Health = 3,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -14346,12 +14347,12 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
         card277.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card279.RelatedCards = new List<CardData> { card136 };
         card280.RelatedCards = new List<CardData> { card136 };
-        card289.RelatedCards = new List<CardData> { card290, card291, card292, card293, card294 };
-        card290.RelatedCards = new List<CardData> { card291, card292, card293, card294 };
-        card291.RelatedCards = new List<CardData> { card290, card292, card293, card294 };
-        card292.RelatedCards = new List<CardData> { card290, card291, card293, card294 };
+        card289.RelatedCards = new List<CardData> { card290, card291, card292, card294 };
+        card290.RelatedCards = new List<CardData> { card291, card292, card294 };
+        card291.RelatedCards = new List<CardData> { card290, card292, card294 };
+        card292.RelatedCards = new List<CardData> { card290, card291, card294 };
         card293.RelatedCards = new List<CardData> { card290, card291, card292, card294 };
-        card294.RelatedCards = new List<CardData> { card290, card291, card292, card293 };
+        card294.RelatedCards = new List<CardData> { card290, card291, card292 };
         card304.RelatedCards = new List<CardData> { card305 };
         card307.RelatedCards = new List<CardData> { card306 };
         card309.RelatedCards = new List<CardData> { card308 };
@@ -14359,7 +14360,7 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
         card313.RelatedCards = new List<CardData> { card312 };
         card315.RelatedCards = new List<CardData> { card314 };
         card319.RelatedCards = new List<CardData> { card318 };
-        card320.RelatedCards = new List<CardData> { card290, card291, card292, card293, card294 };
+        card320.RelatedCards = new List<CardData> { card290, card291, card292, card294 };
         card323.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card326.RelatedCards = new List<CardData> { card285, card286, card287, card288 };
         card333.RelatedCards = new List<CardData> { card332 };
@@ -14386,7 +14387,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem, Immune
     }
 
     public enum Synergies
