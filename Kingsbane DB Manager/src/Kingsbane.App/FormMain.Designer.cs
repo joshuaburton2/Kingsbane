@@ -37,6 +37,8 @@
             this.btnExportUpgrades = new System.Windows.Forms.Button();
             this.btnResources = new System.Windows.Forms.Button();
             this.btnExportResources = new System.Windows.Forms.Button();
+            this.btnExportMap = new System.Windows.Forms.Button();
+            this.btnMaps = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -136,11 +138,35 @@
             this.btnExportResources.UseVisualStyleBackColor = true;
             this.btnExportResources.Click += new System.EventHandler(this.btnExportResources_Click);
             // 
+            // btnExportMap
+            // 
+            this.btnExportMap.Location = new System.Drawing.Point(192, 262);
+            this.btnExportMap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExportMap.Name = "btnExportMap";
+            this.btnExportMap.Size = new System.Drawing.Size(116, 52);
+            this.btnExportMap.TabIndex = 5;
+            this.btnExportMap.Text = "Export";
+            this.btnExportMap.UseVisualStyleBackColor = true;
+            this.btnExportMap.Click += new System.EventHandler(this.btnExportMap_Click);
+            // 
+            // btnMaps
+            // 
+            this.btnMaps.Location = new System.Drawing.Point(192, 206);
+            this.btnMaps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMaps.Name = "btnMaps";
+            this.btnMaps.Size = new System.Drawing.Size(116, 52);
+            this.btnMaps.TabIndex = 6;
+            this.btnMaps.Text = "Maps";
+            this.btnMaps.UseVisualStyleBackColor = true;
+            this.btnMaps.Click += new System.EventHandler(this.btnMaps_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 328);
+            this.Controls.Add(this.btnExportMap);
+            this.Controls.Add(this.btnMaps);
             this.Controls.Add(this.btnExportResources);
             this.Controls.Add(this.btnResources);
             this.Controls.Add(this.btnExportUpgrades);
@@ -169,6 +195,8 @@
         private System.Windows.Forms.Button btnExportUpgrades;
         private System.Windows.Forms.Button btnResources;
         private System.Windows.Forms.Button btnExportResources;
+        private System.Windows.Forms.Button btnExportMap;
+        private System.Windows.Forms.Button btnMaps;
     }
 }
 

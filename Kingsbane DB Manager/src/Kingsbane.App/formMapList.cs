@@ -51,15 +51,15 @@ namespace Kingsbane.App
 
         private void RefreshList()
         {
-            var cardList = GetMapLst(txtSearch.Text);
+            var mapList = GetMapLst(txtSearch.Text);
 
             lstMaps.Items.Clear();
-            foreach (var card in cardList)
+            foreach (var map in mapList)
             {
-                var listItem = new ListViewItem(card.Id.ToString());
-                listItem.SubItems.Add(card.Name);
+                var listItem = new ListViewItem(map.Id.ToString());
+                listItem.SubItems.Add(map.Name);
                 lstMaps.Items.Add(listItem);
-                listItem.Tag = card.Id;
+                listItem.Tag = map.Id;
             }
         }
 
@@ -76,7 +76,7 @@ namespace Kingsbane.App
 
         private List<MapListItem> GetMapLst(string nameSearch = null)
         {
-            var mapQuery = _context.Cards.Select(x => new MapListItem { Id = x.Id, Name = x.Name });
+            var mapQuery = _context.Maps.Select(x => new MapListItem { Id = x.Id, Name = x.Name });
 
             if (!string.IsNullOrWhiteSpace(nameSearch))
             {

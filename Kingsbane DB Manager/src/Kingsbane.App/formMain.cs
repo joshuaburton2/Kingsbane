@@ -530,5 +530,17 @@ namespace Kingsbane.App
         {
             Application.Exit();
         }
+
+        private void btnMaps_Click(object sender, EventArgs e)
+        {
+            var formMaps = _serviceProvider.GetRequiredService<formMapList>();
+            formMaps.Show();
+            this.Hide();
+        }
+
+        private void btnExportMap_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
