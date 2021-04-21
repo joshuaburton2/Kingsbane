@@ -16,6 +16,43 @@ namespace Kingsbane.App
 {
     public partial class formMapEdit : Form
     {
+
+
+        private class ScenarioData
+        {
+            public int? Id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public int EnemyDeckId { get; set; }
+            public string EnemyDeckName { get; set; }
+            public List<List<int?>> DeploymentMap { get; set; }
+            public List<List<int?>> ObjectiveMap { get; set; }
+            public List<ObjectiveData> Objectives { get; set; }
+            public List<ScenarioRuleData> ScenarioRules { get; set; }
+
+            public ScenarioData()
+            {
+                DeploymentMap = new List<List<int?>>();
+                ObjectiveMap = new List<List<int?>>();
+                Objectives = new List<ObjectiveData>();
+                ScenarioRules = new List<ScenarioRuleData>();
+            }
+        }
+
+        private class ObjectiveData
+        {
+            public int? Id { get; set; }
+            public string Name { get; set; }
+            public Color Color { get; set; }
+        }
+
+        private class ScenarioRuleData
+        {
+            public int? Id { get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+        }
+
         private enum KeyTypes
         {
             Terrain,
@@ -31,8 +68,14 @@ namespace Kingsbane.App
 
         private const int GRID_SIZE = 10;
         private List<List<Button>> mapButtons;
+        private List<List<TerrainTypes>> terrainMap;
+        private const string DEFAULT_SCENARIO_NAME = "Default Scenario";
+        private List<ScenarioData> scenarioList;
 
         private List<Button> keyButtons;
+
+        private KeyTypes selectedKey;
+        private ScenarioData selectedScenario;
 
         private readonly Dictionary<TerrainTypes, Color> terrainColours = new Dictionary<TerrainTypes, Color>()
         {
@@ -65,9 +108,9 @@ namespace Kingsbane.App
             var keyTypes = Enum.GetValues(typeof(KeyTypes)).Cast<KeyTypes>().Select(x => new SelectListItem { Id = (int)x, Name = x.ToString() }).ToArray();
             cmbKeyType.Items.AddRange(keyTypes);
             keyButtons = new List<Button>();
-            cmbKeyType.SelectedIndex = 0;
 
             mapButtons = new List<List<Button>>(GRID_SIZE);
+            scenarioList = new List<ScenarioData>();
 
             var cellSize = 37;
             var currentRowPos = 15;
@@ -120,7 +163,45 @@ namespace Kingsbane.App
             else
             {
                 this.Text = "Add Card";
+
+                CreateAddData();
             }
+
+            cmbKeyType.SelectedIndex = 0;
+        }
+
+        private void CreateAddData()
+        {
+            terrainMap = new List<List<TerrainTypes>>();
+            var defaultScenario = new ScenarioData()
+            {
+                Id = null,
+                Name = DEFAULT_SCENARIO_NAME,
+            };
+
+            for (int y = 0; y < GRID_SIZE; y++)
+            {
+                terrainMap.Add(new List<TerrainTypes>());
+                var deploymentMap = defaultScenario.DeploymentMap;
+                var objectiveMap = defaultScenario.ObjectiveMap;
+
+                deploymentMap.Add(new List<int?>());
+                objectiveMap.Add(new List<int?>());
+                for (int x = 0; x < GRID_SIZE; x++)
+                {
+                    terrainMap[y].Add(TerrainTypes.Regular);
+                    objectiveMap[y].Add(null);
+                    if (y == 0 || y == 1)
+                        deploymentMap[y].Add(1);
+                    else if (y == GRID_SIZE - 1 || y == GRID_SIZE - 2)
+                        deploymentMap[y].Add(0);
+                    else
+                        deploymentMap[y].Add(null);
+                }
+            }
+
+            selectedScenario = defaultScenario;
+            scenarioList.Add(selectedScenario);
         }
 
         private void LoadMapData()
@@ -141,10 +222,10 @@ namespace Kingsbane.App
         {
             foreach (var keyButton in keyButtons)
             {
-                Controls.Remove(keyButton);
+                pnlKey.Controls.Remove(keyButton);
             }
 
-            var selectedKey = (KeyTypes)((SelectListItem)cmbKeyType.SelectedItem).Id;
+            selectedKey = (KeyTypes)((SelectListItem)cmbKeyType.SelectedItem).Id;
 
             var baseKeyPos = new Vector2(5, 70);
             var keyItemDistance = 35;
@@ -162,12 +243,16 @@ namespace Kingsbane.App
                 case KeyTypes.Deployment:
                     for (int playerId = 0; playerId < 2; playerId++)
                     {
-
+                        var playerColour = playerColours[playerId];
+                        CreateKeyItem(baseKeyPos, $"Player: {playerId + 1}", playerColour);
+                        baseKeyPos.Y += keyItemDistance;
                     }
                     break;
                 case KeyTypes.Objectives:
                     break;
             }
+
+            RefreshMapFilter();
         }
 
         private void CreateKeyItem(Vector2 pos, string itemText, Color itemColour)
@@ -186,6 +271,37 @@ namespace Kingsbane.App
 
             keyButtons.Add(keyButton);
             pnlKey.Controls.Add(keyButton);
+        }
+
+        private void RefreshMapFilter()
+        {
+            for (int y = 0; y < GRID_SIZE; y++)
+            {
+                for (int x = 0; x < GRID_SIZE; x++)
+                {
+                    Color colour = Color.White;
+                    switch (selectedKey)
+                    {
+                        case KeyTypes.Terrain:
+                            colour = terrainColours.GetValueOrDefault(terrainMap[y][x]);
+                            break;
+                        case KeyTypes.Deployment:
+                            var deploymentCell = selectedScenario.DeploymentMap[y][x];
+                            if (deploymentCell.HasValue)
+                                colour = playerColours[deploymentCell.Value];
+                            break;
+                        case KeyTypes.Objectives:
+                            var objectiveCell = selectedScenario.ObjectiveMap[y][x];
+                            if (objectiveCell.HasValue)
+                            {
+                                colour = selectedScenario.Objectives[objectiveCell.Value].Color;
+                            }
+                            break;
+                    }
+
+                    mapButtons[y][x].BackColor = colour;
+                }
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

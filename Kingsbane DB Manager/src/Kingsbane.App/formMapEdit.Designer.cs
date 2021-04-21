@@ -35,6 +35,7 @@
             this.lblDescription = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.pnlMap = new System.Windows.Forms.Panel();
+            this.btnSaveScenario = new System.Windows.Forms.Button();
             this.lblScenario = new System.Windows.Forms.Label();
             this.cmbScenarioSelector = new System.Windows.Forms.ComboBox();
             this.btnAddScenario = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.btnAddRule = new System.Windows.Forms.Button();
             this.pnlKey.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,16 @@
             this.pnlMap.Size = new System.Drawing.Size(400, 400);
             this.pnlMap.TabIndex = 8;
             // 
+            // btnSaveScenario
+            // 
+            this.btnSaveScenario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveScenario.Location = new System.Drawing.Point(194, 564);
+            this.btnSaveScenario.Name = "btnSaveScenario";
+            this.btnSaveScenario.Size = new System.Drawing.Size(93, 26);
+            this.btnSaveScenario.TabIndex = 26;
+            this.btnSaveScenario.Text = "Save Scenario";
+            this.btnSaveScenario.UseVisualStyleBackColor = true;
+            // 
             // lblScenario
             // 
             this.lblScenario.AutoSize = true;
@@ -174,7 +186,7 @@
             // lblScenarioRules
             // 
             this.lblScenarioRules.AutoSize = true;
-            this.lblScenarioRules.Location = new System.Drawing.Point(12, 449);
+            this.lblScenarioRules.Location = new System.Drawing.Point(12, 453);
             this.lblScenarioRules.Name = "lblScenarioRules";
             this.lblScenarioRules.Size = new System.Drawing.Size(83, 15);
             this.lblScenarioRules.TabIndex = 14;
@@ -184,7 +196,7 @@
             // 
             this.lstScenarioRules.FormattingEnabled = true;
             this.lstScenarioRules.ItemHeight = 15;
-            this.lstScenarioRules.Location = new System.Drawing.Point(11, 467);
+            this.lstScenarioRules.Location = new System.Drawing.Point(11, 479);
             this.lstScenarioRules.Name = "lstScenarioRules";
             this.lstScenarioRules.Size = new System.Drawing.Size(276, 79);
             this.lstScenarioRules.TabIndex = 15;
@@ -256,7 +268,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(820, 524);
+            this.buttonDelete.Location = new System.Drawing.Point(820, 562);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -267,7 +279,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(732, 524);
+            this.buttonCancel.Location = new System.Drawing.Point(732, 562);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -278,7 +290,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(644, 524);
+            this.buttonSave.Location = new System.Drawing.Point(644, 562);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -287,11 +299,22 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // btnAddRule
+            // 
+            this.btnAddRule.Location = new System.Drawing.Point(247, 449);
+            this.btnAddRule.Name = "btnAddRule";
+            this.btnAddRule.Size = new System.Drawing.Size(40, 23);
+            this.btnAddRule.TabIndex = 25;
+            this.btnAddRule.Text = "+";
+            this.btnAddRule.UseVisualStyleBackColor = true;
+            // 
             // formMapEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 555);
+            this.ClientSize = new System.Drawing.Size(914, 595);
+            this.Controls.Add(this.btnSaveScenario);
+            this.Controls.Add(this.btnAddRule);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -352,5 +375,7 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.ComboBox cmbKeyType;
         private System.Windows.Forms.Label lblKeyTitle;
+        private System.Windows.Forms.Button btnAddRule;
+        private System.Windows.Forms.Button btnSaveScenario;
     }
 }
