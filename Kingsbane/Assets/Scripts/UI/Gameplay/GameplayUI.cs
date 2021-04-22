@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CategoryEnums;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -169,6 +170,7 @@ public class GameplayUI : MonoBehaviour
 
                 break;
             case GameManager.GamePhases.End:
+                GameManager.instance.sceneManager.LoadNewScene(SceneList.MainMenuScene);
                 break;
             default:
                 throw new Exception("Not a valid game phase");
@@ -176,6 +178,19 @@ public class GameplayUI : MonoBehaviour
 
         effectBarUI.RefreshEffectList();
         ShowCardDisplay();
+    }
+
+    public void ShowVictoryState(int victoryId)
+    {
+        foreach (var playerUIBar in playerUIBars)
+        {
+            var playerId = playerUIBar.Id;
+            playerUIBar.ShowVictoryUI(playerId == victoryId);
+        }
+
+        effectBarUI.RefreshEffectList();
+        ShowCardDisplay();
+        actionButtonText.text = "Finish Game";
     }
 
     private void RefreshHeroDeployUI()

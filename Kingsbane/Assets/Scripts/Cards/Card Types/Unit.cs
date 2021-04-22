@@ -684,6 +684,11 @@ public class Unit : Card
                 UpdateOwnerStats(false);
                 GameManager.instance.uiManager.RefreshUI();
                 GameManager.instance.CheckWarden();
+
+                if (isDestroy && IsHero)
+                {
+                    Owner.TriggerHeroLoss();
+                }
             }
         }
     }

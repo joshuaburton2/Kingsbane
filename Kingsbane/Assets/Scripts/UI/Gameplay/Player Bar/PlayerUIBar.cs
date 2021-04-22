@@ -26,6 +26,8 @@ public class PlayerUIBar : MonoBehaviour
     [SerializeField]
     private UnitCommandUI unitCommandUI;
     [SerializeField]
+    private VictoryStateUI victoryStateUI;
+    [SerializeField]
     private GameplayUI gameplayUI;
 
     public void InitialisePlayerBar(int _id)
@@ -37,8 +39,10 @@ public class PlayerUIBar : MonoBehaviour
         resourceUI.InitResourceUI(Player.Resources, this);
         heroUI.InitHeroUI(Player.Hero);
         cardFunctionUI.InitCardFunctionUI(Player, this);
+        victoryStateUI.InitVictoryStateUI();
 
         unitCommandUI.gameObject.SetActive(false);
+        victoryStateUI.gameObject.SetActive(false);
 
         turnIndicator.SetActive(false);
 
@@ -130,5 +134,11 @@ public class PlayerUIBar : MonoBehaviour
         {
             unitCommandUI.gameObject.SetActive(false);
         }
+    }
+
+    public void ShowVictoryUI(bool isVictory)
+    {
+        victoryStateUI.gameObject.SetActive(true);
+        victoryStateUI.ShowVictoryState(isVictory);
     }
 }

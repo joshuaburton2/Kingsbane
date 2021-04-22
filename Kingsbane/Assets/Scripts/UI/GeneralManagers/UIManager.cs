@@ -182,6 +182,11 @@ public class UIManager : MonoBehaviour
             throw new Exception("Not a valid scene to show map key");
     }
 
+    public void ShowVictoryState(int victoryId)
+    {
+        gameplayUI.ShowVictoryState(victoryId);
+    }
+
     /// <summary>
     /// 
     /// General function for closing a panel

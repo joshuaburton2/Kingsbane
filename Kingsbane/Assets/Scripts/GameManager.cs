@@ -278,4 +278,11 @@ public class GameManager : MonoBehaviour
                 player.CheckWarden();
         }
     }
+
+    public void TriggerVictory(int lossPlayerId)
+    {
+        CurrentGamePhase = GamePhases.End;
+        effectManager.RefreshEffectManager(true);
+        uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
+    }
 }

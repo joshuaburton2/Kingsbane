@@ -34,6 +34,8 @@ public class Player
     public int SummonCapcity { get; set; }
     public int CurrentSummons { get; set; }
 
+    public bool LoseOnHeroLoss { get; set; }
+
     public Player(DeckData _deckData)
     {
         DeckData = _deckData;
@@ -62,6 +64,8 @@ public class Player
         Id = id;
         Deck.Shuffle();
         DrawMulligan();
+
+        LoseOnHeroLoss = true;
 
         foreach (var resource in Resources)
             resource.StartOfGameUpdate(Id);
@@ -140,6 +144,14 @@ public class Player
             var resourceToChange = Resources.First(x => x.ResourceType == resourceChange.ResourceType);
 
             resourceToChange.ModifyValue(resourceChange.Value);
+        }
+    }
+
+    public void TriggerHeroLoss()
+    {
+        if (LoseOnHeroLoss)
+        {
+            GameManager.instance.TriggerVictory(Id);
         }
     }
 
