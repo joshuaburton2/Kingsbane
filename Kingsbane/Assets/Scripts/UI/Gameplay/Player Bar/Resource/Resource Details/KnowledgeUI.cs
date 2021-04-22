@@ -27,7 +27,7 @@ public class KnowledgeUI : ResourceDetailUI
     {
         base.RefreshResourceDetailUI();
 
-        valueText.text = $"{playerResource.ResourceType}: {playerResource.Value}/{ResourceKnowledge.BaseKnowledgeGain}";
+        valueText.text = $"{playerResource.ResourceType}: {playerResource.Value}/{ResourceKnowledge.KnowledgeGain}";
         propertyText.text = $"Ignorance: {ResourceKnowledge.Ignorance}, {ResourceKnowledge.ExcessStagnation}/{ResourceKnowledge.IGNORANCE_THRESHOLD}";
         studyInput.text = "";
         stagnationInput.text = "";

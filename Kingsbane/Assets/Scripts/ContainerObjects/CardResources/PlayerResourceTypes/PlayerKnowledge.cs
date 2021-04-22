@@ -12,6 +12,7 @@ public class PlayerKnowledge : PlayerResource
     private readonly int STAGNATION_MODIFIER = 1;
 
     public int BaseKnowledgeGain { get; set; }
+    public int KnowledgeGain { get; set; }
     public int Stagnation { get; set; }
     public int Ignorance { get { return  (int)Mathf.Floor(Stagnation / IGNORANCE_THRESHOLD); } }
     public int ExcessStagnation { get { return Stagnation % IGNORANCE_THRESHOLD; } }
@@ -62,6 +63,7 @@ public class PlayerKnowledge : PlayerResource
     public void ResetValue()
     {
         Value = 0;
+        KnowledgeGain = BaseKnowledgeGain;
     }
 
     /// <summary>
@@ -71,7 +73,7 @@ public class PlayerKnowledge : PlayerResource
     /// </summary>
     public void RefreshValue()
     {
-        Value = BaseKnowledgeGain;
+        Value = KnowledgeGain;
     }
 
     /// <summary>
@@ -108,7 +110,7 @@ public class PlayerKnowledge : PlayerResource
     /// </summary>
     public void UpdateBaseGain(int gainIncrease)
     {
-        BaseKnowledgeGain += gainIncrease;
+        KnowledgeGain += gainIncrease;
     }
 
     /// <summary>
