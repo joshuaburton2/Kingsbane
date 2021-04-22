@@ -210,12 +210,79 @@ namespace Kingsbane.App
             txtColourMap.Text = map.ColourMapName;
             txtDescription.Text = map.Decription;
 
+            terrainMap = new List<List<TerrainTypes>>();
+            for (int y = 0; y < GRID_SIZE; y++)
+            {
+                var row = new List<TerrainTypes>();
+                terrainMap.Add(row);
+                for (int x = 0; x < GRID_SIZE; x++)
+                {
+                    var cell = map.TerrainMap.Single(cell => cell.RowId == y && cell.ColumnId == y);
+                    row.Add(cell.TerrainId);
+                }
+            }
+
             LoadScenarioData();
         }
 
         private void LoadScenarioData()
         {
+            foreach (var scenario in map.Scenarios)
+            {
+                var scenarioData = new ScenarioData()
+                {
+                    Id = scenario.Id,
+                    Name = scenario.Name,
+                    Description = scenario.Decription,
+                    EnemyDeckId = scenario.EnemyDeckId,
+                    EnemyDeckName = scenario.EnemyDeck.Name,
+                };
 
+                foreach (var objective in scenario.Objectives)
+                {
+                    var objectiveData = new ObjectiveData()
+                    {
+                        Id = objective.Id,
+                        Name = objective.Name,
+                        Color = Color.FromArgb(objective.Red, objective.Green, objective.Blue),
+                    };
+
+                    scenarioData.Objectives.Add(objectiveData);
+                }
+
+                foreach (var scenarioRule in scenario.ScenarioRuleSet)
+                {
+                    var scenarioRuleData = new ScenarioRuleData()
+                    {
+                        Id = scenarioRule.RuleId,
+                        Name = scenarioRule.Rule.Name,
+                        Description = scenarioRule.Rule.Decription,
+                    };
+
+                    scenarioData.ScenarioRules.Add(scenarioRuleData);
+                }
+
+                scenarioData.DeploymentMap = new List<List<int?>>();
+                scenarioData.ObjectiveMap = new List<List<int?>>();
+                for (int y = 0; y < GRID_SIZE; y++)
+                {
+                    var deploymentRow = new List<int?>();
+                    var objectiveRow = new List<int?>();
+                    scenarioData.DeploymentMap.Add(deploymentRow);
+                    scenarioData.ObjectiveMap.Add(objectiveRow);
+                    for (int x = 0; x < GRID_SIZE; x++)
+                    {
+                        var deploymentCell = scenario.DeploymentMap.Single(cell => cell.RowId == y && cell.ColumnId == y);
+                        var objectiveCell = scenario.ObjectiveMap.Single(cell => cell.RowId == y && cell.ColumnId == y);
+                        deploymentRow.Add(deploymentCell.PlayerId);
+                        objectiveRow.Add(scenarioData.Objectives.FindIndex(x => x.Id == objectiveCell.ObjectiveId));
+                    }
+                }
+
+                scenarioList.Add(scenarioData);
+            }
+
+            cmbScenarioSelector.SelectedIndex = 0;
         }
 
         private void RefreshKeyItems()
@@ -342,6 +409,11 @@ namespace Kingsbane.App
         private void cmbKeyType_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshKeyItems();
+        }
+
+        private void cmbScenarioSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

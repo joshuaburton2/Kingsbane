@@ -146,6 +146,7 @@
             this.cmbScenarioSelector.Name = "cmbScenarioSelector";
             this.cmbScenarioSelector.Size = new System.Drawing.Size(208, 36);
             this.cmbScenarioSelector.TabIndex = 9;
+            this.cmbScenarioSelector.SelectedIndexChanged += new System.EventHandler(this.cmbScenarioSelector_SelectedIndexChanged);
             // 
             // btnAddScenario
             // 
