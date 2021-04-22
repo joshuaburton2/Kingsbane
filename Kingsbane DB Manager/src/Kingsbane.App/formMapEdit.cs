@@ -75,6 +75,7 @@ namespace Kingsbane.App
         private List<Button> keyButtons;
 
         private KeyTypes selectedKey;
+        private int? selectedKeyIndex;
         private ScenarioData selectedScenario;
 
         private readonly Dictionary<TerrainTypes, Color> terrainColours = new Dictionary<TerrainTypes, Color>()
@@ -92,7 +93,7 @@ namespace Kingsbane.App
             Color.FromArgb(26, 48, 236),
             Color.FromArgb(204, 36, 36),
         };
-        
+
         public formMapEdit(
             IServiceProvider serviceProvider,
             KingsbaneContext context)
@@ -136,7 +137,7 @@ namespace Kingsbane.App
                         UseVisualStyleBackColor = true,
                         Tag = new List<int> { x, y },
                     };
-
+                    gridButton.Click += ClickCell;
                     rowButtons.Add(gridButton);
                     pnlMap.Controls.Add(gridButton);
 
@@ -162,7 +163,7 @@ namespace Kingsbane.App
             }
             else
             {
-                this.Text = "Add Card";
+                this.Text = "Add Map";
 
                 CreateAddData();
             }
@@ -293,9 +294,11 @@ namespace Kingsbane.App
             }
 
             selectedKey = (KeyTypes)((SelectListItem)cmbKeyType.SelectedItem).Id;
+            selectedKeyIndex = null;
 
             var baseKeyPos = new Vector2(5, 70);
             var keyItemDistance = 35;
+            var index = 0;
 
             switch (selectedKey)
             {
@@ -303,26 +306,35 @@ namespace Kingsbane.App
                     foreach (var terrainType in Enum.GetValues(typeof(TerrainTypes)).Cast<TerrainTypes>())
                     {
                         var terrainColour = terrainColours.GetValueOrDefault(terrainType);
-                        CreateKeyItem(baseKeyPos, terrainType.ToString(), terrainColour);
+                        CreateKeyItem(baseKeyPos, terrainType.ToString(), terrainColour, index);
                         baseKeyPos.Y += keyItemDistance;
+                        index++;
                     }
                     break;
                 case KeyTypes.Deployment:
                     for (int playerId = 0; playerId < 2; playerId++)
                     {
                         var playerColour = playerColours[playerId];
-                        CreateKeyItem(baseKeyPos, $"Player: {playerId + 1}", playerColour);
+                        CreateKeyItem(baseKeyPos, $"Player: {playerId + 1}", playerColour, index);
                         baseKeyPos.Y += keyItemDistance;
+                        index++;
                     }
                     break;
                 case KeyTypes.Objectives:
+                    foreach (var objective in selectedScenario.Objectives)
+                    {
+                        var objectiveColour = objective.Color;
+                        CreateKeyItem(baseKeyPos, $"Objective: {objective.Name}", objectiveColour, index);
+                        baseKeyPos.Y += keyItemDistance;
+                        index++;
+                    }
                     break;
             }
 
             RefreshMapFilter();
         }
 
-        private void CreateKeyItem(Vector2 pos, string itemText, Color itemColour)
+        private void CreateKeyItem(Vector2 pos, string itemText, Color itemColour, int index)
         {
             var keyButton = new Button()
             {
@@ -332,12 +344,33 @@ namespace Kingsbane.App
                 TabIndex = 0,
                 Text = itemText,
                 UseVisualStyleBackColor = true,
+                Tag = index,
             };
-
+            keyButton.Click += SelectKeyItem;
             keyButton.BackColor = itemColour;
 
             keyButtons.Add(keyButton);
             pnlKey.Controls.Add(keyButton);
+        }
+
+        private void SelectKeyItem(object sender, EventArgs e)
+        {
+            foreach (var keyButton in keyButtons)
+            {
+                keyButton.ForeColor = Color.Black;
+            }
+
+            var button = (Button)sender;
+
+            if (selectedKeyIndex != (int)button.Tag)
+            {
+                selectedKeyIndex = (int)button.Tag;
+                button.ForeColor = Color.White;
+            }
+            else
+            {
+                selectedKeyIndex = null;
+            }
         }
 
         private void RefreshMapFilter()
@@ -368,6 +401,30 @@ namespace Kingsbane.App
 
                     mapButtons[y][x].BackColor = colour;
                 }
+            }
+        }
+
+        private void ClickCell(object sender, EventArgs e)
+        {
+            if (selectedKeyIndex.HasValue)
+            {
+                var button = (Button)sender;
+                var cellPos = (List<int>)button.Tag;
+
+                switch (selectedKey)
+                {
+                    case KeyTypes.Terrain:
+                        terrainMap[cellPos[1]][cellPos[0]] = (TerrainTypes)selectedKeyIndex.Value;
+                        break;
+                    case KeyTypes.Deployment:
+                        selectedScenario.DeploymentMap[cellPos[1]][cellPos[0]] = selectedKeyIndex.Value;
+                        break;
+                    case KeyTypes.Objectives:
+                        selectedScenario.ObjectiveMap[cellPos[1]][cellPos[0]] = selectedKeyIndex.Value;
+                        break;
+                }
+
+                RefreshMapFilter();
             }
         }
 
