@@ -377,13 +377,13 @@ public class Unit : Card
                 }
 
                 ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
-                RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn);
+                RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
             }
         }
         else
         {
             Status = UnitStatuses.Enemy;
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.StartOfOpponentTurn);
+            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOpponentTurn });
         }
 
         UnitCounter.RefreshUnitCounter();
@@ -427,13 +427,11 @@ public class Unit : Card
 
         if (isActive)
         {
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn);
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn, UnitEnchantment.EnchantmentStatus.AfterAttack });
         }
         else
         {
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.EndOfOpponentTurn);
-            RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.EndOfOpponentTurn, UnitEnchantment.EnchantmentStatus.AfterAttack });
         }
 
         UnitCounter.RefreshUnitCounter();
@@ -537,7 +535,7 @@ public class Unit : Card
             targetUnit.RemoveUnit();
         }
 
-        RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus.AfterAttack);
+        RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.AfterAttack });
 
         if (!unitDead)
             UnitCounter.RefreshUnitCounter();
@@ -746,9 +744,9 @@ public class Unit : Card
         }
     }
 
-    public void RemoveEnchantmentsOfStatus(UnitEnchantment.EnchantmentStatus enchantmentStatus)
+    public void RemoveEnchantmentsOfStatus(List<UnitEnchantment.EnchantmentStatus> enchantmentStatuses)
     {
-        var removeEnchantments = Enchantments.Where(x => x.Enchantment.Status == enchantmentStatus);
+        var removeEnchantments = Enchantments.Where(x => enchantmentStatuses.Contains(x.Enchantment.Status));
 
         foreach (var statusEffectList in removeEnchantments.Select(x => x.Enchantment.StatusEffects))
         {
@@ -834,7 +832,7 @@ public class Unit : Card
                     {
                         if (!enchantment.IsApplied)
                         {
-                            if (!CurrentStatusEffects.Contains(statusEffect))
+                            if (!HasStatusEffect(statusEffect))
                                 CurrentStatusEffects.Add(statusEffect);
                         }
                     }

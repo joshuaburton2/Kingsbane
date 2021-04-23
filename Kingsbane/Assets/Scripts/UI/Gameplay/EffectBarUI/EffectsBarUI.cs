@@ -57,6 +57,8 @@ public class EffectsBarUI : MonoBehaviour
         Immune,
         [Description("Captain of the Guard")]
         CaptainOfTheGuard,
+        [Description("Add Passive")]
+        AddPassive,
     }
 
     [Serializable]
