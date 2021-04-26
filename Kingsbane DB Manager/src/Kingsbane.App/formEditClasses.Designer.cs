@@ -52,6 +52,7 @@
             this.lstDeckList = new System.Windows.Forms.ListView();
             this.colId = new System.Windows.Forms.ColumnHeader();
             this.colName = new System.Windows.Forms.ColumnHeader();
+            this.colCount = new System.Windows.Forms.ColumnHeader();
             this.colType = new System.Windows.Forms.ColumnHeader();
             this.colClass = new System.Windows.Forms.ColumnHeader();
             this.colRarity = new System.Windows.Forms.ColumnHeader();
@@ -80,7 +81,6 @@
             this.lstUpgrades = new System.Windows.Forms.ListBox();
             this.btnAddUpgrade = new System.Windows.Forms.Button();
             this.lblUpgrades = new System.Windows.Forms.Label();
-            this.colCount = new System.Windows.Forms.ColumnHeader();
             this.grpNPCProperties.SuspendLayout();
             this.grpResouce2.SuspendLayout();
             this.grpResource1.SuspendLayout();
@@ -316,6 +316,12 @@
             this.colName.Text = "Name";
             this.colName.Width = 120;
             // 
+            // colCount
+            // 
+            this.colCount.Name = "colCount";
+            this.colCount.Text = "Count";
+            this.colCount.Width = 50;
+            // 
             // colType
             // 
             this.colType.Name = "colType";
@@ -529,6 +535,7 @@
             this.txtHeroCard.ReadOnly = true;
             this.txtHeroCard.Size = new System.Drawing.Size(199, 23);
             this.txtHeroCard.TabIndex = 0;
+            this.txtHeroCard.DoubleClick += new System.EventHandler(this.txtHeroCard_DoubleClick);
             // 
             // lstUpgrades
             // 
@@ -559,12 +566,6 @@
             this.lblUpgrades.Size = new System.Drawing.Size(76, 20);
             this.lblUpgrades.TabIndex = 26;
             this.lblUpgrades.Text = "Upgrades";
-            // 
-            // colCount
-            // 
-            this.colCount.Name = "colCount";
-            this.colCount.Text = "Count";
-            this.colCount.Width = 50;
             // 
             // formEditClasses
             // 

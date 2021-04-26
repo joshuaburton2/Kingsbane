@@ -21,7 +21,7 @@ namespace Kingsbane.Database.Models
         public string Name { get; set; }
 
         [Column(TypeName = "varchar(max)")]
-        public string Decription { get; set; }
+        public string Description { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

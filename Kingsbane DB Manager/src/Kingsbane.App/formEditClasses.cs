@@ -222,7 +222,10 @@ namespace Kingsbane.App
         {
             if (selectedDeck.NPCDeck)
             {
-                txtHeroCard.Text = _context.Cards.FirstOrDefault(x => x.Id == selectedDeck.HeroCardId).Name;
+                if (selectedDeck.HeroCardId.HasValue)
+                {
+                    txtHeroCard.Text = _context.Cards.FirstOrDefault(x => x.Id == selectedDeck.HeroCardId).Name;
+                }
                 txtHeroCard.Tag = selectedDeck.HeroCardId;
 
                 txtInitialMulligan.Text = selectedDeck.InitialHandSize.ToString();
@@ -339,66 +342,75 @@ namespace Kingsbane.App
 
         private void btnSaveDeck_Click(object sender, EventArgs e)
         {
-            selectedDeck.Name = txtDeckName.Text;
-            selectedDeck.NPCDeck = chkNPCDeck.Checked;
-
-            var upgradeIds = lstUpgrades.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
-
-            foreach (var upgradeId in upgradeIds)
+            if (chkNPCDeck.Checked && txtHeroCard.Tag == null)
             {
-                var deckUpgrade = selectedDeck != null ? selectedDeck.DeckUpgrades.SingleOrDefault(x => x.UpgradeId == upgradeId) : null;
-                if (deckUpgrade == null)
-                    _context.DeckUpgrades.Add(new DeckUpgrade { Deck = selectedDeck, UpgradeId = upgradeId });
-            }
-            if (selectedDeck != null)
-            {
-                var deckUpgrades = selectedDeck.DeckUpgrades.Where(x => !upgradeIds.Contains(x.UpgradeId));
-                _context.DeckUpgrades.RemoveRange(deckUpgrades);
-            }
-
-            if (selectedDeck.NPCDeck)
-            {
-                selectedDeck.HeroCardId = (int)txtHeroCard.Tag;
-                selectedDeck.InitialHandSize = int.Parse(txtInitialMulligan.Text);
-
-                var resourceIndex = 0;
-
-                foreach (var resource in selectedClass.ClassResources)
-                {
-                    var propertyIndex = 0;
-
-                    foreach (var property in resource.Resource.ResourceProperties)
-                    {
-                        var propertyValue = int.Parse(resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text);
-
-                        if (selectedDeck.ResourceProperties.Where(x => x.ResourcePropertyId == property.Id).Any())
-                        {
-                            selectedDeck.ResourceProperties.FirstOrDefault(x => x.ResourcePropertyId == property.Id).Value = propertyValue;
-                        }
-                        else
-                        {
-                            _context.DeckResourceProperties.Add(new DeckResourceProperty()
-                            {
-                                Deck = selectedDeck,
-                                ResourceProperty = property,
-                                Value = propertyValue,
-                            }); ;
-                        }
-
-                        propertyIndex++;
-                    }
-
-                    resourceIndex++;
-                }
+                MessageBox.Show("NPC Deck requires a hero card");
             }
             else
             {
-                selectedDeck.ResourceProperties.Clear();
+                selectedDeck.Name = txtDeckName.Text;
+                selectedDeck.NPCDeck = chkNPCDeck.Checked;
+
+                var upgradeIds = lstUpgrades.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
+
+                foreach (var upgradeId in upgradeIds)
+                {
+                    var deckUpgrade = selectedDeck != null ? selectedDeck.DeckUpgrades.SingleOrDefault(x => x.UpgradeId == upgradeId) : null;
+                    if (deckUpgrade == null)
+                        _context.DeckUpgrades.Add(new DeckUpgrade { Deck = selectedDeck, UpgradeId = upgradeId });
+                }
+                if (selectedDeck != null)
+                {
+                    var deckUpgrades = selectedDeck.DeckUpgrades.Where(x => !upgradeIds.Contains(x.UpgradeId));
+                    _context.DeckUpgrades.RemoveRange(deckUpgrades);
+                }
+
+                if (selectedDeck.NPCDeck)
+                {
+                    selectedDeck.HeroCardId = (int?)txtHeroCard.Tag;
+                    selectedDeck.InitialHandSize = int.Parse(txtInitialMulligan.Text);
+
+                    var resourceIndex = 0;
+
+                    foreach (var resource in selectedClass.ClassResources)
+                    {
+                        var propertyIndex = 0;
+
+                        foreach (var property in resource.Resource.ResourceProperties)
+                        {
+                            var propertyValue = int.Parse(resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text);
+
+                            if (selectedDeck.ResourceProperties.Where(x => x.ResourcePropertyId == property.Id).Any())
+                            {
+                                selectedDeck.ResourceProperties.FirstOrDefault(x => x.ResourcePropertyId == property.Id).Value = propertyValue;
+                            }
+                            else
+                            {
+                                _context.DeckResourceProperties.Add(new DeckResourceProperty()
+                                {
+                                    Deck = selectedDeck,
+                                    ResourceProperty = property,
+                                    Value = propertyValue,
+                                }); ;
+                            }
+
+                            propertyIndex++;
+                        }
+
+                        resourceIndex++;
+                    }
+                }
+                else
+                {
+                    selectedDeck.ResourceProperties.Clear();
+                    selectedDeck.HeroCardId = null;
+                    selectedDeck.InitialHandSize = 0;
+                }
+
+                _context.SaveChanges();
+
+                InitDeckList(selectedDeck.Id);
             }
-
-            _context.SaveChanges();
-
-            InitDeckList(selectedDeck.Id);
         }
 
         private void btnAddCard_Click(object sender, EventArgs e)
@@ -489,6 +501,12 @@ namespace Kingsbane.App
             {
                 lstUpgrades.Items.Remove(lstUpgrades.SelectedItems[0]);
             }
+        }
+
+        private void txtHeroCard_DoubleClick(object sender, EventArgs e)
+        {
+            txtHeroCard.Text = "";
+            txtHeroCard.Tag = null;
         }
     }
 }

@@ -540,7 +540,169 @@ namespace Kingsbane.App
 
         private void btnExportMap_Click(object sender, EventArgs e)
         {
+            var sb = new StringBuilder();
 
+            var mapQuery = _context.Maps.Include(x => x.TerrainMap);
+
+            sb.AppendLine("using CategoryEnums;");
+            sb.AppendLine("using System.Collections.Generic;");
+            sb.AppendLine("using UnityEngine;");
+
+            sb.AppendLine("namespace Assets.Scripts.Scenarios");
+            sb.AppendLine("{");
+            sb.AppendLine("     public class ScenarioLibrary");
+            sb.AppendLine("     {");
+            sb.AppendLine("         public List<Map> MapList { get; private set; }");
+            sb.AppendLine("         public List<Scenario> ScenarioList { get; private set; }");
+            sb.AppendLine("         public List<Campaign> CampaignList { get; private set; }");
+            sb.AppendLine("");
+            sb.AppendLine("         public void InitLibrary()");
+            sb.AppendLine("         {");
+            sb.AppendLine("            MapList = new List<Map>();");
+            sb.AppendLine("            ScenarioList = new List<Scenario>();");
+            sb.AppendLine("            CampaignList = new List<Campaign>();");
+            sb.AppendLine("");
+
+            const int GRID_SIZE = 10;
+
+            foreach (var map in mapQuery)
+            {
+                sb.AppendLine(@$"            var map{map.Id} = new Map()");
+                sb.AppendLine(@$"            {{");
+                sb.AppendLine(@$"                Id = {map.Id},");
+                sb.AppendLine(@$"                Name = ""{map.Name.FixQuotes()}"",");
+                sb.AppendLine(@$"                Description = ""{map.Description.FixQuotes()}"",");
+                sb.AppendLine(@$"                ColourMapName = ""{map.ColourMapName}"",");
+                sb.AppendLine(@$"                TerrainMap = new TerrainTypes[][]");
+                sb.AppendLine(@$"                {{");
+
+                for (int row = 0; row < GRID_SIZE; row++)
+                {
+                    var terrainRow = "";
+                    for (int column = 0; column < GRID_SIZE; column++)
+                    {
+                        terrainRow += $"TerrainTypes.{map.TerrainMap.Single(x => x.RowId == row && x.ColumnId == column).TerrainId},";
+                    }
+                    sb.AppendLine($"                    new TerrainTypes[] {{ {terrainRow} }},");
+                }
+
+                sb.AppendLine(@$"                }},");
+                sb.AppendLine(@$"            }};");
+                sb.AppendLine(@$"            MapList.Add(map{map.Id});");
+            }
+
+            var scenarioQuery = _context.Scenarios
+                                    .Include(x => x.DeploymentMap)
+                                    .Include(x => x.ObjectiveMap).ThenInclude(x => x.Objective)
+                                    .Include(x => x.ScenarioRuleSet).ThenInclude(x => x.Rule)
+                                    .Include(x => x.EnemyDeck);
+
+            foreach (var scenario in scenarioQuery)
+            {
+                sb.AppendLine(@$"            var scenario{scenario.Id} = new Scenario()");
+                sb.AppendLine(@$"            {{");
+                sb.AppendLine(@$"                Id = {scenario.Id},");
+                sb.AppendLine(@$"                Name = ""{scenario.Name.FixQuotes()}"",");
+                sb.AppendLine(@$"                Description = ""{scenario.Description.FixQuotes()}"",");
+
+                sb.AppendLine(@$"                DeploymentMap = new int?[][]");
+                sb.AppendLine(@$"                {{");
+                for (int row = 0; row < GRID_SIZE; row++)
+                {
+                    var deploymentRow = "";
+                    for (int column = 0; column < GRID_SIZE; column++)
+                    {
+                        var playerId = scenario.DeploymentMap.Single(x => x.RowId == row && x.ColumnId == column).PlayerId;
+                        var value = playerId.HasValue ? playerId.ToString() : "null";
+                        deploymentRow += $"{value},";
+                    }
+                    sb.AppendLine($"                    new int?[] {{ {deploymentRow} }},");
+                }
+                sb.AppendLine(@$"                }},");
+                sb.AppendLine(@$"                ObjectivesMap = new int?[][]");
+                sb.AppendLine(@$"                {{");
+                for (int row = 0; row < GRID_SIZE; row++)
+                {
+                    var objectiveRow = "";
+                    for (int column = 0; column < GRID_SIZE; column++)
+                    {
+                        var objectiveId = scenario.ObjectiveMap.Single(x => x.RowId == row && x.ColumnId == column).ObjectiveId;
+                        var value = objectiveId.HasValue ? objectiveId.ToString() : "null";
+                        objectiveRow += $"{value},";
+                    }
+                    sb.AppendLine($"                    new int?[] {{ {objectiveRow} }},");
+                }
+                sb.AppendLine(@$"                }},");
+
+                sb.AppendLine($@"                Objectives = new List<Objective>()");
+                sb.AppendLine($@"                {{");
+                foreach (var objective in scenario.ObjectiveMap.Where(x => x.ObjectiveId.HasValue).Select(x => x.Objective).Distinct())
+                {
+                    sb.AppendLine($@"                   new Objective() {{ Id = {objective.Id}, Name = ""{objective.Name}"", Color = new Color({objective.Red/255}f, {objective.Green / 255}f, {objective.Blue / 255}f) }},");
+                }
+                sb.AppendLine($@"                }},");
+
+                sb.AppendLine($@"                Rules = new List<Rule>()");
+                sb.AppendLine($@"                {{");
+                foreach (var rule in scenario.ScenarioRuleSet)
+                {
+                    sb.AppendLine($@"                   new Rule() {{ Id = {rule.Rule.Id}, Name = ""{rule.Rule.Name}"", Description = ""{rule.Rule.Description.FixQuotes()}"" }},");
+                }
+                sb.AppendLine($@"                }},");
+
+                if (scenario.EnemyDeckId.HasValue)
+                {
+                    sb.AppendLine($@"                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck({scenario.EnemyDeckId}),");
+                }
+
+                sb.AppendLine(@$"            }};");
+                sb.AppendLine($@"            ScenarioList.Add(scenario{scenario.Id});");
+            }
+
+            var campaignQuery = _context.Campaigns;
+
+            foreach (var campaign in campaignQuery)
+            {
+                sb.AppendLine(@$"            var campaign{campaign.Id} = new Campaign()");
+                sb.AppendLine(@$"            {{");
+                sb.AppendLine(@$"               Id = {campaign.Id}");
+                sb.AppendLine(@$"               Name = ""{campaign.Name.FixQuotes()}""");
+                sb.AppendLine(@$"               Description = ""{campaign.Description.FixQuotes()}""");
+                sb.AppendLine(@$"            }};");
+                sb.AppendLine($@"            CampaignList.Add(campaign{campaign.Id});");
+            }
+
+            sb.AppendLine("");
+            foreach (var map in mapQuery)
+            {
+                var scenarioList = string.Join(",", map.Scenarios.Select(x => $"scenario{x.Id}"));
+
+                if (string.IsNullOrWhiteSpace(scenarioList))
+                {
+                    continue;
+                }
+                sb.AppendLine($"        map{map.Id}.Scenarios = new List<Scenario> {{ {scenarioList} }};");
+            }
+
+            sb.AppendLine("");
+            foreach (var campaign in campaignQuery)
+            {
+                var scenarioList = string.Join(",", campaign.Scenarios.Select(x => $"scenario{x.Id}"));
+
+                if (string.IsNullOrWhiteSpace(scenarioList))
+                {
+                    continue;
+                }
+                sb.AppendLine($"        campaign{campaign.Id}.Scenarios = new List<Scenario> {{ {scenarioList} }};");
+            }
+
+            sb.AppendLine("        }");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+
+            var x = sb.ToString();
+            Clipboard.SetText(x);
+            MessageBox.Show("Exported content copied to clipboard");
         }
     }
 }

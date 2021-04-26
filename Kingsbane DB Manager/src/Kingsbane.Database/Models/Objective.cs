@@ -21,5 +21,7 @@ namespace Kingsbane.Database.Models
         public int Blue { get; set; }
 
         //Related Entities
+
+        public ICollection<MapObjective> MapObjectives { get; set; }
     }
 }

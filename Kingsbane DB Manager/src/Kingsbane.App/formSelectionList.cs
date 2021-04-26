@@ -18,6 +18,8 @@ namespace Kingsbane.App
         Upgrades,
         NPCHero,
         Keywords,
+        Deck,
+        ScenarioRules,
     }
 
     public partial class formSelectionList : Form
@@ -48,6 +50,8 @@ namespace Kingsbane.App
                 case SelectionType.Cards:
                 case SelectionType.Upgrades:
                 case SelectionType.Keywords:
+                case SelectionType.Deck:
+                case SelectionType.ScenarioRules:
                     btnAdd.Enabled = false;
                     txtAdd.Enabled = false;
                     break;
@@ -91,6 +95,12 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.Keywords:
                     newQuery = _context.Keywords.Select(x => new SelectionItem { Id = (int)x.Id, Name = x.Name, Identifier = "" });
+                    break;
+                case SelectionType.Deck:
+                    newQuery = _context.Decks.Where(x => x.NPCDeck).Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = "" });
+                    break;
+                case SelectionType.ScenarioRules:
+                    newQuery = _context.ScenarioRules.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.Description });
                     break;
                 case SelectionType.Cards:
                 default:

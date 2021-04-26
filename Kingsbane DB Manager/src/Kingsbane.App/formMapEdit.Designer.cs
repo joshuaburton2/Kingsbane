@@ -40,7 +40,7 @@
             this.cmbScenarioSelector = new System.Windows.Forms.ComboBox();
             this.btnAddScenario = new System.Windows.Forms.Button();
             this.txtScenarioName = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtScenarioDescription = new System.Windows.Forms.TextBox();
             this.lblScenarioDescription = new System.Windows.Forms.Label();
             this.lblScenarioRules = new System.Windows.Forms.Label();
             this.lstScenarioRules = new System.Windows.Forms.ListBox();
@@ -54,6 +54,12 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.btnAddNewRule = new System.Windows.Forms.Button();
+            this.lblRuleName = new System.Windows.Forms.Label();
+            this.txtRuleName = new System.Windows.Forms.TextBox();
+            this.lblRuleDescription = new System.Windows.Forms.Label();
+            this.txtRuleDescription = new System.Windows.Forms.TextBox();
+            this.btnSaveRule = new System.Windows.Forms.Button();
             this.btnAddRule = new System.Windows.Forms.Button();
             this.pnlKey.SuspendLayout();
             this.SuspendLayout();
@@ -127,6 +133,7 @@
             this.btnSaveScenario.TabIndex = 26;
             this.btnSaveScenario.Text = "Save Scenario";
             this.btnSaveScenario.UseVisualStyleBackColor = true;
+            this.btnSaveScenario.Click += new System.EventHandler(this.btnSaveScenario_Click);
             // 
             // lblScenario
             // 
@@ -140,6 +147,7 @@
             // 
             // cmbScenarioSelector
             // 
+            this.cmbScenarioSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbScenarioSelector.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbScenarioSelector.FormattingEnabled = true;
             this.cmbScenarioSelector.Location = new System.Drawing.Point(11, 238);
@@ -157,6 +165,7 @@
             this.btnAddScenario.TabIndex = 10;
             this.btnAddScenario.Text = "+";
             this.btnAddScenario.UseVisualStyleBackColor = true;
+            this.btnAddScenario.Click += new System.EventHandler(this.btnAddScenario_Click);
             // 
             // txtScenarioName
             // 
@@ -166,13 +175,13 @@
             this.txtScenarioName.Size = new System.Drawing.Size(208, 34);
             this.txtScenarioName.TabIndex = 11;
             // 
-            // textBox2
+            // txtScenarioDescription
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 334);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(276, 82);
-            this.textBox2.TabIndex = 12;
+            this.txtScenarioDescription.Location = new System.Drawing.Point(12, 334);
+            this.txtScenarioDescription.Multiline = true;
+            this.txtScenarioDescription.Name = "txtScenarioDescription";
+            this.txtScenarioDescription.Size = new System.Drawing.Size(276, 82);
+            this.txtScenarioDescription.TabIndex = 12;
             // 
             // lblScenarioDescription
             // 
@@ -201,6 +210,8 @@
             this.lstScenarioRules.Name = "lstScenarioRules";
             this.lstScenarioRules.Size = new System.Drawing.Size(276, 79);
             this.lstScenarioRules.TabIndex = 15;
+            this.lstScenarioRules.SelectedValueChanged += new System.EventHandler(this.lstScenarioRules_SelectedValueChanged);
+            this.lstScenarioRules.DoubleClick += new System.EventHandler(this.lstScenarioRules_DoubleClick);
             // 
             // lblEnemyDeck
             // 
@@ -218,6 +229,7 @@
             this.txtEnemyDeck.ReadOnly = true;
             this.txtEnemyDeck.Size = new System.Drawing.Size(129, 23);
             this.txtEnemyDeck.TabIndex = 17;
+            this.txtEnemyDeck.DoubleClick += new System.EventHandler(this.txtEnemyDeck_DoubleClick);
             // 
             // btnSetEnemyDeck
             // 
@@ -227,6 +239,7 @@
             this.btnSetEnemyDeck.TabIndex = 18;
             this.btnSetEnemyDeck.Text = "Set Deck";
             this.btnSetEnemyDeck.UseVisualStyleBackColor = true;
+            this.btnSetEnemyDeck.Click += new System.EventHandler(this.btnSetEnemyDeck_Click);
             // 
             // btnDeleteScenario
             // 
@@ -236,6 +249,7 @@
             this.btnDeleteScenario.TabIndex = 19;
             this.btnDeleteScenario.Text = "Delete";
             this.btnDeleteScenario.UseVisualStyleBackColor = true;
+            this.btnDeleteScenario.Click += new System.EventHandler(this.btnDeleteScenario_Click);
             // 
             // pnlKey
             // 
@@ -269,7 +283,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(820, 562);
+            this.buttonDelete.Location = new System.Drawing.Point(820, 598);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(82, 22);
@@ -280,7 +294,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(732, 562);
+            this.buttonCancel.Location = new System.Drawing.Point(732, 598);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(82, 22);
@@ -291,7 +305,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(644, 562);
+            this.buttonSave.Location = new System.Drawing.Point(644, 598);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(82, 22);
@@ -300,22 +314,82 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // btnAddNewRule
+            // 
+            this.btnAddNewRule.Location = new System.Drawing.Point(201, 451);
+            this.btnAddNewRule.Name = "btnAddNewRule";
+            this.btnAddNewRule.Size = new System.Drawing.Size(40, 23);
+            this.btnAddNewRule.TabIndex = 25;
+            this.btnAddNewRule.Text = "New";
+            this.btnAddNewRule.UseVisualStyleBackColor = true;
+            this.btnAddNewRule.Click += new System.EventHandler(this.btnAddNewRule_Click);
+            // 
+            // lblRuleName
+            // 
+            this.lblRuleName.AutoSize = true;
+            this.lblRuleName.Location = new System.Drawing.Point(293, 496);
+            this.lblRuleName.Name = "lblRuleName";
+            this.lblRuleName.Size = new System.Drawing.Size(65, 15);
+            this.lblRuleName.TabIndex = 27;
+            this.lblRuleName.Text = "Rule Name";
+            // 
+            // txtRuleName
+            // 
+            this.txtRuleName.Location = new System.Drawing.Point(398, 493);
+            this.txtRuleName.Name = "txtRuleName";
+            this.txtRuleName.Size = new System.Drawing.Size(213, 23);
+            this.txtRuleName.TabIndex = 28;
+            // 
+            // lblRuleDescription
+            // 
+            this.lblRuleDescription.AutoSize = true;
+            this.lblRuleDescription.Location = new System.Drawing.Point(293, 521);
+            this.lblRuleDescription.Name = "lblRuleDescription";
+            this.lblRuleDescription.Size = new System.Drawing.Size(93, 15);
+            this.lblRuleDescription.TabIndex = 29;
+            this.lblRuleDescription.Text = "Rule Description";
+            // 
+            // txtRuleDescription
+            // 
+            this.txtRuleDescription.Location = new System.Drawing.Point(398, 521);
+            this.txtRuleDescription.Multiline = true;
+            this.txtRuleDescription.Name = "txtRuleDescription";
+            this.txtRuleDescription.Size = new System.Drawing.Size(213, 37);
+            this.txtRuleDescription.TabIndex = 30;
+            // 
+            // btnSaveRule
+            // 
+            this.btnSaveRule.Location = new System.Drawing.Point(521, 564);
+            this.btnSaveRule.Name = "btnSaveRule";
+            this.btnSaveRule.Size = new System.Drawing.Size(89, 23);
+            this.btnSaveRule.TabIndex = 31;
+            this.btnSaveRule.Text = "Save Rule";
+            this.btnSaveRule.UseVisualStyleBackColor = true;
+            this.btnSaveRule.Click += new System.EventHandler(this.btnSaveRule_Click);
+            // 
             // btnAddRule
             // 
-            this.btnAddRule.Location = new System.Drawing.Point(247, 449);
+            this.btnAddRule.Location = new System.Drawing.Point(247, 451);
             this.btnAddRule.Name = "btnAddRule";
             this.btnAddRule.Size = new System.Drawing.Size(40, 23);
-            this.btnAddRule.TabIndex = 25;
-            this.btnAddRule.Text = "+";
+            this.btnAddRule.TabIndex = 32;
+            this.btnAddRule.Text = "Add";
             this.btnAddRule.UseVisualStyleBackColor = true;
+            this.btnAddRule.Click += new System.EventHandler(this.btnAddRule_Click);
             // 
             // formMapEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 595);
-            this.Controls.Add(this.btnSaveScenario);
+            this.ClientSize = new System.Drawing.Size(914, 631);
             this.Controls.Add(this.btnAddRule);
+            this.Controls.Add(this.btnSaveRule);
+            this.Controls.Add(this.txtRuleDescription);
+            this.Controls.Add(this.lblRuleDescription);
+            this.Controls.Add(this.txtRuleName);
+            this.Controls.Add(this.lblRuleName);
+            this.Controls.Add(this.btnSaveScenario);
+            this.Controls.Add(this.btnAddNewRule);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -327,7 +401,7 @@
             this.Controls.Add(this.lstScenarioRules);
             this.Controls.Add(this.lblScenarioRules);
             this.Controls.Add(this.lblScenarioDescription);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtScenarioDescription);
             this.Controls.Add(this.txtScenarioName);
             this.Controls.Add(this.btnAddScenario);
             this.Controls.Add(this.cmbScenarioSelector);
@@ -362,7 +436,7 @@
         private System.Windows.Forms.ComboBox cmbScenarioSelector;
         private System.Windows.Forms.Button btnAddScenario;
         private System.Windows.Forms.TextBox txtScenarioName;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtScenarioDescription;
         private System.Windows.Forms.Label lblScenarioDescription;
         private System.Windows.Forms.Label lblScenarioRules;
         private System.Windows.Forms.ListBox lstScenarioRules;
@@ -378,5 +452,12 @@
         private System.Windows.Forms.Label lblKeyTitle;
         private System.Windows.Forms.Button btnAddRule;
         private System.Windows.Forms.Button btnSaveScenario;
+        private System.Windows.Forms.Label lblRuleName;
+        private System.Windows.Forms.TextBox txtRuleName;
+        private System.Windows.Forms.Label lblRuleDescription;
+        private System.Windows.Forms.TextBox txtRuleDescription;
+        private System.Windows.Forms.Button btnSaveRule;
+        private System.Windows.Forms.Button btnAddNewRule;
+        private System.Windows.Forms.Button button1;
     }
 }

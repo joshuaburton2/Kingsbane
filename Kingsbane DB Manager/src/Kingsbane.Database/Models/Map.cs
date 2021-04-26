@@ -20,7 +20,7 @@ namespace Kingsbane.Database.Models
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
         [Column(TypeName = "varchar(max)")]
-        public string Decription { get; set; }
+        public string Description { get; set; }
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
         public string ColourMapName { get; set; }

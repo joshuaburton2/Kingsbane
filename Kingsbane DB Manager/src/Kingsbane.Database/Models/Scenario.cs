@@ -9,7 +9,6 @@ namespace Kingsbane.Database.Models
         public Scenario()
         {
             ScenarioRuleSet = new HashSet<ScenarioRuleSet>();
-            Objectives = new HashSet<Objective>();
         }
 
         [Key]
@@ -22,20 +21,19 @@ namespace Kingsbane.Database.Models
         public string Name { get; set; }
 
         [Column(TypeName = "varchar(max)")]
-        public string Decription { get; set; }
+        public string Description { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
         // Related Entities
-        public int EnemyDeckId { get; set; }
+        public int? EnemyDeckId { get; set; }
         public virtual Deck EnemyDeck { get; set; }
 
         public int MapId { get; set; }
         public virtual Map Map { get; set; }
 
         public virtual ICollection<ScenarioRuleSet> ScenarioRuleSet { get; set; }
-        public virtual ICollection<Objective> Objectives { get; set; }
         public virtual ICollection<MapDeployment> DeploymentMap { get; set; }
         public virtual ICollection<MapObjective> ObjectiveMap { get; set; }
     }
