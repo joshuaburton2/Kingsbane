@@ -22,6 +22,7 @@ namespace Kingsbane.Database.Models
 
         [Column(TypeName = "varchar(max)")]
         public string Description { get; set; }
+        public bool IsDefault { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

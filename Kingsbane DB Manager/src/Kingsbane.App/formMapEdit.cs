@@ -24,6 +24,7 @@ namespace Kingsbane.App
             public int? Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
+            public bool IsDefault { get; set; }
             public int? EnemyDeckId { get; set; }
             public string EnemyDeckName { get; set; }
             public List<List<int?>> DeploymentMap { get; set; }
@@ -182,6 +183,7 @@ namespace Kingsbane.App
             {
                 Id = null,
                 Name = DEFAULT_SCENARIO_NAME,
+                IsDefault = true,
             };
 
             for (int y = 0; y < GRID_SIZE; y++)
@@ -238,6 +240,7 @@ namespace Kingsbane.App
                     Id = scenario.Id,
                     Name = scenario.Name,
                     Description = scenario.Description,
+                    IsDefault = scenario.IsDefault,
                     EnemyDeckId = scenario.EnemyDeckId,
                 };
                 if (scenario.EnemyDeckId.HasValue)
@@ -289,6 +292,7 @@ namespace Kingsbane.App
 
                 scenarioList.Add(scenarioData);
             }
+            scenarioList = scenarioList.OrderByDescending(x => x.IsDefault).ThenBy(x => x.Name).ToList();
         }
 
         private void RefreshScenarioList()
@@ -579,6 +583,7 @@ namespace Kingsbane.App
                 }
                 scenario.Name = scenarioData.Name;
                 scenario.Description = scenarioData.Description;
+                scenario.IsDefault = scenarioData.IsDefault;
                 scenario.EnemyDeckId = scenarioData.EnemyDeckId;
 
                 foreach (var ruleData in scenarioData.ScenarioRules)
@@ -732,9 +737,6 @@ namespace Kingsbane.App
 
         private void cmbScenarioSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedScenario != null)
-                SaveScenario();
-
             var comboBox = (ComboBox)sender;
             selectedScenario = scenarioList[comboBox.SelectedIndex];
 
@@ -746,8 +748,8 @@ namespace Kingsbane.App
             if (lstScenarioRules.Items.Count > 0)
                 lstScenarioRules.SelectedIndex = 0;
 
-            btnDeleteScenario.Enabled = comboBox.SelectedIndex != 0;
-            btnSetEnemyDeck.Enabled = comboBox.SelectedIndex != 0;
+            btnDeleteScenario.Enabled = !selectedScenario.IsDefault;
+            btnSetEnemyDeck.Enabled = !selectedScenario.IsDefault;
 
             RefreshKeyItems();
         }
@@ -764,6 +766,7 @@ namespace Kingsbane.App
             {
                 Id = null,
                 Name = txtScenarioName.Text,
+                IsDefault = false,
             };
 
             for (int y = 0; y < GRID_SIZE; y++)
@@ -786,6 +789,7 @@ namespace Kingsbane.App
             }
 
             scenarioList.Add(newScenarion);
+            scenarioList = scenarioList.OrderByDescending(x => x.IsDefault).ThenBy(x => x.Name).ToList();
             RefreshScenarioList();
             cmbScenarioSelector.SelectedIndex = scenarioList.Count - 1;
         }
@@ -851,7 +855,10 @@ namespace Kingsbane.App
 
         private void btnSaveScenario_Click(object sender, EventArgs e)
         {
+            var currentIndex = cmbScenarioSelector.SelectedIndex;
             SaveScenario();
+            RefreshScenarioList();
+            cmbScenarioSelector.SelectedIndex = currentIndex;
         }
 
         private void SaveScenario()
