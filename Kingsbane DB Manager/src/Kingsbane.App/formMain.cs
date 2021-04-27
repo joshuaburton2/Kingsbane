@@ -565,14 +565,18 @@ namespace Kingsbane.App
 
             const int GRID_SIZE = 10;
 
+            var imageTagList = new List<string>();
+
             foreach (var map in mapQuery)
             {
+                imageTagList.Add(map.ColourMapName);
+
                 sb.AppendLine(@$"            var map{map.Id} = new Map()");
                 sb.AppendLine(@$"            {{");
                 sb.AppendLine(@$"                Id = {map.Id},");
                 sb.AppendLine(@$"                Name = ""{map.Name.FixQuotes()}"",");
                 sb.AppendLine(@$"                Description = ""{map.Description.FixQuotes()}"",");
-                sb.AppendLine(@$"                ColourMapName = ""{map.ColourMapName}"",");
+                sb.AppendLine(@$"                ColourMapName = MapImageTags.{map.ColourMapName},");
                 sb.AppendLine(@$"                TerrainMap = new TerrainTypes[][]");
                 sb.AppendLine(@$"                {{");
 
@@ -697,6 +701,16 @@ namespace Kingsbane.App
             }
 
             sb.AppendLine("        }");
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+
+            imageTagList.Sort();
+
+            sb.AppendLine("namespace CategoryEnums");
+            sb.AppendLine("{");
+            sb.AppendLine("    public enum MapImageTags");
+            sb.AppendLine("    {");
+            sb.AppendLine($"         Default, {string.Join(",", imageTagList)}");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

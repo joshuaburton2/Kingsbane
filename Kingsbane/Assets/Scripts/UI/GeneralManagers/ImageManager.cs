@@ -27,11 +27,17 @@ public class ImageManager : MonoBehaviour
         public Sprite imageSprite;
     }
 
+    [Serializable]
+    private class MapImageObject
+    {
+        public MapImageTags imageTag;
+        public Sprite imageSprite;
+    }
+
     [SerializeField]
     private Sprite defaultImage;
     [SerializeField]
-    private List<CardImageObject> mapImages; //Need to use a different tag system for this
-
+    private List<MapImageObject> mapImages; //Need to use a different tag system for this
     [SerializeField]
     private List<ClassImageList> classImageList;
 
@@ -43,9 +49,27 @@ public class ImageManager : MonoBehaviour
     public Sprite GetCardImage(CardImageTags imageTag, Classes.ClassList requiredClass)
     {
         var image = defaultImage;
-        CardImageObject imageObject = null;
 
-        imageObject = classImageList.FirstOrDefault(x => x.Class == requiredClass).imageList.FirstOrDefault(x => x.imageTag == imageTag);
+        var imageObject = classImageList.FirstOrDefault(x => x.Class == requiredClass).imageList.FirstOrDefault(x => x.imageTag == imageTag);
+
+        if (imageObject == null)
+            image = defaultImage;
+        else
+            image = imageObject.imageSprite;
+
+        return image;
+    }
+
+    /// <summary>
+    /// 
+    /// Gets an image for a card based on a particular tag
+    /// 
+    /// </summary>
+    public Sprite GetMapImage(MapImageTags imageTag)
+    {
+        var image = defaultImage;
+
+        var imageObject = mapImages.FirstOrDefault(x => x.imageTag == imageTag);
 
         if (imageObject == null)
             image = defaultImage;
@@ -76,8 +100,18 @@ public class ImageManager : MonoBehaviour
                 {
                     Debug.Log($"Missing Tag for {image.imageSprite.name}");
                     image.imageTag = CardImageTags.Default;
-                }
-                    
+                } 
+            }
+        }
+
+        foreach (var image in mapImages)
+        {
+            if (Enum.TryParse(image.imageSprite.name, true, out MapImageTags imageTag))
+                image.imageTag = imageTag;
+            else
+            {
+                Debug.Log($"Missing Tag for {image.imageSprite.name}");
+                image.imageTag = MapImageTags.Default;
             }
         }
     }

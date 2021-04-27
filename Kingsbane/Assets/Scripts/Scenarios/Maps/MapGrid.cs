@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -45,6 +46,12 @@ public class MapGrid : MonoBehaviour
 
     private MapFilters activeMapFilter;
 
+    [Header("Colour Map Properties")]
+    [SerializeField]
+    private Canvas colourMapCanvas;
+    [SerializeField]
+    private Image colourMapImage;
+         
     private void Awake()
     {
         baseCellScale = cellObject.transform.localScale;
@@ -54,12 +61,13 @@ public class MapGrid : MonoBehaviour
     [ContextMenu("Refresh Grid")]
     public void RefreshGrid(Map mapData, int scenarioId)
     {
+        colourMapCanvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        colourMapImage.sprite = GameManager.instance.imageManager.GetMapImage(mapData.ColourMapName);
+
         var scaledHexDistance = hexDistance * scalingFactor;
 
         rowList = new GameObject[numY];
         cellList = new Cell[numY][];
-
-        GameManager.DestroyAllChildren(gameObject);
 
         #region Row Initialisation
         //Initialise the rows to store each of the cells. This has no functional purpose but is for organisation within the scene

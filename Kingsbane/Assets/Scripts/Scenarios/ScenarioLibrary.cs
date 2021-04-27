@@ -20,7 +20,7 @@ namespace Assets.Scripts.Scenarios
                 Id = 3,
                 Name = "Test",
                 Description = "Test",
-                ColourMapName = "Test",
+                ColourMapName = MapImageTags.Test,
                 TerrainMap = new TerrainTypes[][]
                 {
                     new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
@@ -41,7 +41,7 @@ namespace Assets.Scripts.Scenarios
                 Id = 4,
                 Name = "Test 2",
                 Description = "Test",
-                ColourMapName = "Test 2",
+                ColourMapName = MapImageTags.Test_2,
                 TerrainMap = new TerrainTypes[][]
                 {
                     new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
@@ -182,5 +182,12 @@ namespace Assets.Scripts.Scenarios
             map4.Scenarios = new List<Scenario> { scenario4, scenario5 };
 
         }
+    }
+}
+namespace CategoryEnums
+{
+    public enum MapImageTags
+    {
+        Default, Test, Test_2
     }
 }
