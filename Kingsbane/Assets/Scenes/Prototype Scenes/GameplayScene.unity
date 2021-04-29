@@ -17447,7 +17447,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -130}
+  m_SizeDelta: {x: 0, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &493209845
 MonoBehaviour:
@@ -66263,6 +66263,10 @@ MonoBehaviour:
     activeGamePhase: 4
     effectPrefab: {fileID: 524201694207549704, guid: 6b43ba11d6770464bb9c77e0a599617f,
       type: 3}
+  - effectType: 24
+    activeGamePhase: 1
+    effectPrefab: {fileID: 524201694207549704, guid: 6b43ba11d6770464bb9c77e0a599617f,
+      type: 3}
   effectExtensions:
   - effectType: 7
     effectArea: {fileID: 1693730675}
@@ -66272,6 +66276,8 @@ MonoBehaviour:
     effectArea: {fileID: 1611952718}
   - effectType: 12
     effectArea: {fileID: 978153277}
+  - effectType: 24
+    effectArea: {fileID: 493209843}
   gameplayUI: {fileID: 1873261933}
 --- !u!1 &1654312706
 GameObject:
