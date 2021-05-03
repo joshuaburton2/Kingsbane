@@ -21,8 +21,8 @@ public class CardListsUI : MonoBehaviour
         Graveyard,
         [Description("Discarded")]
         Discard,
-        [Description("Upgrades")]
-        Upgrades,
+        [Description("Passives")]
+        Passives,
     }
 
     private TabTypes selectedTab;
@@ -43,6 +43,8 @@ public class CardListsUI : MonoBehaviour
     private GameObject cardListPrefab;
     [SerializeField]
     private GameObject upgradeListPrefab;
+    [SerializeField]
+    private GameObject passiveListPrefab;
     [SerializeField]
     private GameObject listParent;
     [SerializeField]
@@ -96,13 +98,13 @@ public class CardListsUI : MonoBehaviour
             case TabTypes.Discard:
                 RefreshCardList(player.Discard.cardList.OrderByDescending(x => x.TotalResource).ToList());
                 break;
-            case TabTypes.Upgrades:
-                foreach (var upgrade in player.Upgrades.OrderBy(x => x.Name))
+            case TabTypes.Passives:
+                foreach (var passive in player.Passives.OrderBy(x => x.Name))
                 {
-                    var upgradeListObject = Instantiate(upgradeListPrefab, listParent.transform);
-                    upgradeListObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgrade);
+                    var upgradeListObject = Instantiate(passiveListPrefab, listParent.transform);
+                    upgradeListObject.GetComponent<DeckPassiveObject>().InitPassiveObject(passive);
                 }
-                UpdateListCountText(player.Upgrades.Count);
+                UpdateListCountText(player.Passives.Count);
                 break;
             default:
                 break;

@@ -60,6 +60,11 @@ public class Resource
             Value = Math.Min(0, Value);
     }
 
+    public void SetValue(int valueSet)
+    {
+        Value = valueSet;
+    }
+
     public static string GetResoourceDescription(CardResources cardResource)
     {
         ResourceDescriptions.TryGetValue(cardResource, out string description);

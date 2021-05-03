@@ -37,6 +37,16 @@ public class UpgradeManager : MonoBehaviour
 
     /// <summary>
     /// 
+    /// Gets an upgrade of a particular name
+    /// 
+    /// </summary>
+    public UpgradeData GetUpgrade(string name)
+    {
+        return upgradeLibrary.UpgradeList.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+    }
+
+    /// <summary>
+    /// 
     /// Creates an upgrade card on a canvas
     /// 
     /// </summary>

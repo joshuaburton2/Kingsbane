@@ -164,6 +164,16 @@ public class Unit : Card
 
                 AddEnchantment(keywordEnchantment);
             }
+
+            if (Owner != null)
+            {
+                foreach (var passive in Owner.Passives)
+                {
+                    if (passive.Enchantment != null)
+                        if (passive.PassiveApplies(this))
+                            AddEnchantment(passive.Enchantment);
+                }
+            }
         }
     }
 
@@ -590,6 +600,9 @@ public class Unit : Card
             {
                 if (TotalProtected.HasValue)
                 {
+                    if (Owner.Passives.Any(x => x.SpecialPassive == SpecialPassiveEffects.LunarEclipse) && TotalProtected.Value > 0)
+                        damageValue = 1;
+
                     ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
                     if (GetStat(StatTypes.TempProtected) < 0)
                     {
@@ -613,8 +626,6 @@ public class Unit : Card
                             ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
                         }
                     }
-
-
                 }
             }
 
@@ -635,7 +646,7 @@ public class Unit : Card
         UnitCounter.RefreshUnitCounter();
     }
 
-    public void AddProtected(int? value, bool isTemporary)
+    public void AddProtected(int? value, bool isTemporary = false)
     {
         if (isTemporary)
         {

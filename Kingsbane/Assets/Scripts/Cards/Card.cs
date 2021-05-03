@@ -130,6 +130,19 @@ public class Card
         ResourcesConverted = false;
         IsSpymasterLuren = false;
         ResourceInit();
+
+        if (Owner != null)
+        {
+            if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
+            {
+                foreach (var passive in Owner.Passives)
+                {
+                    if (passive.CostModification != null)
+                        if (passive.PassiveApplies(this))
+                            ModifyCost(passive.CostModification.Value, passive.TargetResource, StatModifierTypes.Modify);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -245,37 +258,76 @@ public class Card
         Owner.Draw(this);
     }
 
-    public bool ModifyCost(int value, CardResources? resource)
+    public bool ModifyCost(int value, CardResources? resource, StatModifierTypes statModType)
     {
         if (resource.HasValue)
         {
             if (!Resources.Contains(resource.Value))
                 return false;
 
-            ResourceCost.Single(x => x.ResourceType == resource).ModifyValue(-value, true);
+            var resourceCost = ResourceCost.Single(x => x.ResourceType == resource);
+
+            switch (statModType)
+            {
+                case StatModifierTypes.Modify:
+                    resourceCost.ModifyValue(-value, true);
+                    break;
+                case StatModifierTypes.Set:
+                    resourceCost.SetValue(value);
+                    break;
+                default:
+                    throw new Exception("Not a valid stat mod type");
+            }
+
         }
         else
         {
             if (Resources.Count == 1)
             {
-                ResourceCost.FirstOrDefault().ModifyValue(-value, true);
+                var resourceCost = ResourceCost.FirstOrDefault();
+
+                switch (statModType)
+                {
+                    case StatModifierTypes.Modify:
+                        resourceCost.ModifyValue(-value, true);
+                        break;
+                    case StatModifierTypes.Set:
+                        resourceCost.SetValue(value);
+                        break;
+                    default:
+                        throw new Exception("Not a valid stat mod type");
+                }
             }
             else
             {
                 bool isOdd = false;
-                if (value % 2 == 1)
+                if (statModType == StatModifierTypes.Modify)
                 {
-                    value -= 1;
-                    isOdd = true;
-                }
-                else if (value % 2 == -1)
-                {
-                    value += 1;
-                    isOdd = true;
+                    if (value % 2 == 1)
+                    {
+                        value -= 1;
+                        isOdd = true;
+                    }
+                    else if (value % 2 == -1)
+                    {
+                        value += 1;
+                        isOdd = true;
+                    }
+                    value /= Resources.Count;
                 }
 
-                value /= Resources.Count;
-                ResourceCost.ForEach(x => x.ModifyValue(-value, true));
+                switch (statModType)
+                {
+                    case StatModifierTypes.Modify:
+                        ResourceCost.ForEach(x => x.ModifyValue(-value, true));
+                        break;
+                    case StatModifierTypes.Set:
+                        ResourceCost.ForEach(x => x.SetValue(value));
+                        break;
+                    default:
+                        throw new Exception("Not a valid stat mod type");
+                }
+                
 
                 if (isOdd)
                 {

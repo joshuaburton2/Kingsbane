@@ -221,7 +221,7 @@ public class GameplayUI : MonoBehaviour
         {
             cardDisplayArea.SetActive(true);
             GameManager.DestroyAllChildren(cardDisplayParent);
-            GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayParent.transform, 0.25f);
+            GameManager.instance.libraryManager.CreateCardObject(card, cardDisplayParent.transform, 0.32f);
         }
         else
         {

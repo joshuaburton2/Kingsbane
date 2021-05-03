@@ -100,6 +100,7 @@ public class EffectManager : MonoBehaviour
     private List<Keywords> SelectedKeywords { get; set; }
     private CardResources? SelectedResource { get; set; }
     private TileStatuses SelectedTileStatus { get; set; }
+    private StatModifierTypes SelectedStatModType { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -618,30 +619,31 @@ public class EffectManager : MonoBehaviour
         unit.StunUnit();
     }
 
-    public void SetModifyCostMode(int value, CardResources? resource)
+    public void SetModifyCostMode(int value, CardResources? resource, StatModifierTypes statModType)
     {
         ActiveEffect = ActiveEffectTypes.ModifyCost;
 
         SelectedValue = value;
         SelectedResource = resource;
+        SelectedStatModType = statModType;
     }
 
     public void ModifyCost(Card card)
     {
-        var canModify = card.ModifyCost(SelectedValue.Value, SelectedResource);
+        var canModify = card.ModifyCost(SelectedValue.Value, SelectedResource, SelectedStatModType);
         if (!canModify)
             Debug.Log("Cannot modify cost of card");
     }
 
-    public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource)
+    public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource, StatModifierTypes statModType)
     {
         var player = GameManager.instance.GetPlayer();
 
         foreach (var card in player.Hand.cardList.Where(x => x.Type == cardType))
-            card.ModifyCost(value, resource);
+            card.ModifyCost(value, resource, statModType);
 
         foreach (var card in player.Deck.cardList.Where(x => x.Type == cardType))
-            card.ModifyCost(value, resource);
+            card.ModifyCost(value, resource, statModType);
 
         GameManager.instance.uiManager.RefreshUI();
     }
@@ -1049,5 +1051,13 @@ public class EffectManager : MonoBehaviour
                 GameManager.instance.uiManager.RefreshUI();
             }
         }
+    }
+
+    public void AddPassive(Passive passive)
+    {
+        var activePlayer = GameManager.instance.GetPlayer();
+
+        activePlayer.AddPassive(passive);
+        GameManager.instance.uiManager.RefreshUI();
     }
 }

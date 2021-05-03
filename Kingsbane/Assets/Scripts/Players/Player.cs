@@ -24,6 +24,7 @@ public class Player
     public List<Unit> RedeployUnits { get; set; }
     public List<UnitCounter> DeployedSummonUnits { get; set; }
     public int ItemCapacity { get { return DeckData.ItemCapacity; } }
+    public List<Passive> Passives { get; set; }
 
     public List<PlayerResource> Resources { get; set; }
     public List<CardResources> UsedResources { get { return Resources.Select(x => x.ResourceType).ToList(); } }
@@ -40,6 +41,7 @@ public class Player
     {
         DeckData = _deckData;
 
+        Passives = new List<Passive>();
         Deck = new Deck(DeckData.CardList, this);
         Hand = new Hand();
         Graveyard = new CardList();
@@ -378,7 +380,7 @@ public class Player
             }
 
             if (filter.CostModification != null)
-                generatedCard.ModifyCost(filter.CostModification.Value, filter.ResourceModification);
+                generatedCard.ModifyCost(filter.CostModification.Value, filter.ResourceModification, StatModifierTypes.Modify);
 
             if (isChoice)
             {
@@ -627,6 +629,54 @@ public class Player
         else
         {
             throw new Exception("Cannot recruit cards with a non gold class");
+        }
+    }
+
+    public void AddPassive(Passive passive)
+    {
+        Passives.Add(passive);
+
+        var cardList = new List<Card>();
+        cardList.AddRange(Deck.cardList);
+        cardList.AddRange(Hand.cardList);
+        cardList.AddRange(Graveyard.cardList);
+        cardList.AddRange(Discard.cardList);
+        cardList.AddRange(DeployedUnits.Select(x => x.Unit));
+        cardList.AddRange(RedeployUnits);
+
+        if (passive.CostModification != null)
+        {
+            foreach (var card in cardList)
+            {
+                if (!card.IsHero)
+                    if (passive.PassiveApplies(card))
+                        card.ModifyCost(passive.CostModification.Value, passive.TargetResource, StatModifierTypes.Modify);
+            }
+        }
+
+        if (passive.Enchantment != null)
+        {
+            foreach (var card in cardList.Where(x => x.Type == CardTypes.Unit).Cast<Unit>())
+            {
+                if (passive.PassiveApplies(card))
+                    card.AddEnchantment(passive.Enchantment);
+            }
+        }
+
+        switch (passive.SpecialPassive)
+        {
+            case SpecialPassiveEffects.LunarEclipse:
+                foreach (var unit in DeployedUnits.Select(x => x.Unit))
+                {
+                    unit.AddProtected(passive.SpecialPassiveProperty);
+                }
+                break;
+            case SpecialPassiveEffects.SolarEclipse:
+                break;
+            case SpecialPassiveEffects.MonsterHunter:
+                break;
+            default:
+                break;
         }
     }
 }

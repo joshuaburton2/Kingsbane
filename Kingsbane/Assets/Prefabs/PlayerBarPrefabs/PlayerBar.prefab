@@ -27359,6 +27359,8 @@ MonoBehaviour:
     type: 3}
   upgradeListPrefab: {fileID: 5589189360322528574, guid: 5fd1cddeccf43b043bcc3bd2836d53c8,
     type: 3}
+  passiveListPrefab: {fileID: 5533059060780817006, guid: 1c93d0002bb513a4aa0c6a802f66d383,
+    type: 3}
   listParent: {fileID: 3888564416398087172}
   listCountText: {fileID: 5362761986728264982}
 --- !u!1 &3703786857011129523

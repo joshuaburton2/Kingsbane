@@ -12,6 +12,8 @@ public class ModifyCostEffect : EffectUI
     [SerializeField]
     private TMP_InputField costInput;
     [SerializeField]
+    private TMP_Dropdown statTypeDropdown;
+    [SerializeField]
     private TMP_Dropdown targetDropdown;
     [SerializeField]
     private TMP_Dropdown resourceDropdown;
@@ -30,6 +32,7 @@ public class ModifyCostEffect : EffectUI
     {
         base.InitialiseEffectUI(_effectType, _gameplayUI, _effectBarUI);
 
+        GeneralUIExtensions.InitDropdownOfType(statTypeDropdown, new List<StatModifierTypes>() { StatModifierTypes.None });
         GeneralUIExtensions.InitDropdownOfType(targetDropdown, new List<CardTypes>() { CardTypes.Default }, DEFAULT_TARGET_STRING);
         GeneralUIExtensions.InitDropdownOfType(resourceDropdown, new List<CardResources>() { CardResources.Neutral }, DEFAULT_RESOURCE_STRING, true);
 
@@ -44,7 +47,7 @@ public class ModifyCostEffect : EffectUI
     private void ResetState()
     {
         modifyButton.interactable = true;
-
+        statTypeDropdown.value = 0;
     }
 
     /// <summary>
@@ -77,7 +80,7 @@ public class ModifyCostEffect : EffectUI
             cardResource = (CardResources)Enum.Parse(typeof(CardResources), resourceDropdown.captionText.text);
 
         var value = -1;
-        if(int.TryParse(costInput.text, out int result) && costInput.text != "0")
+        if(int.TryParse(costInput.text, out int result))
         {
             value = result;
         }
@@ -87,17 +90,21 @@ public class ModifyCostEffect : EffectUI
             costInput.text = "-1";
         }
 
+        var statModType = (StatModifierTypes)Enum.Parse(typeof(StatModifierTypes), statTypeDropdown.captionText.text);
+        if (statModType == StatModifierTypes.Set)
+            value = -value;
+
         //Chooses the target for the cost modification
         if (targetDropdown.captionText.text == DEFAULT_TARGET_STRING)
         {
             effectComplete = false;
 
-            GameManager.instance.effectManager.SetModifyCostMode(value, cardResource);
+            GameManager.instance.effectManager.SetModifyCostMode(value, cardResource, statModType);
         }
         else
         {
             var cardTarget = (CardTypes)Enum.Parse(typeof(CardTypes), targetDropdown.captionText.text);
-            GameManager.instance.effectManager.ModifyCostOfTargetCards(value, cardTarget, cardResource);
+            GameManager.instance.effectManager.ModifyCostOfTargetCards(value, cardTarget, cardResource, statModType);
         }
     }
 }
