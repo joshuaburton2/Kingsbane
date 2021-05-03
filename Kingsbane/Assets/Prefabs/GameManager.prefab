@@ -175,7 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 15715ea6b30addf4c9c1f1ad2898d1af, type: 3}
-  mapImages: []
+  mapImages:
+  - imageTag: 2
+    imageSprite: {fileID: 21300000, guid: 18409b73c93f4414880bb6991aa7357c, type: 3}
+  - imageTag: 1
+    imageSprite: {fileID: 21300000, guid: 7cfa5293f6a5798499d3a8a103ba0327, type: 3}
   classImageList:
   - Class: 1
     imageList:

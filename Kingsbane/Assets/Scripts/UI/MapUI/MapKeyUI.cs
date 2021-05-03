@@ -98,6 +98,6 @@ public class MapKeyUI : MonoBehaviour
     {
         var mapFilter = (MapGrid.MapFilters)mapFilterId;
         GameManager.instance.mapGrid.SwitchMapFilter(mapFilter);
-        RefreshKey(mapFilter);
+        RefreshKey(mapFilter, GameManager.instance.LoadedScenario.Objectives);
     }
 }

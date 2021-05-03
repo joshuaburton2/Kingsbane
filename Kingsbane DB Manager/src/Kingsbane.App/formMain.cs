@@ -642,7 +642,7 @@ namespace Kingsbane.App
                 sb.AppendLine($@"                {{");
                 foreach (var objective in scenario.ObjectiveMap.Where(x => x.ObjectiveId.HasValue).Select(x => x.Objective).Distinct())
                 {
-                    sb.AppendLine($@"                   new Objective() {{ Id = {objective.Id}, Name = ""{objective.Name}"", Color = new Color({objective.Red/255}f, {objective.Green / 255}f, {objective.Blue / 255}f) }},");
+                    sb.AppendLine($@"                   new Objective() {{ Id = {objective.Id}, Name = ""{objective.Name}"", Color = new Color({(float)objective.Red/255}f, {(float)objective.Green / 255}f, {(float)objective.Blue / 255}f) }},");
                 }
                 sb.AppendLine($@"                }},");
 
