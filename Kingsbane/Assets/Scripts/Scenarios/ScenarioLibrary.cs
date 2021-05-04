@@ -57,6 +57,48 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map6);
+            var map7 = new Map()
+            {
+                Id = 7,
+                Name = "MountainPass",
+                Description = "Pass through a mountain range",
+                ColourMapName = MapImageTags.MountainPass,
+                TerrainMap = new TerrainTypes[][]
+                {
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.TallObstacle,TerrainTypes.TallObstacle, },
+                    new TerrainTypes[] { TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.TallObstacle,TerrainTypes.TallObstacle,TerrainTypes.TallObstacle, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.TallObstacle, },
+                    new TerrainTypes[] { TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.TallObstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.TallObstacle, },
+                },
+            };
+            MapList.Add(map7);
+            var map8 = new Map()
+            {
+                Id = 8,
+                Name = "Farmland",
+                Description = "Battle in the farms",
+                ColourMapName = MapImageTags.Farmland,
+                TerrainMap = new TerrainTypes[][]
+                {
+                    new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                    new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                    new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Impassable, },
+                    new TerrainTypes[] { TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Obstacle,TerrainTypes.Obstacle,TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Obstacle,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                    new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                    new TerrainTypes[] { TerrainTypes.Chasm,TerrainTypes.Chasm,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Obstacle,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult, },
+                },
+            };
+            MapList.Add(map8);
             var scenario6 = new Scenario()
             {
                 Id = 6,
@@ -111,12 +153,12 @@ namespace Assets.Scripts.Scenarios
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { 0,0,0,0,0,0,0,0,0,null, },
+                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                     new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                 },
                 ObjectivesMap = new int?[][]
                 {
-                    new int?[] { 4,4,4,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
@@ -129,16 +171,97 @@ namespace Assets.Scripts.Scenarios
                 },
                 Objectives = new List<Objective>()
                 {
-                   new Objective() { Id = 4, Name = "Test", Color = new Color(0.87058824f, 0f, 0f) },
                 },
                 Rules = new List<Rule>()
                 {
                 },
             };
             ScenarioList.Add(scenario7);
+            var scenario8 = new Scenario()
+            {
+                Id = 8,
+                Name = "Default Scenario",
+                Description = "",
+                DeploymentMap = new int?[][]
+                {
+                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
+                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                },
+                ObjectivesMap = new int?[][]
+                {
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,5,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                },
+                Objectives = new List<Objective>()
+                {
+                   new Objective() { Id = 5, Name = "Hidden Alcove", Color = new Color(0.78431374f, 0f, 0f) },
+                },
+                Rules = new List<Rule>()
+                {
+                   new Rule() { Id = 3, Name = "Hidden Alcove", Description = "The last player to occupy the objective tile for the Hidden Alcove owns it. Whoever owns the Hidden Alcove can deploy their units in adjacent tiles" },
+                },
+            };
+            ScenarioList.Add(scenario8);
+            var scenario9 = new Scenario()
+            {
+                Id = 9,
+                Name = "Default Scenario",
+                Description = "",
+                DeploymentMap = new int?[][]
+                {
+                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
+                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                },
+                ObjectivesMap = new int?[][]
+                {
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                },
+                Objectives = new List<Objective>()
+                {
+                },
+                Rules = new List<Rule>()
+                {
+                },
+            };
+            ScenarioList.Add(scenario9);
 
             map5.Scenarios = new List<Scenario> { scenario6 };
             map6.Scenarios = new List<Scenario> { scenario7 };
+            map7.Scenarios = new List<Scenario> { scenario8 };
+            map8.Scenarios = new List<Scenario> { scenario9 };
 
         }
     }
@@ -147,6 +270,6 @@ namespace CategoryEnums
 {
     public enum MapImageTags
     {
-        Default, RiverCrossing, Sandbox
+        Default, Farmland, MountainPass, RiverCrossing, Sandbox
     }
 }

@@ -100,7 +100,7 @@ MonoBehaviour:
   adjCell: []
   gridIndex: {x: 0, y: 0}
   backgroundImage: {fileID: 6801558084069231290}
-  defaultAlpha: 0.6
+  defaultAlpha: 0.7
   terrainType: 0
   occupantCounter: {fileID: 0}
   tileStatusCanvas: {fileID: 5717426440335990647}

@@ -73,6 +73,9 @@ public class MapKeyUI : MonoBehaviour
                         KeyText = objective.Name,
                     });
                 }
+
+                if (objectiveList.Count == 0)
+                    noKeyText.SetActive(true);
                 break;
             //Other cases have no key
             case MapGrid.MapFilters.Colour:
