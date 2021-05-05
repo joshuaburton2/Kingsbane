@@ -69,7 +69,6 @@ public class EffectManager : MonoBehaviour
     private readonly List<ActiveEffectTypes> NonCancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.None,
-        ActiveEffectTypes.UnitCommand,
         ActiveEffectTypes.ForceDeployment,
         ActiveEffectTypes.ForceEquip,
         ActiveEffectTypes.GraveyardToDeployChoice,
@@ -117,7 +116,8 @@ public class EffectManager : MonoBehaviour
     {
         if (!NonCancelableEffects.Contains(ActiveEffect))
         {
-            CancelEffect = true;
+            if (ActiveEffect != ActiveEffectTypes.UnitCommand)
+                CancelEffect = true;
             RefreshEffectManager();
         }
     }
@@ -375,6 +375,7 @@ public class EffectManager : MonoBehaviour
                 {
                     RemoveUnitCounter(SelectedUnit.UnitCounter);
                     CreateUnitCounter(SelectedUnit, newCell, false);
+                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
                     RefreshEffectManager();
                     GameManager.instance.uiManager.RefreshUI();
                 }
