@@ -583,6 +583,8 @@ public class Unit : Card
 
     public bool DamageUnit(Player sourcePlayer, int damageValue, List<Keywords> keywords = null)
     {
+        var isDead = false;
+
         if (!HasStatusEffect(StatusEffects.Immune) && !HasStatusEffect(StatusEffects.Indestructible))
         {
             if (keywords == null)
@@ -592,7 +594,10 @@ public class Unit : Card
             {
                 CurrentHealth -= damageValue;
                 if (CurrentHealth <= 0 || keywords.Contains(Keywords.Deadly))
+                {
                     RemoveUnit(true);
+                    isDead = true;
+                }
                 if (keywords.Contains(Keywords.Lifebond))
                     sourcePlayer.Hero.HealUnit(damageValue);
             }
@@ -617,9 +622,13 @@ public class Unit : Card
                                     Redeploy();
                                 else
                                     RemoveUnit(true);
+                                isDead = true;
                             }
                             else if (CurrentHealth <= 0)
+                            {
                                 RemoveUnit(true);
+                                isDead = true;
+                            }
                             if (keywords.Contains(Keywords.Lifebond))
                                 sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
@@ -633,7 +642,7 @@ public class Unit : Card
                 UnitCounter.RefreshUnitCounter();
         }
 
-        return CurrentHealth <= 0;
+        return isDead;
     }
 
     public void HealUnit(int? healValue)

@@ -69,7 +69,7 @@ public class EffectManager : MonoBehaviour
     private readonly List<ActiveEffectTypes> NonCancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.None,
-        //ActiveEffectTypes.UnitCommand,
+        ActiveEffectTypes.UnitCommand,
         ActiveEffectTypes.ForceDeployment,
         ActiveEffectTypes.ForceEquip,
         ActiveEffectTypes.GraveyardToDeployChoice,
@@ -187,6 +187,7 @@ public class EffectManager : MonoBehaviour
                 break;
             case ActiveEffectTypes.UnitMove:
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
+
                 CancelEffect = false;
 
                 break;
