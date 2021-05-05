@@ -17,11 +17,6 @@ public class ResourceList : MonoBehaviour
     [SerializeField]
     private GameObject resourceListPrefab;
 
-    private void Start()
-    {
-        isSelected = false;
-    }
-
     /// <summary>
     /// 
     /// Refreshes the resource list with the resource list objects
@@ -30,6 +25,8 @@ public class ResourceList : MonoBehaviour
     /// <param name="excemptResource">The other selected resource to exempt from the list</param>
     public void InitResourceList(CardResources? excemptResource = null)
     {
+        isSelected = false;
+
         GameManager.DestroyAllChildren(resourceListParent);
         resourceListObjects = new List<ResourceListObject>();
 
