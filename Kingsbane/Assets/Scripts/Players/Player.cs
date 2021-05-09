@@ -153,7 +153,8 @@ public class Player
     {
         if (LoseOnHeroLoss)
         {
-            GameManager.instance.TriggerVictory(Id);
+            if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.End)
+                GameManager.instance.TriggerVictory(Id);
         }
     }
 
