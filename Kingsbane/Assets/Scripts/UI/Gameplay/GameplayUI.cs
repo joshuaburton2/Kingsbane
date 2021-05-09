@@ -129,25 +129,11 @@ public class GameplayUI : MonoBehaviour
             case GameManager.GamePhases.Menu:
                 break;
             case GameManager.GamePhases.Setup:
-                GameManager.instance.CurrentGamePhase = GameManager.GamePhases.HeroDeploy;
+                GameManager.instance.CurrentGamePhase = GameManager.GamePhases.Mulligan;
                 SetPlayerTurnText();
 
-                RefreshHeroDeployUI();
+                RefreshPlayerBar();
 
-                break;
-            case GameManager.GamePhases.HeroDeploy:
-                isNewRound = GameManager.instance.NextPlayerTurn();
-                SetPlayerTurnText();
-
-                if (isNewRound)
-                {
-                    ShowCardDisplay();
-                    RefreshPlayerBar();
-                }
-                else
-                {
-                    RefreshHeroDeployUI();
-                }
                 break;
             case GameManager.GamePhases.Mulligan:
                 isNewRound = GameManager.instance.NextPlayerTurn();
@@ -160,6 +146,22 @@ public class GameplayUI : MonoBehaviour
                 else
                 {
                     RefreshPlayerBar();
+                    RefreshHeroDeployUI();
+                }
+                break;
+            case GameManager.GamePhases.HeroDeploy:
+                isNewRound = GameManager.instance.NextPlayerTurn();
+                SetPlayerTurnText();
+
+                if (isNewRound)
+                {
+                    RefreshPlayerBar();
+                    RefreshHeroDeployUI();
+                }
+                else
+                {
+                    RefreshPlayerBar();
+
                 }
                 break;
             case GameManager.GamePhases.Gameplay:
@@ -195,8 +197,6 @@ public class GameplayUI : MonoBehaviour
 
     private void RefreshHeroDeployUI()
     {
-        foreach (var playerBar in playerUIBars)
-            playerBar.UpdateTurnIndicator();
         ShowCardDisplay(GameManager.instance.GetPlayer().Hero);
     }
 

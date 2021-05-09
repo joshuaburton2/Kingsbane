@@ -143,7 +143,7 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.None;
 
                 SelectedCard = null;
-                if (SelectedUnit != null)
+                if (SelectedUnit != null && GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
                     SelectedUnit.UnitCounter.ShowUnitSelector(false);
                 SelectedUnit = null;
                 DeployUnits = new List<Unit>();

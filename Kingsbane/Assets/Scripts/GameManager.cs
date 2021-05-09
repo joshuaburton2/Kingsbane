@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     {
         Menu,
         Setup,
-        HeroDeploy,
         Mulligan,
+        HeroDeploy,
         Gameplay,
         End,
     }
