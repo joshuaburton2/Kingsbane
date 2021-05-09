@@ -46,7 +46,7 @@ public class Unit : Card
     public class Stat
     {
         public StatTypes Type { get; set; }
-        public int? Value { get; set; }
+        public int Value { get; set; }
     }
 
     public UnitData UnitData { get { return CardData as UnitData; } }
@@ -58,10 +58,7 @@ public class Unit : Card
     {
         get
         {
-            if (GetStat(StatTypes.Protected).HasValue && GetStat(StatTypes.TempProtected).HasValue)
-                return GetStat(StatTypes.Protected) + GetStat(StatTypes.TempProtected);
-            else
-                return null;
+            return GetStat(StatTypes.Protected) + GetStat(StatTypes.TempProtected);
         }
     }
 
@@ -79,9 +76,9 @@ public class Unit : Card
     public StatisticStatuses HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
 
     public UnitStatuses Status { get; set; }
-    public int CurrentHealth { get { return currentHealth; } set { currentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth).Value, value); } }
+    public int CurrentHealth { get { return currentHealth; } set { currentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth), value); } }
     private int currentHealth;
-    public int RemainingSpeed { get { return remainingSpeed; } set { remainingSpeed = Mathf.Min(GetStat(StatTypes.Speed).Value, value); } }
+    public int RemainingSpeed { get { return remainingSpeed; } set { remainingSpeed = Mathf.Min(GetStat(StatTypes.Speed), value); } }
     private int remainingSpeed;
     public int ActionsLeft { get; set; }
     public int AbilityUsesLeft { get; set; }
@@ -138,7 +135,7 @@ public class Unit : Card
         AbilityInit();
 
         Status = UnitStatuses.None;
-        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+        CurrentHealth = GetStat(StatTypes.MaxHealth);
         TemporaryMindControlled = false;
         LoseNextAction = false;
 
@@ -202,8 +199,8 @@ public class Unit : Card
 
     private void ResetStats(bool fullReset = false)
     {
-        int? currentTempProtected = 0;
-        int? currentProtected = UnitData.Protected;
+        int currentTempProtected = 0;
+        int currentProtected = UnitData.Protected;
 
         if (!fullReset)
         {
@@ -224,18 +221,18 @@ public class Unit : Card
         };
     }
 
-    public int? GetStat(StatTypes statType)
+    public int GetStat(StatTypes statType)
     {
         return Stats.Single(x => x.Type == statType).Value;
     }
 
-    public void ModifyStat(StatModifierTypes modifierType, StatTypes statType, int? value)
+    public void ModifyStat(StatModifierTypes modifierType, StatTypes statType, int value)
     {
         switch (modifierType)
         {
             case StatModifierTypes.Modify:
                 var currentValue = Stats.Single(x => x.Type == statType).Value;
-                ModifyStat(StatModifierTypes.Set, statType, currentValue.Value + value);
+                ModifyStat(StatModifierTypes.Set, statType, currentValue + value);
                 break;
             case StatModifierTypes.Set:
                 Stats.Single(x => x.Type == statType).Value = value;
@@ -319,15 +316,15 @@ public class Unit : Card
     {
         if (isAdded)
         {
-            if (GetStat(StatTypes.Empowered).Value > 0)
-                Owner.ModifyEmpowered(GetStat(StatTypes.Empowered).Value);
+            if (GetStat(StatTypes.Empowered) > 0)
+                Owner.ModifyEmpowered(GetStat(StatTypes.Empowered));
             if (HasKeyword(Keywords.Summon))
                 Owner.AddSummon(UnitCounter);
         }
         else
         {
-            if (GetStat(StatTypes.Empowered).Value > 0)
-                Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered).Value);
+            if (GetStat(StatTypes.Empowered) > 0)
+                Owner.ModifyEmpowered(-GetStat(StatTypes.Empowered));
             if (HasKeyword(Keywords.Summon))
                 Owner.RemoveSummon(UnitCounter);
         }
@@ -405,7 +402,7 @@ public class Unit : Card
         if (HasKeyword(Keywords.Flying))
             CanFlyOrLand = true;
 
-        RemainingSpeed = GetStat(StatTypes.Speed).Value;
+        RemainingSpeed = GetStat(StatTypes.Speed);
 
         if (HasKeyword(Keywords.Swiftstrike))
         {
@@ -501,7 +498,7 @@ public class Unit : Card
         if (Owner.Id == targetUnit.Owner.Id)
             return false;
 
-        if (targetUnit.HasStatusEffect(StatusEffects.Airborne) && GetStat(StatTypes.Range).Value == 0)
+        if (targetUnit.HasStatusEffect(StatusEffects.Airborne) && GetStat(StatTypes.Range) == 0)
             return false;
 
         if (targetUnit.HasStatusEffect(StatusEffects.Stealthed) && Name != "Scout Regiment") //Hardcoded to account for scout regiment being able to target stealth units. FIX
@@ -525,19 +522,19 @@ public class Unit : Card
         {
             var targetHealth = targetUnit.CurrentHealth;
 
-            targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack).Value, CurrentKeywords);
-            if (GetStat(StatTypes.Range).Value == 0 || forceMelee)
+            targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack), CurrentKeywords);
+            if (GetStat(StatTypes.Range) == 0 || forceMelee)
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
                 if (!targetDead && hasOverwhelm || !hasOverwhelm)
                 {
-                    unitDead = DamageUnit(targetUnit.Owner, targetUnit.GetStat(StatTypes.Attack).Value, targetUnit.CurrentKeywords);
+                    unitDead = DamageUnit(targetUnit.Owner, targetUnit.GetStat(StatTypes.Attack), targetUnit.CurrentKeywords);
                 }
             }
 
             if (targetDead && !unitDead)
             {
-                CheckUnleash(targetUnit.GetStat(StatTypes.Attack).Value, targetHealth);
+                CheckUnleash(targetUnit.GetStat(StatTypes.Attack), targetHealth);
             }
         }
         else
@@ -558,7 +555,7 @@ public class Unit : Card
         if (HasKeyword(Keywords.Routing))
         {
             var missingHealth = GetStat(StatTypes.MaxHealth) - CurrentHealth;
-            var randomValue = UnityEngine.Random.Range(0, GetStat(StatTypes.MaxHealth).Value);
+            var randomValue = UnityEngine.Random.Range(0, GetStat(StatTypes.MaxHealth));
             return randomValue < missingHealth;
         }
 
@@ -611,11 +608,11 @@ public class Unit : Card
                     ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
                     if (GetStat(StatTypes.TempProtected) < 0)
                     {
-                        ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected).Value);
+                        ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, GetStat(StatTypes.TempProtected));
                         ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
                         if (GetStat(StatTypes.Protected) < 0)
                         {
-                            CurrentHealth += GetStat(StatTypes.Protected).Value;
+                            CurrentHealth += GetStat(StatTypes.Protected);
                             if (keywords.Contains(Keywords.Deadly))
                             {
                                 if (IsHero)
@@ -648,37 +645,19 @@ public class Unit : Card
     public void HealUnit(int? healValue)
     {
         if (healValue.HasValue)
-            CurrentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth).Value, CurrentHealth + healValue.Value);
+            CurrentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth), CurrentHealth + healValue.Value);
         else
-            CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+            CurrentHealth = GetStat(StatTypes.MaxHealth);
 
         UnitCounter.RefreshUnitCounter();
     }
 
-    public void AddProtected(int? value, bool isTemporary = false)
+    public void AddProtected(int value, bool isTemporary = false)
     {
         if (isTemporary)
-        {
-            if (value.HasValue)
-            {
-                if (GetStat(StatTypes.TempProtected).HasValue)
-                    ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, value.Value);
-            }
-            else
-                ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, null);
-        }
+            ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, value);
         else
-        {
-            if (value.HasValue)
-            {
-                if (GetStat(StatTypes.Protected).HasValue)
-                    ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, value.Value);
-            }
-            else
-            {
-                ModifyStat(StatModifierTypes.Set, StatTypes.Protected, null);
-            }
-        }
+            ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, value);
         UnitCounter.RefreshUnitCounter();
     }
 
@@ -804,7 +783,7 @@ public class Unit : Card
 
                         var currentAttack = GetStat(StatTypes.Attack);
 
-                        var attackModifier = Mathf.Min(totalOverload, currentAttack.Value - 1);
+                        var attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
 
                         enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
                     }
@@ -829,10 +808,10 @@ public class Unit : Card
                                     break;
                                 case StatModifierTypes.Set:
                                     if (statModifier.StatType == StatTypes.MaxHealth)
-                                        CurrentHealth = GetStat(StatTypes.MaxHealth).Value;
+                                        CurrentHealth = GetStat(StatTypes.MaxHealth);
                                     if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
                                     {
-                                        RemainingSpeed = GetStat(StatTypes.Speed).Value;
+                                        RemainingSpeed = GetStat(StatTypes.Speed);
                                         if (CanMove && Status != UnitStatuses.Enemy && Status != UnitStatuses.Start)
                                             Status = UnitStatuses.Middle;
                                     }

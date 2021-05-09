@@ -555,7 +555,7 @@ public class EffectManager : MonoBehaviour
         unit.HealUnit(SelectedValue);
     }
 
-    public void SetProtectedMode(int? protectedValue, bool isTemporary)
+    public void SetProtectedMode(int protectedValue, bool isTemporary)
     {
         SelectedValue = protectedValue;
         SelectedBoolean = isTemporary;
@@ -564,7 +564,7 @@ public class EffectManager : MonoBehaviour
 
     public void ProtectUnit(Unit unit)
     {
-        unit.AddProtected(SelectedValue, SelectedBoolean.Value);
+        unit.AddProtected(SelectedValue.Value, SelectedBoolean.Value);
     }
 
     public void SetDestroyUnitMode()
