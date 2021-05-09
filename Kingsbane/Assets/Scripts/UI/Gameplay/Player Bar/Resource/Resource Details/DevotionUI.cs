@@ -11,8 +11,6 @@ public class DevotionUI : ResourceDetailUI
     [SerializeField]
     private TMP_InputField prayerInput;
     [SerializeField]
-    private TMP_InputField lastingPrayerInput;
-    [SerializeField]
     private TextMeshProUGUI prayerButtonText;
 
     /// <summary>
@@ -26,7 +24,6 @@ public class DevotionUI : ResourceDetailUI
 
         propertyText.text = $"Lasting Prayer: {ResourceDevotion.LastingPrayer}";
         prayerInput.text = "";
-        lastingPrayerInput.text = "";
         prayerButtonText.text = $"Prayer (+{ResourceDevotion.PrayerModifier})";
     }
 
@@ -39,19 +36,6 @@ public class DevotionUI : ResourceDetailUI
     {
         if(int.TryParse(prayerInput.text, out int prayerVal))
             ResourceDevotion.TriggerPrayer(prayerVal);
-
-        playerBar.RefreshPlayerBar();
-    }
-
-    /// <summary>
-    /// 
-    /// Button click event for setting the lasting prayer
-    /// 
-    /// </summary>
-    public void LastingPrayerButton()
-    {
-        if (int.TryParse(lastingPrayerInput.text, out int lastingPrayerVal))
-            ResourceDevotion.SetLastingPrayer(lastingPrayerVal);
 
         playerBar.RefreshPlayerBar();
     }

@@ -157,6 +157,16 @@ public class Player
         }
     }
 
+    public void GameEndUpdates()
+    {
+        if (UsedResources.Contains(CardResources.Devotion))
+        {
+            var devotion = (PlayerDevotion)Resources.Single(x => x.ResourceType == CardResources.Devotion);
+            var numPrayerUnits = DeployedUnits.Where(x => x.Unit.Tags.Contains(Tags.PrayerGain)).Count();
+            devotion.SetLastingPrayer(numPrayerUnits);
+        }
+    }
+
     public void DrawMulligan()
     {
         var cardsToMulligan = Hand.cardList.ToList();

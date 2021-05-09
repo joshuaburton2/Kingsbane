@@ -282,6 +282,12 @@ public class GameManager : MonoBehaviour
     public void TriggerVictory(int lossPlayerId)
     {
         CurrentGamePhase = GamePhases.End;
+
+        foreach (var player in LoadedPlayers)
+        {
+            player.GameEndUpdates();
+        }
+
         effectManager.RefreshEffectManager(true);
         uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
     }
