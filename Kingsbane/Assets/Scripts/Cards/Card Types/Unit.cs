@@ -743,8 +743,12 @@ public class Unit : Card
             var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
             {
-                newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
-                CanFlyOrLand = true;
+                if (!HasStatusEffect(StatusEffects.Airborne))
+                {
+                    newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
+                    if (Status != UnitStatuses.Preparing)
+                        CanFlyOrLand = true;
+                }
             }
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
                 newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
