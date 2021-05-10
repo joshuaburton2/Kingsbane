@@ -69,7 +69,6 @@ public class EffectManager : MonoBehaviour
     private readonly List<ActiveEffectTypes> NonCancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.None,
-        //ActiveEffectTypes.UnitCommand,
         ActiveEffectTypes.ForceDeployment,
         ActiveEffectTypes.ForceEquip,
         ActiveEffectTypes.GraveyardToDeployChoice,
@@ -117,7 +116,8 @@ public class EffectManager : MonoBehaviour
     {
         if (!NonCancelableEffects.Contains(ActiveEffect))
         {
-            CancelEffect = true;
+            if (ActiveEffect != ActiveEffectTypes.UnitCommand)
+                CancelEffect = true;
             RefreshEffectManager();
         }
     }
@@ -143,7 +143,7 @@ public class EffectManager : MonoBehaviour
                 ActiveEffect = ActiveEffectTypes.None;
 
                 SelectedCard = null;
-                if (SelectedUnit != null)
+                if (SelectedUnit != null && GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
                     SelectedUnit.UnitCounter.ShowUnitSelector(false);
                 SelectedUnit = null;
                 DeployUnits = new List<Unit>();
@@ -187,6 +187,7 @@ public class EffectManager : MonoBehaviour
                 break;
             case ActiveEffectTypes.UnitMove:
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
+
                 CancelEffect = false;
 
                 break;
@@ -374,6 +375,7 @@ public class EffectManager : MonoBehaviour
                 {
                     RemoveUnitCounter(SelectedUnit.UnitCounter);
                     CreateUnitCounter(SelectedUnit, newCell, false);
+                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
                     RefreshEffectManager();
                     GameManager.instance.uiManager.RefreshUI();
                 }
@@ -553,7 +555,7 @@ public class EffectManager : MonoBehaviour
         unit.HealUnit(SelectedValue);
     }
 
-    public void SetProtectedMode(int? protectedValue, bool isTemporary)
+    public void SetProtectedMode(int protectedValue, bool isTemporary)
     {
         SelectedValue = protectedValue;
         SelectedBoolean = isTemporary;
@@ -562,7 +564,7 @@ public class EffectManager : MonoBehaviour
 
     public void ProtectUnit(Unit unit)
     {
-        unit.AddProtected(SelectedValue, SelectedBoolean.Value);
+        unit.AddProtected(SelectedValue.Value, SelectedBoolean.Value);
     }
 
     public void SetDestroyUnitMode()

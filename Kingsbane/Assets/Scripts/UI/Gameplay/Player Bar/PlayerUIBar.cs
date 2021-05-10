@@ -56,7 +56,6 @@ public class PlayerUIBar : MonoBehaviour
         switch (GameManager.instance.CurrentGamePhase)
         {
             case GameManager.GamePhases.Setup:
-            case GameManager.GamePhases.HeroDeploy:
                 ShowUpgradesInHand();
                 break;
             default:

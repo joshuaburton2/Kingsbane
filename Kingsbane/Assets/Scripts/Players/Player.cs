@@ -153,7 +153,18 @@ public class Player
     {
         if (LoseOnHeroLoss)
         {
-            GameManager.instance.TriggerVictory(Id);
+            if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.End)
+                GameManager.instance.TriggerVictory(Id);
+        }
+    }
+
+    public void GameEndUpdates()
+    {
+        if (UsedResources.Contains(CardResources.Devotion))
+        {
+            var devotion = (PlayerDevotion)Resources.Single(x => x.ResourceType == CardResources.Devotion);
+            var numPrayerUnits = DeployedUnits.Where(x => x.Unit.Tags.Contains(Tags.PrayerGain)).Count();
+            devotion.SetLastingPrayer(numPrayerUnits);
         }
     }
 

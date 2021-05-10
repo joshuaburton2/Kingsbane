@@ -12,7 +12,7 @@ public class Passive
     public int? CostModification { get; set; }
     public CardResources? TargetResource { get; set; }
     public SpecialPassiveEffects? SpecialPassive { get; set; }
-    public int? SpecialPassiveProperty { get; set; }
+    public int SpecialPassiveProperty { get; set; }
 
     public CardTypes? AffectedCardTypes { get; set; }
     public Tags? AffectedCardTag { get; set; }

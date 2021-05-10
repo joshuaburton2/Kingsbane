@@ -16,8 +16,8 @@ public class GameManager : MonoBehaviour
     {
         Menu,
         Setup,
-        HeroDeploy,
         Mulligan,
+        HeroDeploy,
         Gameplay,
         End,
     }
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public MapGrid mapGrid;
 
     public Map LoadedMap { get; set; }
-    public int LoadedScenarioId { get; set; }
+    public int? LoadedScenarioId { get; set; }
     public Scenario LoadedScenario { get { return LoadedMap.Scenarios.FirstOrDefault(x => x.Id == LoadedScenarioId); } }
     public List<Player> LoadedPlayers { get; set; }
     public int NumPlayers { get { return LoadedPlayers.Count; } }
@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         LoadedPlayers = null;
         LoadedMap = null;
+        LoadedScenarioId = null;
         ActivePlayerId = null;
         CurrentGamePhase = GamePhases.Menu;
         if (!isInit)
@@ -201,7 +202,7 @@ public class GameManager : MonoBehaviour
     {
         var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
         mapGrid = mapGridObject.GetComponent<MapGrid>();
-        mapGrid.RefreshGrid(LoadedMap, LoadedScenarioId);
+        mapGrid.RefreshGrid(LoadedMap, LoadedScenarioId.Value);
     }
 
     public void StartGame()
@@ -281,6 +282,12 @@ public class GameManager : MonoBehaviour
     public void TriggerVictory(int lossPlayerId)
     {
         CurrentGamePhase = GamePhases.End;
+
+        foreach (var player in LoadedPlayers)
+        {
+            player.GameEndUpdates();
+        }
+
         effectManager.RefreshEffectManager(true);
         uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
     }

@@ -58,19 +58,6 @@ public class ProtectedEffect : EffectUI
 
     /// <summary>
     /// 
-    /// Button click event for setting to infinite protected mode
-    /// 
-    /// </summary>
-    public void InfiniteProtectedButton()
-    {
-        effectComplete = false;
-
-        temporaryToggle.isOn = true;
-        GameManager.instance.effectManager.SetProtectedMode(null, temporaryToggle.isOn);
-    }
-
-    /// <summary>
-    /// 
     /// Cancel the deal damage effect
     /// 
     /// </summary>

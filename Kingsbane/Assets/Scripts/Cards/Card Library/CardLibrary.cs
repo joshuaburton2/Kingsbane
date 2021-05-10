@@ -6244,7 +6244,7 @@ Give the caster +3 Health",
             Rarity = Rarity.Common,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Spellbind },
+            Tags = new List<Tags> { },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.SmallSpells, Synergies.Control, Synergies.Restoration },
             SpellType = "Restoration",
             Range = 1,
@@ -12794,7 +12794,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Spellbind },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Spellbind, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -12818,7 +12818,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -12842,7 +12842,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.AreaDamage },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.AreaDamage, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -12866,7 +12866,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Stun },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Stun, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -12890,7 +12890,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -12914,7 +12914,7 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Rarity = Rarity.Uncollectable,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Enchantment, Tags.Piercing },
+            Tags = new List<Tags> { Tags.Enchantment, Tags.Piercing, Tags.Shot },
             Synergies = new List<Synergies> { },
             SpellType = "Enchantment",
             Range = 0,
@@ -14387,7 +14387,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem, Immune
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem, Immune, Shot
     }
 
     public enum Synergies

@@ -61,6 +61,14 @@ public class MapGrid : MonoBehaviour
     [ContextMenu("Refresh Grid")]
     public void RefreshGrid(Map mapData, int scenarioId)
     {
+        if (rowList != null)
+        {
+            foreach (var row in rowList)
+            {
+                Destroy(row);
+            }
+        }
+
         colourMapCanvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         colourMapImage.sprite = GameManager.instance.imageManager.GetMapImage(mapData.ColourMapName);
 

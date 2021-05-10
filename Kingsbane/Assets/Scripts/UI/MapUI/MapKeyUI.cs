@@ -73,6 +73,9 @@ public class MapKeyUI : MonoBehaviour
                         KeyText = objective.Name,
                     });
                 }
+
+                if (objectiveList.Count == 0)
+                    noKeyText.SetActive(true);
                 break;
             //Other cases have no key
             case MapGrid.MapFilters.Colour:
@@ -98,6 +101,9 @@ public class MapKeyUI : MonoBehaviour
     {
         var mapFilter = (MapGrid.MapFilters)mapFilterId;
         GameManager.instance.mapGrid.SwitchMapFilter(mapFilter);
-        RefreshKey(mapFilter, GameManager.instance.LoadedScenario.Objectives);
+        List<Objective> objectiveList = null;
+        if (GameManager.instance.LoadedScenarioId != null)
+            objectiveList = GameManager.instance.LoadedScenario.Objectives;
+        RefreshKey(mapFilter, objectiveList);
     }
 }
