@@ -166,7 +166,12 @@ public class EffectManager : MonoBehaviour
                 if (DeployUnits.Count == 0 || CancelEffect)
                 {
                     ActiveEffect = ActiveEffectTypes.None;
+                    GameManager.instance.uiManager.ShowCardDisplay();
                     GameManager.instance.uiManager.ShowMapKeyOfType();
+                }
+                else
+                {
+                    GameManager.instance.uiManager.ShowCardDisplay(DeployUnits.FirstOrDefault());
                 }
                 break;
             case ActiveEffectTypes.Equip:
@@ -239,6 +244,8 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Deployment);
         DeployUnits = new List<Unit>() { _selectedUnit };
         ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
+
+        GameManager.instance.uiManager.ShowCardDisplay(DeployUnits.FirstOrDefault());
     }
 
     public void SetDeployUnits(List<Unit> _selectedUnits, bool isForced = false)
@@ -246,6 +253,8 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Deployment);
         DeployUnits = _selectedUnits;
         ActiveEffect = isForced ? ActiveEffectTypes.ForceDeployment : ActiveEffectTypes.Deployment;
+
+        GameManager.instance.uiManager.ShowCardDisplay(DeployUnits.FirstOrDefault());
     }
 
     public void SetCopyMode(int numCopies = 1)

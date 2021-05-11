@@ -83,7 +83,7 @@ public class GameplayUI : MonoBehaviour
     {
         //if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
         //{
-            SetSelectedCommandUnit();
+        SetSelectedCommandUnit();
         //}
 
         GameManager.instance.effectManager.CancelEffectManager();
@@ -239,7 +239,8 @@ public class GameplayUI : MonoBehaviour
                 playerBar.RefreshPlayerBar();
             }
 
-            ShowCardDisplay();
+            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.None)
+                ShowCardDisplay();
         }
         else
         {

@@ -150,6 +150,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ShowCardDisplay(Card card = null)
+    {
+        switch (GameManager.instance.sceneManager.ActiveScene)
+        {
+            case SceneList.GameplayScene:
+                gameplayUI.ShowCardDisplay(card);
+                break;
+            default:
+                throw new Exception("Not a valid scene to show card display");
+        }
+    }
+
     public void ShowCardChoiceDisplay(List<Card> cards)
     {
         if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
