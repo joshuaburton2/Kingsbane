@@ -42,6 +42,7 @@ public class ProtectedEffect : EffectUI
     /// </summary>
     public void ProtectedButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         if (string.IsNullOrWhiteSpace(protectedValueInput.text))

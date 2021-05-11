@@ -43,6 +43,7 @@ public class TransformEffect : EffectUI
     /// </summary>
     public void TransformButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         if (!GameManager.instance.effectManager.SetTransformMode(transformInput.text, isPermanentToggle.isOn))

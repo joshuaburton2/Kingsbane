@@ -29,6 +29,7 @@ public class DivinateEffect : EffectUI
 
     public void DivinateButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         var player = GameManager.instance.GetPlayer(activePlayerToggle.isOn);

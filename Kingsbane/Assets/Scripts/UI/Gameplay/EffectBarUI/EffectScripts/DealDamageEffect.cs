@@ -49,6 +49,7 @@ class DealDamageEffect : EffectUI
     /// </summary>
     public void DealDamageButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         if (string.IsNullOrWhiteSpace(damageValueInput.text))

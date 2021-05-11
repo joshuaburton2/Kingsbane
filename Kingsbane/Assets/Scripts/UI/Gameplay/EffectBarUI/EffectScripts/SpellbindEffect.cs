@@ -41,6 +41,7 @@ public class SpellbindEffect : EffectUI
     /// </summary>
     public void SpellbindButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetSpellbindMode();
@@ -53,6 +54,7 @@ public class SpellbindEffect : EffectUI
     /// </summary>
     public void RestoreButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetRestoreEnchantmentMode();

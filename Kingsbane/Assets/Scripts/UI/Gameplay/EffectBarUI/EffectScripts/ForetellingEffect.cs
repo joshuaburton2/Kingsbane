@@ -24,6 +24,7 @@ public class ForetellingEffect : EffectUI
 
     public void AlterFateButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         var player = GameManager.instance.GetPlayer();
@@ -36,6 +37,7 @@ public class ForetellingEffect : EffectUI
 
     public void FortuneTellerButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         var player = GameManager.instance.GetPlayer();

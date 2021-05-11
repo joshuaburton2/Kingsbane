@@ -120,6 +120,12 @@ public class EffectsBarUI : MonoBehaviour
         HideEffectExtensions();
     }
 
+    public void ActivateEffect()
+    {
+        GameManager.instance.effectManager.RefreshEffectManager(true);
+        gameplayUI.RefreshPlayerBar();
+    }
+
     public void HideEffectExtensions()
     {
         effectExtensionsShown = false;
@@ -130,6 +136,8 @@ public class EffectsBarUI : MonoBehaviour
 
     public void ShowEffectExtension(EffectTypes effectType, EffectUI currentEffect)
     {
+        ActivateEffect();
+
         HideEffectExtensions();
 
         effectExtensionsShown = true;

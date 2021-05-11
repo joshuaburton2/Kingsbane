@@ -40,6 +40,7 @@ public class DestroyUnitEffect : EffectUI
     /// </summary>
     public void DestroyButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
         GameManager.instance.effectManager.SetDestroyUnitMode();
     }
@@ -51,6 +52,7 @@ public class DestroyUnitEffect : EffectUI
     /// </summary>
     public void RemoveButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
         GameManager.instance.effectManager.SetRemoveUnitMode();
     }

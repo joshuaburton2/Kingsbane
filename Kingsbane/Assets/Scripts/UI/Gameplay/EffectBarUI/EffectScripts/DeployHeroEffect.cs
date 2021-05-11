@@ -42,6 +42,7 @@ public class DeployHeroEffect : EffectUI
     /// </summary>
     public void DeployButtonClick()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
         var heroUnit = GameManager.instance.GetPlayer().Hero;
         GameManager.instance.effectManager.SetDeployUnit(heroUnit);

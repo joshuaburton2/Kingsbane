@@ -55,6 +55,7 @@ public class RecruitEffect : EffectUI
             switch (recruitType)
             {
                 case RecruitTypes.DeployedUnit:
+                    effectBarUI.ActivateEffect();
                     effectComplete = false;
                     GameManager.instance.effectManager.SetUnitRecruitMode();
                     break;
@@ -62,6 +63,7 @@ public class RecruitEffect : EffectUI
                     GameManager.instance.effectManager.RecruitTopOfDeck();
                     break;
                 case RecruitTypes.Spycraft:
+                    effectBarUI.ActivateEffect();
                     effectComplete = false;
                     var numToSpycraft = 3;
                     GameManager.instance.effectManager.SetSpycraftChoiceMode(numToSpycraft);

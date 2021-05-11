@@ -41,6 +41,7 @@ public class CrowdControlEffect : EffectUI
     /// </summary>
     public void RootButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetRootMode();
@@ -53,6 +54,7 @@ public class CrowdControlEffect : EffectUI
     /// </summary>
     public void StunButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetStunMode();

@@ -41,6 +41,7 @@ public class ImmuneEffect : EffectUI
     /// </summary>
     public void ImmuneButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetImmuneMode();
@@ -53,6 +54,7 @@ public class ImmuneEffect : EffectUI
     /// </summary>
     public void IndestructibleButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetIndestructibleMode();

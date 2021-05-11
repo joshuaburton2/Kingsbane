@@ -25,6 +25,7 @@ public class BounceEffect : EffectUI
 
     public void ReturnToHandButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetReturnToHandMode();
@@ -32,6 +33,7 @@ public class BounceEffect : EffectUI
 
     public void RedeployButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetRedeployMode();
