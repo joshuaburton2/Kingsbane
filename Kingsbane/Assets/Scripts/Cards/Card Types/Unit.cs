@@ -405,15 +405,15 @@ public class Unit : Card
 
         RemainingSpeed = GetStat(StatTypes.Speed);
 
-        if (HasKeyword(Keywords.Swiftstrike))
-        {
-            ActionsLeft = 2;
-            AbilityUsesLeft = 1;
-        }
-        else if (HasKeyword(Keywords.SpecialSwiftstrike))
+        if (HasKeyword(Keywords.SpecialSwiftstrike))
         {
             ActionsLeft = 3;
             AbilityUsesLeft = 3;
+        }
+        else if (HasKeyword(Keywords.Swiftstrike))
+        {
+            ActionsLeft = 2;
+            AbilityUsesLeft = 1;
         }
         else
         {
@@ -732,6 +732,20 @@ public class Unit : Card
             }
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
                 newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
+
+            if (Status != UnitStatuses.Preparing)
+            {
+                if (newEnchantment.Enchantment.Keywords.Contains(Keywords.SpecialSwiftstrike))
+                {
+                    if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
+                        ModifyActions(2);
+                    else if (HasKeyword(Keywords.Swiftstrike))
+                        ModifyActions(1);
+                }
+                else if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Swiftstrike))
+                    if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
+                        ModifyActions(1);
+            }
 
             Enchantments.Add(newEnchantment);
             UpdateEnchantments();
