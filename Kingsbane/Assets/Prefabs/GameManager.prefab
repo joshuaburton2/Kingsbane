@@ -1469,13 +1469,13 @@ MonoBehaviour:
   - classID: 1
     iconSprite: {fileID: 21300000, guid: e4de920445c626a44b2ca67427ba97cb, type: 3}
   - classID: 2
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 380225096359fda48896661cf7024437, type: 3}
   - classID: 3
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 01dde29b07dc3ec4592b2ee77330aba6, type: 3}
   - classID: 4
     iconSprite: {fileID: 21300000, guid: 6b1dba6a4a2290e4484640a3fe169187, type: 3}
   - classID: 5
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 4ef73fe606dc61548a41182281c2f488, type: 3}
   - classID: 6
     iconSprite: {fileID: 21300000, guid: 5858f7617c10b8741850a516e6a215c2, type: 3}
   - classID: 7
@@ -1485,17 +1485,17 @@ MonoBehaviour:
   - classID: 9
     iconSprite: {fileID: 21300000, guid: a81e008fecc9f5a45a4216cec29170aa, type: 3}
   - classID: 10
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 1dbe93b5f551208408bc6164bf32e11f, type: 3}
   - classID: 11
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 774dfcf4070cc1d469df073b0647a3fb, type: 3}
   - classID: 12
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 3b334ce6d7c5c0f409b757095c3e3f37, type: 3}
   - classID: 13
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 41d628322662b9a4baef3f70f6c13832, type: 3}
   - classID: 14
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 94b4d6c497385a94497a328b6517536d, type: 3}
   - classID: 15
-    iconSprite: {fileID: 0}
+    iconSprite: {fileID: 21300000, guid: 7538f9b341eacfb48b05139673583787, type: 3}
 --- !u!1 &8891978395917923693
 GameObject:
   m_ObjectHideFlags: 0
