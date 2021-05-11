@@ -546,7 +546,7 @@ public class Unit : Card
 
         if (!unitDead)
             UnitCounter.RefreshUnitCounter();
-        if (!targetDead)
+        if (!targetDead && !targetRouted)
             targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
