@@ -136,6 +136,7 @@ public class Unit : Card
 
         Status = UnitStatuses.None;
         CurrentHealth = GetStat(StatTypes.MaxHealth);
+        RemainingSpeed = 0;
         TemporaryMindControlled = false;
         LoseNextAction = false;
 
