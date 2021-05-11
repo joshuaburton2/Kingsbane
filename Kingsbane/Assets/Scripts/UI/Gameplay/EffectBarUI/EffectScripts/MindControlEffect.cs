@@ -28,6 +28,7 @@ public class MindControlEffect : EffectUI
 
     public void MindControlButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetMindControlMode(isActiveToggle.isOn, isTemporaryToggle.isOn);

@@ -358,6 +358,11 @@ public class Player
         RedeployUnits.Add(unit);
     }
 
+    public void AddToRedeploy(List<Unit> units)
+    {
+        RedeployUnits.AddRange(units);
+    }
+
     public bool CopyHandCard(Card copyCard, string createdBy = "")
     {
         var newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
@@ -501,7 +506,7 @@ public class Player
         Graveyard.AddCard(deadCard);
     }
 
-    public bool ReturnFromGraveyard(CardListFilter filter, int numToCreate, bool isDeploy, bool isCopy, string createdBy, bool isChoice)
+    public bool ReturnFromGraveyard(CardListFilter filter, int numToCreate, bool isDeploy, bool isRedeploy, bool isCopy, string createdBy, bool isChoice)
     {
         var filteredCardList = Graveyard.FilterCardList(filter);
 
@@ -515,7 +520,15 @@ public class Player
             if (isDeploy)
             {
                 var unitList = cardList.Cast<Unit>().ToList();
-                GameManager.instance.effectManager.SetDeployUnits(unitList);
+                if (isRedeploy)
+                {
+                    AddToRedeploy(unitList);
+                }
+                else
+                {
+                    GameManager.instance.effectManager.SetDeployUnits(unitList);
+                }
+
             }
             else
             {

@@ -22,6 +22,7 @@ public class MadnessEffect : EffectUI
 
     public void MadnessButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetMadnessMode();

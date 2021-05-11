@@ -55,6 +55,7 @@ public class DeployEffect : EffectUI
     /// </summary>
     public void CopyButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         if (copyValueInputField.text == "" || copyValueInputField.text == "0")

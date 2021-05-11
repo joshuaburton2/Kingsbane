@@ -136,6 +136,7 @@ public class Unit : Card
 
         Status = UnitStatuses.None;
         CurrentHealth = GetStat(StatTypes.MaxHealth);
+        RemainingSpeed = 0;
         TemporaryMindControlled = false;
         LoseNextAction = false;
 
@@ -404,15 +405,15 @@ public class Unit : Card
 
         RemainingSpeed = GetStat(StatTypes.Speed);
 
-        if (HasKeyword(Keywords.Swiftstrike))
-        {
-            ActionsLeft = 2;
-            AbilityUsesLeft = 1;
-        }
-        else if (HasKeyword(Keywords.SpecialSwiftstrike))
+        if (HasKeyword(Keywords.SpecialSwiftstrike))
         {
             ActionsLeft = 3;
             AbilityUsesLeft = 3;
+        }
+        else if (HasKeyword(Keywords.Swiftstrike))
+        {
+            ActionsLeft = 2;
+            AbilityUsesLeft = 1;
         }
         else
         {
@@ -546,7 +547,7 @@ public class Unit : Card
 
         if (!unitDead)
             UnitCounter.RefreshUnitCounter();
-        if (!targetDead)
+        if (!targetDead && !targetRouted)
             targetUnit.UnitCounter.RefreshUnitCounter();
     }
 
@@ -732,6 +733,20 @@ public class Unit : Card
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
                 newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
 
+            if (Status != UnitStatuses.Preparing)
+            {
+                if (newEnchantment.Enchantment.Keywords.Contains(Keywords.SpecialSwiftstrike))
+                {
+                    if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
+                        ModifyActions(2);
+                    else if (HasKeyword(Keywords.Swiftstrike))
+                        ModifyActions(1);
+                }
+                else if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Swiftstrike))
+                    if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
+                        ModifyActions(1);
+            }
+
             Enchantments.Add(newEnchantment);
             UpdateEnchantments();
 
@@ -783,7 +798,11 @@ public class Unit : Card
 
                         var currentAttack = GetStat(StatTypes.Attack);
 
-                        var attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
+                        int attackModifier;
+                        if (currentAttack > 0)
+                            attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
+                        else
+                            attackModifier = 0;
 
                         enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
                     }
@@ -852,6 +871,8 @@ public class Unit : Card
         //Resets the health and speed to cap them out at their max
         CurrentHealth = currentHealth;
         RemainingSpeed = remainingSpeed;
+        if (GetStat(StatTypes.Attack) < 0)
+            ModifyStat(StatModifierTypes.Set, StatTypes.Attack, 0);
 
         GameManager.instance.CheckWarden();
 

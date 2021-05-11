@@ -155,7 +155,7 @@ public class UnitCommandUI : MonoBehaviour
         specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying) || unit.HasStatusEffect(Unit.StatusEffects.Stealthed)));
         //Set Disengage Button Properties
         disengageButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Warded));
-        disengageButton.interactable = unit.CanAction;
+        disengageButton.interactable = unit.CanAction && unit.CanMove;
         //Set Flying Button Properties
         flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
         flyingButton.interactable = unit.CanFlyOrLand;

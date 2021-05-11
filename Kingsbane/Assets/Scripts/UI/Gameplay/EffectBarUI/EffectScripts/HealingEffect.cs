@@ -39,6 +39,7 @@ class HealingEffect : EffectUI
     /// </summary>
     public void HealButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         if (string.IsNullOrWhiteSpace(healValueInput.text))
@@ -60,6 +61,7 @@ class HealingEffect : EffectUI
     /// </summary>
     public void RegenerateButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetHealMode();

@@ -20,10 +20,12 @@ public class LobbyUI : MonoBehaviour
     private GameModes SelectedGameMode { get { return (GameModes)Enum.Parse(typeof(GameModes), gameModeDropdown.captionText.text); } }
     private bool IsPVE { get { return gameMode == GameModes.PVE; } }
 
-    private Map selectedMap;
+    public Map selectedMap;
     List<int> mapDropdownIds;
-    int selectedScenarioId;
+    public int selectedScenarioId;
     List<int> scenarioDropdownIds;
+
+    bool isLoaded;
 
     [SerializeField]
     private TMP_Dropdown gameModeDropdown;
@@ -64,6 +66,8 @@ public class LobbyUI : MonoBehaviour
     /// </summary>
     public void LoadLobbyUI()
     {
+        isLoaded = false;
+
         gameMode = SelectedGameMode;
 
         playerDecks = new DeckData[NUM_PLAYERS];
@@ -74,6 +78,8 @@ public class LobbyUI : MonoBehaviour
         playerDeckList[1].RefreshDeckList(IsPVE, IsPVE ? "NPC Deck List" : "Player 2 Deck List");
 
         RefreshMapList();
+
+        isLoaded = true;
     }
 
     /// <summary>
@@ -150,6 +156,9 @@ public class LobbyUI : MonoBehaviour
             ruleObject.GetComponent<RuleDisplayObject>().RefreshRuleDisplay(rule, this);
             ruleObjectList.Add(ruleObject);
         }
+
+        if (isLoaded)
+            mapKey.ChangeMapFilter();
     }
 
     /// <summary>

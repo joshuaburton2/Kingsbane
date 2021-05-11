@@ -32,6 +32,7 @@ public class TileStatusEffect : EffectUI
     {
         var tileStatus = (TileStatuses)Enum.Parse(typeof(TileStatuses), tileStatusDropdown.captionText.text.Replace(" ", ""));
 
+        effectBarUI.ActivateEffect();
         effectComplete = false;
         GameManager.instance.effectManager.SetTileStatusMode(tileStatus);
     }

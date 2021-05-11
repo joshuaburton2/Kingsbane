@@ -97,6 +97,7 @@ public class ModifyCostEffect : EffectUI
         //Chooses the target for the cost modification
         if (targetDropdown.captionText.text == DEFAULT_TARGET_STRING)
         {
+            effectBarUI.ActivateEffect();
             effectComplete = false;
 
             GameManager.instance.effectManager.SetModifyCostMode(value, cardResource, statModType);

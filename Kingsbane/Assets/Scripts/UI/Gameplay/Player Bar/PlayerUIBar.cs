@@ -101,6 +101,7 @@ public class PlayerUIBar : MonoBehaviour
                 GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseSpeed ||
                 GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseDisengageSpeed)
             {
+                unitCommandUI.gameObject.SetActive(true);
                 unitCommandUI.RefreshCommandBar();
             }
             else

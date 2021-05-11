@@ -25,6 +25,7 @@ public class CaptainOfTheGuardEffect : EffectUI
 
     public void ConfiscateButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetConfiscateMode();
@@ -32,6 +33,7 @@ public class CaptainOfTheGuardEffect : EffectUI
 
     public void ImprisonButton()
     {
+        effectBarUI.ActivateEffect();
         effectComplete = false;
 
         GameManager.instance.effectManager.SetImprisonMode();
