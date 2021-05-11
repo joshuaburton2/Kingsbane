@@ -208,10 +208,10 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 var rangeColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedRange, true).ConvertToHexadecimal();
                 var speedColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedSpeed, true).ConvertToHexadecimal();
 
-                attackText.text = $"Attack: {attackColour}{unitCard.GetStat(Unit.StatTypes.Attack)}";
-                healthText.text = $"Health: {healthColour}{unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
-                unitRangeText.text = $"Range:{rangeColour}{unitCard.GetStat(Unit.StatTypes.Range)}";
-                speedText.text = $"Speed: {speedColour}{unitCard.GetStat(Unit.StatTypes.Speed)}";
+                attackText.text = $"A: {attackColour}{unitCard.GetStat(Unit.StatTypes.Attack)}";
+                healthText.text = $"H: {healthColour}{unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
+                unitRangeText.text = $"R:{rangeColour}{unitCard.GetStat(Unit.StatTypes.Range)}";
+                speedText.text = $"S: {speedColour}{unitCard.GetStat(Unit.StatTypes.Speed)}";
 
                 //Add the abilities to the card text
                 var abilities = unitCard.Abilities;
@@ -227,13 +227,13 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
             case CardTypes.Spell:
                 var spellCard = card as Spell;
 
-                spellRangeText.text = $"Range: {spellCard.SpellRange}";
+                spellRangeText.text = $"R: {spellCard.SpellRange}";
 
                 break;
             case CardTypes.Item:
                 var itemCard = card as Item;
 
-                durabilityText.text = $"Durability: {itemCard.Durability}";
+                durabilityText.text = $"D: {itemCard.Durability}";
 
                 break;
             default:
