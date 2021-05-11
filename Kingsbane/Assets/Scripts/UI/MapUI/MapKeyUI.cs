@@ -25,8 +25,15 @@ public class MapKeyUI : MonoBehaviour
     private GameObject keyColourParent;
     [SerializeField]
     private GameObject noKeyText;
+    [SerializeField]
+    private LobbyUI lobbyUI;
 
     public MapGrid.MapFilters CurrentFilter { get; set; }
+
+    private void Start()
+    {
+        CurrentFilter = MapGrid.MapFilters.Colour;
+    }
 
     /// <summary>
     /// 
@@ -97,13 +104,20 @@ public class MapKeyUI : MonoBehaviour
     /// Button click event for changing the map filter on the displayed grid
     /// 
     /// </summary>
-    public void ChangeMapFilter(int mapFilterId)
+    public void ChangeMapFilter(int mapFilterId = -1)
     {
-        var mapFilter = (MapGrid.MapFilters)mapFilterId;
+        MapGrid.MapFilters mapFilter;
+        if (mapFilterId == -1)
+            mapFilter = CurrentFilter;
+        else
+            mapFilter = (MapGrid.MapFilters)mapFilterId;
+
         GameManager.instance.mapGrid.SwitchMapFilter(mapFilter);
         List<Objective> objectiveList = null;
         if (GameManager.instance.LoadedScenarioId != null)
             objectiveList = GameManager.instance.LoadedScenario.Objectives;
+        else if (lobbyUI != null)
+            objectiveList = lobbyUI.selectedMap.Scenarios.FirstOrDefault(x => x.Id == lobbyUI.selectedScenarioId).Objectives;
         RefreshKey(mapFilter, objectiveList);
     }
 }
