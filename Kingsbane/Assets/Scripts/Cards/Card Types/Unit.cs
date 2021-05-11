@@ -783,7 +783,11 @@ public class Unit : Card
 
                         var currentAttack = GetStat(StatTypes.Attack);
 
-                        var attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
+                        int attackModifier;
+                        if (currentAttack > 0)
+                            attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
+                        else
+                            attackModifier = 0;
 
                         enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
                     }
@@ -852,6 +856,8 @@ public class Unit : Card
         //Resets the health and speed to cap them out at their max
         CurrentHealth = currentHealth;
         RemainingSpeed = remainingSpeed;
+        if (GetStat(StatTypes.Attack) < 0)
+            ModifyStat(StatModifierTypes.Set, StatTypes.Attack, 0);
 
         GameManager.instance.CheckWarden();
 
