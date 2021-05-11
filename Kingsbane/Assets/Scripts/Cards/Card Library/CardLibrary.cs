@@ -905,7 +905,7 @@ public class CardLibrary
             Name = "Call the Host",
             Text = @"Deploy a ""Golden Host"" unit adjacent to this unit",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Gold, 1), },
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
             CostsAction = true,
         };
@@ -6223,7 +6223,7 @@ Give the caster +3 Health",
             Tags = new List<Tags> { Tags.Enchantment, Tags.PrayerGain },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Control, Synergies.Durable, Synergies.Prayer },
             SpellType = "Resource",
-            Range = 2,
+            Range = 0,
         };
         CardList.Add(card156);
 
@@ -6395,7 +6395,7 @@ Give the caster +3 Health",
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
             Text = @"<b>Warden</b>
-Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>
+Has +1 Attack and +1 Health for each other friendly ""Golden Host"" within Range 2. Whenever a friendly ""Golden Host"" dies within Range 2, <b>Regenerate</b>
 <b>Last Rites:</b> Shuffle an additional copy of this unit into your Graveyard",
             LoreText = @"",
             Notes = @"",
@@ -6413,7 +6413,7 @@ Has +2 Attack and +2 Health for each other friendly ""Golden Host"" within Range
                 UnitTags.Soldier,
             },
             Attack = 3,
-            Health = 4,
+            Health = 3,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -6558,7 +6558,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Gold, 2), },
 
             Text = @"Whenever a friendly unit dies within Range 2 of your hero, store its soul. 
-<b>Last Rites:</b> Deploy the stored units adjacent to your hero",
+<b>Last Rites:</b> Redeploy the stored units",
             LoreText = @"",
             Notes = @"",
 
@@ -6570,7 +6570,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Tags = new List<Tags> { Tags.LastRites, Tags.Resurrection, Tags.Holy, Tags.Amulet },
             Synergies = new List<Synergies> { Synergies.Control, Synergies.BigMinions, Synergies.Value, Synergies.Prayer, Synergies.Resurrection },
             ItemTag = "Holy Amulet",
-            Durability = 4,
+            Durability = 3,
         };
         CardList.Add(card167);
 
@@ -6668,7 +6668,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 7), },
 
             Text = @"<b>Lifebond, Warden</b>
-Deal 2 damage to any enemy unit which damages friendly units within Range 2",
+Deal 1 damage to any enemy unit which damages friendly units within Range 2",
             LoreText = @"",
             Notes = @"",
 
@@ -10357,7 +10357,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
             Name = "Brawl: Grab",
             ImageTag = CardImageTags.Brawl_Grab,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Choose an enemy unit in range. Move it in a line to a tile adjacent to the the caster, then attack it.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
@@ -10382,7 +10382,7 @@ If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Disc
             Name = "Brawl: Leap",
             ImageTag = CardImageTags.Brawl_Leap,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Jump to an empty tile in range. Deal 2 damage to all adjacent units and the caster.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
@@ -10407,7 +10407,7 @@ If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Disc
             Name = "Brawl: Shove",
             ImageTag = CardImageTags.Brawl_Shove,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Deal 3 damage to a unit and move it up to 3 tiles away from the caster. If it impacts an obstacle, deal an additional 3 damage.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
@@ -10432,7 +10432,7 @@ If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Disc
             Name = "Brawl: Toss",
             ImageTag = CardImageTags.Brawl_Toss,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Choose a friendly unit. Throw it to an empty tile within range 3. It attacks a random adjacent unit. 
 If this spell kills an enemy unit, add a random different Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
@@ -10457,7 +10457,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
             Name = "Brawl: Whirlwind",
             ImageTag = CardImageTags.Brawl_Whirlwind,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             Text = @"Deal 2 damage to all units adjacent to your hero. Heal the caster for the amount of damage dealt.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
@@ -10695,7 +10695,7 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Abilities = new List<AbilityData>() { ability100 },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card301);
 
@@ -12349,8 +12349,8 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), new Resource(CardResources.Wild, 1), },
 
-            Text = @"Restore health to the caster equal to twice the number of spells in your hand.
-<b>Divinate (1)</b>",
+            Text = @"<b>Divinate (1)</b>
+Restore health to the caster equal to twice the number of spells in your hand.",
             LoreText = @"",
             Notes = @"",
 
@@ -12435,8 +12435,8 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
-            Text = @"Choose a friendly minion and deploy a ""Mirror Aspect"" with equal stats adjacent to it.
-<b>Divinate (1), Cycle -3</b>",
+            Text = @"<b> Cycle -3</b>
+Choose a friendly minion and deploy a ""Mirror Aspect"" with equal stats adjacent to it.",
             LoreText = @"",
             Notes = @"",
 
@@ -12445,7 +12445,7 @@ Whenever this unit deals damage, it gains <b>Protected</b> equal to any excess d
             Rarity = Rarity.Rare,
             CardType = CardTypes.Spell,
 
-            Tags = new List<Tags> { Tags.Divinate, Tags.CycleMinus },
+            Tags = new List<Tags> { Tags.CycleMinus },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.BigMinions, Synergies.Cycle },
             SpellType = "Deployment",
             Range = 2,
