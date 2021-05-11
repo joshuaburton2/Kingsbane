@@ -35,6 +35,10 @@ public class GraveyardExtensionEffect : EffectExtensionUI
     private TMP_InputField createdByInput;
     [SerializeField]
     private Toggle isChoiceToggle;
+    [SerializeField]
+    private GameObject isRedeployArea;
+    [SerializeField]
+    private Toggle isRedeployToggle;
 
     private const string DEFAULT_DROPDOWN_STRING = "Any";
     private string defaultTitleText;
@@ -87,9 +91,9 @@ public class GraveyardExtensionEffect : EffectExtensionUI
             if (int.TryParse(numToCreateInput.text, out int result) && numToCreateInput.text != "0")
                 numberToCreate = Mathf.Max(1, result);
 
-            if (player.ReturnFromGraveyard(filter, numberToCreate, isDeployToggle.isOn, isCopyToggle.isOn, createdByInput.text, isChoiceToggle.isOn))
+            if (player.ReturnFromGraveyard(filter, numberToCreate, isDeployToggle.isOn, isRedeployToggle.isOn, isCopyToggle.isOn, createdByInput.text, isChoiceToggle.isOn))
             {
-                if (isDeployToggle.isOn)
+                if (isDeployToggle.isOn && !isRedeployToggle.isOn)
                     StartEffect();
 
                 if (!isChoiceToggle.isOn)
@@ -103,6 +107,11 @@ public class GraveyardExtensionEffect : EffectExtensionUI
             createdByInput.placeholder.color = new Color(0.8f, 0.0f, 0.0f, 0.5f);
             titleText.text = $"{defaultTitleText} (Input Created By)";
         }
+
+        if (isRedeployToggle.isOn)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void IsDeployToggleState()
@@ -114,16 +123,20 @@ public class GraveyardExtensionEffect : EffectExtensionUI
 
             isCopyArea.SetActive(false);
             createdByArea.SetActive(false);
+            isRedeployArea.SetActive(true);
             createdByInput.text = "";
             isCopyToggle.isOn = false;
+            isRedeployToggle.isOn = false;
         }
         else
         {
             typeDropdown.interactable = true;
             isCopyArea.SetActive(true);
+            isRedeployArea.SetActive(false);
             isCopyToggle.isOn = false;
             createdByArea.SetActive(true);
             createdByInput.text = "";
+            isRedeployToggle.isOn = false;
         }
 
         IsCopyToggleState();
