@@ -1792,7 +1792,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &36375773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12746,7 +12746,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1873261933}
-        m_MethodName: rngRoll
+        m_MethodName: RngRoll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -64161,8 +64161,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 21867675}
   m_HandleRect: {fileID: 21867674}
   m_Direction: 0
-  m_Value: 0.000030517578
-  m_Size: 0.9885714
+  m_Value: -0.000015258905
+  m_Size: 0.9885715
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
