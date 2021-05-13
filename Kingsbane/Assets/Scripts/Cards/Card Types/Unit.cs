@@ -63,14 +63,11 @@ public class Unit : Card
     }
 
     public StatisticStatuses HasBuffedAttack { get { return GetStat(StatTypes.Attack) > UnitData.Attack ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
-    public StatisticStatuses HealthStatus
+    public StatisticStatuses HealthStatus(bool returnDamaged = true)
     {
-        get
-        {
-            if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health)
-                return StatisticStatuses.Buffed;
-            return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
-        }
+        if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health || GetStat(StatTypes.MaxHealth) > UnitData.Health && !returnDamaged)
+            return StatisticStatuses.Buffed;
+        return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
     }
     public StatisticStatuses HasBuffedRange { get { return GetStat(StatTypes.Range) > UnitData.Range ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
     public StatisticStatuses HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
@@ -369,24 +366,17 @@ public class Unit : Card
     {
         if (Owner.IsActivePlayer)
         {
-            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Mulligan)
+            if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
+            {
+                RefreshActions();
+            }
+            else
             {
                 Status = UnitStatuses.Preparing;
             }
-            else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-            {
-                if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
-                {
-                    RefreshActions();
-                }
-                else
-                {
-                    Status = UnitStatuses.Preparing;
-                }
 
-                ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
-                RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
-            }
+            ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
+            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
         }
         else
         {
@@ -733,7 +723,7 @@ public class Unit : Card
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
                 newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
 
-            if (Status != UnitStatuses.Preparing)
+            if (Status != UnitStatuses.Preparing && Status != UnitStatuses.None)
             {
                 if (newEnchantment.Enchantment.Keywords.Contains(Keywords.SpecialSwiftstrike))
                 {

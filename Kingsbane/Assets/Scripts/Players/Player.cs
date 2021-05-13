@@ -277,10 +277,10 @@ public class Player
 
         topCards.Reverse();
         foreach (var card in topCards)
-            Deck.AddToDeck(card, Deck.ListCount);
+            Deck.AddToDeck(card, Deck.ListCount, trackShuffle: false);
 
         foreach (var card in bottomCards)
-            Deck.AddToDeck(card, 0);
+            Deck.AddToDeck(card, 0, trackShuffle: false);
     }
 
     public bool InitFortuneTeller()

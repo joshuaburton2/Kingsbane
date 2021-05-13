@@ -644,6 +644,8 @@ public class EffectManager : MonoBehaviour
         var canModify = card.ModifyCost(SelectedValue.Value, SelectedResource, SelectedStatModType);
         if (!canModify)
             Debug.Log("Cannot modify cost of card");
+        else
+            GameManager.instance.uiManager.RefreshUI();
     }
 
     public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource, StatModifierTypes statModType)

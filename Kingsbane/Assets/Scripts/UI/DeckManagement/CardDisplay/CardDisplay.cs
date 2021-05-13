@@ -204,13 +204,15 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
                 var unitCard = card as Unit;
 
                 var attackColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedAttack, true).ConvertToHexadecimal();
-                var healthColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HealthStatus, true).ConvertToHexadecimal();
+                var currentHealthStatus = unitCard.HealthStatus(false);
+                var fixedHealthStatus = currentHealthStatus == StatisticStatuses.Debuffed ? StatisticStatuses.None : currentHealthStatus;
+                var healthColour = GameManager.instance.colourManager.GetStatModColour(fixedHealthStatus, true).ConvertToHexadecimal();
                 var rangeColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedRange, true).ConvertToHexadecimal();
                 var speedColour = GameManager.instance.colourManager.GetStatModColour(unitCard.HasBuffedSpeed, true).ConvertToHexadecimal();
 
                 attackText.text = $"A: {attackColour}{unitCard.GetStat(Unit.StatTypes.Attack)}";
                 healthText.text = $"H: {healthColour}{unitCard.GetStat(Unit.StatTypes.MaxHealth)}";
-                unitRangeText.text = $"R:{rangeColour}{unitCard.GetStat(Unit.StatTypes.Range)}";
+                unitRangeText.text = $"R: {rangeColour}{unitCard.GetStat(Unit.StatTypes.Range)}";
                 speedText.text = $"S: {speedColour}{unitCard.GetStat(Unit.StatTypes.Speed)}";
 
                 //Add the abilities to the card text
