@@ -37,7 +37,15 @@ public class CardListTab : MonoBehaviour
 
         tabText.text = TabType.GetEnumDescription();
 
-        tabText.alignment = isTop ? TextAlignmentOptions.Top : TextAlignmentOptions.Bottom;
+        //tabText.alignment = isTop ? TextAlignmentOptions.Top : TextAlignmentOptions.Bottom;
+        if (isTop)
+        {
+            tabText.gameObject.GetComponent<RectTransform>().SetBottom(15.0f);
+        }
+        else
+        {
+            tabText.gameObject.GetComponent<RectTransform>().SetTop(15.0f);
+        }
     }
 
     /// <summary>
