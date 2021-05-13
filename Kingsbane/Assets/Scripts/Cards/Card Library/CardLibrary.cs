@@ -1448,7 +1448,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability5 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card2);
 
@@ -2149,7 +2149,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability11 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card28);
 
@@ -2186,7 +2186,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability12 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card29);
 
@@ -2223,7 +2223,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability13 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card30);
 
@@ -2260,7 +2260,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability14 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card31);
 
@@ -2297,7 +2297,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability15 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card32);
 
@@ -3125,7 +3125,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability16 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card60);
 
@@ -3162,7 +3162,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability17 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card61);
 
@@ -3199,7 +3199,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability18 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card62);
 
@@ -3931,7 +3931,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability27 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card84);
 
@@ -3968,7 +3968,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability28 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card85);
 
@@ -4005,7 +4005,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability29 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card86);
 
@@ -4648,7 +4648,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability30 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card107);
 
@@ -4685,7 +4685,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability31 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card108);
 
@@ -4722,7 +4722,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability32 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card109);
 
@@ -5090,7 +5090,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability21 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card121);
 
@@ -5127,7 +5127,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability22 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card122);
 
@@ -5164,7 +5164,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability23 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card123);
 
@@ -5201,7 +5201,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability24 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card124);
 
@@ -5262,7 +5262,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability25 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card126);
 
@@ -5299,7 +5299,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability26 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card127);
 
@@ -5336,7 +5336,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability33 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card128);
 
@@ -5373,7 +5373,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability36 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card129);
 
@@ -5410,7 +5410,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability39 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card130);
 
@@ -5447,7 +5447,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability51 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card131);
 
@@ -5484,7 +5484,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability52 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card132);
 
@@ -5521,7 +5521,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability55 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card133);
 
@@ -5583,7 +5583,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability58 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card135);
 
@@ -5657,7 +5657,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability61 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card137);
 
@@ -6017,7 +6017,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability34 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card148);
 
@@ -6054,7 +6054,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability35 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card149);
 
@@ -6855,7 +6855,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability37 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card176);
 
@@ -6892,7 +6892,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability38 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card177);
 
@@ -7549,7 +7549,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability53 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card199);
 
@@ -7586,7 +7586,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability54 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card200);
 
@@ -8351,7 +8351,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability56 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card225);
 
@@ -8388,7 +8388,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability57 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card226);
 
@@ -9916,7 +9916,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability40 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card274);
 
@@ -9953,7 +9953,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability41 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card275);
 
@@ -9990,7 +9990,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability43 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card276);
 
@@ -10027,7 +10027,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability44 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card277);
 
@@ -10064,7 +10064,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability59 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card279);
 
@@ -10101,7 +10101,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability60 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card280);
 
@@ -10138,7 +10138,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability62 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card281);
 
@@ -10175,7 +10175,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability63 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card282);
 
