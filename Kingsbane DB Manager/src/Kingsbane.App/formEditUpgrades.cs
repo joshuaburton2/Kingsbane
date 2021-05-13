@@ -66,10 +66,13 @@ namespace Kingsbane.App
         private void LoadUpgradeData()
         {
             txtName.Text = upgrade.Name;
+            txtImageTag.Text = upgrade.ImageTag;
             txtHonourPoints.Text = upgrade.HonourPoints.ToString();
             chkIsRepeatable.Checked = upgrade.IsRepeatable;
             chkIsTierUpgrade.Checked = upgrade.IsTierUpgrade;
+            chkNPCLocked.Checked = upgrade.NPCLocked;
             txtText.Text = upgrade.Text;
+            txtLoreText.Text = upgrade.Text;
             txtTierLevel.Text = upgrade.TierLevel.ToString();
             cmbSet.SelectedItem = cmbSet.Items.Cast<SelectListItem>().FirstOrDefault(x => x.Id == upgrade.SetId);
 
@@ -95,17 +98,20 @@ namespace Kingsbane.App
             }
 
             upgrade.Name = txtName.Text;
+            upgrade.ImageTag = txtImageTag.Text;
             if (int.TryParse(txtHonourPoints.Text, out int honourPoints))
             {
                 upgrade.HonourPoints = honourPoints;
             }
             upgrade.IsRepeatable = chkIsRepeatable.Checked;
             upgrade.IsTierUpgrade = chkIsTierUpgrade.Checked;
+            upgrade.NPCLocked = chkNPCLocked.Checked;
             if (int.TryParse(txtTierLevel.Text, out int tierLevel))
             {
                 upgrade.TierLevel = tierLevel;
             }
             upgrade.Text = txtText.Text;
+            upgrade.LoreText = txtLoreText.Text;
             upgrade.SetId = ((SelectListItem)cmbSet.SelectedItem).Id;
 
             var classPrerequisiteIds = lstClassPrerequisites.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();

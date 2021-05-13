@@ -22,14 +22,19 @@ namespace Kingsbane.Database.Models
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
+        [Column(TypeName = "varchar(100)")]
+        public string ImageTag { get; set; }
 
         [Column(TypeName = "varchar(max)")]
         public string Text { get; set; }
+        [Column(TypeName = "varchar(max)")]
+        public string LoreText { get; set; }
 
         public int HonourPoints { get; set; }
         public bool IsRepeatable { get; set; }
         public bool IsTierUpgrade { get; set; }
         public int? TierLevel { get; set; }
+        public bool NPCLocked { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

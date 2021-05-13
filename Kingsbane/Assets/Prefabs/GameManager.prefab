@@ -1031,6 +1031,7 @@ MonoBehaviour:
       imageSprite: {fileID: 21300000, guid: 5044f054954bc1f4f96f4e0769992f6b, type: 3}
     - imageTag: 403
       imageSprite: {fileID: 21300000, guid: 8cd52838833d1734a83a8dc45514db9f, type: 3}
+  upgradeImages: []
 --- !u!1 &8891978394799893638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1476,7 @@ MonoBehaviour:
   - classID: 4
     iconSprite: {fileID: 21300000, guid: 6b1dba6a4a2290e4484640a3fe169187, type: 3}
   - classID: 5
-    iconSprite: {fileID: 21300000, guid: 4ef73fe606dc61548a41182281c2f488, type: 3}
+    iconSprite: {fileID: 21300000, guid: 0cf8e67b61f2544488667f7388707b0e, type: 3}
   - classID: 6
     iconSprite: {fileID: 21300000, guid: 5858f7617c10b8741850a516e6a215c2, type: 3}
   - classID: 7
@@ -1485,7 +1486,7 @@ MonoBehaviour:
   - classID: 9
     iconSprite: {fileID: 21300000, guid: a81e008fecc9f5a45a4216cec29170aa, type: 3}
   - classID: 10
-    iconSprite: {fileID: 21300000, guid: 1dbe93b5f551208408bc6164bf32e11f, type: 3}
+    iconSprite: {fileID: 21300000, guid: 1f3b82e7e2d282f4ebf522735d188737, type: 3}
   - classID: 11
     iconSprite: {fileID: 21300000, guid: 774dfcf4070cc1d469df073b0647a3fb, type: 3}
   - classID: 12

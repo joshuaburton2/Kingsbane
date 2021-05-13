@@ -66,7 +66,7 @@ public class PassiveExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
 
         GeneralUIExtensions.InitDropdownOfType(costResourceDropdown, new List<CardResources>() { CardResources.Neutral }, DEFAULT_INPUT_STRING_NONE);
-        GeneralUIExtensions.InitDropdownOfType(specialPassiveValueDropdown, new List<SpecialPassiveEffects>() { }, DEFAULT_INPUT_STRING_NONE);
+        GeneralUIExtensions.InitDropdownOfType(specialPassiveValueDropdown, new List<SpecialPassiveEffects>() { }, DEFAULT_INPUT_STRING_NONE, true);
 
         nameInput.text = "";
         costValueInput.text = "";

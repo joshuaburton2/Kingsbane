@@ -165,7 +165,7 @@ public class UpgradeManager : MonoBehaviour
             availableUpgrades.Add(upgrade);
         }
 
-        return availableUpgrades;
+        return availableUpgrades.OrderBy(x => x.Name).ToList();
     }
 
     /// <summary>

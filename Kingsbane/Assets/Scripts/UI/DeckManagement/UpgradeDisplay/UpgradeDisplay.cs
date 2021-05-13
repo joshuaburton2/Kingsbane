@@ -42,6 +42,8 @@ public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
         honourPoints.text = $"Honour: {upgradeData.HonourPoints}";
         isRepeatable.text = $"Repeatable: {upgradeData.IsRepeatableString()}";
         upgradeText.text = upgradeData.Text;
+
+        upgradeImage.sprite = GameManager.instance.imageManager.GetUpgradeImage(upgradeData.ImageTag);
     }
 
     /// <summary>

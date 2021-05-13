@@ -12,9 +12,12 @@ public class UpgradeData
 {
     public int? Id { get; set; }
     public string Name { get; set; }
+    public UpgradeImageTags ImageTag { get; set; }
     public string Text { get; set; }
+    public string LoreText { get; set; }
     public int HonourPoints { get; set; }
     public bool IsRepeatable { get; set; }
+    public bool NPCLocked { get; set; }
     public TierLevel TierLevel { get; set; }
     public List<CardResources> ResourcePrerequisites { get; set; }
     public List<Classes.ClassList> ClassPrerequisites { get; set; }

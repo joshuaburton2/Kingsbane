@@ -53,6 +53,11 @@
             this.txtTierLevel = new System.Windows.Forms.TextBox();
             this.cmbSet = new System.Windows.Forms.ComboBox();
             this.lblSet = new System.Windows.Forms.Label();
+            this.txtLoreText = new System.Windows.Forms.TextBox();
+            this.lblLoreText = new System.Windows.Forms.Label();
+            this.txtImageTag = new System.Windows.Forms.TextBox();
+            this.lblImageTag = new System.Windows.Forms.Label();
+            this.chkNPCLocked = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblName
@@ -76,7 +81,7 @@
             // lblText
             // 
             this.lblText.AutoSize = true;
-            this.lblText.Location = new System.Drawing.Point(12, 93);
+            this.lblText.Location = new System.Drawing.Point(12, 140);
             this.lblText.Name = "lblText";
             this.lblText.Size = new System.Drawing.Size(28, 15);
             this.lblText.TabIndex = 2;
@@ -84,16 +89,16 @@
             // 
             // txtText
             // 
-            this.txtText.Location = new System.Drawing.Point(12, 111);
+            this.txtText.Location = new System.Drawing.Point(12, 158);
             this.txtText.Multiline = true;
             this.txtText.Name = "txtText";
-            this.txtText.Size = new System.Drawing.Size(435, 135);
+            this.txtText.Size = new System.Drawing.Size(435, 100);
             this.txtText.TabIndex = 3;
             // 
             // lblHonourPoints
             // 
             this.lblHonourPoints.AutoSize = true;
-            this.lblHonourPoints.Location = new System.Drawing.Point(13, 61);
+            this.lblHonourPoints.Location = new System.Drawing.Point(12, 90);
             this.lblHonourPoints.Name = "lblHonourPoints";
             this.lblHonourPoints.Size = new System.Drawing.Size(84, 15);
             this.lblHonourPoints.TabIndex = 4;
@@ -101,7 +106,7 @@
             // 
             // txtHonourPoints
             // 
-            this.txtHonourPoints.Location = new System.Drawing.Point(106, 58);
+            this.txtHonourPoints.Location = new System.Drawing.Point(105, 87);
             this.txtHonourPoints.Name = "txtHonourPoints";
             this.txtHonourPoints.Size = new System.Drawing.Size(125, 23);
             this.txtHonourPoints.TabIndex = 5;
@@ -109,7 +114,7 @@
             // btnClassPrerequisite
             // 
             this.btnClassPrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClassPrerequisite.Location = new System.Drawing.Point(406, 255);
+            this.btnClassPrerequisite.Location = new System.Drawing.Point(406, 394);
             this.btnClassPrerequisite.Name = "btnClassPrerequisite";
             this.btnClassPrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnClassPrerequisite.TabIndex = 25;
@@ -121,7 +126,7 @@
             // 
             this.lstClassPrerequisites.FormattingEnabled = true;
             this.lstClassPrerequisites.ItemHeight = 15;
-            this.lstClassPrerequisites.Location = new System.Drawing.Point(161, 284);
+            this.lstClassPrerequisites.Location = new System.Drawing.Point(161, 423);
             this.lstClassPrerequisites.Name = "lstClassPrerequisites";
             this.lstClassPrerequisites.Size = new System.Drawing.Size(286, 64);
             this.lstClassPrerequisites.TabIndex = 19;
@@ -131,7 +136,7 @@
             // 
             this.lblClassPrerequisite.AutoSize = true;
             this.lblClassPrerequisite.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblClassPrerequisite.Location = new System.Drawing.Point(12, 253);
+            this.lblClassPrerequisite.Location = new System.Drawing.Point(12, 392);
             this.lblClassPrerequisite.Name = "lblClassPrerequisite";
             this.lblClassPrerequisite.Size = new System.Drawing.Size(144, 21);
             this.lblClassPrerequisite.TabIndex = 17;
@@ -141,7 +146,7 @@
             // 
             this.cmbClassSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClassSelector.FormattingEnabled = true;
-            this.cmbClassSelector.Location = new System.Drawing.Point(162, 255);
+            this.cmbClassSelector.Location = new System.Drawing.Point(162, 394);
             this.cmbClassSelector.Name = "cmbClassSelector";
             this.cmbClassSelector.Size = new System.Drawing.Size(238, 23);
             this.cmbClassSelector.TabIndex = 26;
@@ -150,7 +155,7 @@
             // 
             this.cmbResourceSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbResourceSelector.FormattingEnabled = true;
-            this.cmbResourceSelector.Location = new System.Drawing.Point(193, 360);
+            this.cmbResourceSelector.Location = new System.Drawing.Point(193, 499);
             this.cmbResourceSelector.Name = "cmbResourceSelector";
             this.cmbResourceSelector.Size = new System.Drawing.Size(207, 23);
             this.cmbResourceSelector.TabIndex = 26;
@@ -159,7 +164,7 @@
             // 
             this.lblResourcePrerequisite.AutoSize = true;
             this.lblResourcePrerequisite.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblResourcePrerequisite.Location = new System.Drawing.Point(12, 360);
+            this.lblResourcePrerequisite.Location = new System.Drawing.Point(12, 499);
             this.lblResourcePrerequisite.Name = "lblResourcePrerequisite";
             this.lblResourcePrerequisite.Size = new System.Drawing.Size(175, 21);
             this.lblResourcePrerequisite.TabIndex = 17;
@@ -169,7 +174,7 @@
             // 
             this.lstResourcePrerequisite.FormattingEnabled = true;
             this.lstResourcePrerequisite.ItemHeight = 15;
-            this.lstResourcePrerequisite.Location = new System.Drawing.Point(193, 389);
+            this.lstResourcePrerequisite.Location = new System.Drawing.Point(193, 528);
             this.lstResourcePrerequisite.Name = "lstResourcePrerequisite";
             this.lstResourcePrerequisite.Size = new System.Drawing.Size(254, 64);
             this.lstResourcePrerequisite.TabIndex = 19;
@@ -178,7 +183,7 @@
             // btnResourcePrerequisite
             // 
             this.btnResourcePrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnResourcePrerequisite.Location = new System.Drawing.Point(406, 361);
+            this.btnResourcePrerequisite.Location = new System.Drawing.Point(406, 500);
             this.btnResourcePrerequisite.Name = "btnResourcePrerequisite";
             this.btnResourcePrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnResourcePrerequisite.TabIndex = 25;
@@ -189,7 +194,7 @@
             // btnUpgradePrerequisite
             // 
             this.btnUpgradePrerequisite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnUpgradePrerequisite.Location = new System.Drawing.Point(406, 468);
+            this.btnUpgradePrerequisite.Location = new System.Drawing.Point(406, 607);
             this.btnUpgradePrerequisite.Name = "btnUpgradePrerequisite";
             this.btnUpgradePrerequisite.Size = new System.Drawing.Size(41, 23);
             this.btnUpgradePrerequisite.TabIndex = 25;
@@ -201,7 +206,7 @@
             // 
             this.lstUpgradePrerequisite.FormattingEnabled = true;
             this.lstUpgradePrerequisite.ItemHeight = 15;
-            this.lstUpgradePrerequisite.Location = new System.Drawing.Point(193, 496);
+            this.lstUpgradePrerequisite.Location = new System.Drawing.Point(193, 635);
             this.lstUpgradePrerequisite.Name = "lstUpgradePrerequisite";
             this.lstUpgradePrerequisite.Size = new System.Drawing.Size(254, 64);
             this.lstUpgradePrerequisite.TabIndex = 19;
@@ -211,7 +216,7 @@
             // 
             this.lblUpgradePrerequisite.AutoSize = true;
             this.lblUpgradePrerequisite.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUpgradePrerequisite.Location = new System.Drawing.Point(12, 467);
+            this.lblUpgradePrerequisite.Location = new System.Drawing.Point(12, 606);
             this.lblUpgradePrerequisite.Name = "lblUpgradePrerequisite";
             this.lblUpgradePrerequisite.Size = new System.Drawing.Size(172, 21);
             this.lblUpgradePrerequisite.TabIndex = 17;
@@ -219,7 +224,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(189, 569);
+            this.btnSave.Location = new System.Drawing.Point(189, 708);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 22);
@@ -230,7 +235,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(277, 569);
+            this.btnCancel.Location = new System.Drawing.Point(277, 708);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 22);
@@ -241,7 +246,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(365, 569);
+            this.btnDelete.Location = new System.Drawing.Point(365, 708);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(82, 22);
@@ -253,7 +258,7 @@
             // chkIsRepeatable
             // 
             this.chkIsRepeatable.AutoSize = true;
-            this.chkIsRepeatable.Location = new System.Drawing.Point(237, 60);
+            this.chkIsRepeatable.Location = new System.Drawing.Point(236, 89);
             this.chkIsRepeatable.Name = "chkIsRepeatable";
             this.chkIsRepeatable.Size = new System.Drawing.Size(100, 19);
             this.chkIsRepeatable.TabIndex = 27;
@@ -263,7 +268,7 @@
             // chkIsTierUpgrade
             // 
             this.chkIsTierUpgrade.AutoSize = true;
-            this.chkIsTierUpgrade.Location = new System.Drawing.Point(343, 60);
+            this.chkIsTierUpgrade.Location = new System.Drawing.Point(12, 114);
             this.chkIsTierUpgrade.Name = "chkIsTierUpgrade";
             this.chkIsTierUpgrade.Size = new System.Drawing.Size(109, 19);
             this.chkIsTierUpgrade.TabIndex = 28;
@@ -272,7 +277,7 @@
             // 
             // txtTierLevel
             // 
-            this.txtTierLevel.Location = new System.Drawing.Point(343, 86);
+            this.txtTierLevel.Location = new System.Drawing.Point(127, 112);
             this.txtTierLevel.Name = "txtTierLevel";
             this.txtTierLevel.Size = new System.Drawing.Size(100, 23);
             this.txtTierLevel.TabIndex = 29;
@@ -281,7 +286,7 @@
             // 
             this.cmbSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSet.FormattingEnabled = true;
-            this.cmbSet.Location = new System.Drawing.Point(216, 85);
+            this.cmbSet.Location = new System.Drawing.Point(317, 114);
             this.cmbSet.Name = "cmbSet";
             this.cmbSet.Size = new System.Drawing.Size(121, 23);
             this.cmbSet.TabIndex = 30;
@@ -289,17 +294,65 @@
             // lblSet
             // 
             this.lblSet.AutoSize = true;
-            this.lblSet.Location = new System.Drawing.Point(187, 89);
+            this.lblSet.Location = new System.Drawing.Point(288, 118);
             this.lblSet.Name = "lblSet";
             this.lblSet.Size = new System.Drawing.Size(23, 15);
             this.lblSet.TabIndex = 31;
             this.lblSet.Text = "Set";
             // 
+            // txtLoreText
+            // 
+            this.txtLoreText.Location = new System.Drawing.Point(12, 279);
+            this.txtLoreText.Multiline = true;
+            this.txtLoreText.Name = "txtLoreText";
+            this.txtLoreText.Size = new System.Drawing.Size(435, 100);
+            this.txtLoreText.TabIndex = 32;
+            // 
+            // lblLoreText
+            // 
+            this.lblLoreText.AutoSize = true;
+            this.lblLoreText.Location = new System.Drawing.Point(12, 261);
+            this.lblLoreText.Name = "lblLoreText";
+            this.lblLoreText.Size = new System.Drawing.Size(54, 15);
+            this.lblLoreText.TabIndex = 33;
+            this.lblLoreText.Text = "Lore Text";
+            // 
+            // txtImageTag
+            // 
+            this.txtImageTag.Location = new System.Drawing.Point(105, 58);
+            this.txtImageTag.Name = "txtImageTag";
+            this.txtImageTag.Size = new System.Drawing.Size(338, 23);
+            this.txtImageTag.TabIndex = 35;
+            // 
+            // lblImageTag
+            // 
+            this.lblImageTag.AutoSize = true;
+            this.lblImageTag.Location = new System.Drawing.Point(12, 61);
+            this.lblImageTag.Name = "lblImageTag";
+            this.lblImageTag.Size = new System.Drawing.Size(61, 15);
+            this.lblImageTag.TabIndex = 34;
+            this.lblImageTag.Text = "Image Tag";
+            // 
+            // chkNPCLocked
+            // 
+            this.chkNPCLocked.AutoSize = true;
+            this.chkNPCLocked.Location = new System.Drawing.Point(342, 87);
+            this.chkNPCLocked.Name = "chkNPCLocked";
+            this.chkNPCLocked.Size = new System.Drawing.Size(96, 19);
+            this.chkNPCLocked.TabIndex = 36;
+            this.chkNPCLocked.Text = "NPC Locked?";
+            this.chkNPCLocked.UseVisualStyleBackColor = true;
+            // 
             // formEditUpgrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 602);
+            this.ClientSize = new System.Drawing.Size(459, 740);
+            this.Controls.Add(this.chkNPCLocked);
+            this.Controls.Add(this.txtImageTag);
+            this.Controls.Add(this.lblImageTag);
+            this.Controls.Add(this.lblLoreText);
+            this.Controls.Add(this.txtLoreText);
             this.Controls.Add(this.lblSet);
             this.Controls.Add(this.cmbSet);
             this.Controls.Add(this.txtTierLevel);
@@ -360,5 +413,10 @@
         private System.Windows.Forms.TextBox txtTierLevel;
         private System.Windows.Forms.ComboBox cmbSet;
         private System.Windows.Forms.Label lblSet;
+        private System.Windows.Forms.TextBox txtLoreText;
+        private System.Windows.Forms.Label lblLoreText;
+        private System.Windows.Forms.TextBox txtImageTag;
+        private System.Windows.Forms.Label lblImageTag;
+        private System.Windows.Forms.CheckBox chkNPCLocked;
     }
 }
