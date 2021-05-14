@@ -53,11 +53,25 @@ public class Resource
     /// Modify the value of the resource
     /// 
     /// </summary>
-    public virtual void ModifyValue(int valueChange, bool clamp = false)
+    public virtual void ModifyValue(int valueChange, bool clamp = false, int? clampValue = null)
     {
-        Value = CalcNewValue(valueChange);
-        if (clamp)
-            Value = Math.Min(0, Value);
+        if (clampValue.HasValue)
+        {
+            if (Value <= clampValue)
+            {
+                Value = CalcNewValue(valueChange);
+
+                if (clamp)
+                    Value = Math.Min(clampValue.Value, Value);
+            }
+        }
+        else
+        {
+            Value = CalcNewValue(valueChange);
+
+            if (clamp)
+                Value = Math.Min(0, Value);
+        }
     }
 
     public void SetValue(int valueSet)

@@ -31,6 +31,7 @@ public class DeckSaveData
     public List<CardResources> DeckResources { get { return Classes.GetClassData(DeckClass).GetClassResources(); } }
     public int PassiveEmpowered { get; set; }
     public int BaseSummonCapactiy { get; set; }
+    public bool DeathDefiant { get; set; }
 
     public DeckSaveData()
     {
@@ -41,6 +42,7 @@ public class DeckSaveData
         ItemCapacity = DEFAULT_ITEM_CAPACITY;
         PassiveEmpowered = 0;
         BaseSummonCapactiy = 1;
+        DeathDefiant = false;
     }
 
     /// <summary>
@@ -63,6 +65,7 @@ public class DeckSaveData
         IsNPCDeck = deckData.IsNPCDeck;
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
+        DeathDefiant = deckData.DeathDefiant;
 
         PlayerResources = deckData.CopyPlayerResources();
     }
@@ -170,6 +173,7 @@ public class DeckData : DeckSaveData
         IsNPCDeck = deckData.IsNPCDeck;
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
+        DeathDefiant = deckData.DeathDefiant;
 
         PlayerResources = deckData.CopyPlayerResources();
 
@@ -198,6 +202,7 @@ public class DeckData : DeckSaveData
         IsNPCDeck = deckSaveData.IsNPCDeck;
         PassiveEmpowered = deckSaveData.PassiveEmpowered;
         BaseSummonCapactiy = deckSaveData.BaseSummonCapactiy;
+        DeathDefiant = deckSaveData.DeathDefiant;
 
         //Only need to create the deck resources if the deck is newly created, not loaded from file
         if (isNewDeck)
@@ -334,6 +339,9 @@ public class DeckData : DeckSaveData
         {
             UpgradeList.Remove(upgradeData);
             UpgradeIdList.Remove(upgradeData.Id.Value);
+
+            if (upgradeData.UpgradeTag == UpgradeTags.DeathDefiant)
+                DeathDefiant = false;
         }
         else
         {

@@ -102,7 +102,7 @@ public class UpgradeManager : MonoBehaviour
             if (deck.UpgradeList.Select(x => x.Id).Contains(upgrade.Id))
             {
                 //If the upgrade is not repeatable and in the deck already, it cannot be added again
-                if (!upgrade.IsRepeatable)
+                if (!upgrade.IsRepeatable || (upgrade.UpgradeTag == UpgradeTags.DeathDefiant && deck.DeathDefiant))
                 {
                     continue;
                 }
@@ -262,6 +262,27 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeTags.CycleofNature:
                 playerResource = deckData.GetPlayerResource(CardResources.Wild);
                 ((PlayerWild)playerResource).BaseCycleWild();
+                break;
+            case UpgradeTags.WeaponMaster:
+                deckData.ItemCapacity = 2;
+                break;
+            case UpgradeTags.WeaponVirtuoso:
+                deckData.ItemCapacity = 3;
+                break;
+            case UpgradeTags.CircletofPower:
+                deckData.PassiveEmpowered = 1;
+                break;
+            case UpgradeTags.CrownoftheArcane:
+                deckData.PassiveEmpowered = 3;
+                break;
+            case UpgradeTags.VoidPortal:
+                deckData.BaseSummonCapactiy = 2;
+                break;
+            case UpgradeTags.ConvergantVoidPortal:
+                deckData.BaseSummonCapactiy = 3;
+                break;
+            case UpgradeTags.DeathDefiant:
+                deckData.DeathDefiant = true;
                 break;
             default:
                 break;

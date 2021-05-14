@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CategoryEnums;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -90,7 +91,10 @@ public class PlayerUIBar : MonoBehaviour
 
     private void ShowUpgradesInHand()
     {
-        handUI.DisplayHandList(gameplayUI, Player.Upgrades.Where(x => !x.IsRepeatable).ToList(), true, Id);
+        var upgradeList = Player.Upgrades.Where(x => !x.IsRepeatable).ToList();
+        if (Player.DeathDefiant)
+            upgradeList.Add(Player.Upgrades.FirstOrDefault(x => x.UpgradeTag == UpgradeTags.DeathDefiant));
+        handUI.DisplayHandList(gameplayUI, upgradeList, true, Id);
     }
 
     public void UpdateTurnIndicator()

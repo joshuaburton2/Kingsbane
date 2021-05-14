@@ -159,7 +159,6 @@ public class UpgradeUI : MonoBehaviour
                 upgradesToAdd.Remove(invalidUpgrade);
                 newDeck.RemoveUpgrade(invalidUpgrade);
             }
-
         }
 
         //Refresh the upgrade lists

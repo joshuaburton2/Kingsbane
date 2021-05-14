@@ -47,7 +47,7 @@ public class GraveyardExtensionEffect : EffectExtensionUI
     {
         base.RefreshEffectExtension(_effectUI);
 
-        defaultTitleText = "Graveyard";
+        defaultTitleText = titleText.text;
 
         ClearFields();
     }

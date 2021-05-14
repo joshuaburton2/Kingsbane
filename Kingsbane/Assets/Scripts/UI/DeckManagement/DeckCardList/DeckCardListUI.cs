@@ -12,7 +12,7 @@ using UnityEngine.EventSystems;
 public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
 {
     private DeckListUI deckListUI;
-    private int? deckId;
+    private DeckData deckData;
     private List<CardData> deckCardList;
     private List<UpgradeData> deckUpgradeList;
 
@@ -30,16 +30,16 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// Refreshes the card list
     /// 
     /// </summary>
-    public void RefreshCardList(DeckData deckData = null, DeckListUI _deckListUI = null)
+    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null)
     {
         deckListUI = _deckListUI;
 
         GameManager.DestroyAllChildren(cardListArea);
         
         //Certain situations may require an empty card list, so will leave the object empty
-        if (deckData != null)
+        if (_deckData != null)
         {
-            deckId = deckData.Id;
+            deckData = _deckData;
             deckCardList = deckData.CardList;
             deckUpgradeList = deckData.UpgradeList;
 
@@ -65,7 +65,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     private void AddHeroCard(DeckData deckData)
     {
         var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
-        heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, deckListUI, 1, deckId);
+        heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, deckListUI, 1, this.deckData.Id);
         heroCardObject.name = $"Card- {deckData.HeroCard.Name}";
     }
 
@@ -78,12 +78,17 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     {
         var upgradeObjects = new List<GameObject>();
 
+        var hasDeathDefiant = false;
+
         foreach (var upgradeData in deckUpgradeList)
         {
-            if (!upgradeData.IsRepeatable)
+            if (!upgradeData.IsRepeatable || (upgradeData.UpgradeTag == UpgradeTags.DeathDefiant && deckData.DeathDefiant && !hasDeathDefiant))
             {
+                if ((upgradeData.UpgradeTag == UpgradeTags.DeathDefiant && deckData.DeathDefiant))
+                    hasDeathDefiant = true;
+
                 var deckUpgradeObject = Instantiate(upgradeTemplate, cardListArea.transform);
-                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckId);
+                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckData.Id);
                 deckUpgradeObject.name = $"Upgrade- {upgradeData.Name}";
 
                 upgradeObjects.Add(deckUpgradeObject);
@@ -135,7 +140,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
             }
 
             //Initialise the card object
-            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, deckListUI, numCopies, deckId);
+            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, deckListUI, numCopies, deckData.Id);
             deckCardObject.name = $"Card- {cardData.Name}";
 
             //Shifts the index of the overall card loop to the last instance of the current card in the deck. Note that when the code returns to the top of the loop,

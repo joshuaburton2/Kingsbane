@@ -8,20 +8,8 @@ using System;
 
 public class ModifyCostEffect : EffectUI
 {
-     
-    [SerializeField]
-    private TMP_InputField costInput;
-    [SerializeField]
-    private TMP_Dropdown statTypeDropdown;
-    [SerializeField]
-    private TMP_Dropdown targetDropdown;
-    [SerializeField]
-    private TMP_Dropdown resourceDropdown;
     [SerializeField]
     private Button modifyButton;
-
-    private const string DEFAULT_TARGET_STRING = "Target";
-    private const string DEFAULT_RESOURCE_STRING = "None";
 
     /// <summary>
     /// 
@@ -32,9 +20,6 @@ public class ModifyCostEffect : EffectUI
     {
         base.InitialiseEffectUI(_effectType, _gameplayUI, _effectBarUI);
 
-        GeneralUIExtensions.InitDropdownOfType(statTypeDropdown, new List<StatModifierTypes>() { StatModifierTypes.None });
-        GeneralUIExtensions.InitDropdownOfType(targetDropdown, new List<CardTypes>() { CardTypes.Default }, DEFAULT_TARGET_STRING);
-        GeneralUIExtensions.InitDropdownOfType(resourceDropdown, new List<CardResources>() { CardResources.Neutral }, DEFAULT_RESOURCE_STRING, true);
 
         ResetState();
     }
@@ -47,21 +32,6 @@ public class ModifyCostEffect : EffectUI
     private void ResetState()
     {
         modifyButton.interactable = true;
-        statTypeDropdown.value = 0;
-    }
-
-    /// <summary>
-    /// 
-    /// Cancel the modification effect
-    /// 
-    /// </summary>
-    public override void CancelEffect()
-    {
-        base.CancelEffect();
-
-        costInput.text = "";
-        targetDropdown.value = 0;
-        resourceDropdown.value = 0;
     }
 
     /// <summary>
@@ -71,41 +41,6 @@ public class ModifyCostEffect : EffectUI
     /// </summary>
     public void ModifyButton()
     {
-
-        //Gets the card resource from the dropdown
-        CardResources? cardResource;
-        if (resourceDropdown.captionText.text == DEFAULT_RESOURCE_STRING)
-            cardResource = null;
-        else
-            cardResource = (CardResources)Enum.Parse(typeof(CardResources), resourceDropdown.captionText.text);
-
-        var value = -1;
-        if(int.TryParse(costInput.text, out int result))
-        {
-            value = result;
-        }
-        else
-        {
-            value = -1;
-            costInput.text = "-1";
-        }
-
-        var statModType = (StatModifierTypes)Enum.Parse(typeof(StatModifierTypes), statTypeDropdown.captionText.text);
-        if (statModType == StatModifierTypes.Set)
-            value = -value;
-
-        //Chooses the target for the cost modification
-        if (targetDropdown.captionText.text == DEFAULT_TARGET_STRING)
-        {
-            effectBarUI.ActivateEffect();
-            effectComplete = false;
-
-            GameManager.instance.effectManager.SetModifyCostMode(value, cardResource, statModType);
-        }
-        else
-        {
-            var cardTarget = (CardTypes)Enum.Parse(typeof(CardTypes), targetDropdown.captionText.text);
-            GameManager.instance.effectManager.ModifyCostOfTargetCards(value, cardTarget, cardResource, statModType);
-        }
+        effectBarUI.ShowEffectExtension(effectType, this);
     }
 }

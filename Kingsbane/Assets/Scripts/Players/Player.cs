@@ -34,6 +34,7 @@ public class Player
     public int BaseSummonCapactiy { get; set; }
     public int SummonCapcity { get; set; }
     public int CurrentSummons { get; set; }
+    public bool DeathDefiant { get { return DeckData.DeathDefiant; } set { DeckData.DeathDefiant = value; } }
 
     public bool LoseOnHeroLoss { get; set; }
 
@@ -87,6 +88,14 @@ public class Player
             }
 
             UnitStartOfTurn();
+
+            foreach (var passive in new List<Passive>(Passives))
+            {
+                if (passive.IsTemporary)
+                {
+                    Passives.Remove(passive);
+                }
+            }
         }
         else
         {
@@ -94,7 +103,6 @@ public class Player
         }
 
         CheckWarden();
-
     }
 
     private void UnitStartOfTurn()
@@ -356,6 +364,7 @@ public class Player
     public void AddToRedeploy(Unit unit)
     {
         RedeployUnits.Add(unit);
+        GameManager.instance.uiManager.RefreshUI();
     }
 
     public void AddToRedeploy(List<Unit> units)
@@ -363,9 +372,9 @@ public class Player
         RedeployUnits.AddRange(units);
     }
 
-    public bool CopyHandCard(Card copyCard, string createdBy = "")
+    public bool CopyHandCard(Card copyCard, out Card newCopy, string createdBy = "")
     {
-        var newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
+        newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
         newCopy.CreatedByName = createdBy;
         newCopy.CopyCardStats(copyCard);
 
@@ -396,7 +405,15 @@ public class Player
             }
 
             if (filter.CostModification != null)
-                generatedCard.ModifyCost(filter.CostModification.Value, filter.ResourceModification, StatModifierTypes.Modify);
+            {
+                var adjustCost = new AdjustCostObject()
+                {
+                    Value = filter.CostModification.Value,
+                    TargetResource = filter.ResourceModification,
+                    AdjustmentType = StatModifierTypes.Modify,
+                };
+                generatedCard.ModifyCost(adjustCost);
+            }
 
             if (isChoice)
             {
@@ -656,8 +673,28 @@ public class Player
         }
     }
 
-    public void AddPassive(Passive passive)
+    public bool HasSpecialPassive(SpecialPassiveEffects specialPassive)
     {
+        return Passives.Any(x => x.SpecialPassive == specialPassive);
+    }
+
+    public bool HasSpecialPassive(SpecialPassiveEffects specialPassive, out Passive passive)
+    {
+        passive = Passives.SingleOrDefault(x => x.SpecialPassive == specialPassive);
+        return passive != null;
+    }
+
+    public bool AddPassive(Passive passive)
+    {
+        if (passive.SourceUpgrade != null)
+        {
+            if (passive.SourceUpgrade.ResourcePrerequisites.Any() && !passive.SourceUpgrade.ResourcePrerequisites.Intersect(UsedResources).Any())
+                return false;
+
+            if (passive.SourceUpgrade.ClassPrerequisites.Any() && !passive.SourceUpgrade.ClassPrerequisites.Contains(PlayerClass))
+                return false;
+        }
+
         Passives.Add(passive);
 
         var cardList = new List<Card>();
@@ -668,13 +705,13 @@ public class Player
         cardList.AddRange(DeployedUnits.Select(x => x.Unit));
         cardList.AddRange(RedeployUnits);
 
-        if (passive.CostModification != null)
+        if (passive.CostAdjustment != null)
         {
             foreach (var card in cardList)
             {
                 if (!card.IsHero)
                     if (passive.PassiveApplies(card))
-                        card.ModifyCost(passive.CostModification.Value, passive.TargetResource, StatModifierTypes.Modify);
+                        card.ModifyCost(passive.CostAdjustment);
             }
         }
 
@@ -695,12 +732,10 @@ public class Player
                     unit.AddProtected(passive.SpecialPassiveProperty);
                 }
                 break;
-            case SpecialPassiveEffects.SolarEclipse:
-                break;
-            case SpecialPassiveEffects.MonsterHunter:
-                break;
             default:
                 break;
         }
+
+        return true;
     }
 }

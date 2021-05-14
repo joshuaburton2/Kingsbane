@@ -292,7 +292,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
     public void CopyButton()
     {
-        Card.Owner.CopyHandCard(Card, "Duplicate");
+        Card.Owner.CopyHandCard(Card, out Card copyCard, "Duplicate");
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
 
