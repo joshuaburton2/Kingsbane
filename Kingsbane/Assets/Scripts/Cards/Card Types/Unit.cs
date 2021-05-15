@@ -311,6 +311,11 @@ public class Unit : Card
             {
                 GameManager.instance.uiManager.RefreshHeroStats(Owner.Id, OriginalTransformForm);
             }
+
+            if (Owner.HasSpecialPassive(SpecialPassiveEffects.ShapeshiftersMask, out Passive shapeshiftersMaskPassive))
+            {
+                OriginalTransformForm.HealUnit(shapeshiftersMaskPassive.SpecialPassiveProperty);
+            }
         }
         else
             throw new Exception("Cannot return a non-transformed unit to its original form.");
@@ -656,6 +661,11 @@ public class Unit : Card
             }
 
             RefreshCounter();
+
+            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors))
+            {
+                HealUnit(painDrivenWarriors.SpecialPassiveProperty);
+            }
         }
 
         return isDead;
