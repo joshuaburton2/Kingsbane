@@ -579,7 +579,7 @@ public class CardLibrary
         {
             Id = 61,
             Name = "Enrage",
-            Text = @"Give your hero +2 Attack until the end of your turn",
+            Text = @"Give your hero +2 Attack until the end of your turn and <b>Protected (1)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -591,7 +591,7 @@ public class CardLibrary
         {
             Id = 62,
             Name = "Enrage",
-            Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (2)</b>",
+            Text = @"Your hero gains +3 Attack until the end of your turn and <b>Protected (2)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -603,7 +603,7 @@ public class CardLibrary
         {
             Id = 63,
             Name = "Enrage",
-            Text = @"Your hero gains +6 Attack until the end of your turn and <b>Protected (4)</b>",
+            Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (3)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
