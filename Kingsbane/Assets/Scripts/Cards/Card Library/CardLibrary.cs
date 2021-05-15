@@ -579,7 +579,7 @@ public class CardLibrary
         {
             Id = 61,
             Name = "Enrage",
-            Text = @"Give your hero +2 Attack until the end of your turn",
+            Text = @"Give your hero +2 Attack until the end of your turn and <b>Protected (1)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -591,7 +591,7 @@ public class CardLibrary
         {
             Id = 62,
             Name = "Enrage",
-            Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (2)</b>",
+            Text = @"Your hero gains +3 Attack until the end of your turn and <b>Protected (2)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -603,7 +603,7 @@ public class CardLibrary
         {
             Id = 63,
             Name = "Enrage",
-            Text = @"Your hero gains +6 Attack until the end of your turn and <b>Protected (4)</b>",
+            Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (3)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -989,7 +989,7 @@ public class CardLibrary
             Name = "Fetch Gear",
             Text = @"Draw a card",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
             CostsAction = true,
         };
@@ -1440,7 +1440,7 @@ public class CardLibrary
                 UnitTags.Runeblade,
             },
             Attack = 4,
-            Health = 9,
+            Health = 14,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -1448,7 +1448,7 @@ public class CardLibrary
 
             Abilities = new List<AbilityData>() { ability5 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card2);
 
@@ -1727,7 +1727,7 @@ public class CardLibrary
             Tags = new List<Tags> { Tags.AreaDamage },
             Synergies = new List<Synergies> { Synergies.Energy, Synergies.Blademaster, Synergies.Empowered, Synergies.Control, Synergies.BigSpells, Synergies.AreaDamage },
             SpellType = "Damage",
-            Range = 5,
+            Range = 0,
         };
         CardList.Add(card13);
 
@@ -2141,7 +2141,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
                 UnitTags.Runeblade,
             },
             Attack = 7,
-            Health = 16,
+            Health = 21,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -2149,7 +2149,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability11 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card28);
 
@@ -2186,7 +2186,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability12 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card29);
 
@@ -2215,7 +2215,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
                 UnitTags.Arcanist,
             },
             Attack = 4,
-            Health = 5,
+            Health = 10,
             Protected = 0,
             Range = 3,
             Speed = 2,
@@ -2223,7 +2223,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability13 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card30);
 
@@ -2252,7 +2252,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
                 UnitTags.Arcanist,
             },
             Attack = 6,
-            Health = 11,
+            Health = 16,
             Protected = 0,
             Range = 3,
             Speed = 2,
@@ -2260,7 +2260,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability14 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card31);
 
@@ -2297,7 +2297,7 @@ Whenever your hero attacks and kills a unit, add three ""Magic Missile"" cards t
 
             Abilities = new List<AbilityData>() { ability15 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card32);
 
@@ -2725,7 +2725,7 @@ The Mana cost of your spells is reduced by (2)",
             Name = "Callardis Academic",
             ImageTag = CardImageTags.Callardis_Academic,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
             Text = @"<b>Deployment: Study (4)</b>
 Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is increased by an additional point. ",
@@ -2745,7 +2745,7 @@ Whenever your draw an <b>Inspiration</b> card, your Knowledge gain rate is incre
                 UnitTags.Scholar,
             },
             Attack = 3,
-            Health = 5,
+            Health = 4,
             Protected = 0,
             Range = 0,
             Speed = 2,
@@ -3117,7 +3117,7 @@ After you cast the first spell on your turn, cast it again on the same target",
                 UnitTags.Abyssal,
             },
             Attack = 3,
-            Health = 7,
+            Health = 12,
             Protected = 0,
             Range = 3,
             Speed = 2,
@@ -3125,7 +3125,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability16 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card60);
 
@@ -3154,7 +3154,7 @@ After you cast the first spell on your turn, cast it again on the same target",
                 UnitTags.Abyssal,
             },
             Attack = 4,
-            Health = 15,
+            Health = 20,
             Protected = 0,
             Range = 3,
             Speed = 2,
@@ -3162,7 +3162,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability17 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card61);
 
@@ -3199,7 +3199,7 @@ After you cast the first spell on your turn, cast it again on the same target",
 
             Abilities = new List<AbilityData>() { ability18 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card62);
 
@@ -3923,7 +3923,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
                 UnitTags.Elementalist,
             },
             Attack = 5,
-            Health = 5,
+            Health = 10,
             Protected = 0,
             Range = 2,
             Speed = 2,
@@ -3931,7 +3931,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability27 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card84);
 
@@ -3960,7 +3960,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
                 UnitTags.Elementalist,
             },
             Attack = 7,
-            Health = 11,
+            Health = 16,
             Protected = 0,
             Range = 2,
             Speed = 2,
@@ -3968,7 +3968,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability28 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card85);
 
@@ -4005,7 +4005,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
 
             Abilities = new List<AbilityData>() { ability29 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card86);
 
@@ -4640,7 +4640,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
                 UnitTags.Grovewatcher,
             },
             Attack = 2,
-            Health = 11,
+            Health = 16,
             Protected = 0,
             Range = 2,
             Speed = 2,
@@ -4648,7 +4648,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability30 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card107);
 
@@ -4677,7 +4677,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
                 UnitTags.Grovewatcher,
             },
             Attack = 3,
-            Health = 19,
+            Health = 24,
             Protected = 0,
             Range = 2,
             Speed = 2,
@@ -4685,7 +4685,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability31 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card108);
 
@@ -4722,7 +4722,7 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
 
             Abilities = new List<AbilityData>() { ability32 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card109);
 
@@ -5082,7 +5082,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Agent,
             },
             Attack = 3,
-            Health = 10,
+            Health = 15,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -5090,7 +5090,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability21 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card121);
 
@@ -5119,7 +5119,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Agent,
             },
             Attack = 4,
-            Health = 19,
+            Health = 24,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -5127,7 +5127,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability22 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card122);
 
@@ -5164,7 +5164,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability23 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card123);
 
@@ -5193,7 +5193,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Captain,
             },
             Attack = 5,
-            Health = 10,
+            Health = 15,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -5201,7 +5201,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability24 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card124);
 
@@ -5254,7 +5254,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Captain,
             },
             Attack = 5,
-            Health = 20,
+            Health = 25,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -5262,7 +5262,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability25 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card126);
 
@@ -5299,7 +5299,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability26 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card127);
 
@@ -5328,7 +5328,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Lifebringer,
             },
             Attack = 1,
-            Health = 12,
+            Health = 17,
             Protected = 0,
             Range = 1,
             Speed = 3,
@@ -5336,7 +5336,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability33 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card128);
 
@@ -5365,7 +5365,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Lorekeeper,
             },
             Attack = 2,
-            Health = 12,
+            Health = 17,
             Protected = 0,
             Range = 1,
             Speed = 2,
@@ -5373,7 +5373,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability36 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card129);
 
@@ -5402,7 +5402,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Luminist,
             },
             Attack = 2,
-            Health = 9,
+            Health = 14,
             Protected = 0,
             Range = 2,
             Speed = 3,
@@ -5410,7 +5410,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability39 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card130);
 
@@ -5439,7 +5439,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Mercenary,
             },
             Attack = 5,
-            Health = 8,
+            Health = 13,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -5447,7 +5447,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability51 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card131);
 
@@ -5476,7 +5476,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Oathknight,
             },
             Attack = 3,
-            Health = 12,
+            Health = 17,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -5484,7 +5484,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability52 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card132);
 
@@ -5513,7 +5513,7 @@ At the start of each of your turns, gain 2 Wild",
                 UnitTags.Trickster,
             },
             Attack = 6,
-            Health = 7,
+            Health = 12,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -5521,7 +5521,7 @@ At the start of each of your turns, gain 2 Wild",
 
             Abilities = new List<AbilityData>() { ability55 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card133);
 
@@ -5575,7 +5575,7 @@ Deal 1 damage to a unit",
                 UnitTags.Waystalker,
             },
             Attack = 2,
-            Health = 5,
+            Health = 10,
             Protected = 0,
             Range = 3,
             Speed = 4,
@@ -5583,7 +5583,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability58 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card135);
 
@@ -5648,8 +5648,8 @@ Deal 1 damage to a unit",
                 UnitTags.Human,
                 UnitTags.Wildkin,
             },
-            Attack = 1,
-            Health = 14,
+            Attack = 2,
+            Health = 18,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -5657,7 +5657,7 @@ Deal 1 damage to a unit",
 
             Abilities = new List<AbilityData>() { ability61 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card137);
 
@@ -5813,7 +5813,7 @@ At the end of your turn, reduce the Wild cost of a random card in your hand by (
         var card143 = new UnitData()
         {
             Id = 143,
-            Name = "Faerie Harbringer",
+            Name = "Faerie Harbinger",
             ImageTag = CardImageTags.Faerie_Harbringer,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 5), new Resource(CardResources.Wild, 4), },
@@ -6009,7 +6009,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
                 UnitTags.Lifebringer,
             },
             Attack = 2,
-            Health = 20,
+            Health = 25,
             Protected = 0,
             Range = 1,
             Speed = 3,
@@ -6017,7 +6017,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability34 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card148);
 
@@ -6054,7 +6054,7 @@ Last Rites:</b> Shuffle a copy of this unit back into your deck. It keeps any en
 
             Abilities = new List<AbilityData>() { ability35 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card149);
 
@@ -6847,7 +6847,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
                 UnitTags.Lorekeeper,
             },
             Attack = 3,
-            Health = 20,
+            Health = 25,
             Protected = 0,
             Range = 1,
             Speed = 2,
@@ -6855,7 +6855,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability37 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card176);
 
@@ -6892,7 +6892,7 @@ Deployment:</b> Deploy two random units in your Graveyard besides this one. When
 
             Abilities = new List<AbilityData>() { ability38 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card177);
 
@@ -7039,7 +7039,7 @@ Deal damage to a unit equal to its attack",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
-            Text = @"Destroy a minion with 5 or more attack",
+            Text = @"Destroy a minion with 4 or more attack",
             LoreText = @"",
             Notes = @"",
 
@@ -7423,7 +7423,7 @@ After your hero attacks a unit, the target melee attacks a random adjacent unit 
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
 
-            Text = @"Destroy all minions with 5 or more attack in an area of Radius 3",
+            Text = @"Destroy all minions with 4 or more attack in an area of Radius 3",
             LoreText = @"",
             Notes = @"",
 
@@ -7541,7 +7541,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
                 UnitTags.Oathknight,
             },
             Attack = 4,
-            Health = 21,
+            Health = 26,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -7549,7 +7549,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability53 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card199);
 
@@ -7586,7 +7586,7 @@ Whenever you shuffle a card into your deck, reduce its cost by (4)",
 
             Abilities = new List<AbilityData>() { ability54 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card200);
 
@@ -8343,7 +8343,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
                 UnitTags.Trickster,
             },
             Attack = 8,
-            Health = 15,
+            Health = 20,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -8351,7 +8351,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability56 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card225);
 
@@ -8388,7 +8388,7 @@ Whenever your hero recieves an enchantment on your turn, this unit recieves it a
 
             Abilities = new List<AbilityData>() { ability57 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card226);
 
@@ -9452,7 +9452,7 @@ Deployment:</b> Gain either +2 Attack or +2 Health",
             Name = "Field Commander",
             ImageTag = CardImageTags.Field_Commander,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 5), },
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), },
 
             Text = @"<b>Conduit
 Deployment: Study (4)</b>
@@ -9473,7 +9473,7 @@ Whenever this unit attacks and kills an enemy, draw an <b>Inspiration</b> card",
                 UnitTags.Captain,
             },
             Attack = 4,
-            Health = 6,
+            Health = 4,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -9908,7 +9908,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Luminist,
             },
             Attack = 3,
-            Health = 17,
+            Health = 22,
             Protected = 0,
             Range = 2,
             Speed = 3,
@@ -9916,7 +9916,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability40 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card274);
 
@@ -9953,7 +9953,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability41 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card275);
 
@@ -9982,7 +9982,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Mercenary,
             },
             Attack = 6,
-            Health = 17,
+            Health = 22,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -9990,7 +9990,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability43 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card276);
 
@@ -10027,7 +10027,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability44 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card277);
 
@@ -10056,7 +10056,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Waystalker,
             },
             Attack = 4,
-            Health = 11,
+            Health = 16,
             Protected = 0,
             Range = 3,
             Speed = 4,
@@ -10064,7 +10064,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability59 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card279);
 
@@ -10101,7 +10101,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability60 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card280);
 
@@ -10129,8 +10129,8 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Human,
                 UnitTags.Wildkin,
             },
-            Attack = 2,
-            Health = 23,
+            Attack = 3,
+            Health = 27,
             Protected = 0,
             Range = 0,
             Speed = 3,
@@ -10138,7 +10138,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability62 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card281);
 
@@ -10166,8 +10166,8 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
                 UnitTags.Human,
                 UnitTags.Wildkin,
             },
-            Attack = 3,
-            Health = 35,
+            Attack = 4,
+            Health = 34,
             Protected = 0,
             Range = 0,
             Speed = 4,
@@ -10175,7 +10175,7 @@ Tiles adjacent to this unit are part of your deployment zone. The first time eac
 
             Abilities = new List<AbilityData>() { ability63 },
 
-            Keywords = new List<Keywords>() { Keywords.Conduit },
+            Keywords = new List<Keywords>() { },
         };
         CardList.Add(card282);
 
@@ -10645,7 +10645,7 @@ Whenever this unit takes damage, gain +2 Attack",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
-            Text = @"Choose a friendly unit. Deal 1 damage to it and the caster. While both the target and the caster are alive, they both have +5 Attack and you gain 1 additional Energy at the start of each turn. If the caster casts this spell again, remove any previous Blood Bond effects they have cast",
+            Text = @"Choose a friendly unit. Deal 1 damage to it and the caster. While both the target and the caster are alive, they both have +3 Attack and you gain 1 additional Energy at the start of each turn. If the caster casts this spell again, remove any previous Blood Bond effects they have cast",
             LoreText = @"",
             Notes = @"",
 
@@ -13870,8 +13870,8 @@ After you draw an <b>Inspiration</b> card, shuffle another back into your deck",
                 UnitTags.Human,
                 UnitTags.Agent,
             },
-            Attack = 4,
-            Health = 5,
+            Attack = 5,
+            Health = 4,
             Protected = 0,
             Range = 0,
             Speed = 2,

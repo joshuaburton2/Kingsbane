@@ -72,9 +72,9 @@ public class PlayerMana : PlayerResource
     /// Modifying the resource value for mana requires a check to update Overload value as well
     /// 
     /// </summary>
-    public override void ModifyValue(int valueChange, bool clamp = false)
+    public override void ModifyValue(int valueChange, bool clamp = false, int? clampValue = null)
     {
-        base.ModifyValue(valueChange, clamp);
+        base.ModifyValue(valueChange, clamp, clampValue);
 
         var pastOverload = TotalOverload;
         //If the value is less than 0, it means there is an Overload value

@@ -63,14 +63,11 @@ public class Unit : Card
     }
 
     public StatisticStatuses HasBuffedAttack { get { return GetStat(StatTypes.Attack) > UnitData.Attack ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
-    public StatisticStatuses HealthStatus
+    public StatisticStatuses HealthStatus(bool returnDamaged = true)
     {
-        get
-        {
-            if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health)
-                return StatisticStatuses.Buffed;
-            return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
-        }
+        if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health || GetStat(StatTypes.MaxHealth) > UnitData.Health && !returnDamaged)
+            return StatisticStatuses.Buffed;
+        return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
     }
     public StatisticStatuses HasBuffedRange { get { return GetStat(StatTypes.Range) > UnitData.Range ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
     public StatisticStatuses HasBuffedSpeed { get { return GetStat(StatTypes.Speed) > UnitData.Speed ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
@@ -222,6 +219,12 @@ public class Unit : Card
         };
     }
 
+    public void RefreshCounter()
+    {
+        if (UnitCounter != null)
+            UnitCounter.RefreshUnitCounter();
+    }
+
     public int GetStat(StatTypes statType)
     {
         return Stats.Single(x => x.Type == statType).Value;
@@ -292,7 +295,7 @@ public class Unit : Card
         }
 
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void ReturnToOriginalForm()
@@ -307,6 +310,11 @@ public class Unit : Card
             if (OriginalTransformForm.IsHero)
             {
                 GameManager.instance.uiManager.RefreshHeroStats(Owner.Id, OriginalTransformForm);
+            }
+
+            if (Owner.HasSpecialPassive(SpecialPassiveEffects.ShapeshiftersMask, out Passive shapeshiftersMaskPassive))
+            {
+                OriginalTransformForm.HealUnit(shapeshiftersMaskPassive.SpecialPassiveProperty);
             }
         }
         else
@@ -369,23 +377,32 @@ public class Unit : Card
     {
         if (Owner.IsActivePlayer)
         {
-            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Mulligan)
+            if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
+            {
+                RefreshActions();
+            }
+            else
             {
                 Status = UnitStatuses.Preparing;
             }
-            else if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-            {
-                if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
-                {
-                    RefreshActions();
-                }
-                else
-                {
-                    Status = UnitStatuses.Preparing;
-                }
 
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            {
                 ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
                 RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
+                if (IsHero && Owner.HasSpecialPassive(SpecialPassiveEffects.WoundResistant))
+                {
+                    if (Owner.UsedResources.Contains(CardResources.Energy))
+                    {
+                        var playerEnergy = (PlayerEnergy)Owner.Resources.Single(x => x.ResourceType == CardResources.Energy);
+                        HealUnit(playerEnergy.BaseEnergyGain);
+                    }
+                }
+
+                if (Owner.HasSpecialPassive(SpecialPassiveEffects.RestorativeBlessing, out Passive restorativeBlessingPassive))
+                {
+                    HealUnit(restorativeBlessingPassive.SpecialPassiveProperty);
+                }
             }
         }
         else
@@ -394,7 +411,7 @@ public class Unit : Card
             RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOpponentTurn });
         }
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     private void RefreshActions()
@@ -444,6 +461,11 @@ public class Unit : Card
 
         UnitCounter.RefreshUnitCounter();
 
+        if (IsHero && ((Hero)this).ActiveMagisFury.HasValue && !((Hero)this).ActiveMagisFury.Value)
+        {
+            RemoveUnit(true);
+        }
+
         return false;
     }
 
@@ -472,7 +494,7 @@ public class Unit : Card
             else
                 Status = UnitStatuses.Middle;
 
-            UnitCounter.RefreshUnitCounter();
+            RefreshCounter();
             GameManager.instance.effectManager.RefreshEffectManager();
         }
     }
@@ -488,7 +510,7 @@ public class Unit : Card
             if (Status == UnitStatuses.Finished)
                 Status = UnitStatuses.Middle;
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public bool CanAttackTarget(Unit targetUnit)
@@ -546,9 +568,9 @@ public class Unit : Card
         RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.AfterAttack });
 
         if (!unitDead)
-            UnitCounter.RefreshUnitCounter();
+            RefreshCounter();
         if (!targetDead && !targetRouted)
-            targetUnit.UnitCounter.RefreshUnitCounter();
+            targetUnit.RefreshCounter();
     }
 
     public bool CheckRouting()
@@ -572,8 +594,10 @@ public class Unit : Card
                 Source = "Unleash",
                 Status = UnitEnchantment.EnchantmentStatus.Permanent,
             };
-            unleashEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, targetAttack);
-            unleashEnchantment.AddStatModifier(StatTypes.MaxHealth, StatModifierTypes.Modify, targetHealth);
+
+            var modifier = Owner.HasSpecialPassive(SpecialPassiveEffects.FeralNature) ? 2 : 1;
+            unleashEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, targetAttack * modifier);
+            unleashEnchantment.AddStatModifier(StatTypes.MaxHealth, StatModifierTypes.Modify, targetHealth * modifier);
 
             AddEnchantment(unleashEnchantment);
         }
@@ -603,7 +627,7 @@ public class Unit : Card
             {
                 if (TotalProtected.HasValue)
                 {
-                    if (Owner.Passives.Any(x => x.SpecialPassive == SpecialPassiveEffects.LunarEclipse) && TotalProtected.Value > 0)
+                    if (Owner.HasSpecialPassive(SpecialPassiveEffects.LunarEclipse) && TotalProtected.Value > 0)
                         damageValue = 1;
 
                     ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, -damageValue);
@@ -636,8 +660,12 @@ public class Unit : Card
                 }
             }
 
-            if (UnitCounter != null)
-                UnitCounter.RefreshUnitCounter();
+            RefreshCounter();
+
+            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors))
+            {
+                HealUnit(painDrivenWarriors.SpecialPassiveProperty);
+            }
         }
 
         return isDead;
@@ -646,11 +674,17 @@ public class Unit : Card
     public void HealUnit(int? healValue)
     {
         if (healValue.HasValue)
+        {
+            var excessHeal = CurrentHealth + healValue.Value - GetStat(StatTypes.MaxHealth);
             CurrentHealth = Mathf.Min(GetStat(StatTypes.MaxHealth), CurrentHealth + healValue.Value);
+
+            if (IsHero && Owner.HasSpecialPassive(SpecialPassiveEffects.DivineProtection) && excessHeal > 0)
+                AddProtected(excessHeal);
+        }
         else
             CurrentHealth = GetStat(StatTypes.MaxHealth);
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void AddProtected(int value, bool isTemporary = false)
@@ -659,7 +693,7 @@ public class Unit : Card
             ModifyStat(StatModifierTypes.Modify, StatTypes.TempProtected, value);
         else
             ModifyStat(StatModifierTypes.Modify, StatTypes.Protected, value);
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void RemoveUnit(bool isDestroy = false)
@@ -672,20 +706,46 @@ public class Unit : Card
         {
             if (!isDestroy || !HasStatusEffect(StatusEffects.Indestructible))
             {
-                if (isDestroy)
+                if (IsHero && isDestroy)
                 {
-                    ReturnCaptureCards();
-                    Owner.AddToGraveyard(this);
+                    if (Owner.DeathDefiant)
+                    {
+                        int halfHealth = GetStat(StatTypes.MaxHealth) / 2;
+                        HealUnit(null);
+                        DamageUnit(Owner, halfHealth);
+                        Redeploy();
+                        Owner.DeathDefiant = false;
+                    }
+                    else if (((Hero)this).ActiveMagisFury.HasValue && ((Hero)this).ActiveMagisFury.Value)
+                    {
+                        ((Hero)this).ActiveMagisFury = false;
+                        CurrentHealth = 1;
+                        AddProtected(10);
+                        Owner.ModifyEmpowered(3);
+                        RefreshCounter();
+                        GameManager.instance.uiManager.RefreshUI();
+                    }
+                    else
+                    {
+                        Owner.TriggerHeroLoss();
+                        GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+                        UpdateOwnerStats(false);
+                        GameManager.instance.uiManager.RefreshUI();
+                        GameManager.instance.CheckWarden();
+                    }
                 }
-
-                GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
-                UpdateOwnerStats(false);
-                GameManager.instance.uiManager.RefreshUI();
-                GameManager.instance.CheckWarden();
-
-                if (isDestroy && IsHero)
+                else
                 {
-                    Owner.TriggerHeroLoss();
+                    if (isDestroy)
+                    {
+                        ReturnCaptureCards();
+                        Owner.AddToGraveyard(this);
+                    }
+
+                    GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+                    UpdateOwnerStats(false);
+                    GameManager.instance.uiManager.RefreshUI();
+                    GameManager.instance.CheckWarden();
                 }
             }
         }
@@ -713,7 +773,7 @@ public class Unit : Card
         ModifyActions(ability.CostsAction ? -1 : 0);
         Unstealth();
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void AddEnchantment(UnitEnchantment enchantment)
@@ -733,7 +793,7 @@ public class Unit : Card
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
                 newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
 
-            if (Status != UnitStatuses.Preparing)
+            if (Status != UnitStatuses.Preparing && Status != UnitStatuses.None)
             {
                 if (newEnchantment.Enchantment.Keywords.Contains(Keywords.SpecialSwiftstrike))
                 {
@@ -753,8 +813,7 @@ public class Unit : Card
             if (HasKeyword(Keywords.Prepared) && (Status == UnitStatuses.Preparing || Status == UnitStatuses.None))
                 RefreshActions();
 
-            if (UnitCounter != null)
-                UnitCounter.RefreshUnitCounter();
+            RefreshCounter();
         }
         else
         {
@@ -775,8 +834,7 @@ public class Unit : Card
 
         UpdateEnchantments();
 
-        if (UnitCounter != null)
-            UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void UpdateEnchantments()
@@ -876,8 +934,7 @@ public class Unit : Card
 
         GameManager.instance.CheckWarden();
 
-        if (UnitCounter != null)
-            UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void DeleteEnchantment(AppliedEnchantment enchantment)
@@ -955,7 +1012,7 @@ public class Unit : Card
                                 if (CheckWardenMatchingKeywords(adjUnit, Keywords.Ethereal) && CheckWardenMatchingKeywords(adjUnit, Keywords.Flying))
                                 {
                                     CurrentStatusEffects.Add(StatusEffects.Warded);
-                                    UnitCounter.RefreshUnitCounter();
+                                    RefreshCounter();
                                     return true;
                                 }
                             }
@@ -989,7 +1046,7 @@ public class Unit : Card
             CurrentStatusEffects.Add(StatusEffects.Airborne);
         }
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void Unstealth()
@@ -997,7 +1054,7 @@ public class Unit : Card
         if (HasStatusEffect(StatusEffects.Stealthed))
             CurrentStatusEffects.Remove(StatusEffects.Stealthed);
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
     }
 
     public void Spellbind()
@@ -1072,7 +1129,7 @@ public class Unit : Card
             Status = UnitStatuses.Enemy;
         }
 
-        UnitCounter.RefreshUnitCounter();
+        RefreshCounter();
         GameManager.instance.CheckWarden();
     }
 
@@ -1117,9 +1174,10 @@ public class Unit : Card
         }
     }
 
-    public void Redeploy()
+    public void Redeploy(bool destroyCounter = true)
     {
-        RemoveUnit();
+        if (destroyCounter)
+            RemoveUnit();
         Owner.AddToRedeploy(this);
     }
 

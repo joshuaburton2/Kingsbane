@@ -39,7 +39,7 @@ public class EquipExtensionEffect : EffectExtensionUI
     {
         base.RefreshEffectExtension(_effectUI);
 
-        defaultTitleText = "Deployment";
+        defaultTitleText = titleText.text;
 
         ClearFields();
     }

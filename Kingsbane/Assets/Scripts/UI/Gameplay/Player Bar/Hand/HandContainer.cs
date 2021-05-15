@@ -213,7 +213,6 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
                     break;
                 case EffectManager.ActiveEffectTypes.ModifyCost:
                     GameManager.instance.effectManager.ModifyCost(Card);
-                    CardDisplay.UpdateProperties();
                     break;
                 default:
                     if (!GameManager.instance.effectManager.IsUILocked)
@@ -293,7 +292,7 @@ public class HandContainer : MonoBehaviour, IPointerClickHandler
 
     public void CopyButton()
     {
-        Card.Owner.CopyHandCard(Card, "Duplicate");
+        Card.Owner.CopyHandCard(Card, out Card copyCard, "Duplicate");
         GameplayUI.RefreshPlayerBar(PlayerIndex);
     }
 

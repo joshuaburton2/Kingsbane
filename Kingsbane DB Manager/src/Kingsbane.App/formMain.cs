@@ -410,19 +410,24 @@ namespace Kingsbane.App
                 .Include(x => x.ClassPrerequisites)
                 .Include(x => x.UpgradePrerequisites);
             var upgradeTags = new List<string>();
+            var imageTagList = new List<string>();
 
             foreach (var item in query)
             {
-                var tierLevelString = item.IsTierUpgrade ? $"Tier{item.TierLevel.ToString()}" : "Default";
+                var tierLevelString = item.IsTierUpgrade ? $"Tier{item.TierLevel}" : "Default";
+                imageTagList.Add(item.ImageTag);
 
                 sb.AppendLine("");
                 sb.AppendLine($"        var upgrade{item.Id} = new UpgradeData()");
                 sb.AppendLine($"        {{");
                 sb.AppendLine($"            Id = {item.Id},");
                 sb.AppendLine(@$"            Name = ""{item.Name}"",");
+                sb.AppendLine(@$"            ImageTag = UpgradeImageTags.{item.ImageTag},");
                 sb.AppendLine(@$"            Text = @""{item.Text.FixQuotes()}"",");
+                sb.AppendLine(@$"            LoreText = @""{item.LoreText.FixQuotes()}"",");
                 sb.AppendLine($"            HonourPoints = {item.HonourPoints},");
                 sb.AppendLine($"            IsRepeatable = {item.IsRepeatable.ToString().ToLower()},");
+                sb.AppendLine($"            NPCLocked = {item.NPCLocked.ToString().ToLower()},");
                 sb.AppendLine($"            TierLevel = TierLevel.{tierLevelString},");
 
                 sb.AppendLine($"            ResourcePrerequisites = new List<CardResources>()");
@@ -437,7 +442,7 @@ namespace Kingsbane.App
                 sb.AppendLine($"            {{");
                 foreach (var classPrerequisite in item.ClassPrerequisites)
                 {
-                    sb.AppendLine($"                CardResources.{classPrerequisite.CardClassId},");
+                    sb.AppendLine($"                Classes.ClassList.{classPrerequisite.CardClassId},");
                 }
                 sb.AppendLine($"            }},");
                 sb.AppendLine($"            UpgradePrerequisites = new List<UpgradeData>(),");
@@ -458,7 +463,7 @@ namespace Kingsbane.App
                 }
                 else
                 {
-                    upgradeTag = item.Name.Replace(" ", "");
+                    upgradeTag = item.Name.Replace(" ", "").Replace("'", "").Replace("-", "");
                 }
                 if (!upgradeTags.Contains(upgradeTag))
                 {
@@ -490,6 +495,11 @@ namespace Kingsbane.App
             sb.AppendLine("    public enum UpgradeTags");
             sb.AppendLine("    {");
             sb.AppendLine($"        {string.Join(",", upgradeTags)}");
+            sb.AppendLine("    }");
+            sb.AppendLine("");
+            sb.AppendLine("    public enum UpgradeImageTags");
+            sb.AppendLine("    {");
+            sb.AppendLine($"        {string.Join(",", imageTagList)}");
             sb.AppendLine("    }");
             sb.AppendLine("}");
 

@@ -9,10 +9,11 @@ public class Passive
     public UpgradeData SourceUpgrade { get; set; }
 
     public UnitEnchantment Enchantment { get; set; }
-    public int? CostModification { get; set; }
+    public AdjustCostObject CostAdjustment { get; set; }
     public CardResources? TargetResource { get; set; }
     public SpecialPassiveEffects? SpecialPassive { get; set; }
     public int SpecialPassiveProperty { get; set; }
+    public bool IsTemporary { get; set; }
 
     public CardTypes? AffectedCardTypes { get; set; }
     public Tags? AffectedCardTag { get; set; }

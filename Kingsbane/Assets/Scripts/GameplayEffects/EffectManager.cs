@@ -93,13 +93,12 @@ public class EffectManager : MonoBehaviour
     private Ability SelectedAbility { get; set; }
     private UnitEnchantment SelectedEnchantment { get; set; }
     private int? SelectedValue { get; set; }
+    private AdjustCostObject SelectedAdjustCost { get; set; }
     private bool? SelectedBoolean { get; set; }
     private string SelectedString { get; set; }
     private DeckPositions? SelectedDeckPosition { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
-    private CardResources? SelectedResource { get; set; }
     private TileStatuses SelectedTileStatus { get; set; }
-    private StatModifierTypes SelectedStatModType { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -135,7 +134,7 @@ public class EffectManager : MonoBehaviour
         SelectedString = null;
         SelectedDeckPosition = null;
         SelectedKeywords = new List<Keywords>();
-        SelectedResource = null;
+        SelectedAdjustCost = null;
 
         switch (ActiveEffect)
         {
@@ -630,31 +629,30 @@ public class EffectManager : MonoBehaviour
         unit.StunUnit();
     }
 
-    public void SetModifyCostMode(int value, CardResources? resource, StatModifierTypes statModType)
+    public void SetModifyCostMode(AdjustCostObject adjustCostObject)
     {
         ActiveEffect = ActiveEffectTypes.ModifyCost;
-
-        SelectedValue = value;
-        SelectedResource = resource;
-        SelectedStatModType = statModType;
+        SelectedAdjustCost = adjustCostObject;
     }
 
     public void ModifyCost(Card card)
     {
-        var canModify = card.ModifyCost(SelectedValue.Value, SelectedResource, SelectedStatModType);
+        var canModify = card.ModifyCost(SelectedAdjustCost);
         if (!canModify)
             Debug.Log("Cannot modify cost of card");
+        else
+            GameManager.instance.uiManager.RefreshUI();
     }
 
-    public void ModifyCostOfTargetCards(int value, CardTypes cardType, CardResources? resource, StatModifierTypes statModType)
+    public void ModifyCostOfTargetCards(AdjustCostObject adjustCostObject)
     {
         var player = GameManager.instance.GetPlayer();
 
-        foreach (var card in player.Hand.cardList.Where(x => x.Type == cardType))
-            card.ModifyCost(value, resource, statModType);
+        foreach (var card in player.Hand.cardList.Where(x => x.Type == adjustCostObject.TargetCardType))
+            card.ModifyCost(adjustCostObject);
 
-        foreach (var card in player.Deck.cardList.Where(x => x.Type == cardType))
-            card.ModifyCost(value, resource, statModType);
+        foreach (var card in player.Deck.cardList.Where(x => x.Type == adjustCostObject.TargetCardType))
+            card.ModifyCost(adjustCostObject);
 
         GameManager.instance.uiManager.RefreshUI();
     }
@@ -900,9 +898,11 @@ public class EffectManager : MonoBehaviour
             var recruitCards = inActivePlayer.Hand.GetRandomCards(numToRecruit);
             foreach (var recruitCard in recruitCards)
             {
+                var newCopy = GameManager.instance.libraryManager.CreateCard(recruitCard.CardData, recruitCard.Owner);
+                newCopy.CopyCardStats(recruitCard);
                 inActivePlayer.Hand.RemoveCard(recruitCard);
-                activePlayer.RecruitCard(recruitCard, false);
-                recruitCard.IsSpymasterLuren = true;
+                activePlayer.RecruitCard(newCopy, false);
+                newCopy.SpyMasterLurenCard = recruitCard;
             }
 
             GameManager.instance.uiManager.RefreshUI();
@@ -914,13 +914,11 @@ public class EffectManager : MonoBehaviour
         var activePlayer = GameManager.instance.GetPlayer();
         var inActivePlayer = GameManager.instance.GetPlayer(false);
 
-        var cardList = activePlayer.Hand.cardList.Where(x => x.IsSpymasterLuren).ToList();
+        var cardList = activePlayer.Hand.cardList.Where(x => x.SpyMasterLurenCard != null).ToList();
         foreach (var card in cardList)
         {
             activePlayer.Hand.RemoveCard(card);
-            inActivePlayer.AddToHand(card);
-            card.CreatedByName = "";
-            card.ResourceInit();
+            inActivePlayer.AddToHand(card.SpyMasterLurenCard);
         }
 
         GameManager.instance.uiManager.RefreshUI();
@@ -955,7 +953,6 @@ public class EffectManager : MonoBehaviour
     public void Redeploy(Unit unit)
     {
         unit.Redeploy();
-        GameManager.instance.uiManager.RefreshUI();
     }
 
     public void SetTileStatusMode(TileStatuses tileStatus)
@@ -1064,11 +1061,13 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void AddPassive(Passive passive)
+    public bool AddPassive(Passive passive)
     {
         var activePlayer = GameManager.instance.GetPlayer();
 
-        activePlayer.AddPassive(passive);
+        var success = activePlayer.AddPassive(passive);
         GameManager.instance.uiManager.RefreshUI();
+
+        return success;
     }
 }

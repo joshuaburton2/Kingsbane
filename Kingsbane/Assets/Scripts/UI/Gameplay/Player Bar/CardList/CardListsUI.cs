@@ -23,6 +23,8 @@ public class CardListsUI : MonoBehaviour
         Discard,
         [Description("Passives")]
         Passives,
+        [Description("Deck Ordered")]
+        DeckOrdered,
     }
 
     private TabTypes selectedTab;
@@ -87,16 +89,13 @@ public class CardListsUI : MonoBehaviour
         switch (selectedTab)
         {
             case TabTypes.Deck:
-                //Copies the deck list and reverses it since drawing from the deck draws from the end of the list
-                var deckList = player.Deck.cardList.ToList();
-                deckList.Reverse();
-                RefreshCardList(deckList);
+                RefreshCardList(player.Deck.cardList.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Graveyard:
-                RefreshCardList(player.Graveyard.cardList.OrderByDescending(x => x.TotalResource).ToList());
+                RefreshCardList(player.Graveyard.cardList.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Discard:
-                RefreshCardList(player.Discard.cardList.OrderByDescending(x => x.TotalResource).ToList());
+                RefreshCardList(player.Discard.cardList.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Passives:
                 foreach (var passive in player.Passives.OrderBy(x => x.Name))
@@ -105,6 +104,13 @@ public class CardListsUI : MonoBehaviour
                     upgradeListObject.GetComponent<DeckPassiveObject>().InitPassiveObject(passive);
                 }
                 UpdateListCountText(player.Passives.Count);
+                break;
+                //Case for the deck being ordered as it is in the game
+            case TabTypes.DeckOrdered:
+                //Copies the deck list and reverses it since drawing from the deck draws from the end of the list
+                var deckList = player.Deck.cardList.ToList();
+                deckList.Reverse();
+                RefreshCardList(deckList);
                 break;
             default:
                 break;

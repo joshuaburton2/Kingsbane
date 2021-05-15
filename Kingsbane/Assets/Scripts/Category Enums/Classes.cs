@@ -911,14 +911,14 @@ namespace CategoryEnums
                             {
                                 35,
                                 65,
+                                73,
+                                74,
                                 168,
-                                179,
+                                185,
                                 180,
                                 183,
-                                185,
                                 186,
                                 191,
-                                1336,
                             },
                             UpgradeIdList = new List<int>(),
                         },
@@ -1080,11 +1080,11 @@ namespace CategoryEnums
                             {
                                 161,
                                 322,
+                                324,
                                 325,
                                 328,
                                 329,
                                 331,
-                                332,
                                 333,
                                 334,
                                 1381,
@@ -1556,11 +1556,11 @@ namespace CategoryEnums
                                 289,
                                 295,
                                 299,
+                                301,
                                 302,
                                 303,
                                 304,
                                 311,
-                                301,
                                 336,
                                 1359,
                             },
@@ -1618,6 +1618,5 @@ namespace CategoryEnums
                     },
                 },
         };
-
     }
 }

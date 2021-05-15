@@ -28,6 +28,13 @@ public class ImageManager : MonoBehaviour
     }
 
     [Serializable]
+    private class UpgradeImageObject
+    {
+        public UpgradeImageTags imageTag;
+        public Sprite imageSprite;
+    }
+
+    [Serializable]
     private class MapImageObject
     {
         public MapImageTags imageTag;
@@ -37,9 +44,11 @@ public class ImageManager : MonoBehaviour
     [SerializeField]
     private Sprite defaultImage;
     [SerializeField]
-    private List<MapImageObject> mapImages; //Need to use a different tag system for this
+    private List<MapImageObject> mapImages;
     [SerializeField]
     private List<ClassImageList> classImageList;
+    [SerializeField]
+    private List<UpgradeImageObject> upgradeImages;
 
     /// <summary>
     /// 
@@ -70,6 +79,25 @@ public class ImageManager : MonoBehaviour
         var image = defaultImage;
 
         var imageObject = mapImages.FirstOrDefault(x => x.imageTag == imageTag);
+
+        if (imageObject == null)
+            image = defaultImage;
+        else
+            image = imageObject.imageSprite;
+
+        return image;
+    }
+
+    /// <summary>
+    /// 
+    /// Gets an image for a card based on a particular tag
+    /// 
+    /// </summary>
+    public Sprite GetUpgradeImage(UpgradeImageTags imageTag)
+    {
+        var image = defaultImage;
+
+        var imageObject = upgradeImages.FirstOrDefault(x => x.imageTag == imageTag);
 
         if (imageObject == null)
             image = defaultImage;
