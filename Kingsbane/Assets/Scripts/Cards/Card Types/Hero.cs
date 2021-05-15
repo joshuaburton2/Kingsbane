@@ -6,6 +6,7 @@ public class Hero : Unit
 {
     public int ItemCapacity { get; set; }
     public List<Item> EquippedItems { get; set; }
+    public bool? ActiveMagisFury { get; set; }
 
     public override void InitCard(CardData _cardData, Player owner)
     {

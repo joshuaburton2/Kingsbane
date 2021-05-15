@@ -34,7 +34,7 @@ public class Card
     public List<Resource> DefaultCost { get { return CardData.GetResources; } }
     public List<Resource> ResourceCost { get; private set; }
     public List<CardResources> Resources { get; private set; }
-    public bool ResourcesConverted { get; set; }
+    public CardResources? ResourceConvertedTo { get; set; }
 
     public Card SpyMasterLurenCard { get; set; }
 
@@ -127,7 +127,6 @@ public class Card
         CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
         CreatedByName = "";
         NumShuffles = 0;
-        ResourcesConverted = false;
         SpyMasterLurenCard = null;
         ResourceInit();
 
@@ -152,7 +151,7 @@ public class Card
     /// </summary>
     public void ResourceInit()
     {
-        if (!ResourcesConverted || ResourceCost.Count == 0)
+        if (!ResourceConvertedTo.HasValue || ResourceCost.Count == 0)
         {
             ResourceCost = new List<Resource>();
             Resources = new List<CardResources>();
@@ -164,8 +163,8 @@ public class Card
         }
         else
         {
-            var convertedResource = Resources.FirstOrDefault();
-            ResourceConvert(convertedResource);
+            ResourceCost.FirstOrDefault().SetValue(CardData.TotalResource);
+            ResourceConvert(ResourceConvertedTo.Value);
         }
     }
 
@@ -175,7 +174,7 @@ public class Card
         {
             ResourceCost = new List<Resource>() { new Resource(newResource, TotalResource) };
             Resources = new List<CardResources> { newResource };
-            ResourcesConverted = true;
+            ResourceConvertedTo = newResource;
         }
     }
 
@@ -198,7 +197,7 @@ public class Card
     /// </summary>
     private StatisticStatuses GetResourceStatus(CardResources resource)
     {
-        if (ResourcesConverted)
+        if (ResourceConvertedTo.HasValue)
             return StatisticStatuses.Converted;
 
         var currentCost = ResourceCost.Single(x => x.ResourceType == resource).Value;

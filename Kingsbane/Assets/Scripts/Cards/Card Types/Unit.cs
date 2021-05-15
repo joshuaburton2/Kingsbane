@@ -387,7 +387,16 @@ public class Unit : Card
                 RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
                 if (IsHero && Owner.HasSpecialPassive(SpecialPassiveEffects.WoundResistant))
                 {
+                    if (Owner.UsedResources.Contains(CardResources.Energy))
+                    {
+                        var playerEnergy = (PlayerEnergy)Owner.Resources.Single(x => x.ResourceType == CardResources.Energy);
+                        HealUnit(playerEnergy.BaseEnergyGain);
+                    }
+                }
 
+                if (Owner.HasSpecialPassive(SpecialPassiveEffects.RestorativeBlessing, out Passive restorativeBlessingPassive))
+                {
+                    HealUnit(restorativeBlessingPassive.SpecialPassiveProperty);
                 }
             }
         }
@@ -446,6 +455,11 @@ public class Unit : Card
         }
 
         UnitCounter.RefreshUnitCounter();
+
+        if (IsHero && ((Hero)this).ActiveMagisFury.HasValue && !((Hero)this).ActiveMagisFury.Value)
+        {
+            RemoveUnit(true);
+        }
 
         return false;
     }
@@ -575,8 +589,10 @@ public class Unit : Card
                 Source = "Unleash",
                 Status = UnitEnchantment.EnchantmentStatus.Permanent,
             };
-            unleashEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, targetAttack);
-            unleashEnchantment.AddStatModifier(StatTypes.MaxHealth, StatModifierTypes.Modify, targetHealth);
+
+            var modifier = Owner.HasSpecialPassive(SpecialPassiveEffects.FeralNature) ? 2 : 1;
+            unleashEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, targetAttack * modifier);
+            unleashEnchantment.AddStatModifier(StatTypes.MaxHealth, StatModifierTypes.Modify, targetHealth * modifier);
 
             AddEnchantment(unleashEnchantment);
         }
@@ -680,31 +696,46 @@ public class Unit : Card
         {
             if (!isDestroy || !HasStatusEffect(StatusEffects.Indestructible))
             {
-                if (isDestroy)
-                {
-                    ReturnCaptureCards();
-                    Owner.AddToGraveyard(this);
-                }
-
-                GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
-                UpdateOwnerStats(false);
-                GameManager.instance.uiManager.RefreshUI();
-                GameManager.instance.CheckWarden();
-
-                if (isDestroy && IsHero)
+                if (IsHero && isDestroy)
                 {
                     if (Owner.DeathDefiant)
                     {
                         int halfHealth = GetStat(StatTypes.MaxHealth) / 2;
                         HealUnit(null);
                         DamageUnit(Owner, halfHealth);
-                        Redeploy(false);
+                        Redeploy();
                         Owner.DeathDefiant = false;
+                    }
+                    else if (((Hero)this).ActiveMagisFury.HasValue && ((Hero)this).ActiveMagisFury.Value)
+                    {
+                        ((Hero)this).ActiveMagisFury = false;
+                        CurrentHealth = 1;
+                        AddProtected(10);
+                        Owner.ModifyEmpowered(3);
+                        RefreshCounter();
+                        GameManager.instance.uiManager.RefreshUI();
                     }
                     else
                     {
                         Owner.TriggerHeroLoss();
+                        GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+                        UpdateOwnerStats(false);
+                        GameManager.instance.uiManager.RefreshUI();
+                        GameManager.instance.CheckWarden();
                     }
+                }
+                else
+                {
+                    if (isDestroy)
+                    {
+                        ReturnCaptureCards();
+                        Owner.AddToGraveyard(this);
+                    }
+
+                    GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+                    UpdateOwnerStats(false);
+                    GameManager.instance.uiManager.RefreshUI();
+                    GameManager.instance.CheckWarden();
                 }
             }
         }

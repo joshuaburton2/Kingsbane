@@ -82,6 +82,9 @@ public class Player
 
             if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             {
+                if (GameManager.instance.CurrentRound == 1)
+                    StartOfGameEffects();
+
                 Draw();
                 foreach (var resource in Resources)
                     resource.StartOfTurnUpdate();
@@ -103,6 +106,31 @@ public class Player
         }
 
         CheckWarden();
+    }
+
+    private void StartOfGameEffects()
+    {
+        if (HasSpecialPassive(SpecialPassiveEffects.BreadthOfKnowledge, out Passive breadthOfKnowledgePassive))
+        {
+            //Finds the required inspiration card
+            var inspirationCardData = GameManager.instance.libraryManager.GenerateGameplayCards(new GenerateCardFilter(PlayerClass)
+            {
+                IncludeUncollectables = true,
+                Class = PlayerClass,
+                Tag = Tags.Inspiration,
+            }).Single();
+
+            for (int i = 0; i < breadthOfKnowledgePassive.SpecialPassiveProperty; i++)
+            {
+                var inspirationCard = GameManager.instance.libraryManager.CreateCard(inspirationCardData, this);
+                Deck.ShuffleIntoDeck(inspirationCard, breadthOfKnowledgePassive.SourceUpgrade.Name);
+            }
+        }
+
+        if (HasSpecialPassive(SpecialPassiveEffects.MagisFury))
+        {
+            Hero.ActiveMagisFury = true;
+        }
     }
 
     private void UnitStartOfTurn()
@@ -376,6 +404,8 @@ public class Player
     {
         newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
         newCopy.CreatedByName = createdBy;
+        if (copyCard.ResourceConvertedTo.HasValue)
+            newCopy.ResourceConvert(copyCard.ResourceConvertedTo.Value);
         newCopy.CopyCardStats(copyCard);
 
         return AddToHand(newCopy);
@@ -485,6 +515,7 @@ public class Player
     public void DiscardCard(Card discardCard)
     {
         Discard.AddCard(discardCard);
+        Hero.HealUnit(-discardCard.TotalResource);
     }
 
     public void ShuffleFromHand(Card card)
@@ -666,6 +697,14 @@ public class Player
             AddToHand(newCard, "Recruit");
             newCard.ResourceConvert(CardResources.Gold);
             newCard.Owner = this;
+
+            if (HasSpecialPassive(SpecialPassiveEffects.ThiefsGloves, out Passive thiefsGlovesPassive))
+            {
+                for (int i = 0; i < thiefsGlovesPassive.SpecialPassiveProperty; i++)
+                {
+                    CopyHandCard(newCard, out Card newCopy, "Recruit");
+                }
+            }
         }
         else
         {
