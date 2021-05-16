@@ -551,8 +551,9 @@ public class Unit : Card
         {
             var targetHealth = targetUnit.CurrentHealth;
 
+            var targetStunned = targetUnit.HasStatusEffect(StatusEffects.Stunned);
             targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack), CurrentKeywords);
-            if ((GetStat(StatTypes.Range) == 0 || forceMelee) && !targetUnit.HasStatusEffect(StatusEffects.Stunned))
+            if ((GetStat(StatTypes.Range) == 0 || forceMelee) && !targetStunned)
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
                 if (!targetDead && hasOverwhelm || !hasOverwhelm)
