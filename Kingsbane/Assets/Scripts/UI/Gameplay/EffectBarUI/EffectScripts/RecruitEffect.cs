@@ -70,7 +70,7 @@ public class RecruitEffect : EffectUI
                     break;
                 case RecruitTypes.SpymasterLuren:
                     var numToRecruit = 3;
-                    GameManager.instance.effectManager.SpymasterLurenEffect(numToRecruit);
+                    GameManager.instance.effectManager.SetSpymasterLurenSourceMode(numToRecruit);
                     break;
                 default:
                     throw new Exception("Not a valid recruit type.");

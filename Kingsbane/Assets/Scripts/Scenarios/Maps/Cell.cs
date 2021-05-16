@@ -182,6 +182,10 @@ public class Cell : MonoBehaviour
                                     if (occupantCounter != null)
                                         GameManager.instance.effectManager.Imprison(occupantCounter.Unit);
                                     break;
+                                case EffectManager.ActiveEffectTypes.SpymasterLurenSource:
+                                    if (occupantCounter != null)
+                                        GameManager.instance.effectManager.SpymasterLurenEffect(occupantCounter.Unit);
+                                    break;
                                 case EffectManager.ActiveEffectTypes.None:
                                     SelectCommandUnit();
                                     break;

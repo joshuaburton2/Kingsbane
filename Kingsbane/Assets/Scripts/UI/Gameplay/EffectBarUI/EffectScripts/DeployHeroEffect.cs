@@ -74,4 +74,14 @@ public class DeployHeroEffect : EffectUI
 
         gameplayUI.SetActionButtonState(true);
     }
+
+    public override void CancelEffect()
+    {
+        base.CancelEffect();
+
+        deployButton.interactable = true;
+        cancelButton.interactable = false;
+
+        gameplayUI.SetActionButtonState(false);
+    }
 }

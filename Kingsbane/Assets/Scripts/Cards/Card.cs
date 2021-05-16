@@ -36,6 +36,7 @@ public class Card
     public List<CardResources> Resources { get; private set; }
     public CardResources? ResourceConvertedTo { get; set; }
 
+    public Unit SpymasterLurenSource { get; set; }
     public Card SpyMasterLurenCard { get; set; }
 
 
@@ -227,16 +228,16 @@ public class Card
 
     public virtual void Play()
     {
+        if (SpyMasterLurenCard != null)
+        {
+            SpyMasterLurenCard = null;
+            GameManager.instance.effectManager.ReturnLurenCards(playedCard: this);
+        }
+
         Owner.ModifyResources(ResourceCost);
 
         ResourceInit();
         Owner.PlayFromHand(this);
-
-        if (SpyMasterLurenCard != null)
-        {
-            SpyMasterLurenCard = null;
-            GameManager.instance.effectManager.ReturnLurenCards();
-        }
 
         //ToDo: Might need to pass out an on play parameter. This will determine the effect of spells as well as deployment effects for units and items
     }
