@@ -114,6 +114,8 @@ public class Unit : Card
     public List<Card> ConfiscatedCards { get; set; }
     public List<Unit> ImprisonedUnits { get; set; }
 
+    public List<Card> SpymasterLurenCards { get; set; }
+
     public bool HasKeyword(Keywords keyword)
     {
         return CurrentKeywords.Contains(keyword);
@@ -136,9 +138,11 @@ public class Unit : Card
         RemainingSpeed = 0;
         TemporaryMindControlled = false;
         LoseNextAction = false;
-
+        
         ConfiscatedCards = new List<Card>();
         ImprisonedUnits = new List<Unit>();
+
+        SpymasterLurenCards = new List<Card>();
 
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
@@ -337,6 +341,8 @@ public class Unit : Card
             if (HasKeyword(Keywords.Summon))
                 Owner.RemoveSummon(UnitCounter);
         }
+
+        GameManager.instance.uiManager.RefreshUI();
     }
 
     public bool CheckOccupancy(Cell newCell, bool isLanding = false)
@@ -546,7 +552,7 @@ public class Unit : Card
             var targetHealth = targetUnit.CurrentHealth;
 
             targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack), CurrentKeywords);
-            if (GetStat(StatTypes.Range) == 0 || forceMelee)
+            if ((GetStat(StatTypes.Range) == 0 || forceMelee) && !targetUnit.HasStatusEffect(StatusEffects.Stunned))
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
                 if (!targetDead && hasOverwhelm || !hasOverwhelm)
@@ -704,7 +710,7 @@ public class Unit : Card
         }
         else
         {
-            if (!isDestroy || !HasStatusEffect(StatusEffects.Indestructible))
+            if (!isDestroy || isDestroy && !HasStatusEffect(StatusEffects.Indestructible))
             {
                 if (IsHero && isDestroy)
                 {
@@ -736,13 +742,17 @@ public class Unit : Card
                 }
                 else
                 {
+                    if (SpymasterLurenCards.Any())
+                        GameManager.instance.effectManager.ReturnLurenCards(this);
+
+                    GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
+
                     if (isDestroy)
                     {
                         ReturnCaptureCards();
                         Owner.AddToGraveyard(this);
                     }
 
-                    GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
                     UpdateOwnerStats(false);
                     GameManager.instance.uiManager.RefreshUI();
                     GameManager.instance.CheckWarden();
@@ -1066,15 +1076,23 @@ public class Unit : Card
         }
         else
         {
-            foreach (var enchantment in Enchantments)
-                if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
-                    enchantment.IsActive = false;
+            if (HasKeyword(Keywords.Summon))
+            {
+                RemoveUnit(true);
+            }
+            else
+            {
+                foreach (var enchantment in Enchantments)
+                    if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
+                        enchantment.IsActive = false;
 
-            ConfiscatedCards.Clear();
-            ImprisonedUnits.Clear();
-            CurrentStatusEffects.Clear();
-            CurrentStatusEffects.Add(StatusEffects.Spellbound);
-            UpdateEnchantments();
+                UpdateOwnerStats(false);
+                ConfiscatedCards.Clear();
+                ImprisonedUnits.Clear();
+                CurrentStatusEffects.Clear();
+                CurrentStatusEffects.Add(StatusEffects.Spellbound);
+                UpdateEnchantments();
+            }
         }
     }
 

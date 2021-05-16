@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using CategoryEnums;
 using System;
+using System.Linq;
 
 public class PassiveExtensionEffect : EffectExtensionUI
 {
@@ -21,6 +22,8 @@ public class PassiveExtensionEffect : EffectExtensionUI
     private TMP_Dropdown affectedUnitTagDropdown;
     [SerializeField]
     private Toggle isTemporaryToggle;
+    [SerializeField]
+    private TMP_Dropdown playerNumberDropdown;
 
     [Header("Passive Effects Area")]
     [SerializeField]
@@ -80,6 +83,10 @@ public class PassiveExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(costResourceDropdown, new List<CardResources>() { CardResources.Neutral }, DEFAULT_INPUT_STRING_NONE);
         GeneralUIExtensions.InitDropdownOfType(specialPassiveValueDropdown, new List<SpecialPassiveEffects>() { }, DEFAULT_INPUT_STRING_NONE, true);
 
+        playerNumberDropdown.ClearOptions();
+        playerNumberDropdown.AddOptions(GameManager.instance.LoadedPlayers.Select(x => (x.Id + 1).ToString()).ToList());
+        playerNumberDropdown.gameObject.SetActive(GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Setup);
+
         nameInput.text = "";
         costValueInput.text = "";
         minCostInput.text = "";
@@ -100,10 +107,12 @@ public class PassiveExtensionEffect : EffectExtensionUI
     {
         UpgradeData sourceUpgrade = null;
         CardData sourceCard = null;
+        int? playerId = null;
         switch (GameManager.instance.CurrentGamePhase)
         {
             case GameManager.GamePhases.Setup:
                 sourceUpgrade = GameManager.instance.upgradeManager.GetUpgrade(nameInput.text);
+                playerId = int.Parse(playerNumberDropdown.captionText.text) - 1;
                 break;
             case GameManager.GamePhases.Gameplay:
                 sourceCard = GameManager.instance.libraryManager.GetCard(nameInput.text);
@@ -168,7 +177,7 @@ public class PassiveExtensionEffect : EffectExtensionUI
                     passive.SpecialPassiveProperty = 0;
             }
 
-            if (GameManager.instance.effectManager.AddPassive(passive))
+            if (GameManager.instance.effectManager.AddPassive(passive, playerId))
             {
                 gameObject.SetActive(false);
             }

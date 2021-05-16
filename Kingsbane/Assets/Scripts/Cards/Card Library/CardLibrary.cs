@@ -651,7 +651,7 @@ public class CardLibrary
         {
             Id = 67,
             Name = "Lifedrain",
-            Text = @"Deal 3 damage to a unit. Heal this unit for the amount of damage dealt",
+            Text = @"Deal 3 damage to an adjacent unit. Heal this unit for the amount of damage dealt",
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -8872,7 +8872,7 @@ Deployment:</b> Use <b>Smuggle</b>",
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
             Text = @"<b>Warden</b>
-Whenever this attacks, a unit, if it would kill it, <b>Recruit</b> it instead",
+Whenever this attacks a unit, if it would kill it, <b>Recruit</b> it instead",
             LoreText = @"",
             Notes = @"",
 
@@ -12698,7 +12698,7 @@ Give all friendly units <b>Protected (3).</b>",
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 8), },
 
             Text = @"<b>Cycle -4</b>
-Until the start of your next turn gain ""<b>Passive:</b> All your spells and abilities deal double double damage"".
+Until the start of your next turn gain ""<b>Passive:</b> All your spells and abilities deal double damage"".
 Deal 3 damage to all enemy units",
             LoreText = @"",
             Notes = @"",
@@ -14264,7 +14264,7 @@ If this unit <b>Routs</b> shuffle a new copy of it back into your deck",
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 7), },
 
             Text = @"<b>Conduit
-Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play any of them, return the other two to their hand and restore their previous cost.",
+Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play any of them or when Luren leaves the battlefield, return the remaining cards to their hand and restore their previous cost.",
             LoreText = @"",
             Notes = @"",
 
@@ -14280,8 +14280,8 @@ Deployment: Recruit</b> 3 random cards from your opponent's hand. After you play
                 UnitTags.Human,
                 UnitTags.Agent,
             },
-            Attack = 6,
-            Health = 6,
+            Attack = 4,
+            Health = 4,
             Protected = 0,
             Range = 0,
             Speed = 3,

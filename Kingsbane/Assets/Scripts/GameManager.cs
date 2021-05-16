@@ -164,9 +164,13 @@ public class GameManager : MonoBehaviour
     /// Gets a player of a particular Id
     /// 
     /// </summary>
-    public Player GetPlayer(int id)
+    public Player GetPlayer(int? id)
     {
-        return LoadedPlayers[id];
+        if (id != null)
+            return LoadedPlayers[id.Value];
+        else
+            return GetPlayer();
+
     }
 
     /// <summary>

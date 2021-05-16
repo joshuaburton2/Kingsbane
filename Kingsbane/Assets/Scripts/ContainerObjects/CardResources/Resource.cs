@@ -99,7 +99,7 @@ public class Resource
 
         { CardResources.Gold, @"Gold is a measure of the players wealth. It allows them to acquire various mercenary units, purchase items and pay for various services. This gold provides the player with a strong army and the ability to push their deck in any direction they desire.
 <b>Resource Gain:</b>Whenever an enemy unit dies, the player gains an amount of Gold equal to their Bounty.
-<b>Ongoing Effect:</b> The player's Gold amount persists between each scenarie. As such, whatever gold the player ends each scenario with is the amount they will start the next scenario with." },
+<b>Ongoing Effect:</b> The player's Gold amount persists between each scenario. As such, whatever gold the player ends each scenario with is the amount they will start the next scenario with." },
 
         { CardResources.Knowledge, @"Knowledge decks display the player’s intelligence and understanding of the world around them or their foe. This understanding allows them to manipulate the battlefield, their deck or their foe to give them the advantage in the field. Other intelligent people look to the player as a beacon of knowledge in the world and will flock to their side to aid them. 
 <b>Resource Gain:</b> At the start of each turn, the player gains an amount of Knowledge equal to their base increase. At the end of each turn, their Knowledge is reset to zero, resetting it for the next turn. Whenever a player uses a <b>Study</b> effect, they shuffle a number of Inspiration cards into their deck. Whenever a player draws an Inspiration card, their base Knowledge gain is increase by 1 for that scenario.

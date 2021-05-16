@@ -965,13 +965,14 @@ public class UpgradeLibrary
             Name = "Monetary Motivation",
             ImageTag = UpgradeImageTags.Monetary_Motivation,
             Text = @"Your <b>Deployment</b> effects trigger twice",
-            LoreText = @"",
+            LoreText = @"Your <b>Deployment</b> effects trigger twice",
             HonourPoints = 4,
             IsRepeatable = false,
             NPCLocked = false,
             TierLevel = TierLevel.Default,
             ResourcePrerequisites = new List<CardResources>()
             {
+                CardResources.Gold,
             },
             ClassPrerequisites = new List<Classes.ClassList>()
             {
@@ -1079,13 +1080,14 @@ public class UpgradeLibrary
             Name = "Crown of the Arcane",
             ImageTag = UpgradeImageTags.Crown_of_the_Arcane,
             Text = @"You have the <b>Passive: Empowered +3.</b>This replaces Circlet of Power",
-            LoreText = @"",
+            LoreText = @"You have the <b>Passive: Empowered +3.</b>This replaces Circlet of Power",
             HonourPoints = 5,
             IsRepeatable = false,
             NPCLocked = false,
             TierLevel = TierLevel.Default,
             ResourcePrerequisites = new List<CardResources>()
             {
+                CardResources.Mana,
             },
             ClassPrerequisites = new List<Classes.ClassList>()
             {
@@ -1170,13 +1172,14 @@ public class UpgradeLibrary
             Name = "Restored Heart of the Wild",
             ImageTag = UpgradeImageTags.Restored_Heart_of_the_Wild,
             Text = @"Your units that have a total cost of (5) or more cost (4) less, but not less than (5). This replaces Heart of the Wild",
-            LoreText = @"",
+            LoreText = @"Your units that have a total cost of (5) or more cost (4) less, but not less than (5). This replaces Heart of the Wild",
             HonourPoints = 5,
             IsRepeatable = false,
             NPCLocked = false,
             TierLevel = TierLevel.Default,
             ResourcePrerequisites = new List<CardResources>()
             {
+                CardResources.Wild,
             },
             ClassPrerequisites = new List<Classes.ClassList>()
             {
@@ -1215,7 +1218,7 @@ public class UpgradeLibrary
             Name = "Convergant Void Portal",
             ImageTag = UpgradeImageTags.Convergant_Void_Portal,
             Text = @"Your base <b>Summon</b> capacity is increased to 3. This replaces Void Portal",
-            LoreText = @"",
+            LoreText = @"Your base <b>Summon</b> capacity is increased to 3. This replaces Void Portal",
             HonourPoints = 5,
             IsRepeatable = false,
             NPCLocked = false,
@@ -1225,6 +1228,7 @@ public class UpgradeLibrary
             },
             ClassPrerequisites = new List<Classes.ClassList>()
             {
+                Classes.ClassList.Abyssal,
             },
             UpgradePrerequisites = new List<UpgradeData>(),
             UpgradeTag = UpgradeTags.ConvergantVoidPortal,
@@ -2042,7 +2046,7 @@ public class UpgradeLibrary
             Name = "Serrated Edges",
             ImageTag = UpgradeImageTags.Serrated_Edges,
             Text = @"Your Shivs deal 2 extra damage and prevent the target from being healed until the end of their next turn. This replaces Jagged Edges",
-            LoreText = @"",
+            LoreText = @"Your Shivs deal 2 extra damage and prevent the target from being healed until the end of their next turn. This replaces Jagged Edges",
             HonourPoints = 3,
             IsRepeatable = false,
             NPCLocked = false,
@@ -2239,6 +2243,7 @@ public class UpgradeLibrary
         upgrade48.UpgradePrerequisites = new List<UpgradeData> { upgrade47 };
         upgrade52.UpgradePrerequisites = new List<UpgradeData> { upgrade51 };
         upgrade54.UpgradePrerequisites = new List<UpgradeData> { upgrade53 };
+        upgrade57.UpgradePrerequisites = new List<UpgradeData> { upgrade56 };
         upgrade61.UpgradePrerequisites = new List<UpgradeData> { upgrade60 };
         upgrade64.UpgradePrerequisites = new List<UpgradeData> { upgrade63 };
         upgrade66.UpgradePrerequisites = new List<UpgradeData> { upgrade65 };
@@ -2249,6 +2254,7 @@ public class UpgradeLibrary
         upgrade81.UpgradePrerequisites = new List<UpgradeData> { upgrade80 };
         upgrade85.UpgradePrerequisites = new List<UpgradeData> { upgrade84 };
         upgrade87.UpgradePrerequisites = new List<UpgradeData> { upgrade86 };
+        upgrade90.UpgradePrerequisites = new List<UpgradeData> { upgrade89 };
         upgrade93.UpgradePrerequisites = new List<UpgradeData> { upgrade92 };
         upgrade96.UpgradePrerequisites = new List<UpgradeData> { upgrade95 };
     }

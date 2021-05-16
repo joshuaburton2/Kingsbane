@@ -60,6 +60,7 @@ public class EffectManager : MonoBehaviour
         Confiscate,
         SelectImprisonCaster,
         Imprison,
+        SpymasterLurenSource,
     }
 
     public ActiveEffectTypes ActiveEffect { get; set; }
@@ -886,42 +887,81 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public void SpymasterLurenEffect(int numToChoose)
+    public void SetSpymasterLurenSourceMode(int numToRecruit)
     {
         var activePlayer = GameManager.instance.GetPlayer();
-        var inActivePlayer = GameManager.instance.GetPlayer(false);
 
         if (activePlayer.UsedResources.Contains(CardResources.Gold))
         {
-            var numToRecruit = Mathf.Min(activePlayer.Hand.CardsToFull, numToChoose);
+            ActiveEffect = ActiveEffectTypes.SpymasterLurenSource;
 
-            var recruitCards = inActivePlayer.Hand.GetRandomCards(numToRecruit);
-            foreach (var recruitCard in recruitCards)
-            {
-                var newCopy = GameManager.instance.libraryManager.CreateCard(recruitCard.CardData, recruitCard.Owner);
-                newCopy.CopyCardStats(recruitCard);
-                inActivePlayer.Hand.RemoveCard(recruitCard);
-                activePlayer.RecruitCard(newCopy, false);
-                newCopy.SpyMasterLurenCard = recruitCard;
-            }
-
-            GameManager.instance.uiManager.RefreshUI();
+            SelectedValue = numToRecruit;
         }
     }
 
-    public void ReturnLurenCards()
+    public void SpymasterLurenEffect(Unit sourceUnit)
+    {
+        if (!sourceUnit.SpymasterLurenCards.Any() && !sourceUnit.IsHero)
+        {
+            var activePlayer = GameManager.instance.GetPlayer();
+            var inActivePlayer = GameManager.instance.GetPlayer(false);
+
+            if (activePlayer.UsedResources.Contains(CardResources.Gold))
+            {
+                var numToRecruit = Mathf.Min(activePlayer.Hand.CardsToFull, SelectedValue.Value);
+
+                var recruitCards = inActivePlayer.Hand.GetRandomCards(numToRecruit);
+                foreach (var recruitCard in recruitCards)
+                {
+                    var newCopy = GameManager.instance.libraryManager.CreateCard(recruitCard.CardData, recruitCard.Owner);
+                    newCopy.CopyCardStats(recruitCard);
+                    inActivePlayer.Hand.RemoveCard(recruitCard);
+                    activePlayer.RecruitCard(newCopy, false);
+                    newCopy.SpyMasterLurenCard = recruitCard;
+                    newCopy.SpymasterLurenSource = sourceUnit;
+                    sourceUnit.SpymasterLurenCards.Add(newCopy);
+                }
+
+                GameManager.instance.uiManager.RefreshUI();
+            }
+
+            RefreshEffectManager();
+        }
+    }
+
+    public void ReturnLurenCards(Unit sourceUnit = null, Card playedCard = null)
     {
         var activePlayer = GameManager.instance.GetPlayer();
         var inActivePlayer = GameManager.instance.GetPlayer(false);
 
-        var cardList = activePlayer.Hand.cardList.Where(x => x.SpyMasterLurenCard != null).ToList();
-        foreach (var card in cardList)
+        if (sourceUnit == null && playedCard != null)
         {
-            activePlayer.Hand.RemoveCard(card);
-            inActivePlayer.AddToHand(card.SpyMasterLurenCard);
+            sourceUnit = playedCard.SpymasterLurenSource;
+        }
+        else if (sourceUnit == null)
+        {
+            throw new Exception("Cannot return Luren cards as inputs do not match");
         }
 
-        GameManager.instance.uiManager.RefreshUI();
+        var cardList = sourceUnit.SpymasterLurenCards;
+        if (cardList.Any())
+        {
+            if (playedCard != null)
+                cardList.Remove(playedCard);
+
+            foreach (var card in cardList)
+            {
+                activePlayer.Hand.RemoveCard(card);
+                inActivePlayer.AddToHand(card.SpyMasterLurenCard);
+            }
+
+            sourceUnit.SpymasterLurenCards = new List<Card>();
+            GameManager.instance.uiManager.RefreshUI();
+        }
+        else
+        {
+            throw new Exception("No valid cards to return from the source unit");
+        }
     }
 
     public void SetMadnessMode()
@@ -1061,9 +1101,9 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public bool AddPassive(Passive passive)
+    public bool AddPassive(Passive passive, int? playerId = null)
     {
-        var activePlayer = GameManager.instance.GetPlayer();
+        var activePlayer = GameManager.instance.GetPlayer(playerId);
 
         var success = activePlayer.AddPassive(passive);
         GameManager.instance.uiManager.RefreshUI();
