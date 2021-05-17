@@ -144,6 +144,8 @@ public class Card
                             ModifyCost(passive.CostAdjustment);
                 }
             }
+
+            RecalculateCost();
         }
     }
 
