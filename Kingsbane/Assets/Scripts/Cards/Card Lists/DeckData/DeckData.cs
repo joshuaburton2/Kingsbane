@@ -32,6 +32,8 @@ public class DeckSaveData
     public int PassiveEmpowered { get; set; }
     public int BaseSummonCapactiy { get; set; }
     public bool DeathDefiant { get; set; }
+    public CampaignProgression CampaignTracker { get; set; }
+    public bool IsCampaign { get { return CampaignTracker != null; } }
 
     public DeckSaveData()
     {
@@ -43,6 +45,7 @@ public class DeckSaveData
         PassiveEmpowered = 0;
         BaseSummonCapactiy = 1;
         DeathDefiant = false;
+        CampaignTracker = null;
     }
 
     /// <summary>
@@ -66,6 +69,7 @@ public class DeckSaveData
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
         DeathDefiant = deckData.DeathDefiant;
+        CampaignTracker = deckData.CampaignTracker;
 
         PlayerResources = deckData.CopyPlayerResources();
     }
@@ -174,6 +178,7 @@ public class DeckData : DeckSaveData
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
         DeathDefiant = deckData.DeathDefiant;
+        CampaignTracker = deckData.CampaignTracker;
 
         PlayerResources = deckData.CopyPlayerResources();
 
@@ -203,6 +208,7 @@ public class DeckData : DeckSaveData
         PassiveEmpowered = deckSaveData.PassiveEmpowered;
         BaseSummonCapactiy = deckSaveData.BaseSummonCapactiy;
         DeathDefiant = deckSaveData.DeathDefiant;
+        CampaignTracker = deckSaveData.CampaignTracker;
 
         //Only need to create the deck resources if the deck is newly created, not loaded from file
         if (isNewDeck)

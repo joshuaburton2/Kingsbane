@@ -17,6 +17,8 @@ public class UpgradeUI : MonoBehaviour
     [Header("Object Prefabs")]
     [SerializeField]
     GameObject upgradeListObject;
+    [SerializeField]
+    GameObject upgradeDividerObject;
 
     [Header("DetailsFields")]
     [SerializeField]
@@ -163,7 +165,7 @@ public class UpgradeUI : MonoBehaviour
 
         //Refresh the upgrade lists
         RefreshAvailableUpgrades();
-        RefreshUpgradeList(upgradesToAddArea, false, upgradesToAdd, newDeck);
+        RefreshUpgradeList(upgradesToAddArea, false, new List<UpgradeData>(upgradesToAdd), newDeck);
 
         //Empties the selected ugprade fields
         RefreshSelectedUpgrade();
@@ -193,14 +195,65 @@ public class UpgradeUI : MonoBehaviour
 
         if (upgradeList != null)
         {
-            //Loops through all the upgrades and creates the upgrade list objects in the list
-            foreach (var upgrade in upgradeList)
+            //Initialise the resource section
+            foreach (var resource in currentDeck.DeckResources.OrderBy(x => x.GetEnumDescription()))
             {
-                var newUpgradeObject = Instantiate(upgradeListObject, listParent.transform);
-                newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this, currentDeck, isToAdd);
-
-                newUpgradeObject.name = $"Upgrade: {upgrade.Name}";
+                var resourceDividedList = upgradeList.Where(x => x.ResourcePrerequisites.Contains(resource)).ToList();
+                if (resourceDividedList.Any())
+                {
+                    CreateDivider(resource.GetEnumDescription().ToUpper(), listParent);
+                    RefreshDividedList(listParent, isToAdd, resourceDividedList, currentDeck);
+                    //Removes the resource upgrades from the list so only class and neutral upgrades are left
+                    upgradeList.RemoveAll(x => resourceDividedList.Contains(x));
+                }
             }
+
+            //Initialise the class section
+            var classDividedList = upgradeList.Where(x => x.ClassPrerequisites.Contains(currentDeck.DeckClass)).ToList();
+            if (classDividedList.Any())
+            {
+                CreateDivider(currentDeck.DeckClass.GetEnumDescription().ToUpper(), listParent);
+                RefreshDividedList(listParent, isToAdd, classDividedList, currentDeck);
+                //Removes the class upgrades from the list so only neutral upgrades are left
+                upgradeList.RemoveAll(x => classDividedList.Contains(x));
+            }
+
+            //Initialise the neutral section
+            if (upgradeList.Any())
+            {
+                CreateDivider("NEUTRAL", listParent);
+                //As resource and class upgrades have been removed, only neutral upgrades are left
+                RefreshDividedList(listParent, isToAdd, upgradeList, currentDeck);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Creates the upgrade divider in the list
+    /// 
+    /// </summary>
+    private void CreateDivider(string dividerName, GameObject parent)
+    {
+        var divdiderObject = Instantiate(upgradeDividerObject, parent.transform);
+        divdiderObject.GetComponent<UpgradeDividerObject>().InitDivider(dividerName);
+        divdiderObject.gameObject.name = $"Divider: {dividerName}";
+    }
+
+    /// <summary>
+    /// 
+    /// Refresh the divided upgrade list
+    /// 
+    /// </summary>
+    private void RefreshDividedList(GameObject listParent, bool isToAdd = true, List<UpgradeData> dividedUpgradeList = null, DeckData currentDeck = null)
+    {
+        //Loops through all the upgrades and creates the upgrade list objects in the list
+        foreach (var upgrade in dividedUpgradeList.OrderBy(x => x.Name))
+        {
+            var newUpgradeObject = Instantiate(upgradeListObject, listParent.transform);
+            newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this, currentDeck, isToAdd);
+
+            newUpgradeObject.name = $"Upgrade: {upgrade.Name}";
         }
     }
 

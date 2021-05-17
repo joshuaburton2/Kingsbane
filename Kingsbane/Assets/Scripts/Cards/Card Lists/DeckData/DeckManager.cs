@@ -145,7 +145,7 @@ public class DeckManager : MonoBehaviour
     /// Create a new player deck
     /// 
     /// </summary>
-    public void CreatePlayerDeck(DeckData deck, string deckName)
+    public void CreatePlayerDeck(DeckData deck, string deckName, int? campaignId = null)
     {
         //Generate the ID of the deck. Takes the last deck id in the list and adds one to it
         var newId = 0;
@@ -155,12 +155,17 @@ public class DeckManager : MonoBehaviour
         }
 
         //Adds the deck to the list
-        PlayerDeckList.Add(
-            new DeckData(deck)
-            {
-                Id = newId,
-                Name = deckName,
-            });
+        var deckData = new DeckData(deck)
+        {
+            Id = newId,
+            Name = deckName,
+        };
+        PlayerDeckList.Add(deckData);
+
+        if (campaignId.HasValue)
+        {
+            deckData.CampaignTracker = new CampaignProgression(campaignId.Value);
+        }
 
         //Save decks to file
         SaveDecks();
