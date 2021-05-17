@@ -8,4 +8,5 @@ public class AdjustCostObject
     public int? MustBeGreaterThan { get; set; }
     public CardResources? TargetResource { get; set; }
     public CardTypes? TargetCardType { get; set; }
+    public bool FromPassive { get; set; }
 }

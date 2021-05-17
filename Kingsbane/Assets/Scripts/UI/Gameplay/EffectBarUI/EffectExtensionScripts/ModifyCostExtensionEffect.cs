@@ -47,7 +47,7 @@ public class ModifyCostExtensionEffect : EffectExtensionUI
 
     public void ConfirmButton()
     {
-        var adjustCostObject = new AdjustCostObject();
+        var adjustCostObject = new AdjustCostObject() { FromPassive = false };
 
         //Gets the card resource from the dropdown
         if (resourceDropdown.captionText.text == DEFAULT_RESOURCE_STRING)

@@ -404,6 +404,7 @@ public class Player
     {
         newCopy = GameManager.instance.libraryManager.CreateCard(copyCard.CardData, this);
         newCopy.CreatedByName = createdBy;
+        newCopy.CostAdjustments = new List<AdjustCostObject>(copyCard.CostAdjustments);
         if (copyCard.ResourceConvertedTo.HasValue)
             newCopy.ResourceConvert(copyCard.ResourceConvertedTo.Value);
         newCopy.CopyCardStats(copyCard);
@@ -695,7 +696,21 @@ public class Player
             if (isCopy)
                 newCard = GameManager.instance.libraryManager.CreateCard(card.CardData, this);
             AddToHand(newCard, "Recruit");
+
+            foreach (var costAdjustment in card.CostAdjustments)
+            {
+                if (!costAdjustment.FromPassive)
+                    newCard.CostAdjustments.Add(new AdjustCostObject()
+                    {
+                        Value = costAdjustment.Value,
+                        AdjustmentType = costAdjustment.AdjustmentType,
+                        MinCost = costAdjustment.MinCost,
+                        MustBeGreaterThan = costAdjustment.MustBeGreaterThan,
+                        TargetResource = CardResources.Gold,
+                    });
+            }
             newCard.ResourceConvert(CardResources.Gold);
+            newCard.RecalculateCost();
             newCard.Owner = this;
 
             if (HasSpecialPassive(SpecialPassiveEffects.ThiefsGloves, out Passive thiefsGlovesPassive))

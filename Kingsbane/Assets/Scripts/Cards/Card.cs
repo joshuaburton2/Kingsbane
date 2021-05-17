@@ -33,7 +33,7 @@ public class Card
     //The resource cost should always be set to the default cost at the start of each game.
     public List<Resource> DefaultCost { get { return CardData.GetResources; } }
     public List<Resource> ResourceCost { get; private set; }
-    public List<AdjustCostObject> CostModifications { get; set; }
+    public List<AdjustCostObject> CostAdjustments { get; set; }
     public List<CardResources> Resources { get; private set; }
     public CardResources? ResourceConvertedTo { get; set; }
 
@@ -131,6 +131,7 @@ public class Card
         NumShuffles = 0;
         SpyMasterLurenCard = null;
         ResourceInit();
+        CostAdjustments = new List<AdjustCostObject>();
 
         if (Owner != null)
         {
@@ -261,110 +262,130 @@ public class Card
 
     public bool ModifyCost(AdjustCostObject adjustCostObject)
     {
-        if (!adjustCostObject.MustBeGreaterThan.HasValue || adjustCostObject.MustBeGreaterThan.HasValue && TotalResource < -adjustCostObject.MustBeGreaterThan.Value)
+        CostAdjustments.Add(adjustCostObject);
+
+        return RecalculateCost();
+    }
+
+    public bool RecalculateCost()
+    {
+        ResourceInit();
+        
+        foreach (var adjustCostObject in CostAdjustments)
         {
-            if (adjustCostObject.TargetResource.HasValue)
+            if (!adjustCostObject.MustBeGreaterThan.HasValue || adjustCostObject.MustBeGreaterThan.HasValue && TotalResource < -adjustCostObject.MustBeGreaterThan.Value)
             {
-                if (!Resources.Contains(adjustCostObject.TargetResource.Value))
-                    return false;
-
-                var resourceCost = ResourceCost.Single(x => x.ResourceType == adjustCostObject.TargetResource);
-
-                switch (adjustCostObject.AdjustmentType)
+                if (adjustCostObject.TargetResource.HasValue)
                 {
-                    case StatModifierTypes.Modify:
-                        resourceCost.ModifyValue(-adjustCostObject.Value, true, -adjustCostObject.MinCost);
-                        break;
-                    case StatModifierTypes.Set:
-                        resourceCost.SetValue(-adjustCostObject.Value);
-                        break;
-                    default:
-                        throw new Exception("Not a valid stat mod type");
-                }
-            }
-            else
-            {
-                foreach (var resourceCost in ResourceCost)
-                {
+                    if (!Resources.Contains(adjustCostObject.TargetResource.Value))
+                        return false;
+
+                    var resourceCost = ResourceCost.Single(x => x.ResourceType == adjustCostObject.TargetResource);
+
                     switch (adjustCostObject.AdjustmentType)
                     {
                         case StatModifierTypes.Modify:
-                            resourceCost.ModifyValue(-adjustCostObject.Value, true, -adjustCostObject.MinCost);
+                            resourceCost.ModifyValue(-adjustCostObject.Value, adjustCostObject.MinCost.HasValue, -adjustCostObject.MinCost);
                             break;
                         case StatModifierTypes.Set:
-                            resourceCost.SetValue(adjustCostObject.Value);
+                            resourceCost.SetValue(-adjustCostObject.Value);
                             break;
                         default:
                             throw new Exception("Not a valid stat mod type");
                     }
                 }
+                else
+                {
+                    foreach (var resourceCost in ResourceCost)
+                    {
+                        switch (adjustCostObject.AdjustmentType)
+                        {
+                            case StatModifierTypes.Modify:
+                                resourceCost.ModifyValue(-adjustCostObject.Value, adjustCostObject.MinCost.HasValue, -adjustCostObject.MinCost);
+                                break;
+                            case StatModifierTypes.Set:
+                                resourceCost.SetValue(-adjustCostObject.Value);
+                                break;
+                            default:
+                                throw new Exception("Not a valid stat mod type");
+                        }
+                    }
 
-                //Removing the mixed modify cost as it was perhaps too complicated/confusing. May add this in later
-                //For now, modifying cost just modifies each resource in the list
+                    //Removing the mixed modify cost as it was perhaps too complicated/confusing. May add this in later
+                    //For now, modifying cost just modifies each resource in the list
+                    #region Mixed Modify Cost
+                    //if (Resources.Count == 1)
+                    //{
+                    //    var resourceCost = ResourceCost.FirstOrDefault();
 
-                //if (Resources.Count == 1)
-                //{
-                //    var resourceCost = ResourceCost.FirstOrDefault();
+                    //    switch (statModType)
+                    //    {
+                    //        case StatModifierTypes.Modify:
+                    //            resourceCost.ModifyValue(-value, true);
+                    //            break;
+                    //        case StatModifierTypes.Set:
+                    //            resourceCost.SetValue(value);
+                    //            break;
+                    //        default:
+                    //            throw new Exception("Not a valid stat mod type");
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    bool isOdd = false;
+                    //    if (statModType == StatModifierTypes.Modify)
+                    //    {
+                    //        if (value % 2 == 1)
+                    //        {
+                    //            value -= 1;
+                    //            isOdd = true;
+                    //        }
+                    //        else if (value % 2 == -1)
+                    //        {
+                    //            value += 1;
+                    //            isOdd = true;
+                    //        }
+                    //        value /= Resources.Count;
+                    //    }
 
-                //    switch (statModType)
-                //    {
-                //        case StatModifierTypes.Modify:
-                //            resourceCost.ModifyValue(-value, true);
-                //            break;
-                //        case StatModifierTypes.Set:
-                //            resourceCost.SetValue(value);
-                //            break;
-                //        default:
-                //            throw new Exception("Not a valid stat mod type");
-                //    }
-                //}
-                //else
-                //{
-                //    bool isOdd = false;
-                //    if (statModType == StatModifierTypes.Modify)
-                //    {
-                //        if (value % 2 == 1)
-                //        {
-                //            value -= 1;
-                //            isOdd = true;
-                //        }
-                //        else if (value % 2 == -1)
-                //        {
-                //            value += 1;
-                //            isOdd = true;
-                //        }
-                //        value /= Resources.Count;
-                //    }
-
-                //    switch (statModType)
-                //    {
-                //        case StatModifierTypes.Modify:
-                //            ResourceCost.ForEach(x => x.ModifyValue(-value, true));
-                //            break;
-                //        case StatModifierTypes.Set:
-                //            ResourceCost.ForEach(x => x.SetValue(value));
-                //            break;
-                //        default:
-                //            throw new Exception("Not a valid stat mod type");
-                //    }
+                    //    switch (statModType)
+                    //    {
+                    //        case StatModifierTypes.Modify:
+                    //            ResourceCost.ForEach(x => x.ModifyValue(-value, true));
+                    //            break;
+                    //        case StatModifierTypes.Set:
+                    //            ResourceCost.ForEach(x => x.SetValue(value));
+                    //            break;
+                    //        default:
+                    //            throw new Exception("Not a valid stat mod type");
+                    //    }
 
 
-                //    if (isOdd)
-                //    {
-                //        var highestResources = ResourceCost.Where(x => x.Value == ResourceCost.Min(y => y.Value)).ToList();
-                //        var valueModifier = value > 0 ? -1 : 1;
-                //        if (highestResources.Count() == 1)
-                //        {
-                //            highestResources.FirstOrDefault().ModifyValue(valueModifier, true);
-                //        }
-                //        else
-                //        {
-                //            var randomResource = UnityEngine.Random.Range(0, highestResources.Count());
-                //            highestResources[randomResource].ModifyValue(valueModifier, true);
-                //        }
-                //    }
-                //}
+                    //    if (isOdd)
+                    //    {
+                    //        var highestResources = ResourceCost.Where(x => x.Value == ResourceCost.Min(y => y.Value)).ToList();
+                    //        var valueModifier = value > 0 ? -1 : 1;
+                    //        if (highestResources.Count() == 1)
+                    //        {
+                    //            highestResources.FirstOrDefault().ModifyValue(valueModifier, true);
+                    //        }
+                    //        else
+                    //        {
+                    //            var randomResource = UnityEngine.Random.Range(0, highestResources.Count());
+                    //            highestResources[randomResource].ModifyValue(valueModifier, true);
+                    //        }
+                    //    }
+                    //}
+                    #endregion
+                }
             }
+        }
+
+        //Loops through each resource to clamp the values of each resource
+        foreach (var resourceCost in ResourceCost)
+        {
+            //Modifies the cost by 0 to clamp the resource value
+            resourceCost.ModifyValue(0, true);
         }
 
         return true;
