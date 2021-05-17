@@ -12988,9 +12988,9 @@ Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activate
             Name = "Hunter's Mark",
             ImageTag = CardImageTags.Hunters_Mark,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
-            Text = @"Give an enemy unit, ""This unit takes double damage from attacks from your hero or units with <b>Conduit</b>""",
+            Text = @"Give an enemy unit, ""This unit takes double damage from attacks from your hero or units with <b>Conduit</b>"" until the end of your turn",
             LoreText = @"",
             Notes = @"",
 
