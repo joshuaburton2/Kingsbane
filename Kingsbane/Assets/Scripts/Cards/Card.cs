@@ -33,6 +33,7 @@ public class Card
     //The resource cost should always be set to the default cost at the start of each game.
     public List<Resource> DefaultCost { get { return CardData.GetResources; } }
     public List<Resource> ResourceCost { get; private set; }
+    public List<AdjustCostObject> CostModifications { get; set; }
     public List<CardResources> Resources { get; private set; }
     public CardResources? ResourceConvertedTo { get; set; }
 
