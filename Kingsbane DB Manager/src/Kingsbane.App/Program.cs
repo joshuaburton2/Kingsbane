@@ -65,6 +65,8 @@ namespace Kingsbane.App
             services.AddTransient<formMapList>();
             services.AddTransient<formMapEdit>();
             services.AddTransient<formEditObjective>();
+            services.AddTransient<formCampaignList>();
+            services.AddTransient<formCampaignEdit>();
         }
     }
 }

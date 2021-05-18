@@ -728,5 +728,12 @@ namespace Kingsbane.App
             Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
         }
+
+        private void btnCampaigns_Click(object sender, EventArgs e)
+        {
+            var formCampaigns = _serviceProvider.GetRequiredService<formCampaignList>();
+            formCampaigns.Show();
+            this.Hide();
+        }
     }
 }
