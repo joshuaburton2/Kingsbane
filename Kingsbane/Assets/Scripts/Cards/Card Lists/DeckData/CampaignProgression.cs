@@ -3,7 +3,8 @@
 [Serializable]
 public class CampaignProgression
 {
-    private readonly int[] honourTracker = new int[] { 0, 2, 2, 2, 2, 3, 3, 3, 4, 4 };
+    private readonly int[] HONOUR_TRACKER = new int[] { 0, 2, 2, 2, 2, 3, 3, 3, 4, 4 };
+    private readonly int MAX_CAMPAIGN_LENGTH = 10;
 
     public int CampaignId { get; set; }
     public int CampaignLength { get; set; }
@@ -15,6 +16,8 @@ public class CampaignProgression
     {
         CampaignId = campaignId;
         CampaignLength = GameManager.instance.scenarioManager.GetCampaign(CampaignId).Scenarios.Count;
+        if (CampaignLength > MAX_CAMPAIGN_LENGTH)
+            throw new Exception($"Cannot have a campaign of length greater than {MAX_CAMPAIGN_LENGTH}, currently {CampaignLength}");
         CompletedScenarios = 0;
         HonourPoints = 0;
     }
@@ -28,7 +31,7 @@ public class CampaignProgression
         }
         else
         {
-            HonourPoints += honourTracker[CompletedScenarios];
+            HonourPoints += HONOUR_TRACKER[CompletedScenarios];
         }
     }
 

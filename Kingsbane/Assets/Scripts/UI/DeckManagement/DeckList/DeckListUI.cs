@@ -86,7 +86,7 @@ public class DeckListUI : MonoBehaviour
         //i.e. In start on this script. This is because the filter object in the library UI doesn't exist yet as it is also created in start.
         if (resourceFilter)
         {
-            libraryUI.ApplyClassPlayableFilter(Classes.ClassList.Default);
+            libraryUI.ApplyClassPlayableFilter();
         }
 
         //Clears the deck list of objects
@@ -94,7 +94,7 @@ public class DeckListUI : MonoBehaviour
         deckListObjects.Clear();
 
         //Initialise and create the objects in the deck list
-        var deckList = GameManager.instance.deckManager.PlayerDeckList;
+        var deckList = GameManager.instance.deckManager.GetPlayerDecks();
         foreach (var deck in deckList)
         {
             var deckListObject = Instantiate(deckListObjectPrefab, deckListParent.transform);

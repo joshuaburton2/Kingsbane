@@ -62,7 +62,7 @@ public class LobbyDeckListUI : MonoBehaviour
         }
         else
         {
-            deckList = GameManager.instance.deckManager.PlayerDeckList;
+            deckList = GameManager.instance.deckManager.GetPlayerDecks();
         }
 
         //Clears the deck list of objects
