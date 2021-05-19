@@ -138,6 +138,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Refreshes the UI based on the scene currently in
+    /// 
+    /// </summary>
+    public void SetSelectedCommandUnit(Unit selectedUnit = null)
+    {
+        switch (GameManager.instance.sceneManager.ActiveScene)
+        {
+            case SceneList.GameplayScene:
+                gameplayUI.SetSelectedCommandUnit(selectedUnit);
+                break;
+            default:
+                throw new Exception("Not a valid scene to refresh");
+        }
+    }
+
     public void RefreshHeroStats(int playerId, Unit overrideUnit = null)
     {
         switch (GameManager.instance.sceneManager.ActiveScene)
