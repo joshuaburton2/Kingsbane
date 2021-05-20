@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Main Menu Pages")]
     [SerializeField]
+    CampaignUI campaignPage;
+    [SerializeField]
     LobbyUI lobbyPage;
     [SerializeField]
     CardLibraryParent cardLibrary;
@@ -65,11 +67,14 @@ public class UIManager : MonoBehaviour
 
         cardDetailDisplay = mainMenuUIReferences.cardDetailDisplay.GetComponent<CardDetailUI>();
         upgradeDetailDisplay = mainMenuUIReferences.upgradeDetailDisplay.GetComponent<UpgradeDetailUI>();
+        campaignPage = mainMenuUIReferences.campaignUI.GetComponent<CampaignUI>();
         lobbyPage = mainMenuUIReferences.lobbyUI.GetComponent<LobbyUI>();
         cardLibrary = mainMenuUIReferences.libraryUI.GetComponent<CardLibraryParent>();
 
         cardDetailDisplay.gameObject.SetActive(false);
         upgradeDetailDisplay.gameObject.SetActive(false);
+        
+        campaignPage.gameObject.SetActive(false);
         lobbyPage.gameObject.SetActive(false);
         cardLibrary.gameObject.SetActive(false);
     }

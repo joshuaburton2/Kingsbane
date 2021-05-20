@@ -15,6 +15,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     private int deckId;
     private DeckListUI deckListUI;
     private LobbyDeckListUI lobbyDeckListUI;
+    private CampaignDeckListUI campaignDeckListUI;
 
     public DeckData deckData;
 
@@ -46,11 +47,12 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the deck object. Updates the text properties of the object
     /// 
     /// </summary>
-    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI = null, LobbyDeckListUI _lobbyDeckListUI = null)
+    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI = null, LobbyDeckListUI _lobbyDeckListUI = null, CampaignDeckListUI _campaignDeckListUI = null)
     {
         //Need to pass in the deck list UI to handle certain click interactions on this object
         deckListUI = _deckListUI;
         lobbyDeckListUI = _lobbyDeckListUI;
+        campaignDeckListUI = _campaignDeckListUI;
         deckData = _deckData;
 
         deckId = deckData.Id.Value;
@@ -79,6 +81,11 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         if (_lobbyDeckListUI != null)
         {
             deleteButton.SetActive(false);
+        }
+
+        if (_campaignDeckListUI != null)
+        {
+            deleteButton.SetActive(true);
         }
     }
 
@@ -136,6 +143,10 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
                         deckDetailsArea.gameObject.SetActive(true);
                     }
                 }
+            }
+            else if (campaignDeckListUI != null)
+            {
+
             }
             else
             {
