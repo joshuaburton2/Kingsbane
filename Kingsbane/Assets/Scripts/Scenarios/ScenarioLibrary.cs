@@ -258,10 +258,29 @@ namespace Assets.Scripts.Scenarios
             };
             ScenarioList.Add(scenario9);
 
+            var campaign0 = new Campaign()
+            {
+                Id = 0,
+                Name = "Test 1",
+                Description = "Testing",
+            };
+            CampaignList.Add(campaign0);
+
+            var campaign1 = new Campaign()
+            {
+                Id = 1,
+                Name = "Test 2",
+                Description = "Testing",
+            };
+            CampaignList.Add(campaign1);
+
             map5.Scenarios = new List<Scenario> { scenario6 };
             map6.Scenarios = new List<Scenario> { scenario7 };
             map7.Scenarios = new List<Scenario> { scenario8 };
             map8.Scenarios = new List<Scenario> { scenario9 };
+
+            campaign0.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8 };
+            campaign1.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8 };
 
         }
     }

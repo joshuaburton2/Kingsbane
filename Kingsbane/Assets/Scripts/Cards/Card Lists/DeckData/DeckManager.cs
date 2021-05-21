@@ -31,16 +31,6 @@ public class DeckManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Gets a list of player decks based on whether it is for a campaign or not
-    /// 
-    /// </summary>
-    public List<DeckData> GetPlayerDecks(bool isCampaign = false)
-    {
-        return PlayerDeckList.Where(x => x.IsCampaign == isCampaign).ToList();
-    }
-
-    /// <summary>
-    /// 
     /// Gets a list of player deck templates for a particular class
     /// 
     /// </summary>
@@ -66,31 +56,32 @@ public class DeckManager : MonoBehaviour
     /// </summary>
     public void LoadDecks()
     {
-        try
+        //If there is an exception to loading the save file, creates a new version, then loads them again
+        if (File.Exists(Application.persistentDataPath + deckFileName))
         {
-            //If there is an exception to loading the save file, creates a new version, then loads them again
-            if (File.Exists(Application.persistentDataPath + deckFileName))
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
+            try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
                 var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
-
                 PlayerDeckList = ConvertDeckSave(saveDeckList, false);
 
                 file.Close();
             }
-            else
+            catch
             {
-                PlayerDeckList = new List<DeckData>();
+                file.Close();
+                ResetDecks();
+                LoadDecks();
             }
-
-            LoadNPCDecks();
         }
-        catch
+        else
         {
-            ResetDecks();
-            LoadDecks();
+            PlayerDeckList = new List<DeckData>();
         }
+
+        LoadNPCDecks();
+
     }
 
     /// <summary>
@@ -144,7 +135,7 @@ public class DeckManager : MonoBehaviour
     /// Create a new player deck
     /// 
     /// </summary>
-    public void CreatePlayerDeck(DeckData deck, string deckName, int? campaignId = null)
+    public DeckData CreatePlayerDeck(DeckData deckTemplate, string deckName, int? campaignId = null)
     {
         //Generate the ID of the deck. Takes the last deck id in the list and adds one to it
         var newId = 0;
@@ -154,20 +145,22 @@ public class DeckManager : MonoBehaviour
         }
 
         //Adds the deck to the list
-        var deckData = new DeckData(deck)
+        var newDeck = new DeckData(deckTemplate)
         {
             Id = newId,
             Name = deckName,
         };
-        PlayerDeckList.Add(deckData);
+        PlayerDeckList.Add(newDeck);
 
         if (campaignId.HasValue)
         {
-            deckData.CampaignTracker = new CampaignProgression(campaignId.Value);
+            newDeck.CampaignTracker = new CampaignProgression(campaignId.Value);
         }
 
         //Save decks to file
         SaveDecks();
+
+        return newDeck;
     }
 
     /// <summary>
@@ -195,6 +188,18 @@ public class DeckManager : MonoBehaviour
     {
         return PlayerDeckList.FirstOrDefault(x => x.Id == id);
     }
+
+    /// <summary>
+    /// 
+    /// Gets a list of player decks based on whether it is for a campaign or not
+    /// 
+    /// </summary>
+    public List<DeckData> GetPlayerDecks(bool isCampaign = false)
+    {
+        //Note that if is campaign 
+        return PlayerDeckList.Where(x => x.IsCampaign == isCampaign && (!isCampaign || isCampaign && !x.CampaignTracker.CompletedCampaign)).ToList();
+    }
+
 
     /// <summary>
     /// 

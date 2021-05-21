@@ -30,6 +30,8 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     GameObject deckDetailsArea;
     [SerializeField]
     GameObject deleteButton;
+    [SerializeField]
+    public GameObject selectionIcon;
 
     [Header("Card List Properties")]
     [SerializeField]
@@ -58,7 +60,9 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         deckId = deckData.Id.Value;
         nameText.text = deckData.Name;
         classBorder.color = GameManager.instance.colourManager.GetClassColour(deckData.DeckClass);
-        classText.text = deckData.DeckClass.ToString();
+        var campaignText = deckData.IsCampaign ? $" - {deckData.CampaignTracker.GetCampaign().Name}" : "";
+        classText.text = $"{deckData.DeckClass}{campaignText}";
+        selectionIcon.SetActive(false);
 
         deckCardList.RefreshCardList(deckData, deckListUI);
 
@@ -138,15 +142,16 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
                 //If not, sets the lobby deck list UI into selected mode and opens the card list panel on this object
                 else
                 {
-                    if (lobbyDeckListUI.SelectDeck(deckId, deckData))
+                    if (lobbyDeckListUI.SelectDeck(deckData))
                     {
                         deckDetailsArea.gameObject.SetActive(true);
                     }
                 }
             }
+            //For the deck list if its in the campaign lobby and cannot be edited
             else if (campaignDeckListUI != null)
             {
-
+                campaignDeckListUI.SelectDeck(deckData);
             }
             else
             {
@@ -164,6 +169,17 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     public void DeleteDeck()
     {
         GameManager.instance.deckManager.DeletePlayerDeck(deckData);
-        deckListUI.RefreshDeckList();
+        if (deckListUI != null)
+        {
+            deckListUI.RefreshDeckList();
+        }
+        else if(campaignDeckListUI != null)
+        {
+            campaignDeckListUI.RefreshDeckList();
+        }
+        else
+        {
+            throw new Exception("Deck list object not initialised properly. Requires an appropriate parent list.");
+        }
     }
 }

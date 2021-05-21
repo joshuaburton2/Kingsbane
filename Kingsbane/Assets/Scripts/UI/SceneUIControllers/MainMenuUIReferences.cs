@@ -9,6 +9,7 @@ public class MainMenuUIReferences : MonoBehaviour
     public GameObject lobbyUI;
     public GameObject libraryUI;
     public GameObject campaignUI;
+    public GameObject newDeckUI;
 
     /// <summary>
     /// 

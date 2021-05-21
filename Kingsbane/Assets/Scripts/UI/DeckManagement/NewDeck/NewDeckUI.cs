@@ -63,6 +63,10 @@ public class NewDeckUI : MonoBehaviour
     [Header("Other Objects")]
     [SerializeField]
     DeckListUI deckList;
+    [SerializeField]
+    LoadCampaignUI loadCampaignUI;
+
+    private int? campaignId;
 
     private void Start()
     {
@@ -93,7 +97,7 @@ public class NewDeckUI : MonoBehaviour
     /// Initialise the deck page on opening
     /// 
     /// </summary>
-    public void InitNewDeckPage()
+    public void InitNewDeckPage(int? _campaignId = null)
     {
         heroTierDropdown.value = 0;
         abilityTierDropdown.value = 0;
@@ -105,6 +109,8 @@ public class NewDeckUI : MonoBehaviour
         {
             resourceList.InitResourceList();
         }
+
+        campaignId = _campaignId;
 
         SelectClassData(Classes.ClassList.Default);
     }
@@ -313,8 +319,18 @@ public class NewDeckUI : MonoBehaviour
     /// </summary>
     public void CreateNewDeck()
     {
-        GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
-        deckList.RefreshDeckList();
+        if (campaignId.HasValue)
+        {
+            var newDeck = GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text, campaignId);
+            loadCampaignUI.LoadCampaignDeck(newDeck);
+            campaignId = null;
+        }
+        else
+        {
+            GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
+            deckList.RefreshDeckList();
+        }
+
         GameManager.instance.uiManager.ClosePanel(gameObject);
     }
 }

@@ -39,6 +39,8 @@ public class UIManager : MonoBehaviour
     LobbyUI lobbyPage;
     [SerializeField]
     CardLibraryParent cardLibrary;
+    [SerializeField]
+    NewDeckUI newDeckUI;
 
     [Header("Gameplay Pages")]
     [SerializeField]
@@ -70,6 +72,7 @@ public class UIManager : MonoBehaviour
         campaignPage = mainMenuUIReferences.campaignUI.GetComponent<CampaignUI>();
         lobbyPage = mainMenuUIReferences.lobbyUI.GetComponent<LobbyUI>();
         cardLibrary = mainMenuUIReferences.libraryUI.GetComponent<CardLibraryParent>();
+        newDeckUI = mainMenuUIReferences.newDeckUI.GetComponent<NewDeckUI>();
 
         cardDetailDisplay.gameObject.SetActive(false);
         upgradeDetailDisplay.gameObject.SetActive(false);
@@ -77,6 +80,7 @@ public class UIManager : MonoBehaviour
         campaignPage.gameObject.SetActive(false);
         lobbyPage.gameObject.SetActive(false);
         cardLibrary.gameObject.SetActive(false);
+        newDeckUI.gameObject.SetActive(false);
     }
 
     /// <summary>

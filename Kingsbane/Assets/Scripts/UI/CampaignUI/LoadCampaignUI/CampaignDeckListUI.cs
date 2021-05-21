@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CampaignDeckListUI : MonoBehaviour
 {
     [SerializeField]
-    private CampaignUI campaignUI;
+    private LoadCampaignUI loadCampaignUI;
     [SerializeField]
     private GameObject deckListParent;
     [SerializeField]
@@ -27,7 +27,7 @@ public class CampaignDeckListUI : MonoBehaviour
         //Unlocks the deck scrolling
         listScrollArea.vertical = true;
 
-        var deckList = GameManager.instance.deckManager.GetPlayerDecks(false);
+        var deckList = GameManager.instance.deckManager.GetPlayerDecks(true);
 
         //Clears the deck list of objects
         GameManager.DestroyAllChildren(deckListParent);
@@ -42,8 +42,7 @@ public class CampaignDeckListUI : MonoBehaviour
             deckListObjects.Add(deckListObject);
         }
 
-        //Removes the deck selected
-        campaignUI.SelectDeck();
+        SelectDeck();
     }
 
     /// <summary>
@@ -51,8 +50,28 @@ public class CampaignDeckListUI : MonoBehaviour
     /// Function call for selecing a deck for the player to play
     /// 
     /// </summary>
-    public bool SelectDeck(int deckId, DeckData deckData)
+    public void SelectDeck(DeckData deckData = null)
     {
-        return true;
+        loadCampaignUI.SelectDeck(deckData);
+
+        foreach (var deckObject in deckListObjects)
+        {
+            var deckObjectScript = deckObject.GetComponent<DeckListObject>();
+            if (deckData != null)
+            {
+                if (deckObjectScript.deckData.Id == deckData.Id)
+                {
+                    deckObjectScript.selectionIcon.SetActive(true);
+                }
+                else
+                {
+                    deckObjectScript.selectionIcon.SetActive(false);
+                }
+            }
+            else
+            {
+                deckObjectScript.selectionIcon.SetActive(false);
+            }
+        }
     }
 }

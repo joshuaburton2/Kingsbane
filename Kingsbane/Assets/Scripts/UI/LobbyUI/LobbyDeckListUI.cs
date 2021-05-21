@@ -78,7 +78,7 @@ public class LobbyDeckListUI : MonoBehaviour
             deckListObjects.Add(deckListObject);
         }
 
-        //Removes the deck selected
+        //Removes the deck selected if the UI is loaded into again
         lobbyUI.SelectDeck(playerId, null);
     }
 
@@ -87,13 +87,13 @@ public class LobbyDeckListUI : MonoBehaviour
     /// Function call for selecing a deck for the player to play
     /// 
     /// </summary>
-    public bool SelectDeck(int deckId, DeckData deckData)
+    public bool SelectDeck(DeckData deckData)
     {
         //Return the selected deck to the lobby UI
         if (lobbyUI.SelectDeck(playerId, deckData))
         {
             //Sets the properties of the deck currently being edited
-            SelectedDeckId = deckId;
+            SelectedDeckId = deckData.Id;
 
             //Locks the deck scrolling
             listScrollArea.vertical = false;
@@ -101,7 +101,7 @@ public class LobbyDeckListUI : MonoBehaviour
             //Hides all deck objects in the deck list except the one being edited
             for (int deckIndex = 0; deckIndex < deckListObjects.Count; deckIndex++)
             {
-                if (deckListObjects[deckIndex].GetComponent<DeckListObject>().deckData.Id != deckId)
+                if (deckListObjects[deckIndex].GetComponent<DeckListObject>().deckData.Id != SelectedDeckId)
                 {
                     deckListObjects[deckIndex].SetActive(false);
                 }
