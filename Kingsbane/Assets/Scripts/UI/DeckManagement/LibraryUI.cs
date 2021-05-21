@@ -440,15 +440,12 @@ public class LibraryUI : MonoBehaviour
     {
         //Checks if the filter already is already allowing uncollectable cards
         var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
-        //Stores the current class playable filter
-        var resourceFilter = activeFilter.ClassPlayableFilter;
 
         //Creates a new filter object
         activeFilter = new CardFilter();
 
         //Updates the new filters with the carry over properties of the old filter
         UpdateUncollectableStatus(includeUncollectables);
-        activeFilter.ClassPlayableFilter = resourceFilter;
 
         //Sets the uncollectable button to be turned on by default
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
