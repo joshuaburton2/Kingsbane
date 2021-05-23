@@ -20,6 +20,7 @@ namespace Kingsbane.App
         Keywords,
         Deck,
         ScenarioRules,
+        Scenarios,
     }
 
     public partial class formSelectionList : Form
@@ -52,6 +53,7 @@ namespace Kingsbane.App
                 case SelectionType.Keywords:
                 case SelectionType.Deck:
                 case SelectionType.ScenarioRules:
+                case SelectionType.Scenarios:
                     btnAdd.Enabled = false;
                     txtAdd.Enabled = false;
                     break;
@@ -101,6 +103,10 @@ namespace Kingsbane.App
                     break;
                 case SelectionType.ScenarioRules:
                     newQuery = _context.ScenarioRules.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.Description });
+                    break;
+                case SelectionType.Scenarios:
+                    //newQuery = _context.Scenarios.Where(x => !x.IsDefault && x.EnemyDeckId != null).Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CampaignId.HasValue ? x.Campaign.Name : "None" });
+                    newQuery = _context.Scenarios.Select(x => new SelectionItem { Id = x.Id, Name = x.Name, Identifier = x.CampaignId.HasValue ? x.Campaign.Name : "None" });
                     break;
                 case SelectionType.Cards:
                 default:

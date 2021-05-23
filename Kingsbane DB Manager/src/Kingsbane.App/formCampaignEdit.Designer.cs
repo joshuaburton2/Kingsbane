@@ -35,8 +35,8 @@ namespace Kingsbane.App
             this.lblDescription = new System.Windows.Forms.Label();
             this.lstScenarios = new System.Windows.Forms.ListView();
             this.colId = new System.Windows.Forms.ColumnHeader();
-            this.colName = new System.Windows.Forms.ColumnHeader();
             this.colIndex = new System.Windows.Forms.ColumnHeader();
+            this.colName = new System.Windows.Forms.ColumnHeader();
             this.lblScenarioList = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -96,26 +96,29 @@ namespace Kingsbane.App
             this.lstScenarios.HideSelection = false;
             this.lstScenarios.Location = new System.Drawing.Point(12, 262);
             this.lstScenarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstScenarios.MultiSelect = false;
             this.lstScenarios.Name = "lstScenarios";
             this.lstScenarios.Size = new System.Drawing.Size(431, 218);
             this.lstScenarios.TabIndex = 6;
             this.lstScenarios.UseCompatibleStateImageBehavior = false;
             this.lstScenarios.View = System.Windows.Forms.View.Details;
+            this.lstScenarios.SelectedIndexChanged += new System.EventHandler(this.lstScenarios_SelectedIndexChanged);
+            this.lstScenarios.DoubleClick += new System.EventHandler(this.lstScenarios_DoubleClick);
             // 
             // colId
             // 
             this.colId.Name = "colId";
             this.colId.Text = "Id";
             // 
+            // colIndex
+            // 
+            this.colIndex.Text = "Index";
+            // 
             // colName
             // 
             this.colName.Name = "colName";
             this.colName.Text = "Name";
             this.colName.Width = 300;
-            // 
-            // colIndex
-            // 
-            this.colIndex.Text = "Index";
             // 
             // lblScenarioList
             // 
@@ -135,6 +138,7 @@ namespace Kingsbane.App
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnCancel
             // 
@@ -145,6 +149,7 @@ namespace Kingsbane.App
             this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -155,6 +160,7 @@ namespace Kingsbane.App
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAddScenario
             // 
@@ -164,6 +170,7 @@ namespace Kingsbane.App
             this.btnAddScenario.TabIndex = 11;
             this.btnAddScenario.Text = "Add";
             this.btnAddScenario.UseVisualStyleBackColor = true;
+            this.btnAddScenario.Click += new System.EventHandler(this.btnAddScenario_Click);
             // 
             // btnIndexUp
             // 
@@ -173,6 +180,7 @@ namespace Kingsbane.App
             this.btnIndexUp.TabIndex = 12;
             this.btnIndexUp.Text = "+";
             this.btnIndexUp.UseVisualStyleBackColor = true;
+            this.btnIndexUp.Click += new System.EventHandler(this.btnIndexUp_Click);
             // 
             // btnIndexDown
             // 
@@ -182,6 +190,7 @@ namespace Kingsbane.App
             this.btnIndexDown.TabIndex = 13;
             this.btnIndexDown.Text = "-";
             this.btnIndexDown.UseVisualStyleBackColor = true;
+            this.btnIndexDown.Click += new System.EventHandler(this.btnIndexDown_Click);
             // 
             // lblIndexChange
             // 

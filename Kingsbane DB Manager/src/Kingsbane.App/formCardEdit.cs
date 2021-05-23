@@ -504,7 +504,6 @@ namespace Kingsbane.App
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-
         }
 
         private void btnAddRelatedCard_Click(object sender, EventArgs e)
@@ -579,19 +578,16 @@ namespace Kingsbane.App
         private void ClickListRecord(object sender, EventArgs e)
         {
             var listBox = (ListBox)sender;
-            var selectedRecord = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
-
-            var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
-
-            if (result == DialogResult.Yes)
+            if (listBox.SelectedItems.Count == 1)
             {
-                if(sender == lstAbilities)
-                {
-                    _context.Abilities.Remove(_context.Abilities.FirstOrDefault(x => x.Id == selectedRecord.Id));
-                    _context.SaveChanges();
-                }
+                var selectedRecord = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
 
-                listBox.Items.Remove(listBox.SelectedItems[0]);
+                var result = MessageBox.Show("Are you sure you want to remove " + selectedRecord.Name + " from the list?", "Remove record", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    listBox.Items.Remove(listBox.SelectedItems[0]);
+                }
             }
         }
 
@@ -608,8 +604,11 @@ namespace Kingsbane.App
         private void lstAbilities_DoubleClick(object sender, EventArgs e)
         {
             var listBox = (ListBox)sender;
-            var selectedAbility = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
-            EditAbility(selectedAbility.Id);
+            if (listBox.SelectedItems.Count == 1)
+            {
+                var selectedAbility = listBox.SelectedItems.Cast<SelectListItem>().ToList()[0];
+                EditAbility(selectedAbility.Id);
+            }
         }
 
         private void EditAbility(int? id)

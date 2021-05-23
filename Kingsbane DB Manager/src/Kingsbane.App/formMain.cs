@@ -603,6 +603,7 @@ namespace Kingsbane.App
                 sb.AppendLine(@$"                }},");
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine(@$"            MapList.Add(map{map.Id});");
+                sb.AppendLine("");
             }
 
             var scenarioQuery = _context.Scenarios
@@ -671,6 +672,7 @@ namespace Kingsbane.App
 
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine($@"            ScenarioList.Add(scenario{scenario.Id});");
+                sb.AppendLine("");
             }
 
             var campaignQuery = _context.Campaigns;
@@ -679,14 +681,14 @@ namespace Kingsbane.App
             {
                 sb.AppendLine(@$"            var campaign{campaign.Id} = new Campaign()");
                 sb.AppendLine(@$"            {{");
-                sb.AppendLine(@$"               Id = {campaign.Id}");
-                sb.AppendLine(@$"               Name = ""{campaign.Name.FixQuotes()}""");
-                sb.AppendLine(@$"               Description = ""{campaign.Description.FixQuotes()}""");
+                sb.AppendLine(@$"               Id = {campaign.Id},");
+                sb.AppendLine(@$"               Name = ""{campaign.Name.FixQuotes()}"",");
+                sb.AppendLine(@$"               Description = ""{campaign.Description.FixQuotes()}"",");
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine($@"            CampaignList.Add(campaign{campaign.Id});");
+                sb.AppendLine("");
             }
 
-            sb.AppendLine("");
             foreach (var map in mapQuery)
             {
                 var scenarioList = string.Join(",", map.Scenarios.Select(x => $"scenario{x.Id}"));

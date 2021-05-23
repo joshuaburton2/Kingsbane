@@ -36,7 +36,7 @@ namespace Kingsbane.Database.Models
         public int MapId { get; set; }
         public virtual Map Map { get; set; }
 
-        public int CampaignId { get; set; }
+        public int? CampaignId { get; set; }
         public virtual Campaign Campaign { get; set; }
 
         public virtual ICollection<ScenarioRuleSet> ScenarioRuleSet { get; set; }

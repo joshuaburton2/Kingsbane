@@ -36,6 +36,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map5);
+
             var map6 = new Map()
             {
                 Id = 6,
@@ -57,6 +58,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map6);
+
             var map7 = new Map()
             {
                 Id = 7,
@@ -78,6 +80,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map7);
+
             var map8 = new Map()
             {
                 Id = 8,
@@ -99,6 +102,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             MapList.Add(map8);
+
             var scenario6 = new Scenario()
             {
                 Id = 6,
@@ -138,6 +142,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             ScenarioList.Add(scenario6);
+
             var scenario7 = new Scenario()
             {
                 Id = 7,
@@ -177,6 +182,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             ScenarioList.Add(scenario7);
+
             var scenario8 = new Scenario()
             {
                 Id = 8,
@@ -218,6 +224,7 @@ namespace Assets.Scripts.Scenarios
                 },
             };
             ScenarioList.Add(scenario8);
+
             var scenario9 = new Scenario()
             {
                 Id = 9,
@@ -258,19 +265,11 @@ namespace Assets.Scripts.Scenarios
             };
             ScenarioList.Add(scenario9);
 
-            var campaign0 = new Campaign()
-            {
-                Id = 0,
-                Name = "Test 1",
-                Description = "Testing",
-            };
-            CampaignList.Add(campaign0);
-
             var campaign1 = new Campaign()
             {
                 Id = 1,
-                Name = "Test 2",
-                Description = "Testing",
+                Name = "Test",
+                Description = "Test",
             };
             CampaignList.Add(campaign1);
 
@@ -279,9 +278,7 @@ namespace Assets.Scripts.Scenarios
             map7.Scenarios = new List<Scenario> { scenario8 };
             map8.Scenarios = new List<Scenario> { scenario9 };
 
-            campaign0.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8 };
-            campaign1.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8 };
-
+            campaign1.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8, scenario9 };
         }
     }
 }
