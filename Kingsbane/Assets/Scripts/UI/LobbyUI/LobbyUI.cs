@@ -42,13 +42,9 @@ public class LobbyUI : MonoBehaviour
     [SerializeField]
     private TMP_Dropdown scenarioDropdown;
     [SerializeField]
-    private GameObject keyParent;
-    [SerializeField]
     private TextMeshProUGUI mapDescription;
     [SerializeField]
     private TextMeshProUGUI scenarioDescription;
-    [SerializeField]
-    private GameObject rulesParent;
     [SerializeField]
     private MapKeyUI mapKey;
 
@@ -148,7 +144,7 @@ public class LobbyUI : MonoBehaviour
         scenarioDescription.text = selectedScenario.Description;
 
         //Creates the list of rules for the scenario
-        GameManager.DestroyAllChildren(rulesParent);
+        GameManager.DestroyAllChildren(ruleListParent);
         ruleObjectList = new List<GameObject>();
         foreach (var rule in selectedScenario.Rules)
         {
@@ -158,7 +154,10 @@ public class LobbyUI : MonoBehaviour
         }
 
         if (isLoaded)
+        {
+            GameManager.instance.mapGrid.RefreshGrid(selectedMap, selectedScenarioId);
             mapKey.ChangeMapFilter();
+        }
     }
 
     /// <summary>

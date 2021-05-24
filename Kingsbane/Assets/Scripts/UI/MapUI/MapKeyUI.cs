@@ -27,6 +27,8 @@ public class MapKeyUI : MonoBehaviour
     private GameObject noKeyText;
     [SerializeField]
     private LobbyUI lobbyUI;
+    [SerializeField]
+    private CampaignManagerUI campaignManagerUI;
 
     public MapGrid.MapFilters CurrentFilter { get; set; }
 
@@ -118,6 +120,8 @@ public class MapKeyUI : MonoBehaviour
             objectiveList = GameManager.instance.LoadedScenario.Objectives;
         else if (lobbyUI != null)
             objectiveList = lobbyUI.selectedMap.Scenarios.FirstOrDefault(x => x.Id == lobbyUI.selectedScenarioId).Objectives;
+        else if (campaignManagerUI != null)
+            objectiveList = campaignManagerUI.selectedScenario.Objectives;
         RefreshKey(mapFilter, objectiveList);
     }
 }

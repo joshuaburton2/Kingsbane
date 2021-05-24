@@ -145,6 +145,7 @@ public class LoadCampaignUI : MonoBehaviour
         if (deck.IsCampaign)
         {
             campaignUI.SelectDeck(deck);
+            InitialiseLoadCampaignUI();
         }
         else
         {

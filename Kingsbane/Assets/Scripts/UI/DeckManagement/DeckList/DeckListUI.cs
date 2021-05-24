@@ -141,7 +141,7 @@ public class DeckListUI : MonoBehaviour
     /// </summary>
     public void RefreshActiveDeckDetails(DeckData deckData = null)
     {
-        activeDeckObject.RefreshDeckDetails(deckData, this);
+        activeDeckObject.RefreshDeckDetails(deckData);
     }
 
     /// <summary>

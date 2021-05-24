@@ -16,6 +16,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     private DeckListUI deckListUI;
     private LobbyDeckListUI lobbyDeckListUI;
     private CampaignDeckListUI campaignDeckListUI;
+    private CampaignManagerUI campaignManagerUI;
 
     public DeckData deckData;
 
@@ -49,12 +50,18 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the deck object. Updates the text properties of the object
     /// 
     /// </summary>
-    public void InitDeckListObject(DeckData _deckData, DeckListUI _deckListUI = null, LobbyDeckListUI _lobbyDeckListUI = null, CampaignDeckListUI _campaignDeckListUI = null)
+    public void InitDeckListObject(DeckData _deckData,
+        DeckListUI _deckListUI = null,
+        LobbyDeckListUI _lobbyDeckListUI = null,
+        CampaignDeckListUI _campaignDeckListUI = null,
+        CampaignManagerUI _campaignManagerUI = null,
+        bool hideCards = false)
     {
         //Need to pass in the deck list UI to handle certain click interactions on this object
         deckListUI = _deckListUI;
         lobbyDeckListUI = _lobbyDeckListUI;
         campaignDeckListUI = _campaignDeckListUI;
+        campaignManagerUI = _campaignManagerUI;
         deckData = _deckData;
 
         deckId = deckData.Id.Value;
@@ -64,9 +71,10 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         classText.text = $"{deckData.DeckClass}{campaignText}";
         selectionIcon.SetActive(false);
 
-        deckCardList.RefreshCardList(deckData, deckListUI);
+        deckCardList.RefreshCardList(deckData, deckListUI, hideCards);
 
         deckResourceObjects = new List<DeckResourceDetailUI>();
+        GameManager.DestroyAllChildren(deckResourcesParent);
         foreach (var resource in deckData.PlayerResources)
         {
             var deckResourceObject = Instantiate(deckResourcePrefab, deckResourcesParent.transform);
@@ -74,22 +82,18 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
             deckResourceScript.InitDeckResourceDetail(resource);
             deckResourceObjects.Add(deckResourceScript);
         }
-        
-        deckDetailsArea.SetActive(false);
 
-        if (_deckListUI != null)
+        if (campaignManagerUI == null)
+            deckDetailsArea.SetActive(false);
+
+        if (deckListUI != null || campaignDeckListUI != null)
         {
             deleteButton.SetActive(true);
         }
 
-        if (_lobbyDeckListUI != null)
+        if (lobbyDeckListUI != null || campaignManagerUI != null)
         {
             deleteButton.SetActive(false);
-        }
-
-        if (_campaignDeckListUI != null)
-        {
-            deleteButton.SetActive(true);
         }
     }
 
@@ -98,10 +102,10 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     /// Refreshes the deck details of the object
     /// 
     /// </summary>
-    public void RefreshDeckDetails(DeckData deckData, DeckListUI deckListUI)
+    public void RefreshDeckDetails(DeckData deckData)
     {
         deckCardList.RefreshCardList(deckData, deckListUI);
-        foreach (var deckResourceObject in deckResourceObjects)  
+        foreach (var deckResourceObject in deckResourceObjects)
         {
             deckResourceObject.RefreshResourceProperties();
         }
@@ -153,11 +157,15 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
             {
                 campaignDeckListUI.SelectDeck(deckData);
             }
+            else if (campaignManagerUI != null)
+            {
+                
+            }
             else
             {
                 throw new Exception("Deck list object not initialised properly. Requires an appropriate parent list.");
             }
-            
+
         }
     }
 
@@ -173,7 +181,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         {
             deckListUI.RefreshDeckList();
         }
-        else if(campaignDeckListUI != null)
+        else if (campaignDeckListUI != null)
         {
             campaignDeckListUI.RefreshDeckList();
         }

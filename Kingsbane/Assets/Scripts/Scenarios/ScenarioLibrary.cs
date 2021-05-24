@@ -140,6 +140,7 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
+                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario6);
 
@@ -180,6 +181,7 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
+                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario7);
 
@@ -222,6 +224,7 @@ namespace Assets.Scripts.Scenarios
                 {
                    new Rule() { Id = 3, Name = "Hidden Alcove", Description = "The last player to occupy the objective tile for the Hidden Alcove owns it. Whoever owns the Hidden Alcove can deploy their units in adjacent tiles" },
                 },
+                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario8);
 
@@ -262,6 +265,7 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
+                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario9);
 
@@ -277,6 +281,11 @@ namespace Assets.Scripts.Scenarios
             map6.Scenarios = new List<Scenario> { scenario7 };
             map7.Scenarios = new List<Scenario> { scenario8 };
             map8.Scenarios = new List<Scenario> { scenario9 };
+
+            scenario6.Map = map5;
+            scenario7.Map = map6;
+            scenario8.Map = map7;
+            scenario9.Map = map8;
 
             campaign2.Scenarios = new List<Scenario> { scenario6, scenario7, scenario8, scenario9 };
         }

@@ -23,5 +23,5 @@ public class Scenario
     public List<Objective> Objectives { get; set; }
     public List<Rule> Rules { get; set; }
     public DeckData EnemyDeck { get; set; }
-
+    public Map Map { get; set; }
 }

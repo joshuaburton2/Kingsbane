@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 [Serializable]
 public class CampaignProgression
@@ -26,6 +27,18 @@ public class CampaignProgression
     public Campaign GetCampaign()
     {
         return GameManager.instance.scenarioManager.GetCampaign(CampaignId);
+    }
+
+    public Scenario GetCurrentScenario()
+    {
+        if (!CompletedCampaign)
+        {
+            return GetCampaign().Scenarios[CompletedScenarios];
+        }
+        else
+        {
+            return GetCampaign().Scenarios.LastOrDefault();
+        }
     }
 
     public void CompleteScenario()

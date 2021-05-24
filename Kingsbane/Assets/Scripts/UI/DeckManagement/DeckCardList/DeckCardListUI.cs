@@ -15,6 +15,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     private DeckData deckData;
     private List<CardData> deckCardList;
     private List<UpgradeData> deckUpgradeList;
+    private bool hideCards;
 
     [SerializeField]
     GameObject cardListArea;
@@ -30,27 +31,30 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// Refreshes the card list
     /// 
     /// </summary>
-    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null)
+    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null, bool _hideCards = false)
     {
         deckListUI = _deckListUI;
 
         GameManager.DestroyAllChildren(cardListArea);
-        
+
         //Certain situations may require an empty card list, so will leave the object empty
         if (_deckData != null)
         {
             deckData = _deckData;
             deckCardList = deckData.CardList;
             deckUpgradeList = deckData.UpgradeList;
+            hideCards = _hideCards;
 
             //Add the hero card to the list
-            AddHeroCard(deckData);
+            if (!hideCards)
+                AddHeroCard(deckData);
 
             //Add the upgrades to the list
             AddUpgrades();
 
             //Add the cards to the list
-            AddCards();
+            if (!hideCards)
+                AddCards();
 
             //Update the card count text
             cardCountText.text = $"Cards: {deckData.DeckCount}";
@@ -88,7 +92,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
                     hasDeathDefiant = true;
 
                 var deckUpgradeObject = Instantiate(upgradeTemplate, cardListArea.transform);
-                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckData.Id);
+                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckData.Id);
                 deckUpgradeObject.name = $"Upgrade- {upgradeData.Name}";
 
                 upgradeObjects.Add(deckUpgradeObject);
@@ -156,6 +160,6 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
     }
 }
