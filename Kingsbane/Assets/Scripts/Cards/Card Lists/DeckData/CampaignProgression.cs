@@ -10,6 +10,7 @@ public class CampaignProgression
     public int CampaignId { get; set; }
     public int CampaignLength { get; private set; }
     public int CompletedScenarios { get; set; }
+    public int CompletedSinceTierUpgrade { get; set; }
     public bool CompletedCampaign { get; set; }
     public int HonourPoints { get; set; }
 
@@ -21,7 +22,8 @@ public class CampaignProgression
         if (CampaignLength > MAX_CAMPAIGN_LENGTH)
             throw new Exception($"Cannot have a campaign of length greater than {MAX_CAMPAIGN_LENGTH}, currently {CampaignLength}");
         CompletedScenarios = 0;
-        HonourPoints = 0;
+        CompletedSinceTierUpgrade = 0;
+        HonourPoints = 100;
     }
 
     public Campaign GetCampaign()
@@ -44,6 +46,7 @@ public class CampaignProgression
     public void CompleteScenario()
     {
         CompletedScenarios++;
+        CompletedSinceTierUpgrade++;
         if (CompletedScenarios == CampaignLength)
         {
             CompletedCampaign = true;

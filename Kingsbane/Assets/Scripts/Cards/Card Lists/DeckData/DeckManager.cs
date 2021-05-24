@@ -265,7 +265,7 @@ public class DeckManager : MonoBehaviour
     {
         foreach (var upgradeData in upgradeDatas)
         {
-            PlayerDeckList[id].AddUpgrade(upgradeData);
+            PlayerDeckList[id].AddUpgrade(upgradeData, true);
         }
         SaveDecks();
         return PlayerDeckList[id];

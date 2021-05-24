@@ -701,6 +701,12 @@ namespace Kingsbane.App
             }
 
             sb.AppendLine("");
+            foreach (var scenario in scenarioQuery)
+            {
+                sb.AppendLine($"        scenario{scenario.Id}.Map = map{scenario.MapId};");
+            }
+
+            sb.AppendLine("");
             foreach (var campaign in campaignQuery)
             {
                 var scenarioList = string.Join(",", campaign.Scenarios.Select(x => $"scenario{x.Id}"));

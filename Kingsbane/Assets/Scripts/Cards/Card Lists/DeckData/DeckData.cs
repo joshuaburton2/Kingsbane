@@ -157,6 +157,15 @@ public class DeckData : DeckSaveData
     public List<UpgradeData> UpgradeList { get; set; }
     public int DeckCount { get { return CardList.Count; } }
 
+    public DeckData()
+    {
+        PlayerResources = new List<PlayerResource>();
+        CardIdList = new List<int>();
+        UpgradeIdList = new List<int>();
+        CardList = new List<CardData>();
+        UpgradeList = new List<UpgradeData>();
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying deck data to a new deck data
@@ -327,11 +336,22 @@ public class DeckData : DeckSaveData
     /// Adds an upgrade to the deck
     /// 
     /// </summary>
-    public void AddUpgrade(UpgradeData upgradeData)
+    public void AddUpgrade(UpgradeData upgradeData, bool trackTierAdding = false)
     {
         UpgradeList.Add(upgradeData);
         UpgradeIdList.Add(upgradeData.Id.Value);
         GameManager.instance.upgradeManager.UpdateUpgradeEffect(upgradeData, this);
+
+        if (IsCampaign)
+        {
+            CampaignTracker.HonourPoints -= upgradeData.GetHonourPointsCost(CampaignTracker.CompletedSinceTierUpgrade);
+
+            if (trackTierAdding)
+            {
+                CampaignTracker.CompletedSinceTierUpgrade = 0;
+            }
+        }
+
     }
 
     /// <summary>

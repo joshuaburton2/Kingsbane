@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CampaignManagerUI : MonoBehaviour
 {
-    private DeckData loadedDeck;
+    public DeckData loadedDeck;
     private Campaign loadedCampaign;
     public Scenario selectedScenario;
 
@@ -22,6 +22,7 @@ public class CampaignManagerUI : MonoBehaviour
     private GameObject scenarioListParent;
     [SerializeField]
     private GameObject scenarioListPrefab;
+    private List<ScenarioListObject> scenarioObjectList;
 
     [Header("Scenario Details Area")]
     [SerializeField]
@@ -56,10 +57,22 @@ public class CampaignManagerUI : MonoBehaviour
     [SerializeField]
     private Button playButton;
 
+    [Header("External Pages")]
+    [SerializeField]
+    private UpgradeUI upgradeUI;
+    [SerializeField]
+    private LootGeneratorUI lootGenerateUI;
+    [SerializeField]
+    private ReserveForcesUI reserveForcesUI;
+
     public void InitialiseCampaignManager(DeckData deckData)
     {
         if (!deckData.IsCampaign)
             throw new Exception("Deck is invalid to manage- not a campaign deck");
+
+        upgradeUI.gameObject.SetActive(false);
+        lootGenerateUI.gameObject.SetActive(false);
+        reserveForcesUI.gameObject.SetActive(false);
 
         loadedDeck = deckData;
         loadedCampaign = deckData.CampaignTracker.GetCampaign();
@@ -67,6 +80,9 @@ public class CampaignManagerUI : MonoBehaviour
         campaignNameText.text = loadedCampaign.Name;
         campaignDescriptionText.text = loadedCampaign.Description;
         campaignLengthText.text = loadedCampaign.Scenarios.Count.ToString();
+
+        selectedScenario = loadedDeck.CampaignTracker.GetCurrentScenario();
+        scenarioObjectList = new List<ScenarioListObject>();
 
         GameManager.DestroyAllChildren(scenarioListParent);
         for (int index = 0; index < Mathf.Min(loadedCampaign.Scenarios.Count, loadedDeck.CampaignTracker.CompletedScenarios + 1); index++)
@@ -76,9 +92,12 @@ public class CampaignManagerUI : MonoBehaviour
             var scenarioListScript = scenarioListObject.GetComponent<ScenarioListObject>();
             scenarioListScript.InitScenarioListObject(this, index + 1, scenario);
             scenarioListObject.name = $"Scenario: {scenario.Name}";
+            scenarioObjectList.Add(scenarioListScript);
+
+            if (selectedScenario.Id == scenario.Id)
+                scenarioListScript.selectScenarioBorder.SetActive(true);
         }
 
-        selectedScenario = loadedDeck.CampaignTracker.GetCurrentScenario();
         RefreshSelectedScenario();
 
         RefreshPlayerDetails();
@@ -147,6 +166,12 @@ public class CampaignManagerUI : MonoBehaviour
     public void SelectScenario(Scenario scenario)
     {
         selectedScenario = scenario;
+
+        foreach (var scenarioObject in scenarioObjectList)
+        {
+            scenarioObject.selectScenarioBorder.SetActive(scenarioObject.scenario.Id == selectedScenario.Id);
+        }
+
         RefreshSelectedScenario();
     }
 
@@ -163,7 +188,23 @@ public class CampaignManagerUI : MonoBehaviour
 
     public void AccessCamp()
     {
+        enemyDeckDetailsArea.SetActive(false);
 
+        if (upgradeUI.gameObject.activeSelf)
+        {
+            upgradeUI.gameObject.SetActive(false);
+        }
+        else
+        {
+            upgradeUI.InitUpgradeUI();
+            upgradeUI.gameObject.SetActive(true);
+        }
+    }
+
+    public void OpenReserveForces(int numToReserve)
+    {
+        reserveForcesUI.gameObject.SetActive(true);
+        reserveForcesUI.InitReserveForces(loadedDeck, this);
     }
 
     /// <summary>

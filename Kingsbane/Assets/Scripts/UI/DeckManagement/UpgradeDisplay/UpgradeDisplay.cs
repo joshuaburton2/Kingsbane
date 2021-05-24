@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using CategoryEnums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -39,7 +40,9 @@ public class UpgradeDisplay : MonoBehaviour, IPointerClickHandler
 
         upgradeName.text = upgradeData.Name;
         upgradePrerequisites.text = $"Prerequisites: {upgradeData.PrerequisiteString()}";
-        honourPoints.text = $"Honour: {upgradeData.HonourPoints}";
+        var honourPointMod = currentDeck != null && currentDeck.IsCampaign && upgradeData.IsTierLevel ? currentDeck.CampaignTracker.CompletedSinceTierUpgrade : 0;
+        var colourTag = honourPointMod > 0 ? GameManager.instance.colourManager.GetStatModColour(StatisticStatuses.Buffed, true).ConvertToHexadecimal() : "";
+        honourPoints.text = $"Honour: {colourTag}{upgradeData.GetHonourPointsCost(honourPointMod)}";
         isRepeatable.text = $"Repeatable: {upgradeData.IsRepeatableString()}";
         upgradeText.text = upgradeData.Text;
 

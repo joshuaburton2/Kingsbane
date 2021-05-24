@@ -17,6 +17,8 @@ public class LootGeneratorUI : MonoBehaviour
     [SerializeField]
     private DeckListUI deckListUI;
     [SerializeField]
+    private CampaignManagerUI campaignManagerUI;
+    [SerializeField]
     private Button addSelectedButton;
     [SerializeField]
     private Button refreshButton;
@@ -52,6 +54,9 @@ public class LootGeneratorUI : MonoBehaviour
     /// </summary>
     public void RefreshLootGenerator()
     {
+        if (deckListUI != null && campaignManagerUI != null)
+            throw new Exception("UI not initialised properly");
+
         //Refreshed the loot grid
         GameManager.DestroyAllChildren(lootArea);
 

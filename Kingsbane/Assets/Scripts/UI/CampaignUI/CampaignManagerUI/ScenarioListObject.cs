@@ -7,12 +7,14 @@ using UnityEngine.EventSystems;
 public class ScenarioListObject : MonoBehaviour, IPointerClickHandler
 {
     CampaignManagerUI campaignManagerUI;
-    Scenario scenario;
+    public Scenario scenario;
 
     [SerializeField]
     private TextMeshProUGUI indexText;
     [SerializeField]
     private TextMeshProUGUI nameText;
+    [SerializeField]
+    public GameObject selectScenarioBorder;
 
     public void InitScenarioListObject(CampaignManagerUI _campaignManagerUI, int index, Scenario _scenario)
     {
@@ -21,6 +23,8 @@ public class ScenarioListObject : MonoBehaviour, IPointerClickHandler
 
         indexText.text = index.ToString();
         nameText.text = scenario.Name;
+
+        selectScenarioBorder.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
