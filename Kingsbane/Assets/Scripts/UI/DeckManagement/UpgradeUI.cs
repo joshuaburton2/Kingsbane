@@ -168,7 +168,7 @@ public class UpgradeUI : MonoBehaviour
         if (selectedUpgradeToAdd)
         {
             upgradesToAdd.Add(selectedUpgrade);
-            newDeck.AddUpgrade(selectedUpgrade);
+            newDeck.AddUpgrade(selectedUpgrade, false);
 
             if (campaignManagerUI != null)
             {
@@ -366,8 +366,15 @@ public class UpgradeUI : MonoBehaviour
             var numToReserveMultiplier = 2;
             var numToReserve = upgradesToAdd.Where(x => x.UpgradeTag == UpgradeTags.ReserveForces).Count() * numToReserveMultiplier;
 
-            if (numToReserve > 0)
-                campaignManagerUI.OpenReserveForces(numToReserve);
+            if (campaignManagerUI != null)
+            {
+                campaignManagerUI.RefreshPlayerDetails();
+
+                if (numToReserve > 0)
+                {
+                    campaignManagerUI.OpenReserveForces(numToReserve);
+                }
+            }
         }
 
         //Empties the upgrade to add list

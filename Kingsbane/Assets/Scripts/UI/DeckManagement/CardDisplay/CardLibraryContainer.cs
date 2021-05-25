@@ -18,6 +18,7 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
 
     private CardDisplay cardDisplay;
     private DeckListUI deckListUI;
+    private CampaignManagerUI campaignManagerUI;
 
     //Variables for handling loot generator
     private LootGeneratorUI lootGeneratorUI;
@@ -32,12 +33,14 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void InitCardContainer(
         CardData cardData,
-        DeckListUI _deckListUI,
+        DeckListUI _deckListUI = null,
+        CampaignManagerUI _campaignManagerUI = null,
         string cardName = "",
         float scalingFactor = defaultScalingFactor,
         LootGeneratorUI _lootGeneratorUI = null)
     {
         deckListUI = _deckListUI;
+        campaignManagerUI = _campaignManagerUI;
         lootGeneratorUI = _lootGeneratorUI;
 
         isSelected = false;
@@ -65,7 +68,7 @@ public class CardLibraryContainer : MonoBehaviour, IPointerClickHandler
         }
         
         //Left clicking functionality varies depending on which part of the library you are in
-        if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
+        if (eventData.button == PointerEventData.InputButton.Left && (deckListUI != null && deckListUI.DeckEditMode || campaignManagerUI != null))
         {
             //If the loot generator UI is null, this means the card is in the library display, and as such, the card just needs to be added to the deck
             if (lootGeneratorUI == null)

@@ -205,7 +205,22 @@ public class UIManager : MonoBehaviour
 
     public void ShowVictoryState(int victoryId)
     {
-        gameplayUI.ShowVictoryState(victoryId);
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
+            gameplayUI.ShowVictoryState(victoryId);
+        else
+            throw new Exception("Not a valid scene to show victory state");
+    }
+
+    public void ShowLootGeneratorForCampaign()
+    {
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.MainMenuScene)
+        {
+            campaignPage.gameObject.SetActive(true);
+            campaignPage.LoadCampaignUI();
+            campaignPage.SelectDeck(GameManager.instance.CampaignDeck, true);
+        }
+        else
+            throw new Exception("Not a valid scene to show loot generator");
     }
 
     /// <summary>

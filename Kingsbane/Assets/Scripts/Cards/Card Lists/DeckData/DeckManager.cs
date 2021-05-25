@@ -154,7 +154,7 @@ public class DeckManager : MonoBehaviour
 
         if (campaignId.HasValue)
         {
-            newDeck.CampaignTracker = new CampaignProgression(campaignId.Value);
+            newDeck.CampaignTracker = new CampaignProgression(newDeck.Id.Value, campaignId.Value);
         }
 
         //Save decks to file
@@ -256,6 +256,23 @@ public class DeckManager : MonoBehaviour
         return PlayerDeckList[id];
     }
 
+    public DeckData RemoveReserves(int id, List<CardData> reserveCards)
+    {
+        var playerDeck = PlayerDeckList[id];
+
+        if (!playerDeck.IsCampaign)
+            throw new Exception("Deck is invalid to reserve- not a campaign deck");
+
+        foreach (var reserveCard in reserveCards)
+        {
+            RemoveCardFromPlayerDeck(id, reserveCard);
+        }
+
+        playerDeck.CampaignTracker.NumToReserve = 0;
+
+        return playerDeck;
+    }
+
     /// <summary>
     /// 
     /// Adds a list of upgrades to a particular deck
@@ -265,7 +282,7 @@ public class DeckManager : MonoBehaviour
     {
         foreach (var upgradeData in upgradeDatas)
         {
-            PlayerDeckList[id].AddUpgrade(upgradeData, true);
+            PlayerDeckList[id].AddUpgrade(upgradeData);
         }
         SaveDecks();
         return PlayerDeckList[id];
@@ -281,5 +298,20 @@ public class DeckManager : MonoBehaviour
         PlayerDeckList[id].RemoveUpgrade(upgradeData);
         SaveDecks();
         return PlayerDeckList[id];
+    }
+
+    public DeckData AddNumToReserves(int id, int numToReserve)
+    {
+        var playerDeck = PlayerDeckList[id];
+
+        if (playerDeck.IsCampaign)
+        {
+            numToReserve = Mathf.Min(numToReserve, playerDeck.DeckCount);
+
+            playerDeck.CampaignTracker.NumToReserve += numToReserve;
+            SaveDecks();
+        }
+
+        return playerDeck;
     }
 }

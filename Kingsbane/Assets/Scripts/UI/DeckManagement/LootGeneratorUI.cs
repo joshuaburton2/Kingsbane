@@ -63,7 +63,16 @@ public class LootGeneratorUI : MonoBehaviour
         addSelectedButton.interactable = false;
 
         //Gets the current deck and the generated loot cards
-        var selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+        DeckData selectedDeck = null;
+        if (deckListUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+        }
+        else if (campaignManagerUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(campaignManagerUI.loadedDeck.Id.Value);
+            refreshButton.gameObject.SetActive(false);
+        }
         var lootCards = GameManager.instance.libraryManager.GenerateLootCards(selectedDeck, numLootCards, out int totalWeighting);
 
         cardsSelected = new List<CardData>();
@@ -79,7 +88,7 @@ public class LootGeneratorUI : MonoBehaviour
             cardContainer.name = $"Container {lootCard.CardData.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card {lootCard.CardData.Name}";
-            cardLibaryContainer.InitCardContainer(lootCard.CardData, deckListUI, cardName, scalingFactor, this);
+            cardLibaryContainer.InitCardContainer(lootCard.CardData, deckListUI, campaignManagerUI, cardName, scalingFactor, this);
 
             //Displays the loot properties of the card in text below the card
             var lootStatsObject = Instantiate(lootStatPrefab, cardLibaryContainer.transform);
@@ -123,9 +132,19 @@ public class LootGeneratorUI : MonoBehaviour
     /// </summary>
     public void AddCardsToDeck()
     {
-        var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
+        if (deckListUI != null)
+        {
+            var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
 
-        deckListUI.RefreshActiveDeckDetails(updatedDeck);
-        RefreshLootGenerator();
+            deckListUI.RefreshActiveDeckDetails(updatedDeck);
+            RefreshLootGenerator();
+        }
+        else if (campaignManagerUI != null)
+        {
+            GameManager.instance.deckManager.AddCardsToPlayerDeck(campaignManagerUI.loadedDeck.Id.Value, cardsSelected);
+
+            campaignManagerUI.RefreshPlayerDetails();
+            gameObject.SetActive(false);
+        }
     }
 }

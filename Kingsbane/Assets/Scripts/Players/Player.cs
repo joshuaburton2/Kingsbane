@@ -12,7 +12,7 @@ public class Player
     public Classes.ClassList PlayerClass { get { return DeckData.DeckClass; } }
     public bool IsActivePlayer { get { return Id == GameManager.instance.ActivePlayerId; } }
 
-    private DeckData DeckData { get; set; }
+    public DeckData DeckData { get; private set; }
 
     public Deck Deck { get; set; }
     public Hand Hand { get; set; }

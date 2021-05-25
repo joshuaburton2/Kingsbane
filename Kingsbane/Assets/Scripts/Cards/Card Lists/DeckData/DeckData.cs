@@ -336,7 +336,7 @@ public class DeckData : DeckSaveData
     /// Adds an upgrade to the deck
     /// 
     /// </summary>
-    public void AddUpgrade(UpgradeData upgradeData, bool trackTierAdding = false)
+    public void AddUpgrade(UpgradeData upgradeData, bool trackAddition = true)
     {
         UpgradeList.Add(upgradeData);
         UpgradeIdList.Add(upgradeData.Id.Value);
@@ -344,10 +344,9 @@ public class DeckData : DeckSaveData
 
         if (IsCampaign)
         {
-            CampaignTracker.HonourPoints -= upgradeData.GetHonourPointsCost(CampaignTracker.CompletedSinceTierUpgrade);
-
-            if (trackTierAdding)
+            if (trackAddition)
             {
+                CampaignTracker.HonourPoints -= upgradeData.GetHonourPointsCost(CampaignTracker.CompletedSinceTierUpgrade);
                 CampaignTracker.CompletedSinceTierUpgrade = 0;
             }
         }
@@ -383,5 +382,14 @@ public class DeckData : DeckSaveData
     public PlayerResource GetPlayerResource(CardResources resource)
     {
         return PlayerResources.FirstOrDefault(x => x.ResourceType == resource);
+    }
+
+    public void ConverToBaseDeck()
+    {
+        CampaignTracker = null;
+        if (GameManager.instance.CampaignDeck.Id == Id)
+        {
+            GameManager.instance.CampaignDeck = null;
+        }
     }
 }

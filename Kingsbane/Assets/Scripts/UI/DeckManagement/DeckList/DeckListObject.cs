@@ -71,7 +71,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
         classText.text = $"{deckData.DeckClass}{campaignText}";
         selectionIcon.SetActive(false);
 
-        deckCardList.RefreshCardList(deckData, deckListUI, hideCards);
+        deckCardList.RefreshCardList(deckData, deckListUI, _hideCards: hideCards);
 
         deckResourceObjects = new List<DeckResourceDetailUI>();
         GameManager.DestroyAllChildren(deckResourcesParent);

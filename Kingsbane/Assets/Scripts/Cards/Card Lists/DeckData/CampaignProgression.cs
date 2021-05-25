@@ -7,15 +7,19 @@ public class CampaignProgression
     private readonly int[] HONOUR_TRACKER = new int[] { 0, 2, 2, 2, 2, 3, 3, 3, 4, 4 };
     private readonly int MAX_CAMPAIGN_LENGTH = 10;
 
+    private int DeckId { get; set; }
+
     public int CampaignId { get; set; }
     public int CampaignLength { get; private set; }
     public int CompletedScenarios { get; set; }
     public int CompletedSinceTierUpgrade { get; set; }
     public bool CompletedCampaign { get; set; }
     public int HonourPoints { get; set; }
+    public int NumToReserve { get; set; }
 
-    public CampaignProgression(int campaignId)
+    public CampaignProgression(int deckId, int campaignId)
     {
+        DeckId = deckId;
         CampaignId = campaignId;
         var campaign = GameManager.instance.scenarioManager.GetCampaign(CampaignId);
         CampaignLength = campaign.Scenarios.Count;
@@ -23,7 +27,8 @@ public class CampaignProgression
             throw new Exception($"Cannot have a campaign of length greater than {MAX_CAMPAIGN_LENGTH}, currently {CampaignLength}");
         CompletedScenarios = 0;
         CompletedSinceTierUpgrade = 0;
-        HonourPoints = 100;
+        HonourPoints = 0;
+        NumToReserve = 0;
     }
 
     public Campaign GetCampaign()
@@ -50,7 +55,7 @@ public class CampaignProgression
         if (CompletedScenarios == CampaignLength)
         {
             CompletedCampaign = true;
-            //Need to add code for handling campaign victory here
+            GameManager.instance.deckManager.GetPlayerDeck(DeckId).ConverToBaseDeck();
         }
         else
         {
@@ -60,6 +65,7 @@ public class CampaignProgression
 
     public void TriggerDefeat()
     {
-
+        CompletedCampaign = true;
+        GameManager.instance.deckManager.GetPlayerDeck(DeckId).ConverToBaseDeck();
     }
 }

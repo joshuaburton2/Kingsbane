@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using static EffectManager;
 
 public class PlayerUIBar : MonoBehaviour
@@ -29,7 +30,14 @@ public class PlayerUIBar : MonoBehaviour
     [SerializeField]
     private VictoryStateUI victoryStateUI;
     [SerializeField]
+    private Button triggerLossButton;
+    [SerializeField]
     private GameplayUI gameplayUI;
+
+    private void Update()
+    {
+        triggerLossButton.interactable = !GameManager.instance.effectManager.IsUILocked;
+    }
 
     public void InitialisePlayerBar(int _id)
     {
@@ -144,5 +152,10 @@ public class PlayerUIBar : MonoBehaviour
     {
         victoryStateUI.gameObject.SetActive(true);
         victoryStateUI.ShowVictoryState(isVictory);
+    }
+
+    public void TriggerLoss()
+    {
+        GameManager.instance.TriggerVictory(Player.Id);
     }
 }

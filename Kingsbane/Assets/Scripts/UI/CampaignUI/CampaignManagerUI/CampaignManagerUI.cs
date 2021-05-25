@@ -101,6 +101,12 @@ public class CampaignManagerUI : MonoBehaviour
         RefreshSelectedScenario();
 
         RefreshPlayerDetails();
+
+        if (deckData.CampaignTracker.NumToReserve > 0)
+        {
+            AccessCamp();
+            OpenReserveForces(0);
+        }
     }
 
     public void RefreshSelectedScenario()
@@ -203,8 +209,21 @@ public class CampaignManagerUI : MonoBehaviour
 
     public void OpenReserveForces(int numToReserve)
     {
-        reserveForcesUI.gameObject.SetActive(true);
-        reserveForcesUI.InitReserveForces(loadedDeck, this);
+        GameManager.instance.deckManager.AddNumToReserves(loadedDeck.Id.Value, numToReserve);
+
+        if (loadedDeck.CampaignTracker.NumToReserve > 0)
+        {
+            reserveForcesUI.gameObject.SetActive(true);
+            reserveForcesUI.InitReserveForces(loadedDeck, this);
+        }
+    }
+
+    public void OpenLootGenerator()
+    {
+        enemyDeckDetailsArea.SetActive(false);
+
+        lootGenerateUI.RefreshLootGenerator();
+        lootGenerateUI.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -214,6 +233,6 @@ public class CampaignManagerUI : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        GameManager.instance.LoadGameplay(new DeckData[] { loadedDeck, selectedScenario.EnemyDeck }, selectedScenario.Map, selectedScenario.Id.Value);
+        GameManager.instance.LoadGameplay(new DeckData[] { loadedDeck, selectedScenario.EnemyDeck }, selectedScenario.Map, selectedScenario.Id.Value, true);
     }
 }

@@ -17,10 +17,16 @@ public class CampaignUI : MonoBehaviour
         loadCampaignArea.GetComponent<LoadCampaignUI>().InitialiseLoadCampaignUI();
     }
 
-    public void SelectDeck(DeckData deck)
+    public void SelectDeck(DeckData deck, bool showLootGenerator = false)
     {
         campaignManagerArea.SetActive(true);
 
-        campaignManagerArea.GetComponent<CampaignManagerUI>().InitialiseCampaignManager(deck);
+        var campaignManager = campaignManagerArea.GetComponent<CampaignManagerUI>();
+        campaignManager.InitialiseCampaignManager(deck);
+
+        if (showLootGenerator)
+        {
+            campaignManager.OpenLootGenerator();
+        }
     }
 }

@@ -292,7 +292,7 @@ public class LibraryUI : MonoBehaviour
             cardContainer.name = $"Container {currentRow}.{currentColumn}- {card.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card{currentRow}.{currentColumn}- {card.Name}";
-            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName);
+            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName: cardName);
 
             //Once a card is created, moves to the next column
             currentColumn++;

@@ -12,6 +12,8 @@ using UnityEngine.EventSystems;
 public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
 {
     private DeckListUI deckListUI;
+    private ReserveForcesUI reserveForcesUI;
+    private bool isReserved;
     private DeckData deckData;
     private List<CardData> deckCardList;
     private List<UpgradeData> deckUpgradeList;
@@ -31,9 +33,15 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// Refreshes the card list
     /// 
     /// </summary>
-    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null, bool _hideCards = false)
+    public void RefreshCardList(DeckData _deckData = null,
+        DeckListUI _deckListUI = null,
+        ReserveForcesUI _reserveForcesUI = null,
+        bool _isReserved = false,
+        bool _hideCards = false)
     {
         deckListUI = _deckListUI;
+        reserveForcesUI = _reserveForcesUI;
+        isReserved = _isReserved;
 
         GameManager.DestroyAllChildren(cardListArea);
 
@@ -45,12 +53,15 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
             deckUpgradeList = deckData.UpgradeList;
             hideCards = _hideCards;
 
-            //Add the hero card to the list
-            if (!hideCards)
-                AddHeroCard(deckData);
+            if (reserveForcesUI == null)
+            {
+                //Add the hero card to the list
+                if (!hideCards)
+                    AddHeroCard(deckData);
 
-            //Add the upgrades to the list
-            AddUpgrades();
+                //Add the upgrades to the list
+                AddUpgrades();
+            }
 
             //Add the cards to the list
             if (!hideCards)
@@ -68,9 +79,12 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void AddHeroCard(DeckData deckData)
     {
-        var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
-        heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, deckListUI, 1, this.deckData.Id);
-        heroCardObject.name = $"Card- {deckData.HeroCard.Name}";
+        if (deckData.HeroCard != null)
+        {
+            var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
+            heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, 1, this.deckData.Id, deckListUI);
+            heroCardObject.name = $"Card- {deckData.HeroCard.Name}";
+        }
     }
 
     /// <summary>
@@ -144,7 +158,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
             }
 
             //Initialise the card object
-            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, deckListUI, numCopies, deckData.Id);
+            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, numCopies, deckData.Id, deckListUI, reserveForcesUI, isReserved);
             deckCardObject.name = $"Card- {cardData.Name}";
 
             //Shifts the index of the overall card loop to the last instance of the current card in the deck. Note that when the code returns to the top of the loop,
