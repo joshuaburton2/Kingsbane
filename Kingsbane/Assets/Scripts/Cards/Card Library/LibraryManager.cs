@@ -240,7 +240,7 @@ public class LibraryManager : MonoBehaviour
                 return FilterCardList(dictionaryList.OrderCardList(), listFilter);
             else
                 return dictionaryList.OrderCardList();
-        }  
+        }
         else
             return new List<CardData>();
     }
@@ -538,8 +538,11 @@ public class LibraryManager : MonoBehaviour
             //Class playable filter area
             if (listFilter.ClassPlayableFilter != Classes.ClassList.Default)
             {
-                //Filters out all heroes from the list
-                if (!card.IsHero)
+                //Filters out all heroes except the classes hero from the list
+                if (card.IsHero && card.Class != listFilter.ClassPlayableFilter)
+                    continue;
+                //Required to ignore the classes hero for the resource filtering
+                else if (!card.IsHero)
                 {
                     var classResource = new ClassResources(listFilter.ClassPlayableFilter);
                     //Uses the default filter when obtaining the dictionary list. Also adds uncollectable rarity to the filter
