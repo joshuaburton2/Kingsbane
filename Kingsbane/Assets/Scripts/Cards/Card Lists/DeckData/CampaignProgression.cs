@@ -5,6 +5,7 @@ using System.Linq;
 public class CampaignProgression
 {
     private readonly int[] HONOUR_TRACKER = new int[] { 0, 2, 2, 2, 2, 3, 3, 3, 4, 4 };
+    private readonly int BONUS_OBJECTIVE_HONOUR = 1;
     private readonly int MAX_CAMPAIGN_LENGTH = 10;
 
     private int DeckId { get; set; }
@@ -48,7 +49,7 @@ public class CampaignProgression
         }
     }
 
-    public void CompleteScenario()
+    public void CompleteScenario(bool completedBonusObjectives)
     {
         CompletedScenarios++;
         CompletedSinceTierUpgrade++;
@@ -60,6 +61,11 @@ public class CampaignProgression
         else
         {
             HonourPoints += HONOUR_TRACKER[CompletedScenarios];
+
+            if (completedBonusObjectives)
+            {
+                HonourPoints += BONUS_OBJECTIVE_HONOUR;
+            }
         }
     }
 

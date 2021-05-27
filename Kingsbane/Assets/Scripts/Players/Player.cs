@@ -35,6 +35,7 @@ public class Player
     public int SummonCapcity { get; set; }
     public int CurrentSummons { get; set; }
     public bool DeathDefiant { get { return DeckData.DeathDefiant; } set { DeckData.DeathDefiant = value; } }
+    public bool CompletedBonusObjective { get; set; }
 
     public bool LoseOnHeroLoss { get; set; }
 
@@ -58,6 +59,7 @@ public class Player
         CurrentEmpowered = PassiveEmpowered;
         CurrentSummons = 0;
         SummonCapcity = BaseSummonCapactiy;
+        CompletedBonusObjective = false;
 
         Resources = DeckData.PlayerResources;
     }

@@ -30,13 +30,15 @@ public class PlayerUIBar : MonoBehaviour
     [SerializeField]
     private VictoryStateUI victoryStateUI;
     [SerializeField]
-    private Button triggerLossButton;
+    private CanvasGroup lossStateArea;
+    [SerializeField]
+    private Button bonusObjectiveButton;
     [SerializeField]
     private GameplayUI gameplayUI;
 
     private void Update()
     {
-        triggerLossButton.interactable = !GameManager.instance.effectManager.IsUILocked;
+        lossStateArea.interactable = !GameManager.instance.effectManager.IsUILocked;
     }
 
     public void InitialisePlayerBar(int _id)
@@ -56,6 +58,8 @@ public class PlayerUIBar : MonoBehaviour
         turnIndicator.SetActive(false);
 
         cardListsUI.gameObject.SetActive(false);
+
+        bonusObjectiveButton.interactable = !Player.DeckData.IsNPCDeck && Player.DeckData.IsCampaign;
     }
 
     public void RefreshPlayerBar()
@@ -157,5 +161,11 @@ public class PlayerUIBar : MonoBehaviour
     public void TriggerLoss()
     {
         GameManager.instance.TriggerVictory(Player.Id);
+    }
+
+    public void CompleteBonusObjective()
+    {
+        Player.CompletedBonusObjective = true;
+        bonusObjectiveButton.interactable = false;
     }
 }

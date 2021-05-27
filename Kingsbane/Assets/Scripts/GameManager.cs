@@ -333,7 +333,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    playerDeck.CampaignTracker.CompleteScenario();
+                    playerDeck.CampaignTracker.CompleteScenario(player.CompletedBonusObjective);
                 }
             }
         }
