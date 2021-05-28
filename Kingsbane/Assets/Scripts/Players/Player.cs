@@ -70,7 +70,7 @@ public class Player
         Deck.Shuffle();
         DrawMulligan();
 
-        LoseOnHeroLoss = true;
+        LoseOnHeroLoss = !DeckData.IsNPCDeck;
 
         foreach (var resource in Resources)
             resource.StartOfGameUpdate(Id);
