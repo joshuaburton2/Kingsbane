@@ -327,8 +327,8 @@ public class NewDeckUI : MonoBehaviour
         }
         else
         {
-            GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
-            deckList.RefreshDeckList();
+            var deck = GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
+            deckList.RefreshDeckList(deck.Id);
         }
 
         GameManager.instance.uiManager.ClosePanel(gameObject);

@@ -28,7 +28,7 @@ public class DeckListObject : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     TextMeshProUGUI classText;
     [SerializeField]
-    GameObject deckDetailsArea;
+    public GameObject deckDetailsArea;
     [SerializeField]
     GameObject deleteButton;
     [SerializeField]

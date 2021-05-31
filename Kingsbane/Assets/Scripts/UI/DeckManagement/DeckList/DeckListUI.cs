@@ -45,7 +45,6 @@ public class DeckListUI : MonoBehaviour
     /// </summary>
     public void CreateNewDeck()
     {
-        DeckEditId = null;
         newDeckPage.SetActive(true);
         newDeckPage.GetComponent<NewDeckUI>().InitNewDeckPage();
     }
@@ -67,7 +66,7 @@ public class DeckListUI : MonoBehaviour
     /// Refreshes the deck list. This will reset the UI on a deck being edited as well
     /// 
     /// </summary>
-    public void RefreshDeckList(bool resourceFilter = true)
+    public void RefreshDeckList(int? editDeckId = null, bool resourceFilter = true)
     {
         newDeckPage.SetActive(false);
         lootGenerator.SetActive(false);
@@ -93,14 +92,29 @@ public class DeckListUI : MonoBehaviour
         GameManager.DestroyAllChildren(deckListParent);
         deckListObjects.Clear();
 
+        DeckListObject editDeckObject = null;
+        DeckData editDeck = null;
+
         //Initialise and create the objects in the deck list
         var deckList = GameManager.instance.deckManager.GetPlayerDecks();
         foreach (var deck in deckList)
         {
             var deckListObject = Instantiate(deckListObjectPrefab, deckListParent.transform);
             deckListObject.name = $"Deck: {deck.Name}";
-            deckListObject.GetComponent<DeckListObject>().InitDeckListObject(deck, _deckListUI: this);
+            var deckListScript = deckListObject.GetComponent<DeckListObject>();
+            deckListScript.InitDeckListObject(deck, _deckListUI: this);
             deckListObjects.Add(deckListObject);
+
+            if (editDeckId.HasValue && deck.Id == editDeckId)
+            {
+                editDeckObject = deckListScript;
+                editDeck = deck;
+            }
+        }
+
+        if (editDeckId.HasValue)
+        {
+            EditDeck(editDeckId.Value, editDeck.DeckClass, editDeckObject);
         }
     }
 
@@ -114,6 +128,8 @@ public class DeckListUI : MonoBehaviour
         //Sets the properties of the deck currently being edited
         DeckEditId = deckId;
         activeDeckObject = _activeDeckObject;
+
+        activeDeckObject.deckDetailsArea.SetActive(true);
 
         //Locks the deck scrolling
         deckScrollArea.vertical = false;

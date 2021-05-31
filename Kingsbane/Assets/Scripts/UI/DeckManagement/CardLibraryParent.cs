@@ -22,6 +22,6 @@ public class CardLibraryParent : MonoBehaviour
     public void RefreshCardLibrary()
     {
         libraryUI.LibraryInitialisation();
-        deckListUI.RefreshDeckList(false);
+        deckListUI.RefreshDeckList(null, false);
     }
 }
