@@ -1546,18 +1546,18 @@ MonoBehaviour:
     type: 3}
   rarityWeightings:
   - rarity: 1
-    weighting: 100
+    weighting: 400
   - rarity: 2
-    weighting: 50
+    weighting: 200
   - rarity: 3
-    weighting: 25
+    weighting: 50
   - rarity: 4
-    weighting: 12
+    weighting: 10
   - rarity: 5
-    weighting: 6
+    weighting: 1
   classWeighting: 25
-  synergyWeighting: 2
-  duplicateWeighting: -30
+  synergyWeighting: 10
+  duplicateWeighting: -50
 --- !u!1 &8891978396315567774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,8 +1607,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSceneController: {fileID: 0}
+  campaignPage: {fileID: 0}
   lobbyPage: {fileID: 0}
   cardLibrary: {fileID: 0}
+  newDeckUI: {fileID: 0}
   gameplayUI: {fileID: 0}
   cardDetailDisplay: {fileID: 0}
   upgradeDetailDisplay: {fileID: 0}
