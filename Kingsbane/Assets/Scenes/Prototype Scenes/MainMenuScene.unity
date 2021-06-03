@@ -52254,45 +52254,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: classWeighting
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: synergyWeighting
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: duplicateWeighting
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: rarityWeightings.Array.data[0].weighting
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: rarityWeightings.Array.data[1].weighting
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: rarityWeightings.Array.data[2].weighting
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: rarityWeightings.Array.data[3].weighting
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8891978395917923695, guid: dffceaad4eff8b8478537273baa686a0,
-        type: 3}
-      propertyPath: rarityWeightings.Array.data[4].weighting
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dffceaad4eff8b8478537273baa686a0, type: 3}
