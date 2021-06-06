@@ -7889,11 +7889,11 @@ Lifebond</b> healing from this unit heals this unit as well as your hero",
             Rarity = Rarity.Uncommon,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Draw, Tags.Elven, Tags.Oathknight },
+            Tags = new List<Tags> { Tags.Human, Tags.Draw, Tags.Oathknight },
             Synergies = new List<Synergies> { Synergies.Enchantment, Synergies.Draw, Synergies.Value, Synergies.Oaths },
             UnitTag = new List<UnitTags>()
             {
-                UnitTags.Elven,
+                UnitTags.Human,
                 UnitTags.Oathknight,
             },
             Attack = 4,

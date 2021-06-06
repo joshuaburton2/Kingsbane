@@ -68,13 +68,15 @@ public class NewDeckUI : MonoBehaviour
 
     private int? campaignId;
 
+    private readonly List<Classes.ClassList> InvalidClasses = new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token };
+
     private void Start()
     {
         //Loop through each class and create a class list object- DEPRICATED. Leaving code here in case changing back
         foreach (var newClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
             //Ignore the default class
-            if (newClass != Classes.ClassList.Default)
+            if (!InvalidClasses.Contains(newClass))
             {
                 var classListObject = Instantiate(classListPrefab, classListParent.transform);
                 classListObject.GetComponent<ClassListObject>().InitClassListObject(newClass, this);

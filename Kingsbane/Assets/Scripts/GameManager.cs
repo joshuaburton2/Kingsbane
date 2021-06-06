@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         Menu,
         Setup,
         Mulligan,
+        [Description("Deploy Hero")]
         HeroDeploy,
         Gameplay,
         End,

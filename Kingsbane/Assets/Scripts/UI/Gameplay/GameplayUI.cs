@@ -27,6 +27,8 @@ public class GameplayUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI actionButtonText;
     [SerializeField]
+    private TextMeshProUGUI currentRoundText;
+    [SerializeField]
     private GameObject keyDisplay;
     [SerializeField]
     private MapKeyUI mapKey;
@@ -111,8 +113,7 @@ public class GameplayUI : MonoBehaviour
         }
 
         actionButtonText.text = "Start Game";
-
-        effectBarUI.RefreshEffectList();
+        currentRoundText.text = GameManager.instance.CurrentGamePhase.GetEnumDescription();
     }
 
     public void ActionButton()
@@ -134,10 +135,13 @@ public class GameplayUI : MonoBehaviour
 
                 RefreshPlayerBar();
 
+                currentRoundText.text = GameManager.instance.CurrentGamePhase.GetEnumDescription();
+
                 break;
             case GameManager.GamePhases.Mulligan:
                 isNewRound = GameManager.instance.NextPlayerTurn();
                 SetPlayerTurnText();
+                currentRoundText.text = GameManager.instance.CurrentGamePhase.GetEnumDescription();
 
                 if (isNewRound)
                 {
@@ -157,16 +161,18 @@ public class GameplayUI : MonoBehaviour
                 {
                     RefreshPlayerBar();
                     RefreshHeroDeployUI();
+                    currentRoundText.text = $"Current Round: {GameManager.instance.CurrentRound}";
                 }
                 else
                 {
                     RefreshPlayerBar();
-
+                    currentRoundText.text = GameManager.instance.CurrentGamePhase.GetEnumDescription();
                 }
                 break;
             case GameManager.GamePhases.Gameplay:
                 isNewRound = GameManager.instance.NextPlayerTurn();
                 SetPlayerTurnText();
+                currentRoundText.text = $"Current Round: {GameManager.instance.CurrentRound}";
 
                 RefreshPlayerBar();
 

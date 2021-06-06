@@ -4,6 +4,8 @@ using UnityEngine;
 using CategoryEnums;
 using System;
 using System.Linq;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 /// <summary>
 /// 
@@ -23,6 +25,8 @@ public class MapKeyUI : MonoBehaviour
     private GameObject keyColourPrefab;
     [SerializeField]
     private GameObject keyColourParent;
+    [SerializeField]
+    private ScrollRect keyScrollView;
     [SerializeField]
     private GameObject noKeyText;
     [SerializeField]
@@ -99,6 +103,8 @@ public class MapKeyUI : MonoBehaviour
             var keyObject = Instantiate(keyColourPrefab, keyColourParent.transform);
             keyObject.GetComponent<KeyColourObject>().RefreshKeyElement(key.KeyColour, key.KeyText);
         }
+
+        keyScrollView.vertical = keyDetailList.Count > 6;
     }
 
     /// <summary>

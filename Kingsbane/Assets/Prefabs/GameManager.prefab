@@ -1032,7 +1032,17 @@ MonoBehaviour:
     - imageTag: 405
       imageSprite: {fileID: 21300000, guid: 8cd52838833d1734a83a8dc45514db9f, type: 3}
   - Class: 16
-    imageList: []
+    imageList:
+    - imageTag: 82
+      imageSprite: {fileID: 21300000, guid: 0e75099d624d21a4a896e2e4d7fbe1b5, type: 3}
+    - imageTag: 262
+      imageSprite: {fileID: 21300000, guid: 4dca65a7e9b710541854b9c28d5ebbcf, type: 3}
+    - imageTag: 406
+      imageSprite: {fileID: 21300000, guid: 6161920b2c499c040a7a1e65224d0c29, type: 3}
+    - imageTag: 407
+      imageSprite: {fileID: 21300000, guid: c5becc04b98c7774a81962e51232c593, type: 3}
+    - imageTag: 408
+      imageSprite: {fileID: 21300000, guid: b039a725c3c388748b4a63600daf1680, type: 3}
   upgradeImages: []
 --- !u!1 &8891978394799893638
 GameObject:
@@ -1093,7 +1103,7 @@ MonoBehaviour:
   - Rarity: 9
     rarityColour: {r: 0, g: 0, b: 0, a: 1}
   - Rarity: 10
-    rarityColour: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    rarityColour: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   resourceColours:
   - Resource: 0
     resourceColour: {r: 1, g: 1, b: 1, a: 1}
@@ -1115,7 +1125,7 @@ MonoBehaviour:
   - Class: 1
     classColour: {r: 0.49803925, g: 0.03529412, b: 0.8196079, a: 1}
   - Class: 2
-    classColour: {r: 0.38431376, g: 0.36862746, b: 0.4666667, a: 1}
+    classColour: {r: 0.3392827, g: 0.3302332, b: 0.38679248, a: 1}
   - Class: 3
     classColour: {r: 0.86274517, g: 0.15294118, b: 0.9960785, a: 1}
   - Class: 4
@@ -1143,7 +1153,7 @@ MonoBehaviour:
   - Class: 15
     classColour: {r: 0.8000001, g: 0, b: 0.003921569, a: 1}
   - Class: 16
-    classColour: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
+    classColour: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   terrainColours:
   - terrainType: 0
     terrainColour: {r: 0.2627451, g: 0.6509804, b: 0.14509805, a: 1}
