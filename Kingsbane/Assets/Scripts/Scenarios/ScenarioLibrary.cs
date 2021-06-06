@@ -111,14 +111,14 @@ namespace Assets.Scripts.Scenarios
                 DeploymentMap = new int?[][]
                 {
                     new int?[] { 1,1,1,1,1,1,1,1,1,1, },
-                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                 },
                 ObjectivesMap = new int?[][]
@@ -140,7 +140,6 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
-                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario6);
 
@@ -152,14 +151,14 @@ namespace Assets.Scripts.Scenarios
                 DeploymentMap = new int?[][]
                 {
                     new int?[] { 1,1,1,1,1,1,1,1,1,1, },
-                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                 },
                 ObjectivesMap = new int?[][]
@@ -181,7 +180,6 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
-                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario7);
 
@@ -193,14 +191,14 @@ namespace Assets.Scripts.Scenarios
                 DeploymentMap = new int?[][]
                 {
                     new int?[] { 1,1,1,1,1,1,1,1,1,1, },
-                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                 },
                 ObjectivesMap = new int?[][]
@@ -224,7 +222,6 @@ namespace Assets.Scripts.Scenarios
                 {
                    new Rule() { Id = 3, Name = "Hidden Alcove", Description = "The last player to occupy the objective tile for the Hidden Alcove owns it. Whoever owns the Hidden Alcove can deploy their units in adjacent tiles" },
                 },
-                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario8);
 
@@ -236,14 +233,14 @@ namespace Assets.Scripts.Scenarios
                 DeploymentMap = new int?[][]
                 {
                     new int?[] { 1,1,1,1,1,1,1,1,1,1, },
-                    new int?[] { 1,1,1,1,1,1,1,1,1,1, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { 0,0,0,0,0,0,0,0,0,0, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
+                    new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { 0,0,0,0,0,0,0,0,0,0, },
                 },
                 ObjectivesMap = new int?[][]
@@ -265,7 +262,6 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                 },
-                EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(34),
             };
             ScenarioList.Add(scenario9);
 

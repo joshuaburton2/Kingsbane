@@ -64,6 +64,7 @@ class DeployExtensionEffect : EffectExtensionUI
         GeneralUIExtensions.InitDropdownOfType(speedModTypeDropdown, new List<StatModifierTypes>());
 
         GeneralUIExtensions.InitDropdownOfType(tagDropdown, new List<Tags> { Tags.Default }, DEFAULT_DROPDOWN_STRING, true);
+        tagDropdown.interactable = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
 
         nameInput.text = "";
         attackValueInput.text = "";
@@ -77,8 +78,10 @@ class DeployExtensionEffect : EffectExtensionUI
         createdByInput.placeholder.color = new Color(0.2f, 0.2f, 0.2f, 0.5f);
 
         activeOwnerToggle.isOn = true;
+        isChoiceToggle.interactable = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
         isChoiceToggle.isOn = false;
-        includeUncollectablesToggle.isOn = true;
+        includeUncollectablesToggle.interactable = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
+        includeUncollectablesToggle.isOn = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
     }
 
     public void ConfirmButton()
@@ -98,8 +101,8 @@ class DeployExtensionEffect : EffectExtensionUI
                 Name = nameInput.text,
                 CardType = CardTypes.Unit,
                 IncludeUncollectables = includeUncollectablesToggle.isOn,
+                IsUnique = isChoiceToggle.isOn,
             };
-            generationFilter.IsUnique = isChoiceToggle.isOn;
 
             if (tagDropdown.captionText.text != DEFAULT_DROPDOWN_STRING)
                 generationFilter.Tag = (Tags)Enum.Parse(typeof(Tags), tagDropdown.captionText.text.Replace(" ", ""));

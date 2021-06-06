@@ -73,7 +73,8 @@ namespace CategoryEnums
             Runeblade,
             Trickster,
             Waystalker,
-            Wildkin
+            Wildkin,
+            Token,
         };
 
         /// <summary>
@@ -1556,11 +1557,11 @@ namespace CategoryEnums
                                 289,
                                 295,
                                 299,
-                                335,
                                 302,
                                 303,
                                 304,
                                 311,
+                                335,
                                 336,
                                 1359,
                             },
@@ -1615,6 +1616,26 @@ namespace CategoryEnums
                         { ClassData.ClassDataFields.Playstyle, "Versatile" },
                         { ClassData.ClassDataFields.Strengths, "Very durable hero, can take upon powerful beastly aspects, strong but few units, self-damage synergies" },
                         { ClassData.ClassDataFields.Weaknesses, "Weak board presence, weak resource generation and card draw" },
+                    },
+                },
+                //Token       (Dominant:Neutral, Secondary:Neutral)
+                new ClassData(ClassList.Token)
+                {
+                    ClassResources = new List<ClassResourceType>()
+                    {
+                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Dominant, CardResource = CardResources.Neutral },
+                        new ClassResourceType() { ResourceType = ClassResourceType.ResourceTypes.Secondary, CardResource = CardResources.Neutral },
+                    },
+                    IsPlayable = false,
+                    DeckTemplates = new List<DeckSaveData>()
+                    {
+                    },
+                    ClassDataStringList = new Dictionary<ClassData.ClassDataFields, string>()
+                    {
+                        { ClassData.ClassDataFields.Description, "NOT PLAYABLE" },
+                        { ClassData.ClassDataFields.Playstyle, "NOT PLAYABLE" },
+                        { ClassData.ClassDataFields.Strengths, "NOT PLAYABLE" },
+                        { ClassData.ClassDataFields.Weaknesses, "NOT PLAYABLE" },
                     },
                 },
         };

@@ -50,6 +50,9 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<HeroTier, UnitData> HeroLookup { get; set; }
     private Dictionary<HeroTier, AbilityData> HeroAbilityLookup { get; set; }
 
+
+    private readonly List<Classes.ClassList> InvalidClasses = new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token };
+
     /// <summary>
     /// 
     /// Loading card library- to be called on initialisation of game
@@ -109,7 +112,8 @@ public class LibraryManager : MonoBehaviour
                     keyList = card.Synergies as List<T>;
                     break;
                 case Type _ when type == typeof(Classes.ClassList):
-                    keyList.Add((T)(object)card.Class);
+                    if (!InvalidClasses.Contains(card.Class))
+                        keyList.Add((T)(object)card.Class);
                     break;
                 //Class Resources type is the cards which are obtainable by a particular class (i.e. they exclusively cost resources which the class can play)
                 case Type _ when type == typeof(ClassResources):
@@ -176,7 +180,8 @@ public class LibraryManager : MonoBehaviour
 
         foreach (var cardClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
-            if (cardClass != Classes.ClassList.Default)
+
+            if (!InvalidClasses.Contains(cardClass))
             {
                 //Obtain all the heroes for a particular class. Intersects the rarity lookup and the classlookup
                 tempHeroLookup.Add(cardClass, RarityLookup[Rarity.Hero].Intersect(ClassLookup[cardClass]).ToList());
@@ -603,9 +608,19 @@ public class LibraryManager : MonoBehaviour
         if (generateCardFilter.CardType != CardTypes.Default)
             cardFilter.CardTypeFilter = new List<CardTypes>() { generateCardFilter.CardType };
         cardFilter.SetFilter = generateCardFilter.SetFilter;
+
+        //If in the setup phase, only want to generate token cards
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Setup)
+        {
+            cardFilter.RaritiyFilter = new List<Rarity>() { Rarity.Token };
+            generateCardFilter.IncludeUncollectables = false;
+        }
         //Adds uncollectable cards if generated filter requires it
         if (generateCardFilter.IncludeUncollectables)
+        {
             cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+            cardFilter.RaritiyFilter.Add(Rarity.Token);
+        }
 
         //Gets the class playable list using the generated filter in order to ensure cards which cannot be generated outside of the players class
         var classResource = new ClassResources(generateCardFilter.ClassPlayable);

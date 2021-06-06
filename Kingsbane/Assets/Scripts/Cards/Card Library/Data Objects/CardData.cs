@@ -118,6 +118,10 @@ public class CardData
                 {
                     totalResource = 1;
                 }
+                else if (Rarity == Rarity.Token)
+                {
+                    totalResource = 0;
+                }
                 else
                 {
                     throw new Exception($"Card {Name} is not a hero");
@@ -154,6 +158,10 @@ public class CardData
                 else if (Rarity == Rarity.NPCHero)
                 {
                     highestResource = 1;
+                }
+                else if (Rarity == Rarity.Token)
+                {
+                    highestResource = 0;
                 }
                 else
                 {

@@ -33,7 +33,8 @@ public class DeployEffect : EffectUI
     public void ResetState()
     {
         deployButton.interactable = true;
-        copyButton.interactable = true;
+        copyButton.interactable = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
+        copyValueInputField.interactable = GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay;
         copyValueInputField.text = "";
     }
 

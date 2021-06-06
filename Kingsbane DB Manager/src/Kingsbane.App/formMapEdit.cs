@@ -197,17 +197,24 @@ namespace Kingsbane.App
                 for (int x = 0; x < GRID_SIZE; x++)
                 {
                     terrainMap[y].Add(TerrainTypes.Regular);
-                    objectiveMap[y].Add(null);
-                    if (y == 0 || y == 1)
-                        deploymentMap[y].Add(1);
-                    else if (y == GRID_SIZE - 1 || y == GRID_SIZE - 2)
-                        deploymentMap[y].Add(0);
-                    else
-                        deploymentMap[y].Add(null);
+                    CreateScenarioTile(y, deploymentMap, objectiveMap);
                 }
             }
 
             scenarioList.Add(defaultScenario);
+        }
+
+        private void CreateScenarioTile(int y, List<List<int?>> deploymentMap, List<List<int?>> objectiveMap)
+        {
+            objectiveMap[y].Add(null);
+            if (y == 0)
+                // || y == 1
+                deploymentMap[y].Add(1);
+            else if (y == GRID_SIZE - 1)
+                // || y == GRID_SIZE - 2
+                deploymentMap[y].Add(0);
+            else
+                deploymentMap[y].Add(null);
         }
 
         private void LoadMapData()
@@ -778,13 +785,7 @@ namespace Kingsbane.App
                 objectiveMap.Add(new List<int?>());
                 for (int x = 0; x < GRID_SIZE; x++)
                 {
-                    objectiveMap[y].Add(null);
-                    if (y == 0 || y == 1)
-                        deploymentMap[y].Add(1);
-                    else if (y == GRID_SIZE - 1 || y == GRID_SIZE - 2)
-                        deploymentMap[y].Add(0);
-                    else
-                        deploymentMap[y].Add(null);
+                    CreateScenarioTile(y, deploymentMap, objectiveMap);
                 }
             }
 

@@ -383,7 +383,7 @@ public class Unit : Card
     {
         if (Owner.IsActivePlayer)
         {
-            if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay && (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared)))
             {
                 RefreshActions();
             }
@@ -751,7 +751,10 @@ public class Unit : Card
                     if (isDestroy)
                     {
                         ReturnCaptureCards();
-                        Owner.AddToGraveyard(this);
+                        if (!HasKeyword(Keywords.Token))
+                        {
+                            Owner.AddToGraveyard(this);
+                        }
                     }
 
                     UpdateOwnerStats(false);
@@ -1177,6 +1180,10 @@ public class Unit : Card
         {
             ReturnToOriginalForm();
             OriginalTransformForm.ReturnToHand();
+        }
+        else if (HasKeyword(Keywords.Token))
+        {
+            RemoveUnit(true);
         }
         else
         {
