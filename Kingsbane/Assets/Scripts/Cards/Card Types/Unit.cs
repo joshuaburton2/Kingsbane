@@ -107,6 +107,7 @@ public class Unit : Card
 
     public List<AbilityData> DefaultAbilities { get { return UnitData.Abilities; } }
     public List<Ability> Abilities { get; set; }
+    public bool HasAbilities { get { return Abilities.Count > 0; } }
 
     public UnitCounter UnitCounter { get; set; }
     public bool IsDeployed { get { return UnitCounter != null; } }
@@ -431,17 +432,17 @@ public class Unit : Card
         if (HasKeyword(Keywords.SpecialSwiftstrike))
         {
             ActionsLeft = 3;
-            AbilityUsesLeft = 3;
+            AbilityUsesLeft = HasAbilities ? 3 : 0;
         }
         else if (HasKeyword(Keywords.Swiftstrike))
         {
             ActionsLeft = 2;
-            AbilityUsesLeft = 1;
+            AbilityUsesLeft = HasAbilities ? 1 : 0;
         }
         else
         {
             ActionsLeft = 1;
-            AbilityUsesLeft = 1;
+            AbilityUsesLeft = HasAbilities ? 1 : 0;
         }
 
         if (LoseNextAction)

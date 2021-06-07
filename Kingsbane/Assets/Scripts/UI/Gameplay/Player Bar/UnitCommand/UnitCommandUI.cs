@@ -178,10 +178,9 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     private void RefreshAbilities()
     {
-        var hasAbilities = unit.Abilities.Count > 0;
         //Hides the button area if the unit has no abilities
-        abilityButtonArea.SetActive(unit.Owner.IsActivePlayer && hasAbilities);
-        if (hasAbilities)
+        abilityButtonArea.SetActive(unit.Owner.IsActivePlayer && unit.HasAbilities);
+        if (unit.HasAbilities)
         {
             abilityButtonObjects = new List<AbilityButton>();
             GameManager.DestroyAllChildren(abilityButtonParent);
