@@ -126,7 +126,10 @@ public class Card
     {
         CardData = _cardData;
         Owner = owner;
-        CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
+        if (CardData.Rarity != Rarity.NPCHero)
+            CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
+        else
+            CardArt = GameManager.instance.imageManager.GetNPCHeroImage(ImageTag);
         CreatedByName = "";
         NumShuffles = 0;
         SpyMasterLurenCard = null;
@@ -272,7 +275,7 @@ public class Card
     public bool RecalculateCost()
     {
         ResourceInit();
-        
+
         foreach (var adjustCostObject in CostAdjustments)
         {
             if (!adjustCostObject.MustBeGreaterThan.HasValue || adjustCostObject.MustBeGreaterThan.HasValue && TotalResource < -adjustCostObject.MustBeGreaterThan.Value)

@@ -28,6 +28,13 @@ public class ImageManager : MonoBehaviour
     }
 
     [Serializable]
+    private class NPCHeroImageObject
+    {
+        public CardImageTags imageTag;
+        public Sprite imageSprite;
+    }
+
+    [Serializable]
     private class UpgradeImageObject
     {
         public UpgradeImageTags imageTag;
@@ -48,6 +55,8 @@ public class ImageManager : MonoBehaviour
     [SerializeField]
     private List<ClassImageList> classImageList;
     [SerializeField]
+    private List<NPCHeroImageObject> npcHeroImageList;
+    [SerializeField]
     private List<UpgradeImageObject> upgradeImages;
 
     /// <summary>
@@ -60,6 +69,25 @@ public class ImageManager : MonoBehaviour
         var image = defaultImage;
 
         var imageObject = classImageList.FirstOrDefault(x => x.Class == requiredClass).imageList.FirstOrDefault(x => x.imageTag == imageTag);
+
+        if (imageObject == null)
+            image = defaultImage;
+        else
+            image = imageObject.imageSprite;
+
+        return image;
+    }
+
+    /// <summary>
+    /// 
+    /// Gets an image for an NPC Hero Card based on a particular tag
+    /// 
+    /// </summary>
+    public Sprite GetNPCHeroImage(CardImageTags imageTag)
+    {
+        var image = defaultImage;
+
+        var imageObject = npcHeroImageList.FirstOrDefault(x => x.imageTag == imageTag);
 
         if (imageObject == null)
             image = defaultImage;

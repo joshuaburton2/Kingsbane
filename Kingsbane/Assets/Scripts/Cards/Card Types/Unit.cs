@@ -354,17 +354,24 @@ public class Unit : Card
 
         var canOccupy = false;
 
-        if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
+        if (HasKeyword(Keywords.Structure))
         {
-            canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+            if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
+            {
+                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+            }
+            if (HasKeyword(Keywords.Ethereal))
+            {
+                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
+            }
+            if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
+            {
+                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+            }
         }
-        if (HasKeyword(Keywords.Ethereal))
+        else
         {
-            canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
-        }
-        if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
-        {
-            canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+            return canOccupy;
         }
 
         return canOccupy;
