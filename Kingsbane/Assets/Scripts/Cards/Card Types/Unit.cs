@@ -354,7 +354,7 @@ public class Unit : Card
 
         var canOccupy = false;
 
-        if (HasKeyword(Keywords.Structure))
+        if (!HasKeyword(Keywords.Structure))
         {
             if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
             {
@@ -371,7 +371,7 @@ public class Unit : Card
         }
         else
         {
-            return canOccupy;
+            return true;
         }
 
         return canOccupy;
