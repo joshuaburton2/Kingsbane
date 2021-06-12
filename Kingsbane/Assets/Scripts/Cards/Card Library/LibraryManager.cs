@@ -744,8 +744,8 @@ public class LibraryManager : MonoBehaviour
         {
             var selectedLootCard = new LootCard();
 
-            do
-            {
+            //do
+            //{
                 //Randomly determines a card to be added
                 //First determines a random weighting
                 var randomVal = UnityEngine.Random.Range(0, totalWeighting);
@@ -763,8 +763,8 @@ public class LibraryManager : MonoBehaviour
                         break;
                     }
                 }
-                //If the selection already contains the card, repeats the random selection
-            } while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
+                //If the selection already contains the card, repeats the random selection (TURNED OFF FOR NOW)
+            //} while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
 
             lootSelection.Add(selectedLootCard);
         }

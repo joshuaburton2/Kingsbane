@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootArea: {fileID: 4496596060325170201}
   deckListUI: {fileID: 0}
+  campaignManagerUI: {fileID: 0}
   addSelectedButton: {fileID: 4496596059707165471}
   refreshButton: {fileID: 4496596060288072251}
   cardsToSelectText: {fileID: 4496596060088296445}
@@ -444,8 +445,8 @@ MonoBehaviour:
     type: 3}
   lootStatPrefab: {fileID: 6709459030343833672, guid: cbdb6fdb65e16b24ea85bfd4375ce9a6,
     type: 3}
-  numLootCards: 6
-  numCardsToSelect: 2
+  numLootCards: 8
+  numCardsToSelect: 3
   scalingFactor: 0.32
 --- !u!1 &4496596058782340452
 GameObject:
@@ -1787,9 +1788,9 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 245.76, y: 340.48}
-  m_Spacing: {x: 110, y: 40}
+  m_Spacing: {x: 60, y: 40}
   m_Constraint: 1
-  m_ConstraintCount: 3
+  m_ConstraintCount: 4
 --- !u!1 &4496596060352335030
 GameObject:
   m_ObjectHideFlags: 0
