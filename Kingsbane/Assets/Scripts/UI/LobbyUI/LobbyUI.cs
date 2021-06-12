@@ -226,6 +226,7 @@ public class LobbyUI : MonoBehaviour
         }
         else
         {
+            playerDecks[playerId] = null;
             return false;
         }
     }

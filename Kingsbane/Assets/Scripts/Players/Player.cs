@@ -33,7 +33,7 @@ public class Player
     public int CurrentEmpowered { get; set; }
     public int BaseSummonCapactiy { get; set; }
     public int SummonCapcity { get; set; }
-    public int CurrentSummons { get; set; }
+    public int CurrentSummons { get { return DeployedSummonUnits.Count; } }
     public bool DeathDefiant { get { return DeckData.DeathDefiant; } set { DeckData.DeathDefiant = value; } }
     public bool CompletedBonusObjective { get; set; }
 
@@ -57,7 +57,6 @@ public class Player
         PassiveEmpowered = DeckData.PassiveEmpowered;
         BaseSummonCapactiy = DeckData.BaseSummonCapactiy;
         CurrentEmpowered = PassiveEmpowered;
-        CurrentSummons = 0;
         SummonCapcity = BaseSummonCapactiy;
         CompletedBonusObjective = false;
 
@@ -652,34 +651,22 @@ public class Player
         SummonCapcity = Mathf.Max(1, SummonCapcity);
     }
 
-    /// <summary>
-    /// 
-    /// Modify the current summon amount. Returns true or false if the increase goes above the players Summon Capacity
-    /// 
-    /// </summary>
-    public bool ModifyCurrentSummons(int value = 1)
-    {
-        CurrentSummons += value;
-        bool exceedCapacity = CurrentSummons > SummonCapcity;
-        CurrentSummons = Mathf.Clamp(CurrentSummons, 0, SummonCapcity);
-        return exceedCapacity;
-    }
-
     public void AddSummon(UnitCounter summonCounter)
     {
-        var exceedCapacity = ModifyCurrentSummons();
         DeployedSummonUnits.Add(summonCounter);
 
-        if (exceedCapacity)
+        if (CurrentSummons > SummonCapcity)
         {
+            Debug.Log(DeployedSummonUnits.Count);
             GameManager.instance.effectManager.DestroyUnit(DeployedSummonUnits.FirstOrDefault().Unit);
+            Debug.Log(DeployedSummonUnits.Count);
         }
     }
 
     public void RemoveSummon(UnitCounter summonCounter)
     {
+        Debug.Log(DeployedSummonUnits.Contains(summonCounter));
         DeployedSummonUnits.Remove(summonCounter);
-        ModifyCurrentSummons(-1);
     }
 
     public void CheckWarden()
@@ -694,32 +681,35 @@ public class Player
     {
         if (UsedResources.Contains(CardResources.Gold))
         {
-            var newCard = card;
-            if (isCopy)
-                newCard = GameManager.instance.libraryManager.CreateCard(card.CardData, this);
-            AddToHand(newCard, "Recruit");
-
-            foreach (var costAdjustment in card.CostAdjustments)
+            if (!(card.Type == CardTypes.Unit && ((Unit)card).HasKeyword(Keywords.Token)))
             {
-                if (!costAdjustment.FromPassive)
-                    newCard.CostAdjustments.Add(new AdjustCostObject()
-                    {
-                        Value = costAdjustment.Value,
-                        AdjustmentType = costAdjustment.AdjustmentType,
-                        MinCost = costAdjustment.MinCost,
-                        MustBeGreaterThan = costAdjustment.MustBeGreaterThan,
-                        TargetResource = CardResources.Gold,
-                    });
-            }
-            newCard.ResourceConvert(CardResources.Gold);
-            newCard.RecalculateCost();
-            newCard.Owner = this;
+                var newCard = card;
+                if (isCopy)
+                    newCard = GameManager.instance.libraryManager.CreateCard(card.CardData, this);
+                AddToHand(newCard, "Recruit");
 
-            if (HasSpecialPassive(SpecialPassiveEffects.ThiefsGloves, out Passive thiefsGlovesPassive))
-            {
-                for (int i = 0; i < thiefsGlovesPassive.SpecialPassiveProperty; i++)
+                foreach (var costAdjustment in card.CostAdjustments)
                 {
-                    CopyHandCard(newCard, out Card newCopy, "Recruit");
+                    if (!costAdjustment.FromPassive)
+                        newCard.CostAdjustments.Add(new AdjustCostObject()
+                        {
+                            Value = costAdjustment.Value,
+                            AdjustmentType = costAdjustment.AdjustmentType,
+                            MinCost = costAdjustment.MinCost,
+                            MustBeGreaterThan = costAdjustment.MustBeGreaterThan,
+                            TargetResource = CardResources.Gold,
+                        });
+                }
+                newCard.ResourceConvert(CardResources.Gold);
+                newCard.RecalculateCost();
+                newCard.Owner = this;
+
+                if (HasSpecialPassive(SpecialPassiveEffects.ThiefsGloves, out Passive thiefsGlovesPassive))
+                {
+                    for (int i = 0; i < thiefsGlovesPassive.SpecialPassiveProperty; i++)
+                    {
+                        CopyHandCard(newCard, out Card newCopy, "Recruit");
+                    }
                 }
             }
         }

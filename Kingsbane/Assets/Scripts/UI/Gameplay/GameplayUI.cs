@@ -114,6 +114,8 @@ public class GameplayUI : MonoBehaviour
 
         actionButtonText.text = "Start Game";
         currentRoundText.text = GameManager.instance.CurrentGamePhase.GetEnumDescription();
+
+        effectBarUI.RefreshEffectList();
     }
 
     public void ActionButton()

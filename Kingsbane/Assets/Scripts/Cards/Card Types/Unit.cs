@@ -754,6 +754,7 @@ public class Unit : Card
                     if (SpymasterLurenCards.Any())
                         GameManager.instance.effectManager.ReturnLurenCards(this);
 
+                    UpdateOwnerStats(false);
                     GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
 
                     if (isDestroy)
@@ -765,7 +766,6 @@ public class Unit : Card
                         }
                     }
 
-                    UpdateOwnerStats(false);
                     GameManager.instance.uiManager.RefreshUI();
                     GameManager.instance.CheckWarden();
                 }

@@ -872,6 +872,7 @@ public class EffectManager : MonoBehaviour
         if (unit.Owner.Id != player.Id && !unit.IsHero)
         {
             RemoveUnit(unit);
+            unit.InitCard(unit.CardData, unit.Owner);
             player.RecruitCard(unit, false);
             GameManager.instance.uiManager.RefreshUI();
         }
