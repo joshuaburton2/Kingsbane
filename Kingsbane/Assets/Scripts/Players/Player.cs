@@ -23,7 +23,7 @@ public class Player
     public List<UnitCounter> DeployedUnits { get; set; }
     public List<Unit> RedeployUnits { get; set; }
     public List<UnitCounter> DeployedSummonUnits { get; set; }
-    public int ItemCapacity { get { return DeckData.ItemCapacity; } }
+    public int ItemCapacity { get; set; }
     public List<Passive> Passives { get; set; }
 
     public List<PlayerResource> Resources { get; set; }
@@ -49,6 +49,7 @@ public class Player
         Graveyard = new CardList();
         Discard = new CardList();
         Upgrades = DeckData.UpgradeList;
+        ItemCapacity = DeckData.ItemCapacity;
         Hero = (Hero)GameManager.instance.libraryManager.CreateCard(DeckData.HeroCard, this);
         DeployedUnits = new List<UnitCounter>();
         RedeployUnits = new List<Unit>();
@@ -649,6 +650,13 @@ public class Player
     {
         SummonCapcity += value;
         SummonCapcity = Mathf.Max(1, SummonCapcity);
+    }
+
+    public void ModifyItemCapacity(int value = 1)
+    {
+        ItemCapacity += value;
+        ItemCapacity = Mathf.Max(1, ItemCapacity);
+        Hero.ItemCapacity = ItemCapacity;
     }
 
     public void AddSummon(UnitCounter summonCounter)
