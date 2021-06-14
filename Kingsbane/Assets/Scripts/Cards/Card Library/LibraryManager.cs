@@ -716,21 +716,26 @@ public class LibraryManager : MonoBehaviour
             }
 
             //If the card shares synergies with the cards already in the deck, increases the weighting accordingly
+            var scalingSynergyWeighting = 0;
             foreach (var synergy in card.Synergies)
             {
                 if (deckSynergyCounts.TryGetValue(synergy, out int synergyCount))
                 {
-                    lootCard.Weighting += synergyCount * synergyWeighting;
+                    //Debug.Log($"{card.Name}, {synergy}, {Mathf.Max(1, synergyCount * synergyWeighting - scalingSynergyWeighting)}");
+                    lootCard.Weighting += Mathf.Max(1, synergyCount * synergyWeighting - scalingSynergyWeighting);
+                    scalingSynergyWeighting++;
                 }
             }
 
             //Reduces the weighting of the card based on the number of that card already in the deck
             var duplicateCount = deckData.CardList.Count(x => x.Id == card.Id);
+
             lootCard.Weighting += duplicateCount * duplicateWeighting;
 
             //Prevents weighting from being considered if it is below 0
             if (lootCard.Weighting > 0)
             {
+                //Debug.Log($"{card.Name}, {lootCard.Weighting}");
                 lootCards.Add(lootCard);
             }
 

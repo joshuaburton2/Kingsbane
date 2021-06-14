@@ -1043,6 +1043,7 @@ MonoBehaviour:
       imageSprite: {fileID: 21300000, guid: c5becc04b98c7774a81962e51232c593, type: 3}
     - imageTag: 408
       imageSprite: {fileID: 21300000, guid: b039a725c3c388748b4a63600daf1680, type: 3}
+  npcHeroImageList: []
   upgradeImages: []
 --- !u!1 &8891978394799893638
 GameObject:
@@ -1562,18 +1563,18 @@ MonoBehaviour:
     type: 3}
   rarityWeightings:
   - rarity: 1
-    weighting: 400
+    weighting: 800
   - rarity: 2
-    weighting: 200
+    weighting: 400
   - rarity: 3
-    weighting: 50
+    weighting: 100
   - rarity: 4
     weighting: 10
   - rarity: 5
     weighting: 1
   classWeighting: 25
   synergyWeighting: 10
-  duplicateWeighting: -50
+  duplicateWeighting: -100
 --- !u!1 &8891978396315567774
 GameObject:
   m_ObjectHideFlags: 0
