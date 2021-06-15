@@ -176,14 +176,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImage: {fileID: 21300000, guid: 15715ea6b30addf4c9c1f1ad2898d1af, type: 3}
   mapImages:
-  - imageTag: 4
+  - imageTag: 9
     imageSprite: {fileID: 21300000, guid: 18409b73c93f4414880bb6991aa7357c, type: 3}
-  - imageTag: 3
+  - imageTag: 7
     imageSprite: {fileID: 21300000, guid: 7cfa5293f6a5798499d3a8a103ba0327, type: 3}
-  - imageTag: 2
+  - imageTag: 4
     imageSprite: {fileID: 21300000, guid: 4d3c1ec9a182d4e48801573547df32c0, type: 3}
   - imageTag: 1
     imageSprite: {fileID: 21300000, guid: dd7613bcd49e5a8499a2af3354c111c5, type: 3}
+  - imageTag: 14
+    imageSprite: {fileID: 21300000, guid: 7d2b26ea414bebe4f9785f4477ec956b, type: 3}
+  - imageTag: 6
+    imageSprite: {fileID: 21300000, guid: 3e70c3edd79592a4e9b99b2fd7436d40, type: 3}
+  - imageTag: 5
+    imageSprite: {fileID: 21300000, guid: abfdaf7c819c93f429aa4c830d8e2335, type: 3}
+  - imageTag: 2
+    imageSprite: {fileID: 21300000, guid: 5b71f48597dab9048a598f3e19dff112, type: 3}
+  - imageTag: 8
+    imageSprite: {fileID: 21300000, guid: d468d41bd51f967408f2d8aceccdbed3, type: 3}
+  - imageTag: 12
+    imageSprite: {fileID: 21300000, guid: 446efe676ec34f2488a594a6c851aef0, type: 3}
+  - imageTag: 11
+    imageSprite: {fileID: 21300000, guid: b672d86e71b68a04dac8ec4782e30c53, type: 3}
+  - imageTag: 3
+    imageSprite: {fileID: 21300000, guid: ea0334080a3f11d459e135c841550f67, type: 3}
+  - imageTag: 13
+    imageSprite: {fileID: 21300000, guid: 1d3a2652ade8b4741a5b2e1c4294ba96, type: 3}
+  - imageTag: 10
+    imageSprite: {fileID: 21300000, guid: f94ef35ffa5242b4cadddb76d2959930, type: 3}
   classImageList:
   - Class: 1
     imageList:
