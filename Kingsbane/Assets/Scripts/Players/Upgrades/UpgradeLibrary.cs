@@ -2224,6 +2224,336 @@ public class UpgradeLibrary
         };
         UpgradeList.Add(upgrade97);
 
+        var upgrade98 = new UpgradeData()
+        {
+            Id = 98,
+            Name = "Elder's Protection",
+            ImageTag = UpgradeImageTags.Elders_Protection,
+            Text = @"After you play a unit, give it <b>Protected (2)</b>",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.EldersProtection,
+        };
+        UpgradeList.Add(upgrade98);
+
+        var upgrade99 = new UpgradeData()
+        {
+            Id = 99,
+            Name = "Legion's Finest",
+            ImageTag = UpgradeImageTags.Legions_Finest,
+            Text = @"Your Soldier and Captain units have +1 Attack, +1 Health",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.LegionsFinest,
+        };
+        UpgradeList.Add(upgrade99);
+
+        var upgrade100 = new UpgradeData()
+        {
+            Id = 100,
+            Name = "From the Shadows",
+            ImageTag = UpgradeImageTags.From_the_Shadows,
+            Text = @"While your units are <b>Stealthed</b>, they have +2 Attack",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.FromtheShadows,
+        };
+        UpgradeList.Add(upgrade100);
+
+        var upgrade101 = new UpgradeData()
+        {
+            Id = 101,
+            Name = "Dark Woods",
+            ImageTag = UpgradeImageTags.Dark_Woods,
+            Text = @"At the end of your turn, give a random, friendly, non-<b>Stealth</b> unit that is in a difficult terrain tile <b>Stealth</b>",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.DarkWoods,
+        };
+        UpgradeList.Add(upgrade101);
+
+        var upgrade102 = new UpgradeData()
+        {
+            Id = 102,
+            Name = "Corrupting Power",
+            ImageTag = UpgradeImageTags.Corrupting_Power,
+            Text = @"Your hero is <b>Indestructible</b>, unless something can override your powers",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.CorruptingPower,
+        };
+        UpgradeList.Add(upgrade102);
+
+        var upgrade103 = new UpgradeData()
+        {
+            Id = 103,
+            Name = "Void Swarm",
+            ImageTag = UpgradeImageTags.Void_Swarm,
+            Text = @"After you <b>Discard</b> a card, you can choose to <b>Summon</b> a Voidling adjacent to your hero. Set its Attack and Health equal to the total cost of the card",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.VoidSwarm,
+        };
+        UpgradeList.Add(upgrade103);
+
+        var upgrade104 = new UpgradeData()
+        {
+            Id = 104,
+            Name = "Boon of Mogris",
+            ImageTag = UpgradeImageTags.Boon_of_Mogris,
+            Text = @"Your units with <b>Conduit</b> have +3 Health",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.BoonofMogris,
+        };
+        UpgradeList.Add(upgrade104);
+
+        var upgrade105 = new UpgradeData()
+        {
+            Id = 105,
+            Name = "Curse of the Barrows",
+            ImageTag = UpgradeImageTags.Curse_of_the_Barrows,
+            Text = @"Whenever an enemy unit dies on your turn, deploy a Cursed Shade in its place under your control",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.CurseoftheBarrows,
+        };
+        UpgradeList.Add(upgrade105);
+
+        var upgrade106 = new UpgradeData()
+        {
+            Id = 106,
+            Name = "Army of Shadows",
+            ImageTag = UpgradeImageTags.Army_of_Shadows,
+            Text = @"Increase your <b>Summon</b> capacity to 3 at the start of the scenario",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ArmyofShadows,
+        };
+        UpgradeList.Add(upgrade106);
+
+        var upgrade107 = new UpgradeData()
+        {
+            Id = 107,
+            Name = "Burning Trees",
+            ImageTag = UpgradeImageTags.Burning_Trees,
+            Text = @"Whenever an enemy unit enters or starts its turn in a tile adjacent to a friendly Treant unit, deal 3 damage to it.",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.BurningTrees,
+        };
+        UpgradeList.Add(upgrade107);
+
+        var upgrade108 = new UpgradeData()
+        {
+            Id = 108,
+            Name = "Cursed in Undeath",
+            ImageTag = UpgradeImageTags.Cursed_in_Undeath,
+            Text = @"Whenever your hero dies, they are redeployed instead with their max health permanently halved. If their max health goes below 7, they die permanently instead",
+            LoreText = @"Whenever your hero dies, they are redeployed instead with their max health permanently halved. If their max health goes below 7, they die permanently instead",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.CursedinUndeath,
+        };
+        UpgradeList.Add(upgrade108);
+
+        var upgrade109 = new UpgradeData()
+        {
+            Id = 109,
+            Name = "Dragonslayer's Quiver",
+            ImageTag = UpgradeImageTags.Dragonslayers_Quiver,
+            Text = @"Whenever you generate a shot spell, you create an additional random shot spell",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.DragonslayersQuiver,
+        };
+        UpgradeList.Add(upgrade109);
+
+        var upgrade110 = new UpgradeData()
+        {
+            Id = 110,
+            Name = "Bow of Shadows",
+            ImageTag = UpgradeImageTags.Bow_of_Shadows,
+            Text = @"Your hero's attacks also hit a random enemy unit adjacent to the target. Your shot effects apply to both units",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.BowofShadows,
+        };
+        UpgradeList.Add(upgrade110);
+
+        var upgrade111 = new UpgradeData()
+        {
+            Id = 111,
+            Name = "Master of the Forge",
+            ImageTag = UpgradeImageTags.Master_of_the_Forge,
+            Text = @"Increase your item capacity to 2. Your items have +3 Durability",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.MasteroftheForge,
+        };
+        UpgradeList.Add(upgrade111);
+
+        var upgrade112 = new UpgradeData()
+        {
+            Id = 112,
+            Name = "Adaptive Armour",
+            ImageTag = UpgradeImageTags.Adaptive_Armour,
+            Text = @"At the start of your turn, if your units have less <b>Protected</b> than your <b>Empowered</b> value, increase their <b>Protected</b> to your <b>Empowered</b> value",
+            LoreText = @"",
+            HonourPoints = 0,
+            IsRepeatable = false,
+            NPCLocked = true,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.AdaptiveArmour,
+        };
+        UpgradeList.Add(upgrade112);
+
         upgrade2.UpgradePrerequisites = new List<UpgradeData> { upgrade1 };
         upgrade4.UpgradePrerequisites = new List<UpgradeData> { upgrade3 };
         upgrade6.UpgradePrerequisites = new List<UpgradeData> { upgrade5 };
@@ -2264,11 +2594,11 @@ namespace CategoryEnums
 {
     public enum UpgradeTags
     {
-        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature, SupplyLines, DeathDefiant, SpellstoneAmulet, OrnateSpellstoneAmulet, EfficientQuartermasters, ExpertQuartermasters, StandAlone, ImportCraftsmen, ImportMasterCraftsmen, HonourThroughBattle, StrengthinHonour, ReserveForces, GoldenChalice, MithrilChalice, DivineProtection, WeaponMaster, WeaponVirtuoso, WoundResistant, BetterHires, TheBestHires, MonetaryMotivation, BreadthofKnowledge, UltimateKnowledge, PotentForetelling, CircletofPower, CrownoftheArcane, SummonersRod, FeralNature, HeartoftheWild, RestoredHeartoftheWild, VoidPortal, ConvergantVoidPortal, SoulSacrifice, ThiefsGloves, ThiefsTools, ShadowMeld, ReplicativeSpellbook, StaffofAges, StaffofTime, ArtofWar, PreparedForces, OrganisedForces, OrboftheElements, ElementalWell, MagisFury, ConstrictingNature, NaturesThorns, FaeriesShroud, RestorativeBlessing, HolyBlessing, ShadowCrystal, SortedCollection, OrderedCollection, CategorizingAlgorithm, MoonlitVial, MoongracedPhial, StarsWrath, ObligatoryContracts, BindingContracts, GatherCowards, HallowedScriptures, AngelicAscension, HeavenlyAscension, ManaShield, ManaRuneShield, SwiftBlades, JaggedEdges, SerratedEdges, GhostCloak, ReturningQuiver, NeverEndingQuiver, BeastialFury, PainDrivenWarriors, UndyingElites, ShapeshiftersMask
+        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature, SupplyLines, DeathDefiant, SpellstoneAmulet, OrnateSpellstoneAmulet, EfficientQuartermasters, ExpertQuartermasters, StandAlone, ImportCraftsmen, ImportMasterCraftsmen, HonourThroughBattle, StrengthinHonour, ReserveForces, GoldenChalice, MithrilChalice, DivineProtection, WeaponMaster, WeaponVirtuoso, WoundResistant, BetterHires, TheBestHires, MonetaryMotivation, BreadthofKnowledge, UltimateKnowledge, PotentForetelling, CircletofPower, CrownoftheArcane, SummonersRod, FeralNature, HeartoftheWild, RestoredHeartoftheWild, VoidPortal, ConvergantVoidPortal, SoulSacrifice, ThiefsGloves, ThiefsTools, ShadowMeld, ReplicativeSpellbook, StaffofAges, StaffofTime, ArtofWar, PreparedForces, OrganisedForces, OrboftheElements, ElementalWell, MagisFury, ConstrictingNature, NaturesThorns, FaeriesShroud, RestorativeBlessing, HolyBlessing, ShadowCrystal, SortedCollection, OrderedCollection, CategorizingAlgorithm, MoonlitVial, MoongracedPhial, StarsWrath, ObligatoryContracts, BindingContracts, GatherCowards, HallowedScriptures, AngelicAscension, HeavenlyAscension, ManaShield, ManaRuneShield, SwiftBlades, JaggedEdges, SerratedEdges, GhostCloak, ReturningQuiver, NeverEndingQuiver, BeastialFury, PainDrivenWarriors, UndyingElites, ShapeshiftersMask, EldersProtection, LegionsFinest, FromtheShadows, DarkWoods, CorruptingPower, VoidSwarm, BoonofMogris, CurseoftheBarrows, ArmyofShadows, BurningTrees, CursedinUndeath, DragonslayersQuiver, BowofShadows, MasteroftheForge, AdaptiveArmour
     }
 
     public enum UpgradeImageTags
     {
-        Hero_1, Hero_II, Ability_I, Ability_II, Devoted_Followers_I, Devoted_Followers_II, Lasting_Prayers, Strength_of_Arms_I, Strength_of_Arms_II, Battle_Surges, Claim_Bounty_I, Claim_Bounty_II, Emergency_Reserves, Well_of_Knowledge_I, Well_of_Knowledge_II, Stimulate_Learning, Mana_Reserves_I, Mana_Reserves_II, Restore_Power, Wild_Growth_I, Wild_Growth_II, Cycle_of_Nature, Supply_Lines, Death_Defiant, Spellstone_Amulet, Ornate_Spellstone_Amulet, Efficient_Quartermasters, Expert_Quartermasters, Stand_Alone, Import_Craftsmen, Import_Master_Craftsmen, Honour_Through_Battle, Strength_in_Honour, Reserve_Forces, Golden_Chalice, Mithril_Chalice, Divine_Protection, Weapon_Master, Weapon_Virtuoso, Wound_Resistant, Better_Hires, The_Best_Hires, Monetary_Motivation, Breadth_of_Knowledge, Ultimate_Knowledge, Potent_Foretelling, Circlet_of_Power, Crown_of_the_Arcane, Summoners_Rod, Feral_Nature, Heart_of_the_Wild, Restored_Heart_of_the_Wild, Void_Portal, Convergant_Void_Portal, Soul_Sacrifice, Theifs_Gloves, Thiefs_Tools, Shadow_Meld, Replicative_Spellbook, Staff_of_Ages, Staff_of_Time, Art_of_War, Prepared_Forces, Organised_Forces, Orb_of_the_Elements, Elemental_Well, Magis_Fury, Constricting_Nature, Natures_Thorns, Faeries_Shroud, Restorative_Blessing, Holy_Blessing, Shadow_Crystal, Sorted_Collection, Ordered_Collection, Categorizing_Algorithm, Moonlit_Vial, Moongraced_Phial, Stars_Wrath, Obligatory_Contracts, Binding_Contracts, Gather_Cowards, Hallowed_Scriptures, Angelic_Ascension, Heavenly_Ascension, Mana_Shield, ManaRune_Shield, Swift_Blades, Jagged_Edges, Serrated_Edges, Ghost_Cloak, Returning_Quiver, NeverEnding_Quiver, Beastial_Fury, PainDriven_Warriors, Undying_Elites, Shapeshifters_Mask
+        Hero_1, Hero_II, Ability_I, Ability_II, Devoted_Followers_I, Devoted_Followers_II, Lasting_Prayers, Strength_of_Arms_I, Strength_of_Arms_II, Battle_Surges, Claim_Bounty_I, Claim_Bounty_II, Emergency_Reserves, Well_of_Knowledge_I, Well_of_Knowledge_II, Stimulate_Learning, Mana_Reserves_I, Mana_Reserves_II, Restore_Power, Wild_Growth_I, Wild_Growth_II, Cycle_of_Nature, Supply_Lines, Death_Defiant, Spellstone_Amulet, Ornate_Spellstone_Amulet, Efficient_Quartermasters, Expert_Quartermasters, Stand_Alone, Import_Craftsmen, Import_Master_Craftsmen, Honour_Through_Battle, Strength_in_Honour, Reserve_Forces, Golden_Chalice, Mithril_Chalice, Divine_Protection, Weapon_Master, Weapon_Virtuoso, Wound_Resistant, Better_Hires, The_Best_Hires, Monetary_Motivation, Breadth_of_Knowledge, Ultimate_Knowledge, Potent_Foretelling, Circlet_of_Power, Crown_of_the_Arcane, Summoners_Rod, Feral_Nature, Heart_of_the_Wild, Restored_Heart_of_the_Wild, Void_Portal, Convergant_Void_Portal, Soul_Sacrifice, Theifs_Gloves, Thiefs_Tools, Shadow_Meld, Replicative_Spellbook, Staff_of_Ages, Staff_of_Time, Art_of_War, Prepared_Forces, Organised_Forces, Orb_of_the_Elements, Elemental_Well, Magis_Fury, Constricting_Nature, Natures_Thorns, Faeries_Shroud, Restorative_Blessing, Holy_Blessing, Shadow_Crystal, Sorted_Collection, Ordered_Collection, Categorizing_Algorithm, Moonlit_Vial, Moongraced_Phial, Stars_Wrath, Obligatory_Contracts, Binding_Contracts, Gather_Cowards, Hallowed_Scriptures, Angelic_Ascension, Heavenly_Ascension, Mana_Shield, ManaRune_Shield, Swift_Blades, Jagged_Edges, Serrated_Edges, Ghost_Cloak, Returning_Quiver, NeverEnding_Quiver, Beastial_Fury, PainDriven_Warriors, Undying_Elites, Shapeshifters_Mask, Elders_Protection, Legions_Finest, From_the_Shadows, Dark_Woods, Corrupting_Power, Void_Swarm, Boon_of_Mogris, Curse_of_the_Barrows, Army_of_Shadows, Burning_Trees, Cursed_in_Undeath, Dragonslayers_Quiver, Bow_of_Shadows, Master_of_the_Forge, Adaptive_Armour
     }
 }

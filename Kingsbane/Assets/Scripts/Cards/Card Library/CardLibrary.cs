@@ -1427,6 +1427,162 @@ public class CardLibrary
         };
         AbilityList.Add(ability1128);
 
+        var ability1129 = new AbilityData()
+        {
+            Id = 1129,
+            Name = "Flame Breath",
+            Text = @"Deal 2 damage to all units in area of Cone 3",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1129);
+
+        var ability1130 = new AbilityData()
+        {
+            Id = 1130,
+            Name = "Call of the Wild",
+            Text = @"Draw a beast from your deck and give it +1 Attack, +1 Health",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1130);
+
+        var ability1131 = new AbilityData()
+        {
+            Id = 1131,
+            Name = "Elder's Wisdom",
+            Text = @"<b>Divinate (1)</b> and give a friendly unit within range 1 <b>Protected (2)</b>",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1131);
+
+        var ability1132 = new AbilityData()
+        {
+            Id = 1132,
+            Name = "Legion's Aid",
+            Text = @"Deploy a Legionnair unit adjacent to this unit",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1132);
+
+        var ability1133 = new AbilityData()
+        {
+            Id = 1133,
+            Name = "Sap",
+            Text = @"<b>Redeploy</b> an adjacent unit, then gain <b>Stealth</b> until the start of your next turn",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1133);
+
+        var ability1134 = new AbilityData()
+        {
+            Id = 1134,
+            Name = "Fist of Mogris",
+            Text = @"<b>Discard</b> a card and choose an area of Radius 2. At the start of your next turn, deal damage equal to the cards total cost",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1134);
+
+        var ability1135 = new AbilityData()
+        {
+            Id = 1135,
+            Name = "Soul Pact",
+            Text = @"Return a random card in your <b>Discard</b> pool to your hand",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1135);
+
+        var ability1136 = new AbilityData()
+        {
+            Id = 1136,
+            Name = "Shadowdrain",
+            Text = @"Deal 4 <b>Lifebond</b> damage to an adjacent unit and reduce its speed by 1 until the start of your next turn",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1136);
+
+        var ability1137 = new AbilityData()
+        {
+            Id = 1137,
+            Name = "Flame Tempest",
+            Text = @"Deal 2 damage to all units in an area of Radius 2 within range 3. If the unit is a friendly Treant, restore 2 health instead",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1137);
+
+        var ability1138 = new AbilityData()
+        {
+            Id = 1138,
+            Name = "Dragon's Curse",
+            Text = @"Deal 1 damage randomly split among all enemy units. Upgrades after each use",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1138);
+
+        var ability1139 = new AbilityData()
+        {
+            Id = 1139,
+            Name = "Hammer of Sithrimus",
+            Text = @"Deal 3 damage and <b>Root</b> all units in area of Radius 2 centred on this unit",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1139);
+
+        var ability1140 = new AbilityData()
+        {
+            Id = 1140,
+            Name = "Se'Carr's Chosen",
+            Text = @"<b>Discard</b> a card to deploy a Tentacle of Se'Carr within range 5. Set its attack equal to the total cost of the <b>Discarded</b> card.",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = false,
+        };
+        AbilityList.Add(ability1140);
+
+        var ability1141 = new AbilityData()
+        {
+            Id = 1141,
+            Name = "Soul Pact",
+            Text = @"Return a random card in your <b>Discard</b> pool to your hand",
+
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1141);
+
         var card2 = new UnitData()
         {
             Id = 2,
@@ -3484,7 +3640,7 @@ Whenever you <b>Discard</b> a card or a friendly unit dies within Range 2, draw 
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
-            Text = @"Destroy a friendly unit. Restore health equal to the destroyed unit's health to another unit. Draw a card",
+            Text = @"Destroy a friendly minion. Restore health equal to the destroyed unit's health to another unit. Draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -3646,7 +3802,8 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
-            Text = @"<b>Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario."" Deal 3 <b>Piercing</b> damage to your hero",
+            Text = @"<b>Conduit
+Deployment:</b> Gain the <b>Passive:</b> ""You can <b>Summon</b> one additional unit for the rest of the scenario."" Deal 3 <b>Piercing</b> damage to your hero",
             LoreText = @"",
             Notes = @"",
 
@@ -3655,7 +3812,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
             Rarity = Rarity.Rare,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Human, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive, Tags.Piercing },
+            Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Deployment, Tags.Abyssal, Tags.SelfDamage, Tags.Passive, Tags.Piercing },
             Synergies = new List<Synergies> { Synergies.Draw, Synergies.Summon, Synergies.Deployment, Synergies.ShortRange, Synergies.Restoration, Synergies.SelfDamage },
             UnitTag = new List<UnitTags>()
             {
@@ -3671,7 +3828,7 @@ Whenever you <b>Discard</b> a card, gain Attack and Health equal to its total co
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Conduit },
         };
         CardList.Add(card76);
 
@@ -3832,7 +3989,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Mana, 3), },
 
-            Text = @"Destroy a friendly unit. Deal damage to another unit equal to the destroyed unit's health",
+            Text = @"Destroy a friendly minion. Deal damage to another unit equal to the destroyed unit's health",
             LoreText = @"",
             Notes = @"",
 
@@ -4200,7 +4357,7 @@ Deal <b>Piercing</b> damage to your hero equal to half their remaining health",
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Flying</b>
-Whenever this unit takes damage from an Air spell or unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a friendly Air spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -4238,7 +4395,7 @@ Whenever this unit takes damage from an Air spell or unit, it heals for the dama
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon, Warden</b>
-Whenever this unit takes damage from an Earth spell or unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a friendly Earth spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -4276,7 +4433,7 @@ Whenever this unit takes damage from an Earth spell or unit, it heals for the da
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 6), },
 
             Text = @"<b>Summon Prepared</b>
-Whenever this unit takes damage from a Fire spell or unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a friendly Fire spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -4340,7 +4497,7 @@ Draw a card",
 
             Text = @"<b>Summon</b>
 Whenever this unit deals damage to another unit, <b>Stun</b> it.
-Whenever this unit takes damage from a Water spell or unit, it heals for the damage amount instead",
+Whenever this unit takes damage from a friendly Water spell or unit, it heals for the damage amount instead",
             LoreText = @"",
             Notes = @"",
 
@@ -14209,7 +14366,7 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Conduit, Tags.Ethereal, Tags.Agent, Tags.Stealth, Tags.Deadly, Tags.Piercing },
-            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.BigMinions, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges, Synergies.Piercing },
+            Synergies = new List<Synergies> { Synergies.Melee, Synergies.Mobility, Synergies.Control, Synergies.Draw, Synergies.Ethereal, Synergies.Removal, Synergies.Gold, Synergies.Shadows, Synergies.Exchanges, Synergies.Piercing },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
@@ -14492,6 +14649,529 @@ Friendly units can move through this tile",
         };
         CardList.Add(card1406);
 
+        var card1407 = new UnitData()
+        {
+            Id = 1407,
+            Name = "Druidic Pillar",
+            ImageTag = CardImageTags.Druidic_Pillar,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Token, Structure
+Indestructible</b> to all damage except from rule effects",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Token,
+            Rarity = Rarity.Token,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Structure, Tags.Token, Tags.Stone },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Stone,
+                UnitTags.Structure,
+            },
+            Attack = 0,
+            Health = 3,
+            Protected = 0,
+            Range = 0,
+            Speed = 0,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<Keywords>() { Keywords.Structure, Keywords.Token },
+        };
+        CardList.Add(card1407);
+
+        var card1408 = new UnitData()
+        {
+            Id = 1408,
+            Name = "Forge Guardian",
+            ImageTag = CardImageTags.Forge_Guardian,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Token, Conduit, Warden</b>
+Whenever this unit takes damage from friendly Fire units or spells, they are healed for the same amount instead.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Token,
+            Rarity = Rarity.Token,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Conduit, Tags.Warden, Tags.Fire, Tags.Elemental, Tags.Craftsman, Tags.Token },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Craftsman,
+            },
+            Attack = 4,
+            Health = 16,
+            Protected = 0,
+            Range = 0,
+            Speed = 2,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1129 },
+
+            Keywords = new List<Keywords>() { Keywords.Conduit, Keywords.Warden, Keywords.Token },
+        };
+        CardList.Add(card1408);
+
+        var card1409 = new UnitData()
+        {
+            Id = 1409,
+            Name = "Tentacle of Se'Carr",
+            ImageTag = CardImageTags.Tentacle_of_SeCarr,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Token, Prepared</b>
+After this attacks a unit, <b>Root</b> it",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Token,
+            Rarity = Rarity.Token,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Prepared, Tags.Void, Tags.Abomination, Tags.Token },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Abomination,
+            },
+            Attack = 0,
+            Health = 2,
+            Protected = 0,
+            Range = 1,
+            Speed = 0,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1409);
+
+        var card1410 = new UnitData()
+        {
+            Id = 1410,
+            Name = "Ritual Pillar",
+            ImageTag = CardImageTags.Ritual_Pillar,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Token, Structure
+Last Rites:</b> Deal 5 damage to all adjacent non-Void units",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Token,
+            Rarity = Rarity.Token,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Void, Tags.Abomination, Tags.Structure, Tags.Token },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Void,
+                UnitTags.Structure,
+            },
+            Attack = 0,
+            Health = 10,
+            Protected = 0,
+            Range = 0,
+            Speed = 0,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1410);
+
+        var card1411 = new UnitData()
+        {
+            Id = 1411,
+            Name = "Curoz the Savage",
+            ImageTag = CardImageTags.Curoz_the_Savage,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Wildkin,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Beast, Tags.Wildkin },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Beast,
+                UnitTags.Wildkin,
+            },
+            Attack = 4,
+            Health = 16,
+            Protected = 0,
+            Range = 0,
+            Speed = 3,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1130 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1411);
+
+        var card1412 = new UnitData()
+        {
+            Id = 1412,
+            Name = "Elder Keren",
+            ImageTag = CardImageTags.Elder_Keren,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Luminist,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Luminist },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Luminist,
+            },
+            Attack = 2,
+            Health = 21,
+            Protected = 0,
+            Range = 2,
+            Speed = 2,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1131 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1412);
+
+        var card1413 = new UnitData()
+        {
+            Id = 1413,
+            Name = "Lord Durros",
+            ImageTag = CardImageTags.Lord_Durros,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Captain,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Captain },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Captain,
+            },
+            Attack = 5,
+            Health = 20,
+            Protected = 0,
+            Range = 0,
+            Speed = 3,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1132 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1413);
+
+        var card1414 = new UnitData()
+        {
+            Id = 1414,
+            Name = "Kolvar the Shadow",
+            ImageTag = CardImageTags.Kolvar_the_Shadow,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero, Stealth</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Trickster,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Trickster, Tags.Stealth, Tags.Orc },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Trickster,
+            },
+            Attack = 3,
+            Health = 21,
+            Protected = 0,
+            Range = 1,
+            Speed = 4,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1133 },
+
+            Keywords = new List<Keywords>() { Keywords.Stealth },
+        };
+        CardList.Add(card1414);
+
+        var card1415 = new UnitData()
+        {
+            Id = 1415,
+            Name = "Warlord Mogris",
+            ImageTag = CardImageTags.Warlord_Mogris,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Runeblade,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Discard, Tags.Orc, Tags.Voidlord },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Voidlord,
+            },
+            Attack = 8,
+            Health = 42,
+            Protected = 0,
+            Range = 0,
+            Speed = 3,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1134, ability1135 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1415);
+
+        var card1416 = new UnitData()
+        {
+            Id = 1416,
+            Name = "The Wraith King",
+            ImageTag = CardImageTags.The_Wraith_King,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero, Ethereal</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Abyssal,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Ethereal, Tags.Abomination, Tags.Lifebond, Tags.Shadow },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Shadow,
+                UnitTags.Abomination,
+            },
+            Attack = 7,
+            Health = 28,
+            Protected = 0,
+            Range = 0,
+            Speed = 4,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1136 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1416);
+
+        var card1417 = new UnitData()
+        {
+            Id = 1417,
+            Name = "Brukarn Vulkor",
+            ImageTag = CardImageTags.Brukarn_Vulkor,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Grovewatcher,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Human, Tags.Ability, Tags.Grovewatcher },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Human,
+                UnitTags.Grovewatcher,
+            },
+            Attack = 3,
+            Health = 52,
+            Protected = 0,
+            Range = 3,
+            Speed = 2,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1137 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1417);
+
+        var card1418 = new UnitData()
+        {
+            Id = 1418,
+            Name = "Ceyarn, the Cursed Dragonslayer",
+            ImageTag = CardImageTags.Ceyarn_the_Cursed_Dragonslayer,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Waystalker,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Waystalker, Tags.Undead },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Undead,
+                UnitTags.Waystalker,
+            },
+            Attack = 3,
+            Health = 28,
+            Protected = 0,
+            Range = 3,
+            Speed = 4,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1138 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1418);
+
+        var card1419 = new UnitData()
+        {
+            Id = 1419,
+            Name = "Forgemaster Xeron",
+            ImageTag = CardImageTags.Forgemaster_Xeron,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>
+Whenever this unit takes damage from friendly Fire units or spells, they are healed for the same amount instead.",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Elementalist,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Fire, Tags.Elemental, Tags.Craftsman },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Elemental,
+                UnitTags.Craftsman,
+            },
+            Attack = 8,
+            Health = 54,
+            Protected = 0,
+            Range = 0,
+            Speed = 2,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1139 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1419);
+
+        var card1420 = new UnitData()
+        {
+            Id = 1420,
+            Name = "Mogris the Corrupted",
+            ImageTag = CardImageTags.Mogris_the_Corrupted,
+
+            Resources = new List<Resource>() { },
+
+            Text = @"<b>Hero</b>",
+            LoreText = @"",
+            Notes = @"",
+
+            Set = Sets.Standard,
+            Class = Classes.ClassList.Arcanist,
+            Rarity = Rarity.NPCHero,
+            CardType = CardTypes.Unit,
+
+            Tags = new List<Tags> { Tags.Hero, Tags.Ability, Tags.Orc, Tags.Voidlord },
+            Synergies = new List<Synergies> { },
+            UnitTag = new List<UnitTags>()
+            {
+                UnitTags.Orc,
+                UnitTags.Voidlord,
+            },
+            Attack = 8,
+            Health = 72,
+            Protected = 0,
+            Range = 0,
+            Speed = 3,
+            Empowered = 0,
+
+            Abilities = new List<AbilityData>() { ability1140, ability1141 },
+
+            Keywords = new List<Keywords>() { },
+        };
+        CardList.Add(card1420);
+
         card24.RelatedCards = new List<CardData> { card21 };
         card26.RelatedCards = new List<CardData> { card27 };
         card35.RelatedCards = new List<CardData> { card36 };
@@ -14579,6 +15259,8 @@ Friendly units can move through this tile",
         card1373.RelatedCards = new List<CardData> { card1353, card1354, card1355, card1356, card1357, card1358 };
         card1384.RelatedCards = new List<CardData> { card1380 };
         card1387.RelatedCards = new List<CardData> { card1380 };
+        card1413.RelatedCards = new List<CardData> { card254 };
+        card1420.RelatedCards = new List<CardData> { card1409 };
     }
 }
 
@@ -14586,7 +15268,7 @@ namespace CategoryEnums
 {
     public enum Tags
     {
-        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem, Immune, Shot, Wooden, Structure, Cloth, Caravan, Token
+        Default, Blademaster, Hero, Human, Runeblade, Ability, EnergyGain, Enchantment, Swiftstrike, Stun, Draw, Dwarven, Arcanist, Empowered, Protected, AreaDamage, Elven, Conduit, Summon, Spellshield, Ethereal, Arcane, Warden, Prepared, Deployment, ManaGain, Equip, Magic, Sword, Overwhelm, SplitDamage, SingleDamage, StudyGain, Scholar, CastWhenDrawn, Spellbind, Divinate, Transformed, Beast, Transformation, SingleRemoval, Staff, LastRites, Abyssal, Void, Abomination, Discard, PrayerGain, Lifebond, Spirit, Sacrifice, SelfDamage, Vampire, Noble, Regenerate, Flying, PassiveSpell, Elemtalist, Elementalist, Fire, Goblin, Water, Air, ForceMove, Elemental, Earth, CyclePlus, Root, CycleMinus, ShortRange, Grovewatcher, WildGain, Faerie, Soldier, Treant, Agent, Captain, Metal, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, MindControl, Natural, Armour, Trinket, Resurrection, Unleash, Potion, Stealth, GoldGain, GoldenHost, Merchant, Holy, Amulet, Alchemy, Bag, Equalize, Tome, Dragonkin, AreaRemoval, Angel, Knight, Steed, Vanguard, Mythic, Oath, Conjured, Image, Spell, Rogue, Stalker, Bounty, Shadowborn, Recruit, Deadly, Redeploy, Dagger, Shadow, Ogre, Brigand, Scout, Choice, Battle, Stance, Wartorn, Book, Shield, Flag, Siege, Construct, HeroTierZero, HeroTierOne, HeroTierTwo, Hireling, Transform, Brawl, Orc, Barbarian, Talisman, Aspect, Ratfolk, Passive, Routing, Scroll, Warlord, Axe, Wanderer, Mirrored, Entity, Inspiration, Ornate, Bow, Satchel, Feral, Beastmaster, Craftsman, Hidden, Shady, BasicElemental, Piercing, MindItem, Immune, Shot, Wooden, Structure, Cloth, Caravan, Token, Stone, Voidlord, Undead
     }
 
     public enum Synergies
@@ -14601,11 +15283,11 @@ namespace CategoryEnums
 
     public enum CardImageTags
     {
-        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias_Blade_of_the_Kalyan, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flurry, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Caravan, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Mazgix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Fence, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya_Sword_of_Stars, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warband, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Palisade_Wall, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recorded_Inspiration, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Wooden_Gate, Wooden_Tower, Wooden_Wall, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
+        Default, Abyss_Imp, Abyss_Knight, Abyssal_Cultist, Abyssal_Dreadspeaker, Abyssal_Summoner, Abyssal_Voidcaller, Abyssal1, Abyssal2, Abyssal3, Abysslord_Marrex, Aedeline_Mystic, Aedeline_Oracle, Agent1, Agent2, Agent3, Aggressive_Stance, Aid_From_Above, Air_Elemental, Alter_Fate, Amulet_of_Divinity, Angel_of_Devotion, Angel_of_Judgement, Angel_of_Protection, Angel_of_Purity, Arcane_Golem, Arcane_Rush, Arcane_Shot, Arcane_Spike, Arcane_Spirit, Arcanist1, Arcanist2, Arcanist3, Archmage_Staff, Archmage_Tholas, Aspect_Mirror, Aspect_of_the_Bear, Aspect_of_the_Eagle, Aspect_of_the_Sabretooth, Aspect_of_the_Wolf, Assassination_Contract, Atarias_Blade_of_the_Kalyan, Ballista, Battle_Gear, Battle_Inspiration, Battle_Prayer, Battle_Repair, Battle_Stance, Battlefield_Surveyor, Battlemage, Bear_Aspect, Bear_Guardian, Beast_Trainer, Beastial_Fury, Binding_Circle, Bite, Blade_Dance, Blade_Enchantment, Blade_Flurry, Blade_Twirl, Blood_Bond, Blood_Pact, Blood_Shot, Blood_Wolf, Book_of_Madness, Book_of_Records, Bounty_Hunter, Bravery, Brawl_Grab, Brawl_Leap, Brawl_Shove, Brawl_Toss, Brawl_Whirlwind, Brood_Mother, Brukarn_Vulkor, Callardis_Academic, Callardis_Conjurer, Camp_Cook, Camp_Follower, Captain_of_the_Guard, Captain1, Captain2, Captain3, Caravan, Ceyarn_the_Cursed_Dragonslayer, Charge, Cold_Fury, Combat_Insurer, Commanders_Logbook, Consecrate, Convincin_Thug, Corrupt_Guidlmaster, Corthax_Keeper_of_the_Deeps, Counterspell, Counterspell_Item, Creative_Mind, Cunning_Inspiration, Curoz_the_Savage, Cursed_Shade, Dark_Blade, Dark_Pact, Deathsworn_Assassin, Deathsworn_Cursebringer, Deathsworn_Infiltrator, Deceptive_Contract, Dedicated_Preservation, Deep_Conversion, Deep_Mind, Deep_Priest, Defender_of_Sorena, Defensive_Stance, Devastating_Mind, Disgraced_Veteran, Dispel_Magic, Divine_Intervention, Divine_Ritual, Divine_Strength, Dreadbolt, Druidic_Pillar, Eager_Hireling, Eager_Squire, Eagle_Aspect, Earth_Elemental, Earth_Ritual, Earthbinder, Earthquake, Efficient_Bookkeeper, Elder_Keren, Elemental_Rush, Elementalist1, Elementalist2, Elementalist3, Eliminate, Enchanted_Dagger, Enlightenment, Equalize, Ethelia_Chosen_of_the_Light, Execute_Plan, Explosive_Shot, Extortion, Eye_of_the_Void, Fade, Faerie_Guile, Faerie_Harbringer, Faeries_Blessing, Feint, Field_Commander, Field_Medic, Fire_Elemental, Fireball, Flash, Forge_Guardian, Forgemaster_Xeron, Fortune_Teller, Forward_Planning, Furious_Brawl, Gather_Forces, Gilded_Bow, Goblin_Blastmage, Goblin_Boss, Goblin_Horde, Goblin_Looter, Golden_Host, Golden_Hostcaller, Golden_Lifebinder, Goldland_Knight, Goldland_Loyalist, Grand_Archivist_Nurosi, Grasping_Vine, Grey_Shaman, Greywalker, Grovewatcher1, Grovewatcher2, Grovewatcher3, Hardened_Shield, Head_Gobbo_Mazgix, Headhunters_Axe, Hidden_Informant, Homing_Bolt, Honour_the_Old_Gods, Hulking_Beast, Hunters_Mark, Hurricane, Ice_Blast, Imp_Matron, Intimidate, Juicy_Fruit, Kalyan_Duelist, Kalyan_Strike, Kalyan_Warrior, Kelari_Astromancer, Kelari_Librarian, Kelari_Spellguard, King_Toll_of_the_Underbelly, Kolvar_the_Shadow, Laundering_Record, Lay_on_Hands, Legionnaire, Lifebringer1, Lifebringer2, Lifebringer3, Lightning_Bolt, Loaded_Quiver, Lokthar_the_Untamed, Lord_Durros, Lord_Seldoras_Kerhall, Lorekeeper1, Lorekeeper2, Lorekeeper3, Luminist1, Luminist2, Luminist3, Luminous_Inspiration, Lunar_Eclipse, Maddening_Knowledge, Magic_Dash, Magic_Missiles, Magical_Inspiration, Man_at_Arms, Mana_Siphoner, Mana_Surge, Master_Kybas, Master_Thief, Meat_Bundle, Meditative_Vision, Medlar_Fence, Medlar_Saboteur, Medlar_Spy, Mercenary1, Mercenary2, Mercenary3, Mercy_Offering, Mind_Collapse, Mirror_Aspect, Mirror_Entity, Mirror_Image, Mirror_on_the_Pool, Mogris_the_Corrupted, Monk_of_the_Four_Winds, Monster_Hunter, Moonbeam, Moondrain, Moonlight_Premonition, Moonpool_Walk, Moonweaver, Motivate_Rifraf, Mount_Up, Mounted_Raiders, Nadalya_Sword_of_Stars, Naharr_the_Worldroot, Nakari_Bowyer, Nakari_Ranger, Oath_of_Protection, Oath_of_Protection_Item, Oath_of_Restoration, Oath_of_Restoration_Item, Oath_of_Retribution, Oath_of_Retribution_Item, Oathknight1, Oathknight2, Oathknight3, Oathspeaker, Offer_Alms, Oldari_Acolyte, Oldari_Spellweaver, Omaris_Lord_of_Shadows, Opportunistic_Warband, Othtal_Axeman, Othtal_Berserker, Othtal_Undying, Pacify, Pack_Leader, Palisade_Wall, Patient_Harvest, Pegasus, Perfect_Strike, Persuasive_Hireling, Persuasive_Techniques, Pickpocket, Pickpockets_Knife, Pig, Pin, Planned_Removal, Polymorph, Pool_Watcher, Potion_of_Confusion, Potion_of_Decay, Potion_of_Frost, Potion_of_Healing, Potion_of_Shadows, Potion_of_Speed, Potion_Satchel, Potion_Seller, Power_Investment, Predators_Instinct, Prevent_Repetition, Protected_Mind, Pummel, Queen_Aedellaei, Quick_Alchemy, Ragged_Lord_Allos, Raging_Beast, Rally, Rallying_Flag, Rampage, Rapid_Fire, Ray_of_Consumption, Realm_Convergence, Recorded_Inspiration, Recycling, Replicative_Mind, Repress, Retired_Blademaster, Return_Soul, Ring_the_Bells, Ritual_Pillar, Roadside_Wanderer, Rune_Forger, Runeblade1, Runeblade2, Runeblade3, Sabretooth_Aspect, Sanctuary, Scout_Regiment, Seeking_Hawk, Selynthe_Bow_of_the_Nakari, Serrated_Claws, Shade_Hunter, Shadowblade, Shadowy_Assassin, Shady_Hireling, Shady_Recruiter, Shapechanger, Shield_of_Faith, Shield_of_Goldland, Shiv, Solar_Eclipse, Sorena_Cleric, Sorena_High_Priest, Sosthrim_Druid, Sosthrim_Grovekeeper, Sosthrim_Harvester, Sothyn_Moonpool_Warden, Soul_Blade, Soul_Consumer, Soulthief_Shade, Spark_of_Power, Spectral_Shield, Spectral_Staff, Spectral_Sword, Spiderling, Spined_Carapace, Spirit_Totem, Spirit_Walker_Bragas, Spycraft, Spymaster_Luren, Stable_Stance, Starcaller, Starfire, Street_Tricks, Stunning_Shot, Subdue, Sucker_Punch, Supreme_Commander_Tythas, Survey, Swordcaster, Tend_the_Elements, Tending_Priest, Tentacle_of_SeCarr, Tessara_Lady_of_Goldland, Test_NPC_Hero, The_Faceless_One, The_Great_Spirit, The_Green_Horde, The_Right_Tool, The_Void_Hungers, The_Wraith_King, Tidal_Wave, Tithe_Collector, Tome_Of_Power, Tough_Hireling, Tracking_Shot, Trained_Hound, Treeheart_Censer, Trickster1, Trickster2, Trickster3, Tythelia_Lady_of_Gold, Underbelly_Cutthroat, Underbelly_Runner, Underbelly_Smuggler, Vampire_Aristocrat, Vampire_Courtesan, Vault_Archivist, Vault_Catalyst, Vault_Collector, Venom_Shot, Vision_of_the_Future, Vision_of_the_Past, Vision_of_the_Present, Void_Soul, Void_Touch, Voidling, Wall_of_Fire, Wandering_Storyteller, War_Dog, Warchief_Aghazir, Warding_Rune, Warhorse, Warlord_Mogris, Water_Elemental, Wave_Sorceror, Waystalker1, Waystalker2, Waystalker3, Wild_Fury, Wildkin1, Wildkin2, Wildkin3, Wolf_Aspect, Wooden_Gate, Wooden_Tower, Wooden_Wall, Woodland_Guide, Woodland_Sprite, Worldroot_Ancient, Worldroot_Defender, Worldroot_Dreamer, Worldroot_Sapling
     }
 
     public enum UnitTags
     {
-        Default, Human, Runeblade, Blademaster, Dwarven, Arcanist, Arcane, Summon, Elven, Scholar, Transformed, Beast, Abyssal, Void, Abomination, Spirit, Vampire, Noble, Elementalist, Goblin, Elemental, Grovewatcher, Faerie, Soldier, Treant, Agent, Captain, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, Merchant, Dragonkin, Angel, Knight, Steed, Mythic, Rogue, Shadowborn, Ratfolk, Shadow, Ogre, Brigand, Scout, Siege, Construct, Orc, Barbarian, Warlord, Test, Wanderer, Mirrored, Entity, Feral, Beastmaster, Craftsman, Cloth, Caravan, Wooden, Structure
+        Default, Human, Runeblade, Blademaster, Dwarven, Arcanist, Arcane, Summon, Elven, Scholar, Transformed, Beast, Abyssal, Void, Abomination, Spirit, Vampire, Noble, Elementalist, Goblin, Elemental, Grovewatcher, Faerie, Soldier, Treant, Agent, Captain, Lifebringer, Lorekeeper, Luminist, Mercenary, Oathknight, Trickster, Waystalker, Trained, Wildkin, Merchant, Dragonkin, Angel, Knight, Steed, Mythic, Rogue, Shadowborn, Ratfolk, Shadow, Ogre, Brigand, Scout, Siege, Construct, Orc, Barbarian, Warlord, Test, Wanderer, Mirrored, Entity, Feral, Beastmaster, Craftsman, Cloth, Caravan, Wooden, Structure, Stone, Voidlord, Undead
     }
 }
