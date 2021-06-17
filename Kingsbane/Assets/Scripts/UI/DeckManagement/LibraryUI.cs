@@ -120,7 +120,7 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void InitDropdowns()
     {
-        GeneralUIExtensions.InitDropdownOfType(classplayableDropdown, new List<Classes.ClassList> { Classes.ClassList.Default }, DEFAULT_DROPDOWN_STRING);
+        GeneralUIExtensions.InitDropdownOfType(classplayableDropdown, new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable, Rarity.Deleted }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(setDropdown, new List<Sets>() { Sets.Default }, DEFAULT_DROPDOWN_STRING);

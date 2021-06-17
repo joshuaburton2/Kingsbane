@@ -318,7 +318,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TriggerVictory(int lossPlayerId)
+    public void TriggerVictory(int lossPlayerId, bool isSceneExit = false)
     {
         CurrentGamePhase = GamePhases.End;
 
@@ -340,7 +340,11 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        effectManager.RefreshEffectManager(true);
-        uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
+        if (!isSceneExit)
+        {
+            deckManager.SaveDecks();
+            effectManager.RefreshEffectManager(true);
+            uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
+        }
     }
 }
