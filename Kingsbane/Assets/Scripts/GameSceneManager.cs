@@ -125,10 +125,13 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
-            if (GameManager.instance.ActivePlayerId.HasValue)
-                GameManager.instance.TriggerVictory(GameManager.instance.ActivePlayerId.Value, true);
-            else
-                GameManager.instance.TriggerVictory(0, true);
+            if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.End)
+            {
+                if (GameManager.instance.ActivePlayerId.HasValue)
+                    GameManager.instance.TriggerVictory(GameManager.instance.ActivePlayerId.Value, true);
+                else
+                    GameManager.instance.TriggerVictory(0, true);
+            }
 
             GameManager.instance.deckManager.LoadNPCDecks();
             GameManager.instance.deckManager.SaveDecks();

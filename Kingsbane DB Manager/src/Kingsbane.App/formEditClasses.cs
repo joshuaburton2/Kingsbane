@@ -251,11 +251,13 @@ namespace Kingsbane.App
 
                 foreach (var resourceProp in resource.Resource.ResourceProperties)
                 {
-                    resourcePropertiesLabels[resourceIndex][propertyIndex].Text = resourceProp.Type.ToString();
+                    var resourcePropType = resourceProp.Type;
+                    resourcePropertiesLabels[resourceIndex][propertyIndex].Text = resourcePropType.ToString();
 
                     if (selectedDeck.ResourceProperties.Any())
                     {
-                        resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text = selectedDeck.ResourceProperties.ToList()[propertyIndex].Value.ToString();
+                        resourcePropertiesTextBoxes[resourceIndex][propertyIndex].Text = selectedDeck.ResourceProperties.ToList()
+                            .Single(x => x.ResourceProperty.Type == resourcePropType).Value.ToString();
                     }
 
                     propertyIndex++;

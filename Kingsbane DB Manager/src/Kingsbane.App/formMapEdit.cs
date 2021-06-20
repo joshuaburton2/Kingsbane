@@ -50,7 +50,7 @@ namespace Kingsbane.App
 
         private class ScenarioRuleData
         {
-            public int Id { get; set; }
+            public int? Id { get; set; }
             public string Name { get; set; }
             public string Description { get; set; }
         }
@@ -587,11 +587,19 @@ namespace Kingsbane.App
                         Map = map,
                     };
                     _context.Scenarios.Add(scenario);
+
                 }
                 scenario.Name = scenarioData.Name;
                 scenario.Description = scenarioData.Description;
                 scenario.IsDefault = scenarioData.IsDefault;
                 scenario.EnemyDeckId = scenarioData.EnemyDeckId;
+
+                _context.SaveChanges();
+
+                if (scenarioData.Id == null)
+                {
+                    scenarioList.Single(x => x == scenarioData).Id = scenario.Id;
+                }
 
                 foreach (var ruleData in scenarioData.ScenarioRules)
                 {
@@ -607,11 +615,10 @@ namespace Kingsbane.App
                     var scenarioRuleSet = _context.ScenarioRuleSets.SingleOrDefault(x => x.Scenario == scenario && x.Rule == rule);
                     if (scenarioRuleSet == null)
                     {
-                        scenarioRuleSet = new ScenarioRuleSet()
-                        {
-                            Rule = rule,
-                            Scenario = scenario,
-                        };
+                        scenarioRuleSet = new ScenarioRuleSet();
+
+                        rule.ScenarioRules.Add(scenarioRuleSet);
+                        scenario.ScenarioRuleSet.Add(scenarioRuleSet);
                         _context.ScenarioRuleSets.Add(scenarioRuleSet);
                     }
                 }
@@ -890,7 +897,7 @@ namespace Kingsbane.App
                 selectedRule.Name = txtRuleName.Text;
                 selectedRule.Description = txtRuleDescription.Text;
 
-                var relatedRules = scenarioList.SelectMany(x => x.ScenarioRules).Where(x => x.Id == selectedRule.Id);
+                var relatedRules = scenarioList.SelectMany(x => x.ScenarioRules).Where(x => x.Id != null && x.Id == selectedRule.Id);
                 foreach (var relatedRule in relatedRules)
                 {
                     relatedRule.Name = txtRuleName.Text;
@@ -935,7 +942,7 @@ namespace Kingsbane.App
         private void RefreshRuleList()
         {
             lstScenarioRules.Items.Clear();
-            var rules = selectedScenario.ScenarioRules.Select(x => new SelectListItem { Id = x.Id, Name = x.Name }).ToArray();
+            var rules = selectedScenario.ScenarioRules.Select(x => new SelectListItem { Id = x.Id.HasValue ? x.Id.Value : 0, Name = x.Name }).ToArray();
             lstScenarioRules.Items.Clear();
             lstScenarioRules.Items.AddRange(rules);
 

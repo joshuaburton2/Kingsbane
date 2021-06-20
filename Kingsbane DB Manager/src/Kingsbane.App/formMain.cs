@@ -618,7 +618,7 @@ namespace Kingsbane.App
                 sb.AppendLine(@$"            {{");
                 sb.AppendLine(@$"                Id = {scenario.Id},");
                 sb.AppendLine(@$"                Name = ""{scenario.Name.FixQuotes()}"",");
-                sb.AppendLine(@$"                Description = ""{scenario.Description.FixQuotes()}"",");
+                sb.AppendLine(@$"                Description = @""{scenario.Description.FixQuotes()}"",");
 
                 sb.AppendLine(@$"                DeploymentMap = new int?[][]");
                 sb.AppendLine(@$"                {{");
@@ -661,7 +661,7 @@ namespace Kingsbane.App
                 sb.AppendLine($@"                {{");
                 foreach (var rule in scenario.ScenarioRuleSet)
                 {
-                    sb.AppendLine($@"                   new Rule() {{ Id = {rule.Rule.Id}, Name = ""{rule.Rule.Name}"", Description = ""{rule.Rule.Description.FixQuotes()}"" }},");
+                    sb.AppendLine($@"                   new Rule() {{ Id = {rule.Rule.Id}, Name = ""{rule.Rule.Name}"", Description = @""{rule.Rule.Description.FixQuotes()}"" }},");
                 }
                 sb.AppendLine($@"                }},");
 
