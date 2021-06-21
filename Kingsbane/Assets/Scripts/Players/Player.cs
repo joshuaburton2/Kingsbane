@@ -518,7 +518,8 @@ public class Player
     public void DiscardCard(Card discardCard)
     {
         Discard.AddCard(discardCard);
-        Hero.HealUnit(-discardCard.TotalResource);
+        if (HasSpecialPassive(SpecialPassiveEffects.SoulSacrifice))
+            Hero.HealUnit(-discardCard.TotalResource);
     }
 
     public void ShuffleFromHand(Card card)
@@ -673,7 +674,6 @@ public class Player
 
     public void RemoveSummon(UnitCounter summonCounter)
     {
-        Debug.Log(DeployedSummonUnits.Contains(summonCounter));
         DeployedSummonUnits.Remove(summonCounter);
     }
 
