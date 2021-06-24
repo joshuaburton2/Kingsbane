@@ -2229,7 +2229,7 @@ public class UpgradeLibrary
             Id = 98,
             Name = "Elder's Protection",
             ImageTag = UpgradeImageTags.Elders_Protection,
-            Text = @"After you play a unit, give it <b>Protected (2)</b>",
+            Text = @"Whenever you grant a unit <b>Protected</b>, give an additional <b>(1) Protected</b>",
             LoreText = @"",
             HonourPoints = 0,
             IsRepeatable = false,

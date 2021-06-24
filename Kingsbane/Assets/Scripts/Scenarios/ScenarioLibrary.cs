@@ -114,7 +114,7 @@ namespace Assets.Scripts.Scenarios
                     new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
-                    new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular, },
+                    new TerrainTypes[] { TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Difficult,TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Difficult,TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular, },
                     new TerrainTypes[] { TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Regular,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Impassable,TerrainTypes.Regular,TerrainTypes.Regular, },
@@ -919,8 +919,8 @@ namespace Assets.Scripts.Scenarios
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
-                    new int?[] { null,null,null,null,11,11,11,null,null,null, },
-                    new int?[] { null,null,null,11,null,null,11,null,null,null, },
+                    new int?[] { null,null,null,null,null,11,11,null,null,null, },
+                    new int?[] { null,null,null,11,11,null,11,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
                     new int?[] { null,null,null,null,null,null,null,null,null,null, },
@@ -976,7 +976,7 @@ namespace Assets.Scripts.Scenarios
                 },
                 Rules = new List<Rule>()
                 {
-                   new Rule() { Id = 8, Name = "Capture the Pole", Description = @"Whenever a unit moves into the Totem Pole tiles, if the owner of the unit has more units in the tiles than the other player, that player will capture the totem pole. At the start of the scenario set a counter to 5. At the end of each turn, if player 1 controls the totem pole, reduce the counter by 1. Once the counter reaches 0, player 1 completes the scenario. If player 1 captures the totem pole and does not lose it before the end of the scenario, they complete the bonus objective." },
+                   new Rule() { Id = 8, Name = "Capture the Pole", Description = @"Whenever a unit moves into the Totem Pole tiles, if the owner of the unit has more units in the tiles than the other player, that player will capture the totem pole. At the start of the scenario set a counter to 5. At the end of each turn, if the player controls the totem pole, reduce the counter by 1. Once the counter reaches 0, the player completes the scenario. If the player captures the totem pole and does not lose it before the end of the scenario, they complete the bonus objective." },
                 },
                 EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(85),
             };
@@ -1024,7 +1024,8 @@ namespace Assets.Scripts.Scenarios
                 Rules = new List<Rule>()
                 {
                    new Rule() { Id = 9, Name = "Forward Deployment", Description = @"Whoever has occupied the square last controls it. If the enemy control’s the square, they can deploy units in adjacent tiles. At the start of the game, the enemy gains control of the town square." },
-                   new Rule() { Id = 10, Name = "Colony Fortress", Description = @"At the start of the scenario, deploy Wooden Walls, Wooden Towers, Palisade Walls and Wooden Gate on the indicated tiles. " },
+                   new Rule() { Id = 10, Name = "Colony Fortress", Description = @"At the start of the scenario, deploy Wooden Walls, Wooden Towers, Palisade Walls and Wooden Gate on the indicated tiles under the control of the enemy. " },
+                   new Rule() { Id = 30, Name = "Root them Out", Description = @"If the player destroys the Wooden Gate and enemy hero, they win the scenario. If they also have destroyed all four Wooden Towers when they complete this objective, they complete the bonus objective." },
                 },
                 EnemyDeck = GameManager.instance.deckManager.GetNPCDeck(86),
             };

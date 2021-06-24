@@ -1467,7 +1467,7 @@ public class CardLibrary
         {
             Id = 1132,
             Name = "Legion's Aid",
-            Text = @"Deploy a Legionnair unit adjacent to this unit",
+            Text = @"Deploy a Legionnaire unit adjacent to this unit",
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -6775,7 +6775,7 @@ Whenever this unit or your hero is healed, <b>Prayer +3.</b> All your healing is
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 4), new Resource(CardResources.Gold, 3), },
 
-            Text = @"<b>Deployment:</b> Choose one of three different random units in your Graveyard to deploy adjacent to the caster",
+            Text = @"<b>Deployment:</b> Choose one of three different random units in your Graveyard to deploy adjacent to this unit",
             LoreText = @"",
             Notes = @"",
 
@@ -10578,7 +10578,7 @@ If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Disc
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            Text = @"Deal 3 damage to a unit and move it up to 3 tiles away from the caster. If it impacts an obstacle, deal an additional 3 damage.
+            Text = @"Deal 3 damage to a unit and move it up to 1 tile away from the caster. If it impacts an obstacle, deal an additional 3 damage.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
