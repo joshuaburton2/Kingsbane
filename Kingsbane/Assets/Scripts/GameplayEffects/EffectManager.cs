@@ -155,7 +155,8 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
 
                 if (SelectedUnit != null)
-                    SelectedUnit.UnitCounter.ShowUnitSelector(false);
+                    if (SelectedUnit.UnitCounter != null)
+                        SelectedUnit.UnitCounter.ShowUnitSelector(false);
                 SelectedUnit = null;
                 break;
             case ActiveEffectTypes.Deployment:
@@ -441,7 +442,8 @@ public class EffectManager : MonoBehaviour
             {
                 SelectedUnit = caster;
                 ActiveEffect = ActiveEffectTypes.Spell;
-                SelectedUnit.UnitCounter.ShowUnitSelector(true);
+                if (SelectedUnit.UnitCounter != null)
+                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
 
             caster.Unstealth();

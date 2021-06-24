@@ -150,11 +150,12 @@ public class GameManager : MonoBehaviour
         {
             CampaignDeck = null;
 
+            var orderedNPCDecks = deckManager.NPCDeckList.OrderBy(x => x.Id);
             var defaultDecks = new DeckData[]
             {
-                deckManager.NPCDeckList.FirstOrDefault(),
+                orderedNPCDecks.FirstOrDefault(),
                 //deckManager.NPCDeckList.FirstOrDefault(),
-                deckManager.NPCDeckList.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
+                orderedNPCDecks.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
             var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
