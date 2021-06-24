@@ -404,12 +404,12 @@ public class EffectManager : MonoBehaviour
     {
         if (targetUnit != null)
         {
-            if (SelectedUnit.CanAttackTarget(targetUnit))
-            {
-                SelectedUnit.TriggerAttack(targetUnit);
-                RefreshEffectManager();
-                GameManager.instance.uiManager.RefreshUI();
-            }
+            //if (SelectedUnit.CanAttackTarget(targetUnit))
+            //{
+            SelectedUnit.TriggerAttack(targetUnit);
+            RefreshEffectManager();
+            GameManager.instance.uiManager.RefreshUI();
+            //}
         }
     }
 
@@ -1024,11 +1024,15 @@ public class EffectManager : MonoBehaviour
     {
         if (!unit.HasStatusEffect(Unit.StatusEffects.Transformed))
         {
-            unit.RemoveUnit();
+            if (!SelectedBoolean.Value || SelectedBoolean.Value && !unit.IsHero)
+            {
+                unit.RemoveUnit();
 
-            var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
-            CreateUnitCounter(transformUnit, currentCell);
-            transformUnit.Transform(unit.Status == Unit.UnitStatuses.Start, SelectedBoolean.Value ? null : unit);
+                var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
+                CreateUnitCounter(transformUnit, currentCell);
+                var newFormCanAction = unit.CanAction && unit.RemainingSpeed == unit.GetStat(Unit.StatTypes.Speed);
+                transformUnit.Transform(newFormCanAction, SelectedBoolean.Value ? null : unit);
+            }
         }
     }
 

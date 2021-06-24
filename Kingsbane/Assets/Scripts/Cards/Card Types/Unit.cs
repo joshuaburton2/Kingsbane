@@ -303,6 +303,20 @@ public class Unit : Card
         RefreshCounter();
     }
 
+    private void ReturnToOriginalFromActionReset()
+    {
+        if (Status == UnitStatuses.Enemy)
+            Status = UnitStatuses.Enemy;
+        else
+            Status = UnitStatuses.Preparing;
+
+        ActionsLeft = 0;
+        AbilityUsesLeft = 0;
+        RemainingSpeed = 0;
+
+        RefreshCounter();
+    }
+
     public void ReturnToOriginalForm()
     {
         if (HasStatusEffect(StatusEffects.Transformed))
@@ -311,6 +325,7 @@ public class Unit : Card
             RemoveUnit();
             GameManager.instance.effectManager.CreateUnitCounter(OriginalTransformForm, currentCell);
 
+            OriginalTransformForm.ReturnToOriginalFromActionReset();
 
             if (OriginalTransformForm.IsHero)
             {
@@ -529,6 +544,8 @@ public class Unit : Card
 
     public bool CanAttackTarget(Unit targetUnit)
     {
+        //Currently not working and will need more work, as this does not account for attacks external to the action attack (e.g. attacks through spells). As such commented out
+
         if (!CanAttack)
             return false;
 
@@ -653,6 +670,10 @@ public class Unit : Card
                         if (GetStat(StatTypes.Protected) < 0)
                         {
                             CurrentHealth += GetStat(StatTypes.Protected);
+
+                            if (keywords.Contains(Keywords.Lifebond))
+                                sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
+
                             if (keywords.Contains(Keywords.Deadly))
                             {
                                 if (IsHero)
@@ -666,8 +687,6 @@ public class Unit : Card
                                 RemoveUnit(true);
                                 isDead = true;
                             }
-                            if (keywords.Contains(Keywords.Lifebond))
-                                sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
                             ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
                         }

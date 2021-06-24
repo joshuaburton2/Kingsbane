@@ -160,7 +160,8 @@ public class UnitCommandUI : MonoBehaviour
             disengageButton.interactable = unit.CanAction && unit.CanMove;
             //Set Flying Button Properties
             flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
-            flyingButton.interactable = unit.CanFlyOrLand;
+            flyingButton.interactable = unit.CanFlyOrLand && 
+                (!unit.HasStatusEffect(Unit.StatusEffects.Airborne) || unit.HasStatusEffect(Unit.StatusEffects.Airborne) && unit.CheckOccupancy(unit.UnitCounter.Cell, true));
             flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
             //Set Unstealth Button Properties
             unstealthButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Stealthed));
