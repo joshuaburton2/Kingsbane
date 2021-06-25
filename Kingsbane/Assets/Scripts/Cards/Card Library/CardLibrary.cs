@@ -10628,7 +10628,7 @@ If this spell kills an enemy unit, add a random different Brawl card to your han
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
-            Text = @"Deal 2 damage to all units adjacent to your hero. Heal the caster for the amount of damage dealt.
+            Text = @"Deal 2 damage to all units adjacent to the caster. Heal the caster for the amount of damage dealt.
 If this spell kills an enemy unit, add a random Brawl card to your hand. <b>Discard</b> this card at the end of your turn",
             LoreText = @"",
             Notes = @"",
@@ -14759,7 +14759,7 @@ After this attacks a unit, <b>Root</b> it",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { Keywords.Token, Keywords.Prepared },
+            Keywords = new List<Keywords>() { Keywords.Prepared, Keywords.Token },
         };
         CardList.Add(card1409);
 
@@ -14781,7 +14781,7 @@ Last Rites:</b> Deal 5 damage to all adjacent non-Void units",
             Rarity = Rarity.Token,
             CardType = CardTypes.Unit,
 
-            Tags = new List<Tags> { Tags.Void, Tags.Abomination, Tags.Structure, Tags.Token },
+            Tags = new List<Tags> { Tags.LastRites, Tags.Void, Tags.Structure, Tags.Token },
             Synergies = new List<Synergies> { },
             UnitTag = new List<UnitTags>()
             {
