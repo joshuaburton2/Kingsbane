@@ -89,7 +89,7 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
         {
             if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.SelectCaster)
             {
-                GameManager.instance.effectManager.SelectCaster(hero);
+                GameManager.instance.effectManager.SelectCaster(hero, false);
             }
         }
     }

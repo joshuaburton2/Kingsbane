@@ -430,9 +430,9 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public void SelectCaster(Unit caster)
+    public void SelectCaster(Unit caster, bool requiresActiveCaster = true)
     {
-        if (caster.CanCastSpell)
+        if (!requiresActiveCaster || caster.CanCastSpell)
         {
             if (((Spell)SelectedCard).SpellRange == 0)
             {
