@@ -14570,7 +14570,7 @@ This unit's speed cannot increase above 0",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Structure, Keywords.Token },
         };
         CardList.Add(card1404);
 
@@ -14608,7 +14608,7 @@ Friendly units can move through this tile",
 
             Abilities = new List<AbilityData>() { ability1128 },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Structure, Keywords.Token },
         };
         CardList.Add(card1405);
 
@@ -14645,7 +14645,7 @@ Friendly units can move through this tile",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Structure, Keywords.Token },
         };
         CardList.Add(card1406);
 
@@ -14759,7 +14759,7 @@ After this attacks a unit, <b>Root</b> it",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Token, Keywords.Prepared },
         };
         CardList.Add(card1409);
 
@@ -14797,7 +14797,7 @@ Last Rites:</b> Deal 5 damage to all adjacent non-Void units",
 
             Abilities = new List<AbilityData>() { },
 
-            Keywords = new List<Keywords>() { },
+            Keywords = new List<Keywords>() { Keywords.Structure, Keywords.Token },
         };
         CardList.Add(card1410);
 
