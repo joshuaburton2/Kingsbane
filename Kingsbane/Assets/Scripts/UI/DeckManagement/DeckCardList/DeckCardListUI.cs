@@ -12,9 +12,12 @@ using UnityEngine.EventSystems;
 public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
 {
     private DeckListUI deckListUI;
+    private ReserveForcesUI reserveForcesUI;
+    private bool isReserved;
     private DeckData deckData;
     private List<CardData> deckCardList;
     private List<UpgradeData> deckUpgradeList;
+    private bool hideCards;
 
     [SerializeField]
     GameObject cardListArea;
@@ -30,27 +33,39 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// Refreshes the card list
     /// 
     /// </summary>
-    public void RefreshCardList(DeckData _deckData = null, DeckListUI _deckListUI = null)
+    public void RefreshCardList(DeckData _deckData = null,
+        DeckListUI _deckListUI = null,
+        ReserveForcesUI _reserveForcesUI = null,
+        bool _isReserved = false,
+        bool _hideCards = false)
     {
         deckListUI = _deckListUI;
+        reserveForcesUI = _reserveForcesUI;
+        isReserved = _isReserved;
 
         GameManager.DestroyAllChildren(cardListArea);
-        
+
         //Certain situations may require an empty card list, so will leave the object empty
         if (_deckData != null)
         {
             deckData = _deckData;
             deckCardList = deckData.CardList;
             deckUpgradeList = deckData.UpgradeList;
+            hideCards = _hideCards;
 
-            //Add the hero card to the list
-            AddHeroCard(deckData);
+            if (reserveForcesUI == null)
+            {
+                //Add the hero card to the list
+                if (!hideCards)
+                    AddHeroCard(deckData);
 
-            //Add the upgrades to the list
-            AddUpgrades();
+                //Add the upgrades to the list
+                AddUpgrades();
+            }
 
             //Add the cards to the list
-            AddCards();
+            if (!hideCards)
+                AddCards();
 
             //Update the card count text
             cardCountText.text = $"Cards: {deckData.DeckCount}";
@@ -64,9 +79,12 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     private void AddHeroCard(DeckData deckData)
     {
-        var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
-        heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, deckListUI, 1, this.deckData.Id);
-        heroCardObject.name = $"Card- {deckData.HeroCard.Name}";
+        if (deckData.HeroCard != null)
+        {
+            var heroCardObject = Instantiate(cardTemplate, cardListArea.transform);
+            heroCardObject.GetComponent<DeckCardObject>().InitCardObject(deckData.HeroCard, 1, this.deckData.Id, deckListUI);
+            heroCardObject.name = $"Card- {deckData.HeroCard.Name}";
+        }
     }
 
     /// <summary>
@@ -88,7 +106,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
                     hasDeathDefiant = true;
 
                 var deckUpgradeObject = Instantiate(upgradeTemplate, cardListArea.transform);
-                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckListUI, deckData.Id);
+                deckUpgradeObject.GetComponent<DeckUpgradeObject>().InitUpgradeObject(upgradeData, deckData.Id);
                 deckUpgradeObject.name = $"Upgrade- {upgradeData.Name}";
 
                 upgradeObjects.Add(deckUpgradeObject);
@@ -140,7 +158,7 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
             }
 
             //Initialise the card object
-            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, deckListUI, numCopies, deckData.Id);
+            deckCardObject.GetComponent<DeckCardObject>().InitCardObject(cardData, numCopies, deckData.Id, deckListUI, reserveForcesUI, isReserved);
             deckCardObject.name = $"Card- {cardData.Name}";
 
             //Shifts the index of the overall card loop to the last instance of the current card in the deck. Note that when the code returns to the top of the loop,
@@ -156,6 +174,6 @@ public class DeckCardListUI : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+
     }
 }

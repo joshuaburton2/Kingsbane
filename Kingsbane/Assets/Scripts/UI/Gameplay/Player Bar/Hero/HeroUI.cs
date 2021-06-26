@@ -10,8 +10,6 @@ public class HeroUI : MonoBehaviour
     public Player Player { get { return Hero.Owner; } }
 
     [SerializeField]
-    private CanvasGroup buttonGroup;
-    [SerializeField]
     private HeroStatsUI heroStatUI;
     [SerializeField]
     private Image heroStatBackground;
@@ -28,12 +26,6 @@ public class HeroUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI summonText;
 
-    private void Update()
-    {
-        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
-            buttonGroup.interactable = !GameManager.instance.effectManager.IsUILocked;
-    }
-
     /// <summary>
     /// 
     /// Initialises the Hero UI
@@ -42,9 +34,6 @@ public class HeroUI : MonoBehaviour
     public void InitHeroUI(Hero _hero)
     {
         Hero = _hero;
-
-        buttonGroup.interactable = false;
-
         heroStatUI.InitHeroStats(Hero);
 
         RefreshHeroUI();
@@ -117,6 +106,17 @@ public class HeroUI : MonoBehaviour
     public void IncreaseSummonCapacity()
     {
         Player.ModifySummonCapacity();
+        RefreshHeroUI();
+    }
+
+    /// <summary>
+    /// 
+    /// Button click event for increasing the player's item capacity
+    /// 
+    /// </summary>
+    public void IncreaseItemCapacity()
+    {
+        Player.ModifyItemCapacity();
         RefreshHeroUI();
     }
 }

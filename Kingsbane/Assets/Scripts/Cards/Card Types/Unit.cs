@@ -107,6 +107,7 @@ public class Unit : Card
 
     public List<AbilityData> DefaultAbilities { get { return UnitData.Abilities; } }
     public List<Ability> Abilities { get; set; }
+    public bool HasAbilities { get { return Abilities.Count > 0; } }
 
     public UnitCounter UnitCounter { get; set; }
     public bool IsDeployed { get { return UnitCounter != null; } }
@@ -302,6 +303,20 @@ public class Unit : Card
         RefreshCounter();
     }
 
+    private void ReturnToOriginalFromActionReset()
+    {
+        if (Status == UnitStatuses.Enemy)
+            Status = UnitStatuses.Enemy;
+        else
+            Status = UnitStatuses.Preparing;
+
+        ActionsLeft = 0;
+        AbilityUsesLeft = 0;
+        RemainingSpeed = 0;
+
+        RefreshCounter();
+    }
+
     public void ReturnToOriginalForm()
     {
         if (HasStatusEffect(StatusEffects.Transformed))
@@ -310,6 +325,7 @@ public class Unit : Card
             RemoveUnit();
             GameManager.instance.effectManager.CreateUnitCounter(OriginalTransformForm, currentCell);
 
+            OriginalTransformForm.ReturnToOriginalFromActionReset();
 
             if (OriginalTransformForm.IsHero)
             {
@@ -353,17 +369,24 @@ public class Unit : Card
 
         var canOccupy = false;
 
-        if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
+        if (!HasKeyword(Keywords.Structure))
         {
-            canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+            if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
+            {
+                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+            }
+            if (HasKeyword(Keywords.Ethereal))
+            {
+                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
+            }
+            if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
+            {
+                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+            }
         }
-        if (HasKeyword(Keywords.Ethereal))
+        else
         {
-            canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
-        }
-        if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
-        {
-            canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+            return true;
         }
 
         return canOccupy;
@@ -383,7 +406,7 @@ public class Unit : Card
     {
         if (Owner.IsActivePlayer)
         {
-            if (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared))
+            if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay && (GameManager.instance.CurrentRound != 1 || HasKeyword(Keywords.Prepared)))
             {
                 RefreshActions();
             }
@@ -431,17 +454,17 @@ public class Unit : Card
         if (HasKeyword(Keywords.SpecialSwiftstrike))
         {
             ActionsLeft = 3;
-            AbilityUsesLeft = 3;
+            AbilityUsesLeft = HasAbilities ? 3 : 0;
         }
         else if (HasKeyword(Keywords.Swiftstrike))
         {
             ActionsLeft = 2;
-            AbilityUsesLeft = 1;
+            AbilityUsesLeft = HasAbilities ? 1 : 0;
         }
         else
         {
             ActionsLeft = 1;
-            AbilityUsesLeft = 1;
+            AbilityUsesLeft = HasAbilities ? 1 : 0;
         }
 
         if (LoseNextAction)
@@ -521,6 +544,8 @@ public class Unit : Card
 
     public bool CanAttackTarget(Unit targetUnit)
     {
+        //Currently not working and will need more work, as this does not account for attacks external to the action attack (e.g. attacks through spells). As such commented out
+
         if (!CanAttack)
             return false;
 
@@ -551,8 +576,9 @@ public class Unit : Card
         {
             var targetHealth = targetUnit.CurrentHealth;
 
+            var targetStunned = targetUnit.HasStatusEffect(StatusEffects.Stunned);
             targetDead = targetUnit.DamageUnit(Owner, GetStat(StatTypes.Attack), CurrentKeywords);
-            if ((GetStat(StatTypes.Range) == 0 || forceMelee) && !targetUnit.HasStatusEffect(StatusEffects.Stunned))
+            if ((GetStat(StatTypes.Range) == 0 || forceMelee) && !targetStunned)
             {
                 bool hasOverwhelm = HasKeyword(Keywords.Overwhelm);
                 if (!targetDead && hasOverwhelm || !hasOverwhelm)
@@ -644,6 +670,10 @@ public class Unit : Card
                         if (GetStat(StatTypes.Protected) < 0)
                         {
                             CurrentHealth += GetStat(StatTypes.Protected);
+
+                            if (keywords.Contains(Keywords.Lifebond))
+                                sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
+
                             if (keywords.Contains(Keywords.Deadly))
                             {
                                 if (IsHero)
@@ -657,8 +687,6 @@ public class Unit : Card
                                 RemoveUnit(true);
                                 isDead = true;
                             }
-                            if (keywords.Contains(Keywords.Lifebond))
-                                sourcePlayer.Hero.HealUnit(-GetStat(StatTypes.Protected));
 
                             ModifyStat(StatModifierTypes.Set, StatTypes.Protected, 0);
                         }
@@ -745,15 +773,18 @@ public class Unit : Card
                     if (SpymasterLurenCards.Any())
                         GameManager.instance.effectManager.ReturnLurenCards(this);
 
+                    UpdateOwnerStats(false);
                     GameManager.instance.effectManager.RemoveUnitCounter(UnitCounter);
 
                     if (isDestroy)
                     {
                         ReturnCaptureCards();
-                        Owner.AddToGraveyard(this);
+                        if (!HasKeyword(Keywords.Token))
+                        {
+                            Owner.AddToGraveyard(this);
+                        }
                     }
 
-                    UpdateOwnerStats(false);
                     GameManager.instance.uiManager.RefreshUI();
                     GameManager.instance.CheckWarden();
                 }
@@ -1176,6 +1207,10 @@ public class Unit : Card
         {
             ReturnToOriginalForm();
             OriginalTransformForm.ReturnToHand();
+        }
+        else if (HasKeyword(Keywords.Token))
+        {
+            RemoveUnit(true);
         }
         else
         {

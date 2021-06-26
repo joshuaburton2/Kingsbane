@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using CategoryEnums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,7 +25,7 @@ public class UpgradeListObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the upgrade list object. Updates the text properties of the object
     /// 
     /// </summary>
-    public void InitUpgradeListObject(UpgradeData _upgradeData, UpgradeUI _upgradeUI, DeckData _currentDeck, bool _isToAdd)
+    public void InitUpgradeListObject(UpgradeData _upgradeData, UpgradeUI _upgradeUI, DeckData _currentDeck, bool _isToAdd, int completedScenarios = 0)
     {
         upgradeData = _upgradeData;
         upgradeUI = _upgradeUI;
@@ -32,7 +33,9 @@ public class UpgradeListObject : MonoBehaviour, IPointerClickHandler
         isToAdd = _isToAdd;
 
         upgradeNameText.text = _upgradeData.Name;
-        honourPointsText.text = _upgradeData.HonourPoints.ToString();
+        honourPointsText.text = _upgradeData.GetHonourPointsCost(completedScenarios).ToString();
+        if (completedScenarios > 0)
+            honourPointsText.color = GameManager.instance.colourManager.GetStatModColour(StatisticStatuses.Buffed);
     }
 
     /// <summary>

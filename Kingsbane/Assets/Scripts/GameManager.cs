@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         Menu,
         Setup,
         Mulligan,
+        [Description("Deploy Hero")]
         HeroDeploy,
         Gameplay,
         End,
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
     public Scenario LoadedScenario { get { return LoadedMap.Scenarios.FirstOrDefault(x => x.Id == LoadedScenarioId); } }
     public List<Player> LoadedPlayers { get; set; }
     public int NumPlayers { get { return LoadedPlayers.Count; } }
+    public DeckData CampaignDeck { get; set; }
+    public bool IsCampaign { get { return CampaignDeck != null; } }
 
     public int? ActivePlayerId { get; set; }
     public int? InactivePlayerId { get { return LoadedPlayers.Select(x => x.Id).FirstOrDefault(x => x != ActivePlayerId); } }
@@ -103,7 +107,15 @@ public class GameManager : MonoBehaviour
         ActivePlayerId = null;
         CurrentGamePhase = GamePhases.Menu;
         if (!isInit)
+        {
             effectManager.RefreshEffectManager(true);
+        }
+        else
+        {
+            CampaignDeck = null;
+        }
+
+
     }
 
     /// <summary>
@@ -111,8 +123,15 @@ public class GameManager : MonoBehaviour
     /// Initialises a gameplay session. Requires a list of player decks and a map
     /// 
     /// </summary>
-    public void LoadGameplay(DeckData[] decks, Map map, int scenarioId)
+    public void LoadGameplay(DeckData[] decks, Map map, int scenarioId, bool isCampaign = false)
     {
+        if (isCampaign)
+        {
+            CampaignDeck = decks.FirstOrDefault(x => !x.IsNPCDeck);
+            if (!CampaignDeck.IsCampaign)
+                throw new Exception("Deck is not a campaign deck");
+        }
+
         LoadGameplayData(decks, map, scenarioId);
 
         sceneManager.LoadNewScene(SceneList.GameplayScene);
@@ -126,13 +145,17 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckGameLoad()
     {
+        //If the phase is still menu, this means the gameplay data has not been loaded, as such, requiring default decks
         if (CurrentGamePhase == GamePhases.Menu)
         {
+            CampaignDeck = null;
+
+            var orderedNPCDecks = deckManager.NPCDeckList.OrderBy(x => x.Id);
             var defaultDecks = new DeckData[]
             {
-                deckManager.NPCDeckList.FirstOrDefault(),
+                orderedNPCDecks.FirstOrDefault(),
                 //deckManager.NPCDeckList.FirstOrDefault(),
-                deckManager.NPCDeckList.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
+                orderedNPCDecks.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
             var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
@@ -195,6 +218,19 @@ public class GameManager : MonoBehaviour
     {
         var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
         mapGrid = mapGridObject.GetComponent<MapGrid>();
+
+        if (IsCampaign)
+        {
+            if (CampaignDeck.IsCampaign)
+            {
+                uiManager.ShowLootGeneratorForCampaign();
+                CampaignDeck = null;
+            }
+            else
+            {
+                throw new Exception("Deck is not a campaign deck");
+            }
+        }
     }
 
     /// <summary>
@@ -283,16 +319,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void TriggerVictory(int lossPlayerId)
+    public void TriggerVictory(int lossPlayerId, bool isSceneExit = false)
     {
         CurrentGamePhase = GamePhases.End;
 
         foreach (var player in LoadedPlayers)
         {
             player.GameEndUpdates();
+
+            var playerDeck = player.DeckData;
+            if (!playerDeck.IsNPCDeck && playerDeck.IsCampaign)
+            {
+                if (lossPlayerId == player.Id)
+                {
+                    playerDeck.CampaignTracker.TriggerDefeat();
+                }
+                else
+                {
+                    playerDeck.CampaignTracker.CompleteScenario(player.CompletedBonusObjective);
+                }
+            }
         }
 
-        effectManager.RefreshEffectManager(true);
-        uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
+        if (!isSceneExit)
+        {
+            deckManager.SaveDecks();
+            effectManager.RefreshEffectManager(true);
+            uiManager.ShowVictoryState(lossPlayerId == 0 ? 1 : 0);
+        }
     }
 }

@@ -141,7 +141,7 @@ public class PassiveExtensionEffect : EffectExtensionUI
                 passive.TargetResource = (CardResources)Enum.Parse(typeof(CardResources), costResourceDropdown.captionText.text);
             if (int.TryParse(costValueInput.text, out int result))
             {
-                var costAdjustment = new AdjustCostObject() { AdjustmentType = StatModifierTypes.Modify, };
+                var costAdjustment = new AdjustCostObject() { AdjustmentType = StatModifierTypes.Modify, FromPassive = true };
 
                 costAdjustment.Value = result;
 

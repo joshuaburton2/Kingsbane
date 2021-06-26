@@ -13,6 +13,8 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
 {
     CardData cardData;    
     private DeckListUI deckListUI;
+    private ReserveForcesUI reserveForcesUI;
+    private bool isReserved;
     private int? deckId;
 
     Card card;
@@ -34,11 +36,13 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the object with card data. Refreshes the text properties of the card. Used for library lists
     /// 
     /// </summary>
-    public void InitCardObject(CardData _cardData, DeckListUI _deckListUI, int numCards, int? _deckId = null)
+    public void InitCardObject(CardData _cardData, int numCards, int? _deckId = null, DeckListUI _deckListUI = null, ReserveForcesUI _reserveForcesUI = null, bool _isReserved = false)
     {
         cardData = _cardData;
         //Needs to pass in the deck list UI to this object in order to know which deck is being edited
         deckListUI = _deckListUI;
+        reserveForcesUI = _reserveForcesUI;
+        isReserved = _isReserved;
         deckId = _deckId;
 
         nameText.text = cardData.Name;
@@ -93,6 +97,11 @@ public class DeckCardObject : MonoBehaviour, IPointerClickHandler
             {
                 var updatedDeck = GameManager.instance.deckManager.RemoveCardFromPlayerDeck(deckId.Value, cardData);
                 deckListUI.RefreshActiveDeckDetails(updatedDeck);
+            }
+
+            if (reserveForcesUI != null)
+            {
+                reserveForcesUI.SwitchCardState(cardData, isReserved);
             }
         }
     }

@@ -84,5 +84,13 @@ public class HeroStatsUI : MonoBehaviour, IPointerClickHandler
         {
             GameManager.instance.uiManager.ActivateCardDetail(hero.CardData);
         }
+
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.SelectCaster)
+            {
+                GameManager.instance.effectManager.SelectCaster(hero, false);
+            }
+        }
     }
 }

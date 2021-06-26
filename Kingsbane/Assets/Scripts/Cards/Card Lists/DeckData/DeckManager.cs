@@ -41,21 +41,10 @@ public class DeckManager : MonoBehaviour
         //Filters out any NPC decks
         var deckSaveTemplates = classData.DeckTemplates.Where(x => x.IsNPCDeck == false).OrderBy(x => x.Name).ToList();
 
-        //Moves the Empty Deck Template to the begining of the template list and shift everything else in alphabetical order up
-        for (int i = 0; i < deckSaveTemplates.Count; i++)
-        {
-            if (deckSaveTemplates[i].Name == "Empty Deck")
-            {
-                var emptyDeckTemplate = deckSaveTemplates[i];
-                //Move down from where the empty deck is and shift all decks one unit up to replace it
-                for (int j = i; j > 0; j--)
-                {
-                    deckSaveTemplates[j] = deckSaveTemplates[j - 1];
-                }
-                //Replace the first element in the list with the empty deck
-                deckSaveTemplates[0] = emptyDeckTemplate;
-            }
-        }
+        //Moves the Empty Deck Template to the beginning of the template list and orders everything else in alphabetical
+        var emptyDeckTemplate = deckSaveTemplates.Single(x => x.Name == "Empty Deck");
+        deckSaveTemplates.Remove(emptyDeckTemplate);
+        deckSaveTemplates.Insert(0, emptyDeckTemplate);
 
         return ConvertDeckSave(deckSaveTemplates, true);
     }
@@ -67,31 +56,32 @@ public class DeckManager : MonoBehaviour
     /// </summary>
     public void LoadDecks()
     {
-        try
+        //If there is an exception to loading the save file, creates a new version, then loads them again
+        if (File.Exists(Application.persistentDataPath + deckFileName))
         {
-            //If there is an exception to loading the save file, creates a new version, then loads them again
-            if (File.Exists(Application.persistentDataPath + deckFileName))
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
+            try
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream file = File.Open(Application.persistentDataPath + deckFileName, FileMode.Open);
                 var saveDeckList = (List<DeckSaveData>)bf.Deserialize(file);
-
                 PlayerDeckList = ConvertDeckSave(saveDeckList, false);
 
                 file.Close();
             }
-            else
+            catch
             {
-                PlayerDeckList = new List<DeckData>();
+                file.Close();
+                ResetDecks();
+                LoadDecks();
             }
-
-            LoadNPCDecks();
         }
-        catch
+        else
         {
-            ResetDecks();
-            LoadDecks();
+            PlayerDeckList = new List<DeckData>();
         }
+
+        LoadNPCDecks();
+
     }
 
     /// <summary>
@@ -145,7 +135,7 @@ public class DeckManager : MonoBehaviour
     /// Create a new player deck
     /// 
     /// </summary>
-    public void CreatePlayerDeck(DeckData deck, string deckName)
+    public DeckData CreatePlayerDeck(DeckData deckTemplate, string deckName, int? campaignId = null)
     {
         //Generate the ID of the deck. Takes the last deck id in the list and adds one to it
         var newId = 0;
@@ -155,15 +145,22 @@ public class DeckManager : MonoBehaviour
         }
 
         //Adds the deck to the list
-        PlayerDeckList.Add(
-            new DeckData(deck)
-            {
-                Id = newId,
-                Name = deckName,
-            });
+        var newDeck = new DeckData(deckTemplate)
+        {
+            Id = newId,
+            Name = deckName,
+        };
+        PlayerDeckList.Add(newDeck);
+
+        if (campaignId.HasValue)
+        {
+            newDeck.CampaignTracker = new CampaignProgression(newDeck.Id.Value, campaignId.Value);
+        }
 
         //Save decks to file
         SaveDecks();
+
+        return newDeck;
     }
 
     /// <summary>
@@ -191,6 +188,18 @@ public class DeckManager : MonoBehaviour
     {
         return PlayerDeckList.FirstOrDefault(x => x.Id == id);
     }
+
+    /// <summary>
+    /// 
+    /// Gets a list of player decks based on whether it is for a campaign or not
+    /// 
+    /// </summary>
+    public List<DeckData> GetPlayerDecks(bool isCampaign = false)
+    {
+        //Note that if is campaign 
+        return PlayerDeckList.Where(x => x.IsCampaign == isCampaign && (!isCampaign || isCampaign && !x.CampaignTracker.CompletedCampaign)).ToList();
+    }
+
 
     /// <summary>
     /// 
@@ -247,6 +256,23 @@ public class DeckManager : MonoBehaviour
         return PlayerDeckList[id];
     }
 
+    public DeckData RemoveReserves(int id, List<CardData> reserveCards)
+    {
+        var playerDeck = PlayerDeckList[id];
+
+        if (!playerDeck.IsCampaign)
+            throw new Exception("Deck is invalid to reserve- not a campaign deck");
+
+        foreach (var reserveCard in reserveCards)
+        {
+            RemoveCardFromPlayerDeck(id, reserveCard);
+        }
+
+        playerDeck.CampaignTracker.NumToReserve = 0;
+
+        return playerDeck;
+    }
+
     /// <summary>
     /// 
     /// Adds a list of upgrades to a particular deck
@@ -272,5 +298,20 @@ public class DeckManager : MonoBehaviour
         PlayerDeckList[id].RemoveUpgrade(upgradeData);
         SaveDecks();
         return PlayerDeckList[id];
+    }
+
+    public DeckData AddNumToReserves(int id, int numToReserve)
+    {
+        var playerDeck = PlayerDeckList[id];
+
+        if (playerDeck.IsCampaign)
+        {
+            numToReserve = Mathf.Min(numToReserve, playerDeck.DeckCount);
+
+            playerDeck.CampaignTracker.NumToReserve += numToReserve;
+            SaveDecks();
+        }
+
+        return playerDeck;
     }
 }

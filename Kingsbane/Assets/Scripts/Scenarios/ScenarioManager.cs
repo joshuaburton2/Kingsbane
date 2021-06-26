@@ -59,4 +59,14 @@ public class ScenarioManager : MonoBehaviour
     {
         return ScenarioLibrary.CampaignList.FirstOrDefault(x => x.Id == id);
     }
+
+    /// <summary>
+    /// 
+    /// Get a list of all campaigns in the game
+    /// 
+    /// </summary>
+    public List<Campaign> GetCampaigns()
+    {
+        return ScenarioLibrary.CampaignList;
+    }
 }

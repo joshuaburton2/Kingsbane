@@ -20,5 +20,7 @@
         Warden,
         Piercing,
         SpecialSwiftstrike,
+        Structure,
+        Token,
     }
 }

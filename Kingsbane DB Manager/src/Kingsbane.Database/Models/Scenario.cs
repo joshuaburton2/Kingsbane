@@ -24,6 +24,8 @@ namespace Kingsbane.Database.Models
         public string Description { get; set; }
         public bool IsDefault { get; set; }
 
+        public int? CampaignIndex { get; set; }
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
@@ -33,6 +35,9 @@ namespace Kingsbane.Database.Models
 
         public int MapId { get; set; }
         public virtual Map Map { get; set; }
+
+        public int? CampaignId { get; set; }
+        public virtual Campaign Campaign { get; set; }
 
         public virtual ICollection<ScenarioRuleSet> ScenarioRuleSet { get; set; }
         public virtual ICollection<MapDeployment> DeploymentMap { get; set; }

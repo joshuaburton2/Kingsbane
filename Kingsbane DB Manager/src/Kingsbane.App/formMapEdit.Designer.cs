@@ -113,6 +113,7 @@
             this.txtDescription.Location = new System.Drawing.Point(12, 121);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(276, 74);
             this.txtDescription.TabIndex = 7;
             // 
@@ -180,6 +181,7 @@
             this.txtScenarioDescription.Location = new System.Drawing.Point(12, 334);
             this.txtScenarioDescription.Multiline = true;
             this.txtScenarioDescription.Name = "txtScenarioDescription";
+            this.txtScenarioDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtScenarioDescription.Size = new System.Drawing.Size(276, 82);
             this.txtScenarioDescription.TabIndex = 12;
             // 
@@ -354,6 +356,7 @@
             this.txtRuleDescription.Location = new System.Drawing.Point(398, 521);
             this.txtRuleDescription.Multiline = true;
             this.txtRuleDescription.Name = "txtRuleDescription";
+            this.txtRuleDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtRuleDescription.Size = new System.Drawing.Size(213, 37);
             this.txtRuleDescription.TabIndex = 30;
             // 

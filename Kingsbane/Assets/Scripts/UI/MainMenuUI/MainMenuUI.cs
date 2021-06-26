@@ -5,9 +5,22 @@ using UnityEngine;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField]
+    private GameObject campaignUI;
+    [SerializeField]
     private GameObject lobbyUI;
     [SerializeField]
     private GameObject libraryUI;
+
+    /// <summary>
+    /// 
+    /// Button click event for opening the gampaign area
+    /// 
+    /// </summary>
+    public void OpenCampaign()
+    {
+        campaignUI.SetActive(true);
+        campaignUI.GetComponent<CampaignUI>().LoadCampaignUI();
+    }
 
     /// <summary>
     /// 

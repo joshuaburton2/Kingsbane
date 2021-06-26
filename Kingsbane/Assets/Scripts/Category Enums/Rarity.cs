@@ -11,6 +11,7 @@
         Uncollectable,
         Hero,
         NPCHero,
-        Deleted
+        Deleted,
+        Token,
     }
 }

@@ -50,6 +50,9 @@ public class LibraryManager : MonoBehaviour
     private Dictionary<HeroTier, UnitData> HeroLookup { get; set; }
     private Dictionary<HeroTier, AbilityData> HeroAbilityLookup { get; set; }
 
+
+    private readonly List<Classes.ClassList> InvalidClasses = new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token };
+
     /// <summary>
     /// 
     /// Loading card library- to be called on initialisation of game
@@ -109,7 +112,8 @@ public class LibraryManager : MonoBehaviour
                     keyList = card.Synergies as List<T>;
                     break;
                 case Type _ when type == typeof(Classes.ClassList):
-                    keyList.Add((T)(object)card.Class);
+                    if (!InvalidClasses.Contains(card.Class))
+                        keyList.Add((T)(object)card.Class);
                     break;
                 //Class Resources type is the cards which are obtainable by a particular class (i.e. they exclusively cost resources which the class can play)
                 case Type _ when type == typeof(ClassResources):
@@ -176,7 +180,8 @@ public class LibraryManager : MonoBehaviour
 
         foreach (var cardClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
-            if (cardClass != Classes.ClassList.Default)
+
+            if (!InvalidClasses.Contains(cardClass))
             {
                 //Obtain all the heroes for a particular class. Intersects the rarity lookup and the classlookup
                 tempHeroLookup.Add(cardClass, RarityLookup[Rarity.Hero].Intersect(ClassLookup[cardClass]).ToList());
@@ -240,7 +245,7 @@ public class LibraryManager : MonoBehaviour
                 return FilterCardList(dictionaryList.OrderCardList(), listFilter);
             else
                 return dictionaryList.OrderCardList();
-        }  
+        }
         else
             return new List<CardData>();
     }
@@ -538,8 +543,11 @@ public class LibraryManager : MonoBehaviour
             //Class playable filter area
             if (listFilter.ClassPlayableFilter != Classes.ClassList.Default)
             {
-                //Filters out all heroes from the list
-                if (!card.IsHero)
+                //Filters out all heroes except the classes hero from the list
+                if (card.IsHero && card.Class != listFilter.ClassPlayableFilter)
+                    continue;
+                //Required to ignore the classes hero for the resource filtering
+                else if (!card.IsHero)
                 {
                     var classResource = new ClassResources(listFilter.ClassPlayableFilter);
                     //Uses the default filter when obtaining the dictionary list. Also adds uncollectable rarity to the filter
@@ -600,9 +608,19 @@ public class LibraryManager : MonoBehaviour
         if (generateCardFilter.CardType != CardTypes.Default)
             cardFilter.CardTypeFilter = new List<CardTypes>() { generateCardFilter.CardType };
         cardFilter.SetFilter = generateCardFilter.SetFilter;
+
+        //If in the setup phase, only want to generate token cards
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Setup)
+        {
+            cardFilter.RaritiyFilter = new List<Rarity>() { Rarity.Token };
+            generateCardFilter.IncludeUncollectables = false;
+        }
         //Adds uncollectable cards if generated filter requires it
         if (generateCardFilter.IncludeUncollectables)
+        {
             cardFilter.RaritiyFilter.Add(Rarity.Uncollectable);
+            cardFilter.RaritiyFilter.Add(Rarity.Token);
+        }
 
         //Gets the class playable list using the generated filter in order to ensure cards which cannot be generated outside of the players class
         var classResource = new ClassResources(generateCardFilter.ClassPlayable);
@@ -641,11 +659,6 @@ public class LibraryManager : MonoBehaviour
         return selectedCards;
     }
 
-    public class LootCard
-    {
-        public CardData CardData { get; set; }
-        public int Weighting { get; set; }
-    }
 
     /// <summary>
     /// 
@@ -698,21 +711,26 @@ public class LibraryManager : MonoBehaviour
             }
 
             //If the card shares synergies with the cards already in the deck, increases the weighting accordingly
+            var scalingSynergyWeighting = 0;
             foreach (var synergy in card.Synergies)
             {
                 if (deckSynergyCounts.TryGetValue(synergy, out int synergyCount))
                 {
-                    lootCard.Weighting += synergyCount * synergyWeighting;
+                    //Debug.Log($"{card.Name}, {synergy}, {Mathf.Max(1, synergyCount * synergyWeighting - scalingSynergyWeighting)}");
+                    lootCard.Weighting += Mathf.Max(1, synergyCount * synergyWeighting - scalingSynergyWeighting);
+                    scalingSynergyWeighting++;
                 }
             }
 
             //Reduces the weighting of the card based on the number of that card already in the deck
             var duplicateCount = deckData.CardList.Count(x => x.Id == card.Id);
+
             lootCard.Weighting += duplicateCount * duplicateWeighting;
 
             //Prevents weighting from being considered if it is below 0
             if (lootCard.Weighting > 0)
             {
+                //Debug.Log($"{card.Name}, {lootCard.Weighting}");
                 lootCards.Add(lootCard);
             }
 
@@ -726,8 +744,8 @@ public class LibraryManager : MonoBehaviour
         {
             var selectedLootCard = new LootCard();
 
-            do
-            {
+            //do
+            //{
                 //Randomly determines a card to be added
                 //First determines a random weighting
                 var randomVal = UnityEngine.Random.Range(0, totalWeighting);
@@ -745,8 +763,8 @@ public class LibraryManager : MonoBehaviour
                         break;
                     }
                 }
-                //If the selection already contains the card, repeats the random selection
-            } while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
+                //If the selection already contains the card, repeats the random selection (TURNED OFF FOR NOW)
+            //} while (lootSelection.Where(x => x.CardData.Id == selectedLootCard.CardData.Id).Any());
 
             lootSelection.Add(selectedLootCard);
         }

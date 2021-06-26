@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CategoryEnums;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -13,10 +15,14 @@ public class UpgradeUI : MonoBehaviour
     GameObject upgradesToAddArea;
     [SerializeField]
     DeckListUI deckListUI;
+    [SerializeField]
+    private CampaignManagerUI campaignManagerUI;
 
     [Header("Object Prefabs")]
     [SerializeField]
     GameObject upgradeListObject;
+    [SerializeField]
+    GameObject upgradeDividerObject;
 
     [Header("DetailsFields")]
     [SerializeField]
@@ -34,11 +40,23 @@ public class UpgradeUI : MonoBehaviour
     [SerializeField]
     Button cancelButton;
 
+    [Header("Honour Points Fields")]
+    [SerializeField]
+    private GameObject honourPointsArea;
+    [SerializeField]
+    private TextMeshProUGUI currentCostText;
+    [SerializeField]
+    private TextMeshProUGUI deckHonourPointsText;
+    [SerializeField]
+    private Button addSelectedUpgradesButton;
+
     UpgradeData selectedUpgrade;
     bool selectedUpgradeToAdd;
     List<UpgradeData> upgradesToAdd;
     DeckData selectedDeck;
     DeckData newDeck;
+
+    Dictionary<UpgradeData, int> upgradeCostTracker;
 
     /// <summary>
     /// 
@@ -47,9 +65,24 @@ public class UpgradeUI : MonoBehaviour
     /// </summary>
     public void InitUpgradeUI()
     {
+        if (deckListUI != null && campaignManagerUI != null)
+            throw new Exception("UI not initialised properly");
+
         upgradesToAdd = new List<UpgradeData>();
         //Gets the deck currently being edited it and copies it to a new instance of the deck
-        selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+        if (deckListUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+            honourPointsArea.SetActive(false);
+        }
+        else if (campaignManagerUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(campaignManagerUI.loadedDeck.Id.Value);
+            honourPointsArea.SetActive(true);
+            upgradeCostTracker = new Dictionary<UpgradeData, int>();
+            RefreshHonourPoints();
+        }
+
         newDeck = new DeckData(selectedDeck);
 
         //Refreshes the available upgrades section
@@ -129,44 +162,81 @@ public class UpgradeUI : MonoBehaviour
     /// </summary>
     public void UpdateSelectedUpgradeState()
     {
+        var hideTierUpgrades = false;
+
         //Adds or removes the upgrade from the upgrade to add list depending on where the upgrade came from
         if (selectedUpgradeToAdd)
         {
             upgradesToAdd.Add(selectedUpgrade);
-            newDeck.AddUpgrade(selectedUpgrade);
+            newDeck.AddUpgrade(selectedUpgrade, false);
+
+            if (campaignManagerUI != null)
+            {
+                var honourPoints = selectedUpgrade.GetHonourPointsCost(newDeck.CampaignTracker.CompletedSinceTierUpgrade);
+                if (upgradeCostTracker.ContainsKey(selectedUpgrade))
+                {
+                    upgradeCostTracker[selectedUpgrade] += honourPoints;
+                }
+                else
+                {
+                    upgradeCostTracker.Add(selectedUpgrade, honourPoints);
+                }
+                RefreshHonourPoints();
+            }
         }
         else
         {
-            upgradesToAdd.Remove(selectedUpgrade);
-            newDeck.RemoveUpgrade(selectedUpgrade);
-
-            //Finds any upgrades in the upgrade to add list which are invalid since their prerequisite is removed
-            var invalidUpgrades = new List<UpgradeData>();
-            foreach (var upgradeToAdd in upgradesToAdd)
-            {
-                foreach (var prerequisiteUpgrade in upgradeToAdd.UpgradePrerequisites)
-                {
-                    if (prerequisiteUpgrade.Id == selectedUpgrade.Id)
-                    {
-                        invalidUpgrades.Add(upgradeToAdd);
-                    }
-                }
-            }
-
-            //Removes any invalid upgrades from the list
-            foreach (var invalidUpgrade in invalidUpgrades)
-            {
-                upgradesToAdd.Remove(invalidUpgrade);
-                newDeck.RemoveUpgrade(invalidUpgrade);
-            }
+            RemoveUpgradeFromAddList(selectedUpgrade);
         }
 
+        hideTierUpgrades = campaignManagerUI != null && upgradesToAdd.Any(x => x.IsTierLevel);
+
         //Refresh the upgrade lists
-        RefreshAvailableUpgrades();
-        RefreshUpgradeList(upgradesToAddArea, false, upgradesToAdd, newDeck);
+        RefreshAvailableUpgrades(hideTierUpgrades);
+        RefreshUpgradeList(upgradesToAddArea, false, new List<UpgradeData>(upgradesToAdd));
 
         //Empties the selected ugprade fields
         RefreshSelectedUpgrade();
+    }
+
+    private void RemoveUpgradePrerequisites(UpgradeData upgrade)
+    {
+        //Finds any upgrades in the upgrade to add list which are invalid since their prerequisite is removed
+        foreach (var upgradeToAdd in upgradesToAdd.ToList())
+        {
+            foreach (var prerequisiteUpgrade in upgradeToAdd.UpgradePrerequisites)
+            {
+                if (prerequisiteUpgrade.Id == upgrade.Id)
+                {
+                    if (upgradesToAdd.Contains(upgradeToAdd))
+                    {
+                        RemoveUpgradeFromAddList(upgradeToAdd);
+                    }
+                }
+            }
+        }
+    }
+
+    private void RemoveUpgradeFromAddList(UpgradeData upgrade)
+    {
+        upgradesToAdd.Remove(upgrade);
+        newDeck.RemoveUpgrade(upgrade);
+
+        RemoveUpgradePrerequisites(upgrade);
+
+        if (campaignManagerUI != null)
+        {
+            if (upgradesToAdd.Any(x => x.Id == upgrade.Id))
+            {
+                upgradeCostTracker[upgrade] -= upgrade.GetHonourPointsCost(newDeck.CampaignTracker.CompletedSinceTierUpgrade);
+            }
+            else
+            {
+                upgradeCostTracker.Remove(upgrade);
+            }
+
+            RefreshHonourPoints();
+        }
     }
 
     /// <summary>
@@ -174,11 +244,11 @@ public class UpgradeUI : MonoBehaviour
     /// Refreshes the available upgrade list with the valid upgrades for the deck
     /// 
     /// </summary>
-    private void RefreshAvailableUpgrades()
+    private void RefreshAvailableUpgrades(bool hideTierUpgrades = false)
     {
-        var upgradeList = GameManager.instance.upgradeManager.GetAvailableUpgrades(newDeck);
+        var upgradeList = GameManager.instance.upgradeManager.GetAvailableUpgrades(newDeck).Where(x => !hideTierUpgrades || hideTierUpgrades && !x.IsTierLevel).ToList();
 
-        RefreshUpgradeList(availableUpgradesArea, true, upgradeList, newDeck);
+        RefreshUpgradeList(availableUpgradesArea, true, upgradeList);
     }
 
     /// <summary>
@@ -187,20 +257,72 @@ public class UpgradeUI : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="isToAdd">Is true if being added from the available upgrades. If false is already in the upgrades to add list</param>
-    private void RefreshUpgradeList(GameObject listParent, bool isToAdd = true, List<UpgradeData> upgradeList = null, DeckData currentDeck = null)
+    private void RefreshUpgradeList(GameObject listParent, bool isToAdd = true, List<UpgradeData> upgradeList = null)
     {
-        GameManager.DestroyAllChildren(listParent);        
+        GameManager.DestroyAllChildren(listParent);
 
         if (upgradeList != null)
         {
-            //Loops through all the upgrades and creates the upgrade list objects in the list
-            foreach (var upgrade in upgradeList)
+            //Initialise the resource section
+            foreach (var resource in newDeck.DeckResources.OrderBy(x => x.GetEnumDescription()))
             {
-                var newUpgradeObject = Instantiate(upgradeListObject, listParent.transform);
-                newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this, currentDeck, isToAdd);
-
-                newUpgradeObject.name = $"Upgrade: {upgrade.Name}";
+                var resourceDividedList = upgradeList.Where(x => x.ResourcePrerequisites.Contains(resource)).ToList();
+                if (resourceDividedList.Any())
+                {
+                    CreateDivider(resource.GetEnumDescription().ToUpper(), listParent);
+                    RefreshDividedList(listParent, isToAdd, resourceDividedList, newDeck);
+                    //Removes the resource upgrades from the list so only class and neutral upgrades are left
+                    upgradeList.RemoveAll(x => resourceDividedList.Contains(x));
+                }
             }
+
+            //Initialise the class section
+            var classDividedList = upgradeList.Where(x => x.ClassPrerequisites.Contains(newDeck.DeckClass)).ToList();
+            if (classDividedList.Any())
+            {
+                CreateDivider(newDeck.DeckClass.GetEnumDescription().ToUpper(), listParent);
+                RefreshDividedList(listParent, isToAdd, classDividedList, newDeck);
+                //Removes the class upgrades from the list so only neutral upgrades are left
+                upgradeList.RemoveAll(x => classDividedList.Contains(x));
+            }
+
+            //Initialise the neutral section
+            if (upgradeList.Any())
+            {
+                CreateDivider("NEUTRAL", listParent);
+                //As resource and class upgrades have been removed, only neutral upgrades are left
+                RefreshDividedList(listParent, isToAdd, upgradeList, newDeck);
+            }
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Creates the upgrade divider in the list
+    /// 
+    /// </summary>
+    private void CreateDivider(string dividerName, GameObject parent)
+    {
+        var divdiderObject = Instantiate(upgradeDividerObject, parent.transform);
+        divdiderObject.GetComponent<UpgradeDividerObject>().InitDivider(dividerName);
+        divdiderObject.gameObject.name = $"Divider: {dividerName}";
+    }
+
+    /// <summary>
+    /// 
+    /// Refresh the divided upgrade list
+    /// 
+    /// </summary>
+    private void RefreshDividedList(GameObject listParent, bool isToAdd = true, List<UpgradeData> dividedUpgradeList = null, DeckData currentDeck = null)
+    {
+        //Loops through all the upgrades and creates the upgrade list objects in the list
+        foreach (var upgrade in dividedUpgradeList.OrderBy(x => x.Name))
+        {
+            var newUpgradeObject = Instantiate(upgradeListObject, listParent.transform);
+            var completedScenarios = campaignManagerUI != null && upgrade.IsTierLevel ? campaignManagerUI.loadedDeck.CampaignTracker.CompletedSinceTierUpgrade : 0;
+            newUpgradeObject.GetComponent<UpgradeListObject>().InitUpgradeListObject(upgrade, this, currentDeck, isToAdd, completedScenarios);
+
+            newUpgradeObject.name = $"Upgrade: {upgrade.Name}";
         }
     }
 
@@ -232,10 +354,46 @@ public class UpgradeUI : MonoBehaviour
     public void AddSelectedUpgrades()
     {
         var deckData = GameManager.instance.deckManager.AddUpgradesToPlayerDeck(selectedDeck.Id.Value, upgradesToAdd);
-        //Refreshes the active deck in the list with the deck information
-        deckListUI.RefreshActiveDeckDetails(deckData);
+        if (deckListUI != null)
+        {
+            //Refreshes the active deck in the list with the deck information
+            deckListUI.RefreshActiveDeckDetails(deckData);
+        }
+        if (campaignManagerUI != null)
+        {
+            campaignManagerUI.RefreshPlayerDetails();
+
+            var numToReserveMultiplier = 2;
+            var numToReserve = upgradesToAdd.Where(x => x.UpgradeTag == UpgradeTags.ReserveForces).Count() * numToReserveMultiplier;
+
+            if (campaignManagerUI != null)
+            {
+                campaignManagerUI.RefreshPlayerDetails();
+
+                if (numToReserve > 0)
+                {
+                    campaignManagerUI.OpenReserveForces(numToReserve);
+                }
+            }
+        }
+
         //Empties the upgrade to add list
         RefreshUpgradeList(upgradesToAddArea);
+        RefreshAvailableUpgrades();
         upgradesToAdd = new List<UpgradeData>();
+
+        upgradeCostTracker = new Dictionary<UpgradeData, int>();
+        RefreshHonourPoints();
+    }
+
+    private void RefreshHonourPoints()
+    {
+        if (campaignManagerUI != null)
+        {
+            currentCostText.text = upgradeCostTracker.Values.Sum().ToString();
+            deckHonourPointsText.text = selectedDeck.CampaignTracker.HonourPoints.ToString();
+
+            addSelectedUpgradesButton.interactable = upgradeCostTracker.Values.Sum() <= selectedDeck.CampaignTracker.HonourPoints;
+        }
     }
 }

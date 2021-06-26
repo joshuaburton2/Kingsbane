@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CategoryEnums;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 /// <summary>
@@ -19,6 +20,7 @@ public class UpgradeData
     public bool IsRepeatable { get; set; }
     public bool NPCLocked { get; set; }
     public TierLevel TierLevel { get; set; }
+    public bool IsTierLevel { get { return TierLevel != TierLevel.Default; } }
     public List<CardResources> ResourcePrerequisites { get; set; }
     public List<Classes.ClassList> ClassPrerequisites { get; set; }
     public List<UpgradeData> UpgradePrerequisites { get; set; }
@@ -68,5 +70,17 @@ public class UpgradeData
         }
 
         return prerequisiteString;
+    }
+
+    public int GetHonourPointsCost(int completedScenarios = 0)
+    {
+        if (IsTierLevel)
+        {
+            return Mathf.Max(0, HonourPoints - completedScenarios);
+        }
+        else
+        {
+            return HonourPoints;
+        }
     }
 }

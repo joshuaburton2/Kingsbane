@@ -7,7 +7,6 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
     public int upgradeId;
 
     UpgradeData upgradeData;
-    private DeckListUI deckListUI;
     private int? deckId;
 
     [SerializeField]
@@ -20,12 +19,11 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
     /// Initialise the object. Refreshes the text properties of the upgrade
     /// 
     /// </summary>
-    public void InitUpgradeObject(UpgradeData _upgradeData, DeckListUI _deckListUI = null, int? _deckId = null)
+    public void InitUpgradeObject(UpgradeData _upgradeData, int? _deckId = null)
     {
         upgradeId = _upgradeData.Id.Value;
         upgradeData = _upgradeData;
         //Needs to pass in the deck list UI to this object in order to know which deck is being edited
-        deckListUI = _deckListUI;
         deckId = _deckId;
 
         nameText.text = upgradeData.Name;
@@ -43,16 +41,6 @@ public class DeckUpgradeObject : MonoBehaviour, IPointerClickHandler
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             GameManager.instance.uiManager.ActivateUpgradeDetail(upgradeData);
-        }
-
-        if (deckListUI != null)
-        {
-            //Left click removes the upgrade from the player deck
-            if (eventData.button == PointerEventData.InputButton.Left && deckListUI.DeckEditMode)
-            {
-                //var updatedDeck = GameManager.instance.deckManager.RemoveUpgradeFromPlayerDeck(deckId.Value, upgradeData);
-                //deckListUI.RefreshActiveDeckCardList(updatedDeck);
-            }
         }
     }
 }

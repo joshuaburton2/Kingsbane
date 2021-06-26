@@ -39,6 +39,7 @@
             this.btnExportResources = new System.Windows.Forms.Button();
             this.btnExportMap = new System.Windows.Forms.Button();
             this.btnMaps = new System.Windows.Forms.Button();
+            this.btnCampaigns = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -140,10 +141,10 @@
             // 
             // btnExportMap
             // 
-            this.btnExportMap.Location = new System.Drawing.Point(192, 262);
+            this.btnExportMap.Location = new System.Drawing.Point(192, 277);
             this.btnExportMap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExportMap.Name = "btnExportMap";
-            this.btnExportMap.Size = new System.Drawing.Size(116, 52);
+            this.btnExportMap.Size = new System.Drawing.Size(116, 37);
             this.btnExportMap.TabIndex = 5;
             this.btnExportMap.Text = "Export";
             this.btnExportMap.UseVisualStyleBackColor = true;
@@ -154,17 +155,28 @@
             this.btnMaps.Location = new System.Drawing.Point(192, 206);
             this.btnMaps.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaps.Name = "btnMaps";
-            this.btnMaps.Size = new System.Drawing.Size(116, 52);
+            this.btnMaps.Size = new System.Drawing.Size(116, 30);
             this.btnMaps.TabIndex = 6;
             this.btnMaps.Text = "Maps";
             this.btnMaps.UseVisualStyleBackColor = true;
             this.btnMaps.Click += new System.EventHandler(this.btnMaps_Click);
+            // 
+            // btnCampaigns
+            // 
+            this.btnCampaigns.Location = new System.Drawing.Point(192, 240);
+            this.btnCampaigns.Name = "btnCampaigns";
+            this.btnCampaigns.Size = new System.Drawing.Size(116, 32);
+            this.btnCampaigns.TabIndex = 7;
+            this.btnCampaigns.Text = "Campaigns";
+            this.btnCampaigns.UseVisualStyleBackColor = true;
+            this.btnCampaigns.Click += new System.EventHandler(this.btnCampaigns_Click);
             // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 328);
+            this.Controls.Add(this.btnCampaigns);
             this.Controls.Add(this.btnExportMap);
             this.Controls.Add(this.btnMaps);
             this.Controls.Add(this.btnExportResources);
@@ -197,6 +209,7 @@
         private System.Windows.Forms.Button btnExportResources;
         private System.Windows.Forms.Button btnExportMap;
         private System.Windows.Forms.Button btnMaps;
+        private System.Windows.Forms.Button btnCampaigns;
     }
 }
 

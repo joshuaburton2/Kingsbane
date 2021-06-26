@@ -63,6 +63,12 @@ public class NewDeckUI : MonoBehaviour
     [Header("Other Objects")]
     [SerializeField]
     DeckListUI deckList;
+    [SerializeField]
+    LoadCampaignUI loadCampaignUI;
+
+    private int? campaignId;
+
+    private readonly List<Classes.ClassList> InvalidClasses = new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token };
 
     private void Start()
     {
@@ -70,7 +76,7 @@ public class NewDeckUI : MonoBehaviour
         foreach (var newClass in Enum.GetValues(typeof(Classes.ClassList)).Cast<Classes.ClassList>())
         {
             //Ignore the default class
-            if (newClass != Classes.ClassList.Default)
+            if (!InvalidClasses.Contains(newClass))
             {
                 var classListObject = Instantiate(classListPrefab, classListParent.transform);
                 classListObject.GetComponent<ClassListObject>().InitClassListObject(newClass, this);
@@ -93,7 +99,7 @@ public class NewDeckUI : MonoBehaviour
     /// Initialise the deck page on opening
     /// 
     /// </summary>
-    public void InitNewDeckPage()
+    public void InitNewDeckPage(int? _campaignId = null)
     {
         heroTierDropdown.value = 0;
         abilityTierDropdown.value = 0;
@@ -105,6 +111,8 @@ public class NewDeckUI : MonoBehaviour
         {
             resourceList.InitResourceList();
         }
+
+        campaignId = _campaignId;
 
         SelectClassData(Classes.ClassList.Default);
     }
@@ -313,8 +321,18 @@ public class NewDeckUI : MonoBehaviour
     /// </summary>
     public void CreateNewDeck()
     {
-        GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
-        deckList.RefreshDeckList();
+        if (campaignId.HasValue)
+        {
+            var newDeck = GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text, campaignId);
+            loadCampaignUI.LoadCampaignDeck(newDeck);
+            campaignId = null;
+        }
+        else
+        {
+            var deck = GameManager.instance.deckManager.CreatePlayerDeck(selectedTemplate, deckNameInput.text);
+            deckList.RefreshDeckList(deck.Id);
+        }
+
         GameManager.instance.uiManager.ClosePanel(gameObject);
     }
 }

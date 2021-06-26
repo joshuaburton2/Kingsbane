@@ -139,3 +139,5 @@ D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formMapEdit.resources
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formMapList.resources
 D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formEditObjective.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCampaignEdit.resources
+D:\Game Development Work\Unity Projects\Kingsbane\Kingsbane\Kingsbane DB Manager\src\Kingsbane.App\obj\Debug\netcoreapp3.1\Kingsbane.App.formCampaignList.resources

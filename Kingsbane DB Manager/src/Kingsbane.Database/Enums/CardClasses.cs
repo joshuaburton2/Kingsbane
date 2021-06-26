@@ -21,6 +21,7 @@ namespace Kingsbane.Database.Enums
         Runeblade,
         Trickster,
         Waystalker,
-        Wildkin
+        Wildkin,
+        Token,
     };
 }

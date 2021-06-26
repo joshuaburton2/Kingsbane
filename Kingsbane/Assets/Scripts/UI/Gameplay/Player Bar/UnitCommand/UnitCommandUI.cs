@@ -118,50 +118,58 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     public void RefreshCommandBar()
     {
-        var speedString = unit.HasStatusEffect(Unit.StatusEffects.Rooted) || unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.RemainingSpeed.ToString();
-        speedText.text = $"Speed: {speedString}/{unit.GetStat(Unit.StatTypes.Speed)}";
-        var actionStrng = unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.ActionsLeft.ToString();
-        actionText.text = $"Action: {actionStrng}";
-        abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
-        RefreshAbilities();
-
-        moveButton.interactable = unit.CanMove && !unit.HasStatusEffect(Unit.StatusEffects.Warded);
-        attackButton.interactable = unit.CanAttack;
-        speedArea.SetActive(false);
-
-        //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it
-        if ((GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed ||
-            GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed) &&
-            !speedArea.activeSelf)
+        if (unit.IsDeployed)
         {
-            speedArea.SetActive(true);
-            SetSpeed = LOWEST_SPEED;
-            CheckSpeedButtons();
-        }
-        else 
-        {
+            var speedString = unit.HasStatusEffect(Unit.StatusEffects.Rooted) || unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.RemainingSpeed.ToString();
+            speedText.text = $"Speed: {speedString}/{unit.GetStat(Unit.StatTypes.Speed)}";
+            var actionStrng = unit.HasStatusEffect(Unit.StatusEffects.Stunned) ? "0" : unit.ActionsLeft.ToString();
+            actionText.text = $"Action: {actionStrng}";
+            abilityText.text = $"Ability: {unit.AbilityUsesLeft}";
+            RefreshAbilities();
+
+            moveButton.interactable = unit.CanMove && !unit.HasStatusEffect(Unit.StatusEffects.Warded);
+            attackButton.interactable = unit.CanAttack;
             speedArea.SetActive(false);
-        }
 
-        enchantmentArea.SetActive(unit.Enchantments.Count > 0);
-        GameManager.DestroyAllChildren(enchantmentObjectParent);
-        foreach (var enchantment in unit.Enchantments)
+            //If in the using speed mode and havent already started modifying speed, shows the use speed panel. Otherwise hides it
+            if ((GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed ||
+                GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed) &&
+                !speedArea.activeSelf)
+            {
+                speedArea.SetActive(true);
+                SetSpeed = LOWEST_SPEED;
+                CheckSpeedButtons();
+            }
+            else
+            {
+                speedArea.SetActive(false);
+            }
+
+            enchantmentArea.SetActive(unit.Enchantments.Count > 0);
+            GameManager.DestroyAllChildren(enchantmentObjectParent);
+            foreach (var enchantment in unit.Enchantments)
+            {
+                var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
+                enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment, unit, this);
+            }
+
+            //Shows or hides the special action area if the unit requires it
+            specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying) || unit.HasStatusEffect(Unit.StatusEffects.Stealthed)));
+            //Set Disengage Button Properties
+            disengageButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Warded));
+            disengageButton.interactable = unit.CanAction && unit.CanMove;
+            //Set Flying Button Properties
+            flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
+            flyingButton.interactable = unit.CanFlyOrLand && 
+                (!unit.HasStatusEffect(Unit.StatusEffects.Airborne) || unit.HasStatusEffect(Unit.StatusEffects.Airborne) && unit.CheckOccupancy(unit.UnitCounter.Cell, true));
+            flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
+            //Set Unstealth Button Properties
+            unstealthButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Stealthed));
+        }
+        else
         {
-            var enchantmentObject = Instantiate(enchantmentObjectPrefab, enchantmentObjectParent.transform);
-            enchantmentObject.GetComponent<EnchantmentListObject>().InitEnchantmentObject(enchantment, unit, this);
+            gameObject.SetActive(false);
         }
-
-        //Shows or hides the special action area if the unit requires it
-        specialActionArea.SetActive(unit.Owner.IsActivePlayer && (unit.HasStatusEffect(Unit.StatusEffects.Warded) || unit.HasKeyword(Keywords.Flying) || unit.HasStatusEffect(Unit.StatusEffects.Stealthed)));
-        //Set Disengage Button Properties
-        disengageButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Warded));
-        disengageButton.interactable = unit.CanAction && unit.CanMove;
-        //Set Flying Button Properties
-        flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
-        flyingButton.interactable = unit.CanFlyOrLand;
-        flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
-        //Set Unstealth Button Properties
-        unstealthButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Stealthed));
     }
 
     /// <summary>
@@ -171,10 +179,9 @@ public class UnitCommandUI : MonoBehaviour
     /// </summary>
     private void RefreshAbilities()
     {
-        var hasAbilities = unit.Abilities.Count > 0;
         //Hides the button area if the unit has no abilities
-        abilityButtonArea.SetActive(unit.Owner.IsActivePlayer && hasAbilities);
-        if (hasAbilities)
+        abilityButtonArea.SetActive(unit.Owner.IsActivePlayer && unit.HasAbilities);
+        if (unit.HasAbilities)
         {
             abilityButtonObjects = new List<AbilityButton>();
             GameManager.DestroyAllChildren(abilityButtonParent);

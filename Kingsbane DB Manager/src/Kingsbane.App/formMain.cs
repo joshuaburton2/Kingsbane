@@ -603,6 +603,7 @@ namespace Kingsbane.App
                 sb.AppendLine(@$"                }},");
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine(@$"            MapList.Add(map{map.Id});");
+                sb.AppendLine("");
             }
 
             var scenarioQuery = _context.Scenarios
@@ -617,7 +618,7 @@ namespace Kingsbane.App
                 sb.AppendLine(@$"            {{");
                 sb.AppendLine(@$"                Id = {scenario.Id},");
                 sb.AppendLine(@$"                Name = ""{scenario.Name.FixQuotes()}"",");
-                sb.AppendLine(@$"                Description = ""{scenario.Description.FixQuotes()}"",");
+                sb.AppendLine(@$"                Description = @""{scenario.Description.FixQuotes()}"",");
 
                 sb.AppendLine(@$"                DeploymentMap = new int?[][]");
                 sb.AppendLine(@$"                {{");
@@ -660,7 +661,7 @@ namespace Kingsbane.App
                 sb.AppendLine($@"                {{");
                 foreach (var rule in scenario.ScenarioRuleSet)
                 {
-                    sb.AppendLine($@"                   new Rule() {{ Id = {rule.Rule.Id}, Name = ""{rule.Rule.Name}"", Description = ""{rule.Rule.Description.FixQuotes()}"" }},");
+                    sb.AppendLine($@"                   new Rule() {{ Id = {rule.Rule.Id}, Name = ""{rule.Rule.Name}"", Description = @""{rule.Rule.Description.FixQuotes()}"" }},");
                 }
                 sb.AppendLine($@"                }},");
 
@@ -671,6 +672,7 @@ namespace Kingsbane.App
 
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine($@"            ScenarioList.Add(scenario{scenario.Id});");
+                sb.AppendLine("");
             }
 
             var campaignQuery = _context.Campaigns;
@@ -679,14 +681,14 @@ namespace Kingsbane.App
             {
                 sb.AppendLine(@$"            var campaign{campaign.Id} = new Campaign()");
                 sb.AppendLine(@$"            {{");
-                sb.AppendLine(@$"               Id = {campaign.Id}");
-                sb.AppendLine(@$"               Name = ""{campaign.Name.FixQuotes()}""");
-                sb.AppendLine(@$"               Description = ""{campaign.Description.FixQuotes()}""");
+                sb.AppendLine(@$"               Id = {campaign.Id},");
+                sb.AppendLine(@$"               Name = ""{campaign.Name.FixQuotes()}"",");
+                sb.AppendLine(@$"               Description = ""{campaign.Description.FixQuotes()}"",");
                 sb.AppendLine(@$"            }};");
                 sb.AppendLine($@"            CampaignList.Add(campaign{campaign.Id});");
+                sb.AppendLine("");
             }
 
-            sb.AppendLine("");
             foreach (var map in mapQuery)
             {
                 var scenarioList = string.Join(",", map.Scenarios.Select(x => $"scenario{x.Id}"));
@@ -696,6 +698,12 @@ namespace Kingsbane.App
                     continue;
                 }
                 sb.AppendLine($"        map{map.Id}.Scenarios = new List<Scenario> {{ {scenarioList} }};");
+            }
+
+            sb.AppendLine("");
+            foreach (var scenario in scenarioQuery)
+            {
+                sb.AppendLine($"        scenario{scenario.Id}.Map = map{scenario.MapId};");
             }
 
             sb.AppendLine("");
@@ -727,6 +735,13 @@ namespace Kingsbane.App
             var x = sb.ToString();
             Clipboard.SetText(x);
             MessageBox.Show("Exported content copied to clipboard");
+        }
+
+        private void btnCampaigns_Click(object sender, EventArgs e)
+        {
+            var formCampaigns = _serviceProvider.GetRequiredService<formCampaignList>();
+            formCampaigns.Show();
+            this.Hide();
         }
     }
 }

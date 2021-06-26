@@ -34,9 +34,13 @@ public class UIManager : MonoBehaviour
 
     [Header("Main Menu Pages")]
     [SerializeField]
+    CampaignUI campaignPage;
+    [SerializeField]
     LobbyUI lobbyPage;
     [SerializeField]
     CardLibraryParent cardLibrary;
+    [SerializeField]
+    NewDeckUI newDeckUI;
 
     [Header("Gameplay Pages")]
     [SerializeField]
@@ -65,13 +69,18 @@ public class UIManager : MonoBehaviour
 
         cardDetailDisplay = mainMenuUIReferences.cardDetailDisplay.GetComponent<CardDetailUI>();
         upgradeDetailDisplay = mainMenuUIReferences.upgradeDetailDisplay.GetComponent<UpgradeDetailUI>();
+        campaignPage = mainMenuUIReferences.campaignUI.GetComponent<CampaignUI>();
         lobbyPage = mainMenuUIReferences.lobbyUI.GetComponent<LobbyUI>();
         cardLibrary = mainMenuUIReferences.libraryUI.GetComponent<CardLibraryParent>();
+        newDeckUI = mainMenuUIReferences.newDeckUI.GetComponent<NewDeckUI>();
 
         cardDetailDisplay.gameObject.SetActive(false);
         upgradeDetailDisplay.gameObject.SetActive(false);
+        
+        campaignPage.gameObject.SetActive(false);
         lobbyPage.gameObject.SetActive(false);
         cardLibrary.gameObject.SetActive(false);
+        newDeckUI.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -196,7 +205,22 @@ public class UIManager : MonoBehaviour
 
     public void ShowVictoryState(int victoryId)
     {
-        gameplayUI.ShowVictoryState(victoryId);
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.GameplayScene)
+            gameplayUI.ShowVictoryState(victoryId);
+        else
+            throw new Exception("Not a valid scene to show victory state");
+    }
+
+    public void ShowLootGeneratorForCampaign()
+    {
+        if (GameManager.instance.sceneManager.ActiveScene == SceneList.MainMenuScene)
+        {
+            campaignPage.gameObject.SetActive(true);
+            campaignPage.LoadCampaignUI();
+            campaignPage.SelectDeck(GameManager.instance.CampaignDeck, true);
+        }
+        else
+            throw new Exception("Not a valid scene to show loot generator");
     }
 
     /// <summary>

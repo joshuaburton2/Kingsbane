@@ -8,6 +8,8 @@ public class MainMenuUIReferences : MonoBehaviour
     public GameObject upgradeDetailDisplay;
     public GameObject lobbyUI;
     public GameObject libraryUI;
+    public GameObject campaignUI;
+    public GameObject newDeckUI;
 
     /// <summary>
     /// 

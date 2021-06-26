@@ -32,6 +32,8 @@ public class DeckSaveData
     public int PassiveEmpowered { get; set; }
     public int BaseSummonCapactiy { get; set; }
     public bool DeathDefiant { get; set; }
+    public CampaignProgression CampaignTracker { get; set; }
+    public bool IsCampaign { get { return CampaignTracker != null; } }
 
     public DeckSaveData()
     {
@@ -43,6 +45,7 @@ public class DeckSaveData
         PassiveEmpowered = 0;
         BaseSummonCapactiy = 1;
         DeathDefiant = false;
+        CampaignTracker = null;
     }
 
     /// <summary>
@@ -66,6 +69,7 @@ public class DeckSaveData
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
         DeathDefiant = deckData.DeathDefiant;
+        CampaignTracker = deckData.CampaignTracker;
 
         PlayerResources = deckData.CopyPlayerResources();
     }
@@ -153,6 +157,15 @@ public class DeckData : DeckSaveData
     public List<UpgradeData> UpgradeList { get; set; }
     public int DeckCount { get { return CardList.Count; } }
 
+    public DeckData()
+    {
+        PlayerResources = new List<PlayerResource>();
+        CardIdList = new List<int>();
+        UpgradeIdList = new List<int>();
+        CardList = new List<CardData>();
+        UpgradeList = new List<UpgradeData>();
+    }
+
     /// <summary>
     /// 
     /// Constructor for copying deck data to a new deck data
@@ -174,6 +187,7 @@ public class DeckData : DeckSaveData
         PassiveEmpowered = deckData.PassiveEmpowered;
         BaseSummonCapactiy = deckData.BaseSummonCapactiy;
         DeathDefiant = deckData.DeathDefiant;
+        CampaignTracker = deckData.CampaignTracker;
 
         PlayerResources = deckData.CopyPlayerResources();
 
@@ -203,6 +217,7 @@ public class DeckData : DeckSaveData
         PassiveEmpowered = deckSaveData.PassiveEmpowered;
         BaseSummonCapactiy = deckSaveData.BaseSummonCapactiy;
         DeathDefiant = deckSaveData.DeathDefiant;
+        CampaignTracker = deckSaveData.CampaignTracker;
 
         //Only need to create the deck resources if the deck is newly created, not loaded from file
         if (isNewDeck)
@@ -321,11 +336,21 @@ public class DeckData : DeckSaveData
     /// Adds an upgrade to the deck
     /// 
     /// </summary>
-    public void AddUpgrade(UpgradeData upgradeData)
+    public void AddUpgrade(UpgradeData upgradeData, bool trackAddition = true)
     {
         UpgradeList.Add(upgradeData);
         UpgradeIdList.Add(upgradeData.Id.Value);
         GameManager.instance.upgradeManager.UpdateUpgradeEffect(upgradeData, this);
+
+        if (IsCampaign)
+        {
+            if (trackAddition)
+            {
+                CampaignTracker.HonourPoints -= upgradeData.GetHonourPointsCost(CampaignTracker.CompletedSinceTierUpgrade);
+                CampaignTracker.CompletedSinceTierUpgrade = 0;
+            }
+        }
+
     }
 
     /// <summary>
@@ -357,5 +382,14 @@ public class DeckData : DeckSaveData
     public PlayerResource GetPlayerResource(CardResources resource)
     {
         return PlayerResources.FirstOrDefault(x => x.ResourceType == resource);
+    }
+
+    public void ConverToBaseDeck()
+    {
+        CampaignTracker = null;
+        if (GameManager.instance.CampaignDeck.Id == Id)
+        {
+            GameManager.instance.CampaignDeck = null;
+        }
     }
 }

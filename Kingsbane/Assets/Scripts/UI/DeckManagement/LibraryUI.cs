@@ -65,6 +65,8 @@ public class LibraryUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI uncollectableText;
     [SerializeField]
+    private TMP_Dropdown classplayableDropdown;
+    [SerializeField]
     private TMP_Dropdown cardTypeDropdown;
     [SerializeField]
     private TMP_Dropdown rarityDropdown;
@@ -118,6 +120,7 @@ public class LibraryUI : MonoBehaviour
     /// </summary>
     private void InitDropdowns()
     {
+        GeneralUIExtensions.InitDropdownOfType(classplayableDropdown, new List<Classes.ClassList> { Classes.ClassList.Default, Classes.ClassList.Token }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(cardTypeDropdown, new List<CardTypes>() { CardTypes.Default }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(rarityDropdown, new List<Rarity>() { Rarity.Default, Rarity.Hero, Rarity.NPCHero, Rarity.Uncollectable, Rarity.Deleted }, DEFAULT_DROPDOWN_STRING);
         GeneralUIExtensions.InitDropdownOfType(setDropdown, new List<Sets>() { Sets.Default }, DEFAULT_DROPDOWN_STRING);
@@ -289,7 +292,7 @@ public class LibraryUI : MonoBehaviour
             cardContainer.name = $"Container {currentRow}.{currentColumn}- {card.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card{currentRow}.{currentColumn}- {card.Name}";
-            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName);
+            cardLibaryContainer.InitCardContainer(card, deckListUI, cardName: cardName);
 
             //Once a card is created, moves to the next column
             currentColumn++;
@@ -437,21 +440,19 @@ public class LibraryUI : MonoBehaviour
     {
         //Checks if the filter already is already allowing uncollectable cards
         var includeUncollectables = activeFilter.RaritiyFilter.Contains(Rarity.Uncollectable);
-        //Stores the current class playable filter
-        var resourceFilter = activeFilter.ClassPlayableFilter;
 
         //Creates a new filter object
         activeFilter = new CardFilter();
 
         //Updates the new filters with the carry over properties of the old filter
         UpdateUncollectableStatus(includeUncollectables);
-        activeFilter.ClassPlayableFilter = resourceFilter;
 
         //Sets the uncollectable button to be turned on by default
         uncollectableText.transform.parent.GetComponent<Button>().interactable = true;
 
         //Updates the filter with the selected properties
         activeFilter.SearchString = searchStringInput.text;
+        activeFilter = ApplyDropdownFilter<Classes.ClassList>(classplayableDropdown, activeFilter);
         activeFilter = ApplyDropdownFilter<CardTypes>(cardTypeDropdown, activeFilter);
         activeFilter = ApplyDropdownFilter<Rarity>(rarityDropdown, activeFilter);
         activeFilter = ApplyDropdownFilter<Sets>(setDropdown, activeFilter);
@@ -477,6 +478,9 @@ public class LibraryUI : MonoBehaviour
             //Sets the filter to include the selected option based on the type of dropdown
             switch (type)
             {
+                case Type _ when type == typeof(Classes.ClassList):
+                    activeFilter.ClassPlayableFilter = (Classes.ClassList)(object)selectedField;
+                    break;
                 case Type _ when type == typeof(CardTypes):
                     activeFilter.CardTypeFilter = new List<CardTypes>() { (CardTypes)(object)selectedField };
                     break;
@@ -504,9 +508,20 @@ public class LibraryUI : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="classAbailabilityFilter"></param>
-    public void ApplyClassPlayableFilter(Classes.ClassList classAbailabilityFilter)
+    public void ApplyClassPlayableFilter(Classes.ClassList classAbailabilityFilter = Classes.ClassList.Default)
     {
         activeFilter.ClassPlayableFilter = classAbailabilityFilter;
+
+        if (classAbailabilityFilter != Classes.ClassList.Default)
+        {
+            classplayableDropdown.value = classplayableDropdown.options.FindIndex(x => x.text == classAbailabilityFilter.ToString());
+            classplayableDropdown.interactable = false;
+        }
+        else
+        {
+            classplayableDropdown.value = 0;
+            classplayableDropdown.interactable = true;
+        }
 
         InitTabs();
     }

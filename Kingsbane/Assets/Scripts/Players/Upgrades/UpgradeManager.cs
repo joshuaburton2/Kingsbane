@@ -96,7 +96,7 @@ public class UpgradeManager : MonoBehaviour
         var availableUpgrades = new List<UpgradeData>();
 
         //Loops through each upgrade and checks how many of the required conditions it meets for the deck
-        foreach (var upgrade in upgradeLibrary.UpgradeList)
+        foreach (var upgrade in upgradeLibrary.UpgradeList.Where(x => !x.NPCLocked))
         {
             //If the deck already has the upgrade, it cannot be added again
             if (deck.UpgradeList.Select(x => x.Id).Contains(upgrade.Id))

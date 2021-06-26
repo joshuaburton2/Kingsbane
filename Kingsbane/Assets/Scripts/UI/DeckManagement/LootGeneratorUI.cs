@@ -17,9 +17,9 @@ public class LootGeneratorUI : MonoBehaviour
     [SerializeField]
     private DeckListUI deckListUI;
     [SerializeField]
-    private Button addSelectedButton;
+    private CampaignManagerUI campaignManagerUI;
     [SerializeField]
-    private Button refreshButton;
+    private Button addSelectedButton;
     [SerializeField]
     private TextMeshProUGUI cardsToSelectText;
 
@@ -50,16 +50,29 @@ public class LootGeneratorUI : MonoBehaviour
     /// Refreshes the loot generator with a new set of cards
     /// 
     /// </summary>
-    public void RefreshLootGenerator()
+    public List<LootCard> RefreshLootGenerator(List<LootCard> lootCards = null, int totalWeighting = 0)
     {
+        if (deckListUI != null && campaignManagerUI != null)
+            throw new Exception("UI not initialised properly");
+
         //Refreshed the loot grid
         GameManager.DestroyAllChildren(lootArea);
 
         addSelectedButton.interactable = false;
 
         //Gets the current deck and the generated loot cards
-        var selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
-        var lootCards = GameManager.instance.libraryManager.GenerateLootCards(selectedDeck, numLootCards, out int totalWeighting);
+        DeckData selectedDeck = null;
+        if (deckListUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(deckListUI.DeckEditId.Value);
+        }
+        else if (campaignManagerUI != null)
+        {
+            selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(campaignManagerUI.loadedDeck.Id.Value);
+        }
+
+        if (lootCards == null)
+            lootCards = GameManager.instance.libraryManager.GenerateLootCards(selectedDeck, numLootCards, out totalWeighting);
 
         cardsSelected = new List<CardData>();
 
@@ -74,13 +87,15 @@ public class LootGeneratorUI : MonoBehaviour
             cardContainer.name = $"Container {lootCard.CardData.Name}";
             var cardLibaryContainer = cardContainer.GetComponentInChildren<CardLibraryContainer>();
             var cardName = $"Card {lootCard.CardData.Name}";
-            cardLibaryContainer.InitCardContainer(lootCard.CardData, deckListUI, cardName, scalingFactor, this);
+            cardLibaryContainer.InitCardContainer(lootCard.CardData, deckListUI, campaignManagerUI, cardName, scalingFactor, this);
 
             //Displays the loot properties of the card in text below the card
             var lootStatsObject = Instantiate(lootStatPrefab, cardLibaryContainer.transform);
             var weightingPercentage = Math.Round((float)lootCard.Weighting / totalWeighting * 100, 2);
             lootStatsObject.GetComponent<TextMeshProUGUI>().text = $"Weighting: {lootCard.Weighting} Chance: {weightingPercentage}%";
         }
+
+        return lootCards;
     }
 
     /// <summary>
@@ -118,9 +133,19 @@ public class LootGeneratorUI : MonoBehaviour
     /// </summary>
     public void AddCardsToDeck()
     {
-        var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
+        if (deckListUI != null)
+        {
+            var updatedDeck = GameManager.instance.deckManager.AddCardsToPlayerDeck(deckListUI.DeckEditId.Value, cardsSelected);
 
-        deckListUI.RefreshActiveDeckDetails(updatedDeck);
-        RefreshLootGenerator();
+            deckListUI.RefreshActiveDeckDetails(updatedDeck);
+            RefreshLootGenerator();
+        }
+        else if (campaignManagerUI != null)
+        {
+            GameManager.instance.deckManager.AddCardsToPlayerDeck(campaignManagerUI.loadedDeck.Id.Value, cardsSelected);
+
+            campaignManagerUI.AddLootCards();
+            gameObject.SetActive(false);
+        }
     }
 }

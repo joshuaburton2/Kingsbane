@@ -155,7 +155,8 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
 
                 if (SelectedUnit != null)
-                    SelectedUnit.UnitCounter.ShowUnitSelector(false);
+                    if (SelectedUnit.UnitCounter != null)
+                        SelectedUnit.UnitCounter.ShowUnitSelector(false);
                 SelectedUnit = null;
                 break;
             case ActiveEffectTypes.Deployment:
@@ -404,12 +405,12 @@ public class EffectManager : MonoBehaviour
     {
         if (targetUnit != null)
         {
-            if (SelectedUnit.CanAttackTarget(targetUnit))
-            {
-                SelectedUnit.TriggerAttack(targetUnit);
-                RefreshEffectManager();
-                GameManager.instance.uiManager.RefreshUI();
-            }
+            //if (SelectedUnit.CanAttackTarget(targetUnit))
+            //{
+            SelectedUnit.TriggerAttack(targetUnit);
+            RefreshEffectManager();
+            GameManager.instance.uiManager.RefreshUI();
+            //}
         }
     }
 
@@ -429,9 +430,9 @@ public class EffectManager : MonoBehaviour
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public void SelectCaster(Unit caster)
+    public void SelectCaster(Unit caster, bool requiresActiveCaster = true)
     {
-        if (caster.CanCastSpell)
+        if (!requiresActiveCaster || caster.CanCastSpell)
         {
             if (((Spell)SelectedCard).SpellRange == 0)
             {
@@ -441,7 +442,8 @@ public class EffectManager : MonoBehaviour
             {
                 SelectedUnit = caster;
                 ActiveEffect = ActiveEffectTypes.Spell;
-                SelectedUnit.UnitCounter.ShowUnitSelector(true);
+                if (SelectedUnit.UnitCounter != null)
+                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
 
             caster.Unstealth();
@@ -503,7 +505,6 @@ public class EffectManager : MonoBehaviour
     {
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
-
 
         if (unitCounter.Unit == SelectedUnit &&
             ActiveEffect != ActiveEffectTypes.UnitMove &&
@@ -873,6 +874,7 @@ public class EffectManager : MonoBehaviour
         if (unit.Owner.Id != player.Id && !unit.IsHero)
         {
             RemoveUnit(unit);
+            unit.InitCard(unit.CardData, unit.Owner);
             player.RecruitCard(unit, false);
             GameManager.instance.uiManager.RefreshUI();
         }
@@ -1024,11 +1026,15 @@ public class EffectManager : MonoBehaviour
     {
         if (!unit.HasStatusEffect(Unit.StatusEffects.Transformed))
         {
-            unit.RemoveUnit();
+            if (!SelectedBoolean.Value || SelectedBoolean.Value && !unit.IsHero)
+            {
+                unit.RemoveUnit();
 
-            var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
-            CreateUnitCounter(transformUnit, currentCell);
-            transformUnit.Transform(unit.Status == Unit.UnitStatuses.Start, SelectedBoolean.Value ? null : unit);
+                var transformUnit = (Unit)GameManager.instance.libraryManager.CreateCard(SelectedCardData, unit.Owner);
+                CreateUnitCounter(transformUnit, currentCell);
+                var newFormCanAction = unit.CanAction && unit.RemainingSpeed == unit.GetStat(Unit.StatTypes.Speed);
+                transformUnit.Transform(newFormCanAction, SelectedBoolean.Value ? null : unit);
+            }
         }
     }
 
