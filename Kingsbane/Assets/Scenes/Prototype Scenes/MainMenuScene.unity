@@ -52579,6 +52579,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3112037141066214663, guid: dffceaad4eff8b8478537273baa686a0,
+        type: 3}
+      propertyPath: mapImages.Array.data[4].imageSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 740772585d7c42c4caa1d55544f17813,
+        type: 3}
     - target: {fileID: 8891978395099848710, guid: dffceaad4eff8b8478537273baa686a0,
         type: 3}
       propertyPath: m_Name

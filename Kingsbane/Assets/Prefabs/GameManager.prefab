@@ -185,7 +185,7 @@ MonoBehaviour:
   - imageTag: 1
     imageSprite: {fileID: 21300000, guid: dd7613bcd49e5a8499a2af3354c111c5, type: 3}
   - imageTag: 14
-    imageSprite: {fileID: 21300000, guid: 7d2b26ea414bebe4f9785f4477ec956b, type: 3}
+    imageSprite: {fileID: 21300000, guid: 740772585d7c42c4caa1d55544f17813, type: 3}
   - imageTag: 6
     imageSprite: {fileID: 21300000, guid: 3e70c3edd79592a4e9b99b2fd7436d40, type: 3}
   - imageTag: 5
