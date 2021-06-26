@@ -69,11 +69,6 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [Header("Other Props")]
     public DeckListUI deckListUI;
 
-    private void Awake()
-    {
-        ResetProps();
-    }
-
     /// <summary>
     /// 
     /// Initialise the display. This is for properties which should not reset during the game
@@ -82,6 +77,8 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
     [ContextMenu("Initialise Display")]
     public void InitDisplay(Card _card)
     {
+        ResetProps();
+
         card = _card;
 
         cardName.text = card.Name;
