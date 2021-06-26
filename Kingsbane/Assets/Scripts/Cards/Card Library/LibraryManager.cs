@@ -659,11 +659,6 @@ public class LibraryManager : MonoBehaviour
         return selectedCards;
     }
 
-    public class LootCard
-    {
-        public CardData CardData { get; set; }
-        public int Weighting { get; set; }
-    }
 
     /// <summary>
     /// 

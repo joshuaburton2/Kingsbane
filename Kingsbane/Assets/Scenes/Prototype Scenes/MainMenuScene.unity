@@ -31843,6 +31843,11 @@ PrefabInstance:
       propertyPath: campaignManagerUI
       value: 
       objectReference: {fileID: 1808004475}
+    - target: {fileID: 4496596058916349375, guid: a31e4fa8d214dd847935c25bfa719203,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4496596058993513395, guid: a31e4fa8d214dd847935c25bfa719203,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -31922,6 +31927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496596060288072249, guid: a31e4fa8d214dd847935c25bfa719203,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6509717098643426644, guid: a31e4fa8d214dd847935c25bfa719203,
         type: 3}

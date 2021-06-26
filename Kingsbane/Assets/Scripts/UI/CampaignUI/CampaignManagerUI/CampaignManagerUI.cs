@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -106,6 +107,11 @@ public class CampaignManagerUI : MonoBehaviour
         {
             AccessCamp();
             OpenReserveForces(0);
+        }
+
+        if (deckData.CampaignTracker.LootCards.Any())
+        {
+            OpenLootGenerator();
         }
     }
 
@@ -222,8 +228,15 @@ public class CampaignManagerUI : MonoBehaviour
     {
         enemyDeckDetailsArea.SetActive(false);
 
-        lootGenerateUI.RefreshLootGenerator();
+        lootGenerateUI.RefreshLootGenerator(loadedDeck.CampaignTracker.LootCards.Select(x => x.ConvertToLootCard()).ToList(), loadedDeck.CampaignTracker.TotalWeighting);
         lootGenerateUI.gameObject.SetActive(true);
+    }
+
+    public void AddLootCards()
+    {
+        loadedDeck.CampaignTracker.ResetLootCards();
+
+        RefreshPlayerDetails();
     }
 
     /// <summary>

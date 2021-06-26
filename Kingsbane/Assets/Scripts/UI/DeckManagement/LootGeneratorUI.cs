@@ -21,8 +21,6 @@ public class LootGeneratorUI : MonoBehaviour
     [SerializeField]
     private Button addSelectedButton;
     [SerializeField]
-    private Button refreshButton;
-    [SerializeField]
     private TextMeshProUGUI cardsToSelectText;
 
     [Header("Prefabs")]
@@ -52,7 +50,7 @@ public class LootGeneratorUI : MonoBehaviour
     /// Refreshes the loot generator with a new set of cards
     /// 
     /// </summary>
-    public void RefreshLootGenerator()
+    public List<LootCard> RefreshLootGenerator(List<LootCard> lootCards = null, int totalWeighting = 0)
     {
         if (deckListUI != null && campaignManagerUI != null)
             throw new Exception("UI not initialised properly");
@@ -71,9 +69,10 @@ public class LootGeneratorUI : MonoBehaviour
         else if (campaignManagerUI != null)
         {
             selectedDeck = GameManager.instance.deckManager.GetPlayerDeck(campaignManagerUI.loadedDeck.Id.Value);
-            refreshButton.gameObject.SetActive(false);
         }
-        var lootCards = GameManager.instance.libraryManager.GenerateLootCards(selectedDeck, numLootCards, out int totalWeighting);
+
+        if (lootCards == null)
+            lootCards = GameManager.instance.libraryManager.GenerateLootCards(selectedDeck, numLootCards, out totalWeighting);
 
         cardsSelected = new List<CardData>();
 
@@ -95,6 +94,8 @@ public class LootGeneratorUI : MonoBehaviour
             var weightingPercentage = Math.Round((float)lootCard.Weighting / totalWeighting * 100, 2);
             lootStatsObject.GetComponent<TextMeshProUGUI>().text = $"Weighting: {lootCard.Weighting} Chance: {weightingPercentage}%";
         }
+
+        return lootCards;
     }
 
     /// <summary>
@@ -143,7 +144,7 @@ public class LootGeneratorUI : MonoBehaviour
         {
             GameManager.instance.deckManager.AddCardsToPlayerDeck(campaignManagerUI.loadedDeck.Id.Value, cardsSelected);
 
-            campaignManagerUI.RefreshPlayerDetails();
+            campaignManagerUI.AddLootCards();
             gameObject.SetActive(false);
         }
     }

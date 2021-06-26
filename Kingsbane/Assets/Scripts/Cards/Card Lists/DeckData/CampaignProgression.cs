@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
+
 
 [Serializable]
 public class CampaignProgression
@@ -18,6 +21,10 @@ public class CampaignProgression
     public bool CompletedCampaign { get; set; }
     public int HonourPoints { get; set; }
     public int NumToReserve { get; set; }
+    public List<SaveLootCard> LootCards { get; set; }
+    public int TotalWeighting { get; set; }
+
+    private const int numLootCards = 8;
 
     public CampaignProgression(int deckId, int campaignId)
     {
@@ -31,6 +38,8 @@ public class CampaignProgression
         CompletedSinceTierUpgrade = 0;
         HonourPoints = 0;
         NumToReserve = 0;
+
+        ResetLootCards();
     }
 
     public Campaign GetCampaign()
@@ -63,6 +72,10 @@ public class CampaignProgression
         {
             HonourPoints += HONOUR_TRACKER[CompletedScenarios];
 
+            LootCards = GameManager.instance.libraryManager.GenerateLootCards(GameManager.instance.deckManager.GetPlayerDeck(DeckId), numLootCards, out int totalWeighting)
+                .Select(x => x.ConvertToSaveLootCard()).ToList();
+            TotalWeighting = totalWeighting;
+
             if (completedBonusObjectives)
             {
                 HonourPoints += BONUS_OBJECTIVE_HONOUR;
@@ -74,5 +87,11 @@ public class CampaignProgression
     {
         CompletedCampaign = true;
         GameManager.instance.deckManager.GetPlayerDeck(DeckId).ConverToBaseDeck();
+    }
+
+    public void ResetLootCards()
+    {
+        LootCards = new List<SaveLootCard>();
+        TotalWeighting = 0;
     }
 }
