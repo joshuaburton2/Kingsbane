@@ -675,7 +675,7 @@ public class CardLibrary
         {
             Id = 69,
             Name = "Call of the Void",
-            Text = @"Add a random Void unit to your hand",
+            Text = @"Add a random <b>Summon</b> unit to your hand",
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1059,9 +1059,9 @@ public class CardLibrary
         {
             Id = 101,
             Name = "Shapechange",
-            Text = @"<b>Transform</b> this unit into a Hulking Beast. <b>Cycle -3</b>",
+            Text = @"<b>Transform</b> this unit into a Hulking Beast. <b>Cycle -2</b>",
 
-            Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
+            Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
             CostsAction = false,
         };
@@ -1455,11 +1455,11 @@ public class CardLibrary
         {
             Id = 1131,
             Name = "Elder's Wisdom",
-            Text = @"<b>Divinate (1)</b> and give a friendly unit within range 1 <b>Protected (2)</b>",
+            Text = @"<b>Divinate (1)</b> and give a friendly unit within range 1 <b>Protected (1)</b>",
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
-            CostsAction = false,
+            CostsAction = true,
         };
         AbilityList.Add(ability1131);
 
@@ -3514,9 +3514,9 @@ Deal 4 damage to a unit",
             Name = "Dark Pact",
             ImageTag = CardImageTags.Dark_Pact,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Mana, 0), },
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Mana, 0), },
 
-            Text = @"Increase your mana by 4. Add a random Void unit to your hand",
+            Text = @"Increase your mana by 4. Add a random <b>Summon</b> unit to your hand",
             LoreText = @"",
             Notes = @"",
 
@@ -3526,7 +3526,7 @@ Deal 4 damage to a unit",
             CardType = CardTypes.Spell,
 
             Tags = new List<Tags> { Tags.ManaGain },
-            Synergies = new List<Synergies> { Synergies.Mana, Synergies.Value, Synergies.Void },
+            Synergies = new List<Synergies> { Synergies.Summon, Synergies.Mana, Synergies.Value },
             SpellType = "Resource",
             Range = 0,
         };
@@ -3575,7 +3575,7 @@ Deal 4 damage to a unit",
             Name = "Void Touch",
             ImageTag = CardImageTags.Void_Touch,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Mana, 4), },
+            Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
             Text = @"Give a friendly unit with <b>Summon</b> +4 Attack, +4 Health. Gain additional Attack and Health points equal to your <b>Empowered</b> value.
 Deal <b>Piercing</b> damage to the caster equal to the additional points gained.",
@@ -3925,7 +3925,7 @@ Whenever this attacks and kills a unit, deploy a ""Void Soul"" in its place. Giv
             CardType = CardTypes.Unit,
 
             Tags = new List<Tags> { Tags.Human, Tags.Ability, Tags.Deployment, Tags.Abyssal },
-            Synergies = new List<Synergies> { Synergies.Mana, Synergies.Deployment, Synergies.Value, Synergies.LongRange, Synergies.Void },
+            Synergies = new List<Synergies> { Synergies.Summon, Synergies.Mana, Synergies.Deployment, Synergies.Value, Synergies.LongRange },
             UnitTag = new List<UnitTags>()
             {
                 UnitTags.Human,
@@ -4925,9 +4925,9 @@ The damage of this spell is multiplied by your <b>Empowered</b> score instead of
             Name = "Honour the Old Gods",
             ImageTag = CardImageTags.Honour_the_Old_Gods,
 
-            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Wild, 0), },
+            Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 0), },
 
-            Text = @"Increase your Wild by 3 and <b>Cycle +3</b>. Draw a card",
+            Text = @"Increase your Wild by 2 and <b>Cycle +2</b>. Draw a card",
             LoreText = @"",
             Notes = @"",
 
@@ -10924,9 +10924,9 @@ Whenever this unit takes damage, heal your hero for the same amount.",
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 4), },
 
-            Text = @"Reduce the <b>Cycle</b> and Wild cost of ""Shapechange"" by this units missing health.",
+            Text = @"Reduce the <b>Cycle</b> cost of ""Shapechange"" by this units missing health.",
             LoreText = @"",
-            Notes = @"",
+            Notes = @"The Cycle cost can go positive if the unit has enough missing health",
 
             Set = Sets.Standard,
             Class = Classes.ClassList.Wildkin,
@@ -10978,7 +10978,7 @@ Last Rites: Transform</b> this unit back to its original form",
                 UnitTags.Transformed,
                 UnitTags.Beast,
             },
-            Attack = 6,
+            Attack = 5,
             Health = 5,
             Protected = 0,
             Range = 0,
