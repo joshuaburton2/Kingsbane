@@ -318,4 +318,6 @@ public class Cell : MonoBehaviour
     {
         return cellTileStatuses.Any(x => x.Key == TileStatuses.Survey && x.Value == ownerId);
     }
+
+    public List<Cell> GetRadiusTiles(int radius, bool)
 }

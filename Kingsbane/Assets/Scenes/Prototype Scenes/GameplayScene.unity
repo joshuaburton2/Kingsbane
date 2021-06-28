@@ -60920,6 +60920,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4413952970416224600, guid: c331bbf5b4c57d1458fe87f3f70ab1b3,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8839209130521398563, guid: c331bbf5b4c57d1458fe87f3f70ab1b3,
         type: 3}
       propertyPath: gameplayUI

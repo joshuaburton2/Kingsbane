@@ -160,7 +160,7 @@ public class MapGrid : MonoBehaviour
                     //If on an even row and not in the left hand column, an adjacent cell above this one will have an x index of one less
                     if (y % 2 == 0 && x != 0)
                     {
-                        cell.adjCell.Add(GetCell(x - 1, y + 1));
+                        cell.adjCell.Insert(cell.adjCell.Count - 1, GetCell(x - 1, y + 1));
                     }
                 }
 
@@ -178,7 +178,7 @@ public class MapGrid : MonoBehaviour
                     //If on an odd row and not in the right hand column, an adjacent cell below this one will have an x index of one greater
                     if (y % 2 == 1 && x != numX - 1)
                     {
-                        cell.adjCell.Add(GetCell(x + 1, y - 1));
+                        cell.adjCell.Insert(cell.adjCell.Count - 1, GetCell(x + 1, y - 1));
                     }
                     //If on an even row and not in the left hand column, an adjacent cell below this one will have an x index of one less
                     if (y % 2 == 0 && x != 0)
