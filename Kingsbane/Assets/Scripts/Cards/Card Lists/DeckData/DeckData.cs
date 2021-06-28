@@ -347,7 +347,8 @@ public class DeckData : DeckSaveData
             if (trackAddition)
             {
                 CampaignTracker.HonourPoints -= upgradeData.GetHonourPointsCost(CampaignTracker.CompletedSinceTierUpgrade);
-                CampaignTracker.CompletedSinceTierUpgrade = 0;
+                if (upgradeData.IsTierLevel)
+                    CampaignTracker.CompletedSinceTierUpgrade = 0;
             }
         }
 

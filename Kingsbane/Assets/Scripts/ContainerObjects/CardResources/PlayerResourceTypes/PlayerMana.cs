@@ -90,7 +90,7 @@ public class PlayerMana : PlayerResource
     /// </summary>
     public int ReduceOverload()
     {
-        return PreviousOverload -= OVERLOAD_REDUCTION;
+        return CurrentOverload -= OVERLOAD_REDUCTION;
     }
 
     public void SetOverloadModifiers(int? pastOverload = null)

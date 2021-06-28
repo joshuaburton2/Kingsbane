@@ -366,14 +366,11 @@ public class UpgradeUI : MonoBehaviour
             var numToReserveMultiplier = 2;
             var numToReserve = upgradesToAdd.Where(x => x.UpgradeTag == UpgradeTags.ReserveForces).Count() * numToReserveMultiplier;
 
-            if (campaignManagerUI != null)
-            {
-                campaignManagerUI.RefreshPlayerDetails();
+            campaignManagerUI.RefreshPlayerDetails();
 
-                if (numToReserve > 0)
-                {
-                    campaignManagerUI.OpenReserveForces(numToReserve);
-                }
+            if (numToReserve > 0)
+            {
+                campaignManagerUI.OpenReserveForces(numToReserve);
             }
         }
 
