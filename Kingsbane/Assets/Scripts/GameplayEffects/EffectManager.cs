@@ -349,6 +349,13 @@ public class EffectManager : MonoBehaviour
             ActiveEffect = ActiveEffectTypes.UnitMove;
             PreviousCell = currentCell;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
+
+            var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, false, true);
+
+            foreach (var cell in moveCells)
+            {
+                cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+            }
         }
     }
 

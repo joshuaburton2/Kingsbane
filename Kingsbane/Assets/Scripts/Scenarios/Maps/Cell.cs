@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Cell : MonoBehaviour
 {
     [SerializeField]
-    public List<Cell> adjCell;
+    public List<Cell> adjCells;
     [SerializeField]
     public Vector2 gridIndex;
     [SerializeField]
     public SpriteRenderer backgroundImage;
+    [SerializeField]
+    public SpriteRenderer highlightImage;
     [SerializeField]
     private float defaultAlpha;
     [SerializeField]
@@ -227,6 +230,18 @@ public class Cell : MonoBehaviour
         backgroundImage.color = new Color(0f, 0f, 0f, 0f);
     }
 
+    public void SetHighlightColour(Color colour, bool isTransparent = false)
+    {
+        colour.a = isTransparent ? defaultAlpha : 1.0f;
+        highlightImage.color = colour;
+        highlightImage.gameObject.SetActive(true);
+    }
+
+    public void HideHighlight()
+    {
+        highlightImage.gameObject.SetActive(false);
+    }
+
     public void CellStartOfTurn(int activePlayerId)
     {
         cellTileStatuses.RemoveAll(x => x.Value == activePlayerId);
@@ -319,5 +334,49 @@ public class Cell : MonoBehaviour
         return cellTileStatuses.Any(x => x.Key == TileStatuses.Survey && x.Value == ownerId);
     }
 
-    public List<Cell> GetRadiusTiles(int radius, bool)
+    public List<Cell> GetRadiusTiles(int radius, bool includeCurrentCell = true, bool isMovingUnit = false)
+    {
+        var radiusCellList = new List<Cell>();
+        var tempAdjCells = new List<Cell>(adjCells);
+
+        if (includeCurrentCell)
+            radiusCellList.Add(this);
+
+        for (int i = 0; i < radius; i++)
+        {
+            var nextTempAdjCells = new List<Cell>();
+
+            foreach (var adjCell in tempAdjCells)
+            {
+                if (!radiusCellList.Contains(adjCell))
+                {
+                    var tileValid = true;
+                    if (isMovingUnit)
+                    {
+                        if (occupantCounter == null)
+                            throw new Exception("Cannot get the unit movement without an occupant");
+                        else
+                            tileValid = occupantCounter.Unit.CheckOccupancy(adjCell);
+                    }
+
+                    if (tileValid)
+                    {
+                        radiusCellList.Add(adjCell);
+
+                        foreach (var nextAdjCell in adjCell.adjCells)
+                        {
+                            if (!nextTempAdjCells.Contains(nextAdjCell))
+                            {
+                                nextTempAdjCells.Add(nextAdjCell);
+                            }
+                        }
+                    }
+                }
+            }
+
+            tempAdjCells = new List<Cell>(nextTempAdjCells);
+        }
+
+        return radiusCellList;
+    }
 }

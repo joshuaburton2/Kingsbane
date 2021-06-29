@@ -143,54 +143,54 @@ public class MapGrid : MonoBehaviour
 
                 cell.gameplayUI = gameplayUI;
 
-                cell.adjCell = new List<Cell>();
+                cell.adjCells = new List<Cell>();
 
                 #region Adjacent Cell Handling
                 //Add cells above the current cell. Does not consider the top row
                 if (y != numY - 1)
                 {
                     //All cells will be adjacent to the cell in the above row which has the same index as them
-                    cell.adjCell.Add(GetCell(x, y + 1));
+                    cell.adjCells.Add(GetCell(x, y + 1));
 
                     //If on an odd row and not in the right hand column, an adjacent cell above this one will have an x index of one greater
                     if (y % 2 == 1 && x != numX - 1)
                     {
-                        cell.adjCell.Add(GetCell(x + 1, y + 1));
+                        cell.adjCells.Add(GetCell(x + 1, y + 1));
                     }
                     //If on an even row and not in the left hand column, an adjacent cell above this one will have an x index of one less
                     if (y % 2 == 0 && x != 0)
                     {
-                        cell.adjCell.Insert(cell.adjCell.Count - 1, GetCell(x - 1, y + 1));
+                        cell.adjCells.Insert(cell.adjCells.Count - 1, GetCell(x - 1, y + 1));
                     }
                 }
 
                 //Add cell to the right of the current cell. Does not consider the right hand column
                 if (x != numX - 1)
                 {
-                    cell.adjCell.Add(GetCell(x + 1, y));
+                    cell.adjCells.Add(GetCell(x + 1, y));
                 }
 
                 if (y != 0)
                 {
                     //All cells will be adjacent to the cell in the below row which has the same index as them
-                    cell.adjCell.Add(GetCell(x, y - 1));
+                    cell.adjCells.Add(GetCell(x, y - 1));
 
                     //If on an odd row and not in the right hand column, an adjacent cell below this one will have an x index of one greater
                     if (y % 2 == 1 && x != numX - 1)
                     {
-                        cell.adjCell.Insert(cell.adjCell.Count - 1, GetCell(x + 1, y - 1));
+                        cell.adjCells.Insert(cell.adjCells.Count - 1, GetCell(x + 1, y - 1));
                     }
                     //If on an even row and not in the left hand column, an adjacent cell below this one will have an x index of one less
                     if (y % 2 == 0 && x != 0)
                     {
-                        cell.adjCell.Add(GetCell(x - 1, y - 1));
+                        cell.adjCells.Add(GetCell(x - 1, y - 1));
                     }
                 }
 
                 //Add cell to the left of the current cell. Does not consider the left hand column
                 if (x != 0)
                 {
-                    cell.adjCell.Add(GetCell(x - 1, y));
+                    cell.adjCells.Add(GetCell(x - 1, y));
                 }
 
                 #endregion

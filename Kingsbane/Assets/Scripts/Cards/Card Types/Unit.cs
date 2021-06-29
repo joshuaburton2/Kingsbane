@@ -1039,7 +1039,7 @@ public class Unit : Card
 
         if (!HasKeyword(Keywords.Stalker) && !UnitCounter.Cell.IsSurveyed(Owner.Id))
         {
-            foreach (var adjCell in UnitCounter.Cell.adjCell)
+            foreach (var adjCell in UnitCounter.Cell.adjCells)
             {
                 if (adjCell.occupantCounter != null)
                 {
@@ -1184,7 +1184,7 @@ public class Unit : Card
 
     public void TriggerMadness()
     {
-        var adjacentUnits = UnitCounter.Cell.adjCell.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
+        var adjacentUnits = UnitCounter.Cell.adjCells.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
 
         if (adjacentUnits.Count() != 0)
         {
