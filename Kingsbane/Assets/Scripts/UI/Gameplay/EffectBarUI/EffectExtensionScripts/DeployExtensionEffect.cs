@@ -119,7 +119,10 @@ class DeployExtensionEffect : EffectExtensionUI
                 generationFilter.NumToGenerate = generationFilter.UnitsToCreate;
 
             if (player.GenerateCards(generationFilter, CardGenerationTypes.Deploy, isChoiceToggle.isOn, createdByInput.text))
+            {
                 StartEffect();
+                titleText.text = defaultTitleText;
+            }
             else
                 titleText.text = $"{defaultTitleText} (Failed)";
         }
