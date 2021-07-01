@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using CategoryEnums;
 
 //These links were used as reference for the AStar Search Algorithms
 // https://www.redblobgames.com/pathfinding/a-star/introduction.html
@@ -70,8 +71,12 @@ public class AStarSearch
 
             foreach (var adjCell in current.adjCells)
             {
-                int newCost = costSoFar[current]
-                    + CalculateMoveCost(adjCell, unit);
+                var moveCost = CalculateMoveCost(adjCell, unit);
+
+                if (moveCost == null)
+                    continue;
+
+                int newCost = costSoFar[current] + moveCost.Value;
                 if (!costSoFar.ContainsKey(adjCell)
                     || newCost < costSoFar[adjCell])
                 {
@@ -84,13 +89,19 @@ public class AStarSearch
         }
     }
 
-    public int CalculateMoveCost(Cell nextCell, Unit unit)
+    public int? CalculateMoveCost(Cell nextCell, Unit unit)
     {
-        if (unit.CheckOccupancy(nextCell))
-        {
-            //return 0
-        }
+        if (!unit.CheckOccupancy(nextCell, ignoreFriendlyUnits: false))
+            return null;
 
-        return 1;
+        return unit.HasKeyword(Keywords.Ethereal) ||
+            unit.HasKeyword(Keywords.Stalker) ||
+            unit.HasStatusEffect(Unit.StatusEffects.Airborne) ||
+            nextCell.terrainType != TerrainTypes.Difficult ? 1 : 2;
+    }
+
+    public bool CheckMoveCost(int moveCost, Cell cell)
+    {
+        return costSoFar[cell] <= moveCost;
     }
 }

@@ -361,27 +361,30 @@ public class Unit : Card
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public bool CheckOccupancy(Cell newCell, bool isLanding = false)
+    public bool CheckOccupancy(Cell newCell, bool isLanding = false, bool ignoreFriendlyUnits = true)
     {
         var flyingInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.TallObstacle };
         var eteherealInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Chasm };
         var inAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Obstacle, TerrainTypes.Impassable, TerrainTypes.TallObstacle, TerrainTypes.Chasm };
 
         var canOccupy = false;
+        var hasCellOccupant = newCell.occupantCounter != null && (ignoreFriendlyUnits || !ignoreFriendlyUnits && newCell.occupantCounter.Unit.Status == UnitStatuses.Enemy);
 
         if (!HasKeyword(Keywords.Structure))
         {
             if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
             {
-                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant || 
+                    hasCellOccupant && !newCell.occupantCounter.Unit.HasStatusEffect(StatusEffects.Airborne));
             }
             if (HasKeyword(Keywords.Ethereal))
             {
-                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant ||
+                    hasCellOccupant && !newCell.occupantCounter.Unit.HasKeyword(Keywords.Ethereal));
             }
             if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
             {
-                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType) && !hasCellOccupant;
             }
         }
         else
@@ -509,7 +512,7 @@ public class Unit : Card
         return false;
     }
 
-    public void UseSpeed(int usedSpeed, bool isDisengage)
+    public void UseSpeed(int usedSpeed, bool isDisengage = false)
     {
         if (usedSpeed == 0)
         {
@@ -524,7 +527,6 @@ public class Unit : Card
                 Status = UnitStatuses.Middle;
 
             RefreshCounter();
-            GameManager.instance.effectManager.RefreshEffectManager();
         }
     }
 

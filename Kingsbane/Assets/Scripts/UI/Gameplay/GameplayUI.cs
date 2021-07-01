@@ -83,10 +83,20 @@ public class GameplayUI : MonoBehaviour
 
     public void CancelEffects()
     {
-        //if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitCommand)
-        //{
-        SetSelectedCommandUnit();
-        //}
+        var commandBarExtensionEffects = new List<EffectManager.ActiveEffectTypes>
+        {
+            EffectManager.ActiveEffectTypes.UnitForceMove,
+            EffectManager.ActiveEffectTypes.UnitMove,
+            EffectManager.ActiveEffectTypes.UnitUseSpeed,
+            EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed,
+            EffectManager.ActiveEffectTypes.UnitAbility,
+            EffectManager.ActiveEffectTypes.UnitAttack,
+        };
+
+        if (!commandBarExtensionEffects.Contains(GameManager.instance.effectManager.ActiveEffect))
+        {
+            SetSelectedCommandUnit();
+        }
 
         GameManager.instance.effectManager.CancelEffectManager();
     }

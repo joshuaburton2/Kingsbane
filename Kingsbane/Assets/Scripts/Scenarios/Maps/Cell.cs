@@ -89,7 +89,9 @@ public class Cell : MonoBehaviour
                                 case EffectManager.ActiveEffectTypes.UnitMove:
                                 case EffectManager.ActiveEffectTypes.UnitDisengage:
                                 case EffectManager.ActiveEffectTypes.UnitForceMove:
-                                    GameManager.instance.effectManager.MoveCommandUnit(this);
+                                    GameManager.instance.effectManager.MoveCommandUnit(this,
+                                        GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitMove ||
+                                        GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitDisengage);
                                     break;
                                 case EffectManager.ActiveEffectTypes.UnitAttack:
                                     if (occupantCounter != null)
@@ -356,7 +358,11 @@ public class Cell : MonoBehaviour
                         if (occupantCounter == null)
                             throw new Exception("Cannot get the unit movement without an occupant");
                         else
-                            tileValid = occupantCounter.Unit.CheckOccupancy(adjCell);
+                        {
+                            var pathSearch = new AStarSearch(this, adjCell, occupantCounter.Unit);
+                            tileValid = occupantCounter.Unit.CheckOccupancy(adjCell, ignoreFriendlyUnits: false)
+                                 && pathSearch.CheckMoveCost(radius, adjCell);
+                        }
                     }
 
                     if (tileValid)

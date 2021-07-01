@@ -114,7 +114,9 @@ public class PlayerUIBar : MonoBehaviour
         if (IsActivePlayerBar)
         {
             if (GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitCommand ||
+                GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitMove ||
                 GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseSpeed ||
+                GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitDisengage ||
                 GameManager.instance.effectManager.ActiveEffect == ActiveEffectTypes.UnitUseDisengageSpeed)
             {
                 unitCommandUI.gameObject.SetActive(true);

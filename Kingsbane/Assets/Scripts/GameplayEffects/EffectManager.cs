@@ -119,6 +119,7 @@ public class EffectManager : MonoBehaviour
             if (ActiveEffect != ActiveEffectTypes.UnitCommand)
                 CancelEffect = true;
             RefreshEffectManager();
+            GameManager.instance.mapGrid.ClearHighlights();
         }
     }
 
@@ -192,13 +193,13 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
                 break;
             case ActiveEffectTypes.UnitMove:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
 
                 CancelEffect = false;
 
                 break;
             case ActiveEffectTypes.UnitDisengage:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseDisengageSpeed;
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
                 CancelEffect = false;
 
                 break;
@@ -206,7 +207,7 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.UnitUseDisengageSpeed:
                 if (CancelEffect)
                 {
-                    MoveCommandUnit(PreviousCell);
+                    MoveCommandUnit(PreviousCell, false);
                     CancelEffect = false;
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
@@ -348,14 +349,10 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
             PreviousCell = currentCell;
+            SelectedBoolean = true;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
 
-            var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, false, true);
-
-            foreach (var cell in moveCells)
-            {
-                cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
-            }
+            ShowMoveTiles(currentCell);
         }
     }
 
@@ -365,7 +362,21 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitDisengage;
             PreviousCell = currentCell;
+            SelectedBoolean = true;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
+
+            ShowMoveTiles(currentCell);
+        }
+    }
+
+    public void ShowMoveTiles(Cell currentCell)
+    {
+        var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, false, true);
+
+        foreach (var cell in moveCells)
+        {
+            if (cell.occupantCounter == null)
+                cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
         }
     }
 
@@ -378,7 +389,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveCommandUnit(Cell newCell)
+    public void MoveCommandUnit(Cell newCell, bool checkPath = true)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitMove ||
             ActiveEffect == ActiveEffectTypes.UnitDisengage ||
@@ -390,11 +401,24 @@ public class EffectManager : MonoBehaviour
             {
                 if (SelectedUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
                 {
-                    RemoveUnitCounter(SelectedUnit.UnitCounter);
-                    CreateUnitCounter(SelectedUnit, newCell, false);
-                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
-                    RefreshEffectManager();
-                    GameManager.instance.uiManager.RefreshUI();
+                    var isValidPath = true;
+                    if (checkPath)
+                    {
+                        var pathSearch = new AStarSearch(PreviousCell, newCell, SelectedUnit);
+                        isValidPath = pathSearch.CheckMoveCost(SelectedUnit.RemainingSpeed, newCell);
+                        if (isValidPath)
+                            SelectedUnit.UseSpeed(pathSearch.costSoFar[newCell], SelectedBoolean.Value);
+                    }
+
+                    if (isValidPath)
+                    {
+                        RemoveUnitCounter(SelectedUnit.UnitCounter);
+                        CreateUnitCounter(SelectedUnit, newCell, false);
+                        SelectedUnit.UnitCounter.ShowUnitSelector(true);
+                        RefreshEffectManager();
+                        GameManager.instance.uiManager.RefreshUI();
+                        GameManager.instance.mapGrid.ClearHighlights();
+                    }
                 }
             }
         }
@@ -513,12 +537,7 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
-        if (unitCounter.Unit == SelectedUnit &&
-            ActiveEffect != ActiveEffectTypes.UnitMove &&
-            ActiveEffect != ActiveEffectTypes.UnitForceMove &&
-            ActiveEffect != ActiveEffectTypes.UnitUseSpeed &&
-            ActiveEffect != ActiveEffectTypes.UnitDisengage &&
-            ActiveEffect != ActiveEffectTypes.UnitUseDisengageSpeed)
+        if (unitCounter.Unit == SelectedUnit && ActiveEffect == ActiveEffectTypes.DestroyUnit)
         {
             SelectedUnit = null;
             GameManager.instance.uiManager.RefreshUI();

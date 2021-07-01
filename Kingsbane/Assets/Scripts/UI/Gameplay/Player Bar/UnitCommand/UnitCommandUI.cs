@@ -260,12 +260,13 @@ public class UnitCommandUI : MonoBehaviour
     public void ConfirmSpeedUse()
     {
         if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed)
-            unit.UseSpeed(SetSpeed, false);
+            unit.UseSpeed(SetSpeed);
         else if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed)
             unit.UseSpeed(SetSpeed, true);
         else
             throw new Exception("Not a valid effect mode to use speed");
 
+        GameManager.instance.effectManager.RefreshEffectManager();
         RefreshCommandBar();
     }
 

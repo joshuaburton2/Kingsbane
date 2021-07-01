@@ -300,4 +300,15 @@ public class MapGrid : MonoBehaviour
             }
         }
     }
+
+    public void ClearHighlights()
+    {
+        foreach (var row in cellList)
+        {
+            foreach (var cell in row)
+            {
+                cell.HideHighlight();
+            }
+        }
+    }
 }
