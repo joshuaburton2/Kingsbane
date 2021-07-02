@@ -361,14 +361,14 @@ public class Unit : Card
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public bool CheckOccupancy(Cell newCell, bool isLanding = false, bool ignoreFriendlyUnits = true)
+    public bool CheckOccupancy(Cell newCell, bool isLanding = false, bool ignoreOccupant = false, bool ignoreFriendlyUnits = true)
     {
         var flyingInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.TallObstacle };
         var eteherealInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Chasm };
         var inAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Obstacle, TerrainTypes.Impassable, TerrainTypes.TallObstacle, TerrainTypes.Chasm };
 
         var canOccupy = false;
-        var hasCellOccupant = newCell.occupantCounter != null && (ignoreFriendlyUnits || !ignoreFriendlyUnits && newCell.occupantCounter.Unit.Status == UnitStatuses.Enemy);
+        var hasCellOccupant = ignoreOccupant || newCell.occupantCounter != null && (ignoreFriendlyUnits || !ignoreFriendlyUnits && newCell.occupantCounter.Unit.Status == UnitStatuses.Enemy);
 
         if (!HasKeyword(Keywords.Structure))
         {
@@ -1077,7 +1077,7 @@ public class Unit : Card
     {
         if (HasStatusEffect(StatusEffects.Airborne))
         {
-            if (CheckOccupancy(UnitCounter.Cell, true))
+            if (CheckOccupancy(UnitCounter.Cell, true, true))
             {
                 CanFlyOrLand = false;
                 CurrentStatusEffects.Remove(StatusEffects.Airborne);

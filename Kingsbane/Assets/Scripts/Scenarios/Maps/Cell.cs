@@ -55,10 +55,9 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
-            RaycastHit hit;
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 if (hit.transform.name == transform.name)
                 {
@@ -336,7 +335,14 @@ public class Cell : MonoBehaviour
         return cellTileStatuses.Any(x => x.Key == TileStatuses.Survey && x.Value == ownerId);
     }
 
-    public List<Cell> GetRadiusTiles(int radius, bool includeCurrentCell = true, bool isMovingUnit = false)
+    public enum RadiusTilesType
+    {
+        Default,
+        Unit,
+        Spell,
+    }
+
+    public List<Cell> GetRadiusTiles(int radius, RadiusTilesType tileType, bool includeCurrentCell = true)
     {
         var radiusCellList = new List<Cell>();
         var tempAdjCells = new List<Cell>(adjCells);
@@ -353,16 +359,37 @@ public class Cell : MonoBehaviour
                 if (!radiusCellList.Contains(adjCell))
                 {
                     var tileValid = true;
-                    if (isMovingUnit)
+
+                    switch (tileType)
                     {
-                        if (occupantCounter == null)
-                            throw new Exception("Cannot get the unit movement without an occupant");
-                        else
-                        {
-                            var pathSearch = new AStarSearch(this, adjCell, occupantCounter.Unit);
-                            tileValid = occupantCounter.Unit.CheckOccupancy(adjCell, ignoreFriendlyUnits: false)
-                                 && pathSearch.CheckMoveCost(radius, adjCell);
-                        }
+                        case RadiusTilesType.Unit:
+                            if (occupantCounter == null)
+                                throw new Exception("Cannot get the unit movement without an occupant");
+                            else
+                            {
+                                var unitPathSearch = new AStarSearch(this, adjCell, occupantCounter.Unit);
+                                tileValid = occupantCounter.Unit.CheckOccupancy(adjCell, ignoreFriendlyUnits: false)
+                                     && unitPathSearch.CheckMoveCost(radius, adjCell);
+                            }
+                            break;
+                        case RadiusTilesType.Spell:
+                            var cellLine = DrawCellLine(adjCell);
+
+                            foreach (var cell in cellLine)
+                            {
+                                if (cell != adjCell && (cell.terrainType == TerrainTypes.Obstacle || cell.terrainType == TerrainTypes.TallObstacle))
+                                {
+                                    tileValid = false;
+                                    //Debug.Log(cell.gridIndex);
+                                    cell.SetHighlightColour(new Color(200, 0, 0));
+                                    break;
+                                }
+                            }
+
+                            break;
+                        case RadiusTilesType.Default:
+                        default:
+                            break;
                     }
 
                     if (tileValid)
@@ -384,5 +411,38 @@ public class Cell : MonoBehaviour
         }
 
         return radiusCellList;
+    }
+
+    public List<Cell> DrawCellLine(Cell targetCell)
+    {
+        var cellLineList = new List<Cell>();
+
+        RaycastHit hit;
+        var hitPosition = transform.position;
+        var counter = 0;
+        do
+        {
+            if (Physics.Linecast(hitPosition, targetCell.transform.position, out hit))
+            {
+                hitPosition = hit.point;
+                cellLineList.Add(hit.transform.gameObject.GetComponent<Cell>());
+            }
+            else
+            {
+                throw new Exception("No cell to collide with");
+            }
+
+            if (counter > 1000)
+            {
+                Debug.Log(targetCell.gridIndex);
+                Instantiate(tileStatusPrefab, hit.point, new Quaternion());
+                throw new Exception("Cannot find a valid path");
+            }
+            counter++;
+
+        } while (hit.transform != targetCell.transform);
+
+
+        return cellLineList;
     }
 }

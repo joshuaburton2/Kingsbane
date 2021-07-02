@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2818482052509712665}
   m_Layer: 0
   m_Name: Cell
-  m_TagString: Untagged
+  m_TagString: Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a76527396bc9c24aa458bbc036435e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  adjCell: []
+  adjCells: []
   gridIndex: {x: 0, y: 0}
   backgroundImage: {fileID: 6801558084069231290}
   highlightImage: {fileID: 1503200621457694714}
@@ -121,7 +121,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2.5
+  m_Radius: 2.45
   m_Height: 5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

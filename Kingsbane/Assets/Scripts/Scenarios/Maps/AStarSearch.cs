@@ -71,7 +71,7 @@ public class AStarSearch
 
             foreach (var adjCell in current.adjCells)
             {
-                var moveCost = CalculateMoveCost(adjCell, unit);
+                var moveCost = unit != null ? CalculateMoveCost(adjCell, unit) : 1;
 
                 if (moveCost == null)
                     continue;

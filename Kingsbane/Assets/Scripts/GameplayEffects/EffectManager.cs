@@ -369,9 +369,9 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void ShowMoveTiles(Cell currentCell)
+    private void ShowMoveTiles(Cell currentCell)
     {
-        var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, false, true);
+        var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, Cell.RadiusTilesType.Unit, false);
 
         foreach (var cell in moveCells)
         {
@@ -473,6 +473,14 @@ public class EffectManager : MonoBehaviour
             {
                 SelectedUnit = caster;
                 ActiveEffect = ActiveEffectTypes.Spell;
+
+                var spellCells = caster.UnitCounter.Cell.GetRadiusTiles(((Spell)SelectedCard).SpellRange, Cell.RadiusTilesType.Spell);
+
+                foreach (var cell in spellCells)
+                {
+                    //cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                }
+
                 if (SelectedUnit.UnitCounter != null)
                     SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
@@ -489,6 +497,7 @@ public class EffectManager : MonoBehaviour
             SelectedCard.Play();
             GameManager.instance.uiManager.RefreshUI();
             RefreshEffectManager();
+            GameManager.instance.mapGrid.ClearHighlights();
         }
     }
 
