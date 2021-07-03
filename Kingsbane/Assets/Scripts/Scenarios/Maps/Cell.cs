@@ -340,6 +340,8 @@ public class Cell : MonoBehaviour
         Default,
         Unit,
         Spell,
+        Attack,
+        Ability,
     }
 
     public List<Cell> GetRadiusTiles(int radius, RadiusTilesType tileType, bool includeCurrentCell = true)
@@ -373,15 +375,17 @@ public class Cell : MonoBehaviour
                             }
                             break;
                         case RadiusTilesType.Spell:
-                            var cellLine = DrawCellLine(adjCell);
+                        case RadiusTilesType.Attack:
+                        case RadiusTilesType.Ability:
+                            var cellLine = GetCellLine(adjCell.transform.position, adjCell);
 
                             foreach (var cell in cellLine)
                             {
-                                if (cell != adjCell && (cell.terrainType == TerrainTypes.Obstacle || cell.terrainType == TerrainTypes.TallObstacle))
+                                if (cell != adjCell && 
+                                    (cell.terrainType == TerrainTypes.Obstacle && !occupantCounter.Unit.HasStatusEffect(Unit.StatusEffects.Airborne)
+                                    || cell.terrainType == TerrainTypes.TallObstacle))
                                 {
                                     tileValid = false;
-                                    //Debug.Log(cell.gridIndex);
-                                    cell.SetHighlightColour(new Color(200, 0, 0));
                                     break;
                                 }
                             }
@@ -413,18 +417,31 @@ public class Cell : MonoBehaviour
         return radiusCellList;
     }
 
-    public List<Cell> DrawCellLine(Cell targetCell)
+    public List<Cell> GetCellLine(Vector3 target, Cell targetCell)
     {
         var cellLineList = new List<Cell>();
 
         RaycastHit hit;
         var hitPosition = transform.position;
+        var lastHit = transform;
         var counter = 0;
+
+        var directionalVector = target - transform.position;
+        var unitVector = directionalVector / directionalVector.magnitude;
+
         do
         {
-            if (Physics.Linecast(hitPosition, targetCell.transform.position, out hit))
+            if (Physics.Linecast(hitPosition, target, out hit))
             {
-                hitPosition = hit.point;
+                if (hit.transform == lastHit)
+                {
+                    hitPosition += unitVector;
+                }
+                else
+                {
+                    hitPosition = hit.point;
+                }
+                lastHit = hit.transform;
                 cellLineList.Add(hit.transform.gameObject.GetComponent<Cell>());
             }
             else
@@ -432,10 +449,9 @@ public class Cell : MonoBehaviour
                 throw new Exception("No cell to collide with");
             }
 
-            if (counter > 1000)
+            if (counter > 100)
             {
-                Debug.Log(targetCell.gridIndex);
-                Instantiate(tileStatusPrefab, hit.point, new Quaternion());
+                hit.transform.gameObject.GetComponent<Cell>().SetHighlightColour(new Color(200, 0, 0));
                 throw new Exception("Cannot find a valid path");
             }
             counter++;

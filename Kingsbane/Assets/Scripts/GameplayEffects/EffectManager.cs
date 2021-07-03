@@ -100,6 +100,7 @@ public class EffectManager : MonoBehaviour
     private DeckPositions? SelectedDeckPosition { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
     private TileStatuses SelectedTileStatus { get; set; }
+    private List<Cell> TargetCells { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -137,6 +138,7 @@ public class EffectManager : MonoBehaviour
         SelectedDeckPosition = null;
         SelectedKeywords = new List<Keywords>();
         SelectedAdjustCost = null;
+        TargetCells = null;
 
         switch (ActiveEffect)
         {
@@ -349,7 +351,7 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
             PreviousCell = currentCell;
-            SelectedBoolean = true;
+            SelectedBoolean = false;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
 
             ShowMoveTiles(currentCell);
@@ -428,7 +430,32 @@ public class EffectManager : MonoBehaviour
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
-            ActiveEffect = ActiveEffectTypes.UnitAttack;
+            var unitRange = SelectedUnit.GetStat(Unit.StatTypes.Range);
+            if (unitRange == 0)
+                unitRange = 1;
+
+            var attackCells = SelectedUnit.UnitCounter.Cell.GetRadiusTiles(unitRange, Cell.RadiusTilesType.Attack);
+
+            var validTargets = false;
+
+            foreach (var cell in attackCells.ToList())
+            {
+                if (cell.occupantCounter != null && cell.occupantCounter.Unit.Status == Unit.UnitStatuses.Enemy)
+                {
+                    validTargets = true;
+                    cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                }
+            }
+
+            if (validTargets)
+            {
+                ActiveEffect = ActiveEffectTypes.UnitAttack;
+                TargetCells = attackCells;
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -441,6 +468,7 @@ public class EffectManager : MonoBehaviour
             SelectedUnit.TriggerAttack(targetUnit);
             RefreshEffectManager();
             GameManager.instance.uiManager.RefreshUI();
+            GameManager.instance.mapGrid.ClearHighlights();
             //}
         }
     }
@@ -467,6 +495,7 @@ public class EffectManager : MonoBehaviour
         {
             if (((Spell)SelectedCard).SpellRange == 0)
             {
+                TargetCells = null;
                 CastSpell(caster.UnitCounter.Cell);
             }
             else
@@ -478,8 +507,10 @@ public class EffectManager : MonoBehaviour
 
                 foreach (var cell in spellCells)
                 {
-                    //cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                    cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
                 }
+
+                TargetCells = spellCells;
 
                 if (SelectedUnit.UnitCounter != null)
                     SelectedUnit.UnitCounter.ShowUnitSelector(true);
@@ -493,11 +524,14 @@ public class EffectManager : MonoBehaviour
     {
         if (SelectedCard != null)
         {
-            //Need to account for caster (Selected Unit)
-            SelectedCard.Play();
-            GameManager.instance.uiManager.RefreshUI();
-            RefreshEffectManager();
-            GameManager.instance.mapGrid.ClearHighlights();
+            if (TargetCells == null || TargetCells != null && TargetCells.Contains(targetCell))
+            {
+                //Need to account for caster (Selected Unit)
+                SelectedCard.Play();
+                GameManager.instance.uiManager.RefreshUI();
+                RefreshEffectManager();
+                GameManager.instance.mapGrid.ClearHighlights();
+            }
         }
     }
 
