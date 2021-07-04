@@ -42,6 +42,9 @@ public class PriorityQueue<T>
 
 public class AStarSearch
 {
+    public Cell Start { get; set; }
+    public Cell Goal { get; set; }
+
     public Dictionary<Cell, Cell> cameFrom
         = new Dictionary<Cell, Cell>();
     public Dictionary<Cell, int> costSoFar
@@ -54,6 +57,9 @@ public class AStarSearch
 
     public AStarSearch(Cell start, Cell goal, Unit unit = null)
     {
+        Start = start;
+        Goal = goal;
+
         var frontier = new PriorityQueue<Cell>();
         frontier.Enqueue(start, 0);
 
@@ -103,5 +109,22 @@ public class AStarSearch
     public bool CheckMoveCost(int moveCost, Cell cell)
     {
         return costSoFar[cell] <= moveCost;
+    }
+
+    public List<Cell> GetPath()
+    {
+        var pathList = new List<Cell>();
+        var current = Goal;
+        pathList.Add(current);
+
+        while (current != Start)
+        {
+            current = cameFrom[current];
+            pathList.Add(current);
+        }
+
+        pathList.Reverse();
+
+        return pathList;
     }
 }
