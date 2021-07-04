@@ -698,7 +698,7 @@ public class Unit : Card
 
             RefreshCounter();
 
-            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors))
+            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors) && TotalProtected == 0)
             {
                 HealUnit(painDrivenWarriors.SpecialPassiveProperty);
             }
