@@ -759,7 +759,7 @@ public class UpgradeLibrary
             Name = "Reserve Forces",
             ImageTag = UpgradeImageTags.Reserve_Forces,
             Text = @"Remove two cards permanently from your deck",
-            LoreText = @"",
+            LoreText = @"Remove two cards permanently from your deck",
             HonourPoints = 2,
             IsRepeatable = true,
             NPCLocked = false,
@@ -2554,6 +2554,28 @@ public class UpgradeLibrary
         };
         UpgradeList.Add(upgrade112);
 
+        var upgrade113 = new UpgradeData()
+        {
+            Id = 113,
+            Name = "Scout Loot",
+            ImageTag = UpgradeImageTags.Scout_Loot,
+            Text = @"Serach for 3 new cards through the loot generator",
+            LoreText = @"Serach for 3 new cards through the loot generator",
+            HonourPoints = 2,
+            IsRepeatable = true,
+            NPCLocked = false,
+            TierLevel = TierLevel.Default,
+            ResourcePrerequisites = new List<CardResources>()
+            {
+            },
+            ClassPrerequisites = new List<Classes.ClassList>()
+            {
+            },
+            UpgradePrerequisites = new List<UpgradeData>(),
+            UpgradeTag = UpgradeTags.ScoutLoot,
+        };
+        UpgradeList.Add(upgrade113);
+
         upgrade2.UpgradePrerequisites = new List<UpgradeData> { upgrade1 };
         upgrade4.UpgradePrerequisites = new List<UpgradeData> { upgrade3 };
         upgrade6.UpgradePrerequisites = new List<UpgradeData> { upgrade5 };
@@ -2594,11 +2616,11 @@ namespace CategoryEnums
 {
     public enum UpgradeTags
     {
-        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature, SupplyLines, DeathDefiant, SpellstoneAmulet, OrnateSpellstoneAmulet, EfficientQuartermasters, ExpertQuartermasters, StandAlone, ImportCraftsmen, ImportMasterCraftsmen, HonourThroughBattle, StrengthinHonour, ReserveForces, GoldenChalice, MithrilChalice, DivineProtection, WeaponMaster, WeaponVirtuoso, WoundResistant, BetterHires, TheBestHires, MonetaryMotivation, BreadthofKnowledge, UltimateKnowledge, PotentForetelling, CircletofPower, CrownoftheArcane, SummonersRod, FeralNature, HeartoftheWild, RestoredHeartoftheWild, VoidPortal, ConvergantVoidPortal, SoulSacrifice, ThiefsGloves, ThiefsTools, ShadowMeld, ReplicativeSpellbook, StaffofAges, StaffofTime, ArtofWar, PreparedForces, OrganisedForces, OrboftheElements, ElementalWell, MagisFury, ConstrictingNature, NaturesThorns, FaeriesShroud, RestorativeBlessing, HolyBlessing, ShadowCrystal, SortedCollection, OrderedCollection, CategorizingAlgorithm, MoonlitVial, MoongracedPhial, StarsWrath, ObligatoryContracts, BindingContracts, GatherCowards, HallowedScriptures, AngelicAscension, HeavenlyAscension, ManaShield, ManaRuneShield, SwiftBlades, JaggedEdges, SerratedEdges, GhostCloak, ReturningQuiver, NeverEndingQuiver, BeastialFury, PainDrivenWarriors, UndyingElites, ShapeshiftersMask, EldersProtection, LegionsFinest, FromtheShadows, DarkWoods, CorruptingPower, VoidSwarm, BoonofMogris, CurseoftheBarrows, ArmyofShadows, BurningTrees, CursedinUndeath, DragonslayersQuiver, BowofShadows, MasteroftheForge, AdaptiveArmour
+        HeroUpgrade, AbilityUpgrade, DevotedFollowers, LastingPrayers, StrengthofArms, BattleSurges, ClaimBounty, EmergencyReserves, WellofKnowledge, StimulateLearning, ManaReserves, RestorePower, WildGrowth, CycleofNature, SupplyLines, DeathDefiant, SpellstoneAmulet, OrnateSpellstoneAmulet, EfficientQuartermasters, ExpertQuartermasters, StandAlone, ImportCraftsmen, ImportMasterCraftsmen, HonourThroughBattle, StrengthinHonour, ReserveForces, GoldenChalice, MithrilChalice, DivineProtection, WeaponMaster, WeaponVirtuoso, WoundResistant, BetterHires, TheBestHires, MonetaryMotivation, BreadthofKnowledge, UltimateKnowledge, PotentForetelling, CircletofPower, CrownoftheArcane, SummonersRod, FeralNature, HeartoftheWild, RestoredHeartoftheWild, VoidPortal, ConvergantVoidPortal, SoulSacrifice, ThiefsGloves, ThiefsTools, ShadowMeld, ReplicativeSpellbook, StaffofAges, StaffofTime, ArtofWar, PreparedForces, OrganisedForces, OrboftheElements, ElementalWell, MagisFury, ConstrictingNature, NaturesThorns, FaeriesShroud, RestorativeBlessing, HolyBlessing, ShadowCrystal, SortedCollection, OrderedCollection, CategorizingAlgorithm, MoonlitVial, MoongracedPhial, StarsWrath, ObligatoryContracts, BindingContracts, GatherCowards, HallowedScriptures, AngelicAscension, HeavenlyAscension, ManaShield, ManaRuneShield, SwiftBlades, JaggedEdges, SerratedEdges, GhostCloak, ReturningQuiver, NeverEndingQuiver, BeastialFury, PainDrivenWarriors, UndyingElites, ShapeshiftersMask, EldersProtection, LegionsFinest, FromtheShadows, DarkWoods, CorruptingPower, VoidSwarm, BoonofMogris, CurseoftheBarrows, ArmyofShadows, BurningTrees, CursedinUndeath, DragonslayersQuiver, BowofShadows, MasteroftheForge, AdaptiveArmour, ScoutLoot
     }
 
     public enum UpgradeImageTags
     {
-        Hero_1, Hero_II, Ability_I, Ability_II, Devoted_Followers_I, Devoted_Followers_II, Lasting_Prayers, Strength_of_Arms_I, Strength_of_Arms_II, Battle_Surges, Claim_Bounty_I, Claim_Bounty_II, Emergency_Reserves, Well_of_Knowledge_I, Well_of_Knowledge_II, Stimulate_Learning, Mana_Reserves_I, Mana_Reserves_II, Restore_Power, Wild_Growth_I, Wild_Growth_II, Cycle_of_Nature, Supply_Lines, Death_Defiant, Spellstone_Amulet, Ornate_Spellstone_Amulet, Efficient_Quartermasters, Expert_Quartermasters, Stand_Alone, Import_Craftsmen, Import_Master_Craftsmen, Honour_Through_Battle, Strength_in_Honour, Reserve_Forces, Golden_Chalice, Mithril_Chalice, Divine_Protection, Weapon_Master, Weapon_Virtuoso, Wound_Resistant, Better_Hires, The_Best_Hires, Monetary_Motivation, Breadth_of_Knowledge, Ultimate_Knowledge, Potent_Foretelling, Circlet_of_Power, Crown_of_the_Arcane, Summoners_Rod, Feral_Nature, Heart_of_the_Wild, Restored_Heart_of_the_Wild, Void_Portal, Convergant_Void_Portal, Soul_Sacrifice, Theifs_Gloves, Thiefs_Tools, Shadow_Meld, Replicative_Spellbook, Staff_of_Ages, Staff_of_Time, Art_of_War, Prepared_Forces, Organised_Forces, Orb_of_the_Elements, Elemental_Well, Magis_Fury, Constricting_Nature, Natures_Thorns, Faeries_Shroud, Restorative_Blessing, Holy_Blessing, Shadow_Crystal, Sorted_Collection, Ordered_Collection, Categorizing_Algorithm, Moonlit_Vial, Moongraced_Phial, Stars_Wrath, Obligatory_Contracts, Binding_Contracts, Gather_Cowards, Hallowed_Scriptures, Angelic_Ascension, Heavenly_Ascension, Mana_Shield, ManaRune_Shield, Swift_Blades, Jagged_Edges, Serrated_Edges, Ghost_Cloak, Returning_Quiver, NeverEnding_Quiver, Beastial_Fury, PainDriven_Warriors, Undying_Elites, Shapeshifters_Mask, Elders_Protection, Legions_Finest, From_the_Shadows, Dark_Woods, Corrupting_Power, Void_Swarm, Boon_of_Mogris, Curse_of_the_Barrows, Army_of_Shadows, Burning_Trees, Cursed_in_Undeath, Dragonslayers_Quiver, Bow_of_Shadows, Master_of_the_Forge, Adaptive_Armour
+        Hero_1, Hero_II, Ability_I, Ability_II, Devoted_Followers_I, Devoted_Followers_II, Lasting_Prayers, Strength_of_Arms_I, Strength_of_Arms_II, Battle_Surges, Claim_Bounty_I, Claim_Bounty_II, Emergency_Reserves, Well_of_Knowledge_I, Well_of_Knowledge_II, Stimulate_Learning, Mana_Reserves_I, Mana_Reserves_II, Restore_Power, Wild_Growth_I, Wild_Growth_II, Cycle_of_Nature, Supply_Lines, Death_Defiant, Spellstone_Amulet, Ornate_Spellstone_Amulet, Efficient_Quartermasters, Expert_Quartermasters, Stand_Alone, Import_Craftsmen, Import_Master_Craftsmen, Honour_Through_Battle, Strength_in_Honour, Reserve_Forces, Golden_Chalice, Mithril_Chalice, Divine_Protection, Weapon_Master, Weapon_Virtuoso, Wound_Resistant, Better_Hires, The_Best_Hires, Monetary_Motivation, Breadth_of_Knowledge, Ultimate_Knowledge, Potent_Foretelling, Circlet_of_Power, Crown_of_the_Arcane, Summoners_Rod, Feral_Nature, Heart_of_the_Wild, Restored_Heart_of_the_Wild, Void_Portal, Convergant_Void_Portal, Soul_Sacrifice, Theifs_Gloves, Thiefs_Tools, Shadow_Meld, Replicative_Spellbook, Staff_of_Ages, Staff_of_Time, Art_of_War, Prepared_Forces, Organised_Forces, Orb_of_the_Elements, Elemental_Well, Magis_Fury, Constricting_Nature, Natures_Thorns, Faeries_Shroud, Restorative_Blessing, Holy_Blessing, Shadow_Crystal, Sorted_Collection, Ordered_Collection, Categorizing_Algorithm, Moonlit_Vial, Moongraced_Phial, Stars_Wrath, Obligatory_Contracts, Binding_Contracts, Gather_Cowards, Hallowed_Scriptures, Angelic_Ascension, Heavenly_Ascension, Mana_Shield, ManaRune_Shield, Swift_Blades, Jagged_Edges, Serrated_Edges, Ghost_Cloak, Returning_Quiver, NeverEnding_Quiver, Beastial_Fury, PainDriven_Warriors, Undying_Elites, Shapeshifters_Mask, Elders_Protection, Legions_Finest, From_the_Shadows, Dark_Woods, Corrupting_Power, Void_Swarm, Boon_of_Mogris, Curse_of_the_Barrows, Army_of_Shadows, Burning_Trees, Cursed_in_Undeath, Dragonslayers_Quiver, Bow_of_Shadows, Master_of_the_Forge, Adaptive_Armour, Scout_Loot
     }
 }

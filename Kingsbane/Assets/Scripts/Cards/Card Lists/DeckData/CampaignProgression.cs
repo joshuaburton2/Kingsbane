@@ -22,6 +22,7 @@ public class CampaignProgression
     public int HonourPoints { get; set; }
     public int NumToReserve { get; set; }
     public List<SaveLootCard> LootCards { get; set; }
+    public int NumLootRotations { get; set; }
     public int TotalWeighting { get; set; }
 
     private const int numLootCards = 8;
@@ -72,9 +73,7 @@ public class CampaignProgression
         {
             HonourPoints += HONOUR_TRACKER[CompletedScenarios];
 
-            LootCards = GameManager.instance.libraryManager.GenerateLootCards(GameManager.instance.deckManager.GetPlayerDeck(DeckId), numLootCards, out int totalWeighting)
-                .Select(x => x.ConvertToSaveLootCard()).ToList();
-            TotalWeighting = totalWeighting;
+            AddLootRotations(1);
 
             if (completedBonusObjectives)
             {
@@ -93,5 +92,35 @@ public class CampaignProgression
     {
         LootCards = new List<SaveLootCard>();
         TotalWeighting = 0;
+    }
+
+    public void GenerateLootRotation()
+    {
+        LootCards = GameManager.instance.libraryManager.GenerateLootCards(GameManager.instance.deckManager.GetPlayerDeck(DeckId), numLootCards, out int totalWeighting)
+            .Select(x => x.ConvertToSaveLootCard()).ToList();
+        TotalWeighting = totalWeighting;
+    }
+
+    public void AddLootRotations(int numRotations)
+    {
+        NumLootRotations += numRotations;
+
+        GenerateLootRotation();
+
+        GameManager.instance.deckManager.SaveDecks();
+    }
+
+    public bool ConfirmLootRotation()
+    {
+        NumLootRotations--;
+
+        if (NumLootRotations > 0)
+        {
+            GenerateLootRotation();
+        }
+
+        GameManager.instance.deckManager.SaveDecks();
+
+        return NumLootRotations > 0;
     }
 }

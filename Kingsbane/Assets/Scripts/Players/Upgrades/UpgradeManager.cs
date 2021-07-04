@@ -160,6 +160,13 @@ public class UpgradeManager : MonoBehaviour
                     }
                 }
             }
+            if (upgrade.UpgradeTag == UpgradeTags.ReserveForces)
+            {
+                if (deck.DeckCount == 0)
+                {
+                    continue;
+                }
+            }
 
             //If all conditions are met add the upgrade
             availableUpgrades.Add(upgrade);

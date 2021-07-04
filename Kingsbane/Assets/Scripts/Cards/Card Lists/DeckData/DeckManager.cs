@@ -270,6 +270,8 @@ public class DeckManager : MonoBehaviour
 
         playerDeck.CampaignTracker.NumToReserve = 0;
 
+        SaveDecks();
+
         return playerDeck;
     }
 

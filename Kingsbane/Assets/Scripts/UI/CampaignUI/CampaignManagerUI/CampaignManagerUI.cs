@@ -109,7 +109,7 @@ public class CampaignManagerUI : MonoBehaviour
             OpenReserveForces(0);
         }
 
-        if (deckData.CampaignTracker.LootCards.Any())
+        if (deckData.CampaignTracker.NumLootRotations > 0)
         {
             OpenLootGenerator();
         }
@@ -224,8 +224,11 @@ public class CampaignManagerUI : MonoBehaviour
         }
     }
 
-    public void OpenLootGenerator()
+    public void OpenLootGenerator(int numRotations = 0)
     {
+        if (numRotations > 0)
+            loadedDeck.CampaignTracker.AddLootRotations(numRotations);
+
         enemyDeckDetailsArea.SetActive(false);
 
         lootGenerateUI.RefreshLootGenerator(loadedDeck.CampaignTracker.LootCards.Select(x => x.ConvertToLootCard()).ToList(), loadedDeck.CampaignTracker.TotalWeighting);
@@ -234,7 +237,15 @@ public class CampaignManagerUI : MonoBehaviour
 
     public void AddLootCards()
     {
-        loadedDeck.CampaignTracker.ResetLootCards();
+        if (loadedDeck.CampaignTracker.ConfirmLootRotation())
+        {
+            OpenLootGenerator();
+        }
+        else
+        {
+            loadedDeck.CampaignTracker.ResetLootCards();
+            lootGenerateUI.gameObject.SetActive(false);
+        }
 
         RefreshPlayerDetails();
     }

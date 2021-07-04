@@ -263,6 +263,12 @@ public class UpgradeUI : MonoBehaviour
 
         if (upgradeList != null)
         {
+            if (deckListUI != null)
+            {
+                var removeUpgradeTags = new List<UpgradeTags>() { UpgradeTags.ReserveForces, UpgradeTags.ScoutLoot };
+                upgradeList.RemoveAll(x => removeUpgradeTags.Contains(x.UpgradeTag));
+            }
+
             //Initialise the resource section
             foreach (var resource in newDeck.DeckResources.OrderBy(x => x.GetEnumDescription()))
             {
@@ -366,11 +372,17 @@ public class UpgradeUI : MonoBehaviour
             var numToReserveMultiplier = 2;
             var numToReserve = upgradesToAdd.Where(x => x.UpgradeTag == UpgradeTags.ReserveForces).Count() * numToReserveMultiplier;
 
+            var numLootCards = upgradesToAdd.Where(x => x.UpgradeTag == UpgradeTags.ScoutLoot).Count();
+
             campaignManagerUI.RefreshPlayerDetails();
 
             if (numToReserve > 0)
             {
                 campaignManagerUI.OpenReserveForces(numToReserve);
+            }
+            if (numLootCards > 0)
+            {
+                campaignManagerUI.OpenLootGenerator(numLootCards);
             }
         }
 

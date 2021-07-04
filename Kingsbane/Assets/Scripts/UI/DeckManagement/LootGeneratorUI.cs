@@ -145,7 +145,6 @@ public class LootGeneratorUI : MonoBehaviour
             GameManager.instance.deckManager.AddCardsToPlayerDeck(campaignManagerUI.loadedDeck.Id.Value, cardsSelected);
 
             campaignManagerUI.AddLootCards();
-            gameObject.SetActive(false);
         }
     }
 }
