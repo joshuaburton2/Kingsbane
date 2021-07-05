@@ -4,73 +4,117 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Object for storing a list of cards. Has extra functionality than a regular list
+/// 
+/// </summary>
 public class CardList
 {
-    public List<Card> cardList;
-    public int ListCount { get { return cardList.Count; } }
+    public List<Card> List { get; set; }
+    public int ListCount { get { return List.Count; } }
 
     public CardList()
     {
-        cardList = new List<Card>();
+        List = new List<Card>();
     }
 
     public CardList(List<Card> _cardList)
     {
-        cardList = _cardList;
+        List = _cardList;
     }
 
+    /// <summary>
+    /// 
+    /// Adds a card to the list
+    /// 
+    /// </summary>
+    /// <param name="card"></param>
     public void AddCard(Card card)
     {
-        cardList.Add(card);
-        cardList.OrderBy(x => x.TotalResource);
+        List.Add(card);
+        List.OrderBy(x => x.TotalResource);
     }
 
+    /// <summary>
+    /// 
+    /// Removes a card from the list
+    /// 
+    /// </summary>
+    /// <param name="card"></param>
     public void RemoveCard(Card card)
     {
-        cardList.Remove(card);
+        List.Remove(card);
     }
 
+    /// <summary>
+    /// 
+    /// Removes a list of cards from the list
+    /// 
+    /// </summary>
     public void RemoveCard(List<Card> cards)
     {
-        cardList.RemoveAll(x => cards.Contains(x));
+        List.RemoveAll(x => cards.Contains(x));
     }
 
+    /// <summary>
+    /// 
+    /// Removes a card at a certain position
+    /// 
+    /// </summary>
+    /// <param name="pos"></param>
     public void RemoveCard(int pos = 0)
     {
-        var card = cardList[pos];
-        RemoveCard(card);
+        List.RemoveAt(pos);
     }
 
-    public void Clear()
-    {
-        cardList.Clear();
-    }
-
+    /// <summary>
+    /// 
+    /// Empties the list
+    /// 
+    /// </summary>
     public void EmptyList()
     {
-        cardList.Clear();
+        List.Clear();
     }
 
+    /// <summary>
+    /// 
+    /// Gets a single random card from the list
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public Card GetRandomCard()
     {
         var randomCards = GetRandomCards(1);
         return randomCards.FirstOrDefault();
     }
 
+    /// <summary>
+    /// 
+    /// Gets a random number of cards from the deck
+    /// 
+    /// </summary>
+    /// <param name="numToGet"></param>
+    /// <returns></returns>
     public List<Card> GetRandomCards(int numToGet)
     {
+        //Can only get a number of cards greater than 0
         if (numToGet > 0)
         {
             var selectedCardList = new List<Card>();
+            //Minimises the number so that more than the number of cards in the list can be retrieved
             var numToChoose = Mathf.Min(ListCount, numToGet);
 
-            for (int spycraftIndex = 0; spycraftIndex < numToChoose; spycraftIndex++)
+            //Loops through a number of times for each card that needs to be selected
+            for (int randomIndex = 0; randomIndex < numToChoose; randomIndex++)
             {
+                //Loops until each random card is unique, then adds to the selection
                 Card selectedCard = new Card();
                 do
                 {
-                    var randomIndex = UnityEngine.Random.Range(0, ListCount);
-                    selectedCard = cardList[randomIndex];
+                    var randomVal = UnityEngine.Random.Range(0, ListCount);
+                    selectedCard = List[randomVal];
                 } while (selectedCardList.Contains(selectedCard));
 
                 selectedCardList.Add(selectedCard);
@@ -97,7 +141,7 @@ public class CardList
         var intValueTracker = new Dictionary<CardListFilter.IntFilterTypes, int?>();
 
         //Loop through each card in the list. If fails a filter, continues through the loop
-        foreach (var card in cardList)
+        foreach (var card in List)
         {
             if (filter.Name.Length > 0)
             {

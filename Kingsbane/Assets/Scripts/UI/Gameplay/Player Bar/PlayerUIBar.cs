@@ -74,7 +74,7 @@ public class PlayerUIBar : MonoBehaviour
             default:
                 if (Player.RedeployUnits.Count == 0 || !IsActivePlayerBar)
                 {
-                    handUI.DisplayHandList(gameplayUI, Player.Hand.cardList, IsActivePlayerBar, Id);
+                    handUI.DisplayHandList(gameplayUI, Player.Hand.List, IsActivePlayerBar, Id);
                     gameplayUI.SetActionButtonState(true);
                 }
                 else

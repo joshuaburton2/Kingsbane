@@ -125,10 +125,13 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == SceneList.GameplayScene.ToString())
         {
+            //If the game phase is not the end phase, this means the player is exiting the game before finishing the scenario
             if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.End)
             {
+                //If on a particular player's turn, causes them to lose
                 if (GameManager.instance.ActivePlayerId.HasValue)
                     GameManager.instance.TriggerVictory(GameManager.instance.ActivePlayerId.Value, true);
+                //If not on a particular player's turn (i.e. the setup phase), causes the first player to lose
                 else
                     GameManager.instance.TriggerVictory(0, true);
             }

@@ -208,7 +208,7 @@ public class Player
 
     public void DrawMulligan()
     {
-        var cardsToMulligan = Hand.cardList.ToList();
+        var cardsToMulligan = Hand.List.ToList();
         Hand.EmptyList();
         Draw(DeckData.InitialHandSize);
         Deck.ShuffleIntoDeck(cardsToMulligan, trackShuffle: false);
@@ -311,7 +311,7 @@ public class Player
 
     public void Divinate(List<Card> topCards, List<Card> bottomCards)
     {
-        Deck.cardList.RemoveAll(x => topCards.Contains(x) || bottomCards.Contains(x));
+        Deck.List.RemoveAll(x => topCards.Contains(x) || bottomCards.Contains(x));
 
         topCards.Reverse();
         foreach (var card in topCards)
@@ -339,7 +339,7 @@ public class Player
 
     public void FortuneTeller(Card newTopCard)
     {
-        Deck.cardList.Remove(newTopCard);
+        Deck.List.Remove(newTopCard);
         Deck.AddToDeck(newTopCard, Deck.ListCount, trackShuffle: false);
     }
 
@@ -350,7 +350,7 @@ public class Player
         if (numToSelect == 0)
             return false;
 
-        var handCards = numToSelect == Hand.ListCount ? new List<Card>(Hand.cardList) : Hand.cardList.GetRange(0, numToSelect);
+        var handCards = numToSelect == Hand.ListCount ? new List<Card>(Hand.List) : Hand.List.GetRange(0, numToSelect);
         var deckCards = Deck.GetTopCards(numToSelect);
 
         GameManager.instance.effectManager.SetAlterFateMode(handCards, deckCards);
@@ -370,7 +370,7 @@ public class Player
         {
             if (isSwapped[cardIndex])
             {
-                var handIndex = Hand.cardList.IndexOf(deckCards[cardIndex]);
+                var handIndex = Hand.List.IndexOf(deckCards[cardIndex]);
                 Hand.RemoveCard(deckCards[cardIndex]);
                 Hand.AddToHand(handCards[cardIndex], handIndex);
                 Deck.RemoveCard(handCards[cardIndex]);
@@ -537,10 +537,10 @@ public class Player
             if (returningCard == null)
             {
                 var randomPos = UnityEngine.Random.Range(0, Discard.ListCount);
-                returningCard = Discard.cardList[randomPos];
+                returningCard = Discard.List[randomPos];
             }
 
-            if (!Discard.cardList.Contains(returningCard))
+            if (!Discard.List.Contains(returningCard))
                 throw new Exception("Card does not exist in Discard Pool");
 
             Discard.RemoveCard(returningCard);
@@ -752,10 +752,10 @@ public class Player
         Passives.Add(passive);
 
         var cardList = new List<Card>();
-        cardList.AddRange(Deck.cardList);
-        cardList.AddRange(Hand.cardList);
-        cardList.AddRange(Graveyard.cardList);
-        cardList.AddRange(Discard.cardList);
+        cardList.AddRange(Deck.List);
+        cardList.AddRange(Hand.List);
+        cardList.AddRange(Graveyard.List);
+        cardList.AddRange(Discard.List);
         cardList.AddRange(DeployedUnits.Select(x => x.Unit));
         cardList.AddRange(RedeployUnits);
 

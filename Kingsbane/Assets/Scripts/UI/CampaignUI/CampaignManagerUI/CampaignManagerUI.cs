@@ -106,11 +106,12 @@ public class CampaignManagerUI : MonoBehaviour
         if (deckData.CampaignTracker.NumToReserve > 0)
         {
             AccessCamp();
-            OpenReserveForces(0);
+            OpenReserveForces();
         }
 
         if (deckData.CampaignTracker.NumLootRotations > 0)
         {
+
             OpenLootGenerator();
         }
     }
@@ -213,9 +214,9 @@ public class CampaignManagerUI : MonoBehaviour
         }
     }
 
-    public void OpenReserveForces(int numToReserve)
+    public void OpenReserveForces(int numToReserve = 0)
     {
-        GameManager.instance.deckManager.AddNumToReserves(loadedDeck.Id.Value, numToReserve);
+        loadedDeck.CampaignTracker.AddNumToReserves(numToReserve);
 
         if (loadedDeck.CampaignTracker.NumToReserve > 0)
         {

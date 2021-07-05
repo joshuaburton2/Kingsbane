@@ -89,13 +89,13 @@ public class CardListsUI : MonoBehaviour
         switch (selectedTab)
         {
             case TabTypes.Deck:
-                RefreshCardList(player.Deck.cardList.OrderByDescending(x => x.HighestResource).ToList());
+                RefreshCardList(player.Deck.List.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Graveyard:
-                RefreshCardList(player.Graveyard.cardList.OrderByDescending(x => x.HighestResource).ToList());
+                RefreshCardList(player.Graveyard.List.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Discard:
-                RefreshCardList(player.Discard.cardList.OrderByDescending(x => x.HighestResource).ToList());
+                RefreshCardList(player.Discard.List.OrderByDescending(x => x.HighestResource).ToList());
                 break;
             case TabTypes.Passives:
                 foreach (var passive in player.Passives.OrderBy(x => x.Name))
@@ -108,7 +108,7 @@ public class CardListsUI : MonoBehaviour
                 //Case for the deck being ordered as it is in the game
             case TabTypes.DeckOrdered:
                 //Copies the deck list and reverses it since drawing from the deck draws from the end of the list
-                var deckList = player.Deck.cardList.ToList();
+                var deckList = player.Deck.List.ToList();
                 deckList.Reverse();
                 RefreshCardList(deckList);
                 break;

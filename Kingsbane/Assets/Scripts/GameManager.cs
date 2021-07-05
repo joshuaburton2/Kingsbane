@@ -75,6 +75,11 @@ public class GameManager : MonoBehaviour
         effectManager.InitEffectManager();
     }
 
+    /// <summary>
+    /// 
+    /// Quits the game and saves the player decks.
+    /// 
+    /// </summary>
     public void ExitGame()
     {
         deckManager.SaveDecks();
@@ -106,12 +111,14 @@ public class GameManager : MonoBehaviour
         LoadedScenarioId = null;
         ActivePlayerId = null;
         CurrentGamePhase = GamePhases.Menu;
+        //If loading into the game for the first time, reset the effect manager
         if (!isInit)
         {
             effectManager.RefreshEffectManager(true);
         }
         else
         {
+            //Unloads the campaign deck is returning from the gameplay scene
             CampaignDeck = null;
         }
 
@@ -125,9 +132,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void LoadGameplay(DeckData[] decks, Map map, int scenarioId, bool isCampaign = false)
     {
+        //If loading into a campaign, sets the campaign deck as the only non-npc deck in the list
         if (isCampaign)
         {
-            CampaignDeck = decks.FirstOrDefault(x => !x.IsNPCDeck);
+            CampaignDeck = decks.Single(x => !x.IsNPCDeck);
+            //Cannot load a campaign deck if the selected deck is not a campaign deck
             if (!CampaignDeck.IsCampaign)
                 throw new Exception("Deck is not a campaign deck");
         }
@@ -148,6 +157,7 @@ public class GameManager : MonoBehaviour
         //If the phase is still menu, this means the gameplay data has not been loaded, as such, requiring default decks
         if (CurrentGamePhase == GamePhases.Menu)
         {
+            //Loading into the gameplay scene means that this is not a campaign mission by default
             CampaignDeck = null;
 
             var orderedNPCDecks = deckManager.NPCDeckList.OrderBy(x => x.Id);
@@ -155,7 +165,7 @@ public class GameManager : MonoBehaviour
             {
                 orderedNPCDecks.FirstOrDefault(),
                 //deckManager.NPCDeckList.FirstOrDefault(),
-                orderedNPCDecks.FirstOrDefault(x => x != deckManager.NPCDeckList.FirstOrDefault()), //Gets the second NPC Deck in the List
+                orderedNPCDecks.FirstOrDefault(x => x != orderedNPCDecks.FirstOrDefault()), //Gets the second NPC Deck in the List
             };
             var defaultMap = scenarioManager.GetMaps().FirstOrDefault();
             var defaultScenarioId = defaultMap.Scenarios.FirstOrDefault().Id.Value;
@@ -216,13 +226,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitialiseMenuScene()
     {
+        //Gets the map grid object. Not displayed initially so does not refresh it
         var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
         mapGrid = mapGridObject.GetComponent<MapGrid>();
 
+        //If loading from a campaign deck, this means need to load into the campaign UI by default
         if (IsCampaign)
         {
             if (CampaignDeck.IsCampaign)
             {
+                //Loads into the campaign UI, then unloads the campaign deck
                 uiManager.ShowLootGeneratorForCampaign();
                 CampaignDeck = null;
             }
@@ -240,16 +253,24 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void InitialiseGameplayScene()
     {
+        //Gets the map grid objects and refreshes the grid
         var mapGridObject = GameObject.FindGameObjectWithTag("MapGrid");
         mapGrid = mapGridObject.GetComponent<MapGrid>();
         mapGrid.RefreshGrid(LoadedMap, LoadedScenarioId.Value);
     }
 
+    /// <summary>
+    /// 
+    /// Starts the game upon loading into the gameplay scene
+    /// 
+    /// </summary>
     public void StartGame()
     {
+        //Reset the base variables
         ActivePlayerId = 0;
         CurrentRound = 0;
 
+        //Initialises each player with their required id
         var index = 0;
         foreach (var player in LoadedPlayers)
         {
@@ -259,36 +280,55 @@ public class GameManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 
+    /// Moves the game to the next player's turn
+    /// 
+    /// </summary>
+    /// <returns>True if the round has ended and the game has passed back to the first player. False otherwise</returns>
     public bool NextPlayerTurn()
     {
+        //Conducts the end of turn prompts for each player, then increases the active ID
         PlayerEndOfTurn();
 
         ActivePlayerId++;
 
+        //If the active ID is equal to the number of players, need to loop the active player back to the first player
         if (ActivePlayerId == NumPlayers)
         {
+            //Loops the player ID back
             ActivePlayerId = 0;
 
+            //If in the hero deploy or mulligan phase, looping through all players means game needs to move to next phase,
+            // as each player only needs to do these phases once
             if (CurrentGamePhase == GamePhases.HeroDeploy || CurrentGamePhase == GamePhases.Mulligan)
             {
                 CurrentGamePhase++;
             }
 
+            //If in the gameplay phase, moves to the next gameplay round
             if (CurrentGamePhase == GamePhases.Gameplay)
             {
                 CurrentRound++;
             }
 
+            //Does the start of turn for each player, then returns true as was required to loop to first player
             PlayerStartOfTurn();
 
             return true;
         }
 
+        //Does the start of turn for each player, then returns false as did not require a loop
         PlayerStartOfTurn();
 
         return false;
     }
 
+    /// <summary>
+    /// 
+    /// Does the start of turn effects for players and the map
+    /// 
+    /// </summary>
     private void PlayerStartOfTurn()
     {
         mapGrid.MapStartOfTurn(ActivePlayerId.Value);
@@ -299,8 +339,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Does the end of turn effects for players
+    /// 
+    /// </summary>
     public void PlayerEndOfTurn()
     {
+        //End of turn effects are only required during the gameplay phases
         if (CurrentGamePhase == GamePhases.Gameplay)
         {
             foreach (var player in LoadedPlayers)
@@ -310,6 +356,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 
+    /// Checks the warden effects on all players
+    /// 
+    /// </summary>
     public void CheckWarden()
     {
         if (CurrentGamePhase == GamePhases.Gameplay)
@@ -317,16 +368,30 @@ public class GameManager : MonoBehaviour
             foreach (var player in LoadedPlayers)
                 player.CheckWarden();
         }
+        else
+        {
+            throw new Exception("Cannot check Warden effects outside of gameplay phase");
+        }
     }
 
+    /// <summary>
+    /// 
+    /// Triggers victory for a particular player
+    /// 
+    /// </summary>
+    /// <param name="lossPlayerId">The id of the player who lost</param>
+    /// <param name="isSceneExit">True only if exiting the scene. Required to check due to overriding code in exiting the gameplay scene as well as displaying victory UI</param>
     public void TriggerVictory(int lossPlayerId, bool isSceneExit = false)
     {
+        //Moves game to end phase
         CurrentGamePhase = GamePhases.End;
 
         foreach (var player in LoadedPlayers)
         {
+            //Does each game end update for each player
             player.GameEndUpdates();
 
+            //Updates the players campaign progress if it is a campaign deck
             var playerDeck = player.DeckData;
             if (!playerDeck.IsNPCDeck && playerDeck.IsCampaign)
             {
@@ -341,6 +406,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        //If not exiting the scene, saves the game and refreshes the effect manager. Not required if exiting the scene as this code is handled externally.
+        // Also displays the victory screen if still in the gameplay scene
         if (!isSceneExit)
         {
             deckManager.SaveDecks();

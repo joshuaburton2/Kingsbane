@@ -20,7 +20,7 @@ public class Hand : CardList
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (ListCount < maxHandSize)
         {
-            cardList.Add(card);
+            List.Add(card);
             if(!string.IsNullOrWhiteSpace(createdBy))
                 card.CreatedByName = createdBy;
             return true;
@@ -43,7 +43,7 @@ public class Hand : CardList
         //Checks if the hand is to full to take another card. If not adds the card. Otherwise returns false
         if (ListCount < maxHandSize)
         {
-            cardList.Insert(index, card);
+            List.Insert(index, card);
             if (!string.IsNullOrWhiteSpace(createdBy))
                 card.CreatedByName = createdBy;
             return true;
@@ -72,7 +72,7 @@ public class Hand : CardList
             //not added
             if (ListCount < maxHandSize)
             {
-                cardList.Add(cardToAdd);
+                List.Add(cardToAdd);
                 if (!string.IsNullOrWhiteSpace(createdBy))
                     cardToAdd.CreatedByName = createdBy;
                 failedCards.Remove(cardToAdd);

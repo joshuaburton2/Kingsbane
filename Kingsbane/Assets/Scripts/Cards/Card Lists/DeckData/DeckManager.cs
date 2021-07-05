@@ -301,19 +301,4 @@ public class DeckManager : MonoBehaviour
         SaveDecks();
         return PlayerDeckList[id];
     }
-
-    public DeckData AddNumToReserves(int id, int numToReserve)
-    {
-        var playerDeck = PlayerDeckList[id];
-
-        if (playerDeck.IsCampaign)
-        {
-            numToReserve = Mathf.Min(numToReserve, playerDeck.DeckCount);
-
-            playerDeck.CampaignTracker.NumToReserve += numToReserve;
-            SaveDecks();
-        }
-
-        return playerDeck;
-    }
 }

@@ -385,12 +385,25 @@ public class DeckData : DeckSaveData
         return PlayerResources.FirstOrDefault(x => x.ResourceType == resource);
     }
 
+    /// <summary>
+    /// 
+    /// Converts a campaign deck to a base deck
+    /// 
+    /// </summary>
     public void ConverToBaseDeck()
     {
-        CampaignTracker = null;
-        if (GameManager.instance.CampaignDeck.Id == Id)
+        if (IsCampaign)
         {
-            GameManager.instance.CampaignDeck = null;
+            CampaignTracker = null;
+            //Unloads the campaign deck if converting. Required if the player exits the gameplay scene
+            if (GameManager.instance.CampaignDeck.Id == Id)
+            {
+                GameManager.instance.CampaignDeck = null;
+            }
+        }
+        else
+        {
+            throw new Exception("Cannot convert an already base deck to a base deck");
         }
     }
 }

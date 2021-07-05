@@ -4,11 +4,16 @@ using System.Linq;
 using CategoryEnums;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// Object for storing enchantment details for a unit
+/// 
+/// </summary>
 public class UnitEnchantment
 {
     public enum EnchantmentStatus
     {
-        None, //Default case for the status. Should not be used
+        None, //Default case for the status. Should not be used on an enchantment that is actually being applied
         Base,
         Permanent,
         StartOfOwnersTurn,
@@ -20,6 +25,11 @@ public class UnitEnchantment
         OverloadPassive,
     }
 
+    /// <summary>
+    /// 
+    /// Object for storing a stat modifier in an enchantment
+    /// 
+    /// </summary>
     public class StatModifier
     {
         public Unit.StatTypes StatType { get; set; }
@@ -46,6 +56,14 @@ public class UnitEnchantment
         StatusEffects = new List<Unit.StatusEffects>();
     }
 
+    /// <summary>
+    /// 
+    /// Adds a new stat modifier to the enchantment
+    /// 
+    /// </summary>
+    /// <param name="statType"></param>
+    /// <param name="modType"></param>
+    /// <param name="value"></param>
     public void AddStatModifier(Unit.StatTypes statType, StatModifierTypes modType, int value)
     {
         if (statType == Unit.StatTypes.Default || modType == StatModifierTypes.None)
@@ -57,10 +75,19 @@ public class UnitEnchantment
         StatModifiers.Add(new StatModifier() { StatType = statType, ModType = modType, Value = value });
     }
 
+    /// <summary>
+    /// 
+    /// Gets a description text for an enchantment
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public string DescriptionText()
     {
+        //Does require some work, formatting is not right currently
+
         var text = new List<string>();
 
+        //Adds the stat modifiers text
         foreach (var statModifier in StatModifiers)
         {
             string statText;
@@ -78,12 +105,15 @@ public class UnitEnchantment
             }
             text.Add(statText);
         }
+
+        //Adds the keyword and status effect texts
         foreach (var keyword in Keywords)
             text.Add($"{keyword.GetEnumDescription()}, ");
 
         foreach (var statusEffect in StatusEffects)
             text.Add($"{statusEffect.GetEnumDescription()}, ");
 
+        //Adds the enchantment status text
         var noStatusText = false;
 
         switch (Status)
@@ -115,7 +145,9 @@ public class UnitEnchantment
                 throw new Exception("Not a valid enchantment status");
         }
 
+        //Joins the text together
         var joinedText = string.Join("", text.OrderBy(x => x));
+        //If a base or permanent enchantment, removes the comma and space from the end of the text
         if (noStatusText)
         {
             joinedText = joinedText.Substring(0, joinedText.Length - 2);

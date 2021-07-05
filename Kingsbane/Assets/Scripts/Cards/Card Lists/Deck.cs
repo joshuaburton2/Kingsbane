@@ -10,7 +10,7 @@ public class Deck : CardList
 
     public Deck(List<CardData> _cardList, Player _player)
     {
-        cardList = new List<Card>();
+        List = new List<Card>();
         player = _player;
 
         foreach (var cardData in _cardList)
@@ -35,8 +35,8 @@ public class Deck : CardList
         if(currentCount != 0)
         {
             //Saves the card to return and removes it from the deck list
-            var drawnCard = cardList.LastOrDefault();
-            cardList.Remove(drawnCard);
+            var drawnCard = List.LastOrDefault();
+            List.Remove(drawnCard);
 
             return drawnCard;
         }
@@ -68,8 +68,8 @@ public class Deck : CardList
             if (currentCount != 0)
             {
                 //Saves the card to return and removes it from the deck list
-                drawnCards.Add(cardList.LastOrDefault());
-                cardList.Remove(drawnCards.LastOrDefault());
+                drawnCards.Add(List.LastOrDefault());
+                List.Remove(drawnCards.LastOrDefault());
                 failedDraws--;
             }
             else
@@ -91,12 +91,12 @@ public class Deck : CardList
         {
             var filteredDeck = FilterCardList(filter);
 
-            if (filteredDeck.cardList.Count != 0)
+            if (filteredDeck.List.Count != 0)
             {
                 if (numToChoose == null)
                 {
-                    var drawnCard = filteredDeck.cardList.LastOrDefault();
-                    cardList.Remove(drawnCard);
+                    var drawnCard = filteredDeck.List.LastOrDefault();
+                    List.Remove(drawnCard);
 
                     return drawnCard;
                 }
@@ -111,7 +111,7 @@ public class Deck : CardList
                     {
                         for (int cardIndex = 0; cardIndex < filteredDeck.ListCount; cardIndex++)
                         {
-                            var card = filteredDeck.cardList[filteredDeck.ListCount - 1 - cardIndex];
+                            var card = filteredDeck.List[filteredDeck.ListCount - 1 - cardIndex];
                             if (cardChoiceList.Select(x => x.Name).Contains(card.Name))
                             {
                                 if (cardIndex == filteredDeck.ListCount - 1)
@@ -148,9 +148,9 @@ public class Deck : CardList
 
     public Card Draw(Card card)
     {
-        if (cardList.Contains(card))
+        if (List.Contains(card))
         {
-            cardList.Remove(card);
+            List.Remove(card);
             return card;
         }
         else
@@ -174,10 +174,10 @@ public class Deck : CardList
             {
                 var filteredDeck = FilterCardList(filter);
 
-                if (filteredDeck.cardList.Count != 0)
+                if (filteredDeck.List.Count != 0)
                 {
-                    drawnCards.Add(filteredDeck.cardList.LastOrDefault());
-                    cardList.Remove(drawnCards.LastOrDefault());
+                    drawnCards.Add(filteredDeck.List.LastOrDefault());
+                    List.Remove(drawnCards.LastOrDefault());
                     failedDraws--;
                 }
                 else
@@ -259,7 +259,7 @@ public class Deck : CardList
         position = Mathf.Clamp(position, 0, currentCount);
 
         //Inserts the card at the required position
-        cardList.Insert(position, card);
+        List.Insert(position, card);
 
         if (trackShuffle)
             card.NumShuffles++;
@@ -282,15 +282,15 @@ public class Deck : CardList
             int randPos = UnityEngine.Random.Range(0, currentCount);
 
             //Swaps the cards in each position
-            var randCard = cardList[randPos];
-            cardList[randPos] = cardList[currentPos];
-            cardList[currentPos] = randCard;
+            var randCard = List[randPos];
+            List[randPos] = List[currentPos];
+            List[currentPos] = randCard;
         }
     }
 
     public List<Card> GetTopCards(int numToGet)
     {
-        return cardList.Skip(Mathf.Max(0, ListCount - numToGet)).Reverse().ToList();
+        return List.Skip(Mathf.Max(0, ListCount - numToGet)).Reverse().ToList();
     }
     
 }

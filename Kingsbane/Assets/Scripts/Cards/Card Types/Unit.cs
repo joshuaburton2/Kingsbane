@@ -139,7 +139,7 @@ public class Unit : Card
         RemainingSpeed = 0;
         TemporaryMindControlled = false;
         LoseNextAction = false;
-        
+
         ConfiscatedCards = new List<Card>();
         ImprisonedUnits = new List<Unit>();
 
@@ -374,7 +374,7 @@ public class Unit : Card
         {
             if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
             {
-                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant || 
+                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant ||
                     hasCellOccupant && !newCell.occupantCounter.Unit.HasStatusEffect(StatusEffects.Airborne));
             }
             if (HasKeyword(Keywords.Ethereal))
@@ -975,7 +975,8 @@ public class Unit : Card
         if (GetStat(StatTypes.Attack) < 0)
             ModifyStat(StatModifierTypes.Set, StatTypes.Attack, 0);
 
-        GameManager.instance.CheckWarden();
+        if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
+            GameManager.instance.CheckWarden();
 
         RefreshCounter();
     }

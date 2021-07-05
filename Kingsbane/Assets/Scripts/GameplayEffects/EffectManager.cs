@@ -719,10 +719,10 @@ public class EffectManager : MonoBehaviour
     {
         var player = GameManager.instance.GetPlayer();
 
-        foreach (var card in player.Hand.cardList.Where(x => x.Type == adjustCostObject.TargetCardType))
+        foreach (var card in player.Hand.List.Where(x => x.Type == adjustCostObject.TargetCardType))
             card.ModifyCost(adjustCostObject);
 
-        foreach (var card in player.Deck.cardList.Where(x => x.Type == adjustCostObject.TargetCardType))
+        foreach (var card in player.Deck.List.Where(x => x.Type == adjustCostObject.TargetCardType))
             card.ModifyCost(adjustCostObject);
 
         GameManager.instance.uiManager.RefreshUI();
@@ -953,7 +953,7 @@ public class EffectManager : MonoBehaviour
     {
         var inactivePlayer = GameManager.instance.GetPlayer(false);
 
-        var topOfDeck = inactivePlayer.Deck.cardList.LastOrDefault();
+        var topOfDeck = inactivePlayer.Deck.List.LastOrDefault();
         GameManager.instance.GetPlayer().RecruitCard(topOfDeck);
         GameManager.instance.uiManager.RefreshUI();
     }
