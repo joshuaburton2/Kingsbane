@@ -9,6 +9,7 @@ TagManager:
   - CardLibrary
   - LobbyPage
   - MapGrid
+  - Cell
   layers:
   - Default
   - TransparentFX

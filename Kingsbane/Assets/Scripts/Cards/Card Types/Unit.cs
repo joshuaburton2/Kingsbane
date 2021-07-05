@@ -361,27 +361,30 @@ public class Unit : Card
         GameManager.instance.uiManager.RefreshUI();
     }
 
-    public bool CheckOccupancy(Cell newCell, bool isLanding = false)
+    public bool CheckOccupancy(Cell newCell, bool isLanding = false, bool ignoreOccupant = false, bool ignoreFriendlyUnits = true)
     {
         var flyingInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.TallObstacle };
         var eteherealInAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Chasm };
         var inAccessableTerrains = new List<TerrainTypes> { TerrainTypes.Obstacle, TerrainTypes.Impassable, TerrainTypes.TallObstacle, TerrainTypes.Chasm };
 
         var canOccupy = false;
+        var hasCellOccupant = ignoreOccupant || newCell.occupantCounter != null && (ignoreFriendlyUnits || !ignoreFriendlyUnits && newCell.occupantCounter.Unit.Status == UnitStatuses.Enemy);
 
         if (!HasKeyword(Keywords.Structure))
         {
             if (HasStatusEffect(StatusEffects.Airborne) && !isLanding)
             {
-                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !flyingInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant || 
+                    hasCellOccupant && !newCell.occupantCounter.Unit.HasStatusEffect(StatusEffects.Airborne));
             }
             if (HasKeyword(Keywords.Ethereal))
             {
-                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !eteherealInAccessableTerrains.Contains(newCell.terrainType) && (!hasCellOccupant ||
+                    hasCellOccupant && !newCell.occupantCounter.Unit.HasKeyword(Keywords.Ethereal));
             }
             if (!HasStatusEffect(StatusEffects.Airborne) || isLanding)
             {
-                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType);
+                canOccupy = canOccupy || !inAccessableTerrains.Contains(newCell.terrainType) && !hasCellOccupant;
             }
         }
         else
@@ -509,7 +512,7 @@ public class Unit : Card
         return false;
     }
 
-    public void UseSpeed(int usedSpeed, bool isDisengage)
+    public void UseSpeed(int usedSpeed, bool isDisengage = false)
     {
         if (usedSpeed == 0)
         {
@@ -524,7 +527,6 @@ public class Unit : Card
                 Status = UnitStatuses.Middle;
 
             RefreshCounter();
-            GameManager.instance.effectManager.RefreshEffectManager();
         }
     }
 
@@ -696,7 +698,7 @@ public class Unit : Card
 
             RefreshCounter();
 
-            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors))
+            if (!isDead && Owner.HasSpecialPassive(SpecialPassiveEffects.PainDrivenWarriors, out Passive painDrivenWarriors) && TotalProtected == 0)
             {
                 HealUnit(painDrivenWarriors.SpecialPassiveProperty);
             }
@@ -1039,7 +1041,7 @@ public class Unit : Card
 
         if (!HasKeyword(Keywords.Stalker) && !UnitCounter.Cell.IsSurveyed(Owner.Id))
         {
-            foreach (var adjCell in UnitCounter.Cell.adjCell)
+            foreach (var adjCell in UnitCounter.Cell.adjCells)
             {
                 if (adjCell.occupantCounter != null)
                 {
@@ -1075,7 +1077,7 @@ public class Unit : Card
     {
         if (HasStatusEffect(StatusEffects.Airborne))
         {
-            if (CheckOccupancy(UnitCounter.Cell, true))
+            if (CheckOccupancy(UnitCounter.Cell, true, true))
             {
                 CanFlyOrLand = false;
                 CurrentStatusEffects.Remove(StatusEffects.Airborne);
@@ -1184,7 +1186,7 @@ public class Unit : Card
 
     public void TriggerMadness()
     {
-        var adjacentUnits = UnitCounter.Cell.adjCell.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
+        var adjacentUnits = UnitCounter.Cell.adjCells.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
 
         if (adjacentUnits.Count() != 0)
         {

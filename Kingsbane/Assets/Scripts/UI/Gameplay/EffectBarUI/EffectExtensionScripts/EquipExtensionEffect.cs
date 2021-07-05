@@ -99,7 +99,10 @@ public class EquipExtensionEffect : EffectExtensionUI
             }
 
             if (player.GenerateCards(generationFilter, CardGenerationTypes.Equip, isChoiceToggle.isOn, createdByInput.text))
+            {
                 StartEffect();
+                titleText.text = defaultTitleText;
+            }
             else
                 titleText.text = $"{defaultTitleText} (Failed)";
         }

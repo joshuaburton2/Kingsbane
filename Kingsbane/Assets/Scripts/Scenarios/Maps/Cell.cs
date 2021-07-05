@@ -3,15 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class Cell : MonoBehaviour
 {
     [SerializeField]
-    public List<Cell> adjCell;
+    public List<Cell> adjCells;
     [SerializeField]
     public Vector2 gridIndex;
     [SerializeField]
     public SpriteRenderer backgroundImage;
+    [SerializeField]
+    public SpriteRenderer highlightImage;
     [SerializeField]
     private float defaultAlpha;
     [SerializeField]
@@ -52,10 +55,9 @@ public class Cell : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
-            RaycastHit hit;
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 if (hit.transform.name == transform.name)
                 {
@@ -86,7 +88,9 @@ public class Cell : MonoBehaviour
                                 case EffectManager.ActiveEffectTypes.UnitMove:
                                 case EffectManager.ActiveEffectTypes.UnitDisengage:
                                 case EffectManager.ActiveEffectTypes.UnitForceMove:
-                                    GameManager.instance.effectManager.MoveCommandUnit(this);
+                                    GameManager.instance.effectManager.MoveCommandUnit(this,
+                                        GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitMove ||
+                                        GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitDisengage);
                                     break;
                                 case EffectManager.ActiveEffectTypes.UnitAttack:
                                     if (occupantCounter != null)
@@ -227,6 +231,18 @@ public class Cell : MonoBehaviour
         backgroundImage.color = new Color(0f, 0f, 0f, 0f);
     }
 
+    public void SetHighlightColour(Color colour, bool isTransparent = false)
+    {
+        colour.a = isTransparent ? defaultAlpha : 1.0f;
+        highlightImage.color = colour;
+        highlightImage.gameObject.SetActive(true);
+    }
+
+    public void HideHighlight()
+    {
+        highlightImage.gameObject.SetActive(false);
+    }
+
     public void CellStartOfTurn(int activePlayerId)
     {
         cellTileStatuses.RemoveAll(x => x.Value == activePlayerId);
@@ -317,5 +333,132 @@ public class Cell : MonoBehaviour
     public bool IsSurveyed(int ownerId)
     {
         return cellTileStatuses.Any(x => x.Key == TileStatuses.Survey && x.Value == ownerId);
+    }
+
+    public enum RadiusTilesType
+    {
+        Default,
+        Unit,
+        Spell,
+        Attack,
+        Ability,
+    }
+
+    public List<Cell> GetRadiusTiles(int radius, RadiusTilesType tileType, bool includeCurrentCell = true)
+    {
+        var radiusCellList = new List<Cell>();
+        var tempAdjCells = new List<Cell>(adjCells);
+
+        if (includeCurrentCell)
+            radiusCellList.Add(this);
+
+        for (int i = 0; i < radius; i++)
+        {
+            var nextTempAdjCells = new List<Cell>();
+
+            foreach (var adjCell in tempAdjCells)
+            {
+                if (!radiusCellList.Contains(adjCell))
+                {
+                    var tileValid = true;
+
+                    switch (tileType)
+                    {
+                        case RadiusTilesType.Unit:
+                            if (occupantCounter == null)
+                                throw new Exception("Cannot get the unit movement without an occupant");
+                            else
+                            {
+                                var unitPathSearch = new AStarSearch(this, adjCell, occupantCounter.Unit);
+                                tileValid = occupantCounter.Unit.CheckOccupancy(adjCell, ignoreFriendlyUnits: false)
+                                     && unitPathSearch.CheckMoveCost(radius, adjCell);
+                            }
+                            break;
+                        case RadiusTilesType.Spell:
+                        case RadiusTilesType.Attack:
+                        case RadiusTilesType.Ability:
+                            var cellLine = GetCellLine(adjCell.transform.position, adjCell);
+
+                            foreach (var cell in cellLine)
+                            {
+                                if (cell != adjCell && 
+                                    (cell.terrainType == TerrainTypes.Obstacle && !occupantCounter.Unit.HasStatusEffect(Unit.StatusEffects.Airborne)
+                                    || cell.terrainType == TerrainTypes.TallObstacle))
+                                {
+                                    tileValid = false;
+                                    break;
+                                }
+                            }
+
+                            break;
+                        case RadiusTilesType.Default:
+                        default:
+                            break;
+                    }
+
+                    if (tileValid)
+                    {
+                        radiusCellList.Add(adjCell);
+
+                        foreach (var nextAdjCell in adjCell.adjCells)
+                        {
+                            if (!nextTempAdjCells.Contains(nextAdjCell))
+                            {
+                                nextTempAdjCells.Add(nextAdjCell);
+                            }
+                        }
+                    }
+                }
+            }
+
+            tempAdjCells = new List<Cell>(nextTempAdjCells);
+        }
+
+        return radiusCellList;
+    }
+
+    public List<Cell> GetCellLine(Vector3 target, Cell targetCell)
+    {
+        var cellLineList = new List<Cell>();
+
+        RaycastHit hit;
+        var hitPosition = transform.position;
+        var lastHit = transform;
+        var counter = 0;
+
+        var directionalVector = target - transform.position;
+        var unitVector = directionalVector / directionalVector.magnitude;
+
+        do
+        {
+            if (Physics.Linecast(hitPosition, target, out hit))
+            {
+                if (hit.transform == lastHit)
+                {
+                    hitPosition += unitVector;
+                }
+                else
+                {
+                    hitPosition = hit.point;
+                }
+                lastHit = hit.transform;
+                cellLineList.Add(hit.transform.gameObject.GetComponent<Cell>());
+            }
+            else
+            {
+                throw new Exception("No cell to collide with");
+            }
+
+            if (counter > 100)
+            {
+                hit.transform.gameObject.GetComponent<Cell>().SetHighlightColour(new Color(200, 0, 0));
+                throw new Exception("Cannot find a valid path");
+            }
+            counter++;
+
+        } while (hit.transform != targetCell.transform);
+
+
+        return cellLineList;
     }
 }

@@ -161,7 +161,7 @@ public class UnitCommandUI : MonoBehaviour
             //Set Flying Button Properties
             flyingButton.gameObject.SetActive(unit.HasKeyword(Keywords.Flying));
             flyingButton.interactable = unit.CanFlyOrLand && 
-                (!unit.HasStatusEffect(Unit.StatusEffects.Airborne) || unit.HasStatusEffect(Unit.StatusEffects.Airborne) && unit.CheckOccupancy(unit.UnitCounter.Cell, true));
+                (!unit.HasStatusEffect(Unit.StatusEffects.Airborne) || unit.HasStatusEffect(Unit.StatusEffects.Airborne) && unit.CheckOccupancy(unit.UnitCounter.Cell, true, true));
             flyingButtonText.text = unit.HasStatusEffect(Unit.StatusEffects.Airborne) ? "Land" : "Fly";
             //Set Unstealth Button Properties
             unstealthButton.gameObject.SetActive(unit.HasStatusEffect(Unit.StatusEffects.Stealthed));
@@ -260,12 +260,13 @@ public class UnitCommandUI : MonoBehaviour
     public void ConfirmSpeedUse()
     {
         if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseSpeed)
-            unit.UseSpeed(SetSpeed, false);
+            unit.UseSpeed(SetSpeed);
         else if (GameManager.instance.effectManager.ActiveEffect == EffectManager.ActiveEffectTypes.UnitUseDisengageSpeed)
             unit.UseSpeed(SetSpeed, true);
         else
             throw new Exception("Not a valid effect mode to use speed");
 
+        GameManager.instance.effectManager.RefreshEffectManager();
         RefreshCommandBar();
     }
 

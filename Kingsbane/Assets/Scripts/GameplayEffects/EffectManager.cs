@@ -100,6 +100,7 @@ public class EffectManager : MonoBehaviour
     private DeckPositions? SelectedDeckPosition { get; set; }
     private List<Keywords> SelectedKeywords { get; set; }
     private TileStatuses SelectedTileStatus { get; set; }
+    private List<Cell> TargetCells { get; set; }
 
     private Cell PreviousCell { get; set; }
 
@@ -119,6 +120,7 @@ public class EffectManager : MonoBehaviour
             if (ActiveEffect != ActiveEffectTypes.UnitCommand)
                 CancelEffect = true;
             RefreshEffectManager();
+            GameManager.instance.mapGrid.ClearHighlights();
         }
     }
 
@@ -136,6 +138,7 @@ public class EffectManager : MonoBehaviour
         SelectedDeckPosition = null;
         SelectedKeywords = new List<Keywords>();
         SelectedAdjustCost = null;
+        TargetCells = null;
 
         switch (ActiveEffect)
         {
@@ -192,13 +195,13 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
                 break;
             case ActiveEffectTypes.UnitMove:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseSpeed;
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
 
                 CancelEffect = false;
 
                 break;
             case ActiveEffectTypes.UnitDisengage:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitUseDisengageSpeed;
+                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
                 CancelEffect = false;
 
                 break;
@@ -206,7 +209,7 @@ public class EffectManager : MonoBehaviour
             case ActiveEffectTypes.UnitUseDisengageSpeed:
                 if (CancelEffect)
                 {
-                    MoveCommandUnit(PreviousCell);
+                    MoveCommandUnit(PreviousCell, false);
                     CancelEffect = false;
                 }
                 ActiveEffect = ActiveEffectTypes.UnitCommand;
@@ -348,7 +351,10 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitMove;
             PreviousCell = currentCell;
+            SelectedBoolean = false;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
+
+            ShowMoveTiles(currentCell);
         }
     }
 
@@ -358,7 +364,21 @@ public class EffectManager : MonoBehaviour
         {
             ActiveEffect = ActiveEffectTypes.UnitDisengage;
             PreviousCell = currentCell;
+            SelectedBoolean = true;
             GameManager.instance.uiManager.ShowMapKeyOfType(MapGrid.MapFilters.Terrain);
+
+            ShowMoveTiles(currentCell);
+        }
+    }
+
+    private void ShowMoveTiles(Cell currentCell)
+    {
+        var moveCells = currentCell.GetRadiusTiles(SelectedUnit.RemainingSpeed, Cell.RadiusTilesType.Unit, false);
+
+        foreach (var cell in moveCells)
+        {
+            if (cell.occupantCounter == null)
+                cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
         }
     }
 
@@ -371,7 +391,7 @@ public class EffectManager : MonoBehaviour
         }
     }
 
-    public void MoveCommandUnit(Cell newCell)
+    public void MoveCommandUnit(Cell newCell, bool checkPath = true)
     {
         if (ActiveEffect == ActiveEffectTypes.UnitMove ||
             ActiveEffect == ActiveEffectTypes.UnitDisengage ||
@@ -383,11 +403,24 @@ public class EffectManager : MonoBehaviour
             {
                 if (SelectedUnit.CheckOccupancy(newCell) || ActiveEffect == ActiveEffectTypes.UnitForceMove)
                 {
-                    RemoveUnitCounter(SelectedUnit.UnitCounter);
-                    CreateUnitCounter(SelectedUnit, newCell, false);
-                    SelectedUnit.UnitCounter.ShowUnitSelector(true);
-                    RefreshEffectManager();
-                    GameManager.instance.uiManager.RefreshUI();
+                    var isValidPath = true;
+                    if (checkPath)
+                    {
+                        var pathSearch = new AStarSearch(PreviousCell, newCell, SelectedUnit);
+                        isValidPath = pathSearch.CheckMoveCost(SelectedUnit.RemainingSpeed, newCell);
+                        if (isValidPath)
+                            SelectedUnit.UseSpeed(pathSearch.costSoFar[newCell], SelectedBoolean.Value);
+                    }
+
+                    if (isValidPath)
+                    {
+                        RemoveUnitCounter(SelectedUnit.UnitCounter);
+                        CreateUnitCounter(SelectedUnit, newCell, false);
+                        SelectedUnit.UnitCounter.ShowUnitSelector(true);
+                        RefreshEffectManager();
+                        GameManager.instance.uiManager.RefreshUI();
+                        GameManager.instance.mapGrid.ClearHighlights();
+                    }
                 }
             }
         }
@@ -397,7 +430,32 @@ public class EffectManager : MonoBehaviour
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
-            ActiveEffect = ActiveEffectTypes.UnitAttack;
+            var unitRange = SelectedUnit.GetStat(Unit.StatTypes.Range);
+            if (unitRange == 0)
+                unitRange = 1;
+
+            var attackCells = SelectedUnit.UnitCounter.Cell.GetRadiusTiles(unitRange, Cell.RadiusTilesType.Attack);
+
+            var validTargets = false;
+
+            foreach (var cell in attackCells.ToList())
+            {
+                if (cell.occupantCounter != null && cell.occupantCounter.Unit.Status == Unit.UnitStatuses.Enemy)
+                {
+                    validTargets = true;
+                    cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                }
+            }
+
+            if (validTargets)
+            {
+                ActiveEffect = ActiveEffectTypes.UnitAttack;
+                TargetCells = attackCells;
+            }
+            else
+            {
+
+            }
         }
     }
 
@@ -410,6 +468,7 @@ public class EffectManager : MonoBehaviour
             SelectedUnit.TriggerAttack(targetUnit);
             RefreshEffectManager();
             GameManager.instance.uiManager.RefreshUI();
+            GameManager.instance.mapGrid.ClearHighlights();
             //}
         }
     }
@@ -436,12 +495,23 @@ public class EffectManager : MonoBehaviour
         {
             if (((Spell)SelectedCard).SpellRange == 0)
             {
+                TargetCells = null;
                 CastSpell(caster.UnitCounter.Cell);
             }
             else
             {
                 SelectedUnit = caster;
                 ActiveEffect = ActiveEffectTypes.Spell;
+
+                var spellCells = caster.UnitCounter.Cell.GetRadiusTiles(((Spell)SelectedCard).SpellRange, Cell.RadiusTilesType.Spell);
+
+                foreach (var cell in spellCells)
+                {
+                    cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                }
+
+                TargetCells = spellCells;
+
                 if (SelectedUnit.UnitCounter != null)
                     SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
@@ -454,10 +524,14 @@ public class EffectManager : MonoBehaviour
     {
         if (SelectedCard != null)
         {
-            //Need to account for caster (Selected Unit)
-            SelectedCard.Play();
-            GameManager.instance.uiManager.RefreshUI();
-            RefreshEffectManager();
+            if (TargetCells == null || TargetCells != null && TargetCells.Contains(targetCell))
+            {
+                //Need to account for caster (Selected Unit)
+                SelectedCard.Play();
+                GameManager.instance.uiManager.RefreshUI();
+                RefreshEffectManager();
+                GameManager.instance.mapGrid.ClearHighlights();
+            }
         }
     }
 
@@ -506,12 +580,7 @@ public class EffectManager : MonoBehaviour
         DestroyUnitCounter(unitCounter);
         unitCounter.Owner.DeployedUnits.Remove(unitCounter);
 
-        if (unitCounter.Unit == SelectedUnit &&
-            ActiveEffect != ActiveEffectTypes.UnitMove &&
-            ActiveEffect != ActiveEffectTypes.UnitForceMove &&
-            ActiveEffect != ActiveEffectTypes.UnitUseSpeed &&
-            ActiveEffect != ActiveEffectTypes.UnitDisengage &&
-            ActiveEffect != ActiveEffectTypes.UnitUseDisengageSpeed)
+        if (unitCounter.Unit == SelectedUnit && ActiveEffect == ActiveEffectTypes.DestroyUnit)
         {
             SelectedUnit = null;
             GameManager.instance.uiManager.RefreshUI();

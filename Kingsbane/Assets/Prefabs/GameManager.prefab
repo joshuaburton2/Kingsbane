@@ -1177,7 +1177,7 @@ MonoBehaviour:
     classColour: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   terrainColours:
   - terrainType: 0
-    terrainColour: {r: 0.2627451, g: 0.6509804, b: 0.14509805, a: 1}
+    terrainColour: {r: 0.19044685, g: 0.49056602, b: 0.0995016, a: 1}
   - terrainType: 1
     terrainColour: {r: 0.87843144, g: 0.6627451, b: 0.20392159, a: 1}
   - terrainType: 2
@@ -1263,6 +1263,7 @@ MonoBehaviour:
   - statMod: 3
     statColour: {r: 0.6698113, g: 0.2678594, b: 0.06003024, a: 1}
     isDark: 1
+  highlightColour: {r: 0.084104665, g: 0.8490566, b: 0.709537, a: 1}
 --- !u!1 &8891978394843756991
 GameObject:
   m_ObjectHideFlags: 0

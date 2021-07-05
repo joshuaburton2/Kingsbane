@@ -155,8 +155,8 @@ public class ColourManager : MonoBehaviour
     [Header("Other Colours")]
     [SerializeField]
     private List<StatModColours> statModColours;
-
-
+    [SerializeField]
+    public Color highlightColour;
 
     /// <summary>
     /// 

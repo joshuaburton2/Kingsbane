@@ -98,6 +98,8 @@ public class GraveyardExtensionEffect : EffectExtensionUI
 
                 if (!isChoiceToggle.isOn)
                     GameManager.instance.uiManager.RefreshUI();
+
+                titleText.text = defaultTitleText;
             }
             else
                 titleText.text = $"{defaultTitleText} (Failed)";
