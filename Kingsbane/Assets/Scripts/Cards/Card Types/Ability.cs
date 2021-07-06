@@ -71,8 +71,14 @@ public class Ability
         }
     }
 
+    /// <summary>
+    /// 
+    /// Converts the resource cost to a different resource
+    /// 
+    /// </summary>
     public void ConvertResource(CardResources newResource)
     {
+        //Required for hero cards, as these cannot be resource converted
         if (ResourceCost.Count != 0)
         {
             ResourceCost = new List<Resource>() { new Resource(newResource, TotalResource) };

@@ -232,7 +232,7 @@ public class CardDisplay : MonoBehaviour, IPointerClickHandler
             case CardTypes.Item:
                 var itemCard = card as Item;
 
-                durabilityText.text = $"D: {itemCard.Durability}";
+                durabilityText.text = $"D: {itemCard.CurrentDurability}";
 
                 break;
             default:

@@ -17,6 +17,11 @@ public class Unit : Card
         Enemy, //Status for enemy cards
     }
 
+    /// <summary>
+    /// 
+    /// The possible status effects to apply to a unit
+    /// 
+    /// </summary>
     public enum StatusEffects
     {
         None,
@@ -31,6 +36,11 @@ public class Unit : Card
         Indestructible,
     }
 
+    /// <summary>
+    /// 
+    /// The different stat types on the unit
+    /// 
+    /// </summary>
     public enum StatTypes
     {
         Default,
@@ -43,6 +53,11 @@ public class Unit : Card
         TempProtected,
     }
 
+    /// <summary>
+    /// 
+    /// Object for storing a stat for a unit
+    /// 
+    /// </summary>
     public class Stat
     {
         public StatTypes Type { get; set; }
@@ -54,6 +69,11 @@ public class Unit : Card
     public List<Stat> Stats { get; set; }
     public List<Stat> GetStats { get { return Stats.Select(x => new Stat() { Type = x.Type, Value = x.Value }).ToList(); } }
 
+    /// <summary>
+    /// 
+    /// The total protected of the unit
+    /// 
+    /// </summary>
     public int? TotalProtected
     {
         get
@@ -65,6 +85,7 @@ public class Unit : Card
     public StatisticStatuses HasBuffedAttack { get { return GetStat(StatTypes.Attack) > UnitData.Attack ? StatisticStatuses.Buffed : StatisticStatuses.None; } }
     public StatisticStatuses HealthStatus(bool returnDamaged = true)
     {
+        //Set return damaged to false if on a card display, as this does not display current health but the max health
         if (CurrentHealth == GetStat(StatTypes.MaxHealth) && GetStat(StatTypes.MaxHealth) > UnitData.Health || GetStat(StatTypes.MaxHealth) > UnitData.Health && !returnDamaged)
             return StatisticStatuses.Buffed;
         return CurrentHealth < GetStat(StatTypes.MaxHealth) ? StatisticStatuses.Debuffed : StatisticStatuses.None;
@@ -88,6 +109,7 @@ public class Unit : Card
         get
         {
             return (Status != UnitStatuses.Enemy &&
+                //Cannot cast spells if preparing, unless the unit is the hero on the first round
                 ((Status == UnitStatuses.Preparing && IsHero && GameManager.instance.CurrentRound == 1) || Status != UnitStatuses.Preparing))
                 && !HasStatusEffect(StatusEffects.Stunned)
                 && (HasKeyword(Keywords.Conduit) || IsHero);
@@ -145,12 +167,14 @@ public class Unit : Card
 
         SpymasterLurenCards = new List<Card>();
 
+        //The following code is ignored in the menu
         if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
             Enchantments = new List<AppliedEnchantment>();
             CurrentStatusEffects = new List<StatusEffects>();
             CurrentKeywords = new List<Keywords>();
 
+            //Adds Keywords and Empowered as enchantments from the base unit properties
             if (BaseKeywords.Count > 0 || UnitData.Empowered > 0)
             {
                 var keywordEnchantment = new UnitEnchantment()

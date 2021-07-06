@@ -224,7 +224,7 @@ public class CardList
                             break;
                         case CardListFilter.IntFilterTypes.Durability:
                             if (card.Type == CardTypes.Unit)
-                                value = ((Item)card).Durability;
+                                value = ((Item)card).CurrentDurability;
                             break;
                         default:
                             throw new Exception("Not a valid filter type");
@@ -288,7 +288,7 @@ public class CardList
                                             filteredCardList.RemoveAll(x => ((Spell)x).SpellRange == value);
                                             break;
                                         case CardListFilter.IntFilterTypes.Durability:
-                                            filteredCardList.RemoveAll(x => ((Item)x).Durability == value);
+                                            filteredCardList.RemoveAll(x => ((Item)x).CurrentDurability == value);
                                             break;
                                         default:
                                             throw new Exception("Not a valid filter type");

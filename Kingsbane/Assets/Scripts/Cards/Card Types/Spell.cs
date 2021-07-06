@@ -9,6 +9,11 @@ public class Spell : Card
     public string SpellType { get { return SpellData.SpellType; } }
     public int SpellRange { get { return SpellData.Range; } }
 
+    /// <summary>
+    /// 
+    /// Playes the spell from hand
+    /// 
+    /// </summary>
     public override void Play()
     {
         base.Play();

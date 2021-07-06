@@ -1,5 +1,10 @@
 ﻿using CategoryEnums;
 
+/// <summary>
+/// 
+/// Object for storing a cost adjusment on a card
+/// 
+/// </summary>
 public class AdjustCostObject
 {
     public int Value { get; set; }
