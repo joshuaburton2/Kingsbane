@@ -13,6 +13,8 @@ public class TransformEffect : EffectUI
     [SerializeField]
     private Button transformButton;
 
+    private string titleText;
+
     /// <summary>
     /// 
     /// Initialise the effect UI
@@ -21,6 +23,8 @@ public class TransformEffect : EffectUI
     public override void InitialiseEffectUI(EffectsBarUI.EffectTypes _effectType, GameplayUI _gameplayUI, EffectsBarUI _effectBarUI)
     {
         base.InitialiseEffectUI(_effectType, _gameplayUI, _effectBarUI);
+
+        titleText = effectType.GetEnumDescription();
 
         ResetState();
     }
@@ -43,11 +47,13 @@ public class TransformEffect : EffectUI
     /// </summary>
     public void TransformButton()
     {
-        effectBarUI.ActivateEffect();
-        effectComplete = false;
-
         if (!GameManager.instance.effectManager.SetTransformMode(transformInput.text, isPermanentToggle.isOn))
-            effectTitle.text += " (Failed)";
+            titleText += " (Failed)";
+        else
+        {
+            effectBarUI.ActivateEffect();
+            effectComplete = false;
+        }
     }
 
     public override void CancelEffect()

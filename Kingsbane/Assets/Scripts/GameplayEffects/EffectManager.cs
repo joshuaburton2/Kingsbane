@@ -1080,11 +1080,11 @@ public class EffectManager : MonoBehaviour
 
     public bool SetTransformMode(string unitName, bool isPermanent)
     {
-        ActiveEffect = ActiveEffectTypes.Transform;
-
         SelectedCardData = GameManager.instance.libraryManager.GetCard(unitName);
         if (SelectedCardData == null)
             return false;
+
+        ActiveEffect = ActiveEffectTypes.Transform;
 
         SelectedBoolean = isPermanent;
 

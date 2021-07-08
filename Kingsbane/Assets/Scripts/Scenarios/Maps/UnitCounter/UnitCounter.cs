@@ -84,8 +84,8 @@ public class UnitCounter : MonoBehaviour
         speedText.text = $"{Unit.RemainingSpeed}/{Unit.GetStat(Unit.StatTypes.Speed)}";
         speedText.color = GameManager.instance.colourManager.GetStatModColour(Unit.HasBuffedSpeed);
 
-        protectedText.text = Unit.TotalProtected.HasValue ? Unit.TotalProtected.ToString() : "Inf";
-        protectedArea.SetActive(!Unit.TotalProtected.HasValue || Unit.TotalProtected.Value > 0);
+        protectedText.text =Unit.TotalProtected.ToString();
+        protectedArea.SetActive(Unit.TotalProtected > 0);
 
         statusIcon.color = GameManager.instance.colourManager.GetUnitStatusColour(Unit.Status);
 

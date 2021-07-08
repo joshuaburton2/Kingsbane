@@ -13,6 +13,7 @@ public class Deck : CardList
         List = new List<Card>();
         player = _player;
 
+        //Initialise each card in the list
         foreach (var cardData in _cardList)
         {
             var card = GameManager.instance.libraryManager.CreateCard(cardData, player);
@@ -82,53 +83,41 @@ public class Deck : CardList
         return drawnCards;
     }
 
+    /// <summary>
+    /// 
+    /// Draw a card from the deck using a filter
+    /// 
+    /// </summary>
     public Card Draw(CardListFilter filter, out bool failedFilter, int? numToChoose = null)
     {
         int currentCount = ListCount;
         failedFilter = false;
 
+        //If the current count of the deck is 0, then cannot draw any cards
         if (currentCount != 0)
         {
+            //Obtains the filtered list based on the list filter
             var filteredDeck = FilterCardList(filter);
 
+            //If there are no cards that meet the filter criteria, returns null and fails the filter
             if (filteredDeck.List.Count != 0)
             {
+                //If num to choose is null, does not require a choice mode and just draws 1 card that meets the filter
                 if (numToChoose == null)
                 {
+                    //Removes the drawn card from the deck and returns it (note that last or default is used as the top of the deck is the bottom of the list)
                     var drawnCard = filteredDeck.List.LastOrDefault();
                     List.Remove(drawnCard);
 
                     return drawnCard;
                 }
+                //If num to choose is not null, need to grab cards for the choice mode
                 else
                 {
-                    if (numToChoose.Value > filteredDeck.ListCount)
-                        numToChoose = filteredDeck.ListCount;
+                    //Gets the top number of cards from the filtered card list, capping it out at 0
+                    var cardChoiceList = List.Skip(Mathf.Max(0, filteredDeck.ListCount - numToChoose.Value)).Reverse().ToList();
 
-                    var cardChoiceList = new List<Card>();
-                    var completedList = false;
-                    for (int choiceIndex = 0; choiceIndex < numToChoose; choiceIndex++)
-                    {
-                        for (int cardIndex = 0; cardIndex < filteredDeck.ListCount; cardIndex++)
-                        {
-                            var card = filteredDeck.List[filteredDeck.ListCount - 1 - cardIndex];
-                            if (cardChoiceList.Select(x => x.Name).Contains(card.Name))
-                            {
-                                if (cardIndex == filteredDeck.ListCount - 1)
-                                {
-                                    completedList = true;
-                                    break;
-                                }
-                                continue;
-                            }
-                            cardChoiceList.Add(card);
-                            break;
-                        }
-
-                        if (completedList)
-                            break;
-                    }
-
+                    //Sets the choice mode up to display
                     GameManager.instance.effectManager.SetDrawChoiceMode(cardChoiceList);
 
                     return null;
@@ -146,6 +135,11 @@ public class Deck : CardList
         }
     }
 
+    /// <summary>
+    /// 
+    /// Draws the given card. If it does not exist in the deck, returns null
+    /// 
+    /// </summary>
     public Card Draw(Card card)
     {
         if (List.Contains(card))
@@ -159,23 +153,34 @@ public class Deck : CardList
         }
     }
 
+    /// <summary>
+    /// 
+    /// Draws a given number of cards based on a filter
+    /// 
+    /// </summary>
     public List<Card> Draw(int numToDraw, CardListFilter filter, out int failedDraws, out bool failedFilter)
     {
         var drawnCards = new List<Card>();
 
+        //Sets up the failed parameters
         failedDraws = numToDraw;
         failedFilter = false;
 
+        //Loops for each card required to draw
         for (int count = 0; count < numToDraw; count++)
         {
             int currentCount = ListCount;
 
+            //fails out of the loop if the deck count is 0
             if (currentCount != 0)
             {
+                //Filters the card list and stores the deck
                 var filteredDeck = FilterCardList(filter);
 
+                //If there are no cards that meet the filter, fails the filter and breaks out of the loop
                 if (filteredDeck.List.Count != 0)
                 {
+                    //If successful filter, draws the card
                     drawnCards.Add(filteredDeck.List.LastOrDefault());
                     List.Remove(drawnCards.LastOrDefault());
                     failedDraws--;
@@ -210,6 +215,11 @@ public class Deck : CardList
         AddToDeck(card, randPos, createdBy, trackShuffle);
     }
 
+    /// <summary>
+    /// 
+    /// Shuffles a card into a given preset position
+    /// 
+    /// </summary>
     public void ShuffleIntoDeck(Card card, string createdBy, DeckPositions deckPosition, bool trackShuffle = true)
     {
         switch (deckPosition)
@@ -218,10 +228,12 @@ public class Deck : CardList
                 ShuffleIntoDeck(card, createdBy, trackShuffle);
                 break;
             case DeckPositions.First:
+                //Note that the first position in the deck is the last position in the deck
                 int firstPos = ListCount;
                 AddToDeck(card, firstPos, createdBy, trackShuffle);
                 break;
             case DeckPositions.Last:
+                //The last position in the deck is the first position in the list
                 int lastPos = 0;
                 AddToDeck(card, lastPos, createdBy, trackShuffle);
                 break;
@@ -288,6 +300,11 @@ public class Deck : CardList
         }
     }
 
+    /// <summary>
+    /// 
+    /// Gets the top n cards of the deck
+    /// 
+    /// </summary>
     public List<Card> GetTopCards(int numToGet)
     {
         return List.Skip(Mathf.Max(0, ListCount - numToGet)).Reverse().ToList();
