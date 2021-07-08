@@ -363,7 +363,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CheckWarden()
     {
-        if (CurrentGamePhase != GamePhases.Menu)
+        if (CurrentGamePhase != GamePhases.Menu && CurrentGamePhase != GamePhases.Setup)
         {
             foreach (var player in LoadedPlayers)
                 player.CheckWarden();

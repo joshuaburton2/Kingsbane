@@ -1148,43 +1148,64 @@ public class Unit : Card
         RefreshCounter();
     }
 
+    /// <summary>
+    /// 
+    /// Adds an enchantment to the unit
+    /// 
+    /// </summary>
     public void AddEnchantment(UnitEnchantment enchantment)
     {
+        //Checks if the enchantment is valid
         if (enchantment.ValidEnchantment)
         {
+            //Creates the new applied enchantment. Required to make a new object, as if Unit Enchantment is changed, this will modify all other instances
+            // of the enchantment. Applied Enchantment is unique to each applied unit
             var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
+
+            //If the enchantment adds flying, also adds airborne to the enchantment
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
             {
                 if (!HasStatusEffect(StatusEffects.Airborne))
                 {
-                    newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
+                    if (!newEnchantment.Enchantment.StatusEffects.Contains(StatusEffects.Airborne))
+                        newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Airborne);
                     if (Status != UnitStatuses.Preparing)
                         CanFlyOrLand = true;
                 }
             }
+            //If the enchantment adds the stealth keyword, also adds the stealthed status effect
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Stealth))
-                newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
+                if (!newEnchantment.Enchantment.StatusEffects.Contains(StatusEffects.Stealthed))
+                    newEnchantment.Enchantment.StatusEffects.Add(StatusEffects.Stealthed);
 
+            //If the enchantment adds swiftstike and specifal swiftstrike keywords and the unit is not preparing, updates their actions.
+            //Also checks the unit doesnt already have the keyword- if they do doesn't add actions
             if (Status != UnitStatuses.Preparing && Status != UnitStatuses.None)
             {
                 if (newEnchantment.Enchantment.Keywords.Contains(Keywords.SpecialSwiftstrike))
                 {
+                    //If moving from normal to special swiftstrike, adds 2 actions (so they have 3 actions total)
                     if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
                         ModifyActions(2);
+                    //If already has swiftstrike and adding special swiftstrike, adds 1 action (to 3 actions total)
                     else if (HasKeyword(Keywords.Swiftstrike))
                         ModifyActions(1);
                 }
+                //If moving from normal to swiftstrike, adds 1 action (to 3 actions total)
                 else if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Swiftstrike))
                     if (!HasKeyword(Keywords.Swiftstrike) && !HasKeyword(Keywords.SpecialSwiftstrike))
                         ModifyActions(1);
             }
 
+            //Adds the enchantment to the list, then updates the units enchantments
             Enchantments.Add(newEnchantment);
             UpdateEnchantments();
 
+            //If the enchantment adds preparing, and the unit is not already prepared, then refreshes their actions
             if (HasKeyword(Keywords.Prepared) && (Status == UnitStatuses.Preparing || Status == UnitStatuses.None))
                 RefreshActions();
 
+            //Updates the counter
             RefreshCounter();
         }
         else
@@ -1193,74 +1214,132 @@ public class Unit : Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Remove any enchantments of a particular status type
+    /// 
+    /// </summary>
     public void RemoveEnchantmentsOfStatus(List<UnitEnchantment.EnchantmentStatus> enchantmentStatuses)
     {
+        //Obtains all enchantments to remove
         var removeEnchantments = Enchantments.Where(x => enchantmentStatuses.Contains(x.Enchantment.Status));
 
+        //Removes all status effects given from the remove enchantments
         foreach (var statusEffectList in removeEnchantments.Select(x => x.Enchantment.StatusEffects))
         {
             CurrentStatusEffects.RemoveAll(x => statusEffectList.Contains(x));
         }
 
+        //Remove all required enchantments
         Enchantments.RemoveAll(x => removeEnchantments.Contains(x));
 
+        //Update the enchantments
         UpdateEnchantments();
-
-        RefreshCounter();
     }
 
+    /// <summary>
+    /// 
+    /// Update the units enchantments
+    /// 
+    /// </summary>
     public void UpdateEnchantments()
     {
+        //Function works by reseting the unit to its base then adding each enchantment again. This is required to deal with enchantments being removed from the list
+        //May also be needed in future in case enchantments are reactivated, but not utilised currently
+
+        //Resets the units stats to their base state
         ResetStats();
         CurrentKeywords.Clear();
 
-        foreach (var enchantment in Enchantments.OrderBy(x => x.Enchantment.Status))
+        //Orders the enchantment list so that overload passive is applied last. This is to ensure that the attack reduction from the passive is
+        //applied across all active enchantments
+        var enchantments = new List<AppliedEnchantment>(Enchantments);
+        var overloadEnchantment = enchantments.SingleOrDefault(x => x.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
+        if (overloadEnchantment != null)
         {
+            enchantments.Remove(overloadEnchantment);
+            enchantments.Add(overloadEnchantment);
+        }
+
+        //Loops through each enchantment. Orders by the enchantment status so that passives enchantments are applied last
+        foreach (var enchantment in enchantments)
+        {
+            //Only adds an enchantment if it is of a valid status
             if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
             {
+                //Only adds active enchantments to the unit stats
                 if (enchantment.IsActive)
                 {
+                    //For Overload Passives, need to get the current attack modifier
                     if (enchantment.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive)
                     {
+                        //Gets the total overload value from the mana resource
                         var totalOverload = 0;
                         if (Owner.UsedResources.Contains(CardResources.Mana))
                             totalOverload = ((PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana)).TotalOverload;
 
+                        //Gets the current attack of the unit
                         var currentAttack = GetStat(StatTypes.Attack);
 
+                        //Determine the attack modifier, which is capped so the units attack cannot be reduced below 1
                         int attackModifier;
+                        //If the attack is greater than 0, than 0, needs to determine the attack modifier
                         if (currentAttack > 0)
+                            //Sets the attack modifier to be equal to the total overload or so the attack is set to 1
                             attackModifier = Mathf.Min(totalOverload, currentAttack - 1);
+                        //If the attack is 0, sets the attack modifier to 0 (prevents attack from going negative)
                         else
                             attackModifier = 0;
 
+                        //Updates the stat modifier for the overload enchantment
                         enchantment.Enchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, -attackModifier);
                     }
 
+                    //Loops through each stat modifier in the enchantment
                     foreach (var statModifier in enchantment.Enchantment.StatModifiers)
                     {
+                        //Modifies the stat associated with the modifier
                         ModifyStat(statModifier.ModType, statModifier.StatType, statModifier.Value);
 
+                        //If the enchantment has already been applied, do not need to update the current health and speed of the unit
                         if (!enchantment.IsApplied)
                         {
                             switch (statModifier.ModType)
                             {
                                 case StatModifierTypes.Modify:
+                                    //If modifying the max health, need to also modify the current health of the unit
                                     if (statModifier.StatType == StatTypes.MaxHealth)
-                                        CurrentHealth += statModifier.Value;
+                                    {
+                                        //If the stat modifier is positive, then increases the current health by the same value
+                                        if (statModifier.Value >= 0)
+                                            CurrentHealth += statModifier.Value;
+                                        //If the stat modifier is negative, do not need to reduce the current health, but sets it to itself to cap the value at max health
+                                        else
+                                            CurrentHealth = CurrentHealth;
+                                    }
+                                    //If modifying the speed, need to also modify the remaining speed. Only to be done if the unit is not preparing or an enemy
                                     if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
                                     {
-                                        RemainingSpeed += statModifier.Value;
+                                        //If the stat modifier is positive, then increase the remaining speed by the same value
+                                        if (statModifier.Value >= 0)
+                                            RemainingSpeed += statModifier.Value;
+                                        //If the stat modifier is negative, do not need to reduce the reamining speed, but sets it to itself to cap the value at its speed
+                                        else
+                                            RemainingSpeed = RemainingSpeed;
+                                        //If the unit can move and is not an enemy or in the start status, sets it to the middle status
                                         if (CanMove && Status != UnitStatuses.Enemy && Status != UnitStatuses.Start)
                                             Status = UnitStatuses.Middle;
                                     }
                                     break;
                                 case StatModifierTypes.Set:
+                                    //If setting the max health, need to also set the current health to its max
                                     if (statModifier.StatType == StatTypes.MaxHealth)
                                         CurrentHealth = GetStat(StatTypes.MaxHealth);
+                                    //If setting the speed, need to also set the remaining speed to its max, as long as the unit is not preparing or an enemy
                                     if (statModifier.StatType == StatTypes.Speed && (Status != UnitStatuses.Preparing || Status != UnitStatuses.Enemy))
                                     {
                                         RemainingSpeed = GetStat(StatTypes.Speed);
+                                        //If the unit can move and is not an enemy or in the start status, sets it to the middle status
                                         if (CanMove && Status != UnitStatuses.Enemy && Status != UnitStatuses.Start)
                                             Status = UnitStatuses.Middle;
                                     }
@@ -1269,19 +1348,23 @@ public class Unit : Card
                                     break;
                             }
 
+                            //If the enchantment adds empowered and the unit is already deployed, adds empowered to the owners stats
                             if (statModifier.StatType == StatTypes.Empowered && IsDeployed)
                                 Owner.ModifyEmpowered(statModifier.Value);
                         }
                     }
 
+                    //Adds the keywords from the enchantment to the unit
                     foreach (var keyword in enchantment.Enchantment.Keywords)
                     {
                         if (!HasKeyword(keyword))
                             CurrentKeywords.Add(keyword);
                     }
 
+                    //Adds the status effects from the enchantment to the unit
                     foreach (var statusEffect in enchantment.Enchantment.StatusEffects)
                     {
+                        //If the enchantment already is applied, then do not need to add the status effect
                         if (!enchantment.IsApplied)
                         {
                             if (!HasStatusEffect(statusEffect))
@@ -1289,6 +1372,7 @@ public class Unit : Card
                         }
                     }
 
+                    //Once all modifiers from the enchantment have been added, confirm the application
                     enchantment.IsApplied = true;
                 }
             }
@@ -1301,15 +1385,22 @@ public class Unit : Card
         //Resets the health and speed to cap them out at their max
         CurrentHealth = currentHealth;
         RemainingSpeed = remainingSpeed;
+        //If the units attack is below 0, then sets it back to 0
         if (GetStat(StatTypes.Attack) < 0)
             ModifyStat(StatModifierTypes.Set, StatTypes.Attack, 0);
 
+        //Need to check warden in case enchantments have added or removed the keyword
         if (GameManager.instance.CurrentGamePhase == GameManager.GamePhases.Gameplay)
             GameManager.instance.CheckWarden();
 
         RefreshCounter();
     }
 
+    /// <summary>
+    /// 
+    /// Deletes an enchantment
+    /// 
+    /// </summary>
     public void DeleteEnchantment(AppliedEnchantment enchantment)
     {
         Enchantments.Remove(enchantment);
@@ -1317,8 +1408,14 @@ public class Unit : Card
         UpdateEnchantments();
     }
 
+    /// <summary>
+    /// 
+    /// Root the unit so it cannot move until end of owners turn
+    /// 
+    /// </summary>
     public void RootUnit()
     {
+        //Creates a root enchantment for the unit
         var enchantment = new UnitEnchantment()
         {
             Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
@@ -1328,8 +1425,14 @@ public class Unit : Card
         AddEnchantment(enchantment);
     }
 
+    /// <summary>
+    /// 
+    /// Stun the unit so it cannot move or take actions until end of owners turn
+    /// 
+    /// </summary>
     public void StunUnit()
     {
+        //Create a stun enchantment for the unit
         var enchantment = new UnitEnchantment()
         {
             Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
@@ -1339,6 +1442,11 @@ public class Unit : Card
         AddEnchantment(enchantment);
     }
 
+    /// <summary>
+    /// 
+    /// Sets a unit to be immune so they cannot take damage
+    /// 
+    /// </summary>
     public void ImmuneUnit()
     {
         var enchantment = new UnitEnchantment()
@@ -1350,6 +1458,11 @@ public class Unit : Card
         AddEnchantment(enchantment);
     }
 
+    /// <summary>
+    /// 
+    /// Sets a unit to be indestructible so they cannot take damage or be destroyed
+    /// 
+    /// </summary>
     public void IndestructibleUnit()
     {
         var enchantment = new UnitEnchantment()
@@ -1361,29 +1474,43 @@ public class Unit : Card
         AddEnchantment(enchantment);
     }
 
+    /// <summary>
+    /// 
+    /// Checks if the unit is warded
+    /// 
+    /// </summary>
     public bool CheckWarden()
     {
+        //Removes Warded from the unit in case it is not currently warded due to map changes
         if (CurrentStatusEffects.Contains(StatusEffects.Warded))
         {
             CurrentStatusEffects.Remove(StatusEffects.Warded);
             UnitCounter.RefreshUnitCounter();
         }
 
+        //The unit cannot be warded if they have stalker or if the current terrain is surveyed
         if (!HasKeyword(Keywords.Stalker) && !UnitCounter.Cell.IsSurveyed(Owner.Id))
         {
+            //Loops through each adjacent cell and checks if there is a unit occupying them
             foreach (var adjCell in UnitCounter.Cell.adjCells)
             {
                 if (adjCell.occupantCounter != null)
                 {
+                    //Gets the adjacent unit
                     var adjUnit = adjCell.occupantCounter.Unit;
+                    //Can only be warded by units under the opponents control
                     if (adjUnit.Owner.Id != Owner.Id)
                     {
+                        //Checks if the adjacent unit has Warden
                         if (adjUnit.HasKeyword(Keywords.Warden))
                         {
+                            //Warden units do not take effect if they are stunned
                             if (!adjUnit.HasStatusEffect(StatusEffects.Stunned))
                             {
+                                //Checks if the units have matching keywords, as ethereal units avoid warden from non-ethereal units, and the same with flying
                                 if (CheckWardenMatchingKeywords(adjUnit, Keywords.Ethereal) && CheckWardenMatchingKeywords(adjUnit, Keywords.Flying))
                                 {
+                                    //If all above conditions are met, unit is warded and need to refresh the counter
                                     CurrentStatusEffects.Add(StatusEffects.Warded);
                                     RefreshCounter();
                                     return true;
@@ -1398,30 +1525,55 @@ public class Unit : Card
         return false;
     }
 
+    /// <summary>
+    /// 
+    /// Check if a unit has matching keyword for the purposes of Warden matching
+    /// 
+    /// </summary>
     private bool CheckWardenMatchingKeywords(Unit adjUnit, Keywords keyword)
     {
         return !HasKeyword(keyword) || HasKeyword(keyword) && adjUnit.HasKeyword(keyword);
     }
 
+    /// <summary>
+    /// 
+    /// Move a unit between being airborne or not
+    /// 
+    /// </summary>
     public void FlyOrLand()
     {
-        if (HasStatusEffect(StatusEffects.Airborne))
+        if (HasKeyword(Keywords.Flying))
         {
-            if (CheckOccupancy(UnitCounter.Cell, true, true))
+            //Lands the unit if it is already airborne
+            if (HasStatusEffect(StatusEffects.Airborne))
+            {
+                //Check if the unit is able to land in its current tile
+                if (CheckOccupancy(UnitCounter.Cell, true, true))
+                {
+                    CanFlyOrLand = false;
+                    CurrentStatusEffects.Remove(StatusEffects.Airborne);
+                }
+            }
+            //Puts the unit airborne if it is already landed
+            else
             {
                 CanFlyOrLand = false;
-                CurrentStatusEffects.Remove(StatusEffects.Airborne);
+                CurrentStatusEffects.Add(StatusEffects.Airborne);
             }
+
+            RefreshCounter();
         }
         else
         {
-            CanFlyOrLand = false;
-            CurrentStatusEffects.Add(StatusEffects.Airborne);
+            throw new Exception("Cannot fly or land a non-flying unit");
         }
-
-        RefreshCounter();
     }
 
+    /// <summary>
+    /// 
+    /// Removes stealth status from the unit
+    /// 
+    /// </summary>
     public void Unstealth()
     {
         if (HasStatusEffect(StatusEffects.Stealthed))
@@ -1430,8 +1582,14 @@ public class Unit : Card
         RefreshCounter();
     }
 
+    /// <summary>
+    /// 
+    /// Spellbind a unit to remove all enchantments and text
+    /// 
+    /// </summary>
     public void Spellbind()
     {
+        //If a transformed unit is spellbound, return it to its original form and spellbind the original form
         if (HasStatusEffect(StatusEffects.Transformed))
         {
             ReturnToOriginalForm();
@@ -1439,21 +1597,28 @@ public class Unit : Card
         }
         else
         {
+            //If a summon unit is spellbound, it is destroyed
             if (HasKeyword(Keywords.Summon))
             {
                 RemoveUnit(true);
             }
             else
             {
+                //Loops through each enchantment except for passive enchantments (as these cannot be spellbound) and sets it to inactive
                 foreach (var enchantment in Enchantments)
-                    if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive)
+                    if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive
+                        && enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.OverloadPassive)
                         enchantment.IsActive = false;
 
+                //Updates the owner stats to remove empowered/summon properties
                 UpdateOwnerStats(false);
+                //Clear imprison and confiscate cards, as these cannot be returned after spellbound
                 ConfiscatedCards.Clear();
                 ImprisonedUnits.Clear();
+                //Clear any status effects and adds the spellbound status effect
                 CurrentStatusEffects.Clear();
                 CurrentStatusEffects.Add(StatusEffects.Spellbound);
+                //Need to update enchantments after being spellbound
                 UpdateEnchantments();
             }
         }
@@ -1482,21 +1647,50 @@ public class Unit : Card
         }
     }
 
-    public void SwitchOwner(Player newOwner, bool isTemporary)
+    /// <summary>
+    /// 
+    /// Switch the owner of the unit to a new owner
+    /// 
+    /// </summary>
+    /// <param name="isTemporary">True or false if is temporary. If it is null, this means the unit is returning to its original owner</param>
+    public void SwitchOwner(Player newOwner, bool? isTemporary = null)
     {
-        TemporaryMindControlled = isTemporary;
+        //Sets the temporary mind control property. If null, makes the value false (as it is returning to its original owner)
+        TemporaryMindControlled = isTemporary.HasValue ? isTemporary.Value : false;
+        //Removes the unit from the original owner
         Owner.DeployedUnits.Remove(UnitCounter);
         UpdateOwnerStats(false);
 
+        //Adds the unit to the new owner
         Owner = newOwner;
         Owner.DeployedUnits.Add(UnitCounter);
         UpdateOwnerStats();
 
-        ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
+        //Is temporary is null, that means it is returning to its original owner, so initialises the original resource cost
+        if (isTemporary == null)
+        {
+            ResourceConvertedTo = null;
+            ResourceInit();
+        }
+        //If taking control of the unit, converts the resource to the new owners dominant resource
+        else
+        {
+            ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
+        }
 
+        //Removes the overload passive enchantment if it exists
+        Enchantments.RemoveAll(x => x.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
+        //If the new owner is a mana class, adds a new overload enchantment. Updates enchantments in both cases
+        if (Owner.UsedResources.Contains(CardResources.Mana))
+            ModifyOverloadEnchantment();
+        else
+            UpdateEnchantments();
+
+        //If the new owner is the active player, updates the status accordingly
         if (newOwner.IsActivePlayer)
         {
-            if (isTemporary || HasKeyword(Keywords.Prepared))
+            //If the mind control is temporary or the unit is prepared, refreshes their action. Otherwise is preparing
+            if (isTemporary.HasValue && isTemporary.Value || HasKeyword(Keywords.Prepared))
             {
                 RefreshActions();
             }
@@ -1505,23 +1699,33 @@ public class Unit : Card
                 Status = UnitStatuses.Preparing;
             }
         }
+        //If the new owner is the inactive player, sets the status to enemy
         else
         {
             Status = UnitStatuses.Enemy;
         }
 
+        //Refresh the counter and checks the warden status as the owner of units changes
         RefreshCounter();
         GameManager.instance.CheckWarden();
     }
 
+    /// <summary>
+    /// 
+    /// Triggers a madness effect, where a unit attacks a random adjacent unit
+    /// 
+    /// </summary>
     public void TriggerMadness()
     {
+        //Gets the adjacent units. If there are none, does not continue with the madness trigger
         var adjacentUnits = UnitCounter.Cell.adjCells.Where(x => x.occupantCounter != null).Select(x => x.occupantCounter.Unit).ToList();
 
-        if (adjacentUnits.Count() != 0)
+        if (adjacentUnits.Any())
         {
+            //Randomly selects an adjacent unit to attack
             var randUnit = UnityEngine.Random.Range(0, adjacentUnits.Count());
             TriggerAttack(adjacentUnits[randUnit], false, true);
+            //If the unit is able to use its action, reduce its action for the attack. Otherwise it loses its next action
             if (CanAction)
             {
                 ModifyActions(-1);
@@ -1533,58 +1737,91 @@ public class Unit : Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Returns the deployed unit to the players hand
+    /// 
+    /// </summary>
     public void ReturnToHand()
     {
-        if (HasStatusEffect(StatusEffects.Transformed))
+        //Can only return a deployed unit to hand
+        if (IsDeployed)
         {
-            ReturnToOriginalForm();
-            OriginalTransformForm.ReturnToHand();
-        }
-        else if (HasKeyword(Keywords.Token))
-        {
-            RemoveUnit(true);
-        }
-        else
-        {
-            if (IsHero)
+            //If a transformed unit is returned to hand, they are instead returned to original form, then returns the original form to hand instead
+            if (HasStatusEffect(StatusEffects.Transformed))
             {
-                Redeploy();
+                ReturnToOriginalForm();
+                OriginalTransformForm.ReturnToHand();
+            }
+            //Token units cannot be returned to hand, so are destroyed instead
+            else if (HasKeyword(Keywords.Token))
+            {
+                RemoveUnit(true);
             }
             else
             {
-                RemoveUnit();
-                InitCard(CardData, Owner);
-                Owner.AddToHand(this);
+                //Hero's cannot be returned to hand, so are destroyed instead
+                if (IsHero)
+                {
+                    Redeploy();
+                }
+                else
+                {
+                    //If normal unit and returning to hand, removes the counter, resets the card and adds the unit to owners hand
+                    RemoveUnit();
+                    InitCard(CardData, Owner);
+                    Owner.AddToHand(this);
+                }
             }
+        }
+        else
+        {
+            throw new Exception("Cannot return a non-deployed unit to the owners hand");
         }
     }
 
-    public void Redeploy(bool destroyCounter = true)
+    /// <summary>
+    /// 
+    /// Redeploys the unit
+    /// 
+    /// </summary>
+    public void Redeploy()
     {
-        if (destroyCounter)
-            RemoveUnit();
+        //Removes the unit and adds it to the owners redeploy list
+        RemoveUnit();
         Owner.AddToRedeploy(this);
     }
 
+    /// <summary>
+    /// 
+    /// Modifies the overload enchantment
+    /// 
+    /// </summary>
     public void ModifyOverloadEnchantment(PlayerMana manaResource = null)
     {
         string overloadSourceString = "Overload Reduction";
 
+        //Can only add overload enchantments to mana player classes
         if (Owner.UsedResources.Contains(CardResources.Mana))
         {
+            //If not provided the mana resource, finds it from the owner
             if (manaResource == null)
                 manaResource = (PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana);
 
-            var overloadEnchantment = Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Source == overloadSourceString);
+            //Gets the overload enchantment
+            var overloadEnchantment = Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
             var isNew = false;
+            //If the enchantment does not exist creates a new enchantment
             if (overloadEnchantment == null)
             {
                 overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.OverloadPassive, Source = overloadSourceString };
                 isNew = true;
             }
 
+            //Adds the stat modifier to be total overload (the value does not actually do anything, just is a placeholder, actual value is determined in update enchantments)
             overloadEnchantment.AddStatModifier(StatTypes.Attack, StatModifierTypes.Modify, manaResource.TotalOverload);
 
+            //If is a new enchantment, adds the enchantment. Otherwise updates enchantments
             if (isNew)
                 AddEnchantment(overloadEnchantment);
             else
@@ -1596,17 +1833,27 @@ public class Unit : Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Captures a card with this unit
+    /// 
+    /// </summary>
     public void CaptureCard(Card confiscatedCard = null, Unit imprisonedUnit = null)
     {
+        //Cannot be given no capture
         if (confiscatedCard == null && imprisonedUnit == null)
             throw new Exception("Cannot capture no cards");
+        if (confiscatedCard != null && imprisonedUnit != null)
+            throw new Exception("Cannot confiscate and imprison at the same time");
 
+        //Adds a confiscate card, removing the card from the opponents hand
         if (confiscatedCard != null)
         {
             ConfiscatedCards.Add(confiscatedCard);
             confiscatedCard.Owner.Hand.RemoveCard(confiscatedCard);
         }
 
+        //Adds an imprison card, removing the unit from the field
         if (imprisonedUnit != null)
         {
             ImprisonedUnits.Add(imprisonedUnit);
@@ -1614,13 +1861,21 @@ public class Unit : Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Return any capture cards on the unit
+    /// 
+    /// </summary>
     public void ReturnCaptureCards()
     {
+        //Returns each confiscate card to the enemy hand
         foreach (var card in ConfiscatedCards)
             card.Owner.AddToHand(card);
+        //Redeploys each imprison card
         foreach (var unit in ImprisonedUnits)
             unit.Owner.AddToRedeploy(unit);
-
+        
+        //Clears the confiscate and imprison list
         ConfiscatedCards.Clear();
         ImprisonedUnits.Clear();
     }

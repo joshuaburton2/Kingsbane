@@ -154,7 +154,7 @@ public class Player
                 unit.Unit.RemoveUnit(true);
 
             if (unit.Unit.TemporaryMindControlled && !toDestroy)
-                unit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!IsActivePlayer), false);
+                unit.Unit.SwitchOwner(GameManager.instance.GetPlayer(!IsActivePlayer));
         }
     }
 
