@@ -152,8 +152,6 @@ public class EffectManager : MonoBehaviour
                 DeployUnits = new List<Unit>();
                 SelectedItem = null;
 
-                CancelEffect = false;
-
                 break;
             case ActiveEffectTypes.Spell:
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.SelectCaster : ActiveEffectTypes.None;
@@ -174,8 +172,6 @@ public class EffectManager : MonoBehaviour
                     ActiveEffect = ActiveEffectTypes.None;
                     GameManager.instance.uiManager.ShowCardDisplay();
                     GameManager.instance.uiManager.ShowMapKeyOfType();
-                    if (CancelEffect)
-                        CancelEffect = false;
                 }
                 else
                 {
@@ -189,8 +185,6 @@ public class EffectManager : MonoBehaviour
                 if (SelectedItem == null || CancelEffect)
                 {
                     ActiveEffect = ActiveEffectTypes.None;
-                    if (CancelEffect)
-                        CancelEffect = false;
                 }
                 break;
             case ActiveEffectTypes.UnitForceMove:
