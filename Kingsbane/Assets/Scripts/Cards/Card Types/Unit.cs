@@ -189,6 +189,7 @@ public class Unit : Card
                 AddEnchantment(keywordEnchantment);
             }
 
+            //Add passive enchantments to the unit
             if (Owner != null)
             {
                 foreach (var passive in Owner.Passives)

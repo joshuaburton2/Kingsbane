@@ -1,6 +1,14 @@
-﻿public enum DeckPositions
+﻿namespace CategoryEnums
 {
-    Random,
-    First,
-    Last,
+    /// <summary>
+    /// 
+    /// Determines which position a card is to shuffled to when it is added to the deck
+    /// 
+    /// </summary>
+    public enum DeckPositions
+    {
+        Random,
+        First,
+        Last,
+    }
 }

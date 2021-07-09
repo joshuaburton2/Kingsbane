@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using CategoryEnums;
 
 public class CardFunctionUI : MonoBehaviour
 {

@@ -122,10 +122,18 @@ public class Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Initialise the card on being created
+    /// 
+    /// </summary>
+    /// <param name="_cardData"></param>
+    /// <param name="owner"></param>
     public virtual void InitCard(CardData _cardData, Player owner)
     {
         CardData = _cardData;
         Owner = owner;
+        //Gets the card art, with NPC Hero images being pulled from a different function to regular cards
         if (CardData.Rarity != Rarity.NPCHero)
             CardArt = GameManager.instance.imageManager.GetCardImage(ImageTag, CardClass);
         else
@@ -133,12 +141,12 @@ public class Card
         CreatedByName = "";
         NumShuffles = 0;
         SpyMasterLurenCard = null;
-        ResourceInit();
-        CostAdjustments = new List<AdjustCostObject>();
+        ResourceInit(true);
 
-        if (Owner != null)
+        //Add passive cost modifications
+        if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
         {
-            if (GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
+            if (Owner != null)
             {
                 foreach (var passive in Owner.Passives)
                 {
@@ -157,10 +165,18 @@ public class Card
     /// Initialises the Resource Data on the card. To be called when the card is created
     /// 
     /// </summary>
-    public void ResourceInit()
+    public void ResourceInit(bool fullReset = false)
     {
+        if (fullReset)
+        {
+            //Reset the cost adjustment object
+            CostAdjustments = new List<AdjustCostObject>();
+        }
+
+        //If there is no converted resource or if there is no resource cost (for example hero cards)
         if (!ResourceConvertedTo.HasValue || ResourceCost.Count == 0)
         {
+            //Initialise the resources on the card based on the base resources of the card data
             ResourceCost = new List<Resource>();
             Resources = new List<CardResources>();
             foreach (var resource in DefaultCost)
@@ -171,13 +187,23 @@ public class Card
         }
         else
         {
+            //If there is a converted resource, forces the coversion back to the total resource of the card
+            //This is required to allow for converted cards returning to hand or being added to graveyard still using the converted resource
             ResourceCost.FirstOrDefault().SetValue(CardData.TotalResource);
             ResourceConvert(ResourceConvertedTo.Value);
         }
     }
 
+    /// <summary>
+    /// 
+    /// Convert the card to a new resource cost
+    /// 
+    /// </summary>
     public virtual void ResourceConvert(CardResources newResource)
     {
+        //This is required for mind control cards or recruit effects as examples. This allows for these cards to be played/used by the new owners
+
+        //Cannot convert resource of cards which have no resource cost (i.e. hero cards)
         if (ResourceCost.Count != 0)
         {
             ResourceCost = new List<Resource>() { new Resource(newResource, TotalResource) };
@@ -186,12 +212,18 @@ public class Card
         }
     }
 
+    /// <summary>
+    /// 
+    /// Get a list of hexadecimal colour strings based on the status of each resource on the card
+    /// 
+    /// </summary>
     public List<string> GetResourceColours()
     {
         var colourList = new List<string>();
 
         foreach (var resource in Resources)
         {
+            //Converts the status and converts it to hexadecimal string, adding it to the list
             var status = GetResourceStatus(resource);
             colourList.Add(GameManager.instance.colourManager.GetStatModColour(status, true).ConvertToHexadecimal());
         }
@@ -205,6 +237,7 @@ public class Card
     /// </summary>
     private StatisticStatuses GetResourceStatus(CardResources resource)
     {
+        //Converted resources have their own colour, regardless of whether they are buffed or debuffed
         if (ResourceConvertedTo.HasValue)
             return StatisticStatuses.Converted;
 
@@ -224,7 +257,6 @@ public class Card
     /// 
     /// Tests if a card is playable based on the player's current resources
     /// 
-    /// IMPORTANT: Can be reworked to integrate Resources in Player and Card class
     /// 
     /// </summary>
     /// <returns>True if the card can be played. False otherwise</returns>
@@ -233,38 +265,67 @@ public class Card
         return Resource.CanSpendResources(Owner, ResourceCost);
     }
 
+    /// <summary>
+    /// 
+    /// Play the card from hand
+    /// 
+    /// </summary>
     public virtual void Play()
     {
+        //If this card has been recruited by Spymaster Luren, returns the other cards recruited by him. 
         if (SpyMasterLurenCard != null)
         {
+            //Removes the Luren card from this card, as it is removed when this is played (this card is the original copy of the card which was recruited)
             SpyMasterLurenCard = null;
             GameManager.instance.effectManager.ReturnLurenCards(playedCard: this);
         }
 
+        //Reduces the owners resources by the current cost of the card
         Owner.ModifyResources(ResourceCost);
 
-        ResourceInit();
+        //Initialises the resources on this card, as any cost 
+        ResourceInit(true);
         Owner.PlayFromHand(this);
 
         //ToDo: Might need to pass out an on play parameter. This will determine the effect of spells as well as deployment effects for units and items
     }
 
+    /// <summary>
+    /// 
+    /// Discard this card from the owners hand
+    /// 
+    /// </summary>
     public void Discard()
     {
         Owner.DiscardFromHand(this);
     }
 
+    /// <summary>
+    /// 
+    /// Shuffle this card into the owners deck
+    /// 
+    /// </summary>
     public void Shuffle()
     {
         Owner.ShuffleFromHand(this);
     }
 
+    /// <summary>
+    /// 
+    /// Shuffle this card into owners deck, then draw the same card
+    /// 
+    /// </summary>
     public void ShuffleThenDraw()
     {
         Owner.ShuffleFromHand(this);
         Owner.Draw(this);
     }
 
+    /// <summary>
+    /// 
+    /// Modifies the cost of the card
+    /// 
+    /// </summary>
     public bool ModifyCost(AdjustCostObject adjustCostObject)
     {
         CostAdjustments.Add(adjustCostObject);
@@ -272,23 +333,36 @@ public class Card
         return RecalculateCost();
     }
 
+    /// <summary>
+    /// 
+    /// Recalculates the cost of the card
+    /// 
+    /// </summary>
+    /// <returns>False if the card can not be modifies by a given cost adjustment</returns>
     public bool RecalculateCost()
     {
+        //Resets the resources to the cards base. Required as each cost adjustment is applied again
         ResourceInit();
 
         foreach (var adjustCostObject in CostAdjustments)
         {
+            //If there is a must be greater than cap on the adjustment (i.e the total cost of the card, must be larger than the cap in order for the cost to be adjusted)
+            //and the total cost of the card is already greater than (less than due to negative), then does not adjust the cost
             if (!adjustCostObject.MustBeGreaterThan.HasValue || adjustCostObject.MustBeGreaterThan.HasValue && TotalResource < -adjustCostObject.MustBeGreaterThan.Value)
             {
+                //Case if there is a specific resource target to be adjusted
                 if (adjustCostObject.TargetResource.HasValue)
                 {
+                    //If the card does not contain the resource targeted by the adjustment, then exits the function
                     if (!Resources.Contains(adjustCostObject.TargetResource.Value))
                         return false;
 
+                    //Gets the resource to be adjusted
                     var resourceCost = ResourceCost.Single(x => x.ResourceType == adjustCostObject.TargetResource);
 
                     switch (adjustCostObject.AdjustmentType)
                     {
+                        //Modify or set the cost of the target resource
                         case StatModifierTypes.Modify:
                             resourceCost.ModifyValue(-adjustCostObject.Value, adjustCostObject.MinCost.HasValue, -adjustCostObject.MinCost);
                             break;
@@ -301,6 +375,7 @@ public class Card
                 }
                 else
                 {
+                    //Loop through each resource, and adjust the cost by the given adjustment value
                     foreach (var resourceCost in ResourceCost)
                     {
                         switch (adjustCostObject.AdjustmentType)
@@ -396,8 +471,15 @@ public class Card
         return true;
     }
 
+    /// <summary>
+    /// 
+    /// Copy the a given cards stats to this card
+    /// 
+    /// </summary>
+    /// <param name="copyFrom">The card to copy from</param>
     public virtual void CopyCardStats(Card copyFrom)
     {
+        //Copies the resource cost of each card's resource
         foreach (var resource in ResourceCost)
         {
             var copyResource = copyFrom.ResourceCost.Single(x => x.ResourceType == resource.ResourceType);

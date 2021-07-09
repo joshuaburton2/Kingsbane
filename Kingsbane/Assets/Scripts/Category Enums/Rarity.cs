@@ -1,5 +1,10 @@
 ﻿namespace CategoryEnums
 {
+    /// <summary>
+    /// 
+    /// Rarity of cards in the game
+    /// 
+    /// </summary>
     public enum Rarity
     {
         Default,

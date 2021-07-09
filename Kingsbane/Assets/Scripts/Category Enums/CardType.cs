@@ -2,6 +2,11 @@
 
 namespace CategoryEnums
 {
+    /// <summary>
+    /// 
+    /// The different types of cards in the game
+    /// 
+    /// </summary>
     public enum CardTypes
     {
         [Description("Default")]

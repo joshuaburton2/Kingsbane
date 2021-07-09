@@ -55,18 +55,22 @@ public class Resource
     /// </summary>
     public virtual void ModifyValue(int valueChange, bool clamp = false, int? clampValue = null)
     {
+        //Clamp Value prevents the value from going lower than a certain value, however does not always need to be applied
         if (clampValue.HasValue)
         {
             if (Value <= clampValue)
             {
+                //Sets the value
                 Value = CalcNewValue(valueChange);
 
+                //Clamps the value at the given clamp value
                 if (clamp)
                     Value = Math.Min(clampValue.Value, Value);
             }
         }
         else
         {
+            //If there is no clamp value and is clamping the resource, clamps the value at 0
             Value = CalcNewValue(valueChange);
 
             if (clamp)
@@ -74,17 +78,32 @@ public class Resource
         }
     }
 
+    /// <summary>
+    /// 
+    /// Sets the value of the resource
+    /// 
+    /// </summary>
     public void SetValue(int valueSet)
     {
         Value = valueSet;
     }
 
+    /// <summary>
+    /// 
+    /// Gets the resource description of a given resouce
+    /// 
+    /// </summary>
     public static string GetResoourceDescription(CardResources cardResource)
     {
         ResourceDescriptions.TryGetValue(cardResource, out string description);
         return description;
     }
 
+    /// <summary>
+    /// 
+    /// List of resource descriptions. Pregenerated code
+    /// 
+    /// </summary>
     private static Dictionary<CardResources, string> ResourceDescriptions = new Dictionary<CardResources, string>()
     {
         { CardResources.Neutral, @"" },

@@ -2,6 +2,11 @@
 
 namespace CategoryEnums
 {
+    /// <summary>
+    /// 
+    /// Temporary tile statuses which can be applied on the map
+    /// 
+    /// </summary>
     public enum TileStatuses
     {
         Survey,

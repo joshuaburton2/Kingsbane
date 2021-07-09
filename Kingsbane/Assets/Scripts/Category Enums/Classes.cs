@@ -5,6 +5,11 @@ using System;
 
 namespace CategoryEnums
 {
+    /// <summary>
+    /// 
+    /// Object for storing the resources the class utilises
+    /// 
+    /// </summary>
     public class ClassResources
     {
         public Classes.ClassList thisClass;
@@ -13,6 +18,7 @@ namespace CategoryEnums
         public ClassResources(Classes.ClassList _thisClass)
         {
             thisClass = _thisClass;
+            //Gets the resources used by the given class
             resources = Classes.GetClassData(_thisClass).GetClassResources();
         }
 
@@ -43,6 +49,11 @@ namespace CategoryEnums
 
     public class ClassResourceType
     {
+        /// <summary>
+        /// 
+        /// Checks which type of resource the class has
+        /// 
+        /// </summary>
         public enum ResourceTypes
         {
             Dominant,
