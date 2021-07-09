@@ -152,6 +152,8 @@ public class EffectManager : MonoBehaviour
                 DeployUnits = new List<Unit>();
                 SelectedItem = null;
 
+                CancelEffect = false;
+
                 break;
             case ActiveEffectTypes.Spell:
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.SelectCaster : ActiveEffectTypes.None;
@@ -172,6 +174,8 @@ public class EffectManager : MonoBehaviour
                     ActiveEffect = ActiveEffectTypes.None;
                     GameManager.instance.uiManager.ShowCardDisplay();
                     GameManager.instance.uiManager.ShowMapKeyOfType();
+                    if (CancelEffect)
+                        CancelEffect = false;
                 }
                 else
                 {
@@ -183,7 +187,11 @@ public class EffectManager : MonoBehaviour
                 SelectedCard = null;
 
                 if (SelectedItem == null || CancelEffect)
+                {
                     ActiveEffect = ActiveEffectTypes.None;
+                    if (CancelEffect)
+                        CancelEffect = false;
+                }
                 break;
             case ActiveEffectTypes.UnitForceMove:
             case ActiveEffectTypes.UnitAttack:
@@ -195,13 +203,13 @@ public class EffectManager : MonoBehaviour
                 CancelEffect = false;
                 break;
             case ActiveEffectTypes.UnitMove:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
+                ActiveEffect = ActiveEffectTypes.UnitCommand;
 
                 CancelEffect = false;
 
                 break;
             case ActiveEffectTypes.UnitDisengage:
-                ActiveEffect = CancelEffect ? ActiveEffectTypes.UnitCommand : ActiveEffectTypes.UnitCommand;
+                ActiveEffect = ActiveEffectTypes.UnitCommand;
                 CancelEffect = false;
 
                 break;
@@ -893,7 +901,6 @@ public class EffectManager : MonoBehaviour
         var player = GameManager.instance.GetPlayer(SelectedValue.Value);
         player.Divinate(topCards, bottomCards);
 
-        CancelEffect = true;
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
     }
@@ -909,7 +916,6 @@ public class EffectManager : MonoBehaviour
         var player = GameManager.instance.GetPlayer();
         player.AlterFate(handCards, deckCards, isSwapped);
 
-        CancelEffect = true;
         RefreshEffectManager();
         GameManager.instance.uiManager.RefreshUI();
     }

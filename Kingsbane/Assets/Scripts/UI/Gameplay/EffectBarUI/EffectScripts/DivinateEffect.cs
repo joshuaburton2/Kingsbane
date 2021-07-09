@@ -46,11 +46,17 @@ public class DivinateEffect : EffectUI
             CancelEffect();
     }
 
+    public override void CompleteEffect()
+    {
+        base.CompleteEffect();
+
+        ResetState();
+    }
+
     public override void CancelEffect()
     {
         base.CancelEffect();
 
-        divinateInput.text = "";
-        activePlayerToggle.isOn = true;
+        ResetState();
     }
 }
