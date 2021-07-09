@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class EffectManager : MonoBehaviour
 {
+    /// <summary>
+    /// 
+    /// List of all effects which can be activated in the game
+    /// 
+    /// </summary>
     public enum ActiveEffectTypes
     {
         None,
@@ -67,6 +72,11 @@ public class EffectManager : MonoBehaviour
     public bool IsUILocked { get { return ActiveEffect != ActiveEffectTypes.None && ActiveEffect != ActiveEffectTypes.UnitCommand; } }
     public bool CancelEffect { get; set; }
 
+    /// <summary>
+    /// 
+    /// List of effects which cannot be cancelled with a right click event
+    /// 
+    /// </summary>
     private readonly List<ActiveEffectTypes> NonCancelableEffects = new List<ActiveEffectTypes>()
     {
         ActiveEffectTypes.None,
@@ -86,6 +96,7 @@ public class EffectManager : MonoBehaviour
         ActiveEffectTypes.FortuneTellerChoice,
     };
 
+    //Storage objects for the different effects
     private Card SelectedCard { get; set; }
     private Unit SelectedUnit { get; set; }
     private List<Unit> DeployUnits { get; set; }
@@ -107,28 +118,51 @@ public class EffectManager : MonoBehaviour
     [SerializeField]
     private GameObject unitCounterPrefab;
 
+    /// <summary>
+    /// 
+    /// Initialise the effect manager
+    /// 
+    /// </summary>
     public void InitEffectManager()
     {
+        //Cancel effect is a variable for tracking whether an effect is cancelled. This is required for external detection
+        //of the cancellation (such as in the effect bar). Cancel effect can also be reset outside of the effect manager as well once detection has been made externally
         CancelEffect = false;
         RefreshEffectManager();
     }
 
+    /// <summary>
+    /// 
+    /// Cancel the effect manager, removing all active effects
+    /// 
+    /// </summary>
     public void CancelEffectManager()
     {
+        //Certain effects cannot be cancelled through a right click event
         if (!NonCancelableEffects.Contains(ActiveEffect))
         {
+            //If the cancelled effect is the unit command effect, then don't need cancel effect to be set to true
             if (ActiveEffect != ActiveEffectTypes.UnitCommand)
                 CancelEffect = true;
+
+            //Once cancelled, refreshing the effect maanger will determine what the new effect is
             RefreshEffectManager();
             GameManager.instance.mapGrid.ClearHighlights();
         }
     }
 
+    /// <summary>
+    /// 
+    /// Refresh the effect manager, reseting relevant stored variables and moving the effect manager from one effect to another
+    /// 
+    /// </summary>
+    /// <param name="fullReset">Full reset should only be true when entering or exiting the gameplay scene, or at the start of each turn, as at these points need to set back to default state</param>
     public void RefreshEffectManager(bool fullReset = false)
     {
         if (fullReset)
             ActiveEffect = ActiveEffectTypes.None;
 
+        //Reset the common storage variables (i.e. these variables behaviour doesn't change with different effects)
         SelectedCardData = null;
         SelectedEnchantment = null;
         SelectedAbility = null;
@@ -140,12 +174,15 @@ public class EffectManager : MonoBehaviour
         SelectedAdjustCost = null;
         TargetCells = null;
 
+        //Determines the behaviour of the refresh based on the current effect
         switch (ActiveEffect)
         {
             default:
+                //Default case. Variables changed in here have their behaviour modified when refreshing from different effects
                 ActiveEffect = ActiveEffectTypes.None;
 
                 SelectedCard = null;
+                //Hides the unit selector if it is active (which would be active from units being selected as the command unit or the caster)
                 if (SelectedUnit != null && GameManager.instance.CurrentGamePhase != GameManager.GamePhases.Menu)
                     SelectedUnit.UnitCounter.ShowUnitSelector(false);
                 SelectedUnit = null;
@@ -154,9 +191,11 @@ public class EffectManager : MonoBehaviour
 
                 break;
             case ActiveEffectTypes.Spell:
+                //If casting a spell, and cancelling the effect, need to move back to select caster phase, allowing player to reselect a caster
                 ActiveEffect = CancelEffect ? ActiveEffectTypes.SelectCaster : ActiveEffectTypes.None;
                 CancelEffect = false;
 
+                //Hides the unit selector icon from the caster which was previously selected, then resets the selected caster
                 if (SelectedUnit != null)
                     if (SelectedUnit.UnitCounter != null)
                         SelectedUnit.UnitCounter.ShowUnitSelector(false);
@@ -164,15 +203,18 @@ public class EffectManager : MonoBehaviour
                 break;
             case ActiveEffectTypes.Deployment:
             case ActiveEffectTypes.ForceDeployment:
+                //Resets the selected card and unit
                 SelectedCard = null;
                 SelectedUnit = null;
 
+                //If there are no units left to deploy, or cancelling the effect, sets the active effect back to its based and hides the deployment details
                 if (DeployUnits.Count == 0 || CancelEffect)
                 {
                     ActiveEffect = ActiveEffectTypes.None;
                     GameManager.instance.uiManager.ShowCardDisplay();
                     GameManager.instance.uiManager.ShowMapKeyOfType();
                 }
+                //If there are units left in the list, continues with the effect and displays the next card in the list
                 else
                 {
                     GameManager.instance.uiManager.ShowCardDisplay(DeployUnits.FirstOrDefault());
