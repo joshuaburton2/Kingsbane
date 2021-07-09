@@ -439,7 +439,6 @@ MonoBehaviour:
   deckListUI: {fileID: 0}
   campaignManagerUI: {fileID: 0}
   addSelectedButton: {fileID: 4496596059707165471}
-  refreshButton: {fileID: 4496596060288072251}
   cardsToSelectText: {fileID: 4496596060088296445}
   cardDisplayContainer: {fileID: 1483599694604026599, guid: 440aa63b381b3724890ccf6def217fca,
     type: 3}
@@ -1680,8 +1679,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4496596058780096596}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: RefreshLootGenerator
+        m_TargetAssemblyTypeName: LootGeneratorUI, Assembly-CSharp
+        m_MethodName: RefreshCards
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

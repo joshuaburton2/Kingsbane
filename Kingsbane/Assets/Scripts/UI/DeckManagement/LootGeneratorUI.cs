@@ -147,4 +147,14 @@ public class LootGeneratorUI : MonoBehaviour
             campaignManagerUI.AddLootCards();
         }
     }
+
+    /// <summary>
+    /// 
+    /// Button click event for refreshing the selected loot cards
+    /// 
+    /// </summary>
+    public void RefreshCards()
+    {
+        RefreshLootGenerator();
+    }
 }
