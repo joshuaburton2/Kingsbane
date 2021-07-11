@@ -1393,7 +1393,7 @@ public class CardLibrary
         {
             Id = 1117,
             Name = "Conjure Mirror",
-            Text = @"Deploy a ""Mirror Aspect"" with stats equal to this unit adjacent. Destroy any ""Mirror Aspects"" previously created by this unit. <b>Cycle -2</b>",
+            Text = @"Deploy a ""Mirror Aspect"" with attack and health equal to the number of spells in your hand adjacent. Destroy any ""Mirror Aspects"" previously created by this unit. <b>Cycle -2</b>",
             Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
@@ -13061,7 +13061,7 @@ Deal 3 damage to all enemy units",
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 4), new Resource(CardResources.Wild, 6), },
 
             Text = @"<b>Warden, Unleash, Protected (4)</b>
-Has +1 Attack, +1 Health for each spell in your hand. <b>Unleash</b> is activated on this unit whenever a ""Mirror Aspect"" created by this unit attacks and kills a unit.",
+<b>Unleash</b> is activated on this unit whenever a ""Mirror Aspect"" created by this unit attacks and kills a unit.",
             LoreText = @"",
             Notes = @"",
 
