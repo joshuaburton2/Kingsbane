@@ -80,10 +80,10 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
     private void ClearFields()
     {
         GeneralUIExtensions.InitDropdownOfType(typeDropdown, new List<EnchantmentType>() { EnchantmentType.StatusEffects });
-        GeneralUIExtensions.InitDropdownOfType(statusDropdown, new List<UnitEnchantment.EnchantmentStatus>()
+        GeneralUIExtensions.InitDropdownOfType(statusDropdown, new List<EnchantmentStatus>()
         {
-            UnitEnchantment.EnchantmentStatus.None,
-            UnitEnchantment.EnchantmentStatus.Base,
+            EnchantmentStatus.None,
+            EnchantmentStatus.Base,
         });
 
         GeneralUIExtensions.InitDropdownOfType(attackModTypeDropdown, new List<StatModifierTypes>());
@@ -229,7 +229,7 @@ public class EnchantmentExtensionEffect : EffectExtensionUI
             enchantment.StatusEffects.Add(statusEffect);
         }
 
-        enchantment.Status = (UnitEnchantment.EnchantmentStatus)Enum.Parse(typeof(UnitEnchantment.EnchantmentStatus), statusDropdown.captionText.text);
+        enchantment.BaseStatus = (EnchantmentStatus)Enum.Parse(typeof(EnchantmentStatus), statusDropdown.captionText.text);
         enchantment.Source = sourceInput.text;
 
         if (enchantment.ValidEnchantment)

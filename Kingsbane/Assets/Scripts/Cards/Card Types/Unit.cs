@@ -180,7 +180,7 @@ public class Unit : Card
                 var keywordEnchantment = new UnitEnchantment()
                 {
                     Source = "Base Keywords",
-                    Status = UnitEnchantment.EnchantmentStatus.Base,
+                    BaseStatus = EnchantmentStatus.Base,
                 };
                 keywordEnchantment.Keywords = BaseKeywords.ToList();
                 if (UnitData.Empowered > 0)
@@ -571,7 +571,9 @@ public class Unit : Card
                 //Removes any temporary protected the unit has
                 ModifyStat(StatModifierTypes.Set, StatTypes.TempProtected, 0);
                 //Remove any enchantments which are to be removed at start of owners turn
-                RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOwnersTurn });
+                RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.StartOfOwnersTurn });
+                //Ensures that after attack enchantments are removed
+                RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.AfterAttack });
                 //Passive updates for wound resistant
                 if (IsHero && Owner.HasSpecialPassive(SpecialPassiveEffects.WoundResistant))
                 {
@@ -593,7 +595,7 @@ public class Unit : Card
             //Set the units status to enemy if their owner is not the active player
             Status = UnitStatuses.Enemy;
             //Remove enchantments for start of opponents turn
-            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.StartOfOpponentTurn });
+            RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.StartOfOpponentTurn });
         }
 
         //Refreshes the unit counter after start of turn updates
@@ -654,11 +656,11 @@ public class Unit : Card
         //Removes enchantments of a particular status as required
         if (isActive)
         {
-            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn, UnitEnchantment.EnchantmentStatus.AfterAttack });
+            RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.EndOfOwnersTurn, EnchantmentStatus.AfterAttack });
         }
         else
         {
-            RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.EndOfOpponentTurn, UnitEnchantment.EnchantmentStatus.AfterAttack });
+            RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.EndOfOpponentTurn, EnchantmentStatus.AfterAttack });
         }
 
         //Refreshes the unit counter
@@ -825,7 +827,7 @@ public class Unit : Card
         }
 
         //Remove any after attack enchantments
-        RemoveEnchantmentsOfStatus(new List<UnitEnchantment.EnchantmentStatus>() { UnitEnchantment.EnchantmentStatus.AfterAttack });
+        RemoveEnchantmentsOfStatus(new List<EnchantmentStatus>() { EnchantmentStatus.AfterAttack });
 
         //Refreshes the counters which are still active on the field
         if (!unitDead)
@@ -868,7 +870,7 @@ public class Unit : Card
             var unleashEnchantment = new UnitEnchantment()
             {
                 Source = "Unleash",
-                Status = UnitEnchantment.EnchantmentStatus.Permanent,
+                BaseStatus = EnchantmentStatus.Permanent,
             };
 
             var modifier = Owner.HasSpecialPassive(SpecialPassiveEffects.FeralNature) ? 2 : 1; //If the unit has passive Feral Nature, adds a double modifier for the stats
@@ -1161,7 +1163,7 @@ public class Unit : Card
         {
             //Creates the new applied enchantment. Required to make a new object, as if Unit Enchantment is changed, this will modify all other instances
             // of the enchantment. Applied Enchantment is unique to each applied unit
-            var newEnchantment = new AppliedEnchantment() { Enchantment = enchantment };
+            var newEnchantment = new AppliedEnchantment(enchantment);
 
             //If the enchantment adds flying, also adds airborne to the enchantment
             if (newEnchantment.Enchantment.Keywords.Contains(Keywords.Flying))
@@ -1220,10 +1222,10 @@ public class Unit : Card
     /// Remove any enchantments of a particular status type
     /// 
     /// </summary>
-    public void RemoveEnchantmentsOfStatus(List<UnitEnchantment.EnchantmentStatus> enchantmentStatuses)
+    public void RemoveEnchantmentsOfStatus(List<EnchantmentStatus> enchantmentStatuses)
     {
         //Obtains all enchantments to remove
-        var removeEnchantments = Enchantments.Where(x => enchantmentStatuses.Contains(x.Enchantment.Status));
+        var removeEnchantments = Enchantments.Where(x => enchantmentStatuses.Contains(x.EnchantmentStatus));
 
         //Removes all status effects given from the remove enchantments
         foreach (var statusEffectList in removeEnchantments.Select(x => x.Enchantment.StatusEffects))
@@ -1255,7 +1257,7 @@ public class Unit : Card
         //Orders the enchantment list so that overload passive is applied last. This is to ensure that the attack reduction from the passive is
         //applied across all active enchantments
         var enchantments = new List<AppliedEnchantment>(Enchantments);
-        var overloadEnchantment = enchantments.SingleOrDefault(x => x.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
+        var overloadEnchantment = enchantments.SingleOrDefault(x => x.EnchantmentStatus == EnchantmentStatus.OverloadPassive);
         if (overloadEnchantment != null)
         {
             enchantments.Remove(overloadEnchantment);
@@ -1266,13 +1268,13 @@ public class Unit : Card
         foreach (var enchantment in enchantments)
         {
             //Only adds an enchantment if it is of a valid status
-            if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.None)
+            if (enchantment.EnchantmentStatus != EnchantmentStatus.None)
             {
                 //Only adds active enchantments to the unit stats
                 if (enchantment.IsActive)
                 {
                     //For Overload Passives, need to get the current attack modifier
-                    if (enchantment.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive)
+                    if (enchantment.EnchantmentStatus == EnchantmentStatus.OverloadPassive)
                     {
                         //Gets the total overload value from the mana resource
                         var totalOverload = 0;
@@ -1419,7 +1421,7 @@ public class Unit : Card
         //Creates a root enchantment for the unit
         var enchantment = new UnitEnchantment()
         {
-            Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
+            BaseStatus = EnchantmentStatus.EndOfOwnersTurn,
             Source = "Root",
             StatusEffects = new List<StatusEffects>() { StatusEffects.Rooted }
         };
@@ -1436,7 +1438,7 @@ public class Unit : Card
         //Create a stun enchantment for the unit
         var enchantment = new UnitEnchantment()
         {
-            Status = UnitEnchantment.EnchantmentStatus.EndOfOwnersTurn,
+            BaseStatus = EnchantmentStatus.EndOfOwnersTurn,
             Source = "Stun",
             StatusEffects = new List<StatusEffects>() { StatusEffects.Stunned }
         };
@@ -1452,7 +1454,7 @@ public class Unit : Card
     {
         var enchantment = new UnitEnchantment()
         {
-            Status = UnitEnchantment.EnchantmentStatus.Permanent,
+            BaseStatus = EnchantmentStatus.Permanent,
             Source = "Immune",
             StatusEffects = new List<StatusEffects>() { StatusEffects.Immune }
         };
@@ -1468,7 +1470,7 @@ public class Unit : Card
     {
         var enchantment = new UnitEnchantment()
         {
-            Status = UnitEnchantment.EnchantmentStatus.Permanent,
+            BaseStatus = EnchantmentStatus.Permanent,
             Source = "Indestructible",
             StatusEffects = new List<StatusEffects>() { StatusEffects.Indestructible }
         };
@@ -1607,8 +1609,8 @@ public class Unit : Card
             {
                 //Loops through each enchantment except for passive enchantments (as these cannot be spellbound) and sets it to inactive
                 foreach (var enchantment in Enchantments)
-                    if (enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.Passive
-                        && enchantment.Enchantment.Status != UnitEnchantment.EnchantmentStatus.OverloadPassive)
+                    if (enchantment.EnchantmentStatus != EnchantmentStatus.Passive
+                        && enchantment.EnchantmentStatus != EnchantmentStatus.OverloadPassive)
                         enchantment.IsActive = false;
 
                 //Updates the owner stats to remove empowered/summon properties
@@ -1650,60 +1652,95 @@ public class Unit : Card
 
     /// <summary>
     /// 
+    /// Reference dictionary for when enchantments need to change their status upon being mind controlled
+    /// 
+    /// </summary>
+    private static Dictionary<EnchantmentStatus, EnchantmentStatus> EnchantmentConversion = new Dictionary<EnchantmentStatus, EnchantmentStatus>
+    {
+        { EnchantmentStatus.StartOfOwnersTurn, EnchantmentStatus.StartOfOpponentTurn },
+        { EnchantmentStatus.EndOfOwnersTurn, EnchantmentStatus.EndOfOpponentTurn },
+        { EnchantmentStatus.StartOfOpponentTurn, EnchantmentStatus.StartOfOwnersTurn },
+        { EnchantmentStatus.EndOfOpponentTurn, EnchantmentStatus.EndOfOwnersTurn },
+    };
+
+    /// <summary>
+    /// 
     /// Switch the owner of the unit to a new owner
     /// 
     /// </summary>
     /// <param name="isTemporary">True or false if is temporary. If it is null, this means the unit is returning to its original owner</param>
     public void SwitchOwner(Player newOwner, bool? isTemporary = null)
     {
-        //Sets the temporary mind control property. If null, makes the value false (as it is returning to its original owner)
-        TemporaryMindControlled = isTemporary.HasValue ? isTemporary.Value : false;
-        //Removes the unit from the original owner
-        Owner.DeployedUnits.Remove(UnitCounter);
-        UpdateOwnerStats(false);
+        //Can never switch the owner of a hero
+        if (IsHero)
+            throw new Exception("Cannot switch owner of a hero");
 
-        //Adds the unit to the new owner
-        Owner = newOwner;
-        Owner.DeployedUnits.Add(UnitCounter);
-        UpdateOwnerStats();
-
-        //Is temporary is null, that means it is returning to its original owner, so initialises the original resource cost
-        if (isTemporary == null)
+        //Token rarity units cannot be mind controlled, so are destroyed instead
+        if (Rarity == Rarity.Token)
         {
-            ResourceConvertedTo = null;
-            ResourceInit();
+            RemoveUnit(true);
         }
-        //If taking control of the unit, converts the resource to the new owners dominant resource
         else
         {
-            ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
-        }
+            //Sets the temporary mind control property. If null, makes the value false (as it is returning to its original owner)
+            TemporaryMindControlled = isTemporary.HasValue ? isTemporary.Value : false;
+            //Removes the unit from the original owner
+            Owner.DeployedUnits.Remove(UnitCounter);
+            UpdateOwnerStats(false);
 
-        //Removes the overload passive enchantment if it exists
-        Enchantments.RemoveAll(x => x.Enchantment.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
-        //If the new owner is a mana class, adds a new overload enchantment. Updates enchantments in both cases
-        if (Owner.UsedResources.Contains(CardResources.Mana))
-            ModifyOverloadEnchantment();
-        else
-            UpdateEnchantments();
+            //Adds the unit to the new owner
+            Owner = newOwner;
+            Owner.DeployedUnits.Add(UnitCounter);
+            UpdateOwnerStats();
 
-        //If the new owner is the active player, updates the status accordingly
-        if (newOwner.IsActivePlayer)
-        {
-            //If the mind control is temporary or the unit is prepared, refreshes their action. Otherwise is preparing
-            if (isTemporary.HasValue && isTemporary.Value || HasKeyword(Keywords.Prepared))
+            //Is temporary is null, that means it is returning to its original owner, so initialises the original resource cost
+            if (isTemporary == null)
             {
-                RefreshActions();
+                ResourceConvertedTo = null;
+                ResourceInit();
             }
+            //If taking control of the unit, converts the resource to the new owners dominant resource
             else
             {
-                Status = UnitStatuses.Preparing;
+                ResourceConvert(Classes.GetClassData(newOwner.PlayerClass).GetResourceOfType(ClassResourceType.ResourceTypes.Dominant));
             }
-        }
-        //If the new owner is the inactive player, sets the status to enemy
-        else
-        {
-            Status = UnitStatuses.Enemy;
+
+            //Removes the overload passive enchantment if it exists
+            Enchantments.RemoveAll(x => x.EnchantmentStatus == EnchantmentStatus.OverloadPassive);
+            //If the new owner is a mana class, adds a new overload enchantment. Updates enchantments in both cases
+            if (Owner.UsedResources.Contains(CardResources.Mana))
+                ModifyOverloadEnchantment();
+            else
+                UpdateEnchantments();
+
+            //Loops through each enchantment and converts it to another type if required.
+            //This is required so that statuses which reference an owner or opponent are switched correctly
+            foreach (var enchantment in Enchantments)
+            {
+                if (EnchantmentConversion.ContainsKey(enchantment.EnchantmentStatus))
+                {
+                    enchantment.EnchantmentStatus = EnchantmentConversion[enchantment.EnchantmentStatus];
+                }
+            }
+
+            //If the new owner is the active player, updates the status accordingly
+            if (newOwner.IsActivePlayer)
+            {
+                //If the mind control is temporary or the unit is prepared, refreshes their action. Otherwise is preparing
+                if (isTemporary.HasValue && isTemporary.Value || HasKeyword(Keywords.Prepared))
+                {
+                    RefreshActions();
+                }
+                else
+                {
+                    Status = UnitStatuses.Preparing;
+                }
+            }
+            //If the new owner is the inactive player, sets the status to enemy
+            else
+            {
+                Status = UnitStatuses.Enemy;
+            }
         }
 
         //Refresh the counter and checks the warden status as the owner of units changes
@@ -1810,12 +1847,12 @@ public class Unit : Card
                 manaResource = (PlayerMana)Owner.Resources.Single(x => x.ResourceType == CardResources.Mana);
 
             //Gets the overload enchantment
-            var overloadEnchantment = Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.Status == UnitEnchantment.EnchantmentStatus.OverloadPassive);
+            var overloadEnchantment = Enchantments.Select(x => x.Enchantment).SingleOrDefault(x => x.BaseStatus == EnchantmentStatus.OverloadPassive);
             var isNew = false;
             //If the enchantment does not exist creates a new enchantment
             if (overloadEnchantment == null)
             {
-                overloadEnchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.OverloadPassive, Source = overloadSourceString };
+                overloadEnchantment = new UnitEnchantment() { BaseStatus = EnchantmentStatus.OverloadPassive, Source = overloadSourceString };
                 isNew = true;
             }
 

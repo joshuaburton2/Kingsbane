@@ -90,7 +90,7 @@ class DeployExtensionEffect : EffectExtensionUI
         {
             var player = GameManager.instance.GetPlayer(activeOwnerToggle.isOn);
 
-            var enchantment = new UnitEnchantment() { Status = UnitEnchantment.EnchantmentStatus.Permanent, Source = createdByInput.text };
+            var enchantment = new UnitEnchantment() { BaseStatus = EnchantmentStatus.Permanent, Source = createdByInput.text };
             GetStatModifier(enchantment, Unit.StatTypes.Attack, attackModTypeDropdown, attackValueInput);
             GetStatModifier(enchantment, Unit.StatTypes.MaxHealth, healthModTypeDropdown, healthValueInput);
             GetStatModifier(enchantment, Unit.StatTypes.Range, rangeModTypeDropdown, rangeValueInput);

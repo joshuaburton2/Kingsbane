@@ -158,7 +158,7 @@ public class PassiveExtensionEffect : EffectExtensionUI
 
             var enchantment = new UnitEnchantment()
             {
-                Status = UnitEnchantment.EnchantmentStatus.Passive,
+                BaseStatus = EnchantmentStatus.Passive,
                 Source = nameInput.text,
             };
             GetStatModifier(enchantment, Unit.StatTypes.Attack, attackModTypeDropdown, attackValueInput);

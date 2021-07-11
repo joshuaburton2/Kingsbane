@@ -4,6 +4,20 @@ using System.Linq;
 using CategoryEnums;
 using UnityEngine;
 
+public enum EnchantmentStatus
+{
+    None, //Default case for the status. Should not be used on an enchantment that is actually being applied
+    Base,
+    Permanent,
+    StartOfOwnersTurn,
+    EndOfOwnersTurn,
+    StartOfOpponentTurn,
+    EndOfOpponentTurn,
+    AfterAttack,
+    Passive,
+    OverloadPassive,
+}
+
 /// <summary>
 /// 
 /// Object for storing enchantment details for a unit
@@ -11,20 +25,6 @@ using UnityEngine;
 /// </summary>
 public class UnitEnchantment
 {
-    public enum EnchantmentStatus
-    {
-        None, //Default case for the status. Should not be used on an enchantment that is actually being applied
-        Base,
-        Permanent,
-        StartOfOwnersTurn,
-        EndOfOwnersTurn,
-        StartOfOpponentTurn,
-        EndOfOpponentTurn,
-        AfterAttack,
-        Passive,
-        OverloadPassive,
-    }
-
     /// <summary>
     /// 
     /// Object for storing a stat modifier in an enchantment
@@ -37,7 +37,7 @@ public class UnitEnchantment
         public int Value { get; set; }
     }
 
-    public EnchantmentStatus Status { get; set; }
+    public EnchantmentStatus BaseStatus { get; set; }
 
     public List<StatModifier> StatModifiers { get; set; }
     public List<Keywords> Keywords { get; set; }
@@ -49,7 +49,7 @@ public class UnitEnchantment
 
     public UnitEnchantment()
     {
-        Status = EnchantmentStatus.None;
+        BaseStatus = EnchantmentStatus.None;
 
         StatModifiers = new List<StatModifier>();
         Keywords = new List<Keywords>();
@@ -116,7 +116,7 @@ public class UnitEnchantment
         //Adds the enchantment status text
         var noStatusText = false;
 
-        switch (Status)
+        switch (BaseStatus)
         {
             case EnchantmentStatus.StartOfOwnersTurn:
                 text.Add("until start of owner's next turn.");

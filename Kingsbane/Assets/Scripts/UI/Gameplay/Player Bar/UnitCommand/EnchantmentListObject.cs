@@ -27,12 +27,12 @@ public class EnchantmentListObject : MonoBehaviour
         sourceText.text = $"{_enchantment.Enchantment.Source}{activeText}";
         descriptionText.text = _enchantment.Enchantment.DescriptionText();
 
-        var unRemoveableEnchantments = new List<UnitEnchantment.EnchantmentStatus>()
+        var unRemoveableEnchantments = new List<EnchantmentStatus>()
         {
-            UnitEnchantment.EnchantmentStatus.OverloadPassive,
-            UnitEnchantment.EnchantmentStatus.Passive,
+            EnchantmentStatus.OverloadPassive,
+            EnchantmentStatus.Passive,
         };
-        deleteButton.interactable = !unRemoveableEnchantments.Contains(enchantment.Enchantment.Status);
+        deleteButton.interactable = !unRemoveableEnchantments.Contains(enchantment.Enchantment.BaseStatus);
     }
 
     public void DeleteEnchantment()
