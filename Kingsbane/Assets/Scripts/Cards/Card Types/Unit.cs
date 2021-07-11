@@ -1761,7 +1761,7 @@ public class Unit : Card
             }
             else
             {
-                //Hero's cannot be returned to hand, so are destroyed instead
+                //Hero's cannot be returned to hand, so are redeployed instead
                 if (IsHero)
                 {
                     Redeploy();

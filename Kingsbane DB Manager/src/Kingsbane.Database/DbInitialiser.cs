@@ -46,7 +46,7 @@ namespace Kingsbane.Database
 
             foreach (var value in Enum.GetValues(typeof(Keywords)).Cast<Keywords>())
             {
-                await context.Keywords.AddAsync(new Keyword { Id = value, Name = value.ToString() });
+                await context.Keywords.AddAsync(new Keyword { Id = (int)value, Name = value.ToString() });
             }
 
             await context.SaveChangesAsync();

@@ -16,6 +16,7 @@ public class CardLibrary
             Id = 5,
             Name = "Arcane Bolt",
             Text = @"Deal 2 damage to a unit within range 1",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -28,6 +29,7 @@ public class CardLibrary
             Id = 6,
             Name = "Kalyan Strike",
             Text = @"<b>Stun</b> an adjacent enemy unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -40,6 +42,7 @@ public class CardLibrary
             Id = 7,
             Name = "Runesmith",
             Text = @"Give a friendly unit within Range 1 <b>Empowered +1</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -52,6 +55,7 @@ public class CardLibrary
             Id = 8,
             Name = "Sword Fling",
             Text = @"Deal damage equal to your <b>Empowered</b> value to a unit within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -64,6 +68,7 @@ public class CardLibrary
             Id = 9,
             Name = "Kalyan Training",
             Text = @"Give all other friendly melee units within Range 2 +2 Attack",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -76,6 +81,7 @@ public class CardLibrary
             Id = 10,
             Name = "Kalyan Strike",
             Text = @"<b>Stun</b> an adjacent enemy unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -88,6 +94,7 @@ public class CardLibrary
             Id = 11,
             Name = "Arcane Bolt",
             Text = @"Deal 4 damage to a unit within range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -100,6 +107,7 @@ public class CardLibrary
             Id = 12,
             Name = "Arcane Bolt",
             Text = @"Deal 6 damage to a unit within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -112,6 +120,7 @@ public class CardLibrary
             Id = 13,
             Name = "Arcane Knowledge",
             Text = @"Add a random playable spell to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -124,6 +133,7 @@ public class CardLibrary
             Id = 14,
             Name = "Arcane Knowledge",
             Text = @"Add a random playable spell to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -136,6 +146,7 @@ public class CardLibrary
             Id = 15,
             Name = "Arcane Knowledge",
             Text = @"Add 2 random playable spells to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -148,6 +159,7 @@ public class CardLibrary
             Id = 16,
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -160,6 +172,7 @@ public class CardLibrary
             Id = 17,
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +1 Attack, +1 Health",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -172,6 +185,7 @@ public class CardLibrary
             Id = 18,
             Name = "Conjure Voidling",
             Text = @"<b>Summon</b> a Voidling adjacent to your hero. Give it +2 Attack, +2 Health and <b>Spellshield</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -184,6 +198,7 @@ public class CardLibrary
             Id = 21,
             Name = "Info Exchange",
             Text = @"Shuffle a card in your hand into your deck. Draw a card",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -196,6 +211,7 @@ public class CardLibrary
             Id = 22,
             Name = "Info Exchange",
             Text = @"Shuffle a card in your hand into your deck. Draw a card",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -208,6 +224,7 @@ public class CardLibrary
             Id = 23,
             Name = "Info Exchange",
             Text = @"Shuffle two copies of a card in your hand into your deck. Draw a card",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -220,6 +237,7 @@ public class CardLibrary
             Id = 24,
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Gear"" item",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -232,6 +250,7 @@ public class CardLibrary
             Id = 25,
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and <b>Protected</b> value gained on the Gear by +1",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -244,6 +263,7 @@ public class CardLibrary
             Id = 26,
             Name = "Lead from the Front",
             Text = @"Equip a ""Battle Gear"" item. If you already have one equipped, increase the Attack and <b>Protected</b> value gained on the Gear by +2",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -256,6 +276,7 @@ public class CardLibrary
             Id = 27,
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +1</b> until the end of your turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -268,6 +289,7 @@ public class CardLibrary
             Id = 28,
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +2</b> until the end of your turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -280,6 +302,7 @@ public class CardLibrary
             Id = 29,
             Name = "Elemental Power",
             Text = @"Gain <b>Empowered +3</b> until the end of your turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 1), },
 
@@ -292,6 +315,7 @@ public class CardLibrary
             Id = 30,
             Name = "Plant Growth",
             Text = @"<b>Root</b> an enemy unit within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -304,6 +328,7 @@ public class CardLibrary
             Id = 31,
             Name = "Plant Growth",
             Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -316,6 +341,7 @@ public class CardLibrary
             Id = 32,
             Name = "Plant Growth",
             Text = @"<b>Root</b> all enemy units in an area of Radius 2 within Range 4",
+            Range = 4,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
@@ -328,6 +354,7 @@ public class CardLibrary
             Id = 33,
             Name = "Healing Word",
             Text = @"Restore 2 Health to a unit within Range 1",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -340,6 +367,7 @@ public class CardLibrary
             Id = 34,
             Name = "Healing Word",
             Text = @"Restore 2 Health to a unit within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -352,6 +380,7 @@ public class CardLibrary
             Id = 35,
             Name = "Healing Word",
             Text = @"Restore 4 Health to a unit within Range 3",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -364,6 +393,7 @@ public class CardLibrary
             Id = 36,
             Name = "Preserve Knowledge",
             Text = @"Shuffle a copy of the next spell you cast this turn into your  deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -376,6 +406,7 @@ public class CardLibrary
             Id = 37,
             Name = "Preserve Knowledge",
             Text = @"Shuffle a copy of the next spell you cast this turn into your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -388,6 +419,7 @@ public class CardLibrary
             Id = 38,
             Name = "Preserve Knowledge",
             Text = @"Shuffle two copies of the next spell you cast this turn into your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -400,6 +432,7 @@ public class CardLibrary
             Id = 39,
             Name = "Foretell",
             Text = @"<b>Divinate 1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -412,6 +445,7 @@ public class CardLibrary
             Id = 40,
             Name = "Foretell",
             Text = @"<b>Divinate 2</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -424,6 +458,7 @@ public class CardLibrary
             Id = 41,
             Name = "Foretell",
             Text = @"<b>Divinate 3</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 0), },
 
@@ -436,6 +471,7 @@ public class CardLibrary
             Id = 43,
             Name = "Enlist Hireling",
             Text = @"Deploy a random ""Hireling"" unit adjacent to your hero",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -448,6 +484,7 @@ public class CardLibrary
             Id = 44,
             Name = "Enlist Hireling",
             Text = @"Deploy a ""Hireling"" unit of your choice adjacent to your hero",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -460,6 +497,7 @@ public class CardLibrary
             Id = 51,
             Name = "Enlist Hireling",
             Text = @"Deploy a random ""Hireling"" adjacent to your hero",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -472,6 +510,7 @@ public class CardLibrary
             Id = 52,
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 1 of the hero <b>Protected (1)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), },
 
@@ -484,6 +523,7 @@ public class CardLibrary
             Id = 53,
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 1 of the hero <b>Protected (2)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -496,6 +536,7 @@ public class CardLibrary
             Id = 54,
             Name = "Holy Shield",
             Text = @"Give all friendly units within Range 2 of the hero <b>Protected (3)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -508,6 +549,7 @@ public class CardLibrary
             Id = 55,
             Name = "Resupply",
             Text = @"Add a ""Shiv"" card to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 3), },
 
@@ -520,6 +562,7 @@ public class CardLibrary
             Id = 56,
             Name = "Resupply",
             Text = @"Add two ""Shiv"" cards to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -532,6 +575,7 @@ public class CardLibrary
             Id = 57,
             Name = "Resupply",
             Text = @"Add three ""Shiv"" cards to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -544,6 +588,7 @@ public class CardLibrary
             Id = 58,
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -556,6 +601,7 @@ public class CardLibrary
             Id = 59,
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +1 Attack",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -568,6 +614,7 @@ public class CardLibrary
             Id = 60,
             Name = "Hound Training",
             Text = @"Deploy two ""Trained Hounds"" beside your hero. Give them +2 Attack",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -580,6 +627,7 @@ public class CardLibrary
             Id = 61,
             Name = "Enrage",
             Text = @"Give your hero +2 Attack until the end of your turn and <b>Protected (1)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -592,6 +640,7 @@ public class CardLibrary
             Id = 62,
             Name = "Enrage",
             Text = @"Your hero gains +3 Attack until the end of your turn and <b>Protected (2)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -604,6 +653,7 @@ public class CardLibrary
             Id = 63,
             Name = "Enrage",
             Text = @"Your hero gains +4 Attack until the end of your turn and <b>Protected (3)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -616,6 +666,7 @@ public class CardLibrary
             Id = 64,
             Name = "Magic Missiles",
             Text = @"Deal 3 damage randomly split among all enemies in an area of Cone 3",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -628,6 +679,7 @@ public class CardLibrary
             Id = 65,
             Name = "Studious Research",
             Text = @"<b>Study (3)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -640,6 +692,7 @@ public class CardLibrary
             Id = 66,
             Name = "Stargaze",
             Text = @"<b>Divinate 1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -652,6 +705,7 @@ public class CardLibrary
             Id = 67,
             Name = "Lifedrain",
             Text = @"Deal 3 damage to an adjacent unit. Heal this unit for the amount of damage dealt",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -664,6 +718,7 @@ public class CardLibrary
             Id = 68,
             Name = "Brood Spawn",
             Text = @"<b>Discard</b> a card. Deploy two Abyss Imps beside this unit",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -676,6 +731,7 @@ public class CardLibrary
             Id = 69,
             Name = "Call of the Void",
             Text = @"Add a random <b>Summon</b> unit to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -688,6 +744,7 @@ public class CardLibrary
             Id = 70,
             Name = "Consume",
             Text = @"<b>Discard</b> a card. Gain mana equal to its total cost",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -700,6 +757,7 @@ public class CardLibrary
             Id = 71,
             Name = "For the Void",
             Text = @"<b>Discard</b> a card. Give all adjacent Void units Attack and Health equal to its total cost",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -712,6 +770,7 @@ public class CardLibrary
             Id = 72,
             Name = "Surveillance",
             Text = @"<b>Study (3).</b> Shuffle an additional <b>Inspiration</b> card for each adjacent enemy unit",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -723,7 +782,8 @@ public class CardLibrary
         {
             Id = 73,
             Name = "Triage",
-            Text = @"Restore 2 Health to a unit",
+            Text = @"Restore 2 Health to an adjacent unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -736,6 +796,7 @@ public class CardLibrary
             Id = 74,
             Name = "Confiscate",
             Text = @"Remove a random card from your opponents hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -748,6 +809,7 @@ public class CardLibrary
             Id = 75,
             Name = "Imprison",
             Text = @"Remove an enemy minion from the battlefield",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -759,7 +821,8 @@ public class CardLibrary
         {
             Id = 76,
             Name = "Call to Arms",
-            Text = @"Deploy two ""Goldland Loyalists"" adjacent to this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
+            Text = @"Deploy two ""Goldland Loyalists"" beside this unit or give all friendly units within Range 2 +2 Attack, +2 Health",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 4), },
 
@@ -772,6 +835,7 @@ public class CardLibrary
             Id = 77,
             Name = "FIREBLAST!",
             Text = @"Deal damage to all other units within Range 2 equal to your <b>Empowered</b> value",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -784,6 +848,7 @@ public class CardLibrary
             Id = 78,
             Name = "Earthspike",
             Text = @"Deal damage to all units in an area of Cone 3 equal to your <b>Empowered</b> value and <b>Root</b> them",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -796,6 +861,7 @@ public class CardLibrary
             Id = 79,
             Name = "Call of the Winds",
             Text = @"Draw a card. If it is a spell, reduce its cost by (3). <b>Cycle -3</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -807,7 +873,8 @@ public class CardLibrary
         {
             Id = 80,
             Name = "Water Whip",
-            Text = @"Choose a unit within Range 4. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it",
+            Text = @"Choose a unit within Range 3. Deal 1 damage to it and pull it up to 1 tile closer. If the unit is hostile and adjacent to this unit, this unit attacks it",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -820,6 +887,7 @@ public class CardLibrary
             Id = 81,
             Name = "Master of the Elements",
             Text = @"Add a random basic Elemental Spell to your hand. <b>Cycle -2</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 3), },
 
@@ -832,6 +900,7 @@ public class CardLibrary
             Id = 82,
             Name = "Wild Ritual",
             Text = @"<b>Prayer +1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -844,6 +913,7 @@ public class CardLibrary
             Id = 83,
             Name = "Faerie Charm",
             Text = @"Gain control of an enemy minion within Range 2 until the end of your turn",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), new Resource(CardResources.Wild, 3), },
 
@@ -856,6 +926,7 @@ public class CardLibrary
             Id = 84,
             Name = "Holy Ritual",
             Text = @"<b>Prayer +1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -867,7 +938,8 @@ public class CardLibrary
         {
             Id = 85,
             Name = "Soothe Wounds",
-            Text = @"Restore 3 Health to a unit within Range 1",
+            Text = @"Restore 3 Health to a friendly unit within Range 1",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), },
 
@@ -880,6 +952,7 @@ public class CardLibrary
             Id = 86,
             Name = "Collect Dues",
             Text = @"Gain 2 Gold for every adjacent friendly unit",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -892,6 +965,7 @@ public class CardLibrary
             Id = 87,
             Name = "Potion Sale",
             Text = @"Add a random potion card to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -904,6 +978,7 @@ public class CardLibrary
             Id = 88,
             Name = "Call the Host",
             Text = @"Deploy a ""Golden Host"" unit adjacent to this unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 3), new Resource(CardResources.Gold, 2), },
 
@@ -916,6 +991,7 @@ public class CardLibrary
             Id = 89,
             Name = "Meditative Ritual",
             Text = @"<b>Prayer +1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -928,6 +1004,7 @@ public class CardLibrary
             Id = 90,
             Name = "Submit Collection",
             Text = @"<b>Study (3).</b> One of the <b>Inspiration</b> cards shuffled is placed on the top of your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -940,6 +1017,7 @@ public class CardLibrary
             Id = 91,
             Name = "Search Archives",
             Text = @"Draw an <b>Inspiration</b> card from your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 3), },
 
@@ -952,6 +1030,7 @@ public class CardLibrary
             Id = 92,
             Name = "Deep Exposure",
             Text = @"Deal <b>Piercing</b> damage to a unit within Range 3 equal to its attack.",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 1), new Resource(CardResources.Knowledge, 2), },
 
@@ -964,6 +1043,7 @@ public class CardLibrary
             Id = 93,
             Name = "Pull Record",
             Text = @"Draw a spell which did not start in your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -976,6 +1056,7 @@ public class CardLibrary
             Id = 94,
             Name = "Heavenly Ritual",
             Text = @"<b>Prayer +1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -988,6 +1069,7 @@ public class CardLibrary
             Id = 95,
             Name = "Fetch Gear",
             Text = @"Draw a card",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1000,6 +1082,7 @@ public class CardLibrary
             Id = 96,
             Name = "Hefty Bribe",
             Text = @"<b>Recruit</b> an enemy minion within Range 5 that has a total cost of (5) or less",
+            Range = 5,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 4), },
 
@@ -1012,6 +1095,7 @@ public class CardLibrary
             Id = 97,
             Name = "Run Messages",
             Text = @"Draw a card for every 2 tiles moved this turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1023,7 +1107,8 @@ public class CardLibrary
         {
             Id = 98,
             Name = "Smuggle",
-            Text = @"Return a friendly minion to your hand, or redeploy your hero",
+            Text = @"Return a friendly minion within Range 3 to your hand. If they are your hero, Redeploy them instead",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -1036,6 +1121,7 @@ public class CardLibrary
             Id = 99,
             Name = "Shadowy Ritual",
             Text = @"<b>Prayer +1</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -1048,6 +1134,7 @@ public class CardLibrary
             Id = 100,
             Name = "Grey Blood",
             Text = @"<b>Regenerate, Cycle -3</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -1060,6 +1147,7 @@ public class CardLibrary
             Id = 101,
             Name = "Shapechange",
             Text = @"<b>Transform</b> this unit into a Hulking Beast. <b>Cycle -2</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1072,6 +1160,7 @@ public class CardLibrary
             Id = 102,
             Name = "Roar",
             Text = @"<b>Stun</b> an enemy unit within Range 2",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1084,6 +1173,7 @@ public class CardLibrary
             Id = 103,
             Name = "Caw",
             Text = @"Reduce the attack of all adjacent enemy units by 3 until the start of your next turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -1096,6 +1186,7 @@ public class CardLibrary
             Id = 104,
             Name = "Leap",
             Text = @"Jump to an empty tile within Range 3, then melee attack a random adjacent enemy unit",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1108,6 +1199,7 @@ public class CardLibrary
             Id = 105,
             Name = "Rush",
             Text = @"Gain <b>Unleash</b> until the end of your turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1120,6 +1212,7 @@ public class CardLibrary
             Id = 106,
             Name = "Spirit Walk",
             Text = @"<b>Regenerate. Cycle -3</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -1132,6 +1225,7 @@ public class CardLibrary
             Id = 107,
             Name = "Brawler",
             Text = @"Add a random Brawl card to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 1), },
 
@@ -1144,6 +1238,7 @@ public class CardLibrary
             Id = 108,
             Name = "Feast",
             Text = @"Restore 2 Health to all friendly adjacent units",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1155,7 +1250,8 @@ public class CardLibrary
         {
             Id = 109,
             Name = "Seduce",
-            Text = @"<b>Recruit</b> an adjacent enemy unit that has a total cost of (3) or less or restore 5 health to a friendly unit",
+            Text = @"<b>Recruit</b> an adjacent enemy unit that has a total cost of (3) or less or restore 5 health to an adjacent friendly unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1168,6 +1264,7 @@ public class CardLibrary
             Id = 110,
             Name = "Secret Techniques",
             Text = @"Add a random playable spell that costs just Energy to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 2), },
 
@@ -1180,6 +1277,7 @@ public class CardLibrary
             Id = 111,
             Name = "Warcry",
             Text = @"Give all adjacent friendly Goblin units +2 Attack until the end of your turn",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1192,6 +1290,7 @@ public class CardLibrary
             Id = 1108,
             Name = "Rally the Horde",
             Text = @"Deploy 2 Goblin Hordes beside this unit",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1204,6 +1303,7 @@ public class CardLibrary
             Id = 1109,
             Name = "Enlistment",
             Text = @"Add a Hireling of your choice to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1216,6 +1316,7 @@ public class CardLibrary
             Id = 1110,
             Name = "Glimpse",
             Text = @"Look at the top 3 cards of your deck. Choose which one to place on top of your deck",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -1228,6 +1329,7 @@ public class CardLibrary
             Id = 1111,
             Name = "Trade Tales",
             Text = @"<b>Divinate (1)</b> and give an adjacent friendlly unit <b>Protected (2)</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -1240,6 +1342,7 @@ public class CardLibrary
             Id = 1112,
             Name = "Exchange Stories",
             Text = @"<b>Study (3).</b> The <b>Study</b> value of this effect cannot be reduced below 1",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -1252,6 +1355,7 @@ public class CardLibrary
             Id = 1114,
             Name = "Starcall",
             Text = @"This units next attack this turn also deals 2 damage to all adjacent units",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1264,6 +1368,7 @@ public class CardLibrary
             Id = 1115,
             Name = "Moondrain",
             Text = @"<b>Spellbind</b> a unit within Range 3. Deal damage to the unit equal to the nmber of enchantments removed. This unit gains any attack and health statistics removed",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1276,6 +1381,7 @@ public class CardLibrary
             Id = 1116,
             Name = "Prophecy",
             Text = @"Choose to experience a vision of the Past, Present or Future",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1288,6 +1394,7 @@ public class CardLibrary
             Id = 1117,
             Name = "Conjure Mirror",
             Text = @"Deploy a ""Mirror Aspect"" with stats equal to this unit adjacent. Destroy any ""Mirror Aspects"" previously created by this unit. <b>Cycle -2</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1300,6 +1407,7 @@ public class CardLibrary
             Id = 1118,
             Name = "Scouting Mission",
             Text = @"<b>Divinate (1)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1312,6 +1420,7 @@ public class CardLibrary
             Id = 1119,
             Name = "Deep Study",
             Text = @"<b>Divinate (1)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1324,6 +1433,7 @@ public class CardLibrary
             Id = 1120,
             Name = "War Training",
             Text = @"Give all beasts in your hand +1 Attack, +1 Health",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 1), },
 
@@ -1336,6 +1446,7 @@ public class CardLibrary
             Id = 1121,
             Name = "Craft Arrows",
             Text = @"Choose one of three random shot spells to add to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
 
@@ -1348,6 +1459,7 @@ public class CardLibrary
             Id = 1122,
             Name = "Blood Leap",
             Text = @"Choose a damaged enemy unit within range 2. Move this unit directly to a tile adjacent and attack the target",
+            Range = 2,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1360,6 +1472,7 @@ public class CardLibrary
             Id = 1123,
             Name = "Devour",
             Text = @"Destroy an adjacent minion with less attack than this. This ability activates <b>Unleash. Cycle -2</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1372,6 +1485,7 @@ public class CardLibrary
             Id = 1124,
             Name = "Infiltration",
             Text = @"<b>Study (3)</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 1), },
 
@@ -1384,6 +1498,7 @@ public class CardLibrary
             Id = 1125,
             Name = "Disappear",
             Text = @"Gain <b>Stealth</b>",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1396,6 +1511,7 @@ public class CardLibrary
             Id = 1126,
             Name = "Make Arrangements",
             Text = @"Shuffle a card in your hand into your deck, then draw it",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1408,6 +1524,7 @@ public class CardLibrary
             Id = 1127,
             Name = "Spycraft",
             Text = @"Look at 3 cards in your opponent's hand. Choose to <b>Recruit</b> a copy of one of them",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1420,6 +1537,7 @@ public class CardLibrary
             Id = 1128,
             Name = "Repair",
             Text = @"Restore 2 Health to this unit",
+            Range = 0,
 
             Resources = new List<Resource>() { },
 
@@ -1432,6 +1550,7 @@ public class CardLibrary
             Id = 1129,
             Name = "Flame Breath",
             Text = @"Deal 2 damage to all units in area of Cone 3",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1444,6 +1563,7 @@ public class CardLibrary
             Id = 1130,
             Name = "Call of the Wild",
             Text = @"Draw a beast from your deck and give it +1 Attack, +1 Health",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -1456,6 +1576,7 @@ public class CardLibrary
             Id = 1131,
             Name = "Elder's Wisdom",
             Text = @"<b>Divinate (1)</b> and give a friendly unit within range 1 <b>Protected (1)</b>",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Knowledge, 2), },
 
@@ -1468,6 +1589,7 @@ public class CardLibrary
             Id = 1132,
             Name = "Legion's Aid",
             Text = @"Deploy a Legionnaire unit adjacent to this unit",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Energy, 3), },
 
@@ -1480,6 +1602,7 @@ public class CardLibrary
             Id = 1133,
             Name = "Sap",
             Text = @"<b>Redeploy</b> an adjacent unit, then gain <b>Stealth</b> until the start of your next turn",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Gold, 2), },
 
@@ -1491,7 +1614,8 @@ public class CardLibrary
         {
             Id = 1134,
             Name = "Fist of Mogris",
-            Text = @"<b>Discard</b> a card and choose an area of Radius 2. At the start of your next turn, deal damage equal to the cards total cost",
+            Text = @"<b>Discard</b> a card and choose an area of Radius 2 within Range 10. At the start of your next turn, deal damage equal to the cards total cost",
+            Range = 10,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1504,6 +1628,7 @@ public class CardLibrary
             Id = 1135,
             Name = "Soul Pact",
             Text = @"Return a random card in your <b>Discard</b> pool to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1516,6 +1641,7 @@ public class CardLibrary
             Id = 1136,
             Name = "Shadowdrain",
             Text = @"Deal 4 <b>Lifebond</b> damage to an adjacent unit and reduce its speed by 1 until the start of your next turn",
+            Range = 1,
 
             Resources = new List<Resource>() { new Resource(CardResources.Devotion, 2), },
 
@@ -1528,6 +1654,7 @@ public class CardLibrary
             Id = 1137,
             Name = "Flame Tempest",
             Text = @"Deal 2 damage to all units in an area of Radius 2 within range 3. If the unit is a friendly Treant, restore 2 health instead",
+            Range = 3,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 2), },
 
@@ -1540,6 +1667,7 @@ public class CardLibrary
             Id = 1138,
             Name = "Dragon's Curse",
             Text = @"Deal 1 damage randomly split among all enemy units. Upgrades after each use",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Wild, 3), },
 
@@ -1552,6 +1680,7 @@ public class CardLibrary
             Id = 1139,
             Name = "Hammer of Sithrimus",
             Text = @"Deal 3 damage and <b>Root</b> all units in area of Radius 2 centred on this unit",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1564,6 +1693,7 @@ public class CardLibrary
             Id = 1140,
             Name = "Se'Carr's Chosen",
             Text = @"<b>Discard</b> a card to deploy a Tentacle of Se'Carr within range 5. Set its attack equal to the total cost of the <b>Discarded</b> card.",
+            Range = 5,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
@@ -1576,12 +1706,26 @@ public class CardLibrary
             Id = 1141,
             Name = "Soul Pact",
             Text = @"Return a random card in your <b>Discard</b> pool to your hand",
+            Range = 0,
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 2), },
 
             CostsAction = true,
         };
         AbilityList.Add(ability1141);
+
+        var ability1142 = new AbilityData()
+        {
+            Id = 1142,
+            Name = "From the Source",
+            Text = @"<b>Recruit</b> a copy of the top card of your opponent's deck, then reduce the Gold cost of cards you <b>Recruited</b> in your hand by (1)",
+            Range = 0,
+
+            Resources = new List<Resource>() { new Resource(CardResources.Gold, 1), },
+
+            CostsAction = true,
+        };
+        AbilityList.Add(ability1142);
 
         var card2 = new UnitData()
         {
@@ -4704,7 +4848,7 @@ Whenever this unit takes damage from a friendly Water spell or unit, it heals fo
 
             Resources = new List<Resource>() { new Resource(CardResources.Mana, 8), },
 
-            Text = @"Choose a tile in range. Deal 5 damage to all units in a line between the target and the caster. If any unit enters this area until the end of your next turn, they take 5 damage.",
+            Text = @"Choose a tile in range. Deal 5 damage to all units in a line between the target and the caster. If any unit enters this area until the start of your next turn, they take 5 damage.",
             LoreText = @"",
             Notes = @"",
 
@@ -14342,7 +14486,7 @@ Deployment:</b> Reduce the gold cost of cards you <b>Recruited</b> in your hand 
             Speed = 3,
             Empowered = 0,
 
-            Abilities = new List<AbilityData>() { },
+            Abilities = new List<AbilityData>() { ability1142 },
 
             Keywords = new List<Keywords>() { Keywords.Routing },
         };

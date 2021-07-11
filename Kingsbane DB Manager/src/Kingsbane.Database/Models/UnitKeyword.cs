@@ -7,7 +7,7 @@ namespace Kingsbane.Database.Models
         public int CardUnitId { get; set; }
         public virtual CardUnit CardUnit { get; set; }
 
-        public Keywords KeywordId { get; set; }
+        public int KeywordId { get; set; }
         public virtual Keyword Keyword { get; set; }
     }
 }

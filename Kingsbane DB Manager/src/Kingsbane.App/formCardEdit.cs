@@ -410,9 +410,9 @@ namespace Kingsbane.App
                     var keywordIds = lstKeywords.Items.Cast<SelectListItem>().Select(x => x.Id).ToList();
                     foreach (var keywordId in keywordIds)
                     {
-                        var unitKeyword = Id.HasValue ? cardUnit.UnitKeywords.SingleOrDefault(x => x.KeywordId == (Keywords)keywordId) : null;
+                        var unitKeyword = Id.HasValue ? cardUnit.UnitKeywords.SingleOrDefault(x => x.KeywordId == keywordId) : null;
                         if (unitKeyword == null)
-                            _context.UnitKeywords.Add(new UnitKeyword { CardUnit = cardUnit, KeywordId = (Keywords)keywordId });
+                            _context.UnitKeywords.Add(new UnitKeyword { CardUnit = cardUnit, KeywordId = keywordId });
                     }
                     if (Id.HasValue)
                     {

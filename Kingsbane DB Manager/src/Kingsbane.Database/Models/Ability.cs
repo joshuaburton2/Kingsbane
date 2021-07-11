@@ -28,6 +28,8 @@ namespace Kingsbane.Database.Models
 
         public bool CostsAction { get; set; }
 
+        public int Range { get; set; }
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
 

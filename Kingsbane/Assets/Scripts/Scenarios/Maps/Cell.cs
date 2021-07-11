@@ -97,7 +97,7 @@ public class Cell : MonoBehaviour
                                         GameManager.instance.effectManager.UseAttack(occupantCounter.Unit);
                                     break;
                                 case EffectManager.ActiveEffectTypes.UnitAbility:
-                                    GameManager.instance.effectManager.UseAbility();
+                                    GameManager.instance.effectManager.UseAbility(this);
                                     break;
                                 case EffectManager.ActiveEffectTypes.DealDamage:
                                     if (occupantCounter != null)

@@ -58,6 +58,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.txtRange = new System.Windows.Forms.TextBox();
+            this.lblRange = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDevotion
@@ -293,7 +295,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(286, 299);
+            this.btnSave.Location = new System.Drawing.Point(286, 325);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(82, 22);
@@ -304,7 +306,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(374, 299);
+            this.btnCancel.Location = new System.Drawing.Point(374, 325);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(82, 22);
@@ -315,7 +317,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(462, 299);
+            this.btnDelete.Location = new System.Drawing.Point(462, 325);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(82, 22);
@@ -324,11 +326,29 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // txtRange
+            // 
+            this.txtRange.Location = new System.Drawing.Point(117, 303);
+            this.txtRange.Name = "txtRange";
+            this.txtRange.Size = new System.Drawing.Size(100, 23);
+            this.txtRange.TabIndex = 26;
+            // 
+            // lblRange
+            // 
+            this.lblRange.AutoSize = true;
+            this.lblRange.Location = new System.Drawing.Point(22, 306);
+            this.lblRange.Name = "lblRange";
+            this.lblRange.Size = new System.Drawing.Size(40, 15);
+            this.lblRange.TabIndex = 27;
+            this.lblRange.Text = "Range";
+            // 
             // formEditAbility
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 330);
+            this.ClientSize = new System.Drawing.Size(556, 358);
+            this.Controls.Add(this.lblRange);
+            this.Controls.Add(this.txtRange);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -399,5 +419,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtRange;
+        private System.Windows.Forms.Label lblRange;
     }
 }

@@ -34,6 +34,7 @@ namespace Kingsbane.App
                 txtName.Text = ability.Name;
                 txtAbilityText.Text = ability.Text;
                 chkAction.Checked = ability.CostsAction;
+                txtRange.Text = ability.Range.ToString();
 
                 UpdateResourceFields();
             }
@@ -78,6 +79,14 @@ namespace Kingsbane.App
             ability.Name = txtName.Text;
             ability.Text = txtAbilityText.Text;
             ability.CostsAction = chkAction.Checked;
+            if (int.TryParse(txtRange.Text, out int result))
+            {
+                ability.Range = result;
+            }
+            else
+            {
+                ability.Range = 0;
+            }
 
             ability.ResourceDevotion = AddResource(chkDevotion, txtDevotion);
             ability.ResourceEnergy = AddResource(chkEnergy, txtEnergy);
@@ -134,8 +143,6 @@ namespace Kingsbane.App
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this ability?", "Check Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                selectionItem = new SelectListItem() { Id = ability.Id, Name = ability.Name };
-
                 if (Id.HasValue)
                 {
                     _context.Remove(ability);

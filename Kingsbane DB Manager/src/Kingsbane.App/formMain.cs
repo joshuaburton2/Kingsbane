@@ -76,6 +76,7 @@ namespace Kingsbane.App
             Id = {item.Id},
             Name = ""{item.Name.FixQuotes()}"",
             Text = @""{item.Text.FixQuotes()}"",
+            Range = {item.Range},
 
             {resourceString}
 
@@ -742,6 +743,71 @@ namespace Kingsbane.App
             var formCampaigns = _serviceProvider.GetRequiredService<formCampaignList>();
             formCampaigns.Show();
             this.Hide();
+        }
+
+        private void btnKeywords_Click(object sender, EventArgs e)
+        {
+            var formKeywords = _serviceProvider.GetRequiredService<formKeywordList>();
+            formKeywords.Show();
+            this.Hide();
+        }
+
+        private void btnExportKeywords_Click(object sender, EventArgs e)
+        {
+            var sb = new StringBuilder();
+
+            var query = _context.Keywords;
+
+            sb.AppendLine($"using System.Collections.Generic;");
+            sb.AppendLine($"");
+            sb.AppendLine($"// Pregenerated code- do not edit");
+            sb.AppendLine($"namespace CategoryEnums");
+            sb.AppendLine($"{{");
+            sb.AppendLine($"    /// <summary>");
+            sb.AppendLine($"    ///");
+            sb.AppendLine($"    /// List of Keywords which can be applied to units");
+            sb.AppendLine($"    ///");
+            sb.AppendLine($"    /// </summary>");
+            sb.AppendLine($"    public enum Keywords");
+            sb.AppendLine($"    {{");
+
+            foreach (var item in query)
+            {
+                sb.AppendLine($"        {item.Name},");
+            }
+
+            sb.AppendLine($"    }}");
+            sb.AppendLine($"");
+            sb.AppendLine($"    public static class KeywordProperties");
+            sb.AppendLine($"    {{");
+            sb.AppendLine($"        /// <summary>");
+            sb.AppendLine($"        ///");
+            sb.AppendLine($"        /// Gets the description of a given keyword");
+            sb.AppendLine($"        ///");
+            sb.AppendLine($"        /// </summary>");
+            sb.AppendLine($"        public static string GetResoourceDescription(Keywords keyword)");
+            sb.AppendLine($"        {{");
+            sb.AppendLine($"            KeywordDescriptions.TryGetValue(keyword, out string description);");
+            sb.AppendLine($"            return description;");
+            sb.AppendLine($"        }}");
+            sb.AppendLine($"");
+
+
+            sb.AppendLine($"        private static Dictionary<Keywords, string> KeywordDescriptions = new Dictionary<Keywords, string>()");
+            sb.AppendLine($"        {{");
+            foreach (var item in query)
+            {
+                sb.AppendLine(@$"            {{ Keywords.{item.Name}, @""{item.Description}"" }},");
+                sb.AppendLine("");
+            }
+            sb.AppendLine($"        }};");
+
+            sb.AppendLine($"    }}");
+            sb.AppendLine($"}}");
+
+            var x = sb.ToString();
+            Clipboard.SetText(x);
+            MessageBox.Show("Exported content copied to clipboard");
         }
     }
 }

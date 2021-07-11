@@ -15,6 +15,7 @@ public class AbilityData
     public string Text { get; set; }
     public List<Resource> Resources { get; set; }
     public bool CostsAction { get; set; }
+    public int Range { get; set; }
 
     /// <summary>
     /// 

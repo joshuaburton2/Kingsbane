@@ -13,13 +13,16 @@ namespace Kingsbane.Database.Models
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Keywords Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [MaxLength(100)]
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
+
+        [Column(TypeName = "varchar(max)")]
+        public string Description { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }

@@ -40,6 +40,8 @@
             this.btnExportMap = new System.Windows.Forms.Button();
             this.btnMaps = new System.Windows.Forms.Button();
             this.btnCampaigns = new System.Windows.Forms.Button();
+            this.btnExportKeywords = new System.Windows.Forms.Button();
+            this.btnKeywords = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCardList
@@ -171,11 +173,33 @@
             this.btnCampaigns.UseVisualStyleBackColor = true;
             this.btnCampaigns.Click += new System.EventHandler(this.btnCampaigns_Click);
             // 
+            // btnExportKeywords
+            // 
+            this.btnExportKeywords.Location = new System.Drawing.Point(372, 265);
+            this.btnExportKeywords.Name = "btnExportKeywords";
+            this.btnExportKeywords.Size = new System.Drawing.Size(120, 49);
+            this.btnExportKeywords.TabIndex = 9;
+            this.btnExportKeywords.Text = "Export";
+            this.btnExportKeywords.UseVisualStyleBackColor = true;
+            this.btnExportKeywords.Click += new System.EventHandler(this.btnExportKeywords_Click);
+            // 
+            // btnKeywords
+            // 
+            this.btnKeywords.Location = new System.Drawing.Point(372, 206);
+            this.btnKeywords.Name = "btnKeywords";
+            this.btnKeywords.Size = new System.Drawing.Size(120, 52);
+            this.btnKeywords.TabIndex = 8;
+            this.btnKeywords.Text = "Keywords";
+            this.btnKeywords.UseVisualStyleBackColor = true;
+            this.btnKeywords.Click += new System.EventHandler(this.btnKeywords_Click);
+            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 328);
+            this.Controls.Add(this.btnExportKeywords);
+            this.Controls.Add(this.btnKeywords);
             this.Controls.Add(this.btnCampaigns);
             this.Controls.Add(this.btnExportMap);
             this.Controls.Add(this.btnMaps);
@@ -210,6 +234,8 @@
         private System.Windows.Forms.Button btnExportMap;
         private System.Windows.Forms.Button btnMaps;
         private System.Windows.Forms.Button btnCampaigns;
+        private System.Windows.Forms.Button btnExportKeywords;
+        private System.Windows.Forms.Button btnKeywords;
     }
 }
 

@@ -13,7 +13,7 @@ public class Ability
     public string Name { get { return AbilityData.Name; } }
     public string Text { get { return AbilityData.Text; } }
     public bool CostsAction { get { return AbilityData.CostsAction; } }
-
+    public int Range { get { return AbilityData.Range; } }
 
     public List<Resource> DefaultCost { get { return AbilityData.GetResources; } }
     public List<Resource> ResourceCost { get; set; }

@@ -521,16 +521,37 @@ public class EffectManager : MonoBehaviour
     {
         if (ActiveEffect == ActiveEffectTypes.UnitCommand)
         {
-            ActiveEffect = ActiveEffectTypes.UnitAbility;
             SelectedAbility = ability;
+
+            if (ability.Range == 0)
+            {
+                TargetCells = null;
+                UseAbility(SelectedUnit.UnitCounter.Cell);
+            }
+            else
+            {
+                ActiveEffect = ActiveEffectTypes.UnitAbility;
+
+                var abilityCells = SelectedUnit.UnitCounter.Cell.GetRadiusTiles(ability.Range, Cell.RadiusTilesType.Ability);
+
+                foreach (var cell in abilityCells)
+                {
+                    cell.SetHighlightColour(GameManager.instance.colourManager.highlightColour);
+                }
+
+                TargetCells = abilityCells;
+            }
         }
     }
 
-    public void UseAbility()
+    public void UseAbility(Cell targetCell)
     {
-        SelectedUnit.UseAbility(SelectedAbility);
-        RefreshEffectManager();
-        GameManager.instance.uiManager.RefreshUI();
+        if (TargetCells == null || TargetCells != null && TargetCells.Contains(targetCell))
+        {
+            SelectedUnit.UseAbility(SelectedAbility);
+            RefreshEffectManager();
+            GameManager.instance.uiManager.RefreshUI();
+        }
     }
 
     public void SelectCaster(Unit caster, bool requiresActiveCaster = true)
@@ -559,8 +580,6 @@ public class EffectManager : MonoBehaviour
                 if (SelectedUnit.UnitCounter != null)
                     SelectedUnit.UnitCounter.ShowUnitSelector(true);
             }
-
-            caster.Unstealth();
         }
     }
 
@@ -571,6 +590,8 @@ public class EffectManager : MonoBehaviour
             if (TargetCells == null || TargetCells != null && TargetCells.Contains(targetCell))
             {
                 //Need to account for caster (Selected Unit)
+
+                SelectedUnit.Unstealth();
                 SelectedCard.Play();
                 GameManager.instance.uiManager.RefreshUI();
                 RefreshEffectManager();

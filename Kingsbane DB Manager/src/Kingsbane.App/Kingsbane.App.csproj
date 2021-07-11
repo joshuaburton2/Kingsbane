@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="formKeywordList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="formMapList.cs" />
     <Compile Update="formUpgradeList.cs" />
   </ItemGroup>
